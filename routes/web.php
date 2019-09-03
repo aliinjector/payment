@@ -23,5 +23,6 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::resource('card', 'CardController');
     Route::resource('wallet', 'WalletController');
     Route::resource('shop', 'ShopController');
+    Route::resource('product-list', 'ProductController');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });

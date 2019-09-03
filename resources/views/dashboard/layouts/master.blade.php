@@ -22,6 +22,7 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
     <style>
         .main-icon-menu{
             overflow: scroll!important;
@@ -165,8 +166,8 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">فروشگاه ساز</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="jj"><i class="dripicons-device-desktop"></i>گزارشات فروشگاه شما</a></li>
-                        <li class="nav-item"><a class="nav-link" href="jj"><i class="dripicons-device-desktop"></i>لیست کالاها / خدمات</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop"><i class="dripicons-device-desktop"></i>گزارشات فروشگاه شما</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product-list"><i class="dripicons-device-desktop"></i>لیست کالاها / خدمات</a></li>
                         <li class="nav-item"><a class="nav-link" href="jj"><i class="dripicons-device-desktop"></i>تنظیمات فروشگاه</a></li>
                     </ul>
                 </div>
