@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Dashboard;
+use Alert;
+use App\Wallet;
+use App\Http\Requests\WalletRequest;
 use Illuminate\Http\Request;
 
 class WalletController extends \App\Http\Controllers\Controller
@@ -14,7 +16,8 @@ class WalletController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.wallet');
+        $wallets = \Auth::user()->wallets()->get();
+        return view('dashboard.wallet', compact('wallets'));
     }
     /**
      * Show the form for creating a new resource.
@@ -32,9 +35,19 @@ class WalletController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WalletRequest $request)
     {
-        //
+        $key = str_replace( '=' , '', base64_encode(\Auth::user()->id . mt_rand('1', '99') . \Auth::user()->id . time()  . \Auth::user()->id));
+        $wallet = new Wallet;
+        $wallet->name = $request->name;
+        $wallet->amount = 0;
+        $wallet->user_id = \Auth::user()->id;
+        $wallet->key = $key;
+        $wallet->save();
+
+        alert()->success('کیف پول موفقیت اضافه شد.', 'انجام شد');
+        return redirect()->route('wallet.index');
+
     }
 
     /**

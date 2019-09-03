@@ -43,6 +43,38 @@
 
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="AddWalletModal" tabindex="-1" role="dialog" aria-labelledby="AddWalletModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">افزودن کیف پول</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" method="post" action="{{ route('wallet.store') }}">
+                        @csrf
+                        <div class="form-group mb-0">
+                            <div class="input-group mt-3">
+                                <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">نام کیف پول:</span></div>
+                                <input type="text" class="form-control" name="name" placeholder="مثال: کیف پول سایت">
+                            </div>
+                        </div>
+                        <!--end form-group-->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                    <button type="submit" class="btn btn-success">ثبت درخواست</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
 
 
     <div class="row">
@@ -67,7 +99,7 @@
                 <div class="card-body">
                     <h4 class="title-text mt-0">مجموع موجودی شما</h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold">100,000 تومان </h3></div>
+                        <h3 class="font-weight-bold">{{ $wallets->sum('amount') }} تومان </h3></div>
                 </div>
                 <!--end card-body-->
             </div>
@@ -79,7 +111,7 @@
                 <div class="card-body">
                     <h4 class="title-text mt-0">تعداد کیف پول ها</h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold">1</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
+                        <h3 class="font-weight-bold">{{ $wallets->count() }}</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
                 </div>
                 <!--end card-body-->
             </div>
@@ -114,47 +146,59 @@
     <!--end row-->
 
 
+@include('dashboard.layouts.errors')
+
+    <div class="text-right mb-3">
+        <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2 ">افزودن کیف پول</button><br>
+    </div>
+
     <div class="row">
-        <div class="col-lg-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="wallet-bal-usd">
-                                <center><h4>نام کیف پول: کیف پول شماره ۱</h4></center> <br>
-                                <h5 class="wallet-title m-0">موجودی فعلی این کیف پول:</h5>
-                                <h3 class="text-center">۳۰۰ هزار تومان</h3></div>
-                            <div  class="text-center pt-4">
-                                <button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button>
-                                <button data-toggle="modal" data-target="#CheckoutModal" class="btn btn-danger btn-sm px-3">درخواست تسویه</button>
-                                <!-- Button trigger modal -->
+
+       @foreach ($wallets as $wallet)
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="wallet-bal-usd">
+                                    <center><h4>نام کیف پول: {{ $wallet->name }}</h4></center> <br>
+                                    <h5 class="wallet-title m-0">موجودی فعلی این کیف پول:</h5>
+                                    <h3 class="text-center">{{ number_format($wallet->amount) }} تومان</h3></div>
+                                <div  class="text-center pt-4">
+                                    <button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button>
+                                    <button data-toggle="modal" data-target="#CheckoutModal" class="btn btn-danger btn-sm px-3">درخواست تسویه</button>
+                                    <!-- Button trigger modal -->
 
 
-                                <br><br><span style="margin-top: 10px" class="text-muted font-12">آخرین بروزرسانی: امروز ۸ صبح</span>
+                                    <br><br><span style="margin-top: 10px; font-family: BYekan!important;" class="text-muted font-12">آخرین بروزرسانی: {{ jdate($wallet->updated_at) }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--end card-body-->
-                <div class="card-body pt-0">
-                    <ul class="list-group wallet-bal-crypto">
-                        <li class="list-group-item align-items-center d-flex justify-content-between">
-                            <div class="media"><i style="padding-left: 15px;" class="dripicons-cart card-eco-icon text-secondary align-self-center"></i>
-                                <div class="media-body align-self-center">
-                                    <div class="coin-bal">
-                                        <h3 class="m-0">کد پایان پی:</h3>
-                                        <p class="text-muted mb-0">۲۴۲۳۴۳۲۴</p>
+                    <!--end card-body-->
+                    <div class="card-body pt-0">
+                        <ul class="list-group wallet-bal-crypto">
+                            <li class="list-group-item align-items-center d-flex justify-content-between">
+                                <div class="media"><i style="padding-left: 15px;" class="dripicons-cart card-eco-icon text-secondary align-self-center"></i>
+                                    <div class="media-body align-self-center">
+                                        <div class="coin-bal">
+                                            <h3 class="m-0">کد پایان پی:</h3>
+                                            <p class="text-muted mb-0">{{ $wallet->key }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <!--end media body-->
-                            </div><span class="badge badge-soft-purple">جهت استفاده در API</span></li>
-                    </ul>
+                                    <!--end media body-->
+                                </div><span class="badge badge-soft-purple">جهت استفاده در API</span></li>
+                        </ul>
+                    </div>
+                    <!--end card-body-->
                 </div>
-                <!--end card-body-->
+                <!--end card-->
             </div>
-            <!--end card-->
-        </div>
-        <!--end col-->
+            <!--end col-->
+       @endforeach
+
+
+
 
     </div>
 

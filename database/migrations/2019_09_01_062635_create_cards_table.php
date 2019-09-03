@@ -15,6 +15,11 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text('key');
+            $table->string('name');
+            $table->unsignedInteger('number');
+            $table->unsignedInteger('bank');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }

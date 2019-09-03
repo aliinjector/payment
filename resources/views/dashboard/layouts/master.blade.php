@@ -92,7 +92,7 @@ Author: Ali Rahmani
                     <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M435.2 80H76.8c-24.9 0-44.6 19.6-44.6 44L32 388c0 24.4 19.9 44 44.8 44h358.4c24.9 0 44.8-19.6 44.8-44V124c0-24.4-19.9-44-44.8-44zm0 308H76.8V256h358.4v132zm0-220H76.8v-44h358.4v44z"></path></svg>
                 </a>
                 <!--end PayanPayAnalytic-->
-                <a href="#PayanPayCrypto" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="فروشگاه ساز">
+                <a href="#PayanPayCrypto" class="nav-link active" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="فروشگاه ساز">
                     <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M169.6 377.6c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6s41.601-18.718 41.601-41.6c-.001-22.884-18.72-41.601-41.601-41.601zM48 51.2v41.6h41.6l74.883 151.682-31.308 50.954c-3.118 5.2-5.2 12.482-5.2 19.765 0 27.85 19.025 41.6 44.825 41.6H416v-40H177.893c-3.118 0-5.2-2.082-5.2-5.2 0-1.036 2.207-5.2 2.207-5.2l20.782-32.8h154.954c15.601 0 29.128-8.317 36.4-21.836l74.882-128.8c1.237-2.461 2.082-6.246 2.082-10.399 0-11.446-9.364-19.765-20.8-19.765H135.364L115.6 51.2H48zm326.399 326.4c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6S416 442.082 416 419.2c0-22.883-18.719-41.6-41.601-41.6z"></path></svg>
                 </a>
                 <!--end PayanPayCrypto-->
@@ -151,7 +151,7 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">داشبورد پایان پی</h6></div>
                     <ul class="nav">
-                        <li class="nav-item {{ request()->is('dashboard/UserAuthentication*') == 1 ? 'active' : '' }}"><a style="color: #f1646c" class="nav-link {{ request()->is('dashboard/UserAuthentication*') == 1 ? 'active' : '' }} " href="{{ route('UserAuthentication.index') }}"><i style="color: #f1646c!important" class="mdi mdi-lock-alert"></i>تکمیل اطلاعات و احراز هویت</a></li>
+                        <li class="nav-item {{ request()->is('dashboard/UserAuthentication*') == 1 ? 'active' : '' }}"><a style="color: #f1646c" class="nav-link {{ request()->is('dashboard/UserAuthentication*') == 1 ? 'active' : '' }} " href="{{ route('UserInformation.index') }}"><i style="color: #f1646c!important" class="mdi mdi-lock-alert"></i>تکمیل اطلاعات و احراز هویت</a></li>
                         <li class="nav-item {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}"><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="mdi mdi-school"></i>داشبورد گزارشات کلی</a></li>
                         <li class="nav-item {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}"><a class="nav-link {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} " href="{{ route('ticket.index') }}"><i class="mdi mdi-school"></i>پشتیبانی و تیکتینگ</a></li>
                         <li class="nav-item  {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} " href="{{ route('setting.index') }}"><i class="mdi mdi-school"></i>تنظیمات و پروفایل کاربری</a></li>

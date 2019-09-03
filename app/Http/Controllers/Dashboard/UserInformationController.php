@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Dashboard;
+use App\UserInformation;
+use App\Http\Requests\UserInformationRequest;
 use Illuminate\Http\Request;
 
-class UserAuthenticationController extends \App\Http\Controllers\Controller
+class UserInformationController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class UserAuthenticationController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.userAuthentication');
+        return view('dashboard.userInformation');
     }
 
     /**
@@ -33,7 +34,7 @@ class UserAuthenticationController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserInformationRequest $request)
     {
         //
     }
@@ -41,10 +42,10 @@ class UserAuthenticationController extends \App\Http\Controllers\Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Dashboard  $dashboard
+     * @param  \App\UserInformation  $userInformation
      * @return \Illuminate\Http\Response
      */
-    public function show(Dashboard $dashboard)
+    public function show(UserInformation $userInformation)
     {
         //
     }
@@ -52,10 +53,10 @@ class UserAuthenticationController extends \App\Http\Controllers\Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Dashboard  $dashboard
+     * @param  \App\UserInformation  $userInformation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dashboard $dashboard)
+    public function edit(UserInformation $userInformation)
     {
         //
     }
@@ -64,10 +65,10 @@ class UserAuthenticationController extends \App\Http\Controllers\Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Dashboard  $dashboard
+     * @param  \App\UserInformation  $userInformation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dashboard $dashboard)
+    public function update(Request $request, UserInformation $userInformation)
     {
         //
     }
@@ -75,10 +76,10 @@ class UserAuthenticationController extends \App\Http\Controllers\Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Dashboard  $dashboard
+     * @param  \App\UserInformation  $userInformation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dashboard $dashboard)
+    public function destroy(UserInformation $userInformation)
     {
         //
     }

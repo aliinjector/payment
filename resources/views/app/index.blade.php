@@ -40,12 +40,12 @@
             <div class="header-container container">
                 <div class="header-wrap">
                     <!-- Logo @s -->
-                    <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".6">
-                        <a href="index.html" class="logo-link">
-                            <img class="logo-dark" src="../images/logo.png" srcset="../images/logo2x.png 2x" alt="logo">
-                            <img class="logo-light" src="../images/logo-full-white.png" srcset="../images/logo-full-white2x.png 2x" alt="logo">
-                        </a>
-                    </div>
+{{--                    <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".6">--}}
+{{--                        <a href="index.html" class="logo-link">--}}
+{{--                            <img class="logo-dark" src="../images/logo.png" srcset="../images/logo2x.png 2x" alt="logo">--}}
+{{--                            <img class="logo-light" src="../images/logo-full-white.png" srcset="../images/logo-full-white2x.png 2x" alt="logo">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
 
                     <!-- Menu Toogle @s -->
                     <div class="header-nav-toggle">
@@ -192,7 +192,7 @@
                         <div class="col-lg-6">
                             <div class="nk-block-video animated" data-animate="fadeInUp" data-delay=".5">
                                 <img src="../images/video/a.png" alt="video">
-                                <a href="https://www.youtube.com/watch?v=SSo_EIwHSd4" class="nk-block-video-play video-popup btn-play btn-play-light"><em class="fas fa-play"></em></a>
+                                <a href="" class="nk-block-video-play video-popup btn-play btn-play-light"><em class="fas fa-play"></em></a>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                                 </div>
                                 <div class="feature-text">
                                     <h5 class="title title-sm">عدم لزوم نصب نرم افزار</h5>
-                                    <p> توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات  </p>
+                                    <p> باتوجه به تحت وب بودن سامانه پایان پی، نیازی به نصب نرم افزار نمیباشد و تنها با داشتن اینترنت میتوان از مزایای سامانه بهره مند شد.  </p>
                                 </div>
                             </div>
                         </div>
@@ -221,8 +221,8 @@
                                     <em class="icon ikon ikon-donught"></em>
                                 </div>
                                 <div class="feature-text">
-                                    <h5 class="title title-sm">عدم لزوم نصب نرم افزار</h5>
-                                    <p> توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات  </p>
+                                    <h5 class="title title-sm">گزارشات لحظه ای برخط</h5>
+                                    <p> در سامانه پایان پی قابلیت گزارش گیری در قالب نمودار های متنوع، جداول شخصی سازی شده و فیلتر شده بر اساس معیار های مختلف و... فراهم میباشد.  </p>
                                 </div>
                             </div>
                         </div>
@@ -232,8 +232,8 @@
                                     <em class="icon ikon ikon-document"></em>
                                 </div>
                                 <div class="feature-text">
-                                    <h5 class="title title-sm">عدم لزوم نصب نرم افزار</h5>
-                                    <p> توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات  </p>
+                                    <h5 class="title title-sm">استفاده از طریق تمام پلتفرم ها</h5>
+                                    <p> باتوجه به رسپانسیو بودن قالب سامانه پایان پی، قابلیت بهره مندی از تمامی قابلیت های سامانه از تمام پلتفرم ها فراهم میباشد.  </p>
                                 </div>
                             </div>
                         </div>
@@ -548,7 +548,7 @@
                                     <div class="col-md-6">
                                         <div class="nk-block-text">
                                             <h4 class="title title-md">مستندات فنی</h4>
-                                            <p> توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات   </p>
+                                            <p> تیم برنامه نویسی پایان پی، با درنظر گرفتن نیاز تمامی کاربران محترم سامانه اقدام به ایجاد فایل های ویدیویی آموزشی مربوط به تمامی قسمت های سامانه و پلاگین ها برای انواع سیستم های محتوی و فریم ورک های وب کرده و شما کاربران گرامی میتوانید با ورود به بخش مستندات از این فایل ها استفاده نمایید.    </p>
                                             <ul class="btn-grp gutter-30px gutter-vr-20px">
                                                 <li><a href="#" class="btn btn-grad">ورود به بخش مستندات</a></li>
                                                 <li><a href="#" class="link"><em class="link-icon fas fa-file-alt"></em> دریافت فایل </a></li>
@@ -604,19 +604,19 @@
                         <div class="col-lg-4">
                             <div class="feature feature-s5 animated" data-animate="fadeInUp" data-delay=".5">
                                 <h4 class="title title-md">ضمانت پرداخت</h4>
-                                <p> توضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحاتتوضیحاتتوضیحات توضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحات توضیحات </p>
+                                <p> یکی از روش‌های موثر برای کاهش درد پرداخت، تضمین بازگشت وجه به خریدار است. ضمانت پرداخت پایان پی در خریدار ایجاد اطمینان می‌کند.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="feature feature-s5 animated" data-animate="fadeInUp" data-delay=".6">
                                 <h4 class="title title-md">پشتیبانی</h4>
-                                <p> توضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحاتتوضیحاتتوضیحات توضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحات توضیحات </p>
+                                <p> همراه طلایی بودن به واسطه‌ی پشتیبانی ۲۴ ساعته و وجود متنوع‌ترین پلاگین‌های پرداخت، می‌توانند معرف خوبی از عبارت پایان پی باشند.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="feature feature-s5 animated" data-animate="fadeInUp" data-delay=".7">
                                 <h4 class="title title-md">امنیت</h4>
-                                <p> توضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحاتتوضیحاتتوضیحات توضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحات توضیحات </p>
+                                <p> در تجارت الکترونیک استقرار امنیت حکم ستون نگه‌دارنده‌ای را دارد که اگر نباشد همه چیز فرو خواهد ریخت. پایان پی تکیه‌گاه محکمی است.</p>
                             </div>
                         </div>
                     </div><!-- .row -->
@@ -680,7 +680,7 @@
                                         <div class="roadmap-head">
                                             <span class="roadmap-title">عضویت در سیستم</span>
                                         </div>
-                                        <p> توضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات  </p>
+                                        <p> با ورود به قسمت عضویت در سامانه و تکمیل فرم ثبت نام فرآیند عضویت شما در سیستم تکمیل شده و میبایست پس از ورود به سیستم اطلاعات هویتی خودرا تکمیل نمایید.</p>
                                     </div>
                                 </div>
                                 <div class="roadmap animated " data-animate="fadeInUp" data-delay=".4">
@@ -691,7 +691,7 @@
                                         <div class="roadmap-head">
                                             <span class="roadmap-title">احراز هویت</span>
                                         </div>
-                                        <p> توضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات  </p>
+                                        <p> با ورود به منو تکمیل اطلاعات و احراز هویت و وارد نمودن اطلاعات در سامانه پایان پی، فرآیند احراز هویت شما آغاز شده و تیم مدیریت پایان پی به سرعت اطلاعات هویتی شمارا بررسی خواهند کرد.</p>
                                     </div>
                                 </div>
 
@@ -704,7 +704,7 @@
                                         <div class="roadmap-head">
                                             <span class="roadmap-title">استفاده از سیستم</span>
                                         </div>
-                                        <p> توضیحات توضیحات توضیحات توضیحات توضیحاتتوضیحات توضیحات توضیحات توضیحات توضیحات توضیحات توضیحات  </p>
+                                        <p> پس از احراز هویت شما میتوانید بدون محدودیت از تمامی ماژول ها و خدمات سامانه پایان پی استفاده نمایید.</p>
                                     </div>
                                 </div>
 
@@ -893,27 +893,6 @@
             </div>
 
         </section>
-        <!-- // -->
-        <section class="section section-m section-partners bg-light" id="partners">
-
-            <div class="container">
-                <!-- Block @s -->
-                <div class="nk-block block-partners">
-                    <h6 class="title title-xs tc-primary text-center animated" data-animate="fadeInUp" data-delay=".1">همکاران ما</h6>
-                    <ul class="partner-list flex-lg-nowrap">
-                        <li class="partner-logo animated" data-animate="fadeInUp" data-delay=".2"><img src="../images/partners/a.png" alt="partner"></li>
-                        <li class="partner-logo animated" data-animate="fadeInUp" data-delay=".3"><img src="../images/partners/b.png" alt="partner"></li>
-                        <li class="partner-logo animated" data-animate="fadeInUp" data-delay=".4"><img src="../images/partners/c.png" alt="partner"></li>
-                        <li class="partner-logo animated" data-animate="fadeInUp" data-delay=".5"><img src="../images/partners/d.png" alt="partner"></li>
-                        <li class="partner-logo animated" data-animate="fadeInUp" data-delay=".6"><img src="../images/partners/e.png" alt="partner"></li>
-                        <li class="partner-logo animated" data-animate="fadeInUp" data-delay=".7"><img src="../images/partners/f.png" alt="partner"></li>
-                        <li class="partner-logo animated" data-animate="fadeInUp" data-delay=".8"><img src="../images/partners/g.png" alt="partner"></li>
-                    </ul>
-                </div>
-                <!-- Block @e -->
-            </div>
-
-        </section>
     </main>
 
     <footer class="nk-footer bg-theme-grad">
@@ -959,7 +938,7 @@
                                             <em class="contact-icon fas fa-building"></em>
                                             <div class="contact-text">
                                                 <h6>شرکت فناور ستاره نوران</h6>
-                                                <span>تهران - بلوار فردوس غرب - خیابان سازمان برنامه جنوبی - کوچه ۲۱ شرقی - مجتمع اداری تجاری ارکیده طبقه ۳ - واحد ۳۰۲</span>
+                                                <span></span>
                                             </div>
                                         </li>
                                         <li>
@@ -1051,7 +1030,7 @@
                             <div class="wgs wgs-text animated" data-animate="fadeInUp" data-delay=".1">
                                 <div class="wgs-body">
                                     <a href="index.html" class="wgs-logo">
-                                        <img src="../images/logo-full-white.png" srcset="../images/logo-full-white2x.png 2x" alt="logo">
+{{--                                        <img src="../images/logo-full-white.png" srcset="../images/logo-full-white2x.png 2x" alt="logo">--}}
                                     </a>
                                     <p>© کلیه حقوق محفوظ است. ۱۳۸۹ </p>
                                     <p class="copyright-text">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</p>
