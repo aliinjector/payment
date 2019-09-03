@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Shop;
+use App\Dashboard;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
 {
@@ -14,7 +15,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.shop');
     }
 
     /**

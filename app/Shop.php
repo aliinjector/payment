@@ -3,10 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Shop extends Eloquent
+class Shop extends Model
 {
-    protected $guarded = ['id'];
-
+    //
 }
