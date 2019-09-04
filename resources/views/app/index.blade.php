@@ -312,7 +312,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col-lg-6">
                             <div class="feature boxed boxed-lg bg-theme no-mg split-lg-left split-left animated" data-animate="fadeInUp" data-delay=".3">
-                                <h4 class="title title-md">سیستم پرداخت یازی</h4>
+                                <h4 class="title title-md">سیستم پرداخت یاری</h4>
                                 <p>
                                     اینترنت به عنوان یکی از ابزارهای جدید پرداخت این امکان را برای افراد فراهم آورده تا فروشندگان کالا و خدمات بتوانند با اتصال فروشگاه مجازی خود به سامانه پرداخت اینترنتی به سادگی و سرعت بالا کالای خود را بفروشند و خدمات ارائه دهند. شرکت فناور
                                     ستاره نوران  به عنوان شرکت ارائه دهنده خدمات پرداخت اینترنتی(پرداخت یار) در نظام بانکی کشور است که در بسترهای مختلف اعم از اینترنت، موبایل،دسترسی به درگاه پرداخت اینترنتی را امکان‌پذیر نموده و خرید و فروش اینترنتی را در محیطی امن با سرعتی بالا مهیا کرده است.
@@ -363,8 +363,8 @@
             <div class="container">
                 <!-- Section Head @s -->
                 <div class="section-head text-center wide-auto-sm">
-                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">سایر خدمات پی پین</h2>
-                    <p class="animated" data-animate="fadeInUp" data-delay=".2">در این قسمت سایر خدمات سامانه پی پین را مشاهده مینمایید</p>
+                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">سایر خدمات پایان پی</h2>
+                    <p class="animated" data-animate="fadeInUp" data-delay=".2">در این قسمت سایر خدمات سامانه پایان پی را مشاهده مینمایید</p>
                 </div><!-- .section-head @e -->
                 <!-- Block @s -->
                 <div class="nk-block nk-block-features-s3 mgb-m40 mgt-m20">
@@ -582,7 +582,7 @@
                         </div>
                         <div class="col-lg-5 col-md-10 text-center text-lg-left">
                             <div class="nk-block-text">
-                                <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">نرم افزار موبایل <br class="d-none d-md-block"> پی پین</h2>
+                                <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">نرم افزار موبایل <br class="d-none d-md-block"> پایان پی</h2>
                                 <p class="animated" data-animate="fadeInUp" data-delay=".2"> باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن  </p>
                                 <div class="pdt-m animated" data-animate="fadeInUp" data-delay=".3">
                                     <a href="#" class="btn btn-grad">به زودی</a>
@@ -600,7 +600,7 @@
             <div class="container">
                 <!-- Block @s -->
                 <div class="nk-block nk-block-text-grp mgb-m30">
-                    <h6 class="title title-xs tc-primary pdb-s animated" data-animate="fadeInUp" data-delay=".4">استاندارد های پی پین</h6>
+                    <h6 class="title title-xs tc-primary pdb-s animated" data-animate="fadeInUp" data-delay=".4">استاندارد های پایان پی</h6>
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="feature feature-s5 animated" data-animate="fadeInUp" data-delay=".5">

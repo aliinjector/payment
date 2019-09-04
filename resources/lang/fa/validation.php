@@ -148,6 +148,8 @@ return array(
         'category_id' => 'دسته بندی',
         'comment' => 'نظر',
         'phoneNumber' => 'شماره موبایل',
-        'family' => 'نام خانوادگی'
+        'family' => 'نام خانوادگی',
+        'firstName' => 'نام',
+        'lastName' => 'نام خانوادگی'
     ),
 );

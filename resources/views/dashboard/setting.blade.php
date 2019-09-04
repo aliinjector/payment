@@ -26,7 +26,7 @@
                                     <div class="met-profile-main">
                                         <div class="met-profile-main-pic"><img src="/dashboard/assets/images/users/user-4.jpg" alt="" class="rounded-circle"> <span class="fro-profile_main-pic-change"><i class="fas fa-camera"></i></span></div>
                                         <div class="met-profile_user-detail">
-                                            <h5 class="met-user-name">علی رحمانی</h5>
+                                            <h5 class="met-user-name"> {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }} </h5>
                                             <p class="mb-0 met-user-name-post">کاربر سطح طلایی</p>
                                         </div>
                                     </div>
@@ -34,11 +34,11 @@
                                 <!--end col-->
                                 <div class="col-lg-4 ml-auto">
                                     <ul class="list-unstyled personal-detail">
-                                        <li class=""><i class="dripicons-phone mr-2 text-info font-18"></i><b>تلفن همراه </b>: ۰۹۲۰۱۰۱۰۳۲۸</li>
-                                        <li class="mt-2"><i class="dripicons-mail text-info font-18 mt-2 mr-2"></i><b>آدرس ایمیل </b>: rahmani@rieco.ir</li>
+                                        <li class=""><i class="dripicons-phone mr-2 text-info font-18"></i><b>تلفن همراه </b>: {{ \Auth::user()->mobile }}</li>
+                                        <li class="mt-2"><i class="dripicons-mail text-info font-18 mt-2 mr-2"></i><b>آدرس ایمیل </b>: {{ \Auth::user()->email }}</li>
                                         <li class="mt-2"><i class="dripicons-location text-info font-18 mt-2 mr-2"></i><b>شهر</b> : تهران</li>
                                     </ul>
-                                    <a href="{{ route('UserAuthentication.index') }}"><button type="submit" class="btn btn-info btn-sm">تغییر اطلاعات هویتی</button></a>
+                                    <a href="{{ route('UserInformation.index') }}"><button type="submit" class="btn btn-info btn-sm">تغییر اطلاعات هویتی</button></a>
                                 </div>
                                 <!--end col-->
                             </div>
@@ -61,7 +61,7 @@
                             <!--end form-group-->
                             <div class="form-group">
                                 <label for="setEmail">آدرس ایمیل</label>
-                                <input type="email" class="form-control" value="rahmani@rieco.ir" id="setEmail" disabled>
+                                <input type="email" class="form-control" value="{{ \Auth::user()->email }}" id="setEmail" disabled>
                             </div>
                             <!--end form-group-->
                             <div class="form-group">

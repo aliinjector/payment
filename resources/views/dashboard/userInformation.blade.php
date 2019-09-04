@@ -48,13 +48,13 @@
                                 <div class="form-group row">
                                     <label for="example-text-input" class="col-sm-2 col-form-label text-center">نام</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="firstName" placeholder="مثال: علی" id="example-text-input">
+                                        <input class="form-control" type="text" name="firstName" disabled value="{{ \Auth::user()->firstName }}" id="example-text-input">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام خانوادگی</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="text" name="lastName" placeholder="مثال: رحمانی" >
+                                        <input class="form-control" type="text" name="lastName" disabled value="{{ \Auth::user()->lastName }}" >
                                     </div>
                                 </div>
                                 <div class="form-group row">
