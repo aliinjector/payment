@@ -13,9 +13,8 @@ Author: Ali Rahmani
     <title>پین پی - داشبورد اصلی</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta content="پین پی - داشبورد اصلی" name="description">
-    <meta content="Ali Rahmani" name="author">
+    <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="https://mannatthemes.com/PayanPay/rtl/assets/images/favicon.ico">
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
     <!-- App css -->
     <link href="/dashboard/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
