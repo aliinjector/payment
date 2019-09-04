@@ -25,5 +25,6 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::resource('shop', 'ShopController');
     Route::resource('product-list', 'ProductController');
     Route::resource('product-detail', 'ProductDetailController');
+    Route::resource('product-category', 'ProductCategoryController');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });
