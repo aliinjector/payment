@@ -17,6 +17,7 @@ Author: Ali Rahmani
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
     <!-- App css -->
+    <link href="/dashboard/assets/css/jquery.steps.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
@@ -286,6 +287,8 @@ Author: Ali Rahmani
 <script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
 <script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="/dashboard/assets/pages/jquery.eco_dashboard.init.js"></script>
+<script src="/dashboard/assets/js/jquery.form-wizard.init.js"></script>
+<script src="/dashboard/assets/js/jquery.steps.min.js"></script>
 <!-- App js -->
 <script src="/dashboard/assets/js/app.js"></script>
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
