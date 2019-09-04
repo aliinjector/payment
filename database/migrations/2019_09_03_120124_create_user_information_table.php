@@ -15,10 +15,7 @@ class CreateUserInformationTable extends Migration
     {
         Schema::create('user_information', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('firstName');
-            $table->string('lastName');
             $table->string('fatherName');
-            $table->string('mobile');
             $table->string('tel');
             $table->string('city');
             $table->string('address');
@@ -29,7 +26,7 @@ class CreateUserInformationTable extends Migration
             $table->string('zipCode');
             $table->string('shenasnamehPic');
             $table->string('melliCardPic');
-            $table->string('status');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

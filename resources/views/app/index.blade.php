@@ -96,7 +96,7 @@
                             </ul>
                             <ul class="menu-btns">
                                 <li><a href="{{ route('login') }}" class="btn btn-md btn-auto btn-grad"><span>ورود</span></a></li>
-                                <li><a href="page-login.html" class="btn btn-md btn-auto btn-grad"><span>عضویت</span></a></li>
+                                <li><a href="{{ route('register') }}" class="btn btn-md btn-auto btn-grad"><span>عضویت</span></a></li>
                             </ul>
                         </nav>
                     </div><!-- .header-navbar @e -->
@@ -127,7 +127,7 @@
                                         </div>
                                         <div class="cpn-action">
                                             <div class="cpn-btns animated" data-animate="fadeInUp" data-delay="1.2">
-                                                <a class="btn btn-grad" href="#">عضویت در سیستم پایان پی</a>
+                                                <a class="btn btn-grad" href="{{ route('register') }}">عضویت در سیستم پایان پی</a>
                                             </div>
                                             <ul class="cpn-links animated" data-animate="fadeInUp" data-delay="1.3">
                                                 <li><a class="link" href="#"><em class="link-icon far fa-file-alt"></em>مراحل احراز هویت پرداخت یاری</a></li>

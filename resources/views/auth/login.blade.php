@@ -84,7 +84,7 @@
                     </div>
                     <!--end /div-->
                     <div class="m-3 text-center text-muted">
-                        <p class="">حساب کاربری ندارید؟ <a href="" class="text-primary ml-2">جهت عضویت کلیک نمایید</a></p>
+                        <p class="">حساب کاربری ندارید؟ <a href="/register" class="text-primary ml-2">جهت عضویت کلیک نمایید</a></p>
                     </div>
                 </div>
                 <!--end card-body-->
