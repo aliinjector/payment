@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - ورود به داشبورد</title>
+    <title>پایان پی - عضویت در سیستم</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Ali Rahmani">
     <meta name="description" content="راهکار های نوین پرداخت پین پی">
@@ -34,18 +34,31 @@
                             <p class="text-muted mb-0">پس از تکمیل فرم، برروی گزینه عضویت کلیک نمایید.</p>
                         </div>
                         <!--end auth-logo-text-->
-                        <form class="form-horizontal auth-form my-4" action="index.html">
+                        <form class="form-horizontal auth-form my-4"  method="post" action="{{ route('register')  }}">
+                            @csrf
                             <div class="form-group">
                                 <label for="username">نام</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
-                                    <input type="text" class="form-control" id="username" placeholder="مثال: علی">
+                                    <input type="text" class="form-control @error('firstName') is-invalid @enderror" name="firstName" id="firstName" placeholder="مثال: علی">
+                                    @error('firstName')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
                             </div>
                             <!--end form-group-->
                             <div class="form-group">
                                 <label for="username">نام خانوادگی</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
-                                    <input type="text" class="form-control" id="fname" placeholder="مثال: رحمانی">
+                                    <input type="text" class="form-control @error('lastName') is-invalid @enderror" name="lastName" id="lastName" placeholder="مثال: رحمانی">
+                                    @error('lastName')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
                             </div>
                             <!--end form-group-->
@@ -53,26 +66,50 @@
                             <div class="form-group">
                                 <label for="useremail">آدرس ایمیل</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-mail"></i> </span>
-                                    <input type="email" class="form-control" id="useremail" placeholder="مثال: Info@PayanPay.Ir">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="مثال: Info@PayanPay.Ir">
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
                             </div>
                             <!--end form-group-->
                             <div class="form-group">
                                 <label for="userpassword">رمز عبور</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-lock"></i> </span>
-                                    <input type="password" class="form-control" name="password" id="password" >
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" >
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
                             </div>
                             <!--end form-group-->
                             <div class="form-group">
                                 <label for="conf_password">رمز عبور را مجددا وارد نمایید</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-lock-open"></i> </span>
-                                    <input type="password" class="form-control" name="password_confirmation"  id="password_confirmation" >
+                                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation"  id="password_confirmation" >
+                                    @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+
                                 </div>
                                 <div class="form-group">
                                     <label for="mo_number">شماره موبایل</label>
                                     <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-phone"></i> </span>
-                                        <input type="text" class="form-control" id="mo_number" placeholder="مثال: 09202020222">
+                                        <input type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" id="mobile" placeholder="مثال: 09202020222">
+                                        @error('mobile')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+
                                     </div>
                                 </div>
                                 <!--end form-group-->

@@ -59,7 +59,7 @@ Author: Ali Rahmani
                     <!-- All--><a href="javascript:void(0);" class="dropdown-item text-center text-primary">مشاهده همه <i class="fi-arrow-right"></i></a></div>
             </li>
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="/dashboard/assets/images/users/user-4.jpg" alt="profile-user" class="rounded-circle"> <span class="ml-1 nav-user-name hidden-sm">علی رحمانی <i class="mdi mdi-chevron-down"></i></span></a>
+                <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="/dashboard/assets/images/users/user-4.jpg" alt="profile-user" class="rounded-circle"> <span class="ml-1 nav-user-name hidden-sm"> {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }} <i class="mdi mdi-chevron-down"></i></span></a>
                 <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('setting.index') }}"><i class="dripicons-user text-muted mr-2"></i> تنظیمات و پروفایل کاربری</a> <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted mr-2"></i> کیف پول من</a> <a class="dropdown-item" href="#"><i class="dripicons-gear text-muted mr-2"></i> تنظیمات حساب </a> <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted mr-2"></i> قفل </a>
                     <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="dripicons-exit text-muted mr-2"></i> خروج از سیستم</a></div>
             </li>
