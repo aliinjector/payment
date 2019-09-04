@@ -168,6 +168,7 @@ Author: Ali Rahmani
                     <ul class="nav">
                         <li class="nav-item"><a class="nav-link" href="shop"><i class="dripicons-device-desktop"></i>گزارشات فروشگاه شما</a></li>
                         <li class="nav-item"><a class="nav-link" href="product-list"><i class="dripicons-device-desktop"></i>لیست کالاها / خدمات</a></li>
+                        <li class="nav-item"><a class="nav-link" href="product-detail"><i class="dripicons-device-desktop"></i>جزئیات محصول</a></li>
                         <li class="nav-item"><a class="nav-link" href="jj"><i class="dripicons-device-desktop"></i>تنظیمات فروشگاه</a></li>
                     </ul>
                 </div>
