@@ -59,17 +59,17 @@
                                             </thead>
                                             <tbody class="byekan">
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1 w-25"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 1</a>
+                                                    <td class="sorting_1 w-25 "><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 1</a>
                                                     </td>
                                                     <td>ورزشی</td>
                                                    <td>39تومان</td>
                                                    <td><span class="badge badge-soft-pink">غیرفعال</span></td>
-                                                   <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
+                                                   <td><a href="/dashboard/product-detail"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="even">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0  mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 2</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0  mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 2</a>
                                                     </td>
                                                     <td>الکتریکی</td>
                                                    <td>39تومان</td>
@@ -77,8 +77,8 @@
                                                                                                         <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0  mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 3</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0  mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 3</a>
                                                     </td>
                                                     <td>ورزشی</td>
                                                     <td>39تومان</td>
@@ -86,8 +86,8 @@
                                                                                                         <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="even">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 4</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 4</a>
                                                     </td>
                                                     <td>پوشاک</td>
                                                    <td>39تومان</td>
@@ -95,8 +95,8 @@
                                                                                                        <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 5</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 5</a>
                                                     </td>
                                                     <td>ورزشی</td>
                                                     <td>39تومان</td>
@@ -105,8 +105,8 @@
                                                     <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="even">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 6</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 6</a>
                                                     </td>
                                                     <td>خوراک</td>
                                                     <td>39تومان</td>
@@ -115,8 +115,8 @@
                                                     <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 7</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 7</a>
                                                     </td>
                                                     <td>الکتریکی</td>
                                                     <td>39تومان</td>
@@ -125,8 +125,8 @@
                                                     <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="even">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 8</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 8</a>
                                                     </td>
                                                     <td>ورزشی</td>
                                                     <td>39تومان</td>
@@ -135,8 +135,8 @@
                                                     <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 9</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 9</a>
                                                     </td>
                                                     <td>پوشاک</td>
                                                     <td>39تومان</td>
@@ -145,8 +145,8 @@
                                                     <td><a href="#"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
                                                 </tr>
                                                 <tr role="row" class="even">
-                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product.jpg" alt="" height="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="#" class="d-inline-block align-middle mb-0 product-name">محصول شماره 10</a>
+                                                    <td class="sorting_1"><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">محصول شماره 10</a>
                                                     </td>
                                                     <td>ورزشی</td>
                                                     <td>39تومان</td>
