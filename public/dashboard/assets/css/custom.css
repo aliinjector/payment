@@ -10,3 +10,7 @@
 .f-10 {
     font-size: 12px!important;
 }
+
+.border-muted {
+    border: 2px solid #E5E5E5;
+}
