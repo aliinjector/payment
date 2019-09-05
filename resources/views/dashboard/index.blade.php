@@ -940,7 +940,7 @@
                                 </div>
                                 <!-- end col-->
                                 <div class="col-sm-8">
-                                    <h3>964</h3>
+                                    <h3 class="byekan">964</h3>
                                     <p class="text-muted font-14 mb-0">کاربر جدید</p>
                                 </div>
                                 <!-- end col-->
