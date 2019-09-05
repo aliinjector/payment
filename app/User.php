@@ -39,6 +39,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Wallet');
     }
 
+    public function userInformation()
+    {
+        return $this->belongsTo('App\UserInformation');
+    }
 
 
 }

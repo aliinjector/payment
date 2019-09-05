@@ -15,7 +15,8 @@ class UserInformationController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.userInformation');
+        $userInformation = \Auth::user()->userInformation()->get();
+        return view('dashboard.userInformation', 'userInformation');
     }
 
     /**
