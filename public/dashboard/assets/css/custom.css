@@ -14,3 +14,8 @@
 .border-muted {
     border: 2px solid #E5E5E5;
 }
+::placeholder {
+  color: #bbc3ce!important;
+  font-family: iranyekan!important;
+  font-size: 13px;
+}

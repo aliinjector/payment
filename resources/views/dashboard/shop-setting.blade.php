@@ -23,7 +23,7 @@
                         <div class="col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="mt-0 header-title">اطلاعات فروشگاه</h4>
+                                    <h3 class="mt-0 header-title">اطلاعات فروشگاه</h3>
                                     <p class="text-muted mb-3">در این قسمت اطلاعات فروشگاه خود وارد نموده و موارد درخواستی را آپلود نمایید سپس منتظر تایید  اطلاعات توسط تیم پایان پی باشید.</p><br>
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -195,7 +195,7 @@
                                         <div class="media setting-card"><span class="sett-card-icon set-icon-purple"><i class="fa fa-shipping-fast"></i></span>
                                             <div class="media-body align-self-center">
                                                 <div class="setting-detail">
-                                                    <h3 class="mb-0 mt-0">ارسال رایگان</h3>
+                                                    <h3 class="mb-0 mt-0 iranyekan">ارسال سریع</h3>
                                                     <p class="text-muted mb-0">
                                                             حداقل مبلغ سبد خرید فقط برای تهران ۰ تومان.</p>
                                                 </div>
@@ -223,7 +223,7 @@
                                         <div class="media setting-card"><span class="sett-card-icon set-icon-success"><i class="fa fa-truck"></i></span>
                                             <div class="media-body align-self-center">
                                                 <div class="setting-detail">
-                                                    <h3 class="mb-0 mt-0">  ارسال پستی</h3>
+                                                    <h3 class="mb-0 mt-0 iranyekan">  ارسال پستی</h3>
                                                     <p class="text-muted mb-0">
 
                                                             هزینه ارسال برای تهران ۵٫۰۰۰ تومان.</p>
@@ -252,7 +252,7 @@
                                         <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fa fa-people-carry"></i></span>
                                             <div class="media-body align-self-center">
                                                 <div class="setting-detail">
-                                                    <h3 class="mb-0 mt-0">دریافت حضوری</h3>
+                                                    <h3 class="mb-0 mt-0 iranyekan">دریافت حضوری</h3>
                                                     <p class="text-muted mb-0">
 
                                                             در صورتی که امکان دریافت حضوری محصولات توسط مشتری وجود دارد.</p>

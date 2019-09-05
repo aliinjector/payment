@@ -186,7 +186,7 @@ Author: Ali Rahmani
                         <li class="nav-item"><a class="nav-link" href="product-detail"><i class="dripicons-device-desktop"></i>جزئیات محصول</a></li>
                         <li class="nav-item"><a class="nav-link" href="product-category"><i class="dripicons-device-desktop"></i> محصولات هر دسته بندی
                         </a></li>
-                        <li class="nav-item"><a class="nav-link" href="jj"><i class="dripicons-device-desktop"></i>تنظیمات فروشگاه</a></li>
+                        <li class="nav-item"><a class="nav-link" href="shop-setting"><i class="dripicons-device-desktop"></i>تنظیمات فروشگاه</a></li>
                     </ul>
                 </div>
                 <!-- end Crypto -->
