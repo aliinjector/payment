@@ -871,7 +871,7 @@
                                 </div>
                                 <!-- end col-->
                                 <div class="col-sm-8">
-                                    <h3>1200</h3>
+                                    <h3 class="byekan">1200</h3>
                                     <p class="text-muted font-14 mb-0">مشتری راضی</p>
                                 </div>
                                 <!-- end col-->
@@ -893,7 +893,7 @@
                                 </div>
                                 <!-- end col-->
                                 <div class="col-sm-8">
-                                    <h3>101</h3>
+                                    <h3 class="byekan">101</h3>
                                     <p class="text-muted font-14 mb-0">مشتری جدید</p>
                                 </div>
                                 <!-- end col-->
@@ -918,7 +918,7 @@
                                 </div>
                                 <!-- end col-->
                                 <div class="col-sm-8">
-                                    <h3>720</h3>
+                                    <h3 class="byekan">720</h3>
                                     <p class="text-muted font-14 mb-0">فروش جدید</p>
                                 </div>
                                 <!-- end col-->
