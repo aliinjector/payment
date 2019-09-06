@@ -2,37 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/TicketRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/js/jquery.form-upload.init.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/buttons.colVis.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/buttons.print.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/dataTables.buttons.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/dataTables.responsive.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/jquery.datatable.init.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/jquery.form-upload.init.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/6/1567756053_cartmeli.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/6/1567756053_shenasname.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TicketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TicketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UserInformationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UserInformationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserInformationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserInformationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Ticket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Ticket.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Card.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/UserInformation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserInformation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_31_161516_create_tickets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_31_161516_create_tickets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_03_120124_create_user_information_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_03_120124_create_user_information_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/jquery.dataTables.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/jquery.dataTables.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Wallet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_01_062635_create_cards_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_01_062635_create_cards_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/errors.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/errors.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/ticket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/ticket.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/userInformation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/userInformation.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +191,7 @@
       <workItem from="1567578214087" duration="645000" />
       <workItem from="1567579032608" duration="7738000" />
       <workItem from="1567673949545" duration="3848000" />
-      <workItem from="1567747193276" duration="13169000" />
+      <workItem from="1567747193276" duration="22784000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -249,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567679094340</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ticket added">
+      <created>1567761144784</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1567761144784</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +258,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="user table and register added" />
     <MESSAGE value="user information added" />
-    <option name="LAST_COMMIT_MESSAGE" value="user information added" />
+    <MESSAGE value="Ticket added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ticket added" />
   </component>
 </project>
