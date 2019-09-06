@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.master')
 @section('content')
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -17,8 +18,9 @@
     <!--end col-->
 </div>
 
-<form method="post" action="WED">
-    @csrf
+<form method="post" action="{{ route('shop-setting.update', \Auth::user()->id) }}">
+  @csrf
+  @method('PUT')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -47,9 +49,15 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">توضیحات فروشگاه </label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="description" placeholder="مثال: فروش و توضیع محصولات با کیفیت  " value="{{ old('title') }}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label" style="text-align: center">دسته بندی فروشگاه</label>
                                 <div class="col-sm-10">
-                                    <select class="custom-select">
+                                    <select class="custom-select" name="cat_id">
                                         <option selected="">انتخاب دسته بندی</option>
                                         @foreach($categories as $category)
                                         <option value="{{ $category->id }} ">{{ $category->name }}</option>
@@ -70,7 +78,7 @@
                                     حداقل مبلغ سبد خرید فقط برای تهران ۰ تومان.</p>
                             </div>
                             <div class="mt-3">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons1">
                                     <button type="button" class="btn btn-soft-success btn-round waves-effect waves-light mr-2 iranyekan"><i class="mdi mdi-check-all mr-2 "></i>فعال</button>
                                     <button type="button" class="btn btn-soft-pink btn-round waves-effect waves-light iranyekan"><i class="mdi mdi-power mr-2"></i>غیرفعال</button>
                                 </div>
@@ -94,7 +102,7 @@
                                     هزینه ارسال برای تهران ۵٫۰۰۰ تومان.</p>
                             </div>
                             <div class="mt-3">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons2">
                                     <button type="button" class="btn btn-soft-success btn-round waves-effect waves-light mr-2 iranyekan"><i class="mdi mdi-check-all mr-2"></i>فعال</button>
                                     <button type="button" class="btn btn-soft-pink btn-round waves-effect waves-light iranyekan"><i class="mdi mdi-power mr-2"></i>غیرفعال</button>
                                 </div>
@@ -118,7 +126,7 @@
                                     در صورتی که امکان دریافت حضوری محصولات توسط مشتری وجود دارد.</p>
                             </div>
                             <div class="mt-3">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons3">
                                     <button type="button" class="btn btn-soft-success btn-round waves-effect waves-light mr-2 iranyekan"><i class="mdi mdi-check-all mr-2"></i>فعال</button>
                                     <button type="button" class="btn btn-soft-pink btn-round waves-effect waves-light iranyekan"><i class="mdi mdi-power mr-2"></i>غیرفعال</button>
                                 </div>
@@ -237,9 +245,10 @@
         </div>
       </form>
 
-<form method="post" action="{{ route('shop-setting.store') }}">
+<form method="post" action="{{ route('shop.setting.updateContact', \Auth::user()->shop()->first()->id) }}">
+  @csrf
+  @method('PUT')
 
-    @csrf
     <div class="row">
         <div class="col-xl-12">
             <div class="card">
@@ -251,7 +260,7 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-password-input" class="col-sm-2 col-form-label text-center">ایمیل فروشگاه</label>
-                        <input class="form-control" type="text" name="tel" placeholder="مثال: example@gmail.com" id="example-password-input">
+                        <input class="form-control" type="email" name="shop_email" placeholder="مثال: example@gmail.com" id="example-password-input">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-envelope text-dark font-18"></i></span></div>
                     </div>
                 </div>
@@ -265,7 +274,7 @@
                 <div class="form-group">
                   <div class="col-sm-12 input-group">
                     <label for="example-tel-input" class="col-sm-2 col-form-label text-center">تلفن همراه</label>
-                        <input class="form-control" type="tel" name="mobile" disabled value="{{ \Auth::user()->mobile }}" id="example-tel-input">
+                        <input class="form-control" type="text" name="phone" disabled value="{{ \Auth::user()->mobile }}" id="example-tel-input">
                           <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
                     </div>
                 </div>
@@ -280,7 +289,7 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-week-input" class="col-sm-2 col-form-label text-center">استان فروشگاه</label>
-                        <input class="form-control" type="text" name="city" placeholder=" مثال: تهران" id="example-week-input">
+                        <input class="form-control" type="text" name="province" placeholder=" مثال: تهران" id="example-week-input">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
                     </div>
 
@@ -295,21 +304,21 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">تلگرام</label>
-                        <input type="text" class="form-control" placeholder="مثال: tg://msg?text = www.example.com?t=12">
+                        <input type="text" class="form-control" name="telegram_url" placeholder="مثال: tg://msg?text = www.example.com?t=12">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-telegram text-dark font-18"></i></span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">اینستاگرام</label>
-                        <input type="text" class="form-control" placeholder="مثال: https://www.instagram.com/john_doe">
+                        <input type="text" class="form-control" name="instagram_url" placeholder="مثال: https://www.instagram.com/john_doe">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-instagram text-dark font-18"></i></span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">فیسبوک</label>
-                        <input type="text" class="form-control" placeholder="مثال: https://www.facebook.com/ZambianWatchdog">
+                        <input type="text" class="form-control" name="facebook_url" placeholder="مثال: https://www.facebook.com/ZambianWatchdog">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-facebook-f text-dark font-18"></i></span></div>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ class CreateShopsTable extends Migration
             $table->string('title');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('cat_id');
-            $table->unsignedInteger('cantact_id')->nullable();
+            $table->unsignedInteger('contact_id')->nullable();
             $table->unsignedInteger('status')->default(0);
             $table->enum('quick_way',['enable', 'disable'])->default('disable');
             $table->enum('posting_way',['enable', 'disable'])->default('disable');
