@@ -103,6 +103,9 @@ class ShopSettingController extends Controller
      */
     public function update(Request $request)
     {
+     
+      $icon = $this->uploadFile($request->file('icon'), false, false);
+      $logo = $this->uploadFile($request->file('logo'), false, false);
       $shop =  Shop::where('user_id', \Auth::user()->id)->first();
       $shop->title = $request->title;
       $shop->user_id = \Auth::user()->id;
@@ -113,8 +116,8 @@ class ShopSettingController extends Controller
       $shop->posting_way = "enable";
       $shop->person_way = "enable";
       $shop->description = $request->description;
-      $shop->icon = "w";
-      $shop->logo = "w";
+      $shop->icon = $icon;
+      $shop->logo = $logo;
       $shop->save();
 
       alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');

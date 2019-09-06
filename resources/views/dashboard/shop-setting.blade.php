@@ -18,7 +18,7 @@
     <!--end col-->
 </div>
 
-<form method="post" action="{{ route('shop-setting.update', \Auth::user()->id) }}">
+<form method="post" action="{{ route('shop-setting.update', \Auth::user()->id) }}"  enctype="multipart/form-data">
   @csrf
   @method('PUT')
     <div class="row">
@@ -162,7 +162,7 @@
                         <div class="dropify-errors-container">
                             <ul></ul>
                         </div>
-                        <input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
+                        <input name="icon" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                         <button type="button" class="dropify-clear">حذف</button>
                         <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/BrandNameHere.jpg"></span>
                             <div class="dropify-infos">
@@ -193,7 +193,7 @@
                         <div class="dropify-errors-container">
                             <ul></ul>
                         </div>
-                        <input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
+                        <input name="logo" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                         <button type="button" class="dropify-clear">حذف</button>
                         <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/BrandNameHere.jpg"></span>
                             <div class="dropify-infos">
