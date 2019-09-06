@@ -15,11 +15,12 @@ class CreateCardsTable extends Migration
     {
         Schema::create('cards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('key');
-            $table->string('name');
-            $table->unsignedInteger('number');
-            $table->unsignedInteger('bank');
+            $table->string('number');
+            $table->string('bank');
             $table->unsignedInteger('user_id');
+            $table->string('status')->default('در انتظار تایید');
+            $table->string('month');
+            $table->string('year');
             $table->timestamps();
         });
     }

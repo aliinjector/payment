@@ -8,7 +8,7 @@ class Wallet extends Model
 {
     protected $fillable = ['name'];
 
-    public function post()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Card;
 use App\Dashboard;
+use App\Http\Requests\CardRequest;
 use Illuminate\Http\Request;
 
 class CardController extends \App\Http\Controllers\Controller
@@ -14,7 +16,8 @@ class CardController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.card');
+        $cards = \Auth::user()->wallets()->get();
+        return view('dashboard.card', compact('cards'));
     }
 
 
@@ -34,9 +37,18 @@ class CardController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CardRequest $request)
     {
-        //
+        $card = new Card;
+        $card->bank = $request->bank;
+        $card->number = $request->number;
+        $card->user_id = \Auth::user()->id;
+        $card->month = $request->month;
+        $card->year = $request->year;
+        $card->save();
+
+        alert()->success('کارت بانکی موفقیت اضافه شد.', 'انجام شد');
+        return redirect()->route('card.index');
     }
 
     /**

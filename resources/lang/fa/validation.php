@@ -137,7 +137,7 @@ return array(
         "tags" => "تگ ها",
         "category" => "دسته",
         "story" => "داستان",
-        'number' => 'شماره قسمت',
+        'number' => 'شماره ',
         'price' => 'قیمت دوره',
         'course_id' => 'دوره مورد نظر',
         'fileUrl' => 'آدرس فایل',
@@ -164,5 +164,6 @@ return array(
         'shenasnamehPic' => 'تصویر شناسنامه',
         'melliCardPic' => 'تصویر کارت ملی',
         'scope' => 'حوزه',
+        'bank' => 'بانک',
     ),
 );
