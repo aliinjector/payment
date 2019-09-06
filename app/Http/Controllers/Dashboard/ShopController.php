@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Shop;
+use App\ShopCategory;
 
 class ShopController extends Controller
 {
@@ -15,11 +17,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('dashboard.shop');
-    }
-
-    public function product(){
-        return "hi";
+    
     }
 
     /**
@@ -27,10 +25,16 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+     protected function create(array $data)
+     {
+         return Shop::create([
+             'firstName' => $data['firstName'],
+             'lastName' => $data['lastName'],
+             'mobile' => $data['mobile'],
+             'email' => $data['email'],
+             'password' => Hash::make($data['password']),
+         ]);
+     }
 
     /**
      * Store a newly created resource in storage.

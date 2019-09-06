@@ -15,6 +15,17 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('title');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('cat_id');
+            $table->unsignedInteger('cantact_id')->nullable();
+            $table->unsignedInteger('status')->default(0);
+            $table->enum('quick_way',['enable', 'disable'])->default('disable');
+            $table->enum('posting_way',['enable', 'disable'])->default('disable');
+            $table->enum('person_way',['enable', 'disable'])->default('disable');
+            $table->string('icon')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('description');
             $table->timestamps();
         });
     }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Shop;
+use App\ShopCategory;
 
 class ShopSettingController extends Controller
 {
@@ -15,7 +17,8 @@ class ShopSettingController extends Controller
      */
     public function index()
     {
-        return view('dashboard.shop-setting');
+      $categories=ShopCategory::all();
+      return view('dashboard.shop-setting', compact('categories'));
     }
 
     /**
@@ -36,7 +39,7 @@ class ShopSettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "hi";
     }
 
     /**

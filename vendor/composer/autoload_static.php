@@ -433,6 +433,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Dashboard\\ProductDetailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProductDetailController.php',
         'App\\Http\\Controllers\\Dashboard\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/SettingController.php',
         'App\\Http\\Controllers\\Dashboard\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ShopController.php',
+        'App\\Http\\Controllers\\Dashboard\\ShopSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ShopSettingController.php',
         'App\\Http\\Controllers\\Dashboard\\TicketController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/TicketController.php',
         'App\\Http\\Controllers\\Dashboard\\UserInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/UserInformationController.php',
         'App\\Http\\Controllers\\Dashboard\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/WalletController.php',

@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\Dashboard\\ProductDetailController' => $baseDir . '/app/Http/Controllers/Dashboard/ProductDetailController.php',
     'App\\Http\\Controllers\\Dashboard\\SettingController' => $baseDir . '/app/Http/Controllers/Dashboard/SettingController.php',
     'App\\Http\\Controllers\\Dashboard\\ShopController' => $baseDir . '/app/Http/Controllers/Dashboard/ShopController.php',
+    'App\\Http\\Controllers\\Dashboard\\ShopSettingController' => $baseDir . '/app/Http/Controllers/Dashboard/ShopSettingController.php',
     'App\\Http\\Controllers\\Dashboard\\TicketController' => $baseDir . '/app/Http/Controllers/Dashboard/TicketController.php',
     'App\\Http\\Controllers\\Dashboard\\UserInformationController' => $baseDir . '/app/Http/Controllers/Dashboard/UserInformationController.php',
     'App\\Http\\Controllers\\Dashboard\\WalletController' => $baseDir . '/app/Http/Controllers/Dashboard/WalletController.php',
