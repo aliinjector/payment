@@ -2402,7 +2402,7 @@ button.bg-white:hover {
 
 .alert.alert-danger {
     color: #fff;
-    background-color: #f1646c
+    background-color: #f1646c!important
 }
 
 .alert.alert-dark {

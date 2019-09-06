@@ -16,17 +16,17 @@ class CreateUserInformationTable extends Migration
         Schema::create('user_information', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
-            $table->string('fatherName');
-            $table->string('tel');
-            $table->string('city');
-            $table->string('address');
-            $table->string('nationalCode');
-            $table->string('shenasnamehCode');
-            $table->string('placeOfIssue');
-            $table->string('birthDate');
-            $table->string('zipCode');
-            $table->string('shenasnamehPic');
-            $table->string('melliCardPic');
+            $table->string('fatherName')->nullable();
+            $table->string('tel')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
+            $table->string('nationalCode')->nullable();
+            $table->string('shenasnamehCode')->nullable();
+            $table->string('placeOfIssue')->nullable();
+            $table->string('birthDate')->nullable();
+            $table->string('zipCode')->nullable();
+            $table->string('shenasnamehPic')->nullable();
+            $table->string('melliCardPic')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
         });

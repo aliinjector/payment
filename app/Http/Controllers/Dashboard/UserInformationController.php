@@ -15,8 +15,15 @@ class UserInformationController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $userInformation = \Auth::user()->userInformation()->get();
-        return view('dashboard.userInformation', 'userInformation');
+        if(\Auth::user()->userInformation()->count() == 0){
+            $userInformation = new UserInformation;
+            $userInformation->user_id = \Auth::user()->id;
+            $userInformation->status = 1;
+            $userInformation->save();
+        }
+
+        $userInformation = \Auth::user()->userInformation()->first();
+        return view('dashboard.userInformation', compact('userInformation'));
     }
 
     /**
@@ -37,7 +44,28 @@ class UserInformationController extends \App\Http\Controllers\Controller
      */
     public function store(UserInformationRequest $request)
     {
-        //
+        // check if form uploaded !?
+        $melliCardPic = $this->uploadFile($request->file('melliCardPic'), false, false);
+        $shenasnamehPic = $this->uploadFile($request->file('shenasnamehPic'), false, false);
+
+        $userInformation = UserInformation::where('user_id', \Auth::user()->id)->first();
+        $userInformation->fatherName = $request->fatherName;
+        $userInformation->city = $request->city;
+        $userInformation->address = $request->address;
+        $userInformation->nationalCode = $request->nationalCode;
+        $userInformation->shenasnamehCode = $request->shenasnamehCode;
+        $userInformation->tel = $request->tel;
+        $userInformation->placeOfIssue = $request->placeOfIssue;
+        $userInformation->birthDate = $request->birthDate;
+        $userInformation->zipCode = $request->zipCode;
+        $userInformation->melliCardPic = $melliCardPic;
+        $userInformation->shenasnamehPic = $shenasnamehPic;
+        $userInformation->status = 2;
+        $userInformation->save();
+
+        alert()->success('حساب کاربری شما در مرحله انتظار تایید قرار گرفت.', 'اطلاعات بروز شد');
+        return redirect()->route('UserInformation.index');
+
     }
 
     /**
