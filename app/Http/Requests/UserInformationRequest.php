@@ -24,10 +24,7 @@ class UserInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'firstName' => 'required|min:1|max:24',
-            'lastName' => 'required|min:1|max:24',
             'fatherName' => 'required|min:1|max:24',
-            'mobile' => 'required|min:1|max:20',
             'tel' => 'required|min:1|max:20',
             'city' => 'required|min:1|max:20',
             'address' => 'required|min:1|max:220',
@@ -36,9 +33,8 @@ class UserInformationRequest extends FormRequest
             'placeOfIssue' => 'required|min:1|max:50',
             'birthDate' => 'required|min:1|max:20',
             'zipCode' => 'required|min:1|max:10',
-            'shenasnamehPic' => 'required|min:1|max:220',
-            'melliCardPic' => 'required|min:1|max:220',
-            'status' => 'required|min:1|max:20',
+            'shenasnamehPic' => 'required',
+            'melliCardPic' => 'required',
         ];
     }
 }

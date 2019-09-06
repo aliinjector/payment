@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Dashboard;
+use App\Ticket;
+use App\Http\Requests\TicketRequest;
 use Illuminate\Http\Request;
 
 class TicketController extends \App\Http\Controllers\Controller
@@ -14,7 +15,8 @@ class TicketController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.ticket');
+        $tickets = \Auth::user()->tickets()->get();
+        return view('dashboard.ticket', compact('tickets'));
     }
 
     /**
@@ -33,9 +35,25 @@ class TicketController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketRequest $request)
     {
-        //
+        // check if form uploaded !?
+//        if ($request->file('attachment') != null){
+//            $attachment = $this->uploadFile($request->file('attachment'), false, false);
+//        }
+
+        $ticket = new Ticket;
+        $ticket->user_id = \Auth::user()->id;
+        $ticket->title = $request->title;
+        $ticket->description = $request->description;
+        $ticket->scope = $request->scope;
+//        $ticket->attachment = $attachment;
+        $ticket->status = 'بررسی نشده';
+        $ticket->save();
+
+        alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
+        return redirect()->route('ticket.index');
+
     }
 
     /**
