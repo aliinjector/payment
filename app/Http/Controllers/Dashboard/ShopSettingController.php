@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Dashboard;
 use Illuminate\Http\Request;
+use App\Http\Requests\ShopSettingRequest;
+use App\Http\Requests\ShopContactRequest;
 use App\Http\Controllers\Controller;
 use App\Shop;
 use App\ShopCategory;
@@ -18,24 +20,28 @@ class ShopSettingController extends Controller
      */
     public function index()
     {
-      // if(\Auth::user()->userInformation()->count() == 0){
-      //     $userInformation = new UserInformation;
-      //     $shopContact->shop_id = 1;
-      //     $shopContact->tel = $request->tel;
-      //     $shopContact->phone =  \Auth::user()->mobile;
-      //     $shopContact->shop_email = $request->shop_email;
-      //     $shopContact->address = $request->address;
-      //     $shopContact->city = $request->city;
-      //     $shopContact->province = $request->province;
-      //     $shopContact->telegram_url = $request->telegram_url;
-      //     $shopContact->instagram_url = $request->instagram_url;
-      //     $shopContact->facebook_url = $request->facebook_url;
-      //     $userInformation->save();
-      // }
-      // $userInformation = \Auth::user()->userInformation()->first();
-      //
+      if(\Auth::user()->shop()->count() == 0){
+          $shop = new Shop;
+          $shop->title = "عنوان تست";
+          $shop->user_id = \Auth::user()->id;
+          $shop->status = 0;
+          $shop->quick_way = "disable";
+          $shop->posting_way = "disable";
+          $shop->person_way = "disable";
+          $shop->description = "توضیحات تست";
+          $shop->save();
+          $shopContact = new ShopContact;
+          $shopContact->shop_id = \Auth::user()->shop()->first()->id;
+          $shopContact->phone =  \Auth::user()->mobile;
+          $shopContact->city = "تهران";
+          $shopContact->province = "تهران";
+          $shopContact->save();
+      }
+
+      $shopInformation = \Auth::user()->shop()->first();
+      $shopContactInformation = $shopInformation->shopContact()->first();
       $categories = ShopCategory::all();
-      return view('dashboard.shop-setting', compact('categories'));
+      return view('dashboard.shop-setting', compact('categories','shopInformation','shopContactInformation'));
     }
 
     /**
@@ -56,20 +62,20 @@ class ShopSettingController extends Controller
      */
     public function store(Request $request)
     {
-      $shopContact = new ShopContact;
-      $shopContact->shop_id = 1;
-      $shopContact->tel = $request->tel;
-      $shopContact->phone =  \Auth::user()->mobile;
-      $shopContact->shop_email = $request->shop_email;
-      $shopContact->address = $request->address;
-      $shopContact->city = $request->city;
-      $shopContact->province = $request->province;
-      $shopContact->telegram_url = $request->telegram_url;
-      $shopContact->instagram_url = $request->instagram_url;
-      $shopContact->facebook_url = $request->facebook_url;
-      $shopContact->save();
-      alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
-      return redirect()->route('shop-setting.index');
+    //   $shopContact = new ShopContact;
+    //   $shopContact->shop_id = 1;
+    //   $shopContact->tel = $request->tel;
+    //   $shopContact->phone =  \Auth::user()->mobile;
+    //   $shopContact->shop_email = $request->shop_email;
+    //   $shopContact->address = $request->address;
+    //   $shopContact->city = $request->city;
+    //   $shopContact->province = $request->province;
+    //   $shopContact->telegram_url = $request->telegram_url;
+    //   $shopContact->instagram_url = $request->instagram_url;
+    //   $shopContact->facebook_url = $request->facebook_url;
+    //   $shopContact->save();
+    //   alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
+    //   return redirect()->route('shop-setting.index');
     }
 
     /**
@@ -101,16 +107,15 @@ class ShopSettingController extends Controller
      * @param  \App\ShopSetting  $shopSetting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(ShopSettingRequest $request)
     {
-     
+
       $icon = $this->uploadFile($request->file('icon'), false, false);
       $logo = $this->uploadFile($request->file('logo'), false, false);
       $shop =  Shop::where('user_id', \Auth::user()->id)->first();
       $shop->title = $request->title;
       $shop->user_id = \Auth::user()->id;
       $shop->cat_id = $request->cat_id;
-      $shop->contact_id = 2;
       $shop->status = 0;
       $shop->quick_way = "enable";
       $shop->posting_way = "enable";
@@ -122,10 +127,11 @@ class ShopSettingController extends Controller
 
       alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('shop-setting.index');
-
-
     }
-    public function updateContact(Request $request){
+
+
+
+    public function updateContact(ShopContactRequest $request){
       $shopContact =  ShopContact::where('shop_id', \Auth::user()->shop()->first()->id)->first();
       $shopContact->shop_id = \Auth::user()->shop()->first()->id;
       $shopContact->tel = $request->tel;

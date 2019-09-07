@@ -17,6 +17,7 @@
     </div>
     <!--end col-->
 </div>
+@include('dashboard.layouts.errors')
 
 <form method="post" action="{{ route('shop-setting.update', \Auth::user()->id) }}"  enctype="multipart/form-data">
   @csrf
@@ -45,13 +46,14 @@
                             <div class="form-group row">
                                 <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">عنوان فروشگاه</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="title" placeholder="مثال: پایان پی" value="{{ old('title') }}">
+                                    <input class="form-control" type="text" name="title" placeholder="مثال: پایان پی"                                                value="{{ old('title', $shopInformation->title) }}"
+                                    >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">توضیحات فروشگاه </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="description" placeholder="مثال: فروش و توضیع محصولات با کیفیت  " value="{{ old('title') }}">
+                                    <input class="form-control" type="text" name="description" placeholder="مثال: فروش و توضیع محصولات با کیفیت" value="{{ old('description', $shopInformation->description) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -260,14 +262,14 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-password-input" class="col-sm-2 col-form-label text-center">ایمیل فروشگاه</label>
-                        <input class="form-control" type="email" name="shop_email" placeholder="مثال: example@gmail.com" id="example-password-input">
+                        <input class="form-control" type="email" name="shop_email" placeholder="مثال: example@gmail.com" id="example-password-input"                                                value="{{ old('shop_email', $shopContactInformation->shop_email) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-envelope text-dark font-18"></i></span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-password-input" class="col-sm-2 col-form-label text-center">تلفن ثابت فروشگاه</label>
-                        <input class="form-control" type="text" name="tel" placeholder="مثال: example@gmail.com" id="example-password-input">
+                        <input class="form-control" type="text" name="tel" placeholder="مثال: example@gmail.com" id="example-password-input" value="{{ old('tel', $shopContactInformation->tel) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-phone text-dark font-18"></i></span></div>
                     </div>
                 </div>
@@ -277,11 +279,11 @@
                         <input class="form-control" type="text" name="phone" disabled value="{{ \Auth::user()->mobile }}" id="example-tel-input">
                           <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
                     </div>
-                </div>
+              </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-week-input" class="col-sm-2 col-form-label text-center">شهر فروشگاه</label>
-                        <input class="form-control" type="text" name="city" placeholder=" مثال: تهران" id="example-week-input">
+                        <input class="form-control" type="text" name="city" placeholder=" مثال: تهران" id="example-week-input" value="{{ old('city', $shopContactInformation->city) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-city text-dark font-18"></i></span></div>
                     </div>
                 </div>
@@ -289,7 +291,7 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-week-input" class="col-sm-2 col-form-label text-center">استان فروشگاه</label>
-                        <input class="form-control" type="text" name="province" placeholder=" مثال: تهران" id="example-week-input">
+                        <input class="form-control" type="text" name="province" placeholder=" مثال: تهران" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
                     </div>
 
@@ -297,28 +299,28 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">آدرس فروشگاه</label>
-                        <input class="form-control" type="text" name="address" placeholder="مثال: خیابان پاسداران - گلستان چهارم - پلاک ۲۱ - واحد ۱۱" id="example-datetime-local-input">
+                        <input class="form-control" type="text" name="address" placeholder="مثال: خیابان پاسداران - گلستان چهارم - پلاک ۲۱ - واحد ۱۱" id="example-datetime-local-input" value="{{ old('address', $shopContactInformation->address) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-address-card text-dark font-18"></i></span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">تلگرام</label>
-                        <input type="text" class="form-control" name="telegram_url" placeholder="مثال: tg://msg?text = www.example.com?t=12">
+                        <input type="text" class="form-control" name="telegram_url" placeholder="مثال: tg://msg?text = www.example.com?t=12" value="{{ old('telegram_url', $shopContactInformation->telegram_url) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-telegram text-dark font-18"></i></span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">اینستاگرام</label>
-                        <input type="text" class="form-control" name="instagram_url" placeholder="مثال: https://www.instagram.com/john_doe">
+                        <input type="text" class="form-control" name="instagram_url" placeholder="مثال: https://www.instagram.com/john_doe" value="{{ old('instagram_url', $shopContactInformation->instagram_url) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-instagram text-dark font-18"></i></span></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">فیسبوک</label>
-                        <input type="text" class="form-control" name="facebook_url" placeholder="مثال: https://www.facebook.com/ZambianWatchdog">
+                        <input type="text" class="form-control" name="facebook_url" placeholder="مثال: https://www.facebook.com/ZambianWatchdog" value="{{ old('facebook_url', $shopContactInformation->facebook_url) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-facebook-f text-dark font-18"></i></span></div>
                     </div>
                 </div>

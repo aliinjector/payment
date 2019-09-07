@@ -165,5 +165,9 @@ return array(
         'melliCardPic' => 'تصویر کارت ملی',
         'scope' => 'حوزه',
         'bank' => 'بانک',
+        'shop_email' => 'ایمیل فروشگاه',
+        'province' => 'استان',
+        'icon' => 'آیکون',
+        'logo' => 'لوگو',
     ),
 );
