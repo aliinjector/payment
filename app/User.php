@@ -55,6 +55,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Ticket');
     }
 
+    public function gateways()
+    {
+        return $this->hasMany('App\Gateway');
+    }
+
     public function shop()
    {
        return $this->hasOne('App\Shop');

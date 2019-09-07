@@ -151,7 +151,7 @@ Author: Ali Rahmani
                     <ul class="nav">
                         {{--<li style="display: none;" class="nav-item"><a class="nav-link" href=""><i class="mdi mdi-chart-bar"></i>داشبورد گزارشات</a></li>--}}
                         <li class="nav-item {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} "><a class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} " href="{{ route('wallet.index') }}"><i class="mdi mdi-wallet"></i>کیف پول های شما</a></li>
-                        <li class="nav-item"><a class="nav-link" href=""><i class="fab fa-cc-amazon-pay"></i>درگاه های پرداخت</a></li>
+                        <li class="nav-item {{ request()->is('dashboard/gateway*') == 1 ? 'active' : '' }}" ><a class="nav-link" href="{{ route('gateway.index') }}"><i class="fab fa-cc-amazon-pay"></i>درگاه های پرداخت</a></li>
                         {{--<li class="nav-item"><a class="nav-link" href=""><i class="far fa-money-bill-alt"></i>درخواست تسویه حساب</a></li>--}}
                         <li class="nav-item {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}"><a class="nav-link {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="fas fa-credit-card"></i>کارت های بانکی</a></li>
                         {{--<li class="nav-item"><a class="nav-link" href=""><i class="fab fa-cc-amazon-pay"></i>لینک پرداخت آنی</a></li>--}}
