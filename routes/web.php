@@ -18,6 +18,8 @@ Auth::routes();
 Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('index', 'DashboardController');
     Route::resource('UserInformation', 'UserInformationController');
+    Route::post('melliUpload', 'UserInformationController@melliUpload')->name('melliUpload');
+    Route::post('ShensnamehUpload', 'UserInformationController@ShensnamehUpload')->name('ShensnamehUpload');
     Route::resource('ticket', 'TicketController');
     Route::resource('setting', 'SettingController');
     Route::resource('card', 'CardController') ;

@@ -149,7 +149,7 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">داشبورد اصلی</h6></div>
                     <ul class="nav">
-                        <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و احراز هویت</a></li>
+                        <li class="nav-item "><a style="color: red" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و احراز هویت</a></li>
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
@@ -185,12 +185,6 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">باشگاه مشتریان</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-index.html"><i class="dripicons-device-desktop"></i>Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-products.html"><i class="dripicons-view-apps"></i>Products</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-product-list.html"><i class="dripicons-list"></i>Product List</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-product-detail.html"><i class="dripicons-article"></i>Product Detail</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-cart.html"><i class="dripicons-cart"></i>Cart</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-checkout.html"><i class="dripicons-card"></i>Checkout</a></li>
                     </ul>
                 </div>
                 <!-- end Ecommerce -->
@@ -200,11 +194,6 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">فروشگاه ساز شارژ</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
                     </ul>
                 </div>
                 <!-- end CRM -->
@@ -214,11 +203,6 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت قبوض</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
                     </ul>
                 </div>
                 <!-- end CRM -->
@@ -228,11 +212,6 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت عوارض و فروش بلیط</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
                     </ul>
                 </div>
                 <!-- end CRM -->
@@ -241,11 +220,6 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">استعلام چک</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
                     </ul>
                 </div>
                 <!-- end Check -->
@@ -256,11 +230,6 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت تلفنی</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
                     </ul>
                 </div>
                 <!-- end TPG -->
