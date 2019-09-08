@@ -62,7 +62,7 @@
                                     <select class="custom-select" name="cat_id">
                                         <option selected="">انتخاب دسته بندی</option>
                                         @foreach($categories as $category)
-                                        <option value="{{ $category->id }} ">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

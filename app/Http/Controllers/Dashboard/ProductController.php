@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ProductCategory;
+use App\Product;
 
 class ProductController extends Controller
 {
@@ -14,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('dashboard.product');
+      $productCategory = ProductCategory::first();
+        return view('dashboard.product', compact('productCategory'));
 
 
     }
@@ -35,9 +38,24 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeProduct(Request $request)
     {
-        //
+      $image = $this->uploadFile($request->file('image'), false, false);
+      $product = new Product;
+      $product->title = $request->title;
+      $product->shop_id = 1;
+      $product->productCat_id = $request->productCat_id;
+      $product->status = 0;
+      $product->type = $request->type;
+      $product->color = $request->color;
+      $product->amount = $request->amount;
+      $product->weight = $request->weight;
+      $product->price = $request->price;
+      $product->description = $request->description;
+      $product->image = $image;
+      $product->save();
+      alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('product-list.index');
     }
 
     /**

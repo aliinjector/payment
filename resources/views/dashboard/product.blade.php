@@ -71,7 +71,7 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
                                 {{-- <button type="submit" class="btn btn-primary">ثبت درخواست</button> --}}
                                 {{-- <a data-dismiss="modal" data-toggle="modal" href="#AddProductModal1">Click</a> --}}
 
@@ -81,6 +81,8 @@
                         </div>
                     </div>
                 </div>
+
+
 
 
                 <div class="modal fade bd-example-modal-xl " id="AddProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,70 +95,60 @@
                                 </button>
                             </div>
                             <div class="modal-body modal-scroll">
-                                <form action="{{ route('card.store') }}" method="post" class="form-horizontal">
+                                <form action="{{ route('Product.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: جاروبرقی">
+                                            <input type="text" value="{{ old('title') }}" class="form-control inputfield" name="title" placeholder="مثال: جاروبرقی">
+                                            <input name="type" type="hidden" value="product">
                                         </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات محصول :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: توضیحات مختصری درمورد محصول">
+                                            <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول">
                                         </div>
 
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
 
-                                            <select class="form-control inputfield" name="month" id="">
+                                            <select class="form-control inputfield" name="productCat_id" id="">
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
-                                                <option style="font-family: BYekan!important;" value="1">1</option>
-                                                <option style="font-family: BYekan!important;" value="2">2</option>
-                                                <option style="font-family: BYekan!important;" value="3">3</option>
-                                                <option style="font-family: BYekan!important;" value="4">4</option>
-                                                <option style="font-family: BYekan!important;" value="5">5</option>
-                                                <option style="font-family: BYekan!important;" value="6">6</option>
-                                                <option style="font-family: BYekan!important;" value="7">7</option>
-                                                <option style="font-family: BYekan!important;" value="8">8</option>
-                                                <option style="font-family: BYekan!important;" value="9">9</option>
-                                                <option style="font-family: BYekan!important;" value="10">10</option>
-                                                <option style="font-family: BYekan!important;" value="11">11</option>
-                                                <option style="font-family: BYekan!important;" value="12">12</option>
+                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                             </select>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: 30000">
+                                            <input type="text" value="{{ old('price') }}" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: 3">
+                                            <input type="text" value="{{ old('amount') }}" class="form-control inputfield" name="amount" placeholder="مثال: 3">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="2مثال: 30">
+                                            <input type="text" value="{{ old('weight') }}" class="form-control inputfield" name="weight" placeholder="2مثال: 30">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control" type="color" value="#122272" id="example-color-input">
+                                            <input class="form-control" type="color" value="#122272" id="example-color-input" name="color">
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت محصول :</span></div>
                                             <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
                                                 <label class="btn btn-outline-success active iranyekan mr-5">
-                                                    <input type="radio" name="options" id="option1" checked=""> فعال
+                                                    <input type="radio" name="enable" id="option1" checked=""> فعال
                                                 </label>
                                                 <label class="btn btn-outline-danger iranyekan mr-5">
-                                                    <input type="radio" name="options" id="option3"> غیرفعال
+                                                    <input type="radio" name="disable" id="option3"> غیرفعال
                                                 </label>
                                             </div>
                                         </div>
@@ -173,7 +165,7 @@
                                                     <div class="dropify-errors-container">
                                                         <ul></ul>
                                                     </div>
-                                                    <input name="logo" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
+                                                    <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                                                     <button type="button" class="dropify-clear">حذف</button>
                                                     <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/labtop.jpg"></span>
                                                         <div class="dropify-infos">
@@ -196,7 +188,7 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -205,8 +197,6 @@
                         </div>
                     </div>
                 </div>
-
-
 
                 <div class="modal fade bd-example-modal-xl" id="AddFileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl" role="document">
@@ -224,6 +214,8 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
                                             <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: کتاب آموزش زبان">
+                                            <input name="type" type="hidden" value="file">
+
                                         </div>
 
                                         <div class="input-group mt-3">
@@ -343,7 +335,7 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -352,8 +344,6 @@
                         </div>
                     </div>
                 </div>
-
-
 
                 <div class="modal fade bd-example-modal-xl" id="AddServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-xl" role="document">
@@ -371,6 +361,8 @@
                                       <div class="input-group mt-3">
                                           <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان خدمت :</span></div>
                                           <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: تدریس خصوصی">
+                                          <input name="type" type="hidden" value="service">
+
                                       </div>
 
                                       <div class="input-group mt-3">
@@ -446,7 +438,7 @@
                                   <!--end form-group-->
                           </div>
                           <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
+                              <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
                               <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                           </div>
 
