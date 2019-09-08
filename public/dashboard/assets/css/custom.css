@@ -37,3 +37,7 @@
 .min-width-140{
 min-width: 140px;
 }
+.modal-scroll{
+  overflow-y: auto;
+  max-height: 800px;
+}
