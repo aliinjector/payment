@@ -8735,8 +8735,11 @@ body {
 }
 
 .left-sidenav .main-icon-menu .nav-link.active:before {
-    left: auto;
-    right: 53px
+    right: 48px;
+    top: 31px;
+}
+.menu-active{
+    color: white!important;
 }
 
 .main-menu-inner {
