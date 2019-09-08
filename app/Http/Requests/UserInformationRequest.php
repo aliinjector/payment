@@ -33,8 +33,6 @@ class UserInformationRequest extends FormRequest
             'placeOfIssue' => 'required|min:1|max:50',
             'birthDate' => 'required|min:1|max:20',
             'zipCode' => 'required|min:1|max:10',
-            'shenasnamehPic' => 'required',
-            'melliCardPic' => 'required',
         ];
     }
 }

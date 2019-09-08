@@ -3,6 +3,91 @@
 <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
 @section('content')
+    <!--  Modal content for the above example -->
+    @foreach ($tickets as $ticket)
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="ticketDetail{{$ticket->id}}" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myLargeModalLabel">جرییات درخواست</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" enctype="multipart/form-data" action="http://127.0.0.1:8000/dashboard/gateway">
+                            <input type="hidden" name="_token" value="L5DDm7dHVVSgGVE546lymi8zQYCSwBgeodSzU8TO">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="mt-0 header-title pb-3">عنوان درخواست: {{$ticket->title}}</h4>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group row">
+                                                        <label for="example-text-input"
+                                                               class="col-sm-2 col-form-label text-center">حوزه</label>
+                                                        <div class="col-sm-10">
+                                                            <input disabled class="form-control" type="text" name="name" value="{{ $ticket->scope }}" id="example-text-input">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row">
+                                                        <label style="text-align: center" for="example-email-input"
+                                                               class="col-sm-2 col-form-label text-center"> وضعیت </label>
+                                                        <div class="col-sm-10">
+                                                            <input disabled class="form-control" type="text" name="name" value="{{ $ticket->status }}" id="example-text-input">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group row">
+                                                        <label for="example-search-input" class="col-sm-2 col-form-label text-center">آخرین تغییر </label>
+                                                        <div class="col-sm-10">
+                                                            <input class="form-control" type="text" name="url" disabled value="{{ $ticket->updated_at }}" id="example-search-input">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-ld-12">
+
+
+
+                                                <div class="form-group row">
+                                                    <label for="example-url-input" class="col-sm-2 col-form-label text-center">توضیحات</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control" name="description" id="description" cols="30" rows="3">{{$ticket->description}}</textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!--end card-body-->
+                                    </div>
+                                    <!--end card-->
+                                </div>
+                                <!--end col-->
+                            </div>
+
+
+
+                            <div class="form-actions text-center  pb-3  ">
+                                <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                                    <i class="fa fa-check-square-o"></i> ارسال اطلاعات
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    @endforeach
+
+
+
+
 
     <div class="row">
         <div class="col-sm-12">
@@ -186,7 +271,7 @@
                             <th>حوزه</th>
                             <th>وضعیت</th>
                             <th>تاریخ آخرین تغییر</th>
-                            <th>ویرایش</th>
+                            <th>جزییات</th>
                         </tr>
 
                         </thead>
@@ -197,7 +282,7 @@
                                 <td>{{ $ticket->description }}</td>
                                 <td>{{ $ticket->scope }}</td>
                                 <td style="font-family: BYekan">{{ jdate($ticket->updated_at) }}</td>
-                                <td>مشاهده جزییات</td>
+                               <td><button type="button" class="btn btn-dark waves-effect success" data-toggle="modal" data-animation="bounce" data-target="#ticketDetail{{$ticket->id}}">مشاهده جزییات</button></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -218,6 +303,11 @@
 @section('pageScripts')
     <!-- Responsive examples -->
     <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+
+    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/dashboard//assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+
+
     <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>

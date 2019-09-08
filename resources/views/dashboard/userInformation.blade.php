@@ -180,17 +180,26 @@
                         </div>
 
                     </div>
-                    <!--end card-body-->
+                    <div class="form-actions text-center  pb-3  ">
+                        <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                            <i class="fa fa-check-square-o"></i> ارسال اطلاعات
+                        </button>
+                    </div>
+                 </form>
+
+    <!--end card-body-->
                 </div>
+
                 <!--end card-->
             </div>
             <!--end col-->
         </div>
 
-
         <div class="row">
             <div class="col-xl-6">
-                <div class="card">
+                <form method="post" enctype="multipart/form-data" action="{{ route('ShensnamehUpload') }}">
+                    @csrf
+                    <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">تصویر شناسنامه</h4>
                         <p class="text-muted mb-3">لطفا تصویر اسکن شده شناسنامه خود را آپلود نمایید.</p>
@@ -213,14 +222,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-actions text-center  pt-3  ">
+                            <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                                <i class="fa fa-check-square-o"></i> ارسال تصویر شناسنامه
+                            </button>
+                        </div>
                     </div>
                     <!--end card-body-->
                 </div>
                 <!--end card-->
+                </form>
             </div>
             <!--end col-->
             <div class="col-xl-6">
-                <div class="card">
+                <form method="post" enctype="multipart/form-data" action="{{ route('melliUpload') }}">
+                    @csrf
+                    <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">تصویر کارت ملی</h4>
                         <p class="text-muted mb-3">لطفا تصویر اسکن شده کارت ملی خود را آپلود نمایید.</p>
@@ -242,20 +259,18 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div><div class="form-actions text-center  pt-3  ">
+                            <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                                <i class="fa fa-check-square-o"></i> ارسال تصویر کارت ملی
+                            </button>
                     </div>
                     <!--end card-body-->
                 </div>
+                </form>
                 <!--end card-->
             </div>
             <!--end col-->
         </div>
-        <div class="form-actions text-center  pb-3  ">
-            <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
-                <i class="fa fa-check-square-o"></i> ارسال اطلاعات
-            </button>
-        </div>
-    </form>
 @endsection
 
 
