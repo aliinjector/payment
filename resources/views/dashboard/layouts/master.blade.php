@@ -85,182 +85,196 @@ Author: Ali Rahmani
         <div class="main-icon-menu">
             <nav class="nav">
 
-                <a href="#Dashboard" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} " data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="داشبورد اصلی">
-                    <i style="color: #86a3f7;font-size: 25px" class="mdi mdi-desktop-mac-dashboard"></i>
+                <a href="#PayanPayDashboard" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} " data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="داشبورد اصلی">
+                    <i style="color: #86a3f7;font-size: 25px" class="  {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'menu-active' : '' }} mdi mdi-desktop-mac-dashboard"></i>
                 </a>
 
-                <a href="#PardakhtYari" class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}  " data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت یاری">
+
+                <a href="#PayanPayPardakhtYari" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت یاری">
                     <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M435.2 80H76.8c-24.9 0-44.6 19.6-44.6 44L32 388c0 24.4 19.9 44 44.8 44h358.4c24.9 0 44.8-19.6 44.8-44V124c0-24.4-19.9-44-44.8-44zm0 308H76.8V256h358.4v132zm0-220H76.8v-44h358.4v44z"></path></svg>
                 </a>
-                <!--end PayanPayAnalytic-->
 
-                <a href="#PayanPayCrypto" class="nav-link {{ request()->is('dashboard/shop*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/product-list*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/product-category*') == 1 ? 'active' : '' }} " data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="فروشگاه ساز">
+
+                <a href="#PayanPayShopMaker" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="فروشگاه ساز">
                     <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M169.6 377.6c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6s41.601-18.718 41.601-41.6c-.001-22.884-18.72-41.601-41.601-41.601zM48 51.2v41.6h41.6l74.883 151.682-31.308 50.954c-3.118 5.2-5.2 12.482-5.2 19.765 0 27.85 19.025 41.6 44.825 41.6H416v-40H177.893c-3.118 0-5.2-2.082-5.2-5.2 0-1.036 2.207-5.2 2.207-5.2l20.782-32.8h154.954c15.601 0 29.128-8.317 36.4-21.836l74.882-128.8c1.237-2.461 2.082-6.246 2.082-10.399 0-11.446-9.364-19.765-20.8-19.765H135.364L115.6 51.2H48zm326.399 326.4c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6S416 442.082 416 419.2c0-22.883-18.719-41.6-41.601-41.6z"></path></svg>
                 </a>
-                <!--end PayanPayCrypto-->
 
-                <a href="#PayanPayProject" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="باشگاه مشتریان">
+
+                <a href="#PayanPayBashgah" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="باشگاه مشتریان">
                     <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M239.208 343.937c-17.78 10.103-38.342 15.876-60.255 15.876-21.909 0-42.467-5.771-60.246-15.87C71.544 358.331 42.643 406 32 448h293.912c-10.639-42-39.537-89.683-86.704-104.063zM178.953 120.035c-58.479 0-105.886 47.394-105.886 105.858 0 58.464 47.407 105.857 105.886 105.857s105.886-47.394 105.886-105.857c0-58.464-47.408-105.858-105.886-105.858zm0 186.488c-33.671 0-62.445-22.513-73.997-50.523H252.95c-11.554 28.011-40.326 50.523-73.997 50.523z"></path><g><path d="M322.602 384H480c-10.638-42-39.537-81.691-86.703-96.072-17.781 10.104-38.343 15.873-60.256 15.873-14.823 0-29.024-2.654-42.168-7.49-7.445 12.47-16.927 25.592-27.974 34.906C289.245 341.354 309.146 364 322.602 384zM306.545 200h100.493c-11.554 28-40.327 50.293-73.997 50.293-8.875 0-17.404-1.692-25.375-4.51a128.411 128.411 0 0 1-6.52 25.118c10.066 3.174 20.779 4.862 31.895 4.862 58.479 0 105.886-47.41 105.886-105.872 0-58.465-47.407-105.866-105.886-105.866-37.49 0-70.427 19.703-89.243 49.09C275.607 131.383 298.961 163 306.545 200z"></path></g></svg>
-                </a>
-                <!--end PayanPayProject-->
 
-                <a href="#PayanPayEcommerce" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="فروش شارژ">
+                </a>
+
+
+                <a href="#PayanPayChargeShopMaker" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="فروشگاه ساز شارژ">
                     <i style="color: #86a3f7;font-size: 25px" class="dripicons-shopping-bag"></i>
                 </a>
-                <!--end PayanPayEcommerce-->
 
-                <a href="#PayanPayCRM" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت قبوض">
-                    <i style="color: #86a3f7;font-size: 25px" class="fas fa-ticket-alt"></i>
-                </a>
 
-                <!--end PayanPayCRM-->
-                <a href="#PayanPayOthers" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت عوارض و فروش بلیط">
-                    <i style="color: #86a3f7;font-size: 25px" class="fas fa-money-check"></i>
-                </a>
-                <!--end PayanPayOthers-->
-{{--                <a href="#PayanPayPages" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="شارژ ساختمان">--}}
-{{--                    <i style="color: #86a3f7;font-size: 25px" class="far fa-building"></i>--}}
-{{--                </a>--}}
-
-                <a class="pt-4" target="_blank" href="http://olympictower.ir/login"  >
+                <a class="pt-4 pb-4"  data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="مدیریت مجتمع های مسکونی" target="_blank" href="http://olympictower.ir/login"  >
                     <i style="color: #86a3f7;font-size: 25px" class="far fa-building"></i>
                 </a>
 
-                <!--end PayanPayPages-->
-                <a href="#PayanPayAuthentication" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="استعلام چک">
+
+                <a href="#PayanPayBill" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت قبوض">
+                    <i style="color: #86a3f7;font-size: 25px" class="fas fa-ticket-alt"></i>
+
+                </a>
+
+
+                <a href="#PayanPayAvarez" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت عوارض و فروش بلیط">
+                    <i style="color: #86a3f7;font-size: 25px" class="fas fa-money-check"></i>
+
+                </a>
+
+
+                <a href="#PayanPayCheck" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="استعلام چک">
                     <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M387.581 139.712L356.755 109 216.913 248.319l30.831 30.719 139.837-139.326zM481.172 109L247.744 340.469l-91.39-91.051-30.827 30.715L247.744 403 512 139.712 481.172 109zM0 280.133L123.321 403l30.829-30.713L31.934 249.418 0 280.133z"></path></svg>
                 </a>
 
 
-                <a href="#PayanPayTpg" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت تلفنی">
+                <a href="#PayanPayTPG" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت تلفنی">
                     <i style="color: #86a3f7;font-size: 25px" class="fas fa-phone"></i>
                 </a>
-                <!--end PayanPayTpg-->
 
 
+                <!--end PayanPayAuthentication-->
             </nav>
             <!--end nav-->
         </div>
         <!--end main-icon-menu-->
         <div class="main-menu-inner">
             <div class="menu-body slimscroll">
-
-                <div id="PardakhtYari" class="main-icon-menu-pane">
+                <div id="PayanPayDashboard" class="main-icon-menu-pane">
+                    <div class="title-box">
+                        <h6 class="menu-title">داشبورد اصلی</h6></div>
+                    <ul class="nav">
+                        <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و احراز هویت</a></li>
+                        <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
+                        <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
+                        <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
+                    </ul>
+                </div>
+                <!-- end Analytic -->
+                <div id="PayanPayPardakhtYari" class="main-icon-menu-pane">
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت یاری</h6></div>
                     <ul class="nav">
-                        {{--<li style="display: none;" class="nav-item"><a class="nav-link" href=""><i class="mdi mdi-chart-bar"></i>داشبورد گزارشات</a></li>--}}
-                        <li class="nav-item {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} "><a class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} " href="{{ route('wallet.index') }}"><i class="mdi mdi-wallet"></i>کیف پول های شما</a></li>
-                        <li class="nav-item {{ request()->is('dashboard/gateway*') == 1 ? 'active' : '' }}" ><a class="nav-link" href="{{ route('gateway.index') }}"><i class="fab fa-cc-amazon-pay"></i>درگاه های پرداخت</a></li>
-                        {{--<li class="nav-item"><a class="nav-link" href=""><i class="far fa-money-bill-alt"></i>درخواست تسویه حساب</a></li>--}}
-                        <li class="nav-item {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}"><a class="nav-link {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="fas fa-credit-card"></i>کارت های بانکی</a></li>
-                        {{--<li class="nav-item"><a class="nav-link" href=""><i class="fab fa-cc-amazon-pay"></i>لینک پرداخت آنی</a></li>--}}
-                        {{--<li class="nav-item"><a class="nav-link" href=""><i class="mdi mdi-percent"></i>کد تخفیف</a></li>--}}
-                        <li class="nav-item"><a class="nav-link" href=""><i class="mdi mdi-code-tags-check"></i>سورس کدها</a></li>
-                        <li class="nav-item"><a class="nav-link" href=""><i class="mdi mdi-school"></i>آموزش</a></li>
-                    </ul>
-                </div>
-
-
-                <div id="Dashboard" class="main-icon-menu-pane">
-                    <div class="title-box">
-                        <h6 class="menu-title">داشبورد پایان پی</h6></div>
-                    <ul class="nav">
-                        <li class="nav-item {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }}"><a style="color: #f1646c" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} " href="{{ route('UserInformation.index') }}"><i style="color: #f1646c!important" class="mdi mdi-lock-alert"></i>تکمیل اطلاعات و احراز هویت</a></li>
-                        <li class="nav-item {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}"><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="mdi mdi-school"></i>داشبورد گزارشات کلی</a></li>
-                        <li class="nav-item {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}"><a class="nav-link {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} " href="{{ route('ticket.index') }}"><i class="mdi mdi-school"></i>پشتیبانی و تیکتینگ</a></li>
-                        <li class="nav-item  {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} " href="{{ route('setting.index') }}"><i class="mdi mdi-school"></i>تنظیمات و پروفایل کاربری</a></li>
-                    </ul>
-                </div>
-
-
-
-
-                <!-- end Analytic -->
-                <div id="PayanPayCrypto" class="main-icon-menu-pane">
-                    <div class="title-box">
-                        <h6 class="menu-title">فروشگاه ساز</h6></div>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="shop"><i class="dripicons-device-desktop"></i>گزارشات فروشگاه شما</a></li>
-                        <li class="nav-item"><a class="nav-link" href="product-list"><i class="dripicons-device-desktop"></i>لیست کالاها / خدمات</a></li>
-                        <li class="nav-item"><a class="nav-link" href="product-detail"><i class="dripicons-device-desktop"></i>جزئیات محصول</a></li>
-                        <li class="nav-item"><a class="nav-link" href="product-category"><i class="dripicons-device-desktop"></i> محصولات هر دسته بندی
-                        </a></li>
-                        <li class="nav-item"><a class="nav-link" href="shop-setting"><i class="dripicons-device-desktop"></i>تنظیمات فروشگاه</a></li>
+{{--                        <li class="nav-item"><a class="nav-link" href="../crypto/crypto-index.html"><i class="dripicons-device-desktop"></i>داشبورد گزارشات</a></li>--}}
+                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} " href="{{ route('wallet.index') }}"><i class="mdi mdi-wallet"></i>کیف پول های شما</a></li>
+                        <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/gateway*') == 1 ? 'active' : '' }}" href="{{ route('gateway.index') }}"><i class="fab fa-cc-amazon-pay"></i>درگاه های پرداخت</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="fas fa-credit-card"></i>کارت های بانکی</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/learn*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="mdi mdi-code-tags-check"></i>سورس کدها</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/source*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="mdi mdi-school"></i>آموزش</a></li>
                     </ul>
                 </div>
                 <!-- end Crypto -->
-                <div id="PayanPayProject" class="main-icon-menu-pane">
+                <div id="PayanPayShopMaker" class="main-icon-menu-pane">
                     <div class="title-box">
-                        <h6 class="menu-title">باشگاه مشتریان</h6></div>
+                        <h6 class="menu-title">فروشگاه ساز</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>داشبورد</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('shop.index') }}"><i class="dripicons-view-thumb"></i>گزارشات فروشگاه شما</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>لیست کالاها / خدمات</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('product-detail.index') }}"><i class="dripicons-calendar"></i>جزئیات محصول</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('product-category.index') }}"><i class="dripicons-trophy"></i>محصولات هر دسته بندی</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>تنظیمات فروشگاه</a></li>
                     </ul>
                 </div>
                 <!-- end  Project-->
-                <div id="PayanPayEcommerce" class="main-icon-menu-pane">
+                <div id="PayanPayBashgah" class="main-icon-menu-pane">
                     <div class="title-box">
-                        <h6 class="menu-title">فروش شارژ</h6></div>
+                        <h6 class="menu-title">باشگاه مشتریان</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>داشبورد</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-index.html"><i class="dripicons-device-desktop"></i>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-products.html"><i class="dripicons-view-apps"></i>Products</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-product-list.html"><i class="dripicons-list"></i>Product List</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-product-detail.html"><i class="dripicons-article"></i>Product Detail</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-cart.html"><i class="dripicons-cart"></i>Cart</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../ecommerce/ecommerce-checkout.html"><i class="dripicons-card"></i>Checkout</a></li>
                     </ul>
                 </div>
                 <!-- end Ecommerce -->
-                <div id="PayanPayCRM" class="main-icon-menu-pane">
+
+
+                <div id="PayanPayChargeShopMaker" class="main-icon-menu-pane">
                     <div class="title-box">
-                        <h6 class="menu-title">پرداخت قبوض</h6></div>
+                        <h6 class="menu-title">فروشگاه ساز شارژ</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>داشبورد</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
                     </ul>
                 </div>
                 <!-- end CRM -->
-                <div id="PayanPayOthers" class="main-icon-menu-pane">
-                    <div class="title-box">
-                        <h6 class="menu-title"> پرداخت عوارض و فروش بلیط </h6></div>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>داشبورد</a></li>
-                    </ul>
-                    <!--end nav-->
-                </div>
-                <!-- end Others -->
-                <div id="PayanPayPages" class="main-icon-menu-pane">
-                    <div class="title-box">
-                        <h6 class="menu-title">شارژ ساختمان</h6></div>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>داشبورد گزارشات</a></li>
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>لیست واحد ها</a></li>
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>افزودن واحد</a></li>
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>تنظیمات شارژ ساختمان</a></li>
-                    </ul>
-                </div>
-                <!-- end Pages -->
-                <div id="PayanPayAuthentication" class="main-icon-menu-pane">
-                    <div class="title-box">
-                        <h6 class="menu-title"> استعلام چک</h6></div>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>لیست چک ها</a></li>
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>افزودن چک</a></li>
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>تنظیمات یادآوری</a></li>
-                    </ul>
-                </div>
-
-                <div id="PayanPayTpg" class="main-icon-menu-pane">
-                    <div class="title-box">
-                        <h6 class="menu-title">  پرداخت تلفنی (TPG) </h6></div>
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>لیست پرداخلی ها</a></li>
-                        <li class="nav-item"><a class="nav-link" href="crm-index.html"><i class="dripicons-monitor"></i>تنظیمات پرداخت تلفنی</a></li>
-                    </ul>
-                </div>
 
 
-                <!-- end Authentication-->
+                <div id="PayanPayBill" class="main-icon-menu-pane">
+                    <div class="title-box">
+                        <h6 class="menu-title">پرداخت قبوض</h6></div>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
+                    </ul>
+                </div>
+                <!-- end CRM -->
+
+
+                <div id="PayanPayAvarez" class="main-icon-menu-pane">
+                    <div class="title-box">
+                        <h6 class="menu-title">پرداخت عوارض و فروش بلیط</h6></div>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
+                    </ul>
+                </div>
+                <!-- end CRM -->
+
+                <div id="PayanPayCheck" class="main-icon-menu-pane">
+                    <div class="title-box">
+                        <h6 class="menu-title">استعلام چک</h6></div>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
+                    </ul>
+                </div>
+                <!-- end Check -->
+
+
+
+                <div id="PayanPayTPG" class="main-icon-menu-pane">
+                    <div class="title-box">
+                        <h6 class="menu-title">پرداخت تلفنی</h6></div>
+                    <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-index.html"><i class="dripicons-monitor"></i>Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-contacts.html"><i class="dripicons-user-id"></i>Contacts</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-opportunities.html"><i class="dripicons-lightbulb"></i>Opportunities</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-leads.html"><i class="dripicons-toggles"></i>Leads</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../crm/crm-customers.html"><i class="dripicons-user-group"></i>Customers</a></li>
+                    </ul>
+                </div>
+                <!-- end TPG -->
+
+
+
+
             </div>
             <!--end menu-body-->
         </div>
         <!-- end main-menu-inner-->
     </div>
     <!-- end left-sidenav-->
+
     <!-- Page Content-->
     <div class="page-content">
         <div class="container-fluid">
@@ -298,27 +312,27 @@ Author: Ali Rahmani
 <script>
     $(window).on('load', function() {
 
-        if (window.location.href.indexOf("wallet") == -1) {
-            $('#PardakhtYari').removeClass("active");
-            $("a[href$='PardakhtYari']").removeClass("active");
-
-        }
-        if (window.location.href.indexOf("card") == -1) {
-            $('#PardakhtYari').removeClass("active");
-            $("a[href$='PardakhtYari']").removeClass("active");
-        }
-
-
-
-        if (window.location.href.indexOf("wallet") > -1) {
-            $('#PardakhtYari').addClass("active");
-            $("a[href$='PardakhtYari']").addClass("active");
-
-        }
-        if (window.location.href.indexOf("card") > -1) {
-            $('#PardakhtYari').addeClass("active");
-            $("a[href$='PardakhtYari']").addClass("active");
-        }
+        // if (window.location.href.indexOf("wallet") == -1) {
+        //     $('#PardakhtYari').removeClass("active");
+        //     $("a[href$='PardakhtYari']").removeClass("active");
+        //
+        // }
+        // if (window.location.href.indexOf("card") == -1) {
+        //     $('#PardakhtYari').removeClass("active");
+        //     $("a[href$='PardakhtYari']").removeClass("active");
+        // }
+        //
+        //
+        //
+        // if (window.location.href.indexOf("wallet") > -1) {
+        //     $('#PardakhtYari').addClass("active");
+        //     $("a[href$='PardakhtYari']").addClass("active");
+        //
+        // }
+        // if (window.location.href.indexOf("card") > -1) {
+        //     $('#PardakhtYari').addeClass("active");
+        //     $("a[href$='PardakhtYari']").addClass("active");
+        // }
 
 
 
