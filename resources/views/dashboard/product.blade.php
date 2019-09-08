@@ -164,7 +164,7 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title">تصویر محصول</h4>
-                                                <div class="dropify-wrapper has-preview">
+                                                <div class="dropify-wrapper has-preview h-280px">
                                                     <div class="dropify-message"><span class="file-icon"></span>
                                                         <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
                                                         <p class="dropify-error">خطا</p>
@@ -175,7 +175,7 @@
                                                     </div>
                                                     <input name="logo" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                                                     <button type="button" class="dropify-clear">حذف</button>
-                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/BrandNameHere.jpg"></span>
+                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/labtop.jpg"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
                                                                 <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">نمونه لوگو</span></p>
@@ -279,7 +279,7 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title">تصویر محصول</h4>
-                                                <div class="dropify-wrapper has-preview">
+                                                <div class="dropify-wrapper has-preview h-280px">
                                                     <div class="dropify-message"><span class="file-icon"></span>
                                                         <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
                                                         <p class="dropify-error">خطا</p>
@@ -290,7 +290,7 @@
                                                     </div>
                                                     <input name="logo" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                                                     <button type="button" class="dropify-clear">حذف</button>
-                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/BrandNameHere.jpg"></span>
+                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/english.jpg"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
                                                                 <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">نمونه تصویر محصول</span></p>
@@ -420,7 +420,7 @@
                                       <div class="card mt-3">
                                           <div class="card-body">
                                               <h4 class="mt-0 header-title">تصویر خدمت</h4>
-                                              <div class="dropify-wrapper has-preview">
+                                              <div class="dropify-wrapper has-preview h-280px">
                                                   <div class="dropify-message"><span class="file-icon"></span>
                                                       <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
                                                       <p class="dropify-error">خطا</p>
