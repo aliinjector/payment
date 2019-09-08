@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/docs', 'DocumentationController@index')->name('documentation');
 Route::get('/', 'IndexController@index');
 
 Auth::routes();

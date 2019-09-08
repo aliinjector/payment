@@ -149,7 +149,7 @@
 
 
     <div class="text-right mb-3">
-        <button data-toggle="modal" data-target="#AddCardModal" type="submit" class="btn btn-success px-5 py-2 ">افزودن کارت بانکی</button><br>
+        <button data-toggle="modal" data-target="#AddCardModal" type="submit" class="btn btn-dark waves-effect success ">افزودن کارت بانکی</button><br>
     </div>
 
 <div class="row">
