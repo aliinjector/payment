@@ -30,6 +30,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::resource('shop', 'ShopController');
     Route::resource('product-list', 'ProductController');
     Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
+    Route::post('product-list/storeFile', 'ProductController@storeFile')->name('Product.storeFile');
     Route::resource('product-detail', 'ProductDetailController');
     Route::resource('product-category', 'ProductCategoryController');
     Route::resource('shop-setting', 'ShopSettingController');

@@ -208,51 +208,40 @@
                                 </button>
                             </div>
                             <div class="modal-body modal-scroll">
-                                <form action="{{ route('card.store') }}" method="post" class="form-horizontal">
+                              <form action="{{ route('Product.storeFile') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: کتاب آموزش زبان">
+                                            <input type="text" value="{{ old('title') }}" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: توضیحات مختصری درمورد فایل">
+                                            <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
                                         </div>
 
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی فایل :</span></div>
 
-                                            <select class="form-control inputfield" name="month" id="">
+                                            <select class="form-control inputfield" name="productCat_id" id="">
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
-                                                <option style="font-family: BYekan!important;" value="1">1</option>
-                                                <option style="font-family: BYekan!important;" value="2">2</option>
-                                                <option style="font-family: BYekan!important;" value="3">3</option>
-                                                <option style="font-family: BYekan!important;" value="4">4</option>
-                                                <option style="font-family: BYekan!important;" value="5">5</option>
-                                                <option style="font-family: BYekan!important;" value="6">6</option>
-                                                <option style="font-family: BYekan!important;" value="7">7</option>
-                                                <option style="font-family: BYekan!important;" value="8">8</option>
-                                                <option style="font-family: BYekan!important;" value="9">9</option>
-                                                <option style="font-family: BYekan!important;" value="10">10</option>
-                                                <option style="font-family: BYekan!important;" value="11">11</option>
-                                                <option style="font-family: BYekan!important;" value="12">12</option>
+                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                             </select>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: 30000">
+                                            <input type="text" value="{{ old('price') }}" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">حجم فایل :</span></div>
-                                            <input type="text" value="{{ old('number') }}" class="form-control inputfield" name="number" placeholder="مثال: 45">
+                                            <input type="text" value="{{ old('file_size') }}" class="form-control inputfield" name="file_size" placeholder="مثال: 45">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">مگابایت</span></div>
 
                                         </div>
@@ -260,10 +249,10 @@
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت محصول :</span></div>
                                             <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
                                                 <label class="btn btn-outline-success active iranyekan mr-5">
-                                                    <input type="radio" name="options" id="option1" checked=""> فعال
+                                                    <input type="radio" name="enable" id="option1" checked=""> فعال
                                                 </label>
                                                 <label class="btn btn-outline-danger iranyekan mr-5">
-                                                    <input type="radio" name="options" id="option3"> غیرفعال
+                                                    <input type="radio" name="disable" id="option3"> غیرفعال
                                                 </label>
                                             </div>
                                         </div>
@@ -280,7 +269,7 @@
                                                     <div class="dropify-errors-container">
                                                         <ul></ul>
                                                     </div>
-                                                    <input name="logo" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
+                                                    <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                                                     <button type="button" class="dropify-clear">حذف</button>
                                                     <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/english.jpg"></span>
                                                         <div class="dropify-infos">
@@ -309,7 +298,7 @@
                                                     <div class="dropify-errors-container">
                                                         <ul></ul>
                                                     </div>
-                                                    <input type="file" id="input-file-now" class="dropify">
+                                                    <input type="file" id="input-file-now" class="dropify" name="attachment">
                                                     <button type="button" class="dropify-clear">حذف</button>
 
 

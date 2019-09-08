@@ -58,6 +58,26 @@ class ProductController extends Controller
       return redirect()->route('product-list.index');
     }
 
+    public function storeFile(Request $request)
+    {
+      $image = $this->uploadFile($request->file('image'), false, false);
+      $attachment = $this->uploadFile($request->file('attachment'), false, false);
+      $product = new Product;
+      $product->title = $request->title;
+      $product->shop_id = 1;
+      $product->productCat_id = $request->productCat_id;
+      $product->status = 0;
+      $product->type = $request->type;
+      $product->file_size = $request->file_size;
+      $product->price = $request->price;
+      $product->description = $request->description;
+      $product->image = $image;
+      $product->attachment = $attachment;
+      $product->save();
+      alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('product-list.index');
+    }
+
     /**
      * Display the specified resource.
      *
