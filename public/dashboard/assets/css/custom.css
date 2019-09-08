@@ -25,3 +25,15 @@
 .comming-soon{
   pointer-events:none; opacity: 0.4;
 }
+.f-em5{
+  font-size: 5em;
+}
+.f-em1-5{
+  font-size: 1.5em;
+}
+.inputfield{
+  height:50px;
+}
+.min-width-140{
+min-width: 140px;
+}

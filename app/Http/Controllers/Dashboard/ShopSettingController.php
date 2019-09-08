@@ -125,7 +125,7 @@ class ShopSettingController extends Controller
       $shop->logo = $logo;
       $shop->save();
 
-      alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
+      alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('shop-setting.index');
     }
 
@@ -145,7 +145,7 @@ class ShopSettingController extends Controller
       $shopContact->facebook_url = $request->facebook_url;
       $shopContact->save();
 
-      alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
+      alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('shop-setting.index');
     }
 
