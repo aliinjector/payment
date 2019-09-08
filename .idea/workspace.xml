@@ -2,240 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/DocumentationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/css/page.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BBardiya.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BBardiya.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BBardiya.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BKoodakBold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BKoodakBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BKoodakBold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BYekan.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BYekan.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/BYekan.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/IRANSansMobile.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/IRANSansMobile_Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/IRANSansMobile_Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/IRANSansMobile_Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/IRANSansMobile_UltraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Ikon-Crypto.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Ikon-Crypto.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Ikon-Crypto.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Bold (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Bold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Light (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Light.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Light.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Medium (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Medium.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Quicksand-Medium.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Rezvan.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Rezvan.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Rezvan.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Bold (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Bold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Bold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Bold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Light (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Light.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Light.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Light.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Medium (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Medium.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Medium.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Medium.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Regular (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Roboto-Regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Vazir-Bold-FD.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/Vazir-FD.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/css/fontiran.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/Vazir-Bold-FD.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/Vazir-FD.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/eot/iranyekanwebbold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/eot/iranyekanweblight.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/eot/iranyekanwebregular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/eot/robotobold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/eot/robotolight.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/eot/robotoregular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/svg/iranyekanwebbold.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/svg/iranyekanweblight.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/svg/iranyekanwebregular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/svg/robotobold.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/svg/robotolight.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/svg/robotoregular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/ttf/iranyekanwebbold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/ttf/iranyekanweblight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/ttf/iranyekanwebregular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/ttf/robotobold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/ttf/robotolight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/ttf/robotoregular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff/iranyekanwebbold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff/iranyekanweblight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff/iranyekanwebregular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff/robotobold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff/robotolight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff/robotoregular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff2/iranyekanwebbold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff2/iranyekanweblight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff2/iranyekanwebregular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff2/robotobold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff2/robotolight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/byekan/fonts/woff2/robotoregular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/eot/iranyekanwebbold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/eot/iranyekanweblight.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/eot/iranyekanwebregular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/eot/robotobold.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/eot/robotolight.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/eot/robotoregular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-brands-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-brands-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-brands-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-regular-400 (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-regular-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-regular-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-regular-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-regular-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-regular-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-solid-900 (1).eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-solid-900.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-solid-900.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-solid-900.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flaticon/font/Flaticon.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flaticon/font/Flaticon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flaticon/font/Flaticon.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flaticon/font/Flaticon.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flaticon/font/Flaticond41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flaticon/font/flaticon.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flexslider-icon.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flexslider-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flexslider-icon.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flexslider-icon.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/flexslider-icond41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/font-awesome/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/font-awesome/fonts/fontawesome-webfont3e6e.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/font-awesome/fonts/fontawesome-webfont3e6e.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/font-awesome/fonts/fontawesome-webfont3e6e.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/font-awesome/fonts/fontawesome-webfont3e6e.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/font-awesome/fonts/fontawesome-webfont3e6e.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/font-awesome/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fontawesome-webfont3e6e.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fontawesome-webfont3e6e.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fontawesome-webfont3e6e.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fontawesome-webfont3e6e.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fontawesome-webfont3e6e.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/icofont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/icofont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/icofont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/icofont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/jura-light-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/jura-light-webfont.eot-" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/jura-light-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/jura-light-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/jura-light-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/pishraft-center.ir.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/svg/iranyekanwebbold.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/svg/iranyekanweblight.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/svg/iranyekanwebregular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/svg/robotobold.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/svg/robotolight.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/svg/robotoregular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify9f24.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify9f24.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify9f24.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themify9f24.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/themifyd41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/ttf/iranyekanwebbold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/ttf/iranyekanweblight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/ttf/iranyekanwebregular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/ttf/robotobold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/ttf/robotolight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/ttf/robotoregular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff/iranyekanwebbold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff/iranyekanweblight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff/iranyekanwebregular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff/robotobold.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff/robotolight.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff/robotoregular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff2/iranyekanwebbold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff2/iranyekanweblight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff2/iranyekanwebregular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff2/robotobold.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff2/robotolight.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/fonts/woff2/robotoregular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/avatar/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/avatar/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/avatar/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/logo-dark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/logo-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/og-img.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/thumb/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/vector/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/video/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/img/video/1.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/js/page.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/assets/js/script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/block/cover.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/block/footer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/block/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/block/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/archive-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/archive-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/archive-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/article-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/article-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/article-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/contact-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/faq-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/faq-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/faq-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/homepage-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/help/homepage-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/layout/general-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/layout/general-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/layout/general-3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/layout/minimal-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/layout/minimal-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/layout/one-page-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/page/changelog-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/page/changelog-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/page/contact-1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/page/contact-2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/page/error-404.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/page/terms.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/uikit/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/documentation/uikit/navbar.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/documnetation/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Bill.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/BillController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/BillFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_08_100853_create_bills_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/bill.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -356,7 +139,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/documnetation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -364,8 +147,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\payment\resources\views\documnetation" />
       <recent name="E:\payment\resources\views\dashboard" />
+      <recent name="E:\payment\resources\views\documnetation" />
       <recent name="$PROJECT_DIR$/resources/views/dashboard" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
@@ -422,7 +205,7 @@
       <workItem from="1567847596312" duration="6218000" />
       <workItem from="1567853904685" duration="1085000" />
       <workItem from="1567859342813" duration="693000" />
-      <workItem from="1567917931562" duration="12180000" />
+      <workItem from="1567917931562" duration="14897000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -501,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567933775421</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Documentation Is Added">
+      <created>1567936169340</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1567936169340</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,6 +319,7 @@
     <MESSAGE value="Gateway added" />
     <MESSAGE value="Menu added" />
     <MESSAGE value="Menu and auth added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu and auth added" />
+    <MESSAGE value="Documentation Is Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentation Is Added" />
   </component>
 </project>

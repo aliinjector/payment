@@ -153,6 +153,7 @@ Author: Ali Rahmani
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/docs"><i class="mdi mdi-code-tags-check"></i>مستندات و آموزش</a></li>
                     </ul>
                 </div>
                 <!-- end Analytic -->
@@ -164,8 +165,6 @@ Author: Ali Rahmani
                         <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} " href="{{ route('wallet.index') }}"><i class="mdi mdi-wallet"></i>کیف پول های شما</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/gateway*') == 1 ? 'active' : '' }}" href="{{ route('gateway.index') }}"><i class="fab fa-cc-amazon-pay"></i>درگاه های پرداخت</a></li>
                         <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="fas fa-credit-card"></i>کارت های بانکی</a></li>
-                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/learn*') == 1 ? 'active' : '' }}" href="/docs"><i class="mdi mdi-code-tags-check"></i>مستندات</a></li>
-                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/source*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="mdi mdi-school"></i>آموزش</a></li>
                     </ul>
                 </div>
                 <!-- end Crypto -->
@@ -203,6 +202,8 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت قبوض</h6></div>
                     <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('bill.index') }}"><i class="dripicons-jewel"></i>ثبت قبض</a></li>
+
                     </ul>
                 </div>
                 <!-- end CRM -->

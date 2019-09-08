@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Bill' => $baseDir . '/app/Bill.php',
     'App\\Card' => $baseDir . '/app/Card.php',
     'App\\CheckInquiry' => $baseDir . '/app/CheckInquiry.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
@@ -21,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\Dashboard\\CardController' => $baseDir . '/app/Http/Controllers/Dashboard/CardController.php',
     'App\\Http\\Controllers\\Dashboard\\DashboardController' => $baseDir . '/app/Http/Controllers/Dashboard/DashboardController.php',
+    'App\\Http\\Controllers\\Dashboard\\GatewayController' => $baseDir . '/app/Http/Controllers/Dashboard/GatewayController.php',
     'App\\Http\\Controllers\\Dashboard\\ProductCategoryController' => $baseDir . '/app/Http/Controllers/Dashboard/ProductCategoryController.php',
     'App\\Http\\Controllers\\Dashboard\\ProductController' => $baseDir . '/app/Http/Controllers/Dashboard/ProductController.php',
     'App\\Http\\Controllers\\Dashboard\\ProductDetailController' => $baseDir . '/app/Http/Controllers/Dashboard/ProductDetailController.php',
@@ -30,6 +32,7 @@ return array(
     'App\\Http\\Controllers\\Dashboard\\TicketController' => $baseDir . '/app/Http/Controllers/Dashboard/TicketController.php',
     'App\\Http\\Controllers\\Dashboard\\UserInformationController' => $baseDir . '/app/Http/Controllers/Dashboard/UserInformationController.php',
     'App\\Http\\Controllers\\Dashboard\\WalletController' => $baseDir . '/app/Http/Controllers/Dashboard/WalletController.php',
+    'App\\Http\\Controllers\\DocumentationController' => $baseDir . '/app/Http/Controllers/DocumentationController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\IndexController' => $baseDir . '/app/Http/Controllers/IndexController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
@@ -41,6 +44,9 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\CardRequest' => $baseDir . '/app/Http/Requests/CardRequest.php',
+    'App\\Http\\Requests\\GatewayRequest' => $baseDir . '/app/Http/Requests/GatewayRequest.php',
+    'App\\Http\\Requests\\ShopContactRequest' => $baseDir . '/app/Http/Requests/ShopContactRequest.php',
+    'App\\Http\\Requests\\ShopSettingRequest' => $baseDir . '/app/Http/Requests/ShopSettingRequest.php',
     'App\\Http\\Requests\\TicketRequest' => $baseDir . '/app/Http/Requests/TicketRequest.php',
     'App\\Http\\Requests\\UserInformationRequest' => $baseDir . '/app/Http/Requests/UserInformationRequest.php',
     'App\\Http\\Requests\\WalletRequest' => $baseDir . '/app/Http/Requests/WalletRequest.php',

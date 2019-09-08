@@ -414,6 +414,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
     );
 
     public static $classMap = array (
+        'App\\Bill' => __DIR__ . '/../..' . '/app/Bill.php',
         'App\\Card' => __DIR__ . '/../..' . '/app/Card.php',
         'App\\CheckInquiry' => __DIR__ . '/../..' . '/app/CheckInquiry.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -429,6 +430,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Dashboard\\CardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/CardController.php',
         'App\\Http\\Controllers\\Dashboard\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/DashboardController.php',
+        'App\\Http\\Controllers\\Dashboard\\GatewayController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/GatewayController.php',
         'App\\Http\\Controllers\\Dashboard\\ProductCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProductCategoryController.php',
         'App\\Http\\Controllers\\Dashboard\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProductController.php',
         'App\\Http\\Controllers\\Dashboard\\ProductDetailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/ProductDetailController.php',
@@ -438,6 +440,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Dashboard\\TicketController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/TicketController.php',
         'App\\Http\\Controllers\\Dashboard\\UserInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/UserInformationController.php',
         'App\\Http\\Controllers\\Dashboard\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/WalletController.php',
+        'App\\Http\\Controllers\\DocumentationController' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentationController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -449,6 +452,9 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CardRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CardRequest.php',
+        'App\\Http\\Requests\\GatewayRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GatewayRequest.php',
+        'App\\Http\\Requests\\ShopContactRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ShopContactRequest.php',
+        'App\\Http\\Requests\\ShopSettingRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ShopSettingRequest.php',
         'App\\Http\\Requests\\TicketRequest' => __DIR__ . '/../..' . '/app/Http/Requests/TicketRequest.php',
         'App\\Http\\Requests\\UserInformationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserInformationRequest.php',
         'App\\Http\\Requests\\WalletRequest' => __DIR__ . '/../..' . '/app/Http/Requests/WalletRequest.php',
