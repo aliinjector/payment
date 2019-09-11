@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->text('image')->nullable();
             $table->text('color')->nullable();
             $table->integer('viewCount')->default(0);
-            $table->integer('amount');
+            $table->integer('amount')->nullable();
             $table->integer('weight')->nullable();
             $table->integer('file_size')->nullable();
             $table->integer('buyCount')->nullable();

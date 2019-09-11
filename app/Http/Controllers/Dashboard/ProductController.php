@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Shop;
 use App\ProductCategory;
 use App\Product;
 
@@ -16,8 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-      $productCategory = ProductCategory::first();
-        return view('dashboard.product', compact('productCategory'));
+      $productCategories = \Auth::user()->shop()->first()->categories()->get();
+      $products = \Auth::user()->shop()->first()->products()->get();
+      return view('dashboard.product', compact('productCategories','products'));
 
 
     }
@@ -43,9 +45,12 @@ class ProductController extends Controller
       $image = $this->uploadFile($request->file('image'), false, false);
       $product = new Product;
       $product->title = $request->title;
-      $product->shop_id = 1;
+      $product->shop_id = \Auth::user()->shop()->first()->id;
       $product->productCat_id = $request->productCat_id;
-      $product->status = 0;
+      if ( $request->enable != "on")
+        $product->status = 0;
+     else
+     $product->status = 1;
       $product->type = $request->type;
       $product->color = $request->color;
       $product->amount = $request->amount;
@@ -55,6 +60,48 @@ class ProductController extends Controller
       $product->image = $image;
       $product->save();
       alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('product-list.index');
+    }
+
+    public function storeFile(Request $request)
+    {
+      $image = $this->uploadFile($request->file('image'), false, false);
+      $attachment = $this->uploadFile($request->file('attachment'), false, false);
+      $product = new Product;
+      $product->title = $request->title;
+      $product->shop_id = \Auth::user()->shop()->first()->id;
+      $product->productCat_id = $request->productCat_id;
+      if ( $request->enable != "on")
+        $product->status = 0;
+     else
+     $product->status = 1;
+      $product->type = $request->type;
+      $product->file_size = $request->file_size;
+      $product->price = $request->price;
+      $product->description = $request->description;
+      $product->image = $image;
+      $product->attachment = $attachment;
+      $product->save();
+      alert()->success('فایل جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('product-list.index');
+    }
+    public function storeService(Request $request)
+    {
+      $image = $this->uploadFile($request->file('image'), false, false);
+      $product = new Product;
+      $product->title = $request->title;
+      $product->shop_id = \Auth::user()->shop()->first()->id;
+      $product->productCat_id = $request->productCat_id;
+       if ( $request->enable != "on")
+         $product->status = 0;
+      else
+      $product->status = 1;
+      $product->type = $request->type;
+      $product->price = $request->price;
+      $product->description = $request->description;
+      $product->image = $image;
+      $product->save();
+      alert()->success('فایل جدید شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
     }
 

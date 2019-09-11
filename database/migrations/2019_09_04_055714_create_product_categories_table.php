@@ -18,6 +18,7 @@ class CreateProductCategoriesTable extends Migration
             $table->string('name');
            $table->text('description')->nullable();
            $table->unsignedInteger('parent_id')->nullable();
+           $table->unsignedInteger('shop_id');
             $table->timestamps();
         });
     }
