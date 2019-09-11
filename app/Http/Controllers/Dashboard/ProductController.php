@@ -145,8 +145,17 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+     public function destroy(Product $product, Request $request)
     {
-        //
+      $product = Product::find($request->id);
+
+             if ($product->shop->user_id !== \Auth::user()->id) {
+                 alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                 return redirect()->back();
+             }
+             
+              $product->delete();
+              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+              return redirect()->back();
+          }
     }
-}

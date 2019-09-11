@@ -116,9 +116,7 @@
                                                 <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
                                               </select>
-                                              <a href="{{ route('product-category.index') }}" class="align-self-center"><div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> افزودن دسته بندی</span></div>
-                                              </a>
-
+                                              <a href="{{ route('product-category.index') }}" class="align-self-center"><div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن دسته بندی</span></div></a>
                                               @else
                                                 <select class="form-control inputfield" name="productCat_id" id="">
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
@@ -241,7 +239,7 @@
                                                 <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
                                               </select>
-                                              <a href="{{ route('product-category.index') }}" class="align-self-center"><div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> افزودن دسته بندی</span></div>
+                                              <a href="{{ route('product-category.index') }}" class="align-self-center"><div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن دسته بندی</span></div>
                                               </a>
 
                                               @else
@@ -389,7 +387,7 @@
                                                     <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                     <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
                                                   </select>
-                                                  <a href="{{ route('product-category.index') }}" class="align-self-center"><div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> افزودن دسته بندی</span></div>
+                                                  <a href="{{ route('product-category.index') }}" class="align-self-center"><div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن دسته بندی</span></div>
                                                   </a>
 
                                                   @else
@@ -520,18 +518,29 @@
                                             <tbody class="byekan">
                                               @foreach($products as $product)
                                                 <tr role="row" class="odd">
-                                                    <td class="sorting_1 w-25 "><img src="/dashboard/assets/images/product2.png" class="rounded" alt="" height="52">
+                                                    <td class="sorting_1 w-25 "><img src="{{ $product->image }}" class="rounded" alt="" height="52" width="52">
                                                         <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                                     </td>
                                                     <td>{{  $product->category()->first()->name }}</td>
                                                     <td>{{ $product->price }}</td>
-                                                    <td><span class="badge badge-soft-pink">@if ($product->status == 1)
+                                                    @if ($product->status == 1)
+                                                    <td><span class="badge badge-soft-success">
                                                       فعال
+                                                    </span></td>
                                                     @else
+                                                      <td><span class="badge badge-soft-pink">
                                                         غیرفعال
+                                                      </span></td>
+
                                                   @endif
-                                                </span></td>
-                                                    <td><a href="/dashboard/product-detail"><i class="far fa-edit text-info mr-1"></i></a> <a href="#"><i class="far fa-trash-alt text-danger"></i></a></td>
+                                                    <td>
+
+                                                      <a><i class="far fa-edit text-info mr-1 button"></i>
+                                                      </a>
+
+                                                       <a  href="" id="aaa" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger"></i></a>
+
+                                                     </td>
                                                 </tr>
                                               @endforeach
 
@@ -564,8 +573,27 @@
         </div>
         <!-- container -->
     </div>
+
     @endsection
-
-
     @section('pageScripts')
+      <script>
+        $(document).on('click', '#aaa', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('/dashboard/product-list/delete')}}",
+                        data: {
+                          id:id,
+                          "_token": $('#csrf-token')[0].content  //pass the CSRF_TOKEN()
+                        },
+                        success: function (data) {
+                          console.log(data)
+                            var url = document.location.origin + "/dashboard/product-list";
+                            location.href = url;
+                        }
+                    });
+        });
+
+        </script>
     @stop

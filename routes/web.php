@@ -32,6 +32,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
     Route::post('product-list/storeFile', 'ProductController@storeFile')->name('Product.storeFile');
     Route::post('product-list/storeService', 'ProductController@storeService')->name('Product.storeService');
+    Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
     Route::resource('product-detail', 'ProductDetailController');
     Route::resource('product-category', 'ProductCategoryController');
     Route::resource('shop-setting', 'ShopSettingController');

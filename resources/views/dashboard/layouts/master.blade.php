@@ -23,6 +23,8 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
+    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+
     <style>
         .main-icon-menu{
             overflow: scroll!important;
