@@ -16,7 +16,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        return view('dashboard.product-category');
+      $categoires = \Auth::user()->shop()->first()->categories()->get();
+        return view('dashboard.product-category', compact('categoires'));
     }
 
     /**

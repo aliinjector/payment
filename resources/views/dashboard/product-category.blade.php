@@ -63,7 +63,7 @@
             </div>
 
             <!-- end page title end breadcrumb -->
-            <div class="row">
+            {{-- <div class="row">
                     <div class="col-lg-3">
                         <div class="card e-co-product">
                             <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
@@ -133,10 +133,10 @@
                         <!--end card-->
                     </div>
                     <!--end col-->
-                </div>
+                </div> --}}
             <!-- end row -->
         </div>
-        <div class="row">
+        {{-- <div class="row">
                 <div class="col-12">
                     <div class="card offer-box">
                         <div class="card-body">
@@ -226,8 +226,87 @@
                         <!--end card-->
                     </div>
                     <!--end col-->
-                </div>
+                </div> --}}
         <!-- container -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">لیست محصولات</h4>
+
+
+                        <p class="text-muted mb-4 font-13">لیست تمامی محصولات شما</p>
+                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dataTables_length" id="datatable_length">
+                                        <label>نمایش
+                                            <select name="datatable_length" aria-controls="datatable" class="custom-select custom-select-sm form-control form-control-sm">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select> ورودی ها</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div id="datatable_filter" class="dataTables_filter">
+                                        <label class="text-left">جستوجو:
+                                            <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام
+                                                    محصول
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 123px;">تنظیمات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="byekan">
+                                          @foreach($categoires as $category)
+                                            <tr role="row" class="odd">
+                                                <td>{{  $category->name }}</td>
+                                                <td>{{ $category->description }}</td>
+                                                <td>
+                                                  <a><i class="far fa-edit text-info mr-1 button"></i>
+                                                  </a>
+                                                   <a  href="" id="aaa" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger"></i></a>
+                                                 </td>
+                                            </tr>
+                                          @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-5">
+                                    <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
+                                </div>
+                                <div class="col-sm-12 col-md-7">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">قبلی</a></li>
+                                            <li class="paginate_button page-item active"><a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                            <li class="paginate_button page-item "><a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                            <li class="paginate_button page-item next" id="datatable_next"><a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0" class="page-link">بعدی</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end col -->
+        </div>
     </div>
 @endsection
 
