@@ -10,4 +10,12 @@ class Shop extends Model
     {
         return $this->hasOne('App\ShopContact');
     }
+    public function products()
+   {
+       return $this->hasMany('App\Product');
+   }
+   public function categories()
+    {
+        return $this->hasMany('App\ProductCategory');
+    }
 }

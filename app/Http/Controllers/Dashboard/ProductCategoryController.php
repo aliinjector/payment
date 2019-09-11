@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ProductCategory;
 
 class ProductCategoryController extends Controller
 {
@@ -36,7 +37,13 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $productCategory = new ProductCategory;
+      $productCategory->name = $request->name;
+      $productCategory->description = $request->description;
+      $productCategory->shop_id = \Auth::user()->shop()->first()->id;
+      $productCategory->save();
+      alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('product-category.index');
     }
 
     /**
