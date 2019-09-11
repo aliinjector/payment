@@ -1,8 +1,13 @@
 @extends('dashboard.layouts.master')
-<link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+
+
 
 @section('content')
+    <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
     <!--  Modal content for the above example -->
     @foreach ($tickets as $ticket)
         <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" id="ticketDetail{{$ticket->id}}" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -264,7 +269,7 @@
                 <div class="card-body">
                     <h4 class="mt-0 header-title">لیست تیکت های شما</h4>
                     <p class="text-muted mb-3">در این قسمت، میتوانید تیکت های ثبت شده توسط خودرا مشاهده و با استفاده از گزینه پاسخ، پاسخ آنرا در سیستم ثبت نمایید.</p>
-                    <table style="text-align: center" id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center">
                         <thead>
                         <tr>
                             <th>عنوان</th>
@@ -281,7 +286,7 @@
                                 <td>{{ $ticket->title }}</td>
                                 <td>{{ $ticket->description }}</td>
                                 <td>{{ $ticket->scope }}</td>
-                                <td style="font-family: BYekan">{{ jdate($ticket->updated_at) }}</td>
+                                <td style="font-family: BYekan; direction: ltr">{{ jdate($ticket->updated_at) }}</td>
                                <td><button type="button" class="btn btn-dark waves-effect success" data-toggle="modal" data-animation="bounce" data-target="#ticketDetail{{$ticket->id}}">مشاهده جزییات</button></td>
                             </tr>
                         @endforeach
@@ -301,15 +306,13 @@
 
 
 @section('pageScripts')
-    <!-- Responsive examples -->
+
     <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-
+    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="/dashboard//assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
-
-
     <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+
 
 @stop

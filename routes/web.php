@@ -29,6 +29,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::resource('bill', 'BillController');
     Route::resource('chequeInquiry', 'CheckInquiryController');
     Route::resource('shop', 'ShopController');
+    Route::resource('checkout', 'CheckoutController');
     Route::resource('product-list', 'ProductController');
     Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
     Route::post('product-list/storeFile', 'ProductController@storeFile')->name('Product.storeFile');

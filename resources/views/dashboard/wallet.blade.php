@@ -1,9 +1,9 @@
 @extends('dashboard.layouts.master')
 @section('content')
 
-
+@foreach ($wallets as $wallet)
     <!-- Modal -->
-    <div class="modal fade" id="CheckoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="CheckoutModal{{$wallet->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -13,33 +13,40 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form method="post" action="{{ route('checkout.store') }}" class="form-horizontal">
+                        @csrf
                         <div class="form-group mb-0">
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">مبلغ:</span></div>
-                                <input type="text" class="form-control" placeholder="مثال: ۱۰۰۰۰۰">
+                                <input type="text" class="form-control"name="amount" placeholder="مثال: ۱۰۰۰۰۰">
                                 <div class="input-group-append"><span class="input-group-text bg-light" id="basic-addon8"> ریال</span></div>
                             </div>
 
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">واریز به:</span></div>
-                                <select style="font-family: BYekan!important;" name="" id="">
-                                    <option style="font-family: BYekan!important;" value="5892101028096325"> بانک سپه | شماره کارت: 5892101028096325</option>
-                                    <option value="6104337862241047"> بانک ملت | شماره کارت: 6104337862241047</option>
+                                <input type="hidden" value="{{ $wallet->id }}" name="wallet_id" id="">
+                                <select style="font-family: BYekan!important;" name="id" id="">
+                                    @foreach ($cards as $card)
+                                        <option value="{{ $card->id }}"> {{ $card->bank }} | شماره کارت: {{ $card->number }}</option>
+                                    @endforeach
                                 </select>
                                 <div class="input-group-append"><span class="input-group-text bg-light" id="basic-addon8"> به نام علی رحمانی</span></div>
                             </div>
                         </div>
                         <!--end form-group-->
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                    <button type="button" class="btn btn-success">ثبت درخواست</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">لغو</button>
+                    <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                 </div>
+                </form>
+
             </div>
         </div>
     </div>
+
+
+@endforeach
 
 
 
@@ -166,7 +173,7 @@
                                     <h3 class="text-center">{{ number_format($wallet->amount) }} تومان</h3></div>
                                 <div  class="text-center pt-4">
                                     <button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button>
-                                    <button data-toggle="modal" data-target="#CheckoutModal" class="btn btn-danger btn-sm px-3">درخواست تسویه</button>
+                                    <button data-toggle="modal" data-target="#CheckoutModal{{$wallet->id}}" class="btn btn-danger btn-sm px-3">درخواست تسویه</button>
                                     <!-- Button trigger modal -->
 
 
