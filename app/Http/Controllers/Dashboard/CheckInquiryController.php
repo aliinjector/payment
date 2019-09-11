@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use App\CheckInquiry;
 use Illuminate\Http\Request;
 
-class CheckInquiryController extends Controller
+class CheckInquiryController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CheckInquiryController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.chequeInquiry');
     }
 
     /**

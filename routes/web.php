@@ -27,6 +27,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::resource('wallet', 'WalletController');
     Route::resource('gateway', 'GatewayController');
     Route::resource('bill', 'BillController');
+    Route::resource('chequeInquiry', 'CheckInquiryController');
     Route::resource('shop', 'ShopController');
     Route::resource('product-list', 'ProductController');
     Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');

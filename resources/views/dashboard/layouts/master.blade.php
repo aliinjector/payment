@@ -113,7 +113,7 @@ Author: Ali Rahmani
                 </a>
 
 
-                <a class="pt-4 pb-4"  data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="مدیریت مجتمع های مسکونی" target="_blank" href="http://olympictower.ir/login"  >
+                <a class="pt-4 pb-4"  data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="مدیریت مجتمع های مسکونی" target="_blank" href="http://olympictower.ir/login021"  >
                     <i style="color: #86a3f7;font-size: 25px" class="far fa-building"></i>
                 </a>
 
@@ -155,7 +155,7 @@ Author: Ali Rahmani
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/docs"><i class="mdi mdi-code-tags-check"></i>مستندات و آموزش</a></li>
+                        <li class="nav-item"><a target="_blank" class="nav-link" href="/docs"><i class="mdi mdi-code-tags-check"></i>مستندات و آموزش</a></li>
                     </ul>
                 </div>
                 <!-- end Analytic -->
@@ -228,6 +228,9 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">استعلام چک</h6></div>
                     <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>ثبت و بررسی چک</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>لیست چک های ثبت شده</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>تنظیمات یادآوری</a></li>
                     </ul>
                 </div>
                 <!-- end Check -->
@@ -238,6 +241,10 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت تلفنی</h6></div>
                     <ul class="nav">
+                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>لیست تماس ها</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>لیست پرداخت ها</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>تنظیمات </a></li>
+
                     </ul>
                 </div>
                 <!-- end TPG -->
