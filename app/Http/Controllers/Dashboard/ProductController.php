@@ -111,10 +111,12 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
-        //
+      $product = Product::find($id);
+      return view('dashboard.product-detail', compact('product'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -153,7 +155,7 @@ class ProductController extends Controller
                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
                  return redirect()->back();
              }
-             
+
               $product->delete();
               alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
