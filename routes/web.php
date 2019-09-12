@@ -23,9 +23,15 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::post('ShensnamehUpload', 'UserInformationController@ShensnamehUpload')->name('ShensnamehUpload');
     Route::resource('ticket', 'TicketController');
     Route::resource('setting', 'SettingController');
-    Route::resource('card', 'CardController') ;
+    Route::resource('card', 'CardController');
+    Route::get('card/delete/{id}', 'CardController@destroy')->name('card.delete');
+
     Route::resource('wallet', 'WalletController');
+    Route::get('wallet/delete/{id}', 'WalletController@destroy')->name('wallet.delete');
+
     Route::resource('gateway', 'GatewayController');
+    Route::get('gateway/delete/{id}', 'GatewayController@destroy')->name('gateway.delete');
+
     Route::resource('bill', 'BillController');
     Route::resource('chequeInquiry', 'CheckInquiryController');
     Route::resource('shop', 'ShopController');

@@ -3,8 +3,120 @@
 
 
 
+@foreach ($gateways as $gateway)
     <!-- Modal -->
-    <!--  Modal content for the above example -->
+<div class="modal fade" id="EditGatewayModal{{$gateway->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{$gateway->id}}" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mt-0" id="myLargeModalLabel">ویرایش درگاه پرداخت اینترنتی </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('gateway.update', $gateway->id) }}">
+                            @csrf
+                            {{ method_field('PATCH') }}
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="mt-0 header-title">اطلاعات وبسایت</h4>
+                                        <p class="text-muted mb-3">لطفا در این قسمت اطلاعات وبسایت خود را وارد نموده و برروی گزینه ارسال اطلاعات کلیک نمایید.</p><br>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label for="example-text-input"
+                                                           class="col-sm-2 col-form-label text-center">نام</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" type="text" name="name" value="{{ $gateway->name }}"
+                                                               id="example-text-input">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row">
+                                                    <label style="text-align: center" for="example-email-input"
+                                                           class="col-sm-2 col-form-label text-center">کیف </label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" style="font-family: BYekan!important;margin-right: 10px;" name="wallet_id" id="">
+                                                            @foreach ($wallets as $wallet)
+                                                                <option style="font-family: BYekan!important;" {{ $gateway->wallet_id == $wallet->id ? 'selected' : '' }} value="{{ $wallet->id }}">{{ $wallet->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group row">
+                                                    <label for="example-search-input" class="col-sm-2 col-form-label text-center">آدرس </label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" type="text" name="url" value="{{ $gateway->name }}" id="example-search-input">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label style="text-align: center" for="example-email-input"
+                                                           class="col-sm-2 col-form-label text-center">دسته بندی </label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-control" style="font-family: BYekan!important;margin-right: 10px;" name="category" id="">
+                                                            <option style="font-family: BYekan!important;" >انتخاب دسته بندی</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'سایت فروشگاهی' ? 'selected' : '' }} value="سایت فروشگاهی">سایت فروشگاهی</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'سایت شخصی' ? 'selected' : '' }} value="سایت شخصی">سایت شخصی</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'سایت اطلاع‌رسانی' ? 'selected' : '' }} value="سایت اطلاع‌رسانی">سایت اطلاع‌رسانی</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'سایت خدمات آنلاین' ? 'selected' : '' }} value="سایت خدمات آنلاین">سایت خدمات آنلاین</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'شبکه‌ی اجتماعی' ? 'selected' : '' }} value="شبکه‌ی اجتماعی">شبکه‌ی اجتماعی</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'تالار گفتگو( فروم )' ? 'selected' : '' }} value="تالار گفتگو( فروم )">تالار گفتگو( فروم )</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'سایت آرشیو' ? 'selected' : '' }} value="سایت آرشیو">سایت آرشیو</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'وبلاگ' ? 'selected' : '' }} value="وبلاگ">وبلاگ</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'وبسایت‌های بازی یا تفریحی' ? 'selected' : '' }} value="وبسایت‌های بازی یا تفریحی">وبسایت‌های بازی یا تفریحی</option>
+                                                            <option style="font-family: BYekan!important;" {{ $gateway->category == 'وبسایت‌های علمی و دانشگاهی' ? 'selected' : '' }} value="وبسایت‌های علمی و دانشگاهی">وبسایت‌های علمی و دانشگاهی</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-ld-12">
+
+
+
+                                            <div class="form-group row">
+                                                <label for="example-url-input" class="col-sm-2 col-form-label text-center">توضیحات</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" name="description" id="description" cols="30" rows="3">{{$gateway->description}}</textarea>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--end card-body-->
+                                </div>
+                                <!--end card-->
+                            </div>
+                            <!--end col-->
+                        </div>
+
+
+                        <div style="display: inline" class="modal-footer">
+                            <a style="float:right;" class="btn btn-danger" href="{{ route('gateway.delete', $gateway->id) }}">حذف کارت</a>
+                            <button type="submit" style="float:left;" class="btn btn-primary">ثبت ویرایش</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+@endforeach
+
+
+
+
+
+    <!-- Modal -->
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -35,7 +147,7 @@
 
                                                 <div class="form-group row">
                                                     <label style="text-align: center" for="example-email-input"
-                                                           class="col-sm-2 col-form-label text-center">درگاه </label>
+                                                           class="col-sm-2 col-form-label text-center">کیف </label>
                                                     <div class="col-sm-10">
                                                         <select class="form-control" style="font-family: BYekan!important;margin-right: 10px;" name="wallet_id" id="">
                                                             @foreach ($wallets as $wallet)
@@ -119,7 +231,7 @@
             <div class="page-title-box">
                 <div class="float-right">
                     <ol style="direction: ltr" class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="">کیف های پول شما</a></li>
+                        <li class="breadcrumb-item"><a href="">درگاه های پرداخت اینترنتی شما</a></li>
                         <li class="breadcrumb-item active">داشبورد پین پی</li>
                     </ol>
                 </div>
@@ -204,7 +316,8 @@
                                     <h3 class="text-center">{{ $gateway->url }} </h3></div>
                                 <div  class="text-center pt-4">
                                     <button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button>
-                                    <button data-toggle="modal" data-target="#CheckoutModal" class="btn btn-danger btn-sm px-3">ویرایش</button>
+                                    <a href="" data-toggle="modal" data-target="#EditGatewayModal{{$gateway->id}}"><span class="btn btn-danger btn-sm px-3"> ویرایش و حذف </span></a>
+
                                     <!-- Button trigger modal -->
 
 

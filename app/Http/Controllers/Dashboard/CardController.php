@@ -16,7 +16,7 @@ class CardController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $cards = \Auth::user()->wallets()->get();
+        $cards = \Auth::user()->cards()->get();
         return view('dashboard.card', compact('cards'));
     }
 
@@ -80,9 +80,25 @@ class CardController extends \App\Http\Controllers\Controller
      * @param  \App\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Card $card)
+    public function update(CardRequest $request, Card $card)
     {
-        //
+        if ($card->user_id !== \Auth::user()->id){
+            alert()->error('خطا', 'خطا');
+            return redirect()->route('card.index');
+            exit;
+        }
+
+        $card->number = $request->number;
+        $card->bank = $request->bank;
+        $card->status = 'در انتظار تایید';
+        $card->month = $request->month;
+        $card->year = $request->year;
+        $card->save();
+
+        alert()->success('کارت بانکی موفقیت ویرایش شد.', 'انجام شد');
+        return redirect()->route('card.index');
+
+
     }
 
     /**
@@ -91,8 +107,17 @@ class CardController extends \App\Http\Controllers\Controller
      * @param  \App\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Card $card)
+    public function destroy(Request $request)
     {
-        //
+        $card = Card::find($request->id);
+        if ($card->user_id !== \Auth::user()->id){
+            alert()->error('خطا', 'خطا');
+            return redirect()->route('card.index');
+            exit;
+        }
+        $card->delete();
+        alert()->success('کارت بانکی موفقیت حذف شد.', 'انجام شد');
+        return redirect()->route('card.index');
+
     }
 }
