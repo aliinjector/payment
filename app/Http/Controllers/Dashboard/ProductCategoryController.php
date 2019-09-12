@@ -87,10 +87,9 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductCategory $productCategory)
+    public function destroy(ProductCategory $productCategory , Request $request)
     {
-      $productCategory = ProductCategory::find($request->id);
-
+      $productCategory = ProductCategory::find($request->id); 
              if ($productCategory->shop->user_id !== \Auth::user()->id) {
                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
                  return redirect()->back();
