@@ -14,23 +14,39 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->unsignedInteger('shop_id');
             $table->string('title');
-            $table->unsignedInteger('productCat_id');
+            $table->bigInteger('productCat_id')->unsigned()->index();;
             $table->unsignedInteger('status')->default(0);
+            $table->unsignedInteger('fast_sending')->default(0);
+            $table->unsignedInteger('money_back')->default(0);
+            $table->unsignedInteger('support')->default(0);
+            $table->unsignedInteger('secure_payment')->default(0);
             $table->string('type');
             $table->text('description');
             $table->text('image')->nullable();
-            $table->text('color')->nullable();
+            $table->text('color_1')->nullable();
+            $table->text('color_2')->nullable();
+            $table->text('color_3')->nullable();
+            $table->text('color_4')->nullable();
+            $table->text('color_5')->nullable();
+            $table->text('feature_1')->nullable();
+            $table->text('feature_2')->nullable();
+            $table->text('feature_3')->nullable();
+            $table->text('feature_4')->nullable();
             $table->integer('viewCount')->default(0);
-            $table->integer('amount')->nullable();
+            $table->integer('amount')->default(0);
+            $table->integer('refund')->default(0);
             $table->integer('weight')->nullable();
             $table->integer('file_size')->nullable();
-            $table->integer('buyCount')->nullable();
+            $table->integer('buyCount')->default(0);
             $table->integer('price');
             $table->text('attachment')->nullable();
             $table->timestamps();
+
+
+            $table->foreign('productCat_id')->references('id')->on('product_categories')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -15,7 +15,6 @@ class ProductDetailController extends Controller
      */
     public function index()
     {
-        return view('dashboard.product-detail');
     }
 
     /**

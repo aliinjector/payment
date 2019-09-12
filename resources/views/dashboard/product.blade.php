@@ -519,7 +519,7 @@
                                               @foreach($products as $product)
                                                 <tr role="row" class="odd">
                                                     <td class="sorting_1 w-25 "><img src="{{ $product->image }}" class="rounded" alt="" height="52" width="52">
-                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="/dashboard/product-detail" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
+                                                        <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product-list.show',$product->id) }}" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                                     </td>
                                                     <td>{{  $product->category()->first()->name }}</td>
                                                     <td>{{ $product->price }}</td>
