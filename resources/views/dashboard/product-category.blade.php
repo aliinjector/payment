@@ -312,4 +312,24 @@
 
 
 @section('pageScripts')
+  <script>
+    $(document).on('click', '#aaa', function (e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+                $.ajax({
+                    type: "post",
+                    url: "{{url('product-category/delete')}}",
+                    data: {
+                      id:id,
+                      "_token": $('#csrf-token')[0].content  //pass the CSRF_TOKEN()
+                    },
+                    success: function (data) {
+                      console.log(data)
+                        var url = document.location.origin + "/dashboard/product-category";
+                        location.href = url;
+                    }
+                });
+    });
+
+    </script>
 @stop

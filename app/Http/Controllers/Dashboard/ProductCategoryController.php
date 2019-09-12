@@ -89,6 +89,15 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $productCategory)
     {
-        //
-    }
+      $productCategory = ProductCategory::find($request->id);
+
+             if ($productCategory->shop->user_id !== \Auth::user()->id) {
+                 alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                 return redirect()->back();
+             }
+
+              $productCategory->delete();
+              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+              return redirect()->back();
+          }
 }
