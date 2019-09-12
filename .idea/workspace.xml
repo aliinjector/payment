@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
+    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="Card &amp; GateWay Is Updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/GatewayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/GatewayController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TransactionReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TransactionReportController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/gateway.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,7 +194,7 @@
       <workItem from="1567917931562" duration="16240000" />
       <workItem from="1567941000853" duration="608000" />
       <workItem from="1568177439974" duration="20586000" />
-      <workItem from="1568263341255" duration="9318000" />
+      <workItem from="1568263341255" duration="11832000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -311,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568265866635</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Card &amp; GateWay Is Updated">
+      <created>1568274447078</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1568274447078</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,6 +348,7 @@
     <MESSAGE value="Cheque Is Added" />
     <MESSAGE value="Checkout Is Added" />
     <MESSAGE value="Report Is Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Report Is Added" />
+    <MESSAGE value="Card &amp; GateWay Is Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Card &amp; GateWay Is Updated" />
   </component>
 </project>

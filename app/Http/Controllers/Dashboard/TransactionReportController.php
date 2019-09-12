@@ -22,9 +22,17 @@ class TransactionReportController extends \App\Http\Controllers\Controller
         return view('dashboard.checkout', compact('checkouts'));
     }
 
-    public function gatewayReport(Gateway $gateway)
+    public function gatewayReport(Wallet $wallet)
     {
+        if ($wallet->user_id !== \Auth::user()->id){
+            alert()->error('خطا', 'خطا');
+            return redirect()->route('wallet.index');
+            exit;
+        }
 
+        $checkouts = \Auth::user()->checkouts()->get();
+        return view('dashboard.checkout', compact('checkouts'));
     }
+
 
 }
