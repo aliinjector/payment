@@ -17,7 +17,8 @@ class WalletController extends \App\Http\Controllers\Controller
     public function index()
     {
         $wallets = \Auth::user()->wallets()->get();
-        return view('dashboard.wallet', compact('wallets'));
+        $cards = \Auth::user()->cards()->get();
+        return view('dashboard.wallet', compact('wallets', 'cards'));
     }
     /**
      * Show the form for creating a new resource.

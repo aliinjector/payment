@@ -44,6 +44,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Card');
     }
 
+    public function checkouts()
+    {
+        return $this->hasMany('App\Checkout');
+    }
+
+
 
     public function userInformation()
     {
