@@ -2,26 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Checkout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CheckoutController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TransactionReport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/CheckoutRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/CheckoutFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_11_115841_create_checkouts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/jszip.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/pdfmake.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/dashboard/assets/plugins/datatables/vfs_fonts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/checkout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/tableReports.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_01_040608_create_wallets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_01_040608_create_wallets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/ticket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/ticket.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TransactionReport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/TransactionReportController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CheckoutRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CheckoutRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -149,14 +136,14 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\payment\resources\views\dashboard" />
       <recent name="E:\payment\resources\views\documnetation" />
       <recent name="$PROJECT_DIR$/resources/views/dashboard" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
   </component>
@@ -210,7 +197,8 @@
       <workItem from="1567859342813" duration="693000" />
       <workItem from="1567917931562" duration="16240000" />
       <workItem from="1567941000853" duration="608000" />
-      <workItem from="1568177439974" duration="19762000" />
+      <workItem from="1568177439974" duration="20586000" />
+      <workItem from="1568263341255" duration="1730000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -310,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568196861114</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Checkout Is Added">
+      <created>1568208717971</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1568208717971</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,6 +336,7 @@
     <MESSAGE value="Documentation Is Added" />
     <MESSAGE value="Bill Is Added" />
     <MESSAGE value="Cheque Is Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cheque Is Added" />
+    <MESSAGE value="Checkout Is Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checkout Is Added" />
   </component>
 </project>

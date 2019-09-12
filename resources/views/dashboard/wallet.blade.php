@@ -19,7 +19,7 @@
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">مبلغ:</span></div>
                                 <input type="text" class="form-control"name="amount" placeholder="مثال: ۱۰۰۰۰۰">
-                                <div class="input-group-append"><span class="input-group-text bg-light" id="basic-addon8"> ریال</span></div>
+                                <div class="input-group-append"><span class="input-group-text bg-light" id="basic-addon8"> تومان</span></div>
                             </div>
 
                             <div class="input-group mt-3">
@@ -172,12 +172,12 @@
                                     <h5 class="wallet-title m-0">موجودی فعلی این کیف پول:</h5>
                                     <h3 class="text-center">{{ number_format($wallet->amount) }} تومان</h3></div>
                                 <div  class="text-center pt-4">
-                                    <button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button>
+                                    <a href="{{ route('transactionReport.wallet', $wallet->id) }}"><button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button></a>
                                     <button data-toggle="modal" data-target="#CheckoutModal{{$wallet->id}}" class="btn btn-danger btn-sm px-3">درخواست تسویه</button>
                                     <!-- Button trigger modal -->
 
 
-                                    <br><br><span style="margin-top: 10px; font-family: BYekan!important;" class="text-muted font-12">آخرین بروزرسانی: {{ jdate($wallet->updated_at) }}</span>
+                                    <br><br><span style="margin-top: 10px; font-family: BYekan!important;direction: ltr" class="text-muted font-12">آخرین بروزرسانی: {{ jdate($wallet->updated_at) }}</span>
                                 </div>
                             </div>
                         </div>

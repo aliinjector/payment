@@ -25,7 +25,7 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => 'integer|between:1000,1000000',
+            'amount' => 'integer|between:100,100000000',
             'id' => [
                 'required',
                 Rule::exists('cards')->where(function ($query) {

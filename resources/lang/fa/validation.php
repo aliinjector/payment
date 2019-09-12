@@ -169,5 +169,6 @@ return array(
         'province' => 'استان',
         'icon' => 'آیکون',
         'logo' => 'لوگو',
+        'amount' => 'مبلغ',
     ),
 );
