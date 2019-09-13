@@ -23,12 +23,7 @@
     "sort-packages": true
   },
   "require": {
-    "php": "^7",
-    "ext-intl": "*",
-    "ext-simplexml": "*",
-    "ext-mbstring": "*",
-    "ext-ctype": "*",
-    "ext-json": "*"
+    "php": "^7"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "*",
