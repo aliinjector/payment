@@ -1,27 +1,15 @@
 <?php
 
-namespace App;
+  namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+  use Illuminate\Database\Eloquent\Model;
+  use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Checkout extends Model
+  class Checkout extends Eloquent
 {
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 
-    public function card()
-    {
-        return $this->belongsTo('App\Card');
-    }
-
-    public function wallet()
-    {
-        return $this->belongsTo('App\Wallet');
-    }
 
 
 

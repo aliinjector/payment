@@ -20,28 +20,32 @@ class ShopSettingController extends Controller
      */
     public function index()
     {
-      if(\Auth::user()->shop()->count() == 0){
-          $shop = new Shop;
-          $shop->title = "عنوان تست";
-          $shop->user_id = \Auth::user()->id;
-          $shop->status = 0;
-          $shop->quick_way = "disable";
-          $shop->posting_way = "disable";
-          $shop->person_way = "disable";
-          $shop->description = "توضیحات تست";
-          $shop->save();
-          $shopContact = new ShopContact;
-          $shopContact->shop_id = \Auth::user()->shop()->first()->id;
-          $shopContact->phone =  \Auth::user()->mobile;
-          $shopContact->city = "تهران";
-          $shopContact->province = "تهران";
-          $shopContact->save();
+      if(!\Auth::user()->shop()->get()){
+
+          $shop = \Auth::user()->shop()->create([
+            'title' => "عنوان تست",
+            'user_id' => \Auth::user()->id,
+            'status' => 0,
+            'quick_way' => "disable",
+            'posting_way' => "disable",
+            'person_way' => "disable",
+            'description' => "توضیحات تست",
+          ]);
+
+
+          $shop->shopContact()->create([
+            'shop_id' => \Auth::user()->shop()->first()->id,
+            'phone' =>  \Auth::user()->mobile,
+            'city' => "تهران",
+            'province' => "تهران",
+          ]);
+
+
       }
 
-      $shopInformation = \Auth::user()->shop()->first();
+      $shopInformation = \Auth::user()->shop()->get();
       $shopContactInformation = $shopInformation->shopContact()->first();
-      $categories = ShopCategory::all();
-      return view('dashboard.shop-setting', compact('categories','shopInformation','shopContactInformation'));
+      return view('dashboard.shop-setting', compact('shopInformation','shopContactInformation'));
     }
 
     /**
@@ -62,20 +66,7 @@ class ShopSettingController extends Controller
      */
     public function store(Request $request)
     {
-    //   $shopContact = new ShopContact;
-    //   $shopContact->shop_id = 1;
-    //   $shopContact->tel = $request->tel;
-    //   $shopContact->phone =  \Auth::user()->mobile;
-    //   $shopContact->shop_email = $request->shop_email;
-    //   $shopContact->address = $request->address;
-    //   $shopContact->city = $request->city;
-    //   $shopContact->province = $request->province;
-    //   $shopContact->telegram_url = $request->telegram_url;
-    //   $shopContact->instagram_url = $request->instagram_url;
-    //   $shopContact->facebook_url = $request->facebook_url;
-    //   $shopContact->save();
-    //   alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
-    //   return redirect()->route('shop-setting.index');
+
     }
 
     /**

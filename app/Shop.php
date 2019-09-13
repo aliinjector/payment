@@ -4,19 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
+use ProductCategory;
 
 class Shop extends Eloquent
 {
+    protected $guarded = ['id'];
+
     public function shopContact()
     {
-        return $this->hasOne('App\ShopContact');
+        return $this->embedsOne('App\ShopContact');
     }
-    public function products()
-   {
-       return $this->hasMany('App\Product');
-   }
-   public function categories()
+
+   public function ProductCategories()
     {
-        return $this->hasMany('App\ProductCategory');
+        return $this->embedsMany('App\ProductCategory');
     }
 }

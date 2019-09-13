@@ -56,17 +56,7 @@
                                     <input class="form-control" type="text" name="description" placeholder="مثال: فروش و توضیع محصولات با کیفیت" value="{{ old('description', $shopInformation->description) }}">
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label" style="text-align: center">دسته بندی فروشگاه</label>
-                                <div class="col-sm-10">
-                                    <select class="custom-select" name="cat_id">
-                                        <option selected="">انتخاب دسته بندی</option>
-                                        @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
+                  
                         </div>
 
                     </div>

@@ -324,7 +324,6 @@
                       "_token": $('#csrf-token')[0].content  //pass the CSRF_TOKEN()
                     },
                     success: function (data) {
-                      // console.log(data)
                         var url = document.location.origin + "/dashboard/product-category";
                         location.href = url;
                     }

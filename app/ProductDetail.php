@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+  namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+  use Illuminate\Database\Eloquent\Model;
+  use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class ProductDetail extends Model
+  class ProductDetail extends Eloquent
 {
-    //
+      protected $guarded = ['id'];
 }

@@ -42,39 +42,33 @@ class User extends Eloquent implements Authenticatable{
 
     public function wallets()
     {
-        return $this->hasMany('App\Wallet');
+        return $this->embedsMany('App\Wallet');
     }
 
     public function cards()
     {
-        return $this->hasMany('App\Card');
+        return $this->embedsMany('App\Card');
     }
-
-    public function checkouts()
-    {
-        return $this->hasMany('App\Checkout');
-    }
-
 
 
     public function userInformation()
     {
-        return $this->hasOne('App\UserInformation');
+        return $this->embedsOne('App\UserInformation');
     }
 
     public function tickets()
     {
-        return $this->hasMany('App\Ticket');
+        return $this->embedsMany('App\Ticket');
     }
 
     public function gateways()
     {
-        return $this->hasMany('App\Gateway');
+        return $this->embedsMany('App\Gateway');
     }
 
     public function shop()
    {
-       return $this->hasOne('App\Shop');
+       return $this->embedsOne('App\Shop');
    }
 
 

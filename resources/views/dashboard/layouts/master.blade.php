@@ -184,7 +184,7 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">فروشگاه ساز</h6></div>
                     <ul class="nav">
-                  @if (\Auth::user()->shop()->count() == 0)
+                  @if (!\Auth::user()->shop()->get())
                     <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>ایجاد فروشگاه</a></li>
                 @else
                         <li class="nav-item"><a class="nav-link" href="{{ route('shop.index') }}"><i class="dripicons-view-thumb"></i>گزارشات فروشگاه شما</a></li>

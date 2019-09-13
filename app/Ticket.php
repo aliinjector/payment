@@ -3,13 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Ticket extends Model
+class Ticket extends Eloquent
 {
     protected $guarded = ['id'];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
+  
 }

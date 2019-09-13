@@ -3,14 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Wallet extends Model
+class Wallet extends Eloquent
 {
     protected $fillable = ['name'];
 
-    public function user()
+    public function checkouts()
     {
-        return $this->belongsTo('App\User');
+        return $this->embedsMany('App\Checkout');
     }
 
 

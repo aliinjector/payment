@@ -1,17 +1,17 @@
 <?php
 
-namespace App;
+  namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+  use Illuminate\Database\Eloquent\Model;
+  use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class ProductCategory extends Model
+  class ProductCategory extends Eloquent
 {
+  protected $guarded = ['id'];
+
   public function products()
    {
-       return $this->hasMany('App\Product');
+       return $this->embedsMany('App\Product');
    }
-   public function shop()
-    {
-        return $this->belongsTo('App\Shop');
-    }
+
 }

@@ -39,13 +39,7 @@ class CardController extends \App\Http\Controllers\Controller
      */
     public function store(CardRequest $request)
     {
-        $card = new Card;
-        $card->bank = $request->bank;
-        $card->number = $request->number;
-        $card->user_id = \Auth::user()->id;
-        $card->month = $request->month;
-        $card->year = $request->year;
-        $card->save();
+      $card = \Auth::user()->cards()->create($request->except('_token'));
 
         alert()->success('کارت بانکی موفقیت اضافه شد.', 'انجام شد');
         return redirect()->route('card.index');
@@ -109,13 +103,19 @@ class CardController extends \App\Http\Controllers\Controller
      */
     public function destroy(Request $request)
     {
-        $card = Card::find($request->id);
-        if ($card->user_id !== \Auth::user()->id){
-            alert()->error('خطا', 'خطا');
-            return redirect()->route('card.index');
-            exit;
-        }
-        $card->delete();
+      // if ($card->user_id !== \Auth::user()->id){
+      //     alert()->error('خطا', 'خطا');
+      //     return redirect()->route('card.index');
+      //     exit;
+      // }
+
+
+      $card = \Auth::user()->cards()->find($request->id)->delete();
+
+      // dd($shop->ProductCategories->first());
+      //   $card = Card::find($request->id);
+      //   $card->delete();
+        
         alert()->success('کارت بانکی موفقیت حذف شد.', 'انجام شد');
         return redirect()->route('card.index');
 

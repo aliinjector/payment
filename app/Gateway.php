@@ -1,23 +1,14 @@
 <?php
 
-namespace App;
+  namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+  use Illuminate\Database\Eloquent\Model;
+  use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Gateway extends Model
+  class Gateway extends Eloquent
 {
     protected $guarded = ['id'];
 
-
-    public function wallet()
-    {
-        return $this->belongsTo('App\Wallet');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
 
 
 
