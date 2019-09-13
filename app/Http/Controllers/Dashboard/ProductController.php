@@ -52,10 +52,50 @@ class ProductController extends Controller
      else
      $product->status = 1;
       $product->type = $request->type;
-      $product->color = $request->color;
+      $product->color_1 = $request->color_1;
+      if($request->color_2 == '#a89d8e')
+       $product->color_2 = null;
+       else
+       $product->color_2 = $request->color_2;
+
+      if($request->color_3 == '#a89d8e')
+       $product->color_3 = null;
+       else
+       $product->color_3 = $request->color_3;
+
+      if($request->color_4 == '#a89d8e')
+       $product->color_4 = null;
+       else
+       $product->color_4 = $request->color_4;
+
+      if($request->color_5 == '#a89d8e')
+       $product->color_5 = null;
+       else
+       $product->color_5 = $request->color_5;
+
       $product->amount = $request->amount;
       $product->weight = $request->weight;
       $product->price = $request->price;
+      if ( $request->fast_sending != "on")
+        $product->fast_sending = 0;
+     else
+     $product->fast_sending = 1;
+      if ( $request->money_back != "on")
+        $product->money_back = 0;
+     else
+     $product->money_back = 1;
+      if ( $request->support != "on")
+        $product->support = 0;
+     else
+     $product->support = 1;
+      if ( $request->secure_payment != "on")
+        $product->secure_payment = 0;
+     else
+     $product->secure_payment = 1;
+      $product->feature_1 = $request->feature_1;
+      $product->feature_2 = $request->feature_2;
+      $product->feature_3 = $request->feature_3;
+      $product->feature_4 = $request->feature_4;
       $product->description = $request->description;
       $product->image = $image;
       $product->save();
