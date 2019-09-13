@@ -44,7 +44,7 @@ class ShopSettingController extends Controller
       }
 
       $shopInformation = \Auth::user()->shop()->get();
-      $shopContactInformation = $shopInformation->shopContact()->first();
+      $shopContactInformation = $shopInformation->shopContact()->get();
       return view('dashboard.shop-setting', compact('shopInformation','shopContactInformation'));
     }
 
@@ -100,22 +100,20 @@ class ShopSettingController extends Controller
      */
     public function update(ShopSettingRequest $request)
     {
-
       $icon = $this->uploadFile($request->file('icon'), false, false);
       $logo = $this->uploadFile($request->file('logo'), false, false);
-      $shop =  Shop::where('user_id', \Auth::user()->id)->first();
-      $shop->title = $request->title;
-      $shop->user_id = \Auth::user()->id;
-      $shop->cat_id = $request->cat_id;
-      $shop->status = 0;
-      $shop->quick_way = "enable";
-      $shop->posting_way = "enable";
-      $shop->person_way = "enable";
-      $shop->description = $request->description;
-      $shop->icon = $icon;
-      $shop->logo = $logo;
-      $shop->save();
 
+      $shop = \Auth::user()->shop()->get()->update([
+        'title' => $request->title,
+        'user_id' => \Auth::user()->id,
+        'status' => 0,
+        'quick_way' => "disable",
+        'posting_way' => "disable",
+        'person_way' => "disable",
+        'description' => $request->description,
+        'icon' => $icon,
+        'logo' => $logo,
+      ]);
       alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('shop-setting.index');
     }
@@ -123,18 +121,17 @@ class ShopSettingController extends Controller
 
 
     public function updateContact(ShopContactRequest $request){
-      $shopContact =  ShopContact::where('shop_id', \Auth::user()->shop()->first()->id)->first();
-      $shopContact->shop_id = \Auth::user()->shop()->first()->id;
-      $shopContact->tel = $request->tel;
-      $shopContact->phone =  \Auth::user()->mobile;
-      $shopContact->shop_email = $request->shop_email;
-      $shopContact->address = $request->address;
-      $shopContact->city = $request->city;
-      $shopContact->province = $request->province;
-      $shopContact->telegram_url = $request->telegram_url;
-      $shopContact->instagram_url = $request->instagram_url;
-      $shopContact->facebook_url = $request->facebook_url;
-      $shopContact->save();
+
+      $shop = \Auth::user()->shop()->get()->shopContact()->get()->update([
+        'tel' => $request->tel,
+        'shop_email' => $request->shop_email,
+        'address' => $request->address,
+        'city' => $request->city,
+        'province' => $request->province,
+        'telegram_url' => $request->telegram_url,
+        'instagram_url' => $request->instagram_url,
+        'facebook_url' => $request->facebook_url,
+      ]);
 
       alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('shop-setting.index');

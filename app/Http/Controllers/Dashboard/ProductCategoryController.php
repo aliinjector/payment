@@ -17,7 +17,7 @@ class ProductCategoryController extends Controller
     public function index()
     {
       $shop = Shop::where('user_id' ,\Auth::user()->id)->first();
-      $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
+      $categoires = \Auth::user()->shop()->get()->ProductCategories()->get();
       return view('dashboard.product-category', compact('categoires'));
     }
 
@@ -39,13 +39,8 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-      $shop = Shop::where('user_id' ,\Auth::user()->id)->first();
+      $shop = \Auth::user()->shop()->get();
       $category = $shop->ProductCategories()->create($request->except('_token'));
-      // $productCategory = new ProductCategory;
-      // $productCategory->name = $request->name;
-      // $productCategory->description = $request->description;
-      // $productCategory->shop_id = \Auth::user()->shop()->first()->id;
-      // $productCategory->save();
 
       alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('product-category.index');
@@ -95,7 +90,6 @@ class ProductCategoryController extends Controller
     {
 
         $ProductCategory = Shop::where('user_id' ,\Auth::user()->id)->first()->ProductCategories()->find($request->id)->delete();
-
              if (Shop::where('user_id' ,\Auth::user()->id)->get() !== \Auth::user()->id) {
                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
                  return redirect()->back();
