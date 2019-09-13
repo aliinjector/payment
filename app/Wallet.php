@@ -7,7 +7,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Wallet extends Eloquent
 {
-    protected $fillable = ['name'];
+    protected $guarded = ['id'];
 
     public function checkouts()
     {

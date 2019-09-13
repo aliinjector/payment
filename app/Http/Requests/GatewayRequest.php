@@ -28,7 +28,7 @@ class GatewayRequest extends FormRequest
             'url' =>  'required|min:5|max:200',
             'category' =>  'required|min:1|max:60',
             'description' =>  'required|min:1|max:200',
-            'wallet_id' =>  'required|exists:wallets,id',
+            'wallet_id' =>  'required',
         ];
     }
 }

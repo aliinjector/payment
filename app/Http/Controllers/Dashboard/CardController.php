@@ -40,7 +40,6 @@ class CardController extends \App\Http\Controllers\Controller
     public function store(CardRequest $request)
     {
       $card = \Auth::user()->cards()->create($request->except('_token'));
-
         alert()->success('کارت بانکی موفقیت اضافه شد.', 'انجام شد');
         return redirect()->route('card.index');
     }
@@ -74,20 +73,23 @@ class CardController extends \App\Http\Controllers\Controller
      * @param  \App\Card  $card
      * @return \Illuminate\Http\Response
      */
-    public function update(CardRequest $request, Card $card)
+    public function update(CardRequest $request)
     {
-        if ($card->user_id !== \Auth::user()->id){
+
+        if (!\Auth::user()->cards()->find($request->id)->get()){
             alert()->error('خطا', 'خطا');
             return redirect()->route('card.index');
             exit;
         }
 
-        $card->number = $request->number;
-        $card->bank = $request->bank;
-        $card->status = 'در انتظار تایید';
-        $card->month = $request->month;
-        $card->year = $request->year;
-        $card->save();
+        $card = \Auth::user()->cards()->where('id', $request->id)->first()->update([
+        'number' => $request->number,
+        'bank' => $request->bank,
+        'status' => 'در انتظار تایید',
+        'month' => $request->month,
+        'year' => $request->year,
+        ]);
+
 
         alert()->success('کارت بانکی موفقیت ویرایش شد.', 'انجام شد');
         return redirect()->route('card.index');
@@ -103,19 +105,16 @@ class CardController extends \App\Http\Controllers\Controller
      */
     public function destroy(Request $request)
     {
-      // if ($card->user_id !== \Auth::user()->id){
-      //     alert()->error('خطا', 'خطا');
-      //     return redirect()->route('card.index');
-      //     exit;
-      // }
 
+       if (!\Auth::user()->cards()->find($request->id)->get()){
+           alert()->error('خطا', 'خطا');
+           return redirect()->route('card.index');
+           exit;
+       }
 
       $card = \Auth::user()->cards()->find($request->id)->delete();
 
-      // dd($shop->ProductCategories->first());
-      //   $card = Card::find($request->id);
-      //   $card->delete();
-        
+
         alert()->success('کارت بانکی موفقیت حذف شد.', 'انجام شد');
         return redirect()->route('card.index');
 

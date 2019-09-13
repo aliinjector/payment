@@ -53,6 +53,8 @@
                                                     <label for="example-search-input" class="col-sm-2 col-form-label text-center">آدرس </label>
                                                     <div class="col-sm-10">
                                                         <input class="form-control" type="text" name="url" value="{{ $gateway->name }}" id="example-search-input">
+                                                        <input type="hidden" name="id" value="{{ $gateway->id }}" id="example-search-input">
+
                                                     </div>
                                                 </div>
 
@@ -213,7 +215,7 @@
 
 
                         <div class="form-actions text-center  pb-3  ">
-                            <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                            <button style="font-family: iranyekan!important;" type="submit" class="btn btn-primary">
                                 <i class="fa fa-check-square-o"></i> ارسال اطلاعات
                             </button>
                         </div>

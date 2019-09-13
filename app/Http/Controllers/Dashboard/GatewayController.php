@@ -41,19 +41,18 @@ class GatewayController extends \App\Http\Controllers\Controller
      */
     public function store(GatewayRequest $request)
     {
-        $key = str_replace( '=' , '', base64_encode(\Auth::user()->id . mt_rand('1', '99') . \Auth::user()->id . time()  . \Auth::user()->id));
-        $gateway = new Gateway;
-        $gateway->name = $request->name;
-        $gateway->url = $request->url;
-        $gateway->category = $request->category;
-        $gateway->description = $request->description;
-        $gateway->url = $request->url;
-        $gateway->user_id = \Auth::user()->id;
-        $gateway->wallet_id = $request->wallet_id;
-        $gateway->key = $key;
-        $gateway->save();
+        $key = str_replace( '=' , '', base64_encode(mt_rand(0, 99) . time()  . substr(\Auth::user()->id, 0, 5)));
+        $gateway = \Auth::user()->gateways()->create([
+        'name' => $request->name,
+        'url' => $request->url,
+        'category' => $request->category,
+        'description' => $request->description,
+        'url' => $request->url,
+        'wallet_id' => $request->wallet_id,
+        'key' => $key,
+        ]);
 
-        alert()->success('کیف پول موفقیت اضافه شد.', 'انجام شد');
+        alert()->success('درگاه با موفقیت اضافه شد.', 'انجام شد');
         return redirect()->route('gateway.index');
     }
 
@@ -86,20 +85,19 @@ class GatewayController extends \App\Http\Controllers\Controller
      * @param  \App\Gateway  $gateway
      * @return \Illuminate\Http\Response
      */
-    public function update(GatewayRequest $request, Gateway $gateway)
+    public function update(GatewayRequest $request)
     {
-        if ($gateway->user_id !== \Auth::user()->id){
-            alert()->error('خطا', 'خطا');
-            return redirect()->route('gateway.index');
-            exit;
-        }
 
-        $gateway->name = $request->name;
-        $gateway->url = $request->url;
-        $gateway->category = $request->category;
-        $gateway->description = $request->description;
-        $gateway->wallet_id = $request->wallet_id;
-        $gateway->save();
+        $gateway = \Auth::user()->gateways()->where('id', $request->id)->first()->update([
+            'name' => $request->name,
+            'url' => $request->url,
+            'category' => $request->category,
+            'description' => $request->description,
+            'wallet_id' => $request->wallet_id,
+        ]);
+
+
+
 
         alert()->success('درگاه موفقیت ویرایش شد.', 'انجام شد');
         return redirect()->route('gateway.index');

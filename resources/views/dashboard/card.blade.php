@@ -104,6 +104,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">شماره کارت:</span></div>
                                     <input type="text" value="{{ old('number', $card->number ) }}" class="form-control" name="number" placeholder="مثال: 5892101028096666">
+                                    <input type="hidden" value="{{ $card->id }}" class="form-control" name="id">
                                 </div>
 
                                 <div class="input-group mt-3">
