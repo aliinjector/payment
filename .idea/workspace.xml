@@ -1,69 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
+    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="MongoDb Is Updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Shop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/Assert.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/Assert.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/Assertion.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/Assertion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/AssertionChain.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/AssertionChain.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/AssertionFailedException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/AssertionFailedException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/InvalidArgumentException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/InvalidArgumentException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/LazyAssertion.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/LazyAssertion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/LazyAssertionException.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/LazyAssertionException.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/lib/Assert/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/phpstan-code.neon" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/phpstan-code.neon" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/beberlei/assert/phpstan-tests.neon" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/beberlei/assert/phpstan-tests.neon" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/DatabaseTokenRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/DatabaseTokenRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/PasswordBrokerManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/PasswordBrokerManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/PasswordResetServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/PasswordResetServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Auth/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Collection.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Collection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/Builder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/EmbedsRelations.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/EmbedsRelations.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/HybridRelations.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/HybridRelations.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/SoftDeletes.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Eloquent/SoftDeletes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Helpers/EloquentBuilder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Helpers/EloquentBuilder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Helpers/QueriesRelationships.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Helpers/QueriesRelationships.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/MongodbQueueServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/MongodbQueueServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/MongodbServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/MongodbServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Builder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Grammar.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Grammar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Processor.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Query/Processor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/Failed/MongoFailedJobProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/Failed/MongoFailedJobProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/MongoConnector.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/MongoConnector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/MongoJob.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/MongoJob.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/MongoQueue.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Queue/MongoQueue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/BelongsTo.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/BelongsTo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/BelongsToMany.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/BelongsToMany.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/EmbedsMany.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/EmbedsMany.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/EmbedsOne.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/EmbedsOne.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/EmbedsOneOrMany.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/EmbedsOneOrMany.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/HasMany.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/HasMany.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/HasOne.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/HasOne.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/MorphTo.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Relations/MorphTo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Schema/Blueprint.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Schema/Blueprint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Schema/Builder.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Schema/Builder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Schema/Grammar.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Schema/Grammar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Validation/DatabasePresenceVerifier.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Validation/DatabasePresenceVerifier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Validation/ValidationServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Validation/ValidationServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bill.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/GatewayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/GatewayController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/GatewayRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/GatewayRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Wallet.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/gateway.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -271,7 +220,8 @@
       <workItem from="1568351821053" duration="2131000" />
       <workItem from="1568355343994" duration="28000" />
       <workItem from="1568355498821" duration="525000" />
-      <workItem from="1568361012247" duration="611000" />
+      <workItem from="1568361012247" duration="3956000" />
+      <workItem from="1568381066135" duration="3189000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -399,7 +349,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568287010231</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="MongoDb Is Updated">
+      <created>1568361660395</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1568361660395</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,6 +391,7 @@
     <MESSAGE value="Report Is Added" />
     <MESSAGE value="Card &amp; GateWay Is Updated" />
     <MESSAGE value="TransActionReport Is Updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="TransActionReport Is Updated" />
+    <MESSAGE value="MongoDb Is Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="MongoDb Is Updated" />
   </component>
 </project>

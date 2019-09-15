@@ -73,7 +73,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                    <button type="submit" class="btn btn-success">ثبت درخواست</button>
+                    <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                 </div>
                 </form>
 

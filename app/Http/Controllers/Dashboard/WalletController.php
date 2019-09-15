@@ -38,15 +38,13 @@ class WalletController extends \App\Http\Controllers\Controller
      */
     public function store(WalletRequest $request)
     {
-        $key = str_replace( '=' , '', base64_encode(\Auth::user()->id . mt_rand('1', '99') . \Auth::user()->id . time()  . \Auth::user()->id));
-        $wallet = new Wallet;
-        $wallet->name = $request->name;
-        $wallet->amount = 0;
-        $wallet->user_id = \Auth::user()->id;
-        $wallet->key = $key;
-        $wallet->save();
-
-        alert()->success('کیف پول موفقیت اضافه شد.', 'انجام شد');
+        $key = str_replace( '=' , '', base64_encode(mt_rand(0, 99) . time()  . substr(\Auth::user()->id, 0, 5)));
+        $wallet = \Auth::user()->wallets()->create([
+            'name' => $request->name,
+            'amount' => 0,
+            'key' => $key,
+        ]);
+        alert()->success('کیف پول با موفقیت اضافه شد.', 'انجام شد');
         return redirect()->route('wallet.index');
 
     }
