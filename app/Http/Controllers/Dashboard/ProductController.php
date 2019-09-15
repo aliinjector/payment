@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Shop;
 use App\ProductCategory;
 use App\Product;
+use App\Http\Requests\ProductRequest;
+
 
 class ProductController extends Controller
 {
@@ -17,11 +19,15 @@ class ProductController extends Controller
      */
     public function index()
     {
-      $productCategories = \Auth::user()->shop()->first()->categories()->get();
-      $products = \Auth::user()->shop()->first()->products()->get();
+      if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0) {
+        alert()->success('لطفا ابتدا دسته بندی جدید ایجاد کنید', 'هدایت به صفحه ساخت دسته بندی');
+        return redirect()->route('product-category.index');
+      }
+      else{
+      $productCategories = \Auth::user()->shop()->get()->ProductCategories()->get();
+      $products = \Auth::user()->shop()->get()->ProductCategories()->get()->first()->products()->get();
       return view('dashboard.product', compact('productCategories','products'));
-
-
+      }
     }
 
     /**
@@ -40,120 +46,100 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeProduct(Request $request)
-    {
+     public function storeProduct(ProductRequest $request)
+       {
       $image = $this->uploadFile($request->file('image'), false, false);
-      $product = new Product;
-      $product->title = $request->title;
-      $product->shop_id = \Auth::user()->shop()->first()->id;
-      $product->productCat_id = $request->productCat_id;
+      if($request->type == 'file')
+      $attachment = $this->uploadFile($request->file('attachment'), false, false);
+      else
+      $attachment = null;
       if ( $request->enable != "on")
-        $product->status = 0;
+      $request->enable = 0;
      else
-     $product->status = 1;
-      $product->type = $request->type;
-      $product->color_1 = $request->color_1;
-      if($request->color_2 == '#a89d8e')
-       $product->color_2 = null;
-       else
-       $product->color_2 = $request->color_2;
+     $request->enable = 1;
+     if($request->color_2 == '#a89d8e')
+      $request->color_2 = null;
+      else
+      $request->color_2 = $request->color_2;
 
       if($request->color_3 == '#a89d8e')
-       $product->color_3 = null;
+       $request->color_3 = null;
        else
-       $product->color_3 = $request->color_3;
+       $request->color_3 = $request->color_3;
 
       if($request->color_4 == '#a89d8e')
-       $product->color_4 = null;
+       $request->color_4 = null;
        else
-       $product->color_4 = $request->color_4;
+       $request->color_4 = $request->color_4;
 
       if($request->color_5 == '#a89d8e')
-       $product->color_5 = null;
+       $request->color_5 = null;
        else
-       $product->color_5 = $request->color_5;
+       $request->color_5 = $request->color_5;
 
-      $product->amount = $request->amount;
-      $product->weight = $request->weight;
-      $product->price = $request->price;
-      if ( $request->fast_sending != "on")
-        $product->fast_sending = 0;
-     else
-     $product->fast_sending = 1;
-      if ( $request->money_back != "on")
-        $product->money_back = 0;
-     else
-     $product->money_back = 1;
-      if ( $request->support != "on")
-        $product->support = 0;
-     else
-     $product->support = 1;
-      if ( $request->secure_payment != "on")
-        $product->secure_payment = 0;
-     else
-     $product->secure_payment = 1;
-      $product->feature_1 = $request->feature_1;
-      $product->feature_2 = $request->feature_2;
-      $product->feature_3 = $request->feature_3;
-      $product->feature_4 = $request->feature_4;
-      $product->description = $request->description;
-      $product->image = $image;
-      $product->save();
+       if ( $request->fast_sending != "on")
+         $request->fast_sending = 0;
+      else
+      $request->fast_sending = 1;
+
+       if ( $request->money_back != "on")
+         $request->money_back = 0;
+      else
+      $request->money_back = 1;
+
+       if ( $request->support != "on")
+         $request->support = 0;
+      else
+      $request->support = 1;
+
+       if ( $request->secure_payment != "on")
+         $request->secure_payment = 0;
+      else
+      $request->secure_payment = 1;
+      $shop = \Auth::user()->shop()->get()->ProductCategories()->where('name' , $request->product_category)->first()->products()->create([
+        'title' => $request->title,
+        'status' => $request->enable,
+        'type' => $request->type,
+        'color_1' => $request->color_1,
+        'product_category' => $request->product_category,
+        'color_2' => $request->color_2,
+        'color_3' => $request->color_3,
+        'color_4' => $request->color_4,
+        'color_5' => $request->color_5,
+        'amount' => $request->amount,
+        'weight' => $request->weight,
+        'price' => $request->price,
+        'fast_sending' => $request->fast_sending,
+        'money_back' => $request->money_back,
+        'support' => $request->support,
+        'secure_payment' => $request->secure_payment,
+        'feature_1' => $request->feature_1,
+        'feature_2' => $request->feature_2,
+        'feature_3' => $request->feature_3,
+        'feature_4' => $request->feature_4,
+        'description' => $request->description,
+        'image' => $image,
+        'attachment' => $attachment,
+        'description' => $request->description,
+        'file_size' => $request->file_size,
+      ]);
       alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
     }
-
-    public function storeFile(Request $request)
-    {
-      $image = $this->uploadFile($request->file('image'), false, false);
-      $attachment = $this->uploadFile($request->file('attachment'), false, false);
-      $product = new Product;
-      $product->title = $request->title;
-      $product->shop_id = \Auth::user()->shop()->first()->id;
-      $product->productCat_id = $request->productCat_id;
-      if ( $request->enable != "on")
-        $product->status = 0;
-     else
-     $product->status = 1;
-      $product->type = $request->type;
-      $product->file_size = $request->file_size;
-      $product->price = $request->price;
-      $product->description = $request->description;
-      $product->image = $image;
-      $product->attachment = $attachment;
-      $product->save();
-      alert()->success('فایل جدید شما باموفقیت اضافه شد.', 'ثبت شد');
-      return redirect()->route('product-list.index');
-    }
-    public function storeService(Request $request)
-    {
-      $image = $this->uploadFile($request->file('image'), false, false);
-      $product = new Product;
-      $product->title = $request->title;
-      $product->shop_id = \Auth::user()->shop()->first()->id;
-      $product->productCat_id = $request->productCat_id;
-       if ( $request->enable != "on")
-         $product->status = 0;
-      else
-      $product->status = 1;
-      $product->type = $request->type;
-      $product->price = $request->price;
-      $product->description = $request->description;
-      $product->image = $image;
-      $product->save();
-      alert()->success('فایل جدید شما باموفقیت اضافه شد.', 'ثبت شد');
-      return redirect()->route('product-list.index');
-    }
-
     /**
      * Display the specified resource.
      *
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($productCategory ,$productId)
     {
-      $product = Product::find($id);
+
+    }
+
+    public function showProduct($productCategory ,$productId)
+    {
+      $product = \Auth::user()->shop()->get()->ProductCategories()->get()->where('name', $productCategory)->first()->products()->find($productId);
       return view('dashboard.product-detail', compact('product'));
     }
 
@@ -187,16 +173,16 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-     public function destroy(Product $product, Request $request)
+     public function destroy(Request $request)
     {
-      $product = Product::find($request->id);
+      $ProductCategory = \Auth::user()->shop()->get()->ProductCategories()->get()->where('name', $request->productCategory)->first()->products()->find($request->id)->delete();
 
-             if ($product->shop->user_id !== \Auth::user()->id) {
-                 alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
-                 return redirect()->back();
-             }
+             // if ($product->shop->user_id !== \Auth::user()->id) {
+             //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+             //     return redirect()->back();
+             // }
 
-              $product->delete();
+              // $product->delete();
               alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
           }

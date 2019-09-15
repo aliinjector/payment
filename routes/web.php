@@ -41,6 +41,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::get('transactionReport/gateway/{gateway}', 'TransactionReportController@gatewayReport')->name('transactionReport.gateway');
 
     Route::resource('product-list', 'ProductController');
+    Route::get('product-list/product-category/{productCategory}/product/{productId}', 'ProductController@showProduct')->name('product-list.showProduct');
     Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
     Route::post('product-list/storeFile', 'ProductController@storeFile')->name('Product.storeFile');
     Route::post('product-list/storeService', 'ProductController@storeService')->name('Product.storeService');

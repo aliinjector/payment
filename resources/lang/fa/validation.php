@@ -138,7 +138,7 @@ return array(
         "category" => "دسته",
         "story" => "داستان",
         'number' => 'شماره ',
-        'price' => 'قیمت دوره',
+        'price' => 'قیمت ',
         'course_id' => 'دوره مورد نظر',
         'fileUrl' => 'آدرس فایل',
         'enSlug' => 'نامک انگلیسی',
@@ -170,5 +170,8 @@ return array(
         'icon' => 'آیکون',
         'logo' => 'لوگو',
         'amount' => 'مبلغ',
+        'image' => 'تصویر',
+        'attachment' => 'فایل',
+        'file_size  ' => 'حجم',
     ),
 );

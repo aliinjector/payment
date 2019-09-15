@@ -25,6 +25,7 @@
             </div>
 
 
+            @include('dashboard.layouts.errors')
 
             <div class="modal fade bd-example-modal-xl" id="AddProductCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-xl" role="document">
@@ -277,7 +278,7 @@
                                                 <td>
                                                   <a><i class="far fa-edit text-info mr-1 button"></i>
                                                   </a>
-                                                   <a  href="" id="bbb" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger"></i></a>
+                                                   <a  href="" id="ttttt" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger"></i></a>
                                                  </td>
                                             </tr>
                                           @endforeach
@@ -313,7 +314,7 @@
 
 @section('pageScripts')
   <script>
-    $(document).on('click', '#bbb', function (e) {
+    $(document).on('click', '#ttttt', function (e) {
         e.preventDefault();
         var id = $(this).data('id');
                 $.ajax({

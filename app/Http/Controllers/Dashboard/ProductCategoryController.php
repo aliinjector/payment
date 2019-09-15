@@ -6,6 +6,8 @@ use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ProductCategory;
+use App\Http\Requests\ProductCategoryRequest;
+
 
 class ProductCategoryController extends Controller
 {
@@ -37,7 +39,7 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductCategoryRequest $request)
     {
       $shop = \Auth::user()->shop()->get();
       $category = $shop->ProductCategories()->create($request->except('_token'));
@@ -88,12 +90,12 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $productCategory , Request $request)
     {
-
-        $ProductCategory = Shop::where('user_id' ,\Auth::user()->id)->first()->ProductCategories()->find($request->id)->delete();
-             if (Shop::where('user_id' ,\Auth::user()->id)->get() !== \Auth::user()->id) {
-                 alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
-                 return redirect()->back();
-             }
+      $shop = \Auth::user()->shop()->get();
+      $ProductCategory = $shop->ProductCategories()->find($request->id)->delete();
+             // if (Shop::where('user_id' ,\Auth::user()->id)->get() !== \Auth::user()->id) {
+             //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+             //     return redirect()->back();
+             // }
 
               alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
