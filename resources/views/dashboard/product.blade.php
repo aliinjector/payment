@@ -754,6 +754,10 @@
 
                                                                     </tbody>
                                                                 </table>
+                                                                @if ($productCategory->products()->get()->count() == 0)
+                                                                  <p class="font-17 text-center font-weight-bold"> محصولی وجود ندارد
+                                                                  </p>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         <div class="row">

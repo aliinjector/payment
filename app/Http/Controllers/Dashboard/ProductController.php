@@ -20,7 +20,7 @@ class ProductController extends Controller
     public function index()
     {
       if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0) {
-        alert()->success('لطفا ابتدا دسته بندی جدید ایجاد کنید', 'هدایت به صفحه ساخت دسته بندی');
+        alert()->success('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
         return redirect()->route('product-category.index');
       }
       else{
