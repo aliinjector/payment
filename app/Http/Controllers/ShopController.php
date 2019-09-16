@@ -54,8 +54,7 @@ class ShopController extends Controller
      */
     public function show($shop)
     {
-      $shop = 
-      return $shop;
+    
     }
 
     /**
