@@ -26,13 +26,8 @@ class CheckoutRequest extends FormRequest
     {
         return [
             'amount' => 'integer|between:100,100000000',
-            'id' => [
-                'required',
-                Rule::exists('cards')->where(function ($query) {
-                    $query->where('user_id', \Auth::user()->id);
-                }),
-                ],
-
+            'wallet_id' => 'required',
+            'card_id' => 'required',
         ];
     }
 }

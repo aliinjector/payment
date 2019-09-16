@@ -1,18 +1,11 @@
 <?php
-
 namespace App;
-
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 use Illuminate\Notifications\Notifiable;
-
-
-class User extends Eloquent implements Authenticatable{
-
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class User extends Authenticatable
+{
     use Notifiable;
-    use AuthenticableTrait;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -42,34 +35,40 @@ class User extends Eloquent implements Authenticatable{
 
     public function wallets()
     {
-        return $this->embedsMany('App\Wallet');
+        return $this->hasMany('App\Wallet');
     }
 
     public function cards()
     {
-        return $this->embedsMany('App\Card');
+        return $this->hasMany('App\Card');
     }
 
 
     public function userInformation()
     {
-        return $this->embedsOne('App\UserInformation');
+        return $this->hasOne('App\UserInformation');
     }
 
     public function tickets()
     {
-        return $this->embedsMany('App\Ticket');
+        return $this->hasMany('App\Ticket');
     }
 
     public function gateways()
     {
-        return $this->embedsMany('App\Gateway');
+        return $this->hasMany('App\Gateway');
     }
 
     public function shop()
    {
-       return $this->embedsOne('App\Shop');
+       return $this->hasOne('App\Shop');
    }
+
+    public function checkouts()
+    {
+        return $this->hasMany('App\Checkout');
+    }
+
 
 
 

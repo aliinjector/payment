@@ -173,5 +173,6 @@ return array(
         'image' => 'تصویر',
         'attachment' => 'فایل',
         'file_size  ' => 'حجم',
+        'card_id  ' => 'شماره کارت',
     ),
 );

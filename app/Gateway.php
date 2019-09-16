@@ -1,11 +1,8 @@
 <?php
+namespace App;
+use Illuminate\Database\Eloquent\Model;
 
-  namespace App;
-
-  use Illuminate\Database\Eloquent\Model;
-  use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-
-  class Gateway extends Eloquent
+class Gateway extends Model
 {
     protected $guarded = ['id'];
 

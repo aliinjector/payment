@@ -25,7 +25,7 @@
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">واریز به:</span></div>
                                 <input type="hidden" value="{{ $wallet->id }}" name="wallet_id" id="">
-                                <select style="font-family: BYekan!important;" name="id" id="">
+                                <select style="font-family: BYekan!important;" name="card_id" id="card_id">
                                     @foreach ($cards as $card)
                                         <option value="{{ $card->id }}"> {{ $card->bank }} | شماره کارت: {{ $card->number }}</option>
                                     @endforeach

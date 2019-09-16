@@ -1,14 +1,15 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class UserInformation extends Eloquent
+class UserInformation extends Model
 {
     protected $guarded = ['id'];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 
 
 }

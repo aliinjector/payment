@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Checkout;
+use App\Card;
 use App\Http\Requests\CheckoutRequest;
 use App\Wallet;
 use Illuminate\Http\Request;
@@ -16,7 +17,8 @@ class CheckoutController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $checkouts = \Auth::user()->checkouts()->get();
+        $checkouts = Checkout::with('card');
+        dd($checkouts);
         return view('dashboard.checkout', compact('checkouts'));
     }
 
@@ -29,8 +31,8 @@ class CheckoutController extends \App\Http\Controllers\Controller
      */
     public function store(CheckoutRequest $request)
     {
-        $wallet = Wallet::find($request->wallet_id);
-
+        $wallet = \Auth::user()->wallets()->get()->find($request->wallet_id);
+        $card = \Auth::user()->cards()->get()->find($request->card_id);
 
         if ($wallet->amount < $request->amount){
             alert()->error('موجودی کافی نیست.', 'خطا');
@@ -38,21 +40,20 @@ class CheckoutController extends \App\Http\Controllers\Controller
             exit;
         }
 
-        if ($wallet->user_id !== \Auth::user()->id){
-            alert()->error('خطا', 'خطا');
-            return redirect()->route('wallet.index');
-            exit;
-        }
+
+        $trackingCode = substr(\Auth::user()->id, 22, 2). substr(uniqid(), 10, 13) . substr(time(),5 ,7);
+
+        $checkOutUser = Checkout::create([
+            'user_id' => \Auth::user()->id,
+            'fullName' => \Auth::user()->firstName . \Auth::user()->lastName,
+            'card_id' => $request->card_id,
+            'wallet_id' => $request->wallet_id,
+            'amount' => $request->amount,
+            'status' => 'بررسی نشده',
+            'trackingCode' => $trackingCode,
+        ]);
 
 
-
-        $checkout = new Checkout;
-        $checkout->user_id = \Auth::user()->id;
-        $checkout->card_id = $request->id;
-        $checkout->wallet_id = $request->wallet_id;
-        $checkout->amount = $request->amount;
-        $checkout->status = 'بررسی نشده';
-        $checkout->save();
 
         alert()->success('درخواست شما باموفقیت اضافه شد.', 'ثبت شد');
         return redirect()->route('checkout.index');

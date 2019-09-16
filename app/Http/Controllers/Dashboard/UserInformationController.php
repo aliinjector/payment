@@ -15,11 +15,10 @@ class UserInformationController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        if(\Auth::user()->userInformation()->count() == 0){
-            $userInformation = new UserInformation;
-            $userInformation->user_id = \Auth::user()->id;
-            $userInformation->status = 1;
-            $userInformation->save();
+        if(!\Auth::user()->userInformation()->get()){
+            \Auth::user()->userInformation()->create([
+            'status' => 1,
+            ]);
         }
 
         $userInformation = \Auth::user()->userInformation()->first();

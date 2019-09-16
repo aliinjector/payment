@@ -1,11 +1,8 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Index extends Eloquent
+class Index extends Model
 {
     protected $guarded = ['id'];
 

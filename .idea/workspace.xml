@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="MongoDb Is Updated">
+    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/16/1568614289_dot-a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/16/1568614331_hexagon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Bill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bill.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/GatewayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/GatewayController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/GatewayRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/GatewayRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Card.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/CheckInquiry.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CheckInquiry.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Checkout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Gateway.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Gateway.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CheckoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UserInformationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/UserInformationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CheckoutRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CheckoutRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Index.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Setting.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Setting.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Ticket.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Ticket.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UserInformation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserInformation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Wallet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/gateway.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -221,7 +232,13 @@
       <workItem from="1568355343994" duration="28000" />
       <workItem from="1568355498821" duration="525000" />
       <workItem from="1568361012247" duration="3956000" />
-      <workItem from="1568381066135" duration="3189000" />
+      <workItem from="1568381066135" duration="3362000" />
+      <workItem from="1568436180038" duration="1969000" />
+      <workItem from="1568529103643" duration="3444000" />
+      <workItem from="1568547202061" duration="3476000" />
+      <workItem from="1568611234595" duration="9868000" />
+      <workItem from="1568627773266" duration="6330000" />
+      <workItem from="1568637143943" duration="234000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -356,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568361660395</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Payment Helper Models Support Mongo">
+      <created>1568384372700</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1568384372701</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,6 +416,7 @@
     <MESSAGE value="Card &amp; GateWay Is Updated" />
     <MESSAGE value="TransActionReport Is Updated" />
     <MESSAGE value="MongoDb Is Updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="MongoDb Is Updated" />
+    <MESSAGE value="Payment Helper Models Support Mongo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Payment Helper Models Support Mongo" />
   </component>
 </project>
