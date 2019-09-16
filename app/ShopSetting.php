@@ -1,11 +1,7 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-
-class ShopSettings extends Eloquent
+class ShopSetting extends Model
 {
     //
 }

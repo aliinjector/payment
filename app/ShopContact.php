@@ -1,14 +1,10 @@
 <?php
-
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
-use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
-
-class ShopContact extends Eloquent
+class ShopContact extends Model
 {
       protected $guarded = ['id'];
-      
+
       public function shop()
      {
          return $this->belongsTo('App\Shop');
