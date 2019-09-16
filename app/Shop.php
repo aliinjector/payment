@@ -12,16 +12,16 @@ class Shop extends Eloquent
 
     public function shopContact()
     {
-        return $this->embedsOne('App\ShopContact');
+        return $this->hasOne('App\ShopContact');
     }
 
    public function ProductCategories()
     {
-        return $this->embedsMany('App\ProductCategory');
+      return $this->hasMany('App\ProductCategory');
     }
     public function products()
-     {
-         return $this->embedsMany('App\Product');
-     }
+   {
+       return $this->hasMany('App\Product');
+   }
 
 }

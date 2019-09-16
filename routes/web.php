@@ -13,6 +13,7 @@
 
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 Route::get('/', 'IndexController@index');
+Route::get('/{shop}', 'ShopController@show');
 
 Auth::routes();
 

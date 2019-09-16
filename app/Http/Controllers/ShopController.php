@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers;
 
-use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Shop;
@@ -17,7 +16,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-    
+
     }
 
     /**
@@ -44,7 +43,7 @@ class ShopController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -53,9 +52,10 @@ class ShopController extends Controller
      * @param  \App\Shop  $shop
      * @return \Illuminate\Http\Response
      */
-    public function show(Shop $shop)
+    public function show($shop)
     {
-        //
+      $shop = 
+      return $shop;
     }
 
     /**

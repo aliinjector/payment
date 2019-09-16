@@ -20,9 +20,9 @@ class ShopSettingController extends Controller
      */
     public function index()
     {
-      if(!\Auth::user()->shop()->get()){
+      if(shop()->get()){
 
-          $shop = \Auth::user()->shop()->create([
+           shop::create([
             'title' => "عنوان تست",
             'user_id' => \Auth::user()->id,
             'status' => 0,
@@ -33,7 +33,7 @@ class ShopSettingController extends Controller
           ]);
 
 
-          $shop->shopContact()->create([
+        return  shop::create([
             'shop_id' => \Auth::user()->shop()->first()->id,
             'phone' =>  \Auth::user()->mobile,
             'city' => "تهران",

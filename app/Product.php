@@ -10,7 +10,11 @@
   protected $guarded = ['id'];
 
   public function productCategory()
-   {
-       return $this->embedsMany('App\productCategory');
+  {
+       return $this->belongsTo('App\ProductCategory','productCat_id');
    }
+   public function shop()
+ {
+     return $this->belongsTo('App\Shop');
+ }
 }
