@@ -19,4 +19,9 @@ class Shop extends Eloquent
     {
         return $this->embedsMany('App\ProductCategory');
     }
+    public function products()
+     {
+         return $this->embedsMany('App\Product');
+     }
+
 }

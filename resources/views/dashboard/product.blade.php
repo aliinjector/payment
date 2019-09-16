@@ -125,7 +125,7 @@
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->name }}">{{ $productCategory->name }}</option>
-                                                @endforeach
+                                              @endforeach
                                             </select>
                                             @endif
 
@@ -309,7 +309,7 @@
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی فایل :</span></div>
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="product_category" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
@@ -317,13 +317,12 @@
                                             <a href="{{ route('product-category.index') }}" class="align-self-center">
                                                 <div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن دسته بندی</span></div>
                                             </a>
-
                                             @else
                                             <select class="form-control inputfield" name="product_category" id="">
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->name }}">{{ $productCategory->name }}</option>
-                                                @endforeach
+                                              @endforeach
                                             </select>
                                             @endif
 
@@ -529,7 +528,7 @@
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->name }}">{{ $productCategory->name }}</option>
-                                                @endforeach
+                                              @endforeach
                                             </select>
                                             @endif
 
@@ -658,145 +657,13 @@
         <!-- end page title end breadcrumb -->
 
 
-        <div class="card">
-            <div class="card-body">
-                <p class="text-muted mb-3">برای مشاهده محصولات هر دسته بندی بر روی دسته بندی موردنظر کلیک کنید.</p><br>
-
-                @foreach($productCategories as $productCategory)
-                <div class="accordion" id="accordionExample{{$productCategory->id}}">
-                    <div class="card border mb-0 shadow-none">
-                        <div class="card-header p-0" id="headingOne">
-                            <h5 class="my-1">
-                                <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#collapseOne{{$productCategory->id}}" aria-expanded="false" aria-controls="collapseOne">
-                                    {{$productCategory->name}}
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne{{$productCategory->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample{{$productCategory->id}}" style="">
-                            <div class="card-body">
-                                <p class="mb-0 text-muted">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h4 class="mt-0 header-title">لیست محصولات</h4>
-
-
-                                                    <p class="text-muted mb-4 font-13">لیست تمامی محصولات شما</p>
-                                                    <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-md-6">
-                                                                <div class="dataTables_length" id="datatable_length">
-                                                                    <label>نمایش
-                                                                        <select name="datatable_length" aria-controls="datatable" class="custom-select custom-select-sm form-control form-control-sm">
-                                                                            <option value="10">10</option>
-                                                                            <option value="25">25</option>
-                                                                            <option value="50">50</option>
-                                                                            <option value="100">100</option>
-                                                                        </select> ورودی ها</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-12 col-md-6">
-                                                                <div id="datatable_filter" class="dataTables_filter">
-                                                                    <label class="text-left">جستوجو:
-                                                                        <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable">
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12">
-                                                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
-                                                                  aria-describedby="datatable_info">
-                                                                    <thead>
-                                                                        <tr role="row">
-                                                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending"
-                                                                              style="width: 405px;">نام
-                                                                                محصول
-                                                                            </th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending" style="width: 148px;">دسته بندی
-                                                                            </th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت</th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت</th>
-                                                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 123px;">تنظیمات</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody class="byekan">
-                                                                        @foreach($productCategory->products()->get() as $product)
-                                                                            <tr role="row" class="odd">
-                                                                                <td class="sorting_1 w-25 "><img src="{{ $product->image }}" class="rounded" alt="" height="52" width="52">
-                                                                                    <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product-list.showProduct', ['productCategory'=>$productCategory->name,'productId'=>$product->id] ) }}"
-                                                                                          class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
-                                                                                </td>
-                                                                                <td>{{ $product->product_category }}</td>
-                                                                                <td>{{ $product->price }}</td>
-                                                                                @if ($product->status == 1)
-                                                                                <td><span class="badge badge-soft-success font-12 font-weight-bold">
-                                                                                        فعال
-                                                                                    </span></td>
-                                                                                @else
-                                                                                <td><span class="badge badge-soft-pink">
-                                                                                        غیرفعال
-                                                                                    </span></td>
-
-                                                                                @endif
-                                                                                <td>
-
-                                                                                    <a><i class="far fa-edit text-info mr-1 button"></i>
-                                                                                    </a>
-
-                            <a href="" id="aaa" data-id="{{ $product->id }}" data-product="{{ $product->product_category }}"><i class="far fa-trash-alt text-danger"></i></a>
-
-                                                                                </td>
-                                                                            </tr>
-                                                                            @endforeach
-
-                                                                    </tbody>
-                                                                </table>
-                                                                @if ($productCategory->products()->get()->count() == 0)
-                                                                  <p class="font-17 text-center font-weight-bold"> محصولی وجود ندارد
-                                                                  </p>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-12 col-md-5">
-                                                                <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
-                                                            </div>
-                                                            <div class="col-sm-12 col-md-7">
-                                                                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                                                                    <ul class="pagination">
-                                                                        <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">قبلی</a></li>
-                                                                        <li class="paginate_button page-item active"><a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                                        <li class="paginate_button page-item "><a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                                                        <li class="paginate_button page-item next" id="datatable_next"><a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0" class="page-link">بعدی</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end col -->
-                                    </div>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-
-        </div>
 
 
 
 
 
-        {{-- <div class="row">
+
+       <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -892,7 +759,7 @@
 </div>
 </div>
 <!-- end col -->
-</div> --}}
+</div>
 <!-- end row -->
 </div>
 <!-- container -->
@@ -953,13 +820,11 @@
     $(document).on('click', '#aaa', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        var productCategory = $(this).data('product');
         $.ajax({
             type: "post",
             url: "{{url('/dashboard/product-list/delete')}}",
             data: {
                 id: id,
-                productCategory: productCategory,
                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             },
             success: function(data) {

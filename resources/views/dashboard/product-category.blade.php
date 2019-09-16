@@ -279,7 +279,7 @@
                                             <td>
                                                 <a><i class="far fa-edit text-info mr-1 button"></i>
                                                 </a>
-                                                <a href="" id="ttttt" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger"></i></a>
+                                                <a href="" id="ttttt" data-id="{{ $category->id }}" data-test="{{ $category->name }}"><i class="far fa-trash-alt text-danger"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -323,11 +323,13 @@
     $(document).on('click', '#ttttt', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
+        var test = $(this).data('test');
         $.ajax({
             type: "post",
             url: "{{url('dashboard/product-category/delete')}}",
             data: {
                 id: id,
+                test: test,
                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             },
             success: function(data) {

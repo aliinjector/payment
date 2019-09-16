@@ -20,12 +20,13 @@ class ProductController extends Controller
     public function index()
     {
       if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0) {
-        alert()->success('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
+        alert()->warning('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
         return redirect()->route('product-category.index');
       }
       else{
       $productCategories = \Auth::user()->shop()->get()->ProductCategories()->get();
-      $products = \Auth::user()->shop()->get()->ProductCategories()->get()->first()->products()->get();
+
+        $products = \Auth::user()->shop()->get()->products()->get();
       return view('dashboard.product', compact('productCategories','products'));
       }
     }
@@ -96,12 +97,13 @@ class ProductController extends Controller
          $request->secure_payment = 0;
       else
       $request->secure_payment = 1;
-      $shop = \Auth::user()->shop()->get()->ProductCategories()->where('name' , $request->product_category)->first()->products()->create([
+      $shop = \Auth::user()->shop()->get()->products()->create([
         'title' => $request->title,
         'status' => $request->enable,
         'type' => $request->type,
         'color_1' => $request->color_1,
         'product_category' => $request->product_category,
+        'product_category_id' => $request->product_category_id,
         'color_2' => $request->color_2,
         'color_3' => $request->color_3,
         'color_4' => $request->color_4,
@@ -175,7 +177,7 @@ class ProductController extends Controller
      */
      public function destroy(Request $request)
     {
-      $ProductCategory = \Auth::user()->shop()->get()->ProductCategories()->get()->where('name', $request->productCategory)->first()->products()->find($request->id)->delete();
+      $ProductCategory = \Auth::user()->shop()->get()->products()->where('id' , $request->id)->first()->delete();
 
              // if ($product->shop->user_id !== \Auth::user()->id) {
              //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

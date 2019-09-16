@@ -9,5 +9,8 @@
 {
   protected $guarded = ['id'];
 
-
+  public function productCategory()
+   {
+       return $this->embedsMany('App\productCategory');
+   }
 }

@@ -18,6 +18,7 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
+
       $shop = Shop::where('user_id' ,\Auth::user()->id)->first();
       $categoires = \Auth::user()->shop()->get()->ProductCategories()->get();
       return view('dashboard.product-category', compact('categoires'));
@@ -92,6 +93,10 @@ class ProductCategoryController extends Controller
     {
       $shop = \Auth::user()->shop()->get();
       $ProductCategory = $shop->ProductCategories()->find($request->id)->delete();
+      foreach (\Auth::user()->shop()->get()->products()->where('product_category' ,$request->test) as $product) {
+          $product->delete();
+      }
+      // $ProductCategory = \Auth::user()->shop()->get()->products()->where('product_category' , $request->test)->first()->delete();
              // if (Shop::where('user_id' ,\Auth::user()->id)->get() !== \Auth::user()->id) {
              //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
              //     return redirect()->back();
