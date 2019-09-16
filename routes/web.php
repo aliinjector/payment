@@ -10,12 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 Route::get('/', 'IndexController@index');
 Route::get('/{shop}', 'ShopController@show');
 
-Auth::routes();
 
 Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('index', 'DashboardController');
