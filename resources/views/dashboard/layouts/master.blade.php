@@ -96,12 +96,12 @@ Author: Ali Rahmani
         <div class="main-icon-menu">
             <nav class="nav">
 
-                <a href="#PayanPayDashboard" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} " data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="داشبورد اصلی">
+                <a href="#PayanPayDashboard" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} " data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="داشبورد اصلی" >
                     <i style="color: #86a3f7;font-size: 25px" class="  {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'menu-active' : '' }} mdi mdi-desktop-mac-dashboard"></i>
                 </a>
 
 
-                <a href="#PayanPayPardakhtYari" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت یاری">
+                <a href="#PayanPayPardakhtYari" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پرداخت یاری" >
                     <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M435.2 80H76.8c-24.9 0-44.6 19.6-44.6 44L32 388c0 24.4 19.9 44 44.8 44h358.4c24.9 0 44.8-19.6 44.8-44V124c0-24.4-19.9-44-44.8-44zm0 308H76.8V256h358.4v132zm0-220H76.8v-44h358.4v44z"></path></svg>
                 </a>
 

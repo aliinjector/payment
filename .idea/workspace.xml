@@ -3,6 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Checkout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/CheckoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/WalletController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_11_115841_create_checkouts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_11_115841_create_checkouts_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -138,21 +146,21 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../payment-admin" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\payment\resources\views\dashboard" />
       <recent name="E:\payment\resources\views\documnetation" />
       <recent name="$PROJECT_DIR$/resources/views/dashboard" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
   </component>
@@ -219,7 +227,11 @@
       <workItem from="1568611234595" duration="9868000" />
       <workItem from="1568627773266" duration="6330000" />
       <workItem from="1568637143943" duration="234000" />
-      <workItem from="1568637406900" duration="661000" />
+      <workItem from="1568637406900" duration="911000" />
+      <workItem from="1568638459383" duration="1454000" />
+      <workItem from="1568640073849" duration="3627000" />
+      <workItem from="1568694521088" duration="3365000" />
+      <workItem from="1568698621220" duration="3843000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -375,7 +387,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568637733094</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="migrate to mysql finished">
+      <created>1568638245304</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1568638245304</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,6 +432,7 @@
     <MESSAGE value="MongoDb Is Updated" />
     <MESSAGE value="Payment Helper Models Support Mongo" />
     <MESSAGE value="migrate to mysql" />
-    <option name="LAST_COMMIT_MESSAGE" value="migrate to mysql" />
+    <MESSAGE value="migrate to mysql finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="migrate to mysql finished" />
   </component>
 </project>

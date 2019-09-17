@@ -53,6 +53,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::resource('shop-setting', 'ShopSettingController');
     Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.updateContact');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+
+
 });
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
 Route::get('/{shop}/{id}', 'ShopController@showProduct')->name('shop.show.product');

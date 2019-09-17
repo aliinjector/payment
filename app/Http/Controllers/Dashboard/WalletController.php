@@ -18,7 +18,8 @@ class WalletController extends \App\Http\Controllers\Controller
     {
         $wallets = \Auth::user()->wallets()->get();
         $cards = \Auth::user()->cards()->get();
-        return view('dashboard.wallet', compact('wallets', 'cards'));
+        $checkouts = \Auth::user()->checkouts();
+        return view('dashboard.wallet', compact('wallets', 'cards', 'checkouts'));
     }
     /**
      * Show the form for creating a new resource.

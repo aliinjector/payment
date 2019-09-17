@@ -84,7 +84,7 @@
 
 
 
-    <div class="row">
+    <div style="text-align: center" class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
                 <div class="float-right">
@@ -106,7 +106,7 @@
                 <div class="card-body">
                     <h4 class="title-text mt-0">مجموع موجودی شما</h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold">{{ $wallets->sum('amount') }} تومان </h3></div>
+                        <h3 class="font-weight-bold">{{ number_format($wallets->sum('amount')) }} تومان </h3></div>
                 </div>
                 <!--end card-body-->
             </div>
@@ -128,9 +128,9 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تاریخ آخرین تسویه </h4>
+                    <h4 class="title-text mt-0">تاریخ آخرین تسویه انجام شده</h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold">1398/05/29 </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
+                        <h3 class="font-weight-bold"> {{ jdate($checkouts->where('status', 'انجام شده')->orderBy('updated_at', 'desc')->first()->value('updated_at')) }} </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
                 </div>
                 <!--end card-body-->
             </div>
@@ -140,9 +140,9 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">مجموع تسویه های شما </h4>
+                    <h4 class="title-text mt-0">مجموع تسویه های انجام شده </h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold">    100,301,000 تومان </h3></div>
+                        <h3 class="font-weight-bold">  {{ number_format($checkouts->where('status', 'انجام شده')->sum('amount')) }} تومان </h3></div>
                 </div>
                 <!--end card-body-->
             </div>

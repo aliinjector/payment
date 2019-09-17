@@ -20,6 +20,7 @@ class CreateCheckoutsTable extends Migration
             $table->unsignedInteger('wallet_id');
             $table->bigInteger('amount');
             $table->string('status');
+            $table->string('trackingCode');
             $table->timestamps();
         });
     }

@@ -17,8 +17,7 @@ class CheckoutController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $checkouts = Checkout::with('card');
-        dd($checkouts);
+        $checkouts = Checkout::with('user', 'card', 'wallet')->get();
         return view('dashboard.checkout', compact('checkouts'));
     }
 
@@ -43,9 +42,8 @@ class CheckoutController extends \App\Http\Controllers\Controller
 
         $trackingCode = substr(\Auth::user()->id, 22, 2). substr(uniqid(), 10, 13) . substr(time(),5 ,7);
 
-        $checkOutUser = Checkout::create([
+        $checkOutUser = \Auth::user()->checkouts()->create([
             'user_id' => \Auth::user()->id,
-            'fullName' => \Auth::user()->firstName . \Auth::user()->lastName,
             'card_id' => $request->card_id,
             'wallet_id' => $request->wallet_id,
             'amount' => $request->amount,
