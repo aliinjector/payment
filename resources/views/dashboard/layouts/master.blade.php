@@ -184,9 +184,10 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">فروشگاه ساز</h6></div>
                     <ul class="nav">
-                  @if (!\Auth::user()->shop()->get())
+                  @if (\Auth::user()->shop()->count() == 0)
                     <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>ایجاد فروشگاه</a></li>
                 @else
+                        <li class="nav-item"><a class="nav-link" target="_blank" href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}"><i class="dripicons-view-thumb"></i> مشاهده فروشگاه </a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('shop.index') }}"><i class="dripicons-view-thumb"></i>گزارشات فروشگاه شما</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>لیست کالاها / خدمات</a></li>
                         {{-- <li class="nav-item"><a class="nav-link" href="{{ route('product-detail.index') }}"><i class="dripicons-calendar"></i>جزئیات محصول</a></li> --}}

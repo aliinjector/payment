@@ -19,15 +19,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-      if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0) {
+      if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0) {
         alert()->warning('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
         return redirect()->route('product-category.index');
       }
       else{
-      $productCategories = \Auth::user()->shop()->get()->ProductCategories()->get();
-
-        $products = \Auth::user()->shop()->get()->products()->get();
-      return view('dashboard.product', compact('productCategories','products'));
+        $productCategories = \Auth::user()->shop()->first()->ProductCategories()->get();
+        $products = \Auth::user()->shop()->first()->products()->get();
+        return view('dashboard.product', compact('productCategories','products'));
       }
     }
 
@@ -97,13 +96,12 @@ class ProductController extends Controller
          $request->secure_payment = 0;
       else
       $request->secure_payment = 1;
-      $shop = \Auth::user()->shop()->get()->products()->create([
+      $shop = \Auth::user()->shop()->first()->products()->create([
         'title' => $request->title,
         'status' => $request->enable,
         'type' => $request->type,
         'color_1' => $request->color_1,
-        'product_category' => $request->product_category,
-        'product_category_id' => $request->product_category_id,
+        'productCat_id' => $request->product_category,
         'color_2' => $request->color_2,
         'color_3' => $request->color_3,
         'color_4' => $request->color_4,
@@ -134,15 +132,14 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($productCategory ,$productId)
+    public function show($id)
     {
-
+        $product = Product::find($id);
+        return view('dashboard.product-detail', compact('product'));
     }
 
     public function showProduct($productCategory ,$productId)
     {
-      $product = \Auth::user()->shop()->get()->ProductCategories()->get()->where('name', $productCategory)->first()->products()->find($productId);
-      return view('dashboard.product-detail', compact('product'));
     }
 
 
@@ -177,7 +174,7 @@ class ProductController extends Controller
      */
      public function destroy(Request $request)
     {
-      $ProductCategory = \Auth::user()->shop()->get()->products()->where('id' , $request->id)->first()->delete();
+      $ProductCategory = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
 
              // if ($product->shop->user_id !== \Auth::user()->id) {
              //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

@@ -113,7 +113,7 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            @if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0)
+                                            @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="product_category" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
                                             </select>
@@ -124,7 +124,7 @@
                                             <select class="form-control inputfield" name="product_category" id="">
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
                                                 @foreach($productCategories as $productCategory)
-                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->name }}">{{ $productCategory->name }}</option>
+                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                               @endforeach
                                             </select>
                                             @endif
@@ -310,7 +310,7 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            @if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0)
+                                            @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="product_category" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
                                             </select>
@@ -321,7 +321,7 @@
                                             <select class="form-control inputfield" name="product_category" id="">
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
                                                 @foreach($productCategories as $productCategory)
-                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->name }}">{{ $productCategory->name }}</option>
+                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                               @endforeach
                                             </select>
                                             @endif
@@ -516,7 +516,7 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            @if (\Auth::user()->shop()->get()->ProductCategories()->get()->count() == 0)
+                                            @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="product_category" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
                                             </select>
@@ -527,7 +527,7 @@
                                             <select class="form-control inputfield" name="product_category" id="">
                                                 <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
                                                 @foreach($productCategories as $productCategory)
-                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->name }}">{{ $productCategory->name }}</option>
+                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                               @endforeach
                                             </select>
                                             @endif
@@ -703,6 +703,7 @@
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending" style="width: 148px;">دسته بندی</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">نوع محصول</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 123px;">تنظیمات</th>
                                         </tr>
                                     </thead>
@@ -712,7 +713,7 @@
                                             <td class="sorting_1 w-25 "><img src="{{ $product->image }}" class="rounded" alt="" height="52" width="52">
         <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product-list.show',$product->id) }}" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
             </td>
-            <td>{{ $product->product_category }}</td>
+            <td>{{ $product->productCategory()->first()->name }}</td>
             <td>{{ $product->price }}</td>
             @if ($product->status == 1)
             <td><span class="badge badge-soft-success">
@@ -724,6 +725,14 @@
                 </span></td>
 
             @endif
+            @if ($product->type == 'service')
+              <td>خدمت</td>
+            @elseif($product->type == 'file')
+              <td>فایل</td>
+            @else
+              <td>فیزیکی</td>
+            @endif
+
             <td>
 
                 <a><i class="far fa-edit text-info mr-1 button"></i>

@@ -18,35 +18,31 @@ class ShopSettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-      if(shop()->get()){
-
-           shop::create([
-            'title' => "عنوان تست",
-            'user_id' => \Auth::user()->id,
-            'status' => 0,
-            'quick_way' => "disable",
-            'posting_way' => "disable",
-            'person_way' => "disable",
-            'description' => "توضیحات تست",
-          ]);
-
-
-        return  shop::create([
-            'shop_id' => \Auth::user()->shop()->first()->id,
-            'phone' =>  \Auth::user()->mobile,
-            'city' => "تهران",
-            'province' => "تهران",
-          ]);
-
-
-      }
-
-      $shopInformation = \Auth::user()->shop()->get();
-      $shopContactInformation = $shopInformation->shopContact()->get();
-      return view('dashboard.shop-setting', compact('shopInformation','shopContactInformation'));
-    }
+     public function index()
+        {
+          if(\Auth::user()->shop()->count() == 0){
+              $shop = new Shop;
+              $shop->name = "نام تست";
+              $shop->english_name = \Auth::user()->id;
+              $shop->user_id = \Auth::user()->id;
+              $shop->status = 0;
+              $shop->quick_way = "disable";
+              $shop->posting_way = "disable";
+              $shop->person_way = "disable";
+              $shop->description = "توضیحات تست";
+              $shop->save();
+              $shopContact = new ShopContact;
+              $shopContact->shop_id = \Auth::user()->shop()->first()->id;
+              $shopContact->phone =  \Auth::user()->mobile;
+              $shopContact->city = "تهران";
+              $shopContact->province = "تهران";
+              $shopContact->save();
+          }
+          $shopInformation = \Auth::user()->shop()->first();
+          $shopContactInformation = $shopInformation->shopContact()->first();
+          $categories = ShopCategory::all();
+          return view('dashboard.shop-setting', compact('categories','shopInformation','shopContactInformation'));
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -102,9 +98,9 @@ class ShopSettingController extends Controller
     {
       $icon = $this->uploadFile($request->file('icon'), false, false);
       $logo = $this->uploadFile($request->file('logo'), false, false);
-
-      $shop = \Auth::user()->shop()->get()->update([
-        'title' => $request->title,
+      $shop = \Auth::user()->shop()->first()->update([
+        'name' => $request->name,
+        'english_name' => $request->english_name,
         'user_id' => \Auth::user()->id,
         'status' => 0,
         'quick_way' => "disable",
@@ -121,8 +117,7 @@ class ShopSettingController extends Controller
 
 
     public function updateContact(ShopContactRequest $request){
-
-      $shop = \Auth::user()->shop()->get()->shopContact()->get()->update([
+      $shop = \Auth::user()->shop()->first()->shopContact()->get()->first()->update([
         'tel' => $request->tel,
         'shop_email' => $request->shop_email,
         'address' => $request->address,

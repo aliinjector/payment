@@ -19,9 +19,8 @@ class ProductCategoryController extends Controller
     public function index()
     {
 
-      $shop = Shop::where('user_id' ,\Auth::user()->id)->first();
-      $categoires = \Auth::user()->shop()->get()->ProductCategories()->get();
-      return view('dashboard.product-category', compact('categoires'));
+      $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
+        return view('dashboard.product-category', compact('categoires'));
     }
 
     /**
@@ -42,11 +41,13 @@ class ProductCategoryController extends Controller
      */
     public function store(ProductCategoryRequest $request)
     {
-      $shop = \Auth::user()->shop()->get();
-      $category = $shop->ProductCategories()->create($request->except('_token'));
-
-      alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
-      return redirect()->route('product-category.index');
+      $productCategory = new ProductCategory;
+    $productCategory->name = $request->name;
+    $productCategory->description = $request->description;
+    $productCategory->shop_id = \Auth::user()->shop()->first()->id;
+    $productCategory->save();
+    alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+    return redirect()->route('product-category.index');
     }
 
     /**
@@ -91,18 +92,13 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $productCategory , Request $request)
     {
-      $shop = \Auth::user()->shop()->get();
-      $ProductCategory = $shop->ProductCategories()->find($request->id)->delete();
-      foreach (\Auth::user()->shop()->get()->products()->where('product_category' ,$request->test) as $product) {
-          $product->delete();
-      }
-      // $ProductCategory = \Auth::user()->shop()->get()->products()->where('product_category' , $request->test)->first()->delete();
-             // if (Shop::where('user_id' ,\Auth::user()->id)->get() !== \Auth::user()->id) {
-             //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
-             //     return redirect()->back();
-             // }
-
-              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
-              return redirect()->back();
-          }
+      $productCategory = ProductCategory::find($request->id);
+              if ($productCategory->shop->user_id !== \Auth::user()->id) {
+                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                  return redirect()->back();
+              }
+               $productCategory->delete();
+               alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+               return redirect()->back();
+           }
 }

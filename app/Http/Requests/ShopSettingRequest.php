@@ -26,6 +26,7 @@ class ShopSettingRequest extends FormRequest
       return [
           'icon' => 'required',
           'logo' => 'required',
+          'english_name' => 'required',
       ];
     }
 }

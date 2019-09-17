@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ProductCategory;
 use App\Shop;
 use App\ShopCategory;
 
@@ -26,13 +27,7 @@ class ShopController extends Controller
      */
      protected function create(array $data)
      {
-         return Shop::create([
-             'firstName' => $data['firstName'],
-             'lastName' => $data['lastName'],
-             'mobile' => $data['mobile'],
-             'email' => $data['email'],
-             'password' => Hash::make($data['password']),
-         ]);
+
      }
 
     /**
@@ -54,8 +49,24 @@ class ShopController extends Controller
      */
     public function show($shop)
     {
-    
+        if(Shop::where('english_name' , $shop)->first() == null){
+            return abort(404);
+        }
+    $shop = Shop::where('english_name' , $shop)->first();
+    $lastProducts = $shop->products()->take(8)->get();
+    return view('app.shop', compact('shop','lastProducts'));
+
     }
+
+    public function showProduct($shop, $id)
+    {
+        if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
+            return abort(404);
+        }
+    $product = Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first();
+    return view('app.product-detail', compact('product'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.

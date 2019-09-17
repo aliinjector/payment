@@ -1,7 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('content')
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
-
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -44,10 +43,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">عنوان فروشگاه</label>
+                                <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام فروشگاه</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="title" placeholder="مثال: پایان پی"                                                value="{{ old('title', $shopInformation->title) }}"
+                                    <input class="form-control" type="text" name="name" placeholder="مثال: پایان پی"                                                value="{{ old('title', $shopInformation->name) }}"
                                     >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام فروشگاه(لاتین)</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="english_name" placeholder="این نام به عنوان آدرس اینترنتی فروشگاه شما انتخاب خواهد شد">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -56,7 +61,7 @@
                                     <input class="form-control" type="text" name="description" placeholder="مثال: فروش و توضیع محصولات با کیفیت" value="{{ old('description', $shopInformation->description) }}">
                                 </div>
                             </div>
-                  
+
                         </div>
 
                     </div>

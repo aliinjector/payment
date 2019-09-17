@@ -174,5 +174,6 @@ return array(
         'attachment' => 'فایل',
         'file_size  ' => 'حجم',
         'card_id  ' => 'شماره کارت',
+        'english_name' => 'نام لاتین فروشگاه',
     ),
 );

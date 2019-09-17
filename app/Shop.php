@@ -7,7 +7,7 @@ class Shop extends Model
 
     public function shopContact()
     {
-        return $this->hasOne('App\ShopContact');
+        return $this->hasOne('App\ShopContact','shop_id');
     }
 
    public function ProductCategories()
