@@ -24,7 +24,6 @@ class CardRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required',
             'number' => 'required|numeric|digits:16',
             'bank' => 'required',
             'month' => 'required',

@@ -13,7 +13,13 @@ class Checkout extends Model
           return $this->belongsTo('App\Card');
       }
 
-      public function wallet()
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+
+    public function wallet()
       {
           return $this->belongsTo('App\Wallet');
       }
