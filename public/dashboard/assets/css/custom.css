@@ -10,6 +10,7 @@
 .f-10 {
     font-size: 12px!important;
 }
+
 .f-19 {
     font-size: 19px!important;
 }
@@ -17,41 +18,58 @@
 .border-muted {
     border: 2px solid #E5E5E5;
 }
+
 ::placeholder {
-  color: #bbc3ce!important;
-  font-family: iranyekan!important;
-  font-size: 13px;
+    color: #bbc3ce!important;
+    font-family: iranyekan!important;
+    font-size: 13px;
 }
-.comming-soon{
-  pointer-events:none; opacity: 0.4;
+
+.comming-soon {
+    pointer-events: none;
+    opacity: 0.4;
 }
-.f-em5{
-  font-size: 5em;
+
+.f-em5 {
+    font-size: 5em;
 }
-.f-em1-5{
-  font-size: 1.5em;
+
+.f-em1-5 {
+    font-size: 1.5em;
 }
-.inputfield{
-  height:50px;
+
+.inputfield {
+    height: 50px;
 }
-.min-width-140{
-min-width: 140px;
+
+.min-width-140 {
+    min-width: 140px;
 }
-.modal-scroll{
-  overflow-y: auto;
-  max-height: 800px;
+
+.modal-scroll {
+    overflow-y: auto;
+    max-height: 800px;
 }
-.h-280px{
-  height: 280px!important;
+
+.h-280px {
+    height: 280px!important;
 }
-.h-50px{
-  height: 50px;
+
+.h-50px {
+    height: 50px;
 }
-.color-picker{
-  width: 28px;
-  height: 28px;
-  border-radius: 100px;
+
+.color-picker {
+    width: 28px;
+    height: 28px;
+    border-radius: 100px;
 }
-.min-height-160{
-  min-height: 160px;
+
+.min-height-160 {
+    min-height: 160px;
+}
+
+.menu-shop {
+    font-size: 17px!important;
+    color: #50649c!important;
 }

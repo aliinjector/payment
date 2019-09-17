@@ -40,18 +40,29 @@
 <body>@section('content')
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto mr-2">
+              @foreach ($shopCategories as $shopCategorie)
+            <li class="nav-item">
+              <a class="nav-link iranyekan f-em1-5  menu-shop" href="#" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
+            </li>
+            @endforeach
+          </ul>
+        </div>
+      </nav>
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    <div class="float-right">
+                    {{--  <div class="float-right">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item "> دسته بندی </li>
                             <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
                         </ol>
-                    </div>
+                    </div>  --}}
                     <h4 class="page-title">{{ $shop->name }}</h4>
                 </div>
                 <!--end page-title-box-->
@@ -66,41 +77,6 @@
 
         @include('dashboard.layouts.errors')
 
-        <div class="modal fade bd-example-modal-xl" id="AddProductCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">افزودن خدمت جدید</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body modal-scroll">
-                        <form action="{{ route('product-category.store') }}" method="post" class="form-horizontal">
-                            @csrf
-                            <div class="form-group mb-0">
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" placeholder="مثال: ورزشی">
-                                </div>
-
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد دسته بندی">
-                                </div>
-                            </div>
-                            <!--end form-group-->
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
-                        <button type="submit" class="btn btn-primary">ثبت درخواست</button>
-                    </div>
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
 @if($lastProducts->count() == 0)
 <div class="d-flex justify-content-center align-items-center" style="height:80vh">
 <h4>

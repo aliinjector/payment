@@ -52,9 +52,10 @@ class ShopController extends Controller
         if(Shop::where('english_name' , $shop)->first() == null){
             return abort(404);
         }
+    $shopCategories = Shop::where('english_name' , $shop)->first()->ProductCategories()->get();
     $shop = Shop::where('english_name' , $shop)->first();
     $lastProducts = $shop->products()->take(8)->get();
-    return view('app.shop', compact('shop','lastProducts'));
+    return view('app.shop', compact('shop','lastProducts','shopCategories'));
 
     }
 
