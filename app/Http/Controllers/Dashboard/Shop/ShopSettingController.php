@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Dashboard;
 use Illuminate\Http\Request;
@@ -41,7 +41,7 @@ class ShopSettingController extends Controller
           $shopInformation = \Auth::user()->shop()->first();
           $shopContactInformation = $shopInformation->shopContact()->first();
           $categories = ShopCategory::all();
-          return view('dashboard.shop-setting', compact('categories','shopInformation','shopContactInformation'));
+          return view('dashboard.shop.shop-setting', compact('categories','shopInformation','shopContactInformation'));
         }
 
     /**

@@ -45,9 +45,14 @@
           <ul class="navbar-nav mr-auto mr-2">
               @foreach ($shopCategories as $shopCategorie)
             <li class="nav-item">
-              <a class="nav-link iranyekan f-em1-5  menu-shop" href="#" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
+              <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="#" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
             </li>
             @endforeach
+          </ul>
+          <ul class="navbar-nav ml-2">
+              <li class="nav-item">
+                  <img class="h-50px" src="{{ $shop->logo }}" alt="">
+              </li>
           </ul>
         </div>
       </nav>
@@ -63,7 +68,7 @@
                             <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
                         </ol>
                     </div>  --}}
-                    <h4 class="page-title">{{ $shop->name }}</h4>
+                    <h4 class="page-title iranyekan">فروشگاه {{ $shop->name }}</h4>
                 </div>
                 <!--end page-title-box-->
             </div>
@@ -86,7 +91,7 @@
 </div>
 @else
         <!-- end page title end breadcrumb -->
-         <div class="row">
+         <div class="row p-5">
 
             @if($lastProducts[0])
                     <div class="col-lg-3">
@@ -135,10 +140,10 @@
                     @if(isset($lastProducts[2]))
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->title }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->image }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[2]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $lastProducts[1]->price }} تومان <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{ $lastProducts[2]->price }} تومان <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -205,7 +210,7 @@
 
 
 
-            <div class="row">
+            <div class="row p-5">
                     @if(isset($lastProducts[4]))
 
                     <div class="col-lg-3">

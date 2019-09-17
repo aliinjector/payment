@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Dashboard;
 use Illuminate\Http\Request;
@@ -26,7 +26,7 @@ class ProductController extends Controller
       else{
         $productCategories = \Auth::user()->shop()->first()->ProductCategories()->get();
         $products = \Auth::user()->shop()->first()->products()->get();
-        return view('dashboard.product', compact('productCategories','products'));
+        return view('dashboard.shop.product', compact('productCategories','products'));
       }
     }
 
@@ -135,7 +135,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::find($id);
-        return view('dashboard.product-detail', compact('product'));
+        return view('dashboard.shop.product-detail', compact('product'));
     }
 
     public function showProduct($productCategory ,$productId)

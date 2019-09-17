@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Shop;
 use Illuminate\Http\Request;
@@ -20,7 +20,7 @@ class ProductCategoryController extends Controller
     {
 
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
-        return view('dashboard.product-category', compact('categoires'));
+        return view('dashboard.shop.product-category', compact('categoires'));
     }
 
     /**
