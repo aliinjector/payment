@@ -53,6 +53,23 @@ input[type='radio']:checked:after {
 </head>
 <body>@section('content')
         <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto mr-2">
+                      @foreach ($shopCategories as $shopCategorie)
+                    <li class="nav-item">
+                      <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="#" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
+                    </li>
+                    @endforeach
+                  </ul>
+                  <ul class="navbar-nav ml-2">
+                      <li class="nav-item">
+                          <img class="h-50px" src="{{ $shop->logo }}" alt="">
+                      </li>
+                  </ul>
+                </div>
+              </nav>
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -60,23 +77,20 @@ input[type='radio']:checked:after {
             <div class="col-sm-12">
                 <div class="page-title-box">
                     <div class="float-right">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item ">محصول</li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
-                        </ol>
+
                     </div>
-                    <h4 class="page-title">محصول</h4>
+                    <h4 class="page-title">{{ $product->title }}</h4>
                 </div>
                 <!--end page-title-box-->
             </div>
             <!--end col-->
         </div>
         <!-- end page title end breadcrumb -->
-        <div class="row">
+        <div class="row p-5">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row">
+                        <div class="row max-height-85vh">
                             <div class="col-lg-6"><img src="{{ $product->image }}" alt="" class="col-8 d-block" height="400"></div>
                             <!--end col-->
                             <div class="col-lg-6 align-self-center">
@@ -153,7 +167,31 @@ input[type='radio']:checked:after {
                                <a href="#" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>اضافه به سبد خرید</a>
                                     </div>
                                 </div>
+
                             </div>
+
+
+                            <div class="col-12 d-flex justify-content-end bottom-buyCount">
+                                    <div class="card border w-25 fixed-box-buy">
+                                        <div class="card-body">
+                                            <div class="review-box text-center align-item-center height-20vh">
+                                                <h1 class="byekan">{{ $product->buyCount }}</h1>
+                                                <h4 class="header-title">مجموع فروش   </h4>
+                                            </div>
+                                            <div class="review-box text-center align-item-center">
+                                                <h3 class="byekan">100%</h3>
+                                                <h4 class="header-title">رضایت مشتری</h4>
+                                                <p class="text-muted mb-0">درصد عدم استرداد کالا توسط مشتری.</p>
+                                            </div>
+                                        </div>
+                                        <!--end card-body-->
+                                    </div>
+                                    <!--end card-->
+                                </div>
+
+
+
+
                             <!--end col-->
                         </div>
                         <!--end row-->
@@ -166,7 +204,7 @@ input[type='radio']:checked:after {
         </div>
         <!-- end row -->
     </div>
-    <div class="row">
+    <div class="row px-5">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -218,8 +256,8 @@ input[type='radio']:checked:after {
         </div>
         <!--end col-->
     </div>
-    <div class="row">
-        <div class="col-md-9">
+    <div class="row p-5">
+        <div class="col-md-12">
             <div class="card bg-newsletters">
                 <div class="card-body">
                     <div class="row">
@@ -245,7 +283,7 @@ input[type='radio']:checked:after {
                 <!--end card-body-->
             </div>
             <!--end card-->
-            <div class="card">
+            <div class="card min-height-50vh">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-3 align-self-center"><img src="{{ $product->image }}" alt="" height="250" class="d-block mx-auto col-12"></div>
@@ -278,58 +316,7 @@ input[type='radio']:checked:after {
             <!--end card-->
         </div>
         <!--end col-->
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-body">
-                    <div class="review-box text-center align-item-center">
-                        <h1 class="byekan">{{ $product->buyCount }}</h1>
-                        <h4 class="header-title">مجموع فروش   </h4>
-                        {{-- <ul class="list-inline mb-0 product-review">
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
-                                <li class="list-inline-item"><small class="text-muted">Total Review (700)</small></li>
-                            </ul> --}}
-                    </div>
-                    {{-- <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><span class="text-info">5 Star</span> <small class="float-right text-muted ml-3 font-14">593</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 80%; border-radius:5px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="mb-2"><span class="text-info">4 Star</span> <small class="float-right text-muted ml-3 font-14">99</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 18%; border-radius:5px;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="mb-2"><span class="text-info">3 Star</span> <small class="float-right text-muted ml-3 font-14">6</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 10%; border-radius:5px;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="mb-2"><span class="text-info">2 Star</span> <small class="float-right text-muted ml-3 font-14">2</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 1%; border-radius:5px;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li><span class="text-info">1 Star</span> <small class="float-right text-muted ml-3 font-14">0</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%; border-radius:5px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                        </ul> --}}
-                    <div class="review-box text-center align-item-center">
-                        <h3 class="byekan">100%</h3>
-                        <h4 class="header-title">رضایت مشتری</h4>
-                        <p class="text-muted mb-0">درصد عدم استرداد کالا توسط مشتری.</p>
-                    </div>
-                </div>
-                <!--end card-body-->
-            </div>
-            <!--end card-->
-        </div>
+
         <!--end col-->
     </div>
 
@@ -399,7 +386,19 @@ $(window).on('load', function() {
     //     $("a[href$='PardakhtYari']").addClass("active");
     // }
 
+    $(window).scroll(function() {
+        var scroll = $(window).scrollTop();
 
+         //>=, not <=
+        if (scroll >= 300) {
+            //clearHeader, not clearheader - caps H
+            $(".fixed-box-buy").addClass("top-fixed");
+        }
+        if (scroll <= 300) {
+            //clearHeader, not clearheader - caps H
+            $(".fixed-box-buy").removeClass("top-fixed");
+        }
+    }); //missing );
 
     });
 

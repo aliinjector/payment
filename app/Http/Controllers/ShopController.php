@@ -54,8 +54,9 @@ class ShopController extends Controller
         }
     $shopCategories = Shop::where('english_name' , $shop)->first()->ProductCategories()->get();
     $shop = Shop::where('english_name' , $shop)->first();
-    $lastProducts = $shop->products()->take(8)->get();
-    return view('app.shop', compact('shop','lastProducts','shopCategories'));
+    $lastProducts = $shop->products()->take(4)->get();
+    $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
+    return view('app.shop', compact('shop','lastProducts','shopCategories','bestSelling'));
 
     }
 
@@ -64,8 +65,10 @@ class ShopController extends Controller
         if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
             return abort(404);
         }
-    $product = Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first();
-    return view('app.product-detail', compact('product'));
+    $shop = Shop::where('english_name' , $shop)->first();
+    $shopCategories = $shop->ProductCategories()->get();
+    $product = $shop->products()->where('id', $id)->first();
+    return view('app.product-detail', compact('product','shop','shopCategories'));
     }
 
 
