@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Payment;
 
+use App\Bank;
 use App\Card;
 use App\Dashboard;
 use App\Http\Requests\CardRequest;
@@ -17,7 +18,8 @@ class CardController extends \App\Http\Controllers\Controller
     public function index()
     {
         $cards = \Auth::user()->cards()->get();
-        return view('dashboard.payment.card', compact('cards'));
+        $banks = Bank::all();
+        return view('dashboard.payment.card', compact('cards', 'banks'));
     }
 
 
@@ -84,7 +86,7 @@ class CardController extends \App\Http\Controllers\Controller
 
         $card = \Auth::user()->cards()->where('id', $request->id)->first()->update([
         'number' => $request->number,
-        'bank' => $request->bank,
+        'bank_id' => $request->bank,
         'status' => 'در انتظار تایید',
         'month' => $request->month,
         'year' => $request->year,

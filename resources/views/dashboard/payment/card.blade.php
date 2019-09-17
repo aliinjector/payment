@@ -16,8 +16,10 @@
                         <div class="form-group mb-0">
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">نام بانک:</span></div>
-                                <select class="form-control" val style="font-family: BYekan!important;" name="bank" id="">
-                                    <option style="font-family: BYekan!important;" value="sepah"> بانک سپه</option>
+                                <select class="form-control" val style="font-family: BYekan!important;" name="bank_id" id="">
+                                    @foreach ($banks as $bank)
+                                        <option  style="font-family: BYekan!important;" value="{{$bank->id}}">{{ $bank->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -240,10 +242,10 @@
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <div class="media"><img src="/images/banks/sepah.png" height="90" class="mr-3" alt="کارت بانکی">
+                    <div class="media"><img src="{{ $card->bank->icon }}" height="90" class="mr-3" alt="کارت بانکی">
                         <div class="media-body align-self-center">
                             <div class="mb-2">
-                                <span class="badge badge-primary px-3"> بانک {{ $card->bank}}</span>
+                                <span class="badge badge-primary px-3"> بانک {{ $card->bank->name}}</span>
                                 <span class="ml-2 text-muted byekan">تاریخ افزودن:{{ jdate($card->created_at) }}</span>
 
                             </div>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCardsTable extends Migration
+class CreateBanksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateCardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('cards', function (Blueprint $table) {
+        Schema::create('banks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('number');
-            $table->unsignedInteger('bank_id');
-            $table->unsignedInteger('user_id');
-            $table->string('status')->default('در انتظار تایید');
-            $table->string('month');
-            $table->string('year');
+            $table->string('name', 50);
+            $table->string('icon', 255);
+            $table->string('nameEn', 50);
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateCardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cards');
+        Schema::dropIfExists('banks');
     }
 }

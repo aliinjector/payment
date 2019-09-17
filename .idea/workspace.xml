@@ -2,34 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/bill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/checkout.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/tableReports.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/userInformation.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Bank.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/BankController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/BankFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_17_165230_create_banks_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/BankTableSeeder.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/ansar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/gardeshgari.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/ghavamin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/hekmat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/iranzamin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/kaarafarin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/keshavarzi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/kosar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/markazi.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/maskan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/mehreqtesad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/mehriran.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/melli.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/parsian.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/pasargad.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/post.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/refah.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/saderat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/saman.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/sarmayeh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/shahr.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/sina.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/sm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/taat.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/tejarat.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/tosee.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/ts.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/tt.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/BillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/BillController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Card.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CheckInquiryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CheckInquiryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CheckoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/GatewayController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/GatewayController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/TicketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/TicketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/TransactionReportController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/TransactionReportController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/UserInformationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/UserInformationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/WalletController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/WalletController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bill.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/card.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/checkout.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/chequeInquiry.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/gateway.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/tableReports.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/ticket.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/userInformation.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/wallet.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_01_062635_create_cards_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_01_062635_create_cards_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -171,16 +187,16 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
+      <recent name="E:\payment\resources\views\dashboard\payment" />
+      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\payment\resources\views\dashboard" />
       <recent name="E:\payment\resources\views\documnetation" />
       <recent name="$PROJECT_DIR$/resources/views/dashboard" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\payment\resources\views\dashboard\payment" />
-      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
-      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
   </component>
@@ -253,6 +269,7 @@
       <workItem from="1568694521088" duration="3365000" />
       <workItem from="1568698621220" duration="3843000" />
       <workItem from="1568718374383" duration="2855000" />
+      <workItem from="1568722531328" duration="4646000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -429,7 +446,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568721900961</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Payment Resource Folder Bandi Finished">
+      <created>1568722572229</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1568722572229</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,6 +494,7 @@
     <MESSAGE value="migrate to mysql finished" />
     <MESSAGE value="before folder bandi!" />
     <MESSAGE value="Payment Folder Bandi Finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment Folder Bandi Finished" />
+    <MESSAGE value="Payment Resource Folder Bandi Finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Payment Resource Folder Bandi Finished" />
   </component>
 </project>
