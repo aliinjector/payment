@@ -39,18 +39,18 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::get('transactionReport/gateway/{gateway}', 'TransactionReportController@gatewayReport')->name('transactionReport.gateway');
     });
 
+    Route::namespace('Shop')->prefix('shop')->middleware('auth')->group(function () {
+        Route::resource('shop', 'ShopController');
+        Route::resource('product-list', 'ProductController');
+        Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
+        Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
+        Route::resource('product-detail', 'ProductDetailController');
+        Route::resource('product-category', 'ProductCategoryController');
+        Route::post('product-category/delete', 'ProductCategoryController@destroy');
+        Route::resource('shop-setting', 'ShopSettingController');
+        Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.updateContact');
+    });
 
-
-
-    Route::resource('shop', 'ShopController');
-    Route::resource('product-list', 'ProductController');
-    Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
-    Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
-    Route::resource('product-detail', 'ProductDetailController');
-    Route::resource('product-category', 'ProductCategoryController');
-    Route::post('product-category/delete', 'ProductCategoryController@destroy');
-    Route::resource('shop-setting', 'ShopSettingController');
-    Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.updateContact');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
