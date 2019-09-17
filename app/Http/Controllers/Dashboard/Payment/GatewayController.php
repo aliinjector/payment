@@ -21,7 +21,7 @@ class GatewayController extends \App\Http\Controllers\Controller
     {
         $gateways = \Auth::user()->gateways()->get();
         $wallets = \Auth::user()->wallets()->get();
-        return view('dashboard.gateway', compact('gateways', 'wallets'));
+        return view('dashboard.payment.gateway', compact('gateways', 'wallets'));
     }
     /**
      * Show the form for creating a new resource.

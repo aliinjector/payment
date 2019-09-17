@@ -19,7 +19,7 @@ class TransactionReportController extends \App\Http\Controllers\Controller
         }
 
         $checkouts = \Auth::user()->checkouts()->get();
-        return view('dashboard.checkout', compact('checkouts'));
+        return view('dashboard.payment.checkout', compact('checkouts'));
     }
 
     public function gatewayReport(Wallet $wallet)
@@ -31,7 +31,7 @@ class TransactionReportController extends \App\Http\Controllers\Controller
         }
 
         $checkouts = \Auth::user()->checkouts()->get();
-        return view('dashboard.checkout', compact('checkouts'));
+        return view('dashboard.payment.checkout', compact('checkouts'));
     }
 
 

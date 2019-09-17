@@ -22,7 +22,7 @@ class UserInformationController extends \App\Http\Controllers\Controller
         }
 
         $userInformation = \Auth::user()->userInformation()->first();
-        return view('dashboard.userInformation', compact('userInformation'));
+        return view('dashboard.payment.userInformation', compact('userInformation'));
     }
 
     /**

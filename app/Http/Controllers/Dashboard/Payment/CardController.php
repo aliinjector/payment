@@ -17,7 +17,7 @@ class CardController extends \App\Http\Controllers\Controller
     public function index()
     {
         $cards = \Auth::user()->cards()->get();
-        return view('dashboard.card', compact('cards'));
+        return view('dashboard.payment.card', compact('cards'));
     }
 
 

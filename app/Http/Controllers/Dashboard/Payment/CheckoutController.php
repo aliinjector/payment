@@ -18,7 +18,7 @@ class CheckoutController extends \App\Http\Controllers\Controller
     public function index()
     {
         $checkouts = Checkout::with('user', 'card', 'wallet')->get();
-        return view('dashboard.checkout', compact('checkouts'));
+        return view('dashboard.payment.checkout', compact('checkouts'));
     }
 
 

@@ -16,7 +16,7 @@ class TicketController extends \App\Http\Controllers\Controller
     public function index()
     {
         $tickets = \Auth::user()->tickets()->get();
-        return view('dashboard.ticket', compact('tickets'));
+        return view('dashboard.payment.ticket', compact('tickets'));
     }
 
     /**

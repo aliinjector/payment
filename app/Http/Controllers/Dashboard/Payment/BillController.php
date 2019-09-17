@@ -15,7 +15,7 @@ class BillController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.bill');
+        return view('dashboard.payment.bill');
     }
 
     /**

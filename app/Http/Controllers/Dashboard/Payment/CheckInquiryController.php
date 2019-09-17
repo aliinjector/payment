@@ -14,7 +14,7 @@ class CheckInquiryController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.chequeInquiry');
+        return view('dashboard.payment.chequeInquiry');
     }
 
     /**
