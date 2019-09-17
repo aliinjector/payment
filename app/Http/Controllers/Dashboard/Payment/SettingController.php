@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Payment;
 
-use App\CheckInquiry;
+use App\Dashboard;
 use Illuminate\Http\Request;
 
-class CheckInquiryController extends \App\Http\Controllers\Controller
+class SettingController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CheckInquiryController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.chequeInquiry');
+        return view('dashboard.setting');
     }
 
     /**
@@ -41,10 +41,10 @@ class CheckInquiryController extends \App\Http\Controllers\Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CheckInquiry  $checkInquiry
+     * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function show(CheckInquiry $checkInquiry)
+    public function show(Setting $setting)
     {
         //
     }
@@ -52,10 +52,10 @@ class CheckInquiryController extends \App\Http\Controllers\Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CheckInquiry  $checkInquiry
+     * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function edit(CheckInquiry $checkInquiry)
+    public function edit(Setting $setting)
     {
         //
     }
@@ -64,10 +64,10 @@ class CheckInquiryController extends \App\Http\Controllers\Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CheckInquiry  $checkInquiry
+     * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CheckInquiry $checkInquiry)
+    public function update(Request $request, Setting $setting)
     {
         //
     }
@@ -75,10 +75,10 @@ class CheckInquiryController extends \App\Http\Controllers\Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CheckInquiry  $checkInquiry
+     * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CheckInquiry $checkInquiry)
+    public function destroy(Setting $setting)
     {
         //
     }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Payment;
 
-use App\Dashboard;
+use App\Bill;
+use App\Http\Requests\CardRequest;
 use Illuminate\Http\Request;
 
-class SettingController extends \App\Http\Controllers\Controller
+class BillController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class SettingController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.setting');
+        return view('dashboard.bill');
     }
 
     /**
@@ -41,10 +42,10 @@ class SettingController extends \App\Http\Controllers\Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Setting  $setting
+     * @param  \App\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function show(Setting $setting)
+    public function show(Bill $bill)
     {
         //
     }
@@ -52,10 +53,10 @@ class SettingController extends \App\Http\Controllers\Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Setting  $setting
+     * @param  \App\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function edit(Setting $setting)
+    public function edit(Bill $bill)
     {
         //
     }
@@ -64,10 +65,10 @@ class SettingController extends \App\Http\Controllers\Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Setting  $setting
+     * @param  \App\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Setting $setting)
+    public function update(Request $request, Bill $bill)
     {
         //
     }
@@ -75,10 +76,10 @@ class SettingController extends \App\Http\Controllers\Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Setting  $setting
+     * @param  \App\Bill  $bill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Setting $setting)
+    public function destroy(Bill $bill)
     {
         //
     }

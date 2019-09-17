@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Payment;
 
-use App\Bill;
-use App\Http\Requests\CardRequest;
+use App\CheckInquiry;
 use Illuminate\Http\Request;
 
-class BillController extends \App\Http\Controllers\Controller
+class CheckInquiryController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class BillController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.bill');
+        return view('dashboard.chequeInquiry');
     }
 
     /**
@@ -42,10 +41,10 @@ class BillController extends \App\Http\Controllers\Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Bill  $bill
+     * @param  \App\CheckInquiry  $checkInquiry
      * @return \Illuminate\Http\Response
      */
-    public function show(Bill $bill)
+    public function show(CheckInquiry $checkInquiry)
     {
         //
     }
@@ -53,10 +52,10 @@ class BillController extends \App\Http\Controllers\Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Bill  $bill
+     * @param  \App\CheckInquiry  $checkInquiry
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bill $bill)
+    public function edit(CheckInquiry $checkInquiry)
     {
         //
     }
@@ -65,10 +64,10 @@ class BillController extends \App\Http\Controllers\Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bill  $bill
+     * @param  \App\CheckInquiry  $checkInquiry
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bill $bill)
+    public function update(Request $request, CheckInquiry $checkInquiry)
     {
         //
     }
@@ -76,10 +75,10 @@ class BillController extends \App\Http\Controllers\Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Bill  $bill
+     * @param  \App\CheckInquiry  $checkInquiry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bill $bill)
+    public function destroy(CheckInquiry $checkInquiry)
     {
         //
     }
