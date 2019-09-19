@@ -25,7 +25,7 @@ class CardRequest extends FormRequest
     {
         return [
             'number' => 'required|numeric|digits:16',
-            'bank' => 'required',
+            'bank_id' => 'required',
             'month' => 'required',
             'year' => 'required',
         ];
