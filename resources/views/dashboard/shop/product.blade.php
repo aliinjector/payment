@@ -133,8 +133,8 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
+                                            <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
@@ -331,7 +331,7 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">

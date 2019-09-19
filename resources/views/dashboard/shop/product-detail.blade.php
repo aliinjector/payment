@@ -76,7 +76,7 @@ input[type='radio']:checked:after {
                                             <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
                                             <li class="list-inline-item">4.5 (30 reviews)</li>
                                         </ul> --}}
-                                    <h2 class="pro-price">{{ $product->price }} ریال</h2>
+                                    <h2 class="pro-price">{{ $product->price }} تومان</h2>
                                     <h6 class="text-muted font-13">ویژگی ها :</h6>
                                     <ul class="list-unstyled pro-features border-0 iranyekan">
                                       @if ($product->feature_1)
@@ -242,7 +242,7 @@ input[type='radio']:checked:after {
                                 <li class="mb-2 font-13 text-muted"><i class="mdi mdi-checkbox-marked-circle-outline text-success mr-2"></i>{{ $product->feature_4 }}.</li>
                               @endif
                             </ul>
-                          
+
                             <!--end row-->
                         </div>
                         <!--end col-->

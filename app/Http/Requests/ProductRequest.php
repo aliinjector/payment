@@ -41,7 +41,8 @@ else if($request->type == 'file'){
     'amount' => 'required',
     'price' => 'required',
     'file_size' => 'required',
-    'attachment' => 'required',
+    'attachment' => 'required|mimes:doc,docx,pdf|max:2048',
+
   ];
 }
 else{

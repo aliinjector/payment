@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,14 @@
 */
 Auth::routes();
 
+// Route::get('/docs', 'DocumentationController@index')->name('documentation');
+// if (! $request->hasValidSignature()) {
+//     abort(401);
+// }
+
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
+
+
 Route::get('/', 'IndexController@index');
 
 
@@ -53,6 +61,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });
+Route::get('/file-download', 'ShopController@test');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
+Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');
+Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
 Route::get('/{shop}/{id}', 'ShopController@showProduct')->name('shop.show.product');
+Route::get('/{shop}/category/{categroyId}', 'ShopController@showCategory')->name('shop.show.category');
+
 

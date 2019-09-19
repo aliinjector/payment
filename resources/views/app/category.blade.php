@@ -93,34 +93,17 @@ h2 {
             <!--end col-->
         </div>
 
-        {{--  <div class="text-right">
-            <a href="#" data-toggle="modal" data-target="#AddProductCategoryModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold"><i class="fa fa-plus mr-2"></i>اضافه کردن دسته بندی</a>
-        </div>
-  --}}
-
-        @include('dashboard.layouts.errors')
-
-@if($lastProducts->count() == 0)
-<div class="d-flex justify-content-center align-items-center" style="height:80vh">
-<h4>
-    هیچ محصولی در این فروشگاه وجود ندارد
-
-</h4>
 </div>
-@else
-        <!-- end page title end breadcrumb -->
-
-        <h2><span>اخرین محصولات </span></h2>
-
-
+        <h2><span>اخرین محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
          <div class="row p-5">
-            @if($lastProducts[0])
-                    <div class="col-lg-3">
+                @foreach ($products as $product)
+
+                    <div class="col-lg-2">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><img src="{{ $lastProducts[0]->image }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[0]->title }}</a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image }}" alt="" class="img-fluid"></a>
+                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $product->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
-                                    <p class="product-price byekan">{{ $lastProducts[0]->price }} تومان  <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{ $product->price }} تومان  <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -130,190 +113,9 @@ h2 {
                         </div>
                         <!--end card-->
                     </div>
-                    @endif
+                    @endforeach
 
-
-                    <!--end col-->
-
-                    @if(isset($lastProducts[1]))
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}"><img src="{{ $lastProducts[1]->image }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[1]->title }}</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $lastProducts[1]->price }} تومان <span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    @endif
-
-
-
-                    @if(isset($lastProducts[2]))
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->image }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[2]->title }}</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $lastProducts[2]->price }} تومان <span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endif
-
-                    <!--end col-->
-                    @if(isset($lastProducts[3]))
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}"><img src="{{ $lastProducts[3]->image }}" alt="" class="img-fluid"></a>
-                            <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a>{{ $lastProducts[3]->title }}</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $lastProducts[3]->price }} تومان <span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endif
-
-                    <!--end col-->
                 </div>
-    </div>
-
-
-
-
-
-    <div class="row">
-                <div class="col-12">
-                    <div class="card offer-box">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4 mx-auto">
-                                    <div class="offer-content text-center justify-content-center">
-                                        <p class="text-muted">پیشنهاد ویژه</p>
-                                        <h3 class="mb-3">50% صرفه جویی در هزینه ها</h3>
-                                        <hr class="thick">
-                                        <h5 class="text-muted iranyekan">با خرید از سامانه آنلاین</h5></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end card-->
-                </div>
-                <!--end col-->
-            </div>
-
-
-
-
-            <h2 class="mt-5"><span>پرفروش ترین محصولات</span></h2>
-
-            <div class="row p-5">
-                    @if(isset($bestSelling[0]))
-
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}"><img src="{{ $bestSelling[0]->image }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a> {{ $bestSelling[0]->title }} </a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[0]->price }} تومان<span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endif
-
-                    <!--end col-->
-                    @if(isset($bestSelling[1]))
-
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}"><img src="{{ $bestSelling[1]->image }}" alt="" class="img-fluid"></a>
-                            <div class="ribbon ribbon-secondary"><span>جدید</span></div>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a>{{ $bestSelling[1]->title }}</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[1]->price }} تومان <span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endif
-
-                    <!--end col-->
-
-                    @if(isset($bestSelling[2]))
-
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}"><img src="{{ $bestSelling[2]->image }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $bestSelling[2]->title }}</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[2]->price }} تومان <span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endif
-
-                    <!--end col-->
-
-                    @if(isset($bestSelling[3]))
-
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}"><img src="{{ $bestSelling[3]->image }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $bestSelling[3]->title }}</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[3]->price }} تومان <span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endif
-
-                    <!--end col-->
-                </div>
-                @endif
 
     <!-- container -->
 

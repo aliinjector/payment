@@ -15,7 +15,7 @@ class UserInformationController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        if(!\Auth::user()->userInformation()->get()){
+        if(\Auth::user()->userInformation()->first() == null){
             \Auth::user()->userInformation()->create([
             'status' => 1,
             ]);

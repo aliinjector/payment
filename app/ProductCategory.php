@@ -6,7 +6,7 @@ class ProductCategory extends Model
   protected $guarded = ['id'];
   public function products()
    {
-       return $this->hasMany('App\Product');
+       return $this->hasMany('App\Product','productCat_id','id');
    }
    public function shop()
   {

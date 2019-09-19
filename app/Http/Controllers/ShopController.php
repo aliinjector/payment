@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\ProductCategory;
 use App\Shop;
 use App\ShopCategory;
+use App\ProductCategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
+use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
 {
@@ -71,6 +72,17 @@ class ShopController extends Controller
     return view('app.product-detail', compact('product','shop','shopCategories'));
     }
 
+    public function showCategory($shop, $categroyId)
+    {
+        // if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
+        //     return abort(404);
+        // }
+    $shop = Shop::where('english_name' , $shop)->first();
+    $shopCategories = $shop->ProductCategories()->get();
+    $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->get();
+    return view('app.category', compact('products','shopCategories','shop'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -81,6 +93,28 @@ class ShopController extends Controller
     public function edit(Shop $shop)
     {
         //
+    }
+
+    public function test()
+    {
+        return  redirect(URL::temporarySignedRoute(
+            'documentation', now()->addMinutes(1)));
+    }
+
+    public function downlaodFile($shop , $id)
+    {
+        return  redirect(URL::temporarySignedRoute(
+            'download.link', now()->addMinutes(1), ['shop' => $shop , 'id' => $id]));
+    }
+
+    public function downlaodLink(Request $request,$shop, $id)
+    {
+        if (! $request->hasValidSignature()) {
+            abort(401);
+        }
+        $uri = Shop::where('english_name' , $shop)->get()->first()->products()->where('id', $id)->get()->first()->attachment;
+        $uri = ltrim($uri, '/');
+        return response()->file($uri);
     }
 
     /**
