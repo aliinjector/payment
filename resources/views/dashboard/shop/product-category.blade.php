@@ -1,6 +1,10 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+
+    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
 <div class="page-content">
     <div class="container-fluid">
@@ -241,28 +245,12 @@
 
                     <p class="text-muted mb-4 font-13">لیست تمامی محصولات شما</p>
                     <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="dataTables_length" id="datatable_length">
-                                    <label>نمایش
-                                        <select name="datatable_length" aria-controls="datatable" class="custom-select custom-select-sm form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select> ورودی ها</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div id="datatable_filter" class="dataTables_filter">
-                                    <label class="text-left">جستوجو:
-                                        <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col-sm-12">
+
+
+
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                     <thead>
                                         <tr role="row">
@@ -288,6 +276,8 @@
 
                                     </tbody>
                                 </table>
+
+
                                 @if ($categoires->count() == 0)
                                   <p class="font-17 text-center font-weight-bold"> دسته بندی وجود ندارد
                                   </p>
@@ -295,21 +285,7 @@
 
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-5">
-                                <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
-                            </div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">قبلی</a></li>
-                                        <li class="paginate_button page-item active"><a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item next" id="datatable_next"><a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0" class="page-link">بعدی</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -321,7 +297,17 @@
 
 
 @section('pageScripts')
-<script>
+
+        <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+
+
+
+        <script>
     $(document).on('click', '#ttttt', function(e) {
         e.preventDefault();
         var id = $(this).data('id');

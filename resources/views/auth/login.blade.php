@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                 <label for="username">آدرس ایمیل</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
-                                    <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="مثال: Rahmani@p.com">
+                                    <input type="text" class="form-control @error('email') is-invalid @enderror"  value="{{old('email')}}"  name="email" id="email" placeholder="مثال: Rahmani@p.com">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

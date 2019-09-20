@@ -66,28 +66,28 @@
                                 </li>
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#">درباره پایان پی</a>
+                                    <a class="menu-link nav-link" href="#about">درباره پایان پی</a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#"> خدمات پایان پی </a>
+                                    <a class="menu-link nav-link" href="#services"> خدمات پایان پی </a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#">مستندات</a>
+                                    <a class="menu-link nav-link" target="_blank" href="/docs">مستندات</a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#">آموزش</a>
+                                    <a class="menu-link nav-link"  target="_blank" href="/docs"">آموزش</a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#">سوالات متداول</a>
+                                    <a class="menu-link nav-link" href="#faq">سوالات متداول</a>
                                 </li>
 
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#">تماس باما</a>
+                                    <a class="menu-link nav-link" href="#contact">تماس باما</a>
                                 </li>
 
 
@@ -130,8 +130,8 @@
                                                 <a class="btn btn-grad" href="{{ route('register') }}">عضویت در سیستم پایان پی</a>
                                             </div>
                                             <ul class="cpn-links animated" data-animate="fadeInUp" data-delay="1.3">
-                                                <li><a class="link" href="#"><em class="link-icon far fa-file-alt"></em>مراحل احراز هویت پرداخت یاری</a></li>
-                                                <li><a class="link" href="#"><em class="link-icon fas fa-lightbulb"></em>سایر راهکار های آنلاین</a></li>
+                                                <li><a class="link" href="#steps"><em class="link-icon far fa-file-alt"></em>مراحل احراز هویت پرداخت یاری</a></li>
+                                                <li><a class="link" href="#services"><em class="link-icon fas fa-lightbulb"></em> راهکار های آنلاین پایان پی</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -153,29 +153,30 @@
         <section class="section no-pd text-center over-up">
             <ul class="rank-list">
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay=".9">
-                    <span>نام سرویس</span>
-                    <div class="rank-count">۱۰ <span>/۵</span></div>
+                    <span class="rank-count">پرداخت یاری</span>
                 </li>
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay="1">
-                    <span>نام سرویس</span>
-                    <div class="rank-count">۱۰ <span>/۵</span></div>
+                    <span class="rank-count">فروشگاه ساز</span>
                 </li>
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.1">
-                    <span>نام سرویس</span>
-                    <div class="rank-count">۱۰ <span>/۵</span></div>
+                    <span class="rank-count">پرداخت قبوض</span>
                 </li>
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.2">
-                    <span>نام سرویس</span>
-                    <div class="rank-count">۱۰ <span>/۵</span></div>
+                    <span class="rank-count">مدیریت شارژ</span>
                 </li>
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.3">
-                    <span>نام سرویس</span>
-                    <div class="rank-count">۱۰ <span>/۵</span></div>
+                    <span class="rank-count">پرداخت قبوض</span>
+                </li>
+                <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.4">
+                    <span class="rank-count">استعلام چک</span>
+                </li>
+                <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.5">
+                    <div class="rank-count">پرداخت تلفنی </div>
                 </li>
             </ul>
         </section>
         <!-- // -->
-        <section class="section bg-light section-l section-about" id="about">
+        <section id="about" class="section bg-light section-l section-about" id="about">
 
             <div class="container">
                 <!-- Block @s -->
@@ -244,7 +245,7 @@
 
         </section>
         <!-- // -->
-        <section class="section section-l section-features bg-white" id="why">
+        <section id="steps" class="section section-l section-features bg-white" id="why">
 
             <div class="container">
                 <!-- Block @s -->
@@ -299,7 +300,7 @@
 
         </section>
         <!-- // -->
-        <section class="section section-l section-problem bg-light" id="problem">
+        <section id="services" class="section section-l section-problem bg-light" id="problem">
 
             <div class="container">
                 <!-- Section Head @s -->
@@ -370,6 +371,17 @@
                 <div class="nk-block nk-block-features-s3 mgb-m40 mgt-m20">
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-md-10">
+                            <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".5">
+                                <div class="feature-icon">
+                                    <em class="icon icon-lg ikon ikon-cash"></em>
+                                </div>
+                                <div class="feature-text">
+                                    <h4 class="title title-md title-dark">شارژ ساختمان</h4>
+                                    <p> با استفاده از سرویس مدیریت شارژ، مدیران ساختمان می توانند هر ماه شارژ واحدهای ساختمان خود را  به سادگی محاسبه نموده و در همان لحظه به تمامی ساکنین اطلاع رسانی نمایند  </p>
+                                </div>
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-lg-6 col-md-10">
                             <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".3">
                                 <div class="feature-icon">
                                     <em class="icon icon-lg ikon ikon-cloud"></em>
@@ -387,21 +399,11 @@
                                 </div>
                                 <div class="feature-text">
                                     <h4 class="title title-md title-dark">سرویس های پرداخت عوارض و فروش بلیط </h4>
-                                    <p> با استفاده از سرویس مدیریت شارژ، مدیران ساختمان می توانند هر ماه شارژ واحدهای ساختمان خود را  به سادگی محاسبه نموده و در همان لحظه به تمامی ساکنین اطلاع رسانی نمایند  </p>
+                                    <p> با استفاده از سرویس پرداخت عوارض قادر خواهید بود عوارض خودرا بصورت آنلاین با استفاده از کیف پول پایان پی پرداخت نمایید. </p>
                                 </div>
                             </div>
                         </div><!-- .col -->
-                        <div class="col-lg-6 col-md-10">
-                            <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".5">
-                                <div class="feature-icon">
-                                    <em class="icon icon-lg ikon ikon-cash"></em>
-                                </div>
-                                <div class="feature-text">
-                                    <h4 class="title title-md title-dark">شارژ ساختمان</h4>
-                                    <p> با استفاده از سرویس مدیریت شارژ، مدیران ساختمان می توانند هر ماه شارژ واحدهای ساختمان خود را  به سادگی محاسبه نموده و در همان لحظه به تمامی ساکنین اطلاع رسانی نمایند  </p>
-                                </div>
-                            </div>
-                        </div><!-- .col -->
+
                         <div class="col-lg-6 col-md-10">
                             <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".6">
                                 <div class="feature-icon">
@@ -409,7 +411,7 @@
                                 </div>
                                 <div class="feature-text">
                                     <h4 class="title title-md title-dark">ارتباط با کیف پول</h4>
-                                    <p> با استفاده از سرویس مدیریت شارژ، مدیران ساختمان می توانند هر ماه شارژ واحدهای ساختمان خود را  به سادگی محاسبه نموده و در همان لحظه به تمامی ساکنین اطلاع رسانی نمایند  </p>
+                                    <p> قابلیت ارتباط با سیستم کیف پول و امکان دریافت و پرداخت وجه از طریق کیف پول </p>
                                 </div>
                             </div>
                         </div><!-- .col -->
@@ -461,7 +463,7 @@
                                     <table class="table table-token">
                                         <tbody>
                                         <tr>
-                                            <td class="table-head">خصوصیت شماره ۱</td>
+                                            <td class="table-head">امکان تقسیم سود</td>
                                             <td class="table-des">توضیح</td>
                                         </tr>
                                         <tr>
@@ -551,8 +553,8 @@
                                             <h4 class="title title-md">مستندات فنی</h4>
                                             <p> تیم برنامه نویسی پایان پی، با درنظر گرفتن نیاز تمامی کاربران محترم سامانه اقدام به ایجاد فایل های ویدیویی آموزشی مربوط به تمامی قسمت های سامانه و پلاگین ها برای انواع سیستم های محتوی و فریم ورک های وب کرده و شما کاربران گرامی میتوانید با ورود به بخش مستندات از این فایل ها استفاده نمایید.    </p>
                                             <ul class="btn-grp gutter-30px gutter-vr-20px">
-                                                <li><a href="#" class="btn btn-grad">ورود به بخش مستندات</a></li>
-                                                <li><a href="#" class="link"><em class="link-icon fas fa-file-alt"></em> دریافت فایل </a></li>
+                                                <li><a href="/docs" class="btn btn-grad">ورود به بخش مستندات</a></li>
+{{--                                                <li><a href="#" class="link"><em class="link-icon fas fa-file-alt"></em> دریافت فایل </a></li>--}}
                                             </ul>
                                         </div>
                                     </div><!-- .col -->
@@ -583,7 +585,7 @@
                         <div class="col-lg-5 col-md-10 text-center text-lg-left">
                             <div class="nk-block-text">
                                 <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">نرم افزار موبایل <br class="d-none d-md-block"> پایان پی</h2>
-                                <p class="animated" data-animate="fadeInUp" data-delay=".2"> باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن باتوجه به افزایش روز افزودن  </p>
+                                <p class="animated" data-animate="fadeInUp" data-delay=".2"> باتوجه به افزایش روز افزودن استفاده از تلفن همراه بعنوان دریچه ارتباط با دنیای مجازی در جهان، تیم طراحی و توسعه شرکت فناور ستاره نوران با هدف ایجاد پلتفرم یکپارچه و سهولت در استفاده از سامانه ئایان پی، اقدام به طراحی اپلیکیشن موبایل کرده است که به زودی قابل دسترس عموم قرار خواهد گرفت.  </p>
                                 <div class="pdt-m animated" data-animate="fadeInUp" data-delay=".3">
                                     <a href="#" class="btn btn-grad">به زودی</a>
                                 </div>
@@ -645,10 +647,7 @@
                                 <ul class="list list-check animated" data-animate="fadeInUp" data-delay=".4">
                                     <li>گزارشات گردش حساب</li>
                                     <li>گزارشات بازه زمانی</li>
-                                    <li>گزارشات گردش حساب</li>
-                                    <li>گزارشات بازه زمانی</li>
-                                    <li>گزارشات گردش حساب</li>
-                                    <li>گزارشات بازه زمانی</li>
+                                    <li>قابلیت استفاده از پلتفرم های مختلف</li>
                                 </ul>
                             </div>
                         </div>
@@ -720,7 +719,7 @@
 
         </section>
 
-        <section class="section section-l section-faq bg-white" id="faq">
+        <section id="faq" class="section section-l section-faq bg-white" id="faq">
 
             <div class="container">
                 <!-- Section Head @s -->
@@ -896,8 +895,8 @@
         </section>
     </main>
 
-    <footer class="nk-footer bg-theme-grad">
-        <section class="section no-pdy section-contact bg-transparent">
+    <footer id="contact" class="nk-footer bg-theme-grad">
+        <section  class="section no-pdy section-contact bg-transparent">
 
             <div class="container">
                 <!-- Block @s -->
@@ -938,20 +937,21 @@
                                         <li>
                                             <em class="contact-icon fas fa-building"></em>
                                             <div class="contact-text">
-                                                <h6>شرکت فناور ستاره نوران</h6>
+                                                <h6>منطقه آزاد انزلی - مجتمع تجاری اداری ستاره شمال - طبقه اول - واحد 2136
+                                                    شرکت فناور ستاره نوران</h6>
                                                 <span></span>
                                             </div>
                                         </li>
                                         <li>
                                             <em class="contact-icon fas fa-phone"></em>
                                             <div class="contact-text">
-                                                <span class="byekan">021-44942284</span>
+                                                <span class="byekan">91008658</span>
                                             </div>
                                         </li>
                                         <li>
                                             <em class="contact-icon fas fa-envelope"></em>
                                             <div class="contact-text">
-                                                <span>info@payyyyy.ir</span>
+                                                <span>info@payanpay.ir</span>
                                             </div>
                                         </li>
                                         <li>
@@ -992,10 +992,10 @@
                                 <h6 class="wgs-title">پایان پی</h6>
                                 <div class="wgs-body">
                                     <ul class="wgs-links">
-                                        <li><a href="#">درباره ما</a></li>
-                                        <li><a href="#">خدمات پایان پی</a></li>
-                                        <li><a href="#">مستندات</a></li>
-                                        <li><a href="#">آموزش</a></li>
+                                        <li><a href="#about">درباره ما</a></li>
+                                        <li><a href="#services">خدمات پایان پی</a></li>
+                                        <li><a  target="_blank" href="/docs">مستندات</a></li>
+                                        <li><a  target="_blank" href="/docs">آموزش</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1006,10 +1006,10 @@
                                 <h6 class="wgs-title">لینک های کاربردی</h6>
                                 <div class="wgs-body">
                                     <ul class="wgs-links">
-                                        <li><a href="#">مستندات</a></li>
-                                        <li><a href="#">آموزش</a></li>
-                                        <li><a href="#">سورس کدها</a></li>
-                                        <li><a href="#">سوالات متداول</a></li>
+                                        <li><a target="_blank" href="/docs">مستندات</a></li>
+                                        <li><a  target="_blank" href="/docs">آموزش</a></li>
+                                        <li><a  target="_blank" href="/docs">سورس کدها</a></li>
+                                        <li><a href="#faq">سوالات متداول</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -1019,10 +1019,10 @@
                                 <h6 class="wgs-title">حقوقی</h6>
                                 <div class="wgs-body">
                                     <ul class="wgs-links">
-                                        <li><a href="#">قوانین</a></li>
-                                        <li><a href="#">حریم خصوصی</a></li>
-                                        <li><a href="#">شرایط استفاده</a></li>
-                                        <li><a href="#">مراحل احراز هویت</a></li>
+                                        <li><a  target="_blank" href="/docs">قوانین</a></li>
+                                        <li><a  target="_blank" href="/docs">حریم خصوصی</a></li>
+                                        <li><a  target="_blank" href="/docs">شرایط استفاده</a></li>
+                                        <li><a href="#steps">مراحل احراز هویت</a></li>
                                     </ul>
                                 </div>
                             </div>
