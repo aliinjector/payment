@@ -1,5 +1,8 @@
 @extends('dashboard.layouts.master')
 @section('content')
+<link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
 <div class="row">
@@ -38,7 +41,7 @@
                                     <tbody>
                                         @foreach($purchases as $purchase)
                                         <tr class="byekan">
-                                            <td><img class="product-img" src="{{ $purchase->product()->first()->image}}" alt="user"></td>
+                                            <td><img class="product-img" src="{{ $purchase->product()->first()->image['80,80']}}" alt="user"></td>
                                             <td>{{ $purchase->product()->first()->title}}</td>
                                             <td>{{ jdate($purchase->created_at) }}</td>
                                             <td>{{ $purchase->product()->first()->price }}تومان</td>
@@ -66,6 +69,12 @@
 
 @endsection
 @section('pageScripts')
+<script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
 <script>
     $(document).ready(function() {
         $(".test1").click(function() {

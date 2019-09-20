@@ -49,10 +49,12 @@
                                     >
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام فروشگاه(لاتین)</label>
+                            <div class="form-group row  mb-0">
+                                <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام فروشگاه(لاتین)
+                                    <p class="text-muted mt-1" style="font-size: 11px;">این نام به عنوان آدرس اینترنتی شما انتخاب خواهد شد </p>
+                                </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="english_name" placeholder="این نام به عنوان آدرس اینترنتی فروشگاه شما انتخاب خواهد شد">
+                                    <input class="form-control" type="text" name="english_name"   value="{{ old('english_name', $shopInformation->english_name) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -74,12 +76,12 @@
                                 <p class="text-muted mb-0">
                                     حداقل مبلغ سبد خرید فقط برای تهران ۰ تومان.</p>
                             </div>
-                            <div class="mt-3">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons1">
-                                    <button type="button" class="btn btn-soft-success btn-round waves-effect waves-light mr-2 iranyekan"><i class="mdi mdi-check-all mr-2 "></i>فعال</button>
-                                    <button type="button" class="btn btn-soft-pink btn-round waves-effect waves-light iranyekan"><i class="mdi mdi-power mr-2"></i>غیرفعال</button>
+                            <div class="mt-3 row">
+                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                    <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way">
+                                    <label class="custom-control-label iranyekan font-15" for="quick_way_on">رفعال</label>
                                 </div>
-                                <!--end btn-group-->
+
                             </div>
                             <!--end /div-->
                         </div>
@@ -98,12 +100,12 @@
 
                                     هزینه ارسال برای تهران ۵٫۰۰۰ تومان.</p>
                             </div>
-                            <div class="mt-3">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons2">
-                                    <button type="button" class="btn btn-soft-success btn-round waves-effect waves-light mr-2 iranyekan"><i class="mdi mdi-check-all mr-2"></i>فعال</button>
-                                    <button type="button" class="btn btn-soft-pink btn-round waves-effect waves-light iranyekan"><i class="mdi mdi-power mr-2"></i>غیرفعال</button>
+                            <div class="mt-3 row">
+                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                    <input type="checkbox" class="custom-control-input" id="posting_way_on" name="posting_way">
+                                    <label class="custom-control-label iranyekan font-15" for="posting_way_on">فعال</label>
                                 </div>
-                                <!--end btn-group-->
+
                             </div>
                             <!--end /div-->
                         </div>
@@ -122,12 +124,12 @@
 
                                     در صورتی که امکان دریافت حضوری محصولات توسط مشتری وجود دارد.</p>
                             </div>
-                            <div class="mt-3">
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons3">
-                                    <button type="button" class="btn btn-soft-success btn-round waves-effect waves-light mr-2 iranyekan"><i class="mdi mdi-check-all mr-2"></i>فعال</button>
-                                    <button type="button" class="btn btn-soft-pink btn-round waves-effect waves-light iranyekan"><i class="mdi mdi-power mr-2"></i>غیرفعال</button>
+                            <div class="mt-3 row">
+                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                    <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way">
+                                    <label class="custom-control-label iranyekan font-15" for="person_way_on">فعال</label>
                                 </div>
-                                <!--end btn-group-->
+
                             </div>
                             <!--end /div-->
                         </div>

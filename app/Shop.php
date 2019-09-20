@@ -4,7 +4,10 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     protected $guarded = ['id'];
-
+    protected $casts = [
+        'logo' => 'array',
+        'icon' => 'array'
+    ];
     public function shopContact()
     {
         return $this->hasOne('App\ShopContact','shop_id');

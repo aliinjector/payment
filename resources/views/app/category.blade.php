@@ -69,7 +69,7 @@ h2 {
           </ul>
           <ul class="navbar-nav ml-2">
               <li class="nav-item">
-                  <img class="h-50px" src="{{ $shop->logo }}" alt="">
+                  <img class="h-50px" src="{{ $shop->logo['120,50'] }}" alt="">
               </li>
           </ul>
         </div>
@@ -100,7 +100,7 @@ h2 {
 
                     <div class="col-lg-2">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $product->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
                                     <p class="product-price byekan">{{ $product->price }} تومان  <span class="ml-2 byekan"></span></p>

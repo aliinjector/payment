@@ -278,10 +278,6 @@
                                 </table>
 
 
-                                @if ($categoires->count() == 0)
-                                  <p class="font-17 text-center font-weight-bold"> دسته بندی وجود ندارد
-                                  </p>
-                                @endif
 
                             </div>
                         </div>
@@ -314,14 +310,14 @@
         var test = $(this).data('test');
         $.ajax({
             type: "post",
-            url: "{{url('dashboard/product-category/delete')}}",
+            url: "{{url('dashboard/shop/product-category/delete')}}",
             data: {
                 id: id,
                 test: test,
                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             },
             success: function(data) {
-                var url = document.location.origin + "/dashboard/product-category";
+                var url = document.location.origin + "/dashboard/shop/product-category";
                 location.href = url;
             }
         });

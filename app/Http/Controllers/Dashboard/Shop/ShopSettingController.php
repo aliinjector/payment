@@ -96,16 +96,31 @@ class ShopSettingController extends Controller
      */
     public function update(ShopSettingRequest $request)
     {
-      $icon = $this->uploadFile($request->file('icon'), false, false);
-      $logo = $this->uploadFile($request->file('logo'), false, false);
+        if ( $request->quick_way != "on")
+        $request->quick_way = 'disable';
+     else
+     $request->quick_way = 'enable';
+
+        if ( $request->posting_way != "on")
+        $request->posting_way = 'disable';
+     else
+     $request->posting_way = 'enable';
+
+        if ( $request->person_way != "on")
+        $request->person_way = 'disable';
+     else
+     $request->person_way = 'enable';
+
+     $icon = $this->uploadFile($request->file('icon'), false, true);
+      $logo = $this->uploadFile($request->file('logo'), false, true);
       $shop = \Auth::user()->shop()->first()->update([
         'name' => $request->name,
         'english_name' => $request->english_name,
         'user_id' => \Auth::user()->id,
         'status' => 0,
-        'quick_way' => "disable",
-        'posting_way' => "disable",
-        'person_way' => "disable",
+        'quick_way' => $request->quick_way,
+        'posting_way' => $request->posting_way,
+        'person_way' => $request->person_way,
         'description' => $request->description,
         'icon' => $icon,
         'logo' => $logo,

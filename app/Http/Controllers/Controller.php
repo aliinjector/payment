@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
@@ -29,7 +28,7 @@ class Controller extends BaseController
             $this->watermark($file);
         }
         if ($resize == true && in_array($contentType, $imageMimeTypes)) {
-            $sizes = ["239" => "215", "350" => "234", "250" => "167", "755" => "504", "120" => "80", "848" => "566", "1475" => "800", "400" => "200"];
+            $sizes = ["80" => "80", "400" => "400", "250" => "250", "200" => "175", "410" => "270", "120" => "50", "16" => "16"];
             return $url['images'] = $this->resize($file, $sizes, $filePath, $fileName);
         } else {
             return $file;

@@ -48,7 +48,7 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
-      $image = $this->uploadFile($request->file('image'), false, false);
+      $image = $this->uploadFile($request->file('image'), false, true);
       if($request->type == 'file')
       $attachment = $this->uploadFile($request->file('attachment'), false, false);
       else
@@ -175,7 +175,6 @@ class ProductController extends Controller
      public function destroy(Request $request)
     {
       $ProductCategory = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
-
              // if ($product->shop->user_id !== \Auth::user()->id) {
              //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
              //     return redirect()->back();

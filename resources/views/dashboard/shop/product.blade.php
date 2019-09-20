@@ -1,5 +1,8 @@
 @extends('dashboard.layouts.master')
 @section('content')
+<link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <div class="page-content">
     <div class="container-fluid">
@@ -334,18 +337,18 @@
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
-                                        <div class="input-group mt-3">
+                                        {{--  <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">حجم فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="file_size" placeholder="مثال: 45">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">مگابایت</span></div>
 
-                                        </div>
-                                        <div class="input-group mt-3">
+                                        </div>  --}}
+                                        {{--  <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> موجودی فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="amount" placeholder=" مثال: 100">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> عدد</span></div>
 
-                                        </div>
+                                        </div>  --}}
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا ">
@@ -668,29 +671,10 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="mt-0 header-title">لیست محصولات</h4>
-
-
                     <p class="text-muted mb-4 font-13">لیست تمامی محصولات شما</p>
                     <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                         <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="dataTables_length" id="datatable_length">
-                                    <label>نمایش
-                                        <select name="datatable_length" aria-controls="datatable" class="custom-select custom-select-sm form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select> ورودی ها</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div id="datatable_filter" class="dataTables_filter">
-                                    <label class="text-left">جستوجو:
-                                        <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable">
-                                    </label>
-                                </div>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
@@ -710,7 +694,7 @@
                                     <tbody class="byekan">
                                         @foreach($products as $product)
                                         <tr role="row" class="odd">
-                                            <td class="sorting_1 w-25 "><img src="{{ $product->image }}" class="rounded" alt="" height="52" width="52">
+                                            <td class="sorting_1 w-25 "><img src="{{ $product->image['80,80'] }}" class="rounded" alt="">
         <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product-list.show',$product->id) }}" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
             </td>
             <td>{{ $product->productCategory()->first()->name }}</td>
@@ -752,16 +736,7 @@
     <div class="col-sm-12 col-md-5">
         <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
     </div>
-    <div class="col-sm-12 col-md-7">
-        <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-            <ul class="pagination">
-                <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">قبلی</a></li>
-                <li class="paginate_button page-item active"><a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                <li class="paginate_button page-item "><a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                <li class="paginate_button page-item next" id="datatable_next"><a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0" class="page-link">بعدی</a></li>
-            </ul>
-        </div>
-    </div>
+
 </div>
 </div>
 </div>
@@ -775,7 +750,15 @@
 </div>
 
 @endsection
+
+
 @section('pageScripts')
+<script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
 <script>
     $(document).ready(function() {
         $(".test1").click(function() {
@@ -831,14 +814,13 @@
         var id = $(this).data('id');
         $.ajax({
             type: "post",
-            url: "{{url('/dashboard/product-list/delete')}}",
+            url: "{{url('/dashboard/shop/product-list/delete')}}",
             data: {
                 id: id,
                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             },
             success: function(data) {
-                console.log(data)
-                var url = document.location.origin + "/dashboard/product-list";
+                var url = document.location.origin + "/dashboard/shop/product-list";
                 location.href = url;
             }
         });

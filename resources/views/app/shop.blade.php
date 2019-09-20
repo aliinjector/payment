@@ -69,7 +69,7 @@ h2 {
           </ul>
           <ul class="navbar-nav ml-2">
               <li class="nav-item">
-                  <img class="h-50px" src="{{ $shop->logo }}" alt="">
+                  <img class="h-50px" src="{{ $shop->logo['120,50'] }}" alt="">
               </li>
           </ul>
         </div>
@@ -117,7 +117,7 @@ h2 {
             @if($lastProducts[0])
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><img src="{{ $lastProducts[0]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><img src="{{ $lastProducts[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[0]->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
                                     <p class="product-price byekan">{{ $lastProducts[0]->price }} تومان  <span class="ml-2 byekan"></span></p>
@@ -138,7 +138,7 @@ h2 {
                     @if(isset($lastProducts[1]))
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}"><img src="{{ $lastProducts[1]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}"><img src="{{ $lastProducts[1]->image['250,250']}}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[1]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
                                     <p class="product-price byekan">{{ $lastProducts[1]->price }} تومان <span class="ml-2 byekan"></span></p>
@@ -159,7 +159,7 @@ h2 {
                     @if(isset($lastProducts[2]))
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[2]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
                                     <p class="product-price byekan">{{ $lastProducts[2]->price }} تومان <span class="ml-2 byekan"></span></p>
@@ -178,7 +178,7 @@ h2 {
                     @if(isset($lastProducts[3]))
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}"><img src="{{ $lastProducts[3]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}"><img src="{{ $lastProducts[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a>{{ $lastProducts[3]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
@@ -233,7 +233,7 @@ h2 {
 
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}"><img src="{{ $bestSelling[0]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}"><img src="{{ $bestSelling[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a> {{ $bestSelling[0]->title }} </a>
                                 <div class="d-flex justify-content-between my-2">
                                     <p class="product-price byekan">{{ $bestSelling[0]->price }} تومان<span class="ml-2 byekan"></span></p>
@@ -253,7 +253,7 @@ h2 {
 
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}"><img src="{{ $bestSelling[1]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}"><img src="{{ $bestSelling[1]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="ribbon ribbon-secondary"><span>جدید</span></div>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a>{{ $bestSelling[1]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
@@ -275,7 +275,7 @@ h2 {
 
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}"><img src="{{ $bestSelling[2]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}"><img src="{{ $bestSelling[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $bestSelling[2]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
                                     <p class="product-price byekan">{{ $bestSelling[2]->price }} تومان <span class="ml-2 byekan"></span></p>
@@ -296,7 +296,7 @@ h2 {
 
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}"><img src="{{ $bestSelling[3]->image }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}"><img src="{{ $bestSelling[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $bestSelling[3]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
                                     <p class="product-price byekan">{{ $bestSelling[3]->price }} تومان <span class="ml-2 byekan"></span></p>

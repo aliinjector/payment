@@ -53,7 +53,7 @@ input[type='radio']:checked:after {
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-6"><img src="{{ $product->image }}" alt="" class="col-8 d-block" height="400"></div>
+                            <div class="col-lg-6"><img src="{{ $product->image['400,400'] }}" alt="" class="col-8 d-block"></div>
                             <!--end col-->
                             <div class="col-lg-6 align-self-center">
                                 <div class="single-pro-detail">
@@ -224,7 +224,7 @@ input[type='radio']:checked:after {
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-3 align-self-center"><img src="{{ $product->image }}" alt="" height="250" class="d-block mx-auto col-12"></div>
+                        <div class="col-lg-3 align-self-center"><img src="{{ $product->image['250,250'] }}" alt="" class="d-block mx-auto col-12"></div>
                           <div class="col-lg-9">
                             <h5 class="mt-3">توضیحات   :</h5>
                             <p class="text-muted mb-4">{{ $product->description }}</p>
