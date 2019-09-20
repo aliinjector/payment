@@ -18,5 +18,9 @@ class Shop extends Model
    {
        return $this->hasMany('App\Product');
    }
+    public function purchases()
+   {
+       return $this->hasMany('App\UserPurchase');
+   }
 
 }

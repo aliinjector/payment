@@ -173,5 +173,8 @@ return array(
         'file_size  ' => 'حجم',
         'card_id  ' => 'شماره کارت',
         'english_name' => 'نام لاتین فروشگاه',
+        'telegram_url' => 'لینک تلگرام',
+        'instagram_url' => 'لینک اینستاگرام',
+        'facebook_url' => 'لینک فیسبوک',
     ),
 );

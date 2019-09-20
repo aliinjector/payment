@@ -48,7 +48,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     });
 
     Route::namespace('Shop')->prefix('shop')->middleware('auth')->group(function () {
-        Route::resource('shop', 'ShopController');
+        Route::resource('dashboard-shop', 'DashboardShopController');
+        Route::get('purchase-status', 'DashboardShopController@purchaseStatus')->name('purchase.status');
         Route::resource('product-list', 'ProductController');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');

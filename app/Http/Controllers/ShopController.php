@@ -8,6 +8,7 @@ use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use App\UserPurchase;
 
 class ShopController extends Controller
 {
@@ -94,13 +95,6 @@ class ShopController extends Controller
     {
         //
     }
-
-    public function test()
-    {
-        return  redirect(URL::temporarySignedRoute(
-            'documentation', now()->addMinutes(1)));
-    }
-
     public function downlaodFile($shop , $id)
     {
         return  redirect(URL::temporarySignedRoute(
@@ -114,7 +108,19 @@ class ShopController extends Controller
         }
         $uri = Shop::where('english_name' , $shop)->get()->first()->products()->where('id', $id)->get()->first()->attachment;
         $uri = ltrim($uri, '/');
+        $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
+        $purchase = new UserPurchase;
+        $purchase->product_id = $id;
+        $purchase->shop_id = $shopId;
+        if(\Auth::guest()){
+            $purchase->user_id = null;
+        }
+        else{
+            $purchase->user_id = \Auth::user()->id;
+        }
+        $purchase->save();
         return response()->file($uri);
+
     }
 
     /**

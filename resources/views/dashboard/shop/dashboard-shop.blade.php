@@ -17,12 +17,12 @@
             <!--end row-->
             <!-- end page title end breadcrumb -->
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card card-eco">
                         <div class="card-body">
                             <h4 class="title-text mt-0">تعداد  کالاهای شما</h4>
                             <div class="d-flex justify-content-between">
-                                <h3 class="font-weight-bold">۱۲۴ </h3><i class="fa fa-cubes card-eco-icon text-pink align-self-center"></i></div>
+                                <h3 class="font-weight-bold byekan">{{ number_format($shop->products()->get()->count()) }}</h3><i class="fa fa-cubes card-eco-icon text-pink align-self-center"></i></div>
                             <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> افزایش نسبت به دیروز</p>
                         </div>
                         <!--end card-body-->
@@ -30,12 +30,12 @@
                     <!--end card-->
                 </div>
                 <!--end col-->
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card card-eco">
                         <div class="card-body">
                             <h4 class="title-text mt-0">تعداد فروش های فروشگاه</h4>
                             <div class="d-flex justify-content-between">
-                                <h3 class="font-weight-bold">۲۲۳</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
+                                <h3 class="font-weight-bold byekan">{{ number_format($shop->purchases()->get()->count()) }}</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
                             <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱.۵٪</span> افزایش نسبت به دیروز</p>
                         </div>
                         <!--end card-body-->
@@ -43,25 +43,13 @@
                     <!--end card-->
                 </div>
                 <!--end col-->
-                <div class="col-lg-3">
-                    <div class="card card-eco">
-                        <div class="card-body">
-                            <h4 class="title-text mt-0">تعداد مشتریان</h4>
-                            <div class="d-flex justify-content-between">
-                                <h3 class="font-weight-bold">13 نفر </h3><i class="mdi mdi-account-star-outline card-eco-icon text-warning align-self-center"></i></div>
-                            <p class="mb-0 text-muted text-truncate"><span class="text-danger"><i class="mdi mdi-trending-down"></i>۱۰.۵٪</span> کاهش نسبت به دیروز</p>
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end card-->
-                </div>
                 <!--end col-->
-                <div class="col-lg-3">
+                <div class="col-lg-4">
                     <div class="card card-eco">
                         <div class="card-body">
-                            <h4 class="title-text mt-0">موجودی حساب</h4>
+                            <h4 class="title-text mt-0"></h4>مجموع فروش شما</h4>
                             <div class="d-flex justify-content-between">
-                                <h3 class="font-weight-bold">۲۳۱ میلیون</h3><i class="dripicons-wallet card-eco-icon text-success align-self-center"></i></div>
+                                <h3 class="font-weight-bold byekan">{{ number_format($shop->products()->get()->sum('price')) }}</h3><i class="dripicons-wallet card-eco-icon text-success align-self-center"></i></div>
                             <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> افزایش نسبت به دیروز</p>
                         </div>
                         <!--end card-body-->
@@ -846,26 +834,26 @@
                 <div id="carousel_2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div class="media"><img src="/dashboard/assets/images/product.jpg" height="200" width="175" class="mr-2" alt="...">
-                                <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">354 فروش</span>
-                                    <h4 class="mt-0">محصول شماره سه</h4>
-                                    <p class="text-muted mb-0">30000 تومان</p>
+                            <div class="media"><img src="{{ $bestSelling[0]->image }}" height="200" width="175" class="mr-2" alt="...">
+                                <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[0]->buyCount }} فروش</span>
+                                    <h4 class="mt-0">{{ $bestSelling[0]->title }}</h4>
+                                    <p class="text-muted mb-0">{{ $bestSelling[0]->price }} تومان</p>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="media"><img src="/dashboard/assets/images/product2.png"  height="200" width="175" class="mr-2" alt="...">
-                                <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">354 فروش</span>
-                                    <h4 class="mt-0">محصول شماره یک</h4>
-                                    <p class="text-muted mb-0">30000 تومان</p>
+                            <div class="media"><img src="{{ $bestSelling[1]->image }}"  height="200" width="175" class="mr-2" alt="...">
+                                <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[1]->buyCount }} فروش</span>
+                                    <h4 class="mt-0">{{ $bestSelling[1]->title }}</h4>
+                                    <p class="text-muted mb-0">{{ $bestSelling[1]->price }} تومان</p>
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="media"><img src="/dashboard/assets/images/product.jpg"  height="200" width="175" class="mr-2" alt="...">
-                                <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">354 فروش</span>
-                                    <h4 class="mt-0">محصول شماره دو</h4>
-                                    <p class="text-muted mb-0">30000 تومان</p>
+                            <div class="media"><img src="{{ $bestSelling[2]->image }}"  height="200" width="175" class="mr-2" alt="...">
+                                <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[2]->buyCount }} فروش</span>
+                                    <h4 class="mt-0">{{ $bestSelling[2]->title }}</h4>
+                                    <p class="text-muted mb-0">{{ $bestSelling[2]->price }} تومان</p>
                                 </div>
                             </div>
                         </div>
@@ -895,53 +883,15 @@
                             <!--end tr-->
                         </thead>
                         <tbody>
+                            @foreach($purchases as $purchase)
                             <tr class="byekan">
-                                <td><img class="product-img" src="/dashboard/assets/images/product.jpg" alt="user"></td>
-                                <td>محصول شماره 1</td>
-                                <td>1398/05/28 14:32</td>
-                                <td>650تومان</td>
-                                <td><span class="badge badge-boxed badge-soft-success">ارسال شده</span></td>
+                                <td><img class="product-img" src="{{ $purchase->product()->first()->image}}" alt="user"></td>
+                                <td>{{ $purchase->product()->first()->title}}</td>
+                                <td>{{ jdate($purchase->created_at) }}</td>
+                                <td>{{ $purchase->product()->first()->price }}تومان</td>
+                                <td><span class="badge badge-boxed badge-soft-success">{{ $purchase->status}}</span></td>
                             </tr>
-                            <!--end tr-->
-                            <tr class="byekan">
-                                <td><img class="product-img" src="/dashboard/assets/images/product.jpg" alt="user"></td>
-                                <td>محصول شماره 2</td>
-                                <td>1398/01/25 11:31</td>
-                                <td>650تومان</td>
-                                <td><span class="badge badge-boxed badge-soft-danger">کنسل شده</span></td>
-                            </tr>
-                            <!--end tr-->
-                            <tr class="byekan">
-                                <td><img class="product-img" src="/dashboard/assets/images/product.jpg" alt="user"></td>
-                                <td>محصول شماره 3</td>
-                                <td>1398/05/25 17:12</td>
-                                <td>650تومان</td>
-                                <td><span class="badge badge-boxed badge-soft-warning">درحال پردازش</span></td>
-                            </tr>
-                            <!--end tr-->
-                            <tr class="byekan">
-                                <td><img class="product-img" src="/dashboard/assets/images/product.jpg" alt="user"></td>
-                                <td>محصول شماره 4</td>
-                                <td>1398/05/25 14:52</td>
-                                <td>650تومان</td>
-                                <td><span class="badge badge-boxed badge-soft-success">ارسال شده</span></td>
-                            </tr>
-                            <!--end tr-->
-                            <tr class="byekan">
-                                <td><img class="product-img" src="/dashboard/assets/images/product.jpg" alt="user"></td>
-                                <td>محصول شماره 5</td>
-                                <td>1398/05/15 04:32</td>
-                                <td>650تومان</td>
-                                <td><span class="badge badge-boxed badge-soft-warning">درحال پردازش</span></td>
-                            </tr>
-                            <!--end tr-->
-                            <tr class="byekan">
-                                <td><img class="product-img" src="/dashboard/assets/images/product.jpg" alt="user"></td>
-                                <td>محصول شماره 6</td>
-                                <td>1398/05/25 14:32</td>
-                                <td>650تومان</td>
-                                <td><span class="badge badge-boxed badge-soft-success">ارسال شده</span></td>
-                            </tr>
+                            @endforeach
                             <!--end tr-->
                         </tbody>
                     </table>

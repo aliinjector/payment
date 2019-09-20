@@ -24,8 +24,14 @@ class ShopContactRequest extends FormRequest
     public function rules()
     {
         return [
-              'province' => 'required',
-              'city' => 'required',
+            'city' => 'required|min:1|max:20',
+              'city' => 'required|min:1|max:20',
+              'tel' => 'max:20',
+              'address' => 'max:220',
+              'telegram_url' => 'max:220',
+              'instagram_url' => 'max:220',
+              'facebook_url' => 'max:220',
+
         ];
     }
 }
