@@ -72,6 +72,7 @@ return array(
     'App\\ShopCategory' => $baseDir . '/app/ShopCategory.php',
     'App\\ShopContact' => $baseDir . '/app/ShopContact.php',
     'App\\ShopSetting' => $baseDir . '/app/ShopSetting.php',
+    'App\\TPG' => $baseDir . '/app/TPG.php',
     'App\\Ticket' => $baseDir . '/app/Ticket.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\UserInformation' => $baseDir . '/app/UserInformation.php',

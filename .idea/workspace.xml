@@ -2,49 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Bank.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/BankController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/BankFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_17_165230_create_banks_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/BankTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/ansar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/gardeshgari.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/ghavamin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/hekmat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/iranzamin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/kaarafarin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/keshavarzi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/kosar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/markazi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/maskan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/mehreqtesad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/mehriran.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/melli.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/parsian.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/pasargad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/post.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/refah.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/saderat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/saman.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/sarmayeh.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/shahr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/sina.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/sm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/taat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/tejarat.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/tosee.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/ts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/tt.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TPGController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/TPG.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/TPGFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_22_142041_create_t_p_g_s_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/payment.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/fonts.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/fonts/fonts.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/app-screens/login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/banks/ayandeh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/header/gfx-a.psd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066836_eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066836_eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066836_eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066836_eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066836_eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066836_eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066836_eq.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066836_dey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066836_eq.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/payment.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Card.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Card.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1568876644_az-taghibta-zendan-fooji.ir_.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CardRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_01_062635_create_cards_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_01_062635_create_cards_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/stylee332.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/stylee332.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/header/gfx-a.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/header/gfx-a.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo-full-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo-s2-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -165,11 +185,13 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
-      <path value="$PROJECT_DIR$/vendor/jenssegers/mongodb" />
-      <path value="$PROJECT_DIR$/vendor/mongodb/mongodb" />
       <path value="$PROJECT_DIR$/vendor/uxweb/sweet-alert" />
       <path value="$PROJECT_DIR$/vendor/beberlei/assert" />
       <path value="$PROJECT_DIR$/vendor/morilog/jalali" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QK36TGsVYwU7bBOhm2wrd2VwGC" />
@@ -187,16 +209,16 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
-      <recent name="E:\payment\resources\views\dashboard\payment" />
-      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\payment\resources\views\dashboard" />
       <recent name="E:\payment\resources\views\documnetation" />
       <recent name="$PROJECT_DIR$/resources/views/dashboard" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
+      <recent name="E:\payment\resources\views\dashboard\payment" />
+      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
   </component>
@@ -270,6 +292,14 @@
       <workItem from="1568698621220" duration="3843000" />
       <workItem from="1568718374383" duration="2855000" />
       <workItem from="1568722531328" duration="4646000" />
+      <workItem from="1568870696246" duration="1207000" />
+      <workItem from="1568876397982" duration="1798000" />
+      <workItem from="1568968945739" duration="3457000" />
+      <workItem from="1568974540821" duration="1198000" />
+      <workItem from="1568985947628" duration="65000" />
+      <workItem from="1569062758194" duration="1407000" />
+      <workItem from="1569132693749" duration="12129000" />
+      <workItem from="1569160927048" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -453,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568722572229</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="DataTables Added">
+      <created>1568971545536</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1568971545536</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -495,6 +532,7 @@
     <MESSAGE value="before folder bandi!" />
     <MESSAGE value="Payment Folder Bandi Finished" />
     <MESSAGE value="Payment Resource Folder Bandi Finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment Resource Folder Bandi Finished" />
+    <MESSAGE value="DataTables Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="DataTables Added" />
   </component>
 </project>

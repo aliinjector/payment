@@ -50,7 +50,6 @@ Author: Ali Rahmani
     <!-- Navbar -->
     <nav class="navbar-custom">
         <ul class="list-unstyled topbar-nav float-right mb-0">
-
             <li class="dropdown notification-list"><a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><i class="dripicons-bell noti-icon"></i> <span class="badge badge-danger badge-pill noti-icon-badge">۲</span></a>
                 <div class="dropdown-menu dropdown-lg">
                     <!-- item-->
@@ -72,7 +71,7 @@ Author: Ali Rahmani
             </li>
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="/dashboard/assets/images/users/noavatar.png" alt="profile-user" class="rounded-circle"> <span class="ml-1 nav-user-name hidden-sm"> {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }} <i class="mdi mdi-chevron-down"></i></span></a>
-                <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('setting.index') }}"><i class="dripicons-user text-muted mr-2"></i> تنظیمات و پروفایل کاربری</a> <a class="dropdown-item" href="#"><i class="dripicons-wallet text-muted mr-2"></i> کیف پول من</a> <a class="dropdown-item" href="#"><i class="dripicons-gear text-muted mr-2"></i> تنظیمات حساب </a> <a class="dropdown-item" href="#"><i class="dripicons-lock text-muted mr-2"></i> قفل </a>
+                <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('setting.index') }}"><i class="dripicons-user text-muted mr-2"></i> تنظیمات و پروفایل کاربری</a> <a class="dropdown-item" href="{{ route('wallet.index') }}"><i class="dripicons-wallet text-muted mr-2"></i> کیف پول من</a>
                     <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="dripicons-exit text-muted mr-2"></i> خروج از سیستم</a></div>
             </li>
         </ul>
@@ -172,7 +171,7 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت یاری</h6></div>
                     <ul class="nav">
-{{--                        <li class="nav-item"><a class="nav-link" href="../crypto/crypto-index.html"><i class="dripicons-device-desktop"></i>داشبورد گزارشات</a></li>--}}
+{{--                        <li class="nav-item"><a class="nav-link" href=""><i class="dripicons-device-desktop"></i>داشبورد گزارشات</a></li>--}}
                         <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} " href="{{ route('wallet.index') }}"><i class="mdi mdi-wallet"></i>کیف پول های شما</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/gateway*') == 1 ? 'active' : '' }}" href="{{ route('gateway.index') }}"><i class="fab fa-cc-amazon-pay"></i>درگاه های پرداخت</a></li>
                         <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="fas fa-credit-card"></i>کارت های بانکی</a></li>
@@ -254,9 +253,9 @@ Author: Ali Rahmani
                     <div class="title-box">
                         <h6 class="menu-title">پرداخت تلفنی</h6></div>
                     <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>لیست تماس ها</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>لیست پرداخت ها</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('chequeInquiry.index') }}"><i class="dripicons-jewel"></i>تنظیمات </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('tpg.index') }}"><i class="dripicons-jewel"></i>لیست تماس ها</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('tpg.index') }}"><i class="dripicons-jewel"></i>لیست پرداخت ها</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('tpg.index') }}"><i class="dripicons-jewel"></i>تنظیمات </a></li>
 
                     </ul>
                 </div>

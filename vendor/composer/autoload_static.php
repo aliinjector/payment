@@ -487,6 +487,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\ShopCategory' => __DIR__ . '/../..' . '/app/ShopCategory.php',
         'App\\ShopContact' => __DIR__ . '/../..' . '/app/ShopContact.php',
         'App\\ShopSetting' => __DIR__ . '/../..' . '/app/ShopSetting.php',
+        'App\\TPG' => __DIR__ . '/../..' . '/app/TPG.php',
         'App\\Ticket' => __DIR__ . '/../..' . '/app/Ticket.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserInformation' => __DIR__ . '/../..' . '/app/UserInformation.php',
