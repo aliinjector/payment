@@ -107,10 +107,22 @@
             </div>
             <!--end card-->
         </div>
-        <div class="text-center">
-            <p class="mt-4 mb-4" style="text-align: right;display: inline"><img style="width: 635px;" class="" src="/images/sayyad.PNG" alt=""></p>
-            <p class="mt-4 mb-4" style="text-align: left; display: inline"><img class="" src="/images/chequestatus.PNG" alt=""></p>
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <p class="mt-4 mb-4" style="text-align: right;display: inline"><img style="width: 635px;" class="" src="/images/sayyad.PNG" alt=""></p>
+                        <p class="mt-4 mb-4" style="text-align: left; display: inline"><img class="" src="/images/chequestatus.PNG" alt=""></p>
+                    </div>
+
+                </div>
+                <!--end card-body-->
+            </div>
+            <!--end card-->
         </div>
+
+
 
         <!--end col-->
     </div>

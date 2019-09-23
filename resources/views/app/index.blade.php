@@ -392,9 +392,13 @@
                                 </div>
                                 <div class="feature boxed bg-black-10">
                                     <div class="feature-text">
-                                        <h4 class="title title-md">فروشگاه ساز شارژ</h4>
+                                        <h4 class="title title-md">
+                                            پرداخت تلفنی (TPG)
+                                            </h4>
                                         <p>
-                                            امکان ایجاد بی نهایت فروشگاه شارژ اپراتورها توسط کاربران(ریسلری شارژ)
+                                            با سامانه پرداخت تلفنی می توانید بسیاری از عملیات بانکی مبتنی بر کارت خود را تنها
+                                            از طریق یک خط تلفن انجام دهید. کلیه دارندگان کارت های بانکی عضو شبکه شتاب، می
+                                            توانند از خدمات سامانه پرداخت تلفنی بانک پاسارگاد بهره مند شوند.
                                         </p>
                                     </div>
                                 </div>
@@ -479,9 +483,9 @@
                                 </div>
                                 <div class="feature-text">
                                     <h4 class="title title-md title-dark">سرویس استعلام چک</h4>
-                                    <p>کاربران پایان پی می توانند با وارد نمودن شناسه استعلام 16 رقمی مندرج در چک های
-                                        صیادی در سامانه استعلام چک پایان پی، از وضعیت اعتباری صادرکننده چک مطلع
-                                        شوند.</p>
+                                    <p> با وارد نمودن شناسه استعلام 16 رقمی  چک های
+                                        صیادی در سامانه، میتوان از وضعیت اعتباری صادرکننده چک مطلع
+                                        شد.</p>
                                 </div>
                             </div>
                         </div><!-- .col -->
@@ -492,10 +496,10 @@
                                     <em class="icon icon-lg ikon ikon-globe"></em>
                                 </div>
                                 <div class="feature-text">
-                                    <h4 class="title title-md title-dark">پرداخت تلفنی (TPG)</h4>
-                                    <p>با سامانه پرداخت تلفنی می توانید بسیاری از عملیات بانکی مبتنی بر کارت خود را تنها
-                                        از طریق یک خط تلفن انجام دهید. کلیه دارندگان کارت های بانکی عضو شبکه شتاب، می
-                                        توانند از خدمات سامانه پرداخت تلفنی بانک پاسارگاد بهره مند شوند.</p>
+                                    <h4 class="title title-md title-dark">فروشگاه ساز شارژ</h4>
+                                    <p>
+                                        امکان ایجاد بی نهایت فروشگاه شارژ اپراتورها توسط کاربران(ریسلری شارژ)، فروش شارژ بصورت مستقیم و ارسال آن به خط مورد نظر
+                                    </p>
                                 </div>
                             </div>
                         </div><!-- .col -->
@@ -523,7 +527,7 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".3">
-                                    <h4 class="title title-md mb-2 text-sm-center">اطلاعات سیستم تسهیم</h4>
+                                    <h4 class="title title-md mb-2 text-sm-center"> سیستم تسهیم</h4>
                                     <table class="table table-token">
                                         <tbody>
                                         <tr style="text-align: center">
@@ -537,11 +541,13 @@
                                             <td class="table-head">افزایش دقت و سرعت در مدیریت تراکنش ها</td>
                                         </tr>
                                         <tr style="text-align: center">
-                                            <td class="table-head">ساده سازی فرآیند حسابداری آنلاین</td>
-                                        </tr>
-                                        <tr style="text-align: center">
                                             <td class="table-head">کاهش خطای انسانی در تسهیم سود</td>
                                         </tr>
+
+                                        <tr style="text-align: center">
+                                            <td class="table-head">ساده سازی فرآیند حسابداری آنلاین</td>
+                                        </tr>
+
 
                                         </tbody>
                                     </table>
@@ -551,19 +557,17 @@
                                 <div class="animated" data-animate="fadeInUp" data-delay=".4">
                                     <div class="token-status bg-theme">
                                         <h4 class="title title-md"> باشگاه مشتریان</h4>
-                                        <div class="token-countdown countdown" data-date="2019/08/03"></div>
                                         <div class="progress-wrap progress-wrap-point">
-                                            <span class="progress-info">تراکنش بالای <span>۱۰۰۰۰۰ تومان</span></span>
+                                            <span class="progress-info">با تراکنش بالای <span> صد هزار تومان</span> به باشگاه مشتریان پایان پی بپیوندید</span>
                                             <img src="https://img.icons8.com/cotton/128/000000/christmas-gift--v1.png">
                                             <div class="progress-bar">
                                                 <div class="progress-percent bg-grad" data-percent="90"></div>
-                                                <div class="progress-point progress-point-1">شروع
-                                                    <span>۱۰۰۰ تومان</span></div>
-                                                <div class="progress-point progress-point-2">پایان
-                                                    <span>۱۰۰۰ تومان</span></div>
+                                                <div class="progress-point progress-point-1">حداقل تراکنش
+                                                    <span class="byekan">100000 تومان</span></div>
+                                                <div class="progress-point progress-point-2">حداقل تعداد تراکنش
+                                                    <span class="byekan">100 تراکنش</span></div>
                                             </div>
                                         </div>
-                                        <span class="token-min">حداقل خرید: ۵۰ هزار تومان</span>
                                     </div>
                                 </div>
                             </div><!-- .col -->
@@ -671,15 +675,16 @@
                         <div class="col-lg-4">
                             <div class="feature feature-s5 animated" data-animate="fadeInUp" data-delay=".6">
                                 <h4 class="title title-md">پشتیبانی</h4>
-                                <p>  تنوع در پلاگین های پراخت و پشتیبانی ۲۴ ساعته،
-                                    می‌توانند همراهی مطمئن برای کاربران باشد.</p>
+                                <p>  تنوع در ابزار ها و پلاگین های پراخت یاری و پشتیبانی ۲۴ ساعته،
+                                    می‌توانند همراهی مطمئن برای کاربران باشد. لازم به ذکر است پشتیبانی بصورت چت نیز فعال میباشد.</p>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="feature feature-s5 animated" data-animate="fadeInUp" data-delay=".7">
                                 <h4 class="title title-md">امنیت</h4>
-                                <p> آرامش خاطر
-                                    فرو خواهد ریخت. پایان پی تکیه‌گاه محکمی است.</p>
+                                <p>
+                                    باتوجه به تدابیر امنیتی سمت سرور، سیاست های بکاپ، آپتایم بالای سرور و ورود دو مرحله ای به داشبورد، فضای امنی را برای فعالیت شما آماده کرده ایم.
+                                </p>
                             </div>
                         </div>
                     </div><!-- .row -->
@@ -804,7 +809,7 @@
                 <!-- Section Head @s -->
                 <div class="section-head text-center wide-auto">
                     <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">سوالات متداول</h2>
-                    <p class="animated" data-animate="fadeInUp" data-delay=".2">در این قسمت، سوالات متداول کاربران پایان
+                    <p class="animated" data-animate="fadeInUp" data-delay=".2">در این قسمت، سوالات متداول کاربران را مشاهده میکنید.
                         پی </p>
                 </div><!-- .section-head @e -->
                 <!-- Block @s -->
@@ -829,44 +834,35 @@
                                     <div class="accordion accordion-faq" id="faq-1">
                                         <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".1">
                                             <h5 class="accordion-title accordion-title-sm" data-toggle="collapse"
-                                                data-target="#faq-1-1">متن سوال <span class="accordion-icon"></span>
+                                                data-target="#faq-1-1">آیا عضویت در سامانه پایان پی رایگان است؟ <span class="accordion-icon"></span>
                                             </h5>
                                             <div id="faq-1-1" class="collapse show" data-parent="#faq-1">
                                                 <div class="accordion-content">
-                                                    <p>متن پاسخ</p>
+                                                    <p>بله، عضویت در سیستم کاملا رایگان است و بدون پرداخت هزینه میتوانید عضو سیستم شوید.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".2">
                                             <h5 class="accordion-title accordion-title-sm collapsed"
-                                                data-toggle="collapse" data-target="#faq-1-2">متن سوال <span
+                                                data-toggle="collapse" data-target="#faq-1-2">چگونه میتوانم لیست تراکنش های درگاه خود را مشاهده کنم؟ <span
                                                     class="accordion-icon"></span></h5>
                                             <div id="faq-1-2" class="collapse" data-parent="#faq-1">
                                                 <div class="accordion-content">
-                                                    <p>متن پاسخ</p>
+                                                    <p>با ورود به پنل کاربری، کلیک برروی منوی پرداخت یاری و ورود به قسمت تراکنش ها، میتوانید لیست تراکنش های مربوط به درگاه خودرا مشاهده نمایید.</p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".3">
                                             <h5 class="accordion-title accordion-title-sm collapsed"
-                                                data-toggle="collapse" data-target="#faq-1-3"> متن سوال <span
+                                                data-toggle="collapse" data-target="#faq-1-3"> پشتیبانی پایان پی به په صورت است؟ <span
                                                     class="accordion-icon"></span></h5>
                                             <div id="faq-1-3" class="collapse" data-parent="#faq-1">
                                                 <div class="accordion-content">
-                                                    <p>متن پاسخ</p>
+                                                    <p>میتوانید بصورت 24 ساعته از طریق ارسال تیکت و چت پشتیبانی باما در ارتباط باشید. همچنین میتوانید با تماس با شماره تلفن دفتر پایان پی، با تیم پشتیبانی ارتباط برقرار کنید.</p>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".4">
-                                            <h5 class="accordion-title accordion-title-sm collapsed"
-                                                data-toggle="collapse" data-target="#faq-1-4">متن سوال <span
-                                                    class="accordion-icon"></span></h5>
-                                            <div id="faq-1-4" class="collapse" data-parent="#faq-1">
-                                                <div class="accordion-content">
-                                                    <p>متن پاسخ</p>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="ico-questions">

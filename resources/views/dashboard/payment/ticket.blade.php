@@ -273,8 +273,9 @@
                         <thead>
                         <tr>
                             <th>عنوان</th>
-                            <th>حوزه</th>
+                            <th>توضیحات</th>
                             <th>وضعیت</th>
+                            <th>حوزه</th>
                             <th>تاریخ آخرین تغییر</th>
                             <th>جزییات</th>
                         </tr>
@@ -285,6 +286,7 @@
                             <tr>
                                 <td>{{ $ticket->title }}</td>
                                 <td>{{ $ticket->description }}</td>
+                                <td>{{ $ticket->status }}</td>
                                 <td>{{ $ticket->scope }}</td>
                                 <td style="font-family: BYekan; direction: ltr">{{ jdate($ticket->updated_at) }}</td>
                                <td><button type="button" class="btn btn-dark waves-effect success" data-toggle="modal" data-animation="bounce" data-target="#ticketDetail{{$ticket->id}}">مشاهده جزییات</button></td>
