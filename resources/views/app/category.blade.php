@@ -61,16 +61,22 @@ h2 {
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto mr-2">
+                <li class="nav-item">
+                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
+                      </li>
               @foreach ($shopCategories as $shopCategorie)
+
             <li class="nav-item">
               <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategorie->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
             </li>
             @endforeach
           </ul>
           <ul class="navbar-nav ml-2">
-              <li class="nav-item">
-                  <img class="h-50px" src="{{ $shop->logo['120,50'] }}" alt="">
-              </li>
+                <li class="nav-item">
+                        <a href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}">
+                        <img src="{{ $shop->logo['200,100'] }}" alt="">
+                      </a>
+                    </li>
           </ul>
         </div>
       </nav>
@@ -103,7 +109,7 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $product->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
-                                    <p class="product-price byekan">{{ $product->price }} تومان  <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>

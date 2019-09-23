@@ -56,7 +56,7 @@ class ShopController extends Controller
         }
     $shopCategories = Shop::where('english_name' , $shop)->first()->ProductCategories()->get();
     $shop = Shop::where('english_name' , $shop)->first();
-    $lastProducts = $shop->products()->take(4)->get();
+    $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
     $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
     return view('app.shop', compact('shop','lastProducts','shopCategories','bestSelling'));
 

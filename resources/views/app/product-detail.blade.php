@@ -57,6 +57,9 @@ input[type='radio']:checked:after {
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto mr-2">
+                        <li class="nav-item">
+                                <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
+                              </li>
                       @foreach ($shopCategories as $shopCategorie)
                     <li class="nav-item">
                       <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategorie->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
@@ -64,9 +67,11 @@ input[type='radio']:checked:after {
                     @endforeach
                   </ul>
                   <ul class="navbar-nav ml-2">
-                      <li class="nav-item">
-                          <img class="h-50px" src="{{ $shop->logo['120,50'] }}" alt="">
-                      </li>
+                        <li class="nav-item">
+                                <a href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}">
+                                <img src="{{ $shop->logo['200,100'] }}" alt="">
+                              </a>
+                            </li>
                   </ul>
                 </div>
               </nav>
@@ -113,7 +118,7 @@ input[type='radio']:checked:after {
                                                             <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
                                                             <li class="list-inline-item">4.5 (30 reviews)</li>
                                                         </ul> --}}
-                                                    <h2 class="pro-price">{{ $product->price }} تومان</h2>
+                                                    <h2 class="pro-price">{{  number_format($product->price) }} تومان</h2>
                                                     <h6 class="text-muted font-13">ویژگی ها :</h6>
                                                     <ul class="list-unstyled pro-features border-0 iranyekan">
                                                       @if ($product->feature_1)
@@ -176,7 +181,12 @@ input[type='radio']:checked:after {
                                                     </div>
                                                   @endif
                                                 <div class="quantity mt-3">
-                                               <a href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>اضافه به سبد خرید</a>
+                                                    @if($product->type == 'file')
+                                                    <a href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank" class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
+                                                    @else
+                                                    <a href="#" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>اضافه به سبد خرید</a>
+                                                    @endif
+
                                                     </div>
                                                 </div>
                                             </div>

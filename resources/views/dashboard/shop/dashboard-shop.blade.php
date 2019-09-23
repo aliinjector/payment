@@ -834,7 +834,7 @@
                 <div id="carousel_2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <div class="media"><img src="{{ $bestSelling[0]->image }}" height="200" width="175" class="mr-2" alt="...">
+                            <div class="media"><img src="{{ $bestSelling[0]->image['400,400'] }}" height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[0]->buyCount }} فروش</span>
                                     <h4 class="mt-0">{{ $bestSelling[0]->title }}</h4>
                                     <p class="text-muted mb-0">{{ $bestSelling[0]->price }} تومان</p>
@@ -842,7 +842,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="media"><img src="{{ $bestSelling[1]->image }}"  height="200" width="175" class="mr-2" alt="...">
+                            <div class="media"><img src="{{ $bestSelling[1]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[1]->buyCount }} فروش</span>
                                     <h4 class="mt-0">{{ $bestSelling[1]->title }}</h4>
                                     <p class="text-muted mb-0">{{ $bestSelling[1]->price }} تومان</p>
@@ -850,7 +850,7 @@
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <div class="media"><img src="{{ $bestSelling[2]->image }}"  height="200" width="175" class="mr-2" alt="...">
+                            <div class="media"><img src="{{ $bestSelling[2]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[2]->buyCount }} فروش</span>
                                     <h4 class="mt-0">{{ $bestSelling[2]->title }}</h4>
                                     <p class="text-muted mb-0">{{ $bestSelling[2]->price }} تومان</p>
@@ -885,7 +885,7 @@
                         <tbody>
                             @foreach($purchases as $purchase)
                             <tr class="byekan">
-                                <td><img class="product-img" src="{{ $purchase->product()->first()->image}}" alt="user"></td>
+                                <td><img class="product-img" src="{{ $purchase->product()->first()->image['80,80']}}" alt="user"></td>
                                 <td>{{ $purchase->product()->first()->title}}</td>
                                 <td>{{ jdate($purchase->created_at) }}</td>
                                 <td>{{ $purchase->product()->first()->price }}تومان</td>

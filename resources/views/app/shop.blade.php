@@ -61,6 +61,9 @@ h2 {
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto mr-2">
+                <li class="nav-item">
+                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
+                      </li>
               @foreach ($shopCategories as $shopCategorie)
             <li class="nav-item">
               <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategorie->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
@@ -69,7 +72,9 @@ h2 {
           </ul>
           <ul class="navbar-nav ml-2">
               <li class="nav-item">
-                  <img class="h-50px" src="{{ $shop->logo['120,50'] }}" alt="">
+                  <a href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}">
+                  <img src="{{ $shop->logo['200,100'] }}" alt="">
+                </a>
               </li>
           </ul>
         </div>
@@ -120,7 +125,7 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><img src="{{ $lastProducts[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[0]->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
-                                    <p class="product-price byekan">{{ $lastProducts[0]->price }} تومان  <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($lastProducts[0]->price) }} تومان  <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -141,7 +146,7 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}"><img src="{{ $lastProducts[1]->image['250,250']}}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[1]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $lastProducts[1]->price }} تومان <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($lastProducts[1]->price) }} تومان <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -162,7 +167,7 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $lastProducts[2]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $lastProducts[2]->price }} تومان <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($lastProducts[2]->price) }} تومان <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -182,7 +187,7 @@ h2 {
                             <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a>{{ $lastProducts[3]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $lastProducts[3]->price }} تومان <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($lastProducts[3]->price) }} تومان <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -236,7 +241,7 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}"><img src="{{ $bestSelling[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a> {{ $bestSelling[0]->title }} </a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[0]->price }} تومان<span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($bestSelling[0]->price) }} تومان<span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -257,7 +262,7 @@ h2 {
                             <div class="ribbon ribbon-secondary"><span>جدید</span></div>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title"></a>{{ $bestSelling[1]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[1]->price }} تومان <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($bestSelling[1]->price) }} تومان <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -278,7 +283,7 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}"><img src="{{ $bestSelling[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $bestSelling[2]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[2]->price }} تومان <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($bestSelling[2]->price) }} تومان <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
@@ -299,7 +304,7 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}"><img src="{{ $bestSelling[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">{{ $bestSelling[3]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{ $bestSelling[3]->price }} تومان <span class="ml-2 byekan"></span></p>
+                                    <p class="product-price byekan">{{  number_format($bestSelling[3]->price) }} تومان <span class="ml-2 byekan"></span></p>
 
                                 </div>
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
