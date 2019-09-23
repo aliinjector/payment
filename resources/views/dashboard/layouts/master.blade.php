@@ -172,8 +172,8 @@ Author: Ali Rahmani
                         <h6 class="menu-title">پرداخت یاری</h6></div>
                     <ul class="nav">
 {{--                        <li class="nav-item"><a class="nav-link" href=""><i class="dripicons-device-desktop"></i>داشبورد گزارشات</a></li>--}}
-                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} " href="{{ route('wallet.index') }}"><i class="mdi mdi-wallet"></i>کیف پول های شما</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/gateway*') == 1 ? 'active' : '' }}" href="{{ route('gateway.index') }}"><i class="fab fa-cc-amazon-pay"></i>درگاه های پرداخت</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/wallet*') == 1 ? 'active' : '' }} " href="{{ route('wallet.index') }}"><i class="mdi mdi-wallet"></i>کیف پول های شما</a></li>
                         <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="fas fa-credit-card"></i>کارت های بانکی</a></li>
                         <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/checkout*') == 1 ? 'active' : '' }}" href="{{ route('checkout.index') }}"><i class="fas fa-credit-card"></i>لیست درخواست های تسویه</a></li>
                     </ul>

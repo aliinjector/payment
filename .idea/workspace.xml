@@ -2,19 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/app-screens/login.psd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/stylee332.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/stylee332.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/hexagon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/app-screens/login.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/app-screens/login.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserInformationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserInformationRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dashboard/assets/images/bills.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard/assets/images/bills.PNG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/userInformation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/userInformation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -250,7 +247,7 @@
       <workItem from="1569132693749" duration="12129000" />
       <workItem from="1569160927048" duration="30000" />
       <workItem from="1569161444432" duration="7700000" />
-      <workItem from="1569221858344" duration="1045000" />
+      <workItem from="1569221858344" duration="6068000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -448,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569161499168</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Index Updated">
+      <created>1569223758270</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1569223758270</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,6 +495,7 @@
     <MESSAGE value="Payment Folder Bandi Finished" />
     <MESSAGE value="Payment Resource Folder Bandi Finished" />
     <MESSAGE value="DataTables Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="DataTables Added" />
+    <MESSAGE value="Index Updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Index Updated" />
   </component>
 </project>

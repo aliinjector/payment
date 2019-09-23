@@ -103,7 +103,7 @@
 
 
                         <div style="display: inline" class="modal-footer">
-                            <a style="float:right;" class="btn btn-danger" href="{{ route('gateway.delete', $gateway->id) }}">حذف کارت</a>
+{{--                            <a style="float:right;" class="btn btn-danger" href="{{ route('gateway.delete', $gateway->id) }}">حذف کارت</a>--}}
                             <button type="submit" style="float:left;" class="btn btn-primary">ثبت ویرایش</button>
                         </div>
 
@@ -248,9 +248,10 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">مجموع موجودی شما</h4>
+                    <h4 class="title-text mt-0">مجموع تراکنش های شما</h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold">{{ $gateways->sum('amount') }} تومان </h3></div>
+{{--                        <h3 class="font-weight-bold">{{ $gateways->sum('amount') }} تومان </h3></div>--}}
+                        <h3 class="font-weight-bold">300,000 تومان </h3></div>
                 </div>
                 <!--end card-body-->
             </div>
@@ -287,7 +288,7 @@
                 <div class="card-body">
                     <h4 class="title-text mt-0">مجموع تسویه های شما </h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold">    100,301,000 تومان </h3></div>
+                        <h3 class="font-weight-bold">    100,300,000 تومان </h3></div>
                 </div>
                 <!--end card-body-->
             </div>
@@ -318,7 +319,7 @@
                                     <h3 class="text-center">{{ $gateway->url }} </h3></div>
                                 <div  class="text-center pt-4">
                                     <a href="{{ route('transactionReport.wallet', $gateway->id) }}"><button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button></a>
-                                    <a href="" data-toggle="modal" data-target="#EditGatewayModal{{$gateway->id}}"><span class="btn btn-danger btn-sm px-3"> ویرایش و حذف </span></a>
+                                    <a href="" data-toggle="modal" data-target="#EditGatewayModal{{$gateway->id}}"><span class="btn btn-danger btn-sm px-3"> ویرایش </span></a>
 
                                     <!-- Button trigger modal -->
 
