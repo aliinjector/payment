@@ -48,7 +48,12 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
-        $file_size = $request->file('attachment')->getSize();
+           if($request->type == 'file') {
+            $file_size = $request->file('attachment')->getSize();
+           }
+           else{
+            $file_size = null;
+           }
       $image = $this->uploadFile($request->file('image'), false, true);
       if($request->type == 'file')
 
@@ -163,10 +168,94 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        //
+        if($request->type == 'file') {
+            $file_size = $request->file('attachment')->getSize();
+           }
+           else{
+            $file_size = null;
+           }
+      $image = $this->uploadFile($request->file('image'), false, true);
+      if($request->type == 'file')
+
+      $attachment = $this->uploadFile($request->file('attachment'), false, false);
+      else
+      $attachment = null;
+      if ( $request->enable != "on")
+      $request->enable = 0;
+     else
+     $request->enable = 1;
+     if($request->color_2 == '#a89d8e')
+      $request->color_2 = null;
+      else
+      $request->color_2 = $request->color_2;
+
+      if($request->color_3 == '#a89d8e')
+       $request->color_3 = null;
+       else
+       $request->color_3 = $request->color_3;
+
+      if($request->color_4 == '#a89d8e')
+       $request->color_4 = null;
+       else
+       $request->color_4 = $request->color_4;
+
+      if($request->color_5 == '#a89d8e')
+       $request->color_5 = null;
+       else
+       $request->color_5 = $request->color_5;
+
+       if ( $request->fast_sending != "on")
+         $request->fast_sending = 0;
+      else
+      $request->fast_sending = 1;
+
+       if ( $request->money_back != "on")
+         $request->money_back = 0;
+      else
+      $request->money_back = 1;
+
+       if ( $request->support != "on")
+         $request->support = 0;
+      else
+      $request->support = 1;
+
+       if ( $request->secure_payment != "on")
+         $request->secure_payment = 0;
+      else
+      $request->secure_payment = 1;
+      $shop = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
+        'title' => $request->title,
+        'status' => $request->enable,
+        'type' => $request->type,
+        'color_1' => $request->color_1,
+        'productCat_id' => $request->product_category,
+        'color_2' => $request->color_2,
+        'color_3' => $request->color_3,
+        'color_4' => $request->color_4,
+        'color_5' => $request->color_5,
+        'amount' => $request->amount,
+        'weight' => $request->weight,
+        'price' => $request->price,
+        'fast_sending' => $request->fast_sending,
+        'money_back' => $request->money_back,
+        'support' => $request->support,
+        'secure_payment' => $request->secure_payment,
+        'feature_1' => $request->feature_1,
+        'feature_2' => $request->feature_2,
+        'feature_3' => $request->feature_3,
+        'feature_4' => $request->feature_4,
+        'description' => $request->description,
+        'image' => $image,
+        'attachment' => $attachment,
+        'description' => $request->description,
+        'file_size' => $file_size,
+      ]);
+      alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('product-list.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
