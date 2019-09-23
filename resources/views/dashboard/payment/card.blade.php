@@ -98,8 +98,10 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend"><span class="input-group-text bg-light" id="basic-addon7">نام بانک:</span></div>
-                                    <select class="form-control" val style="font-family: BYekan!important;" name="bank" id="">
-                                        <option style="font-family: BYekan!important;" {{ $card->bank == 'sepah' ? 'selected' : '' }} value="sepah"> بانک سپه</option>
+                                    <select class="form-control" val style="font-family: BYekan!important;" name="bank_id" id="">
+                                        @foreach ($banks as $bank)
+                                            <option style="font-family: BYekan!important;" {{ $bank->id == $card->bank->id ? 'selected' : '' }} value="{{ $bank->id }}"> {{ $bank->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 

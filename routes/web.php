@@ -43,6 +43,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('bill', 'BillController');
         Route::resource('chequeInquiry', 'CheckInquiryController');
         Route::resource('checkout', 'CheckoutController');
+        Route::resource('tpg', 'TPGController');
         Route::get('transactionReport/wallet/{wallet}', 'TransactionReportController@walletReport')->name('transactionReport.wallet');
         Route::get('transactionReport/gateway/{gateway}', 'TransactionReportController@gatewayReport')->name('transactionReport.gateway');
     });

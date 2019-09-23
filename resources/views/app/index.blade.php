@@ -41,12 +41,12 @@
             <div class="header-container container">
                 <div class="header-wrap">
                     <!-- Logo @s -->
-{{--                    <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".6">--}}
-{{--                        <a href="index.html" class="logo-link">--}}
-{{--                            <img class="logo-dark" src="../images/logo.png" srcset="../images/logo2x.png 2x" alt="logo">--}}
-{{--                            <img class="logo-light" src="../images/logo-full-white.png" srcset="../images/logo-full-white2x.png 2x" alt="logo">--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
+                    <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".6">
+                        <a href="index.html" class="logo-link">
+                            <img class="logo-dark" src="../images/logo.png" srcset="../images/logo.png 2x" alt="logo">
+                            <img class="logo-light" src="../images/logo.png" srcset="../images/logo.png 2x" alt="logo">
+                        </a>
+                    </div>
 
                     <!-- Menu Toogle @s -->
                     <div class="header-nav-toggle">
@@ -119,7 +119,7 @@
                                 <div class="col-lg-7 col-sm-10 text-center text-lg-left">
                                     <div class="banner-caption cpn tc-light">
                                         <div class="cpn-head">
-                                            <h1 class="title animated" data-animate="fadeInUp" data-delay="1">اولین اکوسیستم پرداخت یاری ایران <br class="d-none d-md-block"> بهمراه راهکار های نوین فین تکی!</h1>
+                                            <h1 class="title animated" data-animate="fadeInUp" data-delay="1">شرکت فناورستاره نوران  <br class="d-none d-md-block"> ارایه دهنده راهکار های نوین فین تکی</h1>
                                         </div>
                                         <div class="cpn-text">
                                             <p class="animated" data-animate="fadeInUp" data-delay="1.1">
@@ -162,10 +162,10 @@
                     <span class="rank-count">پرداخت قبوض</span>
                 </li>
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.2">
-                    <span class="rank-count">مدیریت شارژ</span>
+                    <span class="rank-count">شارژ ساختمان</span>
                 </li>
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.3">
-                    <span class="rank-count">پرداخت قبوض</span>
+                    <span class="rank-count">پرداخت عوارض</span>
                 </li>
                 <li class="rank-item animated" data-animate="fadeInUp" data-delay="1.4">
                     <span class="rank-count">استعلام چک</span>
@@ -338,9 +338,9 @@
                                 </div>
                                 <div class="feature boxed bg-white-2">
                                     <div class="feature-text">
-                                        <h4 class="title title-md">باشگاه مشتریان</h4>
-                                        <p>
-                                            امکان امتیازدهی به ازای تراکنش و دعوت از طریق کاربر برای جذب کاربران جدید که با افزایش امتیاز سطح کاربری کاربر افزایش یافته و میزان کارمزد دریافتی از او کاهش می یابد که به عنوان CRM  عمل میکند و همچنین امکان جذب کاربران جدید توسط امکاناتی که در سایت تعبیه شده توسط شبکه بازاریابی </p>
+                                        <h4 class="title title-md">شارژ ساختمان</h4>
+                                        <p> با استفاده از سرویس مدیریت شارژ، مدیران ساختمان می توانند هر ماه شارژ واحدهای ساختمان خود را  به سادگی محاسبه نموده و در همان لحظه به تمامی ساکنین اطلاع رسانی نمایند  </p>
+
                                     </div>
                                 </div>
                                 <div class="feature boxed bg-black-10">
@@ -376,8 +376,9 @@
                                     <em class="icon icon-lg ikon ikon-cash"></em>
                                 </div>
                                 <div class="feature-text">
-                                    <h4 class="title title-md title-dark">شارژ ساختمان</h4>
-                                    <p> با استفاده از سرویس مدیریت شارژ، مدیران ساختمان می توانند هر ماه شارژ واحدهای ساختمان خود را  به سادگی محاسبه نموده و در همان لحظه به تمامی ساکنین اطلاع رسانی نمایند  </p>
+                                    <h4 class="title title-md title-dark">باشگاه مشتریان</h4>
+                                    <p>
+                                        امکان امتیازدهی در ازای هر تراکنش به کاربران و دعوت از طریق کاربر برای جذب کاربران جدید که با افزایش امتیاز سطح کاربری افزایش پیدا میکند. </p>
                                 </div>
                             </div>
                         </div><!-- .col -->
@@ -577,7 +578,7 @@
                             <div class="nk-block-img bg-pattern-dots-color">
                                 <div class="app-slide-wrap animated" data-animate="fadeInUp" data-delay=".1">
                                     <div class="app-slide">
-                                        <img src="../images/app-screens/a.jpg" alt="App Screen">
+                                        <img src="../images/app-screens/login.jpg" alt="App Screen">
                                     </div>
                                 </div>
                             </div>
@@ -585,9 +586,9 @@
                         <div class="col-lg-5 col-md-10 text-center text-lg-left">
                             <div class="nk-block-text">
                                 <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">نرم افزار موبایل <br class="d-none d-md-block"> پایان پی</h2>
-                                <p class="animated" data-animate="fadeInUp" data-delay=".2"> باتوجه به افزایش روز افزودن استفاده از تلفن همراه بعنوان دریچه ارتباط با دنیای مجازی در جهان، تیم طراحی و توسعه شرکت فناور ستاره نوران با هدف ایجاد پلتفرم یکپارچه و سهولت در استفاده از سامانه ئایان پی، اقدام به طراحی اپلیکیشن موبایل کرده است که به زودی قابل دسترس عموم قرار خواهد گرفت.  </p>
+                                <p class="animated" data-animate="fadeInUp" data-delay=".2"> باتوجه به افزایش روز افزودن استفاده از تلفن همراه بعنوان دریچه ارتباط با دنیای مجازی، تیم طراحی و توسعه شرکت فناور ستاره نوران با هدف ایجاد پلتفرم یکپارچه و سهولت در استفاده از سامانه پایان پی، اقدام به طراحی اپلیکیشن موبایل کرده است که به زودی قابل دسترس عموم قرار خواهد گرفت.  </p>
                                 <div class="pdt-m animated" data-animate="fadeInUp" data-delay=".3">
-                                    <a href="#" class="btn btn-grad">به زودی</a>
+                                    <a href="#" class="btn btn-grad">دریافت اپلیکیشن موبایل (به زودی)</a>
                                 </div>
                             </div>
                         </div>
@@ -641,13 +642,19 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="nk-block-text">
-                                <h6 class="title title-xs tc-primary animated" data-animate="fadeInUp" data-delay=".1">داشبورد مدیریت آنلاین</h6>
+                                <h6 class="title title-xs tc-primary animated" data-animate="fadeInUp" data-delay=".1"></h6>
                                 <h2 class="title animated" data-animate="fadeInUp" data-delay=".2"> گزارشات لحظه ای</h2>
-                                <p class="animated" data-animate="fadeInUp" data-delay=".3">سامانه پایان پی، با بهره گیری از بروز ترین تکنولوژی روز دنیا در ارایه گزارشات لحظه ای گامی نو برداشته است..</p>
+                                <p class="animated" data-animate="fadeInUp" data-delay=".3">سامانه پایان پی، با بهره گیری از بروز ترین تکنولوژی روز دنیا در ارایه گزارشات لحظه ای گامی نو برداشته است. در ادامه با برخی از </p>
                                 <ul class="list list-check animated" data-animate="fadeInUp" data-delay=".4">
-                                    <li>گزارشات گردش حساب</li>
-                                    <li>گزارشات بازه زمانی</li>
-                                    <li>قابلیت استفاده از پلتفرم های مختلف</li>
+                                    <li>گزارشات کلی گردش حساب</li>
+                                    <li>  بازه های زمانی </li>
+                                    <li> پراکندگی جغرافیایی </li>
+                                    <li> امکان sorting و filtering بین اطلاعات تراکنش ها و پرداختها </li>
+                                    <li> گزارشات و آلارم در سیستم پرداخت قبوض </li>
+                                    <li> امکان ارسال خبرنامه به کاربران فروشگاه ساز </li>
+                                    <li> گزارش ساز (امکان ایجاد گزارشات در قالب نمودار و جداول) </li>
+                                    <li>ارسال آلارم ها و اعلان از طریق ایمیل و پیامک</li>
+                                    <li>قابلیت استفاده در پلتفرم های مختلف</li>
                                 </ul>
                             </div>
                         </div>
@@ -1031,7 +1038,7 @@
                             <div class="wgs wgs-text animated" data-animate="fadeInUp" data-delay=".1">
                                 <div class="wgs-body">
                                     <a href="index.html" class="wgs-logo">
-{{--                                        <img src="../images/logo-full-white.png" srcset="../images/logo-full-white2x.png 2x" alt="logo">--}}
+                                        <img src="../images/logo.png" srcset="../images/logo.png 2x" alt="logo">
                                     </a>
                                     <p style="font-family: BYekan!important;">© کلیه حقوق محفوظ است. 1398 </p>
                                     <p class="copyright-text">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</p>

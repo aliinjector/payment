@@ -27,10 +27,10 @@
                                 <input type="hidden" value="{{ $wallet->id }}" name="wallet_id" id="">
                                 <select style="font-family: BYekan!important;" name="card_id" id="card_id">
                                     @foreach ($cards as $card)
-                                        <option value="{{ $card->id }}"> {{ $card->bank }} | شماره کارت: {{ $card->number }}</option>
+                                        <option value="{{ $card->id }}"> {{ $card->bank->name }} | شماره کارت: {{ $card->number }}</option>
                                     @endforeach
                                 </select>
-                                <div class="input-group-append"><span class="input-group-text bg-light" id="basic-addon8"> به نام علی رحمانی</span></div>
+                                <div class="input-group-append"><span class="input-group-text bg-light" id="basic-addon8">{{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }}</span></div>
                             </div>
                         </div>
                         <!--end form-group-->

@@ -86,7 +86,7 @@ class CardController extends \App\Http\Controllers\Controller
 
         $card = \Auth::user()->cards()->where('id', $request->id)->first()->update([
         'number' => $request->number,
-        'bank_id' => $request->bank,
+        'bank_id' => $request->bank_id,
         'status' => 'در انتظار تایید',
         'month' => $request->month,
         'year' => $request->year,

@@ -317,7 +317,7 @@
                                     <h5 class="gateway-title m-0">آدرس سایت:</h5>
                                     <h3 class="text-center">{{ $gateway->url }} </h3></div>
                                 <div  class="text-center pt-4">
-                                    <a href="{{ route('transactionReport.gateway', $gateway->id) }}"><button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button></a>
+                                    <a href="{{ route('transactionReport.wallet', $gateway->id) }}"><button class="btn btn-success btn-sm px-3">لیست تراکنش ها</button></a>
                                     <a href="" data-toggle="modal" data-target="#EditGatewayModal{{$gateway->id}}"><span class="btn btn-danger btn-sm px-3"> ویرایش و حذف </span></a>
 
                                     <!-- Button trigger modal -->
