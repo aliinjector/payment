@@ -2,70 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TPGController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/TPG.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/TPGFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_22_142041_create_t_p_g_s_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/payment.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/fonts.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/fonts/fonts.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/app-screens/login.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/banks/ayandeh.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/header/gfx-a.psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/120,50_1569066836_eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/1569066836_eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/16,16_1569066836_eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/200,175_1569066836_eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/250,250_1569066836_eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/400,400_1569066836_eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/410,270_1569066836_eq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066811_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066812_43232226_531096524018140_6581352917951840256_n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066836_dey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/9/21/80,80_1569066836_eq.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/payment.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/images/hexagon7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/app-screens/login.psd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1568876644_az-taghibta-zendan-fooji.ir_.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/CardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/stylee332.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/stylee332.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/header/gfx-a.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/header/gfx-a.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo-full-white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo-s2-white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo-white.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/hexagon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/app-screens/login.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/app-screens/login.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -300,6 +249,8 @@
       <workItem from="1569062758194" duration="1407000" />
       <workItem from="1569132693749" duration="12129000" />
       <workItem from="1569160927048" duration="30000" />
+      <workItem from="1569161444432" duration="7700000" />
+      <workItem from="1569221858344" duration="1045000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -490,7 +441,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568971545536</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="DataTables Added">
+      <created>1569161499168</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1569161499168</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
