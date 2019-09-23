@@ -36,7 +36,7 @@
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">افزودن خدمت جدید</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">افزودن دسته بندی جدید</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -68,182 +68,55 @@
             </div>
         </div>
 
-        <!-- end page title end breadcrumb -->
-         {{--  <div class="row">
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 1</a>
-                                <div class="d-flex justify-content-between my-2 byekan">
-                                    <p class="product-price byekan">30000 تومان  <span class="ml-2 byekan"><del>60000 تومان</del></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
+        @foreach($categoires as $category)
+        <div class="modal fade bd-example-modal-xl" id="UpdateProductCategoryModal{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">ویرایش دسته بندی</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 2</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">60000 تومان <span class="ml-2 byekan"><del>60000 تومان</del></span></p>
-
+                    <div class="modal-body modal-scroll">
+                        <form action="{{ route('product-category.update', $category->id) }}" method="post" class="form-horizontal">
+                            @csrf
+                            {{ method_field('PATCH') }}
+                            <div class="form-group mb-0">
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
+                                    <input type="text" class="form-control inputfield" name="name" value="{{ $category->name }}">
                                 </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 3</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">58000 تومان <span class="ml-2 byekan"><del>60000 تومان</del></span></p>
 
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
+                                    <input type="text" class="form-control inputfield" name="description" value="{{ $category->description }}">
                                 </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
                             </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
+                            <!--end form-group-->
                     </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 4</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">30000 تومان <span class="ml-2 byekan"><del>60000 تومان</del></span></p>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                        <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                    </div>
 
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
+                    </form>
+
                 </div>
-        <!-- end row -->
-    </div>
-    -- <div class="row">
-                <div class="col-12">
-                    <div class="card offer-box">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-4 mx-auto">
-                                    <div class="offer-content text-center justify-content-center">
-                                        <p class="text-muted">پیشنهاد ویژه</p>
-                                        <h3 class="mb-3">50% صرفه جویی در هزینه ها</h3>
-                                        <hr class="thick">
-                                        <h5 class="text-muted iranyekan">با خرید از سامانه آنلاین</h5></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end card-->
-                </div>
-                <!--end col-->
             </div>
-            <div class="row">
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 5 <small class="text-muted">size-04</small></a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">30000 تومان<span class="ml-2 byekan"><del>60000 تومان</del></span></p>
+        </div>
+        @endforeach
 
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="ribbon ribbon-secondary"><span>جدید</span></div>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 6</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">10000 تومان <span class="ml-2 byekan"><del>60000 تومان</del></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 7</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">7800 تومان <span class="ml-2 byekan"><del>60000 تومان</del></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card e-co-product">
-                            <a href="/dashboard/product-detail"><img src="/dashboard/assets/images/product2.png" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="/dashboard/product-detail" class="product-title">محصول شماره 8</a>
-                                <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">45000 تومان <span class="ml-2 byekan"><del>60000 تومان</del></span></p>
-
-                                </div>
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه کردن به سبد خرید</button>
-                                <button class="btn btn-wishlist btn-sm waves-effect waves-light wishlist" data-toggle="tooltip" data-placement="top" title="" data-original-title="موردعلاقه"><i class="mdi mdi-heart"></i></button>
-                                <button class="btn btn-quickview btn-sm waves-effect waves-light quickview" data-toggle="tooltip" data-placement="top" title="" data-original-title="نمایش سریع"><i class="mdi mdi-magnify"></i></button>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                </div> --
-    <!-- container -->  --}}
 
 
   <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">لیست محصولات</h4>
+                    <h4 class="mt-0 header-title">لیست دسته بندی ها</h4>
 
 
-                    <p class="text-muted mb-4 font-13">لیست تمامی محصولات شما</p>
+                    <p class="text-muted mb-4 font-13">لیست تمامی دسته بندی های شما</p>
                     <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
                         <div class="row">
@@ -267,9 +140,9 @@
                                             <td>{{ $category->name }}</td>
                                             <td>{{ $category->description }}</td>
                                             <td>
-                                                <a><i class="far fa-edit text-info mr-1 button"></i>
+                                                <a href="{{ $category->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $category->id }}"><i class="far fa-edit text-info mr-1 button"></i>
                                                 </a>
-                                                <a href="" id="ttttt" data-id="{{ $category->id }}" data-test="{{ $category->name }}"><i class="far fa-trash-alt text-danger"></i></a>
+                                                <a href="" id="removeCat" data-id="{{ $category->id }}" ><i class="far fa-trash-alt text-danger"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -289,6 +162,12 @@
         <!-- end col -->
     </div>
 </div>
+
+
+
+
+<!-- Attachment Modal -->
+
 @endsection
 
 
@@ -304,16 +183,14 @@
 
 
         <script>
-    $(document).on('click', '#ttttt', function(e) {
+    $(document).on('click', '#removeCat', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        var test = $(this).data('test');
         $.ajax({
             type: "post",
             url: "{{url('dashboard/shop/product-category/delete')}}",
             data: {
                 id: id,
-                test: test,
                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             },
             success: function(data) {
@@ -322,5 +199,6 @@
             }
         });
     });
+
 </script>
 @stop

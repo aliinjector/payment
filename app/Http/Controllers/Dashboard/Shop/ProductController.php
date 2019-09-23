@@ -48,8 +48,10 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+        $file_size = $request->file('attachment')->getSize();
       $image = $this->uploadFile($request->file('image'), false, true);
       if($request->type == 'file')
+
       $attachment = $this->uploadFile($request->file('attachment'), false, false);
       else
       $attachment = null;
@@ -121,7 +123,7 @@ class ProductController extends Controller
         'image' => $image,
         'attachment' => $attachment,
         'description' => $request->description,
-        'file_size' => $request->file_size,
+        'file_size' => $file_size,
       ]);
       alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('product-list.index');

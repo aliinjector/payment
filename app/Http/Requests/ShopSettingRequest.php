@@ -26,7 +26,7 @@ class ShopSettingRequest extends FormRequest
       return [
           'icon' => 'required',
           'logo' => 'required',
-          'english_name' => 'required',
+          'english_name' => 'required|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/',
       ];
     }
 }

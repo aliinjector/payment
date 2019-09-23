@@ -543,12 +543,7 @@
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
-                                        <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> موجودی خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="amount" placeholder=" مثال: 100">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> عدد</span></div>
 
-                                        </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
@@ -581,7 +576,7 @@
                                         </div>
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                 <input type="checkbox" class="custom-control-input" id="support2" name="support">
                                                 <label class="custom-control-label iranyekan font-15" for="support2">پشتیبانی</label>

@@ -99,14 +99,11 @@ input[type='radio']:checked:after {
                                                         <div class="custom-border mt-3"></div>
 
                                                     </h3>
-                                                    @if ($product->amount != 0)
+
+                                                    @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
                                                     <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجود</span>
                                                       @else
-                                                        @if ($product->type == "service")
-                                                          <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">غیرقابل دسترس</span>
-                                                        @else
                                                         <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
-                                                      @endif
                                                     @endif
                                                     {{-- <ul class="list-inline mb-2 product-review">
                                                             <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
@@ -135,7 +132,7 @@ input[type='radio']:checked:after {
                                                     @if ($product->type == "file")
                                                     <h6 class="text-muted font-13">حجم فایل :</h6>
                                                     <ul class="list-unstyled pro-features border-0 iranyekan">
-                                                        <li>{{ $product->file_size }} کیلوبایت</li>
+                                                        <li>{{ round($product->file_size / 1048576,2)}} مگابایت</li>
                                                     </ul>
                                                     @endif
                                                     @if ($product->type == "product")

@@ -67,9 +67,10 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProductCategory $productCategory)
+    public function edit(Request $request)
     {
-        //
+        dd($request);
+
     }
 
     /**
@@ -79,9 +80,16 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductCategory $productCategory)
+    public function update(Request $request,$id)
     {
-        //
+        $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id',$id)->get()->first()->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+
+        alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+        return redirect()->route('product-category.index');
     }
 
     /**
