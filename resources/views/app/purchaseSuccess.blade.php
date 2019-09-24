@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - داشبورد اصلی</title>
+    <title>فاکتور</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta content="پایان پی - داشبورد اصلی" name="description">
     <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
@@ -21,38 +21,6 @@
     <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
-    <style>
-        .main-icon-menu{
-            overflow: scroll!important;
-        }
-        .dataTables_info{
-            font-family: BYekan!important;
-        }
-        .custom-select{
-            font-family: BYekan!important;
-        }
-        .page-link{
-            font-family: BYekan!important;
-        }
-        h1 {
-  overflow: hidden;
-  text-align: center;
-}
-h2 {
-    width: 80%;
-    text-align: center;
-    border-bottom: 1px solid #50649C;
-    line-height: 0.1em;
-    margin: 8px 11% 20px;
-    font-size: 23px!important;
-
-}
-
- h2 span {
-     background:#EAF0F7;
-     padding:0 17px;
- }
-    </style>
 </head>
 
 <body>@section('content')
@@ -80,169 +48,157 @@ h2 {
           </ul>
         </div>
       </nav>
-<div class="page-content">
-    <div class="container-fluid">
-        <!-- Page-Title -->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                    {{--  <div class="float-right">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item "> دسته بندی </li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
-                        </ol>
-                    </div>  --}}
-                    <h4 class="page-title iranyekan">فروشگاه {{ $shop->name }}</h4>
-                </div>
-                <!--end page-title-box-->
-            </div>
-            <!--end col-->
-        </div>
-
-</div>
-        <h2><span>اخرین محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
-         <div class="row p-5">
-                @foreach ($products as $product)
-
-                    <div class="col-lg-2">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>
-                                <div class="d-flex justify-content-between my-2 byekan">
-                                    <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span></p>
-
-                                </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                            </a>
-
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endforeach
-
-                </div>
-
-    <!-- container -->
 
 
-    {{--  <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="mt-0 header-title">لیست محصولات</h4>
-
-
-                    <p class="text-muted mb-4 font-13">لیست تمامی محصولات شما</p>
-                    <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-6">
-                                <div class="dataTables_length" id="datatable_length">
-                                    <label>نمایش
-                                        <select name="datatable_length" aria-controls="datatable" class="custom-select custom-select-sm form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select> ورودی ها</label>
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <div id="datatable_filter" class="dataTables_filter">
-                                    <label class="text-left">جستوجو:
-                                        <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="datatable">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
-                                    <thead>
-                                        <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام
-                                                محصول
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 123px;">تنظیمات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="byekan">
-                                        @foreach($categoires as $category)
-                                        <tr role="row" class="odd">
-                                            <td>{{ $category->name }}</td>
-                                            <td>{{ $category->description }}</td>
-                                            <td>
-                                                <a><i class="far fa-edit text-info mr-1 button"></i>
-                                                </a>
-                                                <a href="" id="ttttt" data-id="{{ $category->id }}" data-test="{{ $category->name }}"><i class="far fa-trash-alt text-danger"></i></a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
-                                @if ($categoires->count() == 0)
-                                  <p class="font-17 text-center font-weight-bold"> دسته بندی وجود ندارد
-                                  </p>
-                                @endif
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-md-5">
-                                <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
-                            </div>
-                            <div class="col-sm-12 col-md-7">
-                                <div class="dataTables_paginate paging_simple_numbers" id="datatable_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled" id="datatable_previous"><a href="#" aria-controls="datatable" data-dt-idx="0" tabindex="0" class="page-link">قبلی</a></li>
-                                        <li class="paginate_button page-item active"><a href="#" aria-controls="datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#" aria-controls="datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                        <li class="paginate_button page-item next" id="datatable_next"><a href="#" aria-controls="datatable" data-dt-idx="3" tabindex="0" class="page-link">بعدی</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end col -->
-    </div>  --}}
-</div>
 @endsection
 
 
 @section('pageScripts')
-<script>
-    $(document).on('click', '#ttttt', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var test = $(this).data('test');
-        $.ajax({
-            type: "post",
-            url: "{{url('dashboard/product-category/delete')}}",
-            data: {
-                id: id,
-                test: test,
-                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-            },
-            success: function(data) {
-                var url = document.location.origin + "/dashboard/product-category";
-                location.href = url;
-            }
-        });
-    });
-</script>
 @stop
-<!-- Page Content-->
-<div class="page-content">
-    <div class="container-fluid">
-        <!-- Page-Title -->
         @yield('content')
+                            <div class="card col-8 mb-5 mr-16 mt-5">
+                                <div class="card-body invoice-head">
+                                    <div class="row">
+                                        <div class="col-md-4 align-self-center"><img src="../assets/images/logo-sm.png" alt="logo-small" class="logo-sm mr-2" height="26"> <img src="../assets/images/logo-dark.png" alt="logo-large" class="logo-lg" height="16">
+                                            <p class="mt-2 mb-0 text-muted">If account is not paid within 7 days the credits details supplied as confirmation.</p>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-md-8">
+                                            <ul class="list-inline mb-0 contact-detail float-right">
+                                                <li class="list-inline-item">
+                                                    <div class="pr-3"><i class="mdi mdi-web"></i>
+                                                        <p class="text-muted mb-0">www.abcdefghijklmno.com</p>
+                                                        <p class="text-muted mb-0">www.qrstuvwxyz.com</p>
+                                                    </div>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <div class="pr-3"><i class="mdi mdi-phone"></i>
+                                                        <p class="text-muted mb-0">+123 123456789</p>
+                                                        <p class="text-muted mb-0">+123 123456789</p>
+                                                    </div>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <div class="pr-3"><i class="mdi mdi-map-marker"></i>
+                                                        <p class="text-muted mb-0">2821 Kensington Road,</p>
+                                                        <p class="text-muted mb-0">Avondale Estates, GA 30002 USA.</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                </div>
+                                <!--end card-body-->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="">
+                                                <h6 class="mb-0"><b>Start Date :</b> 11/05/2019</h6>
+                                                <h6 class="mb-0"><b>End Date :</b> 10/06/2019</h6></div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-md-6">
+                                            <h6 class="mb-0"><b>Compny :</b> Hubland</h6>
+                                            <h6 class="mb-0"><b>Project Name :</b> Trading System</h6>
+                                            <h6 class="mb-0"><b>Invoice No :</b> #1240</h6></div>
+                                        <!--end col-->
+                                        <div class="col-md-3">
+                                            <div class="text-center bg-light p-3 mb-3">
+                                                <h5 class="bg-info mt-0 p-2 text-white d-sm-inline-block">Payment Methods</h5>
+                                                <h6 class="font-13">Paypal &amp; Cards Payments :</h6>
+                                                <p class="mb-0 text-muted">CompanyA/c.paypal@gmai.com</p>
+                                                <p class="mb-0 text-muted">Visa, Master Card, Chaque</p>
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="table-responsive project-invoice">
+                                                <table class="table table-bordered mb-0">
+                                                    <thead class="thead-light">
+                                                        <tr>
+                                                            <th>Project Breakdown</th>
+                                                            <th>Hours</th>
+                                                            <th>Rate</th>
+                                                            <th>Subtotal</th>
+                                                        </tr>
+                                                        <!--end tr-->
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mt-0 mb-1">Project Design</h5>
+                                                                <p class="mb-0 text-muted">It is a long established fact that a reader will be distracted.</p>
+                                                            </td>
+                                                            <td>60</td>
+                                                            <td>$50</td>
+                                                            <td>$3000.00</td>
+                                                        </tr>
+                                                        <!--end tr-->
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mt-0 mb-1">Development</h5>
+                                                                <p class="mb-0 text-muted">It is a long established fact that a reader will be distracted.</p>
+                                                            </td>
+                                                            <td>100</td>
+                                                            <td>$50</td>
+                                                            <td>$5000.00</td>
+                                                        </tr>
+                                                        <!--end tr-->
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mt-0 mb-1">Testing &amp; Bug Fixing</h5>
+                                                                <p class="mb-0 text-muted">It is a long established fact that a reader will be distracted.</p>
+                                                            </td>
+                                                            <td>10</td>
+                                                            <td>$20</td>
+                                                            <td>$200.00</td>
+                                                        </tr>
+                                                        <!--end tr-->
+                                                        <tr>
+                                                            <td colspan="2" class="border-0"></td>
+                                                            <td class="border-0 font-14"><b>Sub Total</b></td>
+                                                            <td class="border-0 font-14"><b>$82,000.00</b></td>
+                                                        </tr>
+                                                        <!--end tr-->
+                                                        <tr>
+                                                            <th colspan="2" class="border-0"></th>
+                                                            <td class="border-0 font-14"><b>Tax Rate</b></td>
+                                                            <td class="border-0 font-14"><b>$0.00%</b></td>
+                                                        </tr>
+                                                        <!--end tr-->
+                                                        <tr class="bg-dark text-white">
+                                                            <th colspan="2" class="border-0"></th>
+                                                            <td class="border-0 font-14"><b>Total</b></td>
+                                                            <td class="border-0 font-14"><b>$82,000.00</b></td>
+                                                        </tr>
+                                                        <!--end tr-->
+                                                    </tbody>
+                                                </table>
+                                                <!--end table-->
+                                            </div>
+                                            <!--end /div-->
+                                        </div>
+                                        <!--end col-->
+                                    </div>
+                                    <!--end row-->
+
+                                    <!--end row-->
+
+                                    <!--end row-->
+                                </div>
+                                <!--end card-body-->
+                            </div>
+                            <!--end card-->
+                        </div>
+                        <!--end col-->
+                <!--end footer-->
+            </div>
+
+
 
     <!--end row-->
     </div>
@@ -271,37 +227,6 @@ h2 {
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
 @include('sweet::alert')
 @yield('pageScripts')
-
-<script>
-$(window).on('load', function() {
-
-    // if (window.location.href.indexOf("wallet") == -1) {
-    //     $('#PardakhtYari').removeClass("active");
-    //     $("a[href$='PardakhtYari']").removeClass("active");
-    //
-    // }
-    // if (window.location.href.indexOf("card") == -1) {
-    //     $('#PardakhtYari').removeClass("active");
-    //     $("a[href$='PardakhtYari']").removeClass("active");
-    // }
-    //
-    //
-    //
-    // if (window.location.href.indexOf("wallet") > -1) {
-    //     $('#PardakhtYari').addClass("active");
-    //     $("a[href$='PardakhtYari']").addClass("active");
-    //
-    // }
-    // if (window.location.href.indexOf("card") > -1) {
-    //     $('#PardakhtYari').addeClass("active");
-    //     $("a[href$='PardakhtYari']").addClass("active");
-    // }
-
-
-
-    });
-
-</script>
 </body>
 
 </html>

@@ -63,7 +63,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });
-Route::get('/{shop}/purchase-success', 'ShopController@purchaseSuccess')->name('purchaseSuccess');
+Route::get('/{shop}/purchase-success/{id}', 'ShopController@purchaseSuccess')->name('purchaseSuccess');
 Route::get('/file-download', 'ShopController@test');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
 Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');

@@ -123,10 +123,11 @@ class ShopController extends Controller
 
     }
 
-    public function purchaseSuccess(){
+    public function purchaseSuccess($shop){
 
-
-        return view('app.purchaseSuccess');
+        $shop = Shop::where('english_name' , $shop)->first();
+        $shopCategories = $shop->ProductCategories()->get();
+        return view('app.purchaseSuccess', compact('shop','shopCategories'));
     }
 
     /**
