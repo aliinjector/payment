@@ -103,6 +103,12 @@ class ProductController extends Controller
          $request->secure_payment = 0;
       else
       $request->secure_payment = 1;
+      if($request->amount != null){
+        $request->amount = $this->fa_num_to_en($request->amount);
+      }
+      if($request->weight != null){
+        $request->weight = $this->fa_num_to_en($request->weight);
+      }
       $shop = \Auth::user()->shop()->first()->products()->create([
         'title' => $request->title,
         'status' => $request->enable,
@@ -115,7 +121,7 @@ class ProductController extends Controller
         'color_5' => $request->color_5,
         'amount' => $request->amount,
         'weight' => $request->weight,
-        'price' => $request->price,
+        'price' => $this->fa_num_to_en($request->price),
         'fast_sending' => $request->fast_sending,
         'money_back' => $request->money_back,
         'support' => $request->support,

@@ -123,6 +123,12 @@ class ShopController extends Controller
 
     }
 
+    public function purchaseSuccess(){
+
+
+        return view('app.purchaseSuccess');
+    }
+
     /**
      * Update the specified resource in storage.
      *
