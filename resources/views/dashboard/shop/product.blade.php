@@ -318,21 +318,12 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
-                                            <select class="form-control inputfield" name="product_category" id="" disabled>
-                                                <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
-                                            </select>
-                                            <a href="{{ route('product-category.index') }}" class="align-self-center">
-                                                <div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن دسته بندی</span></div>
-                                            </a>
-                                            @else
                                             <select class="form-control inputfield" name="product_category" id="">
-                                                <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
+                                                <option style="font-family: BYekan!important;" value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                               @endforeach
                                             </select>
-                                            @endif
 
 
                                         </div>
@@ -360,27 +351,27 @@
                                             <div class="input-group-append"><a href="#" class="color1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
-                                        <div class="input-group mt-3 d-none color_1">
+                                        <div class="input-group mt-3 @if($product->color_2 == null) d-none @endif color_1">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_2" value="{{ $product->color_2 }}">
+                                            <input class="form-control h-50px" type="color" @if($product->color_2 == null) value="#a89d8e"  @endif id="example-color-input" name="color_2" value="{{ $product->color_2 }}">
                                             <div class="input-group-append"><a href="#" class="color2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
-                                        <div class="input-group mt-3 d-none color_2">
+                                        <div class="input-group mt-3 @if($product->color_3 == null) d-none @endif color_2">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_3" value="{{ $product->color_3 }}">
+                                            <input class="form-control h-50px" type="color" @if($product->color_3 == null) value="#a89d8e"  @endif id="example-color-input" name="color_3" value="{{ $product->color_3 }}">
                                             <div class="input-group-append"><a href="#" class="color3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
-                                        <div class="input-group mt-3 d-none color_3">
+                                        <div class="input-group mt-3 @if($product->color_4 == null) d-none @endif color_3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_4" value="{{ $product->color_4 }}">
+                                            <input class="form-control h-50px" type="color" @if($product->color_4 == null) value="#a89d8e"  @endif  id="example-color-input" name="color_4" value="{{ $product->color_4 }}">
                                             <div class="input-group-append"><a href="#" class="color4"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
-                                        <div class="input-group mt-3 d-none color_4">
+                                        <div class="input-group mt-3 @if($product->color_5 == null) d-none @endif color_4">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_5" value="{{ $product->color_5 }}">
+                                            <input class="form-control h-50px" type="color" @if($product->color_5 == null) value="#a89d8e"  @endif  id="example-color-input" name="color_5" value="{{ $product->color_5 }}">
 
                                         </div>
                                         <div class="input-group mt-3">
@@ -391,7 +382,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_2">
+                                        <div class="input-group mt-3 @if($product->feature_2 == null) d-none @endif feature_2">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب " value="{{ $product->feature_2 }}">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
@@ -399,7 +390,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_3">
+                                        <div class="input-group mt-3 @if($product->feature_3 == null) d-none @endif feature_3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب " value="{{ $product->feature_3 }}">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
@@ -407,7 +398,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_4">
+                                        <div class="input-group mt-3 @if($product->feature_4 == null) d-none @endif feature_4">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب "  value="{{ $product->feature_4 }}">
                                         </div>
@@ -415,19 +406,19 @@
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="supportProductUpdate{{ $product->id }}" name="support">
+                                                <input type="checkbox" class="custom-control-input" id="supportProductUpdate{{ $product->id }}" name="support" @if($product->support == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="supportProductUpdate{{ $product->id }}">پشتیبانی</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="money_backProductUpdate{{ $product->id }}" name="money_back">
+                                                <input type="checkbox" class="custom-control-input" id="money_backProductUpdate{{ $product->id }}" name="money_back" @if($product->money_back == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="money_backProductUpdate{{ $product->id }}">بازگشت وجه</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="fast_sendingProductUpdate{{ $product->id }}" name="fast_sending">
+                                                <input type="checkbox" class="custom-control-input" id="fast_sendingProductUpdate{{ $product->id }}" name="fast_sending" @if($product->fast_sending == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingProductUpdate{{ $product->id }}">ارسال سریع</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="secure_paymentProductUpdate{{ $product->id }}" name="secure_payment">
+                                                <input type="checkbox" class="custom-control-input" id="secure_paymentProductUpdate{{ $product->id }}" name="secure_payment" @if($product->secure_payment == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentProductUpdate{{ $product->id }}">پرداخت امن</label>
                                             </div>
 
@@ -437,10 +428,10 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت محصول :</span></div>
                                             <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5">
-                                                    <input type="radio" name="enable" id="option1"> فعال
+                                                <label class="btn btn-outline-success iranyekan mr-5 @if($product->status == 1) active" @endif">
+                                                    <input type="radio" name="enable" id="option1" > فعال
                                                 </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5">
+                                                <label class="btn btn-outline-danger iranyekan mr-5 @if($product->status == 0) active" @endif">
                                                     <input type="radio" id="option3"> غیرفعال
                                                 </label>
                                             </div>
@@ -460,7 +451,7 @@
                                                     </div>
                                                     <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                                                     <button type="button" class="dropify-clear">حذف</button>
-                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/labtop.jpg"></span>
+                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="{{ $product->image['250,250'] }}"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
                                                                 <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">نمونه لوگو</span></p>
@@ -521,21 +512,12 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
-                                            <select class="form-control inputfield" name="product_category" id="" disabled>
-                                                <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
-                                            </select>
-                                            <a href="{{ route('product-category.index') }}" class="align-self-center">
-                                                <div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن دسته بندی</span></div>
-                                            </a>
-                                            @else
+
                                             <select class="form-control inputfield" name="product_category" id="">
-                                                <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
-                                                @foreach($productCategories as $productCategory)
+                                                <option style="font-family: BYekan!important;" value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option>                                                @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                               @endforeach
                                             </select>
-                                            @endif
 
 
                                         </div>
@@ -565,7 +547,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_2">
+                                        <div class="input-group mt-3 @if($product->feature_2 == null) d-none @endif feature_2">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_2 }}">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
@@ -573,7 +555,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_3">
+                                        <div class="input-group mt-3 @if($product->feature_3 == null) d-none @endif feature_3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_3 }}">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
@@ -581,7 +563,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_4">
+                                        <div class="input-group mt-3 @if($product->feature_4 == null) d-none @endif feature_4">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_4 }}">
 
@@ -591,10 +573,10 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت فایل :</span></div>
                                             <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5">
+                                                <label class="btn btn-outline-success iranyekan mr-5 @if($product->status == 1) active" @endif">
                                                     <input type="radio" name="enable" id="option1"> فعال
                                                 </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5">
+                                                <label class="btn btn-outline-danger iranyekan mr-5 @if($product->status == 0) active" @endif">
                                                     <input type="radio" id="option3"> غیرفعال
                                                 </label>
                                             </div>
@@ -603,19 +585,19 @@
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="supportFileUpdate{{ $product->id }}" name="support">
+                                                <input type="checkbox" class="custom-control-input" id="supportFileUpdate{{ $product->id }}" name="support" @if($product->support == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="supportFileUpdate{{ $product->id }}">پشتیبانی</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="money_backFileUpdate{{ $product->id }}" name="money_back">
+                                                <input type="checkbox" class="custom-control-input" id="money_backFileUpdate{{ $product->id }}" name="money_back" @if($product->money_back == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="money_backFileUpdate{{ $product->id }}">بازگشت وجه</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="fast_sendingFileUpdate{{ $product->id }}" name="fast_sending">
+                                                <input type="checkbox" class="custom-control-input" id="fast_sendingFileUpdate{{ $product->id }}" name="fast_sending" @if($product->fast_sending == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingFileUpdate{{ $product->id }}">ارسال سریع</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="secure_paymentFileUpdate{{ $product->id }}" name="secure_payment">
+                                                <input type="checkbox" class="custom-control-input" id="secure_paymentFileUpdate{{ $product->id }}" name="secure_payment" @if($product->secure_payment == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentFileUpdate{{ $product->id }}">پرداخت امن</label>
                                             </div>
 
@@ -635,7 +617,7 @@
                                                     </div>
                                                     <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
                                                     <button type="button" class="dropify-clear">حذف</button>
-                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/english.jpg"></span>
+                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="{{ $product->image['250,250'] }}"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
                                                                 <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">نمونه تصویر محصول</span></p>
@@ -733,21 +715,11 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
-                                            <select class="form-control inputfield" name="product_category" id="" disabled>
-                                                <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
-                                            </select>
-                                            <a href="{{ route('product-category.index') }}" class="align-self-center">
-                                                <div class="input-group-append"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن دسته بندی</span></div>
-                                            </a>
-                                            @else
                                             <select class="form-control inputfield" name="product_category" id="">
-                                                <option style="font-family: BYekan!important;">انتخاب دسته بندی</option>
-                                                @foreach($productCategories as $productCategory)
+                                                <option style="font-family: BYekan!important;" value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option>                                                @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
                                               @endforeach
                                             </select>
-                                            @endif
 
 
                                         </div>
@@ -766,7 +738,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_2">
+                                        <div class="input-group mt-3 @if($product->feature_2 == null) d-none @endif feature_2">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب "  value="{{ $product->feature_2 }}">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
@@ -774,7 +746,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_3">
+                                        <div class="input-group mt-3 @if($product->feature_3 == null) d-none @endif feature_3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب " value="{{ $product->feature_3 }}">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
@@ -782,7 +754,7 @@
                                                     </span></a></div>
 
                                         </div>
-                                        <div class="input-group mt-3 d-none feature_4">
+                                        <div class="input-group mt-3 @if($product->feature_4 == null) d-none @endif feature_4">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب " value="{{ $product->feature_4 }}">
 
@@ -792,19 +764,19 @@
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="supportServiceUpdate{{ $product->id }}" name="support">
+                                                <input type="checkbox" class="custom-control-input" id="supportServiceUpdate{{ $product->id }}" name="support" @if($product->support == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="supportServiceUpdate{{ $product->id }}">پشتیبانی</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="money_backServiceUpdate{{ $product->id }}" name="money_back">
+                                                <input type="checkbox" class="custom-control-input" id="money_backServiceUpdate{{ $product->id }}" name="money_back" @if($product->money_back == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="money_backServiceUpdate{{ $product->id }}">بازگشت وجه</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="fast_sendingServiceUpdate{{ $product->id }}" name="fast_sending">
+                                                <input type="checkbox" class="custom-control-input" id="fast_sendingServiceUpdate{{ $product->id }}" name="fast_sending" @if($product->fast_sending == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingServiceUpdate{{ $product->id }}">ارسال سریع</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                                <input type="checkbox" class="custom-control-input" id="secure_paymentServiceUpdate{{ $product->id }}" name="secure_payment">
+                                                <input type="checkbox" class="custom-control-input" id="secure_paymentServiceUpdate{{ $product->id }}" name="secure_payment" @if($product->secure_payment == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentServiceUpdate{{ $product->id }}">پرداخت امن</label>
                                             </div>
 
@@ -813,10 +785,10 @@
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت خدمت :</span></div>
                                             <div class="btn-group btn-group-toggle col-10 p-1" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5">
+                                                <label class="btn btn-outline-success iranyekan mr-5 @if($product->status == 1) active" @endif">
                                                     <input type="radio" name="enable" id="option1"> فعال
                                                 </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5">
+                                                <label class="btn btn-outline-danger iranyekan mr-5 @if($product->status == 0) active" @endif">
                                                     <input type="radio" id="option3"> غیرفعال
                                                 </label>
                                             </div>
@@ -836,7 +808,7 @@
                                                     </div>
                                                     <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/teacher.jpg">
                                                     <button type="button" class="dropify-clear">حذف</button>
-                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img class="col-12" src="/dashboard/assets/images/teacher.jpg"></span>
+                                                    <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img class="col-12" src="{{ $product->image['250,250'] }}"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
                                                                 <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">نمونه تصویر از خدمت</span></p>

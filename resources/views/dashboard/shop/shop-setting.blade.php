@@ -58,6 +58,22 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                    <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی فروشگاه </label>
+                                     <div class="col-sm-10">
+                                            <select class="form-control" name="category_id">
+                                                @if($shopInformation->category_id != null)
+                                                <option value="{{ $shopInformation->shopCategory()->first()->id }}">{{ $shopInformation->shopCategory()->first()->name }}</option>
+                                                @else
+                                                    <option value="">یک مورد را انتخاب نمایید</option>
+                                                    @endif
+                                                    @foreach ($shopCategories as $shopCategory)
+                                                    <option value="{{ $shopCategory->id }}">{{ $shopCategory->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group row">
                                 <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">توضیحات فروشگاه </label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="text" name="description" placeholder="مثال: فروش و توضیع محصولات با کیفیت" value="{{ old('description', $shopInformation->description) }}">

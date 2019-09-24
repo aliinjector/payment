@@ -49,7 +49,7 @@
                         <div class="card-body">
                             <h4 class="title-text mt-0"></h4>مجموع فروش شما</h4>
                             <div class="d-flex justify-content-between">
-                                <h3 class="font-weight-bold byekan">{{ number_format($shop->products()->get()->sum('price')) }}</h3><i class="dripicons-wallet card-eco-icon text-success align-self-center"></i></div>
+                                <h3 class="font-weight-bold byekan">{{ number_format($sum) }}</h3><i class="dripicons-wallet card-eco-icon text-success align-self-center"></i></div>
                             <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> افزایش نسبت به دیروز</p>
                         </div>
                         <!--end card-body-->
@@ -474,7 +474,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-8 align-self-center">
-                                    <div class="">
+                                    <div>
                                         <h4 class="mt-0 header-title">درآمد این ماه</h4>
                                         <h2 class="mt-0 font-weight-bold">$57k</h2>
                                         <p class="mb-0 text-muted"><span class="text-success"><i class="mdi mdi-arrow-up"></i>14.5%</span> Up From Last Month</p>
@@ -837,7 +837,7 @@
                             <div class="media"><img src="{{ $bestSelling[0]->image['400,400'] }}" height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[0]->buyCount }} فروش</span>
                                     <h4 class="mt-0">{{ $bestSelling[0]->title }}</h4>
-                                    <p class="text-muted mb-0">{{ $bestSelling[0]->price }} تومان</p>
+                                    <p class="text-muted mb-0">{{ number_format($bestSelling[0]->price) }} تومان</p>
                                 </div>
                             </div>
                         </div>
@@ -845,7 +845,7 @@
                             <div class="media"><img src="{{ $bestSelling[1]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[1]->buyCount }} فروش</span>
                                     <h4 class="mt-0">{{ $bestSelling[1]->title }}</h4>
-                                    <p class="text-muted mb-0">{{ $bestSelling[1]->price }} تومان</p>
+                                    <p class="text-muted mb-0">{{ number_format($bestSelling[1]->price)  }} تومان</p>
                                 </div>
                             </div>
                         </div>
@@ -853,7 +853,7 @@
                             <div class="media"><img src="{{ $bestSelling[2]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[2]->buyCount }} فروش</span>
                                     <h4 class="mt-0">{{ $bestSelling[2]->title }}</h4>
-                                    <p class="text-muted mb-0">{{ $bestSelling[2]->price }} تومان</p>
+                                    <p class="text-muted mb-0">{{ number_format($bestSelling[2]->price) }} تومان</p>
                                 </div>
                             </div>
                         </div>
@@ -888,8 +888,8 @@
                                 <td><img class="product-img" src="{{ $purchase->product()->first()->image['80,80']}}" alt="user"></td>
                                 <td>{{ $purchase->product()->first()->title}}</td>
                                 <td>{{ jdate($purchase->created_at) }}</td>
-                                <td>{{ $purchase->product()->first()->price }}تومان</td>
-                                <td><span class="badge badge-boxed badge-soft-success">{{ $purchase->status}}</span></td>
+                                <td>{{ number_format($purchase->product()->first()->price) }}تومان</td>
+                                <td><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span></td>
                             </tr>
                             @endforeach
                             <!--end tr-->

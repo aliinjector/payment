@@ -18,7 +18,7 @@
                             <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
                         </ol>
                     </div>
-                    <h4 class="page-title">لیست محصولات دسته بندی شماره یک</h4>
+                    {{-- <h4 class="page-title">لیست محصولات دسته بندی شماره یک</h4> --}}
                 </div>
                 <!--end page-title-box-->
             </div>

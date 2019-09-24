@@ -25,5 +25,9 @@ class Shop extends Model
    {
        return $this->hasMany('App\UserPurchase');
    }
+   public function shopCategory()
+   {
+       return $this->belongsTo('App\ShopCategory' , 'category_id');
+   }
 
 }

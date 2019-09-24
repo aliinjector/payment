@@ -170,18 +170,28 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->type == 'file') {
+        $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
+        if($request->type == 'file' and $request->file('attachment') == null){
+            $attachment = $product->attachment;
+            $file_size = $product->file_size;
+        }
+        elseif($request->type == 'file'){
+            $attachment = $this->uploadFile($request->file('attachment'), false, false);
             $file_size = $request->file('attachment')->getSize();
+        }
+            else{
+            $attachment = null;
+            $file_size = null;
+        }
+           if($request->file('image') == null){
+               $image = $product->image;
            }
            else{
-            $file_size = null;
+               $image = $this->uploadFile($request->file('image'), false, true);
            }
-      $image = $this->uploadFile($request->file('image'), false, true);
-      if($request->type == 'file')
 
-      $attachment = $this->uploadFile($request->file('attachment'), false, false);
-      else
-      $attachment = null;
+
+
       if ( $request->enable != "on")
       $request->enable = 0;
      else
@@ -252,7 +262,7 @@ class ProductController extends Controller
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
-      alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+      alert()->success('محصول جدید شما باموفقیت ویرایش شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
     }
 

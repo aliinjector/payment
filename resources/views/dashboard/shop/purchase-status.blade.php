@@ -45,7 +45,7 @@
                                             <td>{{ $purchase->product()->first()->title}}</td>
                                             <td>{{ jdate($purchase->created_at) }}</td>
                                             <td>{{ $purchase->product()->first()->price }}تومان</td>
-                                            <td><span class="badge badge-boxed badge-soft-success">{{ $purchase->status}}</span></td>
+                                            <td><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span></td>
                                         </tr>
                                         @endforeach
                                         <!--end tr-->

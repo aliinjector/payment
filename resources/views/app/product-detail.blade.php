@@ -26,7 +26,7 @@
   width: 16px;
   height: 16px;
   border-radius: 20px;
-  top: -1px;
+  top: -2px;
   left: -2px;
   position: relative;
   background-color: white;
@@ -40,7 +40,7 @@ input[type='radio']:checked:after {
   width: 16px;
   height: 16px;
   border-radius: 20px;
-  top: -1px;
+  top: -2px;
   left: -2px;
   position: relative;
   background-color: #919191;
@@ -184,7 +184,7 @@ input[type='radio']:checked:after {
                                                     @if($product->type == 'file')
                                                     <a href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank" class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
                                                     @else
-                                                    <a href="#" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>اضافه به سبد خرید</a>
+                                                    <a href="#" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>خرید </a>
                                                     @endif
 
                                                     </div>
@@ -257,7 +257,7 @@ input[type='radio']:checked:after {
                     <div class="row">
                         <div class="col-md-9">
                             <div class="card bg-newsletters">
-                                <div class="card-body">
+                                <div class="card-body comming-soon">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="newsletters-text">

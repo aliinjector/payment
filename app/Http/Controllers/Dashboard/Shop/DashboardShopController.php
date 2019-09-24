@@ -18,7 +18,12 @@ class DashboardShopController extends Controller
         $purchases = UserPurchase::where('shop_id' , \Auth::user()->shop()->first()->id)->get();
         $shop = \Auth::user()->shop()->first();
         $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(3)->get();
-        return view('dashboard.shop.dashboard-shop', compact('purchases','shop','bestSelling'));
+        $sumPrices = $shop->purchases()->get();
+        $sum = 0;
+        foreach($sumPrices as $sumPrice){
+            $sum += $sumPrice->product()->first()->price;
+            }
+        return view('dashboard.shop.dashboard-shop', compact('purchases','shop','bestSelling' , 'sum'));
     }
 
     public function purchaseStatus()

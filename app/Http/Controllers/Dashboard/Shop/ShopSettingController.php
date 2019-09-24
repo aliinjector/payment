@@ -38,10 +38,11 @@ class ShopSettingController extends Controller
               $shopContact->province = "تهران";
               $shopContact->save();
           }
+          $shopCategories = ShopCategory::all();
           $shopInformation = \Auth::user()->shop()->first();
           $shopContactInformation = $shopInformation->shopContact()->first();
           $categories = ShopCategory::all();
-          return view('dashboard.shop.shop-setting', compact('categories','shopInformation','shopContactInformation'));
+          return view('dashboard.shop.shop-setting', compact('categories','shopInformation','shopContactInformation','shopCategories'));
         }
 
     /**
@@ -122,6 +123,7 @@ class ShopSettingController extends Controller
         'posting_way' => $request->posting_way,
         'person_way' => $request->person_way,
         'description' => $request->description,
+        'category_id' => $request->category_id,
         'icon' => $icon,
         'logo' => $logo,
       ]);
