@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UserInformationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UserInformationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dashboard/assets/images/bills.PNG" beforeDir="false" afterPath="$PROJECT_DIR$/public/dashboard/assets/images/bills.PNG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/userInformation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/userInformation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -248,6 +240,7 @@
       <workItem from="1569160927048" duration="30000" />
       <workItem from="1569161444432" duration="7700000" />
       <workItem from="1569221858344" duration="6068000" />
+      <workItem from="1569333576347" duration="1466000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>

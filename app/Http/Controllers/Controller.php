@@ -14,13 +14,21 @@ class Controller extends BaseController
 
     protected function uploadFile($file, $watermark = true, $resize = true)
     {
+
+
+        if (\App::environment('local')) {
+            $folder = public_path();
+        }
+        if (\App::environment('production')) {
+            $folder = public_path() . '_html';
+        }
+
         $year = Carbon::now()->year;
         $month = Carbon::now()->month;
         $day = Carbon::now()->day;
         $filePath = "/storage/upload/{$year}/{$month}/{$day}/";
         $fileName = time() . "_" . $file->getClientOriginalName();
-//        $file->move(public_path() . '_html' . $filePath, $fileName);
-        $file->move(public_path() . $filePath, $fileName);
+        $file->move($folder . $filePath, $fileName);
         $file = "$filePath" . "$fileName";
         $imageMimeTypes = ['image/jpeg', 'image/gif', 'image/png', 'image/bmp', 'image/svg+xml'];
         $contentType = mime_content_type(ltrim($file, "/"));
@@ -36,15 +44,20 @@ class Controller extends BaseController
     }
     private function resize($path, $sizes, $filePath, $fileName)
     {
+        if (\App::environment('local')) {
+            $folder = public_path();
+        }
+        if (\App::environment('production')) {
+            $folder = public_path() . '_html';
+        }
+
         $images['original'] = $filePath . $fileName;
         foreach ($sizes as $width => $height) {
             $size = $width . ',' . $height;
             $images[$size] = $filePath . "{$size}_" . $fileName;
-//            \Image::make(public_path() . '_html' . $path)->resize($width, $height, function ($constraint) {
-            \Image::make(public_path() . $path)->resize($width, $height, function ($constraint) {
+            \Image::make($folder . $path)->resize($width, $height, function ($constraint) {
                 $constraint->aspectRatio();
-//            })->save(public_path() . '_html' .$images[$size]);
-            })->save(public_path() . $images[$size]);
+            })->save($folder . $images[$size]);
         }
         return $images;
     }
