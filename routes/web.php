@@ -54,6 +54,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('product-list', 'ProductController');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
+        Route::put('product-list/change-status/status/{id}', 'ProductController@changeStatus')->name('change.status.product');
         Route::resource('product-detail', 'ProductDetailController');
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy');

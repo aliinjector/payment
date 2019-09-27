@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <label for="useremail">آدرس ایمیل</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-mail"></i> </span>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"  value="{{old('email')}}"  placeholder="مثال: Info@PayanPay.Ir">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"  value="{{old('email')}}" style="direction: ltr">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

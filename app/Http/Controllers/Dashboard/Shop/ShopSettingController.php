@@ -25,6 +25,7 @@ class ShopSettingController extends Controller
               $shop->name = "نام تست";
               $shop->english_name = \Auth::user()->id;
               $shop->user_id = \Auth::user()->id;
+              $shop->category_id = 1;
               $shop->status = 0;
               $shop->quick_way = "disable";
               $shop->posting_way = "disable";

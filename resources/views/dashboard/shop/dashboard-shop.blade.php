@@ -833,6 +833,7 @@
                 <h4 class="mt-0 header-title">محصولات محبوب</h4>
                 <div id="carousel_2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
+                        @if(isset($bestSelling[0]))
                         <div class="carousel-item active">
                             <div class="media"><img src="{{ $bestSelling[0]->image['400,400'] }}" height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[0]->buyCount }} فروش</span>
@@ -841,6 +842,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        @if(isset($bestSelling[1]))
                         <div class="carousel-item">
                             <div class="media"><img src="{{ $bestSelling[1]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[1]->buyCount }} فروش</span>
@@ -849,6 +852,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
+                        @if(isset($bestSelling[2]))
                         <div class="carousel-item">
                             <div class="media"><img src="{{ $bestSelling[2]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                                 <div class="media-body align-self-center"><span class="badge badge-primary mb-2 byekan w-25 f-10">{{ $bestSelling[2]->buyCount }} فروش</span>
@@ -857,6 +862,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
+
                     </div><a class="carousel-control-prev" href="#carousel_2" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a><a class="carousel-control-next" href="#carousel_2" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a></div>
             </div>
             <!--end card-body-->
@@ -885,10 +892,11 @@
                         <tbody>
                             @foreach($purchases as $purchase)
                             <tr class="byekan">
-                                <td><img class="product-img" src="{{ $purchase->product()->first()->image['80,80']}}" alt="user"></td>
-                                <td>{{ $purchase->product()->first()->title}}</td>
+
+                                <td><img class="product-img" src="{{ $purchase->product()->withTrashed()->first()->image['80,80']}}" alt="user"></td>
+                                <td>{{ $purchase->product()->withTrashed()->first()->title}}</td>
                                 <td>{{ jdate($purchase->created_at) }}</td>
-                                <td>{{ number_format($purchase->product()->first()->price) }}تومان</td>
+                                <td>{{ number_format($purchase->product()->withTrashed()->first()->price) }}تومان</td>
                                 <td><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span></td>
                             </tr>
                             @endforeach

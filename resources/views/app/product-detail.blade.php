@@ -269,7 +269,7 @@ input[type='radio']:checked:after {
                                         <div class="col-md-6 align-self-center">
                                             <div class="newsletters-input">
                                                 <form class="position-relative">
-                                                    <input type="email" placeholder="ایمیل خود را وارد کنید" required="">
+                                                    <input type="email" placeholder="ایمیل خود را وارد کنید" required="" style="direction: ltr">
                                                     <button type="submit" class="btn btn-success">دنبال کردن</button>
                                                 </form>
                                             </div>

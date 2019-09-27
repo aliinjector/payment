@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers\Dashboard\Shop;
 
+use App\Tag;
+use App\Shop;
+use App\Product;
 use App\Dashboard;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Shop;
-use App\ProductCategory;
-use App\Product;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
 
 
@@ -111,7 +113,6 @@ class ProductController extends Controller
       }
       $shop = \Auth::user()->shop()->first()->products()->create([
         'title' => $request->title,
-        'status' => $request->enable,
         'type' => $request->type,
         'color_1' => $request->color_1,
         'productCat_id' => $request->product_category,
@@ -136,6 +137,23 @@ class ProductController extends Controller
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
+
+
+    if($shop)
+    {
+        $tagNames = explode(',',$request->get('tags'));
+        $tagIds = [];
+        foreach($tagNames as $tagName)
+        {
+            $tag = Tag::firstOrCreate(['name'=>$tagName]);
+            if($tag)
+            {
+              $tagIds[] = $tag->id;
+            }
+        }
+        $shop->tags()->sync($tagIds);
+    }
+
       alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
     }
@@ -243,7 +261,6 @@ class ProductController extends Controller
       $request->secure_payment = 1;
       $shop = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
         'title' => $request->title,
-        'status' => $request->enable,
         'type' => $request->type,
         'color_1' => $request->color_1,
         'productCat_id' => $request->product_category,
@@ -272,6 +289,17 @@ class ProductController extends Controller
       return redirect()->route('product-list.index');
     }
 
+    public function changeStatus($id){
+
+        $product = Product::find($id);
+        if($product->status == 0)
+            $product->status = 1;
+        else
+            $product->status = 0;
+        $product->save();
+        return back();
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -281,14 +309,14 @@ class ProductController extends Controller
      */
      public function destroy(Request $request)
     {
-      $ProductCategory = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
-             // if ($product->shop->user_id !== \Auth::user()->id) {
-             //     alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
-             //     return redirect()->back();
-             // }
+    $product = Product::where('id' , $request->id)->get()->first();
+             if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
+                 alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                 return redirect()->back();
+             }
 
-              // $product->delete();
-              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+             $ProductCategory = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
+             alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
           }
     }

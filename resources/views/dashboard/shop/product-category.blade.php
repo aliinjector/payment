@@ -57,8 +57,8 @@
                             </div>
                             <!--end form-group-->
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                         <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                     </div>
 
@@ -95,8 +95,8 @@
                             </div>
                             <!--end form-group-->
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                         <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                     </div>
 
@@ -186,6 +186,13 @@
     $(document).on('click', '#removeCat', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
+        swal("آیا اطمینان دارید؟", {
+            dangerMode: true,
+            buttons: ["انصراف", "حذف"],
+
+          })
+        .then(function(isConfirm) {
+            if (isConfirm) {
         $.ajax({
             type: "post",
             url: "{{url('dashboard/shop/product-category/delete')}}",
@@ -198,6 +205,10 @@
                 location.href = url;
             }
         });
+    } else {
+        swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+    }
+    });
     });
 
 </script>

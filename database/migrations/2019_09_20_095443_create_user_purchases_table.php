@@ -20,6 +20,7 @@ class CreateUserPurchasesTable extends Migration
             $table->unsignedInteger('shop_id');
             $table->integer('status')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -1,8 +1,14 @@
 <?php
 namespace App;
+
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
+    use SoftDeletes, CascadeSoftDeletes;
+    protected $cascadeDeletes = ['ProductCategories' , 'products'];
+    protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [
         'logo' => 'array',

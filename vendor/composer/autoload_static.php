@@ -116,6 +116,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         array (
             'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
+            'Iatstuti\\Database\\Support\\' => 26,
         ),
         'G' => 
         array (
@@ -341,6 +342,10 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Iatstuti\\Database\\Support\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/iatstuti/laravel-cascade-soft-deletes/src',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -456,6 +461,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
         'App\\Http\\Controllers\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShopController.php',
+        'App\\Http\\Controllers\\TPGController' => __DIR__ . '/../..' . '/app/Http/Controllers/TPGController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -486,8 +492,8 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Shop' => __DIR__ . '/../..' . '/app/Shop.php',
         'App\\ShopCategory' => __DIR__ . '/../..' . '/app/ShopCategory.php',
         'App\\ShopContact' => __DIR__ . '/../..' . '/app/ShopContact.php',
-        'App\\ShopSetting' => __DIR__ . '/../..' . '/app/ShopSetting.php',
         'App\\TPG' => __DIR__ . '/../..' . '/app/TPG.php',
+        'App\\Tag' => __DIR__ . '/../..' . '/app/Tag.php',
         'App\\Ticket' => __DIR__ . '/../..' . '/app/Ticket.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserInformation' => __DIR__ . '/../..' . '/app/UserInformation.php',
@@ -1203,6 +1209,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'Hamcrest\\Type\\IsString' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Type/IsString.php',
         'Hamcrest\\Util' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Util.php',
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
+        'Iatstuti\\Database\\Support\\CascadeSoftDeletes' => __DIR__ . '/..' . '/iatstuti/laravel-cascade-soft-deletes/src/CascadeSoftDeletes.php',
         'Illuminate\\Auth\\Access\\AuthorizationException' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/AuthorizationException.php',
         'Illuminate\\Auth\\Access\\Gate' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/Gate.php',
         'Illuminate\\Auth\\Access\\HandlesAuthorization' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Auth/Access/HandlesAuthorization.php',

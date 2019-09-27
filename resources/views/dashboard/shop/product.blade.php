@@ -75,8 +75,8 @@
                                     </div>
                                     <!--end form-group-->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 {{-- <button type="submit" class="btn btn-primary">ثبت درخواست</button> --}}
                                 {{-- <a data-dismiss="modal" data-toggle="modal" href="#AddProductModal1">Click</a> --}}
 
@@ -209,7 +209,10 @@
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
                                         </div>
-
+                                        <div class="input-group mt-3">
+                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> تگ های محصول :</span></div>
+                                                <input type="text" name="tags" class="form-control"/>
+                                            </div>
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
@@ -232,17 +235,6 @@
                                         </div>
 
 
-                                        <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت محصول :</span></div>
-                                            <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5">
-                                                    <input type="radio" name="enable" id="option1"> فعال
-                                                </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5">
-                                                    <input type="radio" id="option3"> غیرفعال
-                                                </label>
-                                            </div>
-                                        </div>
 
                                         <div class="card mt-3">
                                             <div class="card-body">
@@ -274,8 +266,8 @@
                                     </div>
                                     <!--end form-group-->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -425,17 +417,7 @@
                                         </div>
 
 
-                                        <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت محصول :</span></div>
-                                            <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5 @if($product->status == 1) active" @endif">
-                                                    <input type="radio" name="enable" id="option1" > فعال
-                                                </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5 @if($product->status == 0) active" @endif">
-                                                    <input type="radio" id="option3"> غیرفعال
-                                                </label>
-                                            </div>
-                                        </div>
+
 
                                         <div class="card mt-3">
                                             <div class="card-body">
@@ -467,8 +449,8 @@
                                     </div>
                                     <!--end form-group-->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -570,17 +552,7 @@
 
                                         </div>
 
-                                        <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت فایل :</span></div>
-                                            <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5 @if($product->status == 1) active" @endif">
-                                                    <input type="radio" name="enable" id="option1"> فعال
-                                                </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5 @if($product->status == 0) active" @endif">
-                                                    <input type="radio" id="option3"> غیرفعال
-                                                </label>
-                                            </div>
-                                        </div>
+
 
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
@@ -669,8 +641,8 @@
                                     </div>
                                     <!--end form-group-->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -782,17 +754,6 @@
 
                                         </div>
 
-                                        <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت خدمت :</span></div>
-                                            <div class="btn-group btn-group-toggle col-10 p-1" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5 @if($product->status == 1) active" @endif">
-                                                    <input type="radio" name="enable" id="option1"> فعال
-                                                </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5 @if($product->status == 0) active" @endif">
-                                                    <input type="radio" id="option3"> غیرفعال
-                                                </label>
-                                            </div>
-                                        </div>
 
                                         <div class="card mt-3">
                                             <div class="card-body">
@@ -822,8 +783,8 @@
                                     </div>
                                     <!--end form-group-->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -929,17 +890,6 @@
 
                                         </div>
 
-                                        <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت فایل :</span></div>
-                                            <div class="btn-group btn-group-toggle col-10" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5">
-                                                    <input type="radio" name="enable" id="option1"> فعال
-                                                </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5">
-                                                    <input type="radio" id="option3"> غیرفعال
-                                                </label>
-                                            </div>
-                                        </div>
 
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
@@ -1028,8 +978,8 @@
                                     </div>
                                     <!--end form-group-->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -1145,17 +1095,7 @@
 
                                         </div>
 
-                                        <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وضعیت خدمت :</span></div>
-                                            <div class="btn-group btn-group-toggle col-10 p-1" data-toggle="buttons">
-                                                <label class="btn btn-outline-success iranyekan mr-5">
-                                                    <input type="radio" name="enable" id="option1"> فعال
-                                                </label>
-                                                <label class="btn btn-outline-danger iranyekan mr-5">
-                                                    <input type="radio" id="option3"> غیرفعال
-                                                </label>
-                                            </div>
-                                        </div>
+
 
                                         <div class="card mt-3">
                                             <div class="card-body">
@@ -1185,8 +1125,8 @@
                                     </div>
                                     <!--end form-group-->
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">بستن</button>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 <button type="submit" class="btn btn-primary">ثبت درخواست</button>
                             </div>
 
@@ -1243,16 +1183,32 @@
             </td>
             <td>{{ $product->productCategory()->first()->name }}</td>
             <td>{{ $product->price }}</td>
-            @if ($product->status == 1)
-            <td><span class="badge badge-soft-success">
-                    فعال
-                </span></td>
-            @else
-            <td><span class="badge badge-soft-pink">
-                    غیرفعال
-                </span></td>
 
-            @endif
+            <td>
+                    <form class="form-inline" action="{{ route('change.status.product', $product->id) }}" method="post">
+                            @csrf
+                            {{ method_field('put') }}
+                            <button class="btn btn-link" type="submit">
+                                @if($product->status == 1)
+                                    <i class="fa fa-toggle-on text-success"></i>
+                                @else
+                                    <i class="fa fa-toggle-off text-muted"></i>
+                                @endif
+                            </button>
+                    @if ($product->status == 1)
+                <span class="badge badge-soft-success">
+                    فعال
+                </span>
+                @else
+                <span class="badge badge-soft-pink">
+                        غیرفعال
+                    </span>
+                    @endif
+                </form>
+
+            </td>
+
+
             @if ($product->type == 'service')
               <td>خدمت</td>
             @elseif($product->type == 'file')
@@ -1278,6 +1234,7 @@
                 <a href="" id="removerProduct" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger"></i></a>
 
             </td>
+
             </tr>
             @endforeach
 
@@ -1365,6 +1322,13 @@
     $(document).on('click', '#removerProduct', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
+        swal("آیا اطمینان دارید؟", {
+            dangerMode: true,
+            buttons: ["انصراف", "حذف"],
+
+          })
+          .then(function(isConfirm) {
+            if (isConfirm) {
         $.ajax({
             type: "post",
             url: "{{url('/dashboard/shop/product-list/delete')}}",
@@ -1377,6 +1341,11 @@
                 location.href = url;
             }
         });
+    } else {
+        swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+    }
     });
+    });
+
 </script>
 @stop

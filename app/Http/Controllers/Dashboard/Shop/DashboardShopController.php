@@ -21,7 +21,7 @@ class DashboardShopController extends Controller
         $sumPrices = $shop->purchases()->get();
         $sum = 0;
         foreach($sumPrices as $sumPrice){
-            $sum += $sumPrice->product()->first()->price;
+            $sum += $sumPrice->product()->withTrashed()->first()->price;
             }
         return view('dashboard.shop.dashboard-shop', compact('purchases','shop','bestSelling' , 'sum'));
     }

@@ -275,7 +275,7 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-password-input" class="col-sm-2 col-form-label text-center">ایمیل فروشگاه</label>
-                        <input class="form-control" type="email" name="shop_email" placeholder="مثال: example@gmail.com" id="example-password-input"                                                value="{{ old('shop_email', $shopContactInformation->shop_email) }}">
+                        <input class="form-control" type="email" name="shop_email" style="direction: ltr" id="example-password-input" value="{{ old('shop_email', $shopContactInformation->shop_email) }}" >
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-envelope text-dark font-18"></i></span></div>
                     </div>
                 </div>

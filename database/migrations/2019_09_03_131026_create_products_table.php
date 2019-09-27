@@ -14,10 +14,10 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id')->unsigned();
             $table->unsignedInteger('shop_id');
             $table->string('title');
-            $table->bigInteger('productCat_id')->unsigned()->index();;
+            $table->bigInteger('productCat_id')->unsigned()->index();
             $table->unsignedInteger('status')->default(0);
             $table->unsignedInteger('fast_sending')->default(0);
             $table->unsignedInteger('money_back')->default(0);
@@ -44,6 +44,8 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->text('attachment')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
 
 
             $table->foreign('productCat_id')->references('id')->on('product_categories')->onDelete('cascade')->onUpdate('cascade');

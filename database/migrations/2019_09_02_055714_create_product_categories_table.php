@@ -18,8 +18,12 @@ class CreateProductCategoriesTable extends Migration
             $table->string('name');
            $table->text('description')->nullable();
            $table->unsignedInteger('parent_id')->nullable();
-           $table->unsignedInteger('shop_id');
+           $table->bigInteger('shop_id')->unsigned()->index();
             $table->timestamps();
+            $table->softDeletes();
+
+
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
