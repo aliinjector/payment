@@ -8,6 +8,7 @@ use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use App\Tag;
 use App\UserPurchase;
 
 class ShopController extends Controller
@@ -128,6 +129,14 @@ class ShopController extends Controller
         $shop = Shop::where('english_name' , $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         return view('app.purchaseSuccess', compact('shop','shopCategories'));
+    }
+
+    public function tagProduct($shop, $name){
+        $shop = Shop::where('english_name' , $shop)->first();
+        $shopCategories = $shop->ProductCategories()->get();
+        $products = Tag::where('name' ,$name)->get()->first()->products()->get();
+        return view('app.tags-product', compact('products','shop','shopCategories'));
+
     }
 
     /**

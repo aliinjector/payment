@@ -71,5 +71,6 @@ Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('d
 Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
 Route::get('/{shop}/{id}', 'ShopController@showProduct')->name('shop.show.product');
 Route::get('/{shop}/category/{categroyId}', 'ShopController@showCategory')->name('shop.show.category');
+Route::get('/{shop}/tag/{name}', 'ShopController@tagProduct')->name('shop.tag.product');
 
 
