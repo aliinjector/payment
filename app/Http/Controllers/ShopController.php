@@ -134,7 +134,7 @@ class ShopController extends Controller
     public function tagProduct($shop, $name){
         $shop = Shop::where('english_name' , $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
-        $products = Tag::where('name' ,$name)->get()->first()->products()->get();
+        $products = Tag::where('name' ,$name)->get()->first()->products()->where('shop_id' , $shop->id)->get();
         return view('app.tags-product', compact('products','shop','shopCategories'));
 
     }

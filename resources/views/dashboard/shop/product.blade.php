@@ -210,7 +210,7 @@
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
                                         </div>
                                         <div class="input-group mt-3">
-                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> تگ های محصول :</span></div>
+                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
                                                 <input type="text" name="tags" class="form-control"/>
                                             </div>
                                         <div class="input-group mt-3 bg-white">
@@ -847,18 +847,7 @@
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
-                                        {{--  <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">حجم فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="file_size" placeholder="مثال: 45">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">مگابایت</span></div>
 
-                                        </div>  --}}
-                                        {{--  <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> موجودی فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="amount" placeholder=" مثال: 100">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> عدد</span></div>
-
-                                        </div>  --}}
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا ">
@@ -886,10 +875,11 @@
                                         <div class="input-group mt-3 d-none feature_4">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا ">
-
-
                                         </div>
-
+                                        <div class="input-group mt-3">
+                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                                <input type="text" name="tags" class="form-control"/>
+                                            </div>
 
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
@@ -1070,9 +1060,11 @@
                                         <div class="input-group mt-3 d-none feature_4">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
-
-
                                         </div>
+                                        <div class="input-group mt-3">
+                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                                <input type="text" name="tags" class="form-control"/>
+                                            </div>
 
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
