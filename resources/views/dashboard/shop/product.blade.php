@@ -1164,12 +1164,12 @@
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">نوع محصول</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 123px;">تنظیمات</th>
+
                                         </tr>
                                     </thead>
                                     <tbody class="byekan">
                                         @foreach($products as $product)
-                                        <tr role="row" class="odd">
+                                        <tr role="row" class="odd icon-hover hover-color">
                                             <td class="sorting_1 w-25 "><img src="{{ $product->image['80,80'] }}" class="rounded" alt="">
         <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product-list.show',$product->id) }}" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
             </td>
@@ -1200,33 +1200,33 @@
 
             </td>
 
-
+            <td class="d-flex justify-content-between">
             @if ($product->type == 'service')
-              <td>خدمت</td>
+              خدمت
             @elseif($product->type == 'file')
-              <td>فایل</td>
+              فایل
             @else
-              <td>فیزیکی</td>
+              فیزیکی
+            @endif
+            <div class="d-none icon-show">
+
+            @if($product->type == 'product')
+            <a href="{{ $product->id }}" id="editProduct" data-toggle="modal" data-target="#UpdateProductModalProduct{{ $product->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+            </a>
+            @elseif($product->type == 'file')
+            <a href="{{ $product->id }}" id="editProduct" data-toggle="modal" data-target="#UpdateProductModalFile{{ $product->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+            </a>
+            @else
+            <a href="{{ $product->id }}" id="editProduct" data-toggle="modal" data-target="#UpdateProductModalService{{ $product->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+            </a>
             @endif
 
-            <td>
-                @if($product->type == 'product')
-                <a href="{{ $product->id }}" id="editProduct" data-toggle="modal" data-target="#UpdateProductModalProduct{{ $product->id }}"><i class="far fa-edit text-info mr-1 button"></i>
-                </a>
-                @elseif($product->type == 'file')
-                <a href="{{ $product->id }}" id="editProduct" data-toggle="modal" data-target="#UpdateProductModalFile{{ $product->id }}"><i class="far fa-edit text-info mr-1 button"></i>
-                </a>
-                @else
-                <a href="{{ $product->id }}" id="editProduct" data-toggle="modal" data-target="#UpdateProductModalService{{ $product->id }}"><i class="far fa-edit text-info mr-1 button"></i>
-                </a>
-                @endif
+            </a>
 
-                </a>
+            <a href="" id="removerProduct" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+            </div>
 
-                <a href="" id="removerProduct" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger"></i></a>
-
-            </td>
-
+        </td>
             </tr>
             @endforeach
 
@@ -1338,6 +1338,6 @@
     }
     });
     });
-
+v 
 </script>
 @stop

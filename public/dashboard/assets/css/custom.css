@@ -104,3 +104,15 @@
 .mr-16 {
     margin-right: 16%;
 }
+
+.icon-hover {
+    cursor: pointer;
+}
+
+.hover-color:hover {
+    background-color: #F1F5FA;
+}
+
+.icon-hover:hover .icon-show {
+    display: inline-flex!important;
+}

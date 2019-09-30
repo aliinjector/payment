@@ -131,19 +131,23 @@
                                                 محصول
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 123px;">تنظیمات</th>
                                         </tr>
                                     </thead>
                                     <tbody class="byekan">
                                         @foreach($categoires as $category)
-                                        <tr role="row" class="odd">
+                                        <tr role="row" class="odd icon-hover hover-color">
                                             <td>{{ $category->name }}</td>
-                                            <td>{{ $category->description }}</td>
-                                            <td>
-                                                <a href="{{ $category->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $category->id }}"><i class="far fa-edit text-info mr-1 button"></i>
+                                            <td class="d-flex justify-content-between ">{{ $category->description }}
+                                                <div class="d-none icon-show">
+                                                <a href="{{ $category->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $category->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                 </a>
-                                                <a href="" id="removeCat" data-id="{{ $category->id }}" ><i class="far fa-trash-alt text-danger"></i></a>
+
+                                                <a href="" id="removeCat" data-id="{{ $category->id }}" ><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$category->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
+                                                </a>
+                                            </div>
                                             </td>
+
                                         </tr>
                                         @endforeach
 

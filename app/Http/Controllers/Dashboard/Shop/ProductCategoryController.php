@@ -19,8 +19,9 @@ class ProductCategoryController extends Controller
     public function index()
     {
 
+      $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
-        return view('dashboard.shop.product-category', compact('categoires'));
+        return view('dashboard.shop.product-category', compact('categoires' , 'shop'));
     }
 
     /**
@@ -41,6 +42,7 @@ class ProductCategoryController extends Controller
      */
     public function store(ProductCategoryRequest $request)
     {
+        if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
       $productCategory = new ProductCategory;
     $productCategory->name = $request->name;
     $productCategory->description = $request->description;
@@ -48,6 +50,11 @@ class ProductCategoryController extends Controller
     $productCategory->save();
     alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
     return redirect()->route('product-category.index');
+    }
+    else{
+        alert()->error('دسته بندی با این نام قبلا در فروشگاه شما ثبت شده است ', 'خطا');
+        return redirect()->route('product-category.index');
+        }
     }
 
     /**
