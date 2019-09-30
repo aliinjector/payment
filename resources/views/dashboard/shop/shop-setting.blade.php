@@ -94,7 +94,7 @@
                             </div>
                             <div class="mt-3 row">
                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                    <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way">
+                                    <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way" @if($shopInformation->quick_way == 'enable') checked @endif>
                                     <label class="custom-control-label iranyekan font-15" for="quick_way_on">رفعال</label>
                                 </div>
 
@@ -118,7 +118,7 @@
                             </div>
                             <div class="mt-3 row">
                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                    <input type="checkbox" class="custom-control-input" id="posting_way_on" name="posting_way">
+                                    <input type="checkbox" class="custom-control-input" id="posting_way_on" name="posting_way" @if($shopInformation->posting_way == 'enable') checked @endif>
                                     <label class="custom-control-label iranyekan font-15" for="posting_way_on">فعال</label>
                                 </div>
 
@@ -132,17 +132,17 @@
         </div>
         <!--end col-->
         <div class="col-lg-4  p-3">
-                    <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fa fa-people-carry"></i></span>
+                    <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fas fa-people-carry"></i></span>
                         <div class="media-body align-self-center">
                             <div class="setting-detail">
                                 <h3 class="mb-0 mt-0 iranyekan">دریافت حضوری</h3>
                                 <p class="text-muted mb-0">
 
-                                    در صورتی که امکان دریافت حضوری محصولات توسط مشتری وجود دارد.</p>
+                                   امکان دریافت حضوری محصولات فروشگاه.</p>
                             </div>
                             <div class="mt-3 row">
                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                    <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way">
+                                    <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way" @if($shopInformation->person_way == 'enable') checked @endif>
                                     <label class="custom-control-label iranyekan font-15" for="person_way_on">فعال</label>
                                 </div>
 

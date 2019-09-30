@@ -27,6 +27,9 @@
         <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto mr-2">
                         <li class="nav-item">
@@ -39,11 +42,22 @@
                     @endforeach
                   </ul>
                   <ul class="navbar-nav ml-2">
-                        <li class="nav-item">
-                                <a href="{{ route('show.shop', $shop->first()->english_name) }}">
-                                <img src="{{ $shop->logo['200,100'] }}" alt="">
-                              </a>
-                            </li>
+                        @guest
+                        <li class="nav-item mt-4 pl-4">
+                                <div class="search-icon d-lg-block">
+                                        <a href="{{ route('login') }}" style="font-size:15px;" ><i class="fas fa-sign-in-alt"></i> ورود</a>
+
+                                        <a href="{{ route('register') }}" class="pr-2">
+                                            <span class="" style="font-size:15px;"><i class="fa fa-user"></i> عضویت</span></a>
+                                    </div>
+                                </li>
+                                @endguest
+                      <li class="nav-item">
+                          <a href="{{ route('show.shop', $shop->first()->english_name) }}">
+                          <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
+                        </a>
+                      </li>
+
                   </ul>
                 </div>
               </nav>
@@ -154,7 +168,7 @@
                                                   @endif
                                                 <div class="quantity mt-3">
                                                     @if($product->type == 'file')
-                                                    <a href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank" class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
+                                                    <a href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @if(\auth::user())target="_blank" @endif class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
                                                     @else
                                                     <a href="#" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>خرید </a>
                                                     @endif

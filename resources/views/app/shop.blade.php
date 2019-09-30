@@ -59,6 +59,10 @@ h2 {
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto mr-2">
                 <li class="nav-item">
@@ -71,11 +75,22 @@ h2 {
             @endforeach
           </ul>
           <ul class="navbar-nav ml-2">
+                @guest
+                <li class="nav-item mt-4 pl-4">
+                        <div class="search-icon d-lg-block">
+                                <a href="{{ route('login') }}" style="font-size:15px;" ><i class="fas fa-sign-in-alt"></i> ورود</a>
+
+                                <a href="{{ route('register') }}" class="pr-2">
+                                    <span class="" style="font-size:15px;"><i class="fa fa-user"></i> عضویت</span></a>
+                            </div>
+                        </li>
+                        @endguest
               <li class="nav-item">
                   <a href="{{ route('show.shop', $shop->first()->english_name) }}">
-                  <img src="{{ $shop->logo['200,100'] }}" alt="">
+                  <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
                 </a>
               </li>
+
           </ul>
         </div>
       </nav>

@@ -98,8 +98,16 @@ class ShopController extends Controller
     }
     public function downlaodFile($shop , $id)
     {
-        return  redirect(URL::temporarySignedRoute(
-            'download.link', now()->addMinutes(1), ['shop' => $shop , 'id' => $id]));
+        if(\Auth::guest()){
+            return redirect()->route('register');
+        }
+        else{
+            return  redirect(URL::temporarySignedRoute(
+            'download.link',
+            now()->addMinutes(30),
+            ['shop' => $shop , 'id' => $id]
+        ));
+        }
     }
 
     public function downlaodLink(Request $request,$shop, $id)

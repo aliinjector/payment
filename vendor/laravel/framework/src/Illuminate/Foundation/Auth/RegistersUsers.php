@@ -2,9 +2,11 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use Illuminate\Http\Request;
+use App\Shop;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Request as RequestFacade;
 
 trait RegistersUsers
 {
@@ -17,7 +19,17 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        return view('auth.register');
+
+        if(RequestFacade::server('HTTP_REFERER') === route('index').'/' or RequestFacade::server('HTTP_REFERER') === route('login')){
+            return view('auth.register');
+        }
+        else{
+            $base_url = parse_url(RequestFacade::server('HTTP_REFERER'),PHP_URL_PATH);
+            $uri = ltrim($base_url, '/');
+            $shopName = explode('/',$uri);
+            $shop_id = Shop::where('english_name' , $shopName[0])->get()->first()->id;
+            return view('auth.registerUser',compact('shop_id'));
+        }
     }
 
     /**

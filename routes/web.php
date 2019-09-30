@@ -21,7 +21,7 @@ Auth::routes();
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('index');
 
 
 

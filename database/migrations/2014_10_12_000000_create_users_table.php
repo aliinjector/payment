@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile');
             $table->string('status')->default('active');
             $table->string('type')->default('user');
+            $table->bigInteger('shop_id')->unsigned()->index();
             $table->rememberToken();
             $table->timestamps();
         });
