@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::get('/paymentHelper', function(Request $request){
+//    return $request->user();
+    return \Auth::user()->with('cards.bank', 'wallets', 'gateways' , 'checkouts.card', 'checkouts.wallet')->get()->toArray();
+})->middleware('auth:api');

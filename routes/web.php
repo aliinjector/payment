@@ -1,4 +1,6 @@
 <?php
+
+use App\User;
 use Illuminate\Http\Request;
 
 /*
@@ -13,16 +15,15 @@ use Illuminate\Http\Request;
 */
 Auth::routes();
 
-// Route::get('/docs', 'DocumentationController@index')->name('documentation');
-// if (! $request->hasValidSignature()) {
-//     abort(401);
-// }
-
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 
 
-Route::get('/', 'IndexController@index')->name('index');
+Route::get('/', 'IndexController@index');
 
+Route::get('/paymentHelper', function(Request $request){
+//    return $request->user();
+    return User::find(1)->with('cards.bank', 'wallets', 'gateways' , 'checkouts')->first();
+});
 
 
 Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(function () {

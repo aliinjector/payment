@@ -2,8 +2,173 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/passport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/oauth-private.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/oauth-public.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/asm89/stack-cors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/asm89/stack-cors/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/asm89/stack-cors/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/asm89/stack-cors/src/Asm89/Stack/Cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/asm89/stack-cors/src/Asm89/Stack/CorsService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/changelog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/config/cors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/phpunit.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/src/HandleCors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/src/HandlePreflight.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/src/LumenServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/src/ServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/tests/CorsKernel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/tests/GlobalMiddlewareTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/tests/GroupMiddlewareTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/tests/PreflightTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/barryvdh/laravel-cors/tests/TestCase.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/bin/generate-defuse-key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/bin/generate-defuse-key.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/firebase/php-jwt/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/firebase/php-jwt/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/firebase/php-jwt/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/firebase/php-jwt/src/BeforeValidException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/firebase/php-jwt/src/ExpiredException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/firebase/php-jwt/src/JWT.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/firebase/php-jwt/src/SignatureInvalidException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/UPGRADING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/ClientInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Cookie/CookieJar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Cookie/CookieJarInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Cookie/FileCookieJar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Cookie/SessionCookieJar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Cookie/SetCookie.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/BadResponseException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/ClientException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/ConnectException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/GuzzleException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/SeekException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/ServerException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/TooManyRedirectsException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/TransferException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/CurlFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/CurlFactoryInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/CurlHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/EasyHandle.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/MockHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/Proxy.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/StreamHandler.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/HandlerStack.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/MessageFormatter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Middleware.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Pool.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/RedirectMiddleware.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/RequestOptions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/RetryMiddleware.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/TransferStats.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/UriTemplate.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/functions.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/functions_include.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/LICENSE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/config/passport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/database/migrations/2016_06_01_000001_create_oauth_auth_codes_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/database/migrations/2016_06_01_000002_create_oauth_access_tokens_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/database/migrations/2016_06_01_000003_create_oauth_refresh_tokens_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/database/migrations/2016_06_01_000004_create_oauth_clients_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/database/migrations/2016_06_01_000005_create_oauth_personal_access_clients_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/resources/js/components/AuthorizedClients.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/resources/js/components/Clients.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/resources/js/components/PersonalAccessTokens.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/resources/views/authorize.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/ApiTokenCookieFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/AuthCode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/AccessToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/AccessTokenRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/AuthCode.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/AuthCodeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/Client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/ClientRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/FormatsScopesForStorage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/PersonalAccessGrant.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/RefreshToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/RefreshTokenRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/Scope.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/ScopeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Bridge/UserRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Client.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/ClientRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Console/ClientCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Console/InstallCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Console/KeysCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Events/AccessTokenCreated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Events/RefreshTokenCreated.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Exceptions/MissingScopeException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Guards/TokenGuard.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/HasApiTokens.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/AccessTokenController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/ApproveAuthorizationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/AuthorizationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/AuthorizedAccessTokenController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/ClientController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/ConvertsPsrResponses.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/DenyAuthorizationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/HandlesOAuthErrors.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/PersonalAccessTokenController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/RetrievesAuthRequestFromSession.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/ScopeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Controllers/TransientTokenController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Middleware/CheckClientCredentials.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Middleware/CheckClientCredentialsForAnyScope.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Middleware/CheckForAnyScope.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Middleware/CheckScopes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Middleware/CreateFreshApiToken.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Http/Rules/RedirectRule.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Passport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/PassportServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/PersonalAccessClient.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/PersonalAccessTokenFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/PersonalAccessTokenResult.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/RouteRegistrar.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Scope.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/Token.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/TokenRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/laravel/passport/src/TransientToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/payment.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -130,6 +295,21 @@
       <path value="$PROJECT_DIR$/vendor/intervention/image" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/iatstuti/laravel-cascade-soft-deletes" />
+      <path value="$PROJECT_DIR$/vendor/asm89/stack-cors" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-cors" />
+      <path value="$PROJECT_DIR$/vendor/league/event" />
+      <path value="$PROJECT_DIR$/vendor/league/oauth2-server" />
+      <path value="$PROJECT_DIR$/vendor/defuse/php-encryption" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-diactoros" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/vendor/laravel/passport" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QK36TGsVYwU7bBOhm2wrd2VwGC" />
@@ -240,7 +420,21 @@
       <workItem from="1569160927048" duration="30000" />
       <workItem from="1569161444432" duration="7700000" />
       <workItem from="1569221858344" duration="6068000" />
-      <workItem from="1569333576347" duration="1466000" />
+      <workItem from="1569333576347" duration="3612000" />
+      <workItem from="1569412072099" duration="3115000" />
+      <workItem from="1569484219036" duration="8000" />
+      <workItem from="1569497631045" duration="599000" />
+      <workItem from="1569503516104" duration="155000" />
+      <workItem from="1569566626055" duration="680000" />
+      <workItem from="1569652312713" duration="7237000" />
+      <workItem from="1569666669183" duration="5000" />
+      <workItem from="1569673746473" duration="1209000" />
+      <workItem from="1569824234243" duration="6781000" />
+      <workItem from="1569846951897" duration="3191000" />
+      <workItem from="1569931425590" duration="6000" />
+      <workItem from="1569931526338" duration="480000" />
+      <workItem from="1569932714674" duration="6082000" />
+      <workItem from="1570001569774" duration="2565000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -445,7 +639,14 @@
       <option name="project" value="LOCAL" />
       <updated>1569223758270</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Upload Pic Server Solved">
+      <created>1569336194531</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1569336194531</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -489,6 +690,7 @@
     <MESSAGE value="Payment Resource Folder Bandi Finished" />
     <MESSAGE value="DataTables Added" />
     <MESSAGE value="Index Updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Index Updated" />
+    <MESSAGE value="Upload Pic Server Solved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upload Pic Server Solved" />
   </component>
 </project>
