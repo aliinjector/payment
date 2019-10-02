@@ -85,6 +85,11 @@ h2 {
                             </div>
                         </li>
                         @endguest
+                        @if(\Auth::user()->id == $shop->user_id)
+                        <div class="search-icon d-lg-block ml-5 mt-4">
+                                <a href="{{ route('login') }}" style="font-size:15px;"><i class="fas fa-sign-in-alt ml-1 pt-1"></i>ورود به پنل مدیریت فروشگاه</a>
+                            </div>
+                        @endif
               <li class="nav-item">
                   <a href="{{ route('show.shop', $shop->first()->english_name) }}">
                   <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
@@ -107,6 +112,7 @@ h2 {
                         </ol>
                     </div>  --}}
                     <h4 class="page-title iranyekan">فروشگاه {{ $shop->name }}</h4>
+                    <p class="text-muted mb-3 mt-1">{{ $shop->description }}</p>
                 </div>
                 <!--end page-title-box-->
             </div>
@@ -140,11 +146,15 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><img src="{{ $lastProducts[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}" class="product-title">{{ $lastProducts[0]->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
-                                    <p class="product-price byekan">{{  number_format($lastProducts[0]->price) }} تومان  <span class="ml-2 byekan"></span></p>
-
+                                        @if($lastProducts[0]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($lastProducts[0]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($lastProducts[0]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($lastProducts[0]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}">
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
+                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}">
+                                        <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[0]->type == 'file') دریافت فایل  @else خرید @endif</button>
                             </a>
 
                             </div>
@@ -163,12 +173,18 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}"><img src="{{ $lastProducts[1]->image['250,250']}}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}" class="product-title">{{ $lastProducts[1]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{  number_format($lastProducts[1]->price) }} تومان <span class="ml-2 byekan"></span></p>
+                                        @if($lastProducts[1]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($lastProducts[1]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($lastProducts[1]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($lastProducts[1]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
 
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}">
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                                </a>
+
+                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}" >
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[1]->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
 
                             </div>
                             <!--end card-body-->
@@ -186,12 +202,17 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}" class="product-title">{{ $lastProducts[2]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{  number_format($lastProducts[2]->price) }} تومان <span class="ml-2 byekan"></span></p>
+                                        @if($lastProducts[2]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($lastProducts[2]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($lastProducts[2]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($lastProducts[2]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
 
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}">
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                                </a>
+                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}">
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
 
                             </div>
                             <!--end card-body-->
@@ -208,12 +229,17 @@ h2 {
                             {{-- <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div> --}}
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}" class="product-title"></a>{{ $lastProducts[3]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{  number_format($lastProducts[3]->price) }} تومان <span class="ml-2 byekan"></span></p>
+                                        @if($lastProducts[3]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($lastProducts[3]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($lastProducts[3]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($lastProducts[3]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
 
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}">
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                                </a>
+                                <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}">
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[3]->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
                             </div>
                             <!--end card-body-->
                         </div>
@@ -263,13 +289,17 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}"><img src="{{ $bestSelling[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}" class="product-title"></a> {{ $bestSelling[0]->title }} </a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{  number_format($bestSelling[0]->price) }} تومان<span class="ml-2 byekan"></span></p>
+                                        @if($bestSelling[0]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($bestSelling[0]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($bestSelling[0]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($bestSelling[0]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
 
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}">
-
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                                </a>
+                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}">
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[0]->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
 
                             </div>
                             <!--end card-body-->
@@ -287,13 +317,17 @@ h2 {
                             {{-- <div class="ribbon ribbon-secondary"><span>جدید</span></div> --}}
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}" class="product-title"></a>{{ $bestSelling[1]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{  number_format($bestSelling[1]->price) }} تومان <span class="ml-2 byekan"></span></p>
+                                        @if($bestSelling[1]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($bestSelling[1]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($bestSelling[1]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($bestSelling[1]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
 
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}">
-
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                                </a>
+                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}">
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[1]->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
 
                             </div>
                             <!--end card-body-->
@@ -311,14 +345,16 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}"><img src="{{ $bestSelling[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}" class="product-title">{{ $bestSelling[2]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{  number_format($bestSelling[2]->price) }} تومان <span class="ml-2 byekan"></span></p>
-
+                                        @if($bestSelling[2]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($bestSelling[2]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($bestSelling[2]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($bestSelling[2]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}">
-
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                                </a>
-
+                                <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}">
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[2]->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
                             </div>
                             <!--end card-body-->
                         </div>
@@ -335,13 +371,16 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}"><img src="{{ $bestSelling[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}" class="product-title">{{ $bestSelling[3]->title }}</a>
                                 <div class="d-flex justify-content-between my-2">
-                                    <p class="product-price byekan">{{  number_format($bestSelling[3]->price) }} تومان <span class="ml-2 byekan"></span></p>
-
+                                        @if($bestSelling[3]->off_price != null)
+                                        <p class="product-price byekan">{{  number_format($bestSelling[3]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($bestSelling[3]->price) }} تومان</del></span>
+                                        </p>
+                                        @else
+                                        <p class="product-price byekan">{{  number_format($bestSelling[3]->price) }} تومان  <span class="ml-2 byekan"></span>
+                                            @endif
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}">
-
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                                </a>
+                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}">
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[3]->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
 
                             </div>
                             <!--end card-body-->

@@ -60,11 +60,13 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::post('product-category/delete', 'ProductCategoryController@destroy');
         Route::resource('shop-setting', 'ShopSettingController');
         Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.updateContact');
+        Route::resource('vouchers', 'VoucherController');
+
     });
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });
-Route::get('/{shop}/purchase-success/{id}', 'ShopController@purchaseSuccess')->name('purchaseSuccess');
+Route::get('/{shop}/purchase-list/{id}', 'ShopController@purchaseList')->name('purchaseList');
 Route::get('/file-download', 'ShopController@test');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
 Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');

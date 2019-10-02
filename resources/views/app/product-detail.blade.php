@@ -104,7 +104,12 @@
                                                             <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
                                                             <li class="list-inline-item">4.5 (30 reviews)</li>
                                                         </ul> --}}
+                                                        @if($product->off_price != null)
+                                                    <h2 class="pro-price">{{  number_format($product->off_price) }} تومان</h2>
+                                                    <span><del>{{  number_format($product->price) }} تومان</del></span>
+                                                    @else
                                                     <h2 class="pro-price">{{  number_format($product->price) }} تومان</h2>
+                                                    @endif
                                                     <h6 class="text-muted font-13">ویژگی ها :</h6>
                                                     <ul class="list-unstyled pro-features border-0 iranyekan">
                                                       @if ($product->feature_1)
@@ -168,9 +173,9 @@
                                                   @endif
                                                 <div class="quantity mt-3">
                                                     @if($product->type == 'file')
-                                                    <a href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @if(\auth::user())target="_blank" @endif class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
+                                                    <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @if(\auth::user())target="_blank" @endif class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
                                                     @else
-                                                    <a href="#" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>خرید </a>
+                                                    <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>خرید </a>
                                                     @endif
 
                                                     </div>

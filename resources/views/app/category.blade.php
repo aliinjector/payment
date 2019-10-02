@@ -132,13 +132,17 @@ h2 {
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
-                                    <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span></p>
+                                        @if($product->off_price != null)
+                                    <p class="product-price byekan">{{  number_format($product->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($product->price) }} تومان</del></span>
+                                    </p>
+                                    @else
+                                    <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span>
+                                        @endif
 
                                 </div>
-                                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
-                            </a>
-
+                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
+                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') دریافت فایل  @else خرید @endif</button>
+                        </a>
                             </div>
                             <!--end card-body-->
                         </div>

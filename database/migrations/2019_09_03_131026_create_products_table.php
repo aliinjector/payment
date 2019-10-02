@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('shop_id');
             $table->string('title');
             $table->bigInteger('productCat_id')->unsigned()->index();
-            $table->unsignedInteger('status')->default(0);
+            $table->unsignedInteger('status')->default(1);
             $table->unsignedInteger('fast_sending')->default(0);
             $table->unsignedInteger('money_back')->default(0);
             $table->unsignedInteger('support')->default(0);
@@ -42,6 +42,7 @@ class CreateProductsTable extends Migration
             $table->integer('file_size')->nullable();
             $table->integer('buyCount')->default(0);
             $table->integer('price');
+            $table->integer('off_price')->nullable();
             $table->text('attachment')->nullable();
             $table->timestamps();
             $table->softDeletes();
