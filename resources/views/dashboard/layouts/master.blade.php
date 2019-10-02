@@ -194,6 +194,7 @@ Author: Ali Rahmani
                         <li class="nav-item"><a class="nav-link" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>لیست کالاها / خدمات</a></li>
                         {{-- <li class="nav-item"><a class="nav-link" href="{{ route('product-detail.index') }}"><i class="dripicons-calendar"></i>جزئیات محصول</a></li> --}}
                         <li class="nav-item"><a class="nav-link" href="{{ route('product-category.index') }}"><i class="dripicons-trophy"></i> دسته بندی</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.index') }}"><i class="mdi mdi-gift"></i>  کدهای تخفیف</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>تنظیمات فروشگاه</a></li>
                       @endif
                       <li class="nav-item"><a class="nav-link" href="{{ route('purchase.status') }}"><i class="fa fa-clipboard"></i>وضعیت سفارشات </a></li>

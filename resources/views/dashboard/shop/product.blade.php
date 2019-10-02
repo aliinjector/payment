@@ -141,6 +141,12 @@
 
                                         </div>
                                         <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت  بعد از تخفیف :</span></div>
+                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+
+                                        </div>
+                                        <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
                                             <input type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
@@ -326,6 +332,12 @@
 
                                         </div>
                                         <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت  بعد از تخفیف :</span></div>
+                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en" value="{{ $product->off_price }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+
+                                        </div>
+                                        <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
                                             <input type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3" value="{{ $product->amount }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
@@ -506,6 +518,12 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" value="{{ $product->price }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+
+                                        </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف:</span></div>
+                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" value="{{ $product->off_price }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
@@ -701,6 +719,12 @@
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
+                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" value="{{ $product->off_price }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
+
+                                        </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
@@ -844,6 +868,12 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+
+                                        </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
+                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
@@ -1032,6 +1062,12 @@
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
+                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
+
+                                        </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
@@ -1162,6 +1198,7 @@
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending" style="width: 148px;">دسته بندی</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت بعد از تخفیف</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">نوع محصول</th>
 
@@ -1175,6 +1212,7 @@
             </td>
             <td>{{ $product->productCategory()->first()->name }}</td>
             <td>{{ $product->price }}</td>
+            <td>{{ $product->off_price }}</td>
 
             <td>
                     <form class="form-inline" action="{{ route('change.status.product', $product->id) }}" method="post">
@@ -1338,6 +1376,6 @@
     }
     });
     });
-v 
+v
 </script>
 @stop
