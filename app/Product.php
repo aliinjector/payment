@@ -5,9 +5,9 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use SoftDeletes;
-    protected $dates = ['deleted_at'];
-  protected $guarded = ['id'];
-  protected $casts = [
+     protected $dates = ['deleted_at'];
+     protected $guarded = ['id'];
+    protected $casts = [
     'image' => 'array'
 ];
 

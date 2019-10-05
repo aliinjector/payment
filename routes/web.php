@@ -55,18 +55,22 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('product-list', 'ProductController');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
-        Route::put('product-list/change-status/status/{id}', 'ProductController@changeStatus')->name('change.status.product');
+        Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('change.status.product');
         Route::resource('product-detail', 'ProductDetailController');
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy');
         Route::resource('shop-setting', 'ShopSettingController');
         Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.updateContact');
         Route::resource('vouchers', 'VoucherController');
+        Route::post('vouchers/delete', 'VoucherController@destroy')->name('voucher.destroy');
+        Route::put('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('change.status.voucher');
+
 
     });
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });
+Route::any('/{shop}/purchase-list/{id}/voucher', 'ShopController@approved')->name('approved');
 Route::get('/{shop}/purchase-list/{id}', 'ShopController@purchaseList')->name('purchaseList');
 Route::get('/file-download', 'ShopController@test');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
@@ -75,5 +79,6 @@ Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('d
 Route::get('/{shop}/{id}', 'ShopController@showProduct')->name('shop.show.product');
 Route::get('/{shop}/category/{categroyId}', 'ShopController@showCategory')->name('shop.show.category');
 Route::get('/{shop}/tag/{name}', 'ShopController@tagProduct')->name('shop.tag.product');
+
 
 

@@ -537,6 +537,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Dashboard\\Shop\\ProductCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/ProductCategoryController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/ProductController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\ShopSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/ShopSettingController.php',
+        'App\\Http\\Controllers\\Dashboard\\Shop\\VoucherController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/VoucherController.php',
         'App\\Http\\Controllers\\DocumentationController' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentationController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',

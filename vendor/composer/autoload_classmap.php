@@ -37,6 +37,7 @@ return array(
     'App\\Http\\Controllers\\Dashboard\\Shop\\ProductCategoryController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/ProductCategoryController.php',
     'App\\Http\\Controllers\\Dashboard\\Shop\\ProductController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/ProductController.php',
     'App\\Http\\Controllers\\Dashboard\\Shop\\ShopSettingController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/ShopSettingController.php',
+    'App\\Http\\Controllers\\Dashboard\\Shop\\VoucherController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/VoucherController.php',
     'App\\Http\\Controllers\\DocumentationController' => $baseDir . '/app/Http/Controllers/DocumentationController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\IndexController' => $baseDir . '/app/Http/Controllers/IndexController.php',
