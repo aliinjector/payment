@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('index');
 
 Route::get('/paymentHelper', function(Request $request){
 //    return $request->user();

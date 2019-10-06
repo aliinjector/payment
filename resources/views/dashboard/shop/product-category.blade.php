@@ -42,7 +42,7 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll">
-                        <form action="{{ route('product-category.store') }}" method="post" class="form-horizontal">
+                        <form action="{{ route('product-category.store', ['continue', 1]) }}" method="post" class="form-horizontal">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
@@ -59,7 +59,10 @@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                        <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                        <div class="group">
+                            <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
+                            <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                    </div>
                     </div>
 
                     </form>
@@ -215,5 +218,12 @@
     });
     });
 
+
+
 </script>
+@if(session()->has('flashModal'))
+<script>
+  $('#AddProductCategoryModal').modal('show');
+</script>
+@endif
 @stop

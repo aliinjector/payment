@@ -40,20 +40,45 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductCategoryRequest $request)
+    public function store(Request $request)
     {
-        if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
-      $productCategory = new ProductCategory;
-    $productCategory->name = $request->name;
-    $productCategory->description = $request->description;
-    $productCategory->shop_id = \Auth::user()->shop()->first()->id;
-    $productCategory->save();
-    alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
-    return redirect()->route('product-category.index');
-    }
-    else{
-        alert()->error('دسته بندی با این نام قبلا در فروشگاه شما ثبت شده است ', 'خطا');
-        return redirect()->route('product-category.index');
+        switch ($request->input('action')) {
+            case 'justSave':
+
+                if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
+                    $productCategory = new ProductCategory;
+                    $productCategory->name = $request->name;
+                    $productCategory->description = $request->description;
+                    $productCategory->shop_id = \Auth::user()->shop()->first()->id;
+                    $productCategory->save();
+                    alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+                    return redirect()->route('product-category.index');
+                }
+                else{
+                    alert()->error('دسته بندی با این نام قبلا در فروشگاه شما ثبت شده است ', 'خطا');
+                    return redirect()->route('product-category.index');
+                }
+
+                break;
+
+            case 'saveAndContinue':
+                if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
+                    $productCategory = new ProductCategory;
+                    $productCategory->name = $request->name;
+                    $productCategory->description = $request->description;
+                    $productCategory->shop_id = \Auth::user()->shop()->first()->id;
+                    $productCategory->save();
+                    session()->flash('flashModal');
+                    alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+                    return redirect()->route('product-category.index');
+                }
+                else{
+                    alert()->error('دسته بندی با این نام قبلا در فروشگاه شما ثبت شده است ', 'خطا');
+                    return redirect()->route('product-category.index');
+                }
+
+                break;
+
         }
     }
 
@@ -76,7 +101,7 @@ class ProductCategoryController extends Controller
      */
     public function edit(Request $request)
     {
-        dd($request);
+       
 
     }
 

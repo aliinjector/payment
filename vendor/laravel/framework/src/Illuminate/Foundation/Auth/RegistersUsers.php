@@ -19,7 +19,6 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-
         if(RequestFacade::server('HTTP_REFERER') === route('index').'/' or RequestFacade::server('HTTP_REFERER') === route('login')){
             return view('auth.register');
         }

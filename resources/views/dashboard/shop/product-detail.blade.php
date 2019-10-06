@@ -296,11 +296,7 @@ input[type='radio']:checked:after {
                                 </div>
                             </li>
                         </ul> --}}
-                    <div class="review-box text-center align-item-center">
-                        <h3 class="byekan">100%</h3>
-                        <h4 class="header-title">رضایت مشتری</h4>
-                        <p class="text-muted mb-0">درصد عدم استرداد کالا توسط مشتری.</p>
-                    </div>
+
                 </div>
                 <!--end card-body-->
             </div>

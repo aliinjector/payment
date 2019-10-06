@@ -274,7 +274,10 @@
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                                <div class="group">
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                            </div>
                             </div>
 
                             </form>
@@ -1000,7 +1003,10 @@
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                                <div class="group">
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                            </div>
                             </div>
 
                             </form>
@@ -1155,7 +1161,10 @@
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                                <div class="group">
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                            </div>
                             </div>
 
                             </form>
@@ -1376,6 +1385,20 @@
     }
     });
     });
-v
+
+
 </script>
+@if(session()->has('flashModalProduct'))
+<script>
+  $('#AddProductModal').modal('show');
+</script>
+@elseif(session()->has('flashModalFile'))
+<script>
+    $('#AddFileModal').modal('show');
+  </script>
+  @elseif(session()->has('flashModalService'))
+  <script>
+    $('#AddServiceModal').modal('show');
+  </script>
+@endif
 @stop

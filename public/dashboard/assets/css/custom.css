@@ -140,7 +140,7 @@ h1 {
     text-align: center;
 }
 
-h2 {
+h2.line-throw {
     width: 80%;
     text-align: center;
     border-bottom: 1px solid #50649C;
