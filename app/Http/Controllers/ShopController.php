@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Shop;
+use App\Product;
+use App\Voucher;
 use App\ShopCategory;
+use App\UserPurchase;
 use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
-use App\Product;
-use App\Tag;
-use App\UserPurchase;
+use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
@@ -146,6 +148,41 @@ class ShopController extends Controller
         $products = Tag::where('name' ,$name)->get()->first()->products()->where('shop_id' , $shop->id)->get();
         return view('app.tags-product', compact('products','shop','shopCategories'));
 
+    }
+
+    public function approved($shopName,$productId,Request $request){
+        if(Product::where([['id' , $productId] , ['off_price' , null]])->get()->first() == null){
+            alert()->error('برای محصولاتی که دارای تخفیف هستند نمیتوان از کد تخفیف استفاده کرد.', 'خطا');
+            return redirect()->back();
+        }
+        elseif(Voucher::where([
+            ['code', $request->code],
+            ['status', 1],
+            ['expires_at','>', now()],
+            ['starts_at','<', now()],
+        ])->get()->first() == null){
+            alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
+            return redirect()->back();
+        }
+        if(Product::where([['id' , $productId] , ['off_price' , null]])->get()->first()->shop()->get()->first()->english_name == $shopName and Voucher::where([
+            ['code', $request->code],
+            ['status', 1],
+            ['expires_at','>', now()],
+            ['starts_at','<', now()],
+        ])->get()->first()->shop_id == Shop::where('english_name' , $shopName)->get()->first()->id){
+            $shop = Shop::where('english_name' , $shopName)->first();
+            $product = Product::where('id' , $productId)->get()->first();
+            $shopCategories = $shop->ProductCategories()->get();
+            $productPrice = Product::where('id' , $productId)->get()->first()->price;
+            $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
+            $discountedPrice =  $productPrice - $voucherDiscount;
+            alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
+            return view('app.purchase-list', compact('shop','shopCategories','product','discountedPrice','voucherDiscount'));
+        }
+        else{
+            alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
+            return redirect()->back();
+        }
     }
 
     /**

@@ -3,9 +3,17 @@
     <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
-
     <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.start-field-example').persianDatepicker({
+                altField: '.start-alt-field'
+            });
+            $('.expire-field-example').persianDatepicker({
+                altField: '.expire-alt-field'
+            });
+        });
+      </script>
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -48,11 +56,34 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
                                     <input type="text" class="form-control inputfield" name="name" placeholder="مثال: کد تخفیف 10000 تومانی">
+                                    <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد تخفیف :</span></div>
+                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد  :</span></div>
                                     <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد کد تخفیف مانند مناسبت آن">
+                                </div>
+
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
+                                    <input type="number" class="form-control inputfield" name="uses" placeholder="مثال: 10">
+                                </div>
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
+                                    <input type="number" class="form-control inputfield" name="discount_amount" placeholder="مثال: 15000">
+                                    <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                </div>
+
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
+                                    <input type="hidden" class="start-alt-field col h-50px border-0" name="starts_at" />
+                                    <input class="start-field-example col h-50px border-0" name="" />
+
+                                </div>
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
+                                    <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
+                                    <input class="expire-field-example col h-50px border-0" name="" />
                                 </div>
                             </div>
                             <!--end form-group-->
@@ -69,40 +100,63 @@
         </div>
 
         @foreach($vouchers as $voucher)
-        <div class="modal fade bd-example-modal-xl" id="UpdateProductCategoryModal{{ $voucher->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade bd-example-modal-xl" id="UpdateVoucherModal{{ $voucher->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ویرایش دسته بندی</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body modal-scroll">
-                        <form action="{{ route('product-category.update', $voucher->id) }}" method="post" class="form-horizontal">
-                            @csrf
-                            {{ method_field('PATCH') }}
-                            <div class="form-group mb-0">
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $voucher->name }}">
-                                </div>
-
-                                <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="description" value="{{ $voucher->description }}">
-                                </div>
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">افزودن کد تخفیف جدید</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <!--end form-group-->
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                        <button type="submit" class="btn btn-primary">ثبت درخواست</button>
-                    </div>
+                            <div class="modal-body modal-scroll">
+                                <form action="{{ route('vouchers.update', $voucher->id) }}" method="post" class="form-horizontal">
+                                        @csrf
+                                        {{ method_field('PATCH') }}
+                                    <div class="form-group mb-0">
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
+                                            <input type="text" class="form-control inputfield" name="name" value="{{ $voucher->name }}">
+                                            <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                        </div>
 
-                    </form>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد  :</span></div>
+                                            <input type="text" class="form-control inputfield" name="description" value="{{ $voucher->description }}" >
+                                        </div>
 
-                </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
+                                            <input type="number" class="form-control inputfield" name="uses" value="{{ $voucher->uses }}">
+                                        </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
+                                            <input type="number" class="form-control inputfield" name="discount_amount" value="{{ $voucher->discount_amount }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                        </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
+                                            <input type="hidden" class="start-alt-field col h-50px border-0" name="starts_at" />
+                                            <input class="start-field-example col h-50px border-0" name="" value="{{ $voucher->starts_at }}"/>
+
+                                        </div>
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
+                                            <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
+                                            <input class="expire-field-example col h-50px border-0" name="" value="{{ $voucher->expires_at }}"/>
+                                        </div>
+                                    </div>
+                                    <!--end form-group-->
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                            </div>
+
+                            </form>
+
+                        </div>
             </div>
         </div>
         @endforeach
@@ -127,24 +181,55 @@
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام
-                                                محصول
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 205px;">نام
                                             </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">کد تخفیف</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">تعداد استفاده</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;"> میزان تخفیف</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;"> تاریخ شروع</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">تاریخ انقضا</th>
                                         </tr>
                                     </thead>
                                     <tbody class="byekan">
                                         @foreach($vouchers as $voucher)
                                         <tr role="row" class="odd icon-hover hover-color">
                                             <td>{{ $voucher->name }}</td>
-                                            <td class="d-flex justify-content-between ">{{ $voucher->description }}
+                                            <td>
+                                                <form class="form-inline" action="{{ route('change.status.voucher', $voucher->id) }}" method="post">
+                                                        @csrf
+                                                        {{ method_field('put') }}
+                                                        <button class="btn btn-link p-0" type="submit">
+                                                            @if($voucher->status == 1)
+                                                                <i class="fa fa-toggle-on text-success"></i>
+                                                            @else
+                                                                <i class="fa fa-toggle-off text-muted"></i>
+                                                            @endif
+                                                        </button>
+                                                @if ($voucher->status == 1)
+                                            <span class="badge badge-soft-success">
+                                                فعال
+                                            </span>
+                                            @else
+                                            <span class="badge badge-soft-pink">
+                                                    غیرفعال
+                                                </span>
+                                                @endif
+                                            </form>
+
+                                        </td>
+                                            <td>{{ $voucher->description }}</td>
+                                            <td>{{ $voucher->code }}</td>
+                                            <td>{{ $voucher->uses }}</td>
+                                            <td>{{ $voucher->discount_amount }}</td>
+                                            <td>{{ jdate($voucher->starts_at) }}</td>
+                                            <td class="d-flex justify-content-between p-3">{{ jdate($voucher->expires_at) }}
                                                 <div class="d-none icon-show">
-                                                <a href="{{ $voucher->id }}" id="editCat" data-toggle="modal" data-target="#UpdateremoveVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                <a href="{{ $voucher->id }}" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                 </a>
 
                                                 <a href="" id="removeVoucher" data-id="{{ $voucher->id }}" ><i class="far fa-trash-alt text-danger font-15"></i></a>
-                                                <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$voucher->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
-                                                </a>
                                             </div>
                                             </td>
 
@@ -199,13 +284,13 @@
             if (isConfirm) {
         $.ajax({
             type: "post",
-            url: "{{url('dashboard/shop/product-category/delete')}}",
+            url: "{{url('dashboard/shop/vouchers/delete')}}",
             data: {
                 id: id,
                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             },
             success: function(data) {
-                var url = document.location.origin + "/dashboard/shop/product-category";
+                var url = document.location.origin + "/dashboard/shop/vouchers";
                 location.href = url;
             }
         });

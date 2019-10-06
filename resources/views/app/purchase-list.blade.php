@@ -26,27 +26,40 @@
 <body class="iranyekan">@section('content')
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto mr-2">
-                <li class="nav-item">
-                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop', $shop->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
-                      </li>
-              @foreach ($shopCategories as $shopCategorie)
-
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto mr-2">
             <li class="nav-item">
-              <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategorie->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
-            </li>
-            @endforeach
-          </ul>
-          <ul class="navbar-nav ml-2">
-                <li class="nav-item">
-                        <a href="{{ route('show.shop', $shop->first()->english_name) }}">
-                        <img src="{{ $shop->logo['200,100'] }}" alt="">
-                      </a>
+                    <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop', $shop->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
+                  </li>
+          @foreach ($shopCategories as $shopCategorie)
+        <li class="nav-item">
+          <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategorie->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
+        </li>
+        @endforeach
+      </ul>
+      <ul class="navbar-nav ml-2">
+            @guest
+            <li class="nav-item mt-4 pl-4">
+                    <div class="search-icon d-lg-block">
+                            <a href="{{ route('login') }}" style="font-size:15px;" ><i class="fas fa-sign-in-alt"></i> ورود</a>
+
+                            <a href="{{ route('register') }}" class="pr-2">
+                                <span class="" style="font-size:15px;"><i class="fa fa-user"></i> عضویت</span></a>
+                        </div>
                     </li>
-          </ul>
-        </div>
-      </nav>
+                    @endguest
+          <li class="nav-item">
+              <a href="{{ route('show.shop', $shop->first()->english_name) }}">
+              <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
+            </a>
+          </li>
+
+      </ul>
+    </div>
+  </nav>
 
 
 @endsection
@@ -55,8 +68,8 @@
 @section('pageScripts')
 @stop
         @yield('content')
-                            <div class="card col-lg-12 mb-5 mt-5 iranyekan">
-                                <div class="card-body invoice-head">
+        <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12">
+            <div class="card-body invoice-head">
                                     <div class="row">
                                         <div class="col-md-4 align-self-center"><img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="26">
                                             <p class="mt-2 mb-0 text-muted">{{ $shop->description }}.</p>
@@ -110,7 +123,7 @@
                                                             <th>نام محصول</th>
                                                             <th>قیمت کالا</th>
                                                             <th>میزان تخفیف</th>
-                                                            <th>جمع قیمت</th>
+                                                            <th> قیمت</th>
                                                         </tr>
                                                         <!--end tr-->
                                                     </thead>
@@ -123,8 +136,8 @@
                                                             </a>
                                                             </td>
                                                             <td>{{ $product->price }}</td>
-                                                            <td> @if($product->off_price == null) 0 @else {{ $product->price-$product->off_price}} @endif </td>
-                                                            <td>@if($product->off_price != null){{ $product->off_price}}@else {{ $product->price }}@endif</td>
+                                                            <td> @if(isset($discountedPrice)){{ $voucherDiscount }} @elseif($product->off_price == null) 0 @else {{ $product->price-$product->off_price}} @endif </td>
+                                                            <td>{{ $product->price }}</td>
                                                         </tr>
                                                         <!--end tr-->
 
@@ -133,7 +146,7 @@
                                                         <tr class="bg-dark text-white">
                                                             <th colspan="2" class="border-0"></th>
                                                             <td class="border-0 font-14"><b>جمع کل</b></td>
-                                                            <td>@if($product->off_price != null){{ $product->off_price}}@else {{ $product->price }}@endif</td>
+                                                            <td>@if(isset($discountedPrice)){{ $discountedPrice }}@elseif($product->off_price != null){{ $product->off_price}} @else {{ $product->price }} @endif</td>
                                                             </tr>
                                                         <!--end tr-->
                                                     </tbody>
@@ -143,18 +156,23 @@
 
                                             <!--end /div-->
                                         </div>
-                                        <div class="d-lg-flex col-lg-12 justify-content-lg-between justify-content-sm-end">
+                                        <div class="d-lg-flex col-lg-12 justify-content-lg-between justify-content-sm-end mb-5">
+                                                <div class="mt-4 col-lg-4 col-sm-12">
+                                                        <div class="input-group">
+                                                            <div class="input-group-append">
+                                                                    <form class="form-inline" action="{{ route('approved',['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post">
+                                                                            @csrf
+                                                                            <input type="text" name="code" class="form-control" placeholder="کد" aria-describedby="button-addon2">
+
+                                                                <button class="btn btn-outline-pink" type="submit" id="button-addon2">اعمال کد تخفیف</button>
+                                                                    </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             <a @if($product->type == 'file')href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @else href="#" @endif>
-                                        <button type="button" class="btn btn-success mt-3 col-sm-12">تایید فاکتور</button>
+                                        <button type="button" class="btn btn-success mt-4 col-sm-12">تایید فاکتور</button>
                                              </a>
-                                            <div class="mt-3 col-lg-4 col-sm-12">
-                                            <div class="input-group ml-2">
-                                                <input type="text" class="form-control" placeholder="استفاده از کد تخفیف" aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-primary" type="button" id="button-addon2">اعمال کد تخفیف</button>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                         <!--end col-->
                                     </div>

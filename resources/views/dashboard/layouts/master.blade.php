@@ -9,6 +9,9 @@ Author: Ali Rahmani
 <html lang="en">
 
 <head>
+        <script src="/dashboard/assets/js/jquery.min.js"></script>
+        <script src="/dashboard/assets/js/persian-date.js"></script>
+        <script src="/dashboard/assets/js/persian-datepicker.js"></script>
     <meta charset="utf-8">
     <title>پایان پی - داشبورد اصلی</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -23,6 +26,8 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/css/persian-datepicker.css" rel="stylesheet" type="text/css">
+
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
     <style>
@@ -289,7 +294,7 @@ Author: Ali Rahmani
 </div>
 <!-- end page-wrapper -->
 <!-- jQuery  -->
-<script src="/dashboard/assets/js/jquery.min.js"></script>
+
 <script src="/dashboard/assets/js/bootstrap.bundle.min.js"></script>
 <script src="/dashboard/assets/js/metisMenu.min.js"></script>
 <script src="/dashboard/assets/js/waves.min.js"></script>
