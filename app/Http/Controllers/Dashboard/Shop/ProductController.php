@@ -114,6 +114,9 @@ class ProductController extends Controller
       if($request->off_price != null){
         $request->off_price = $this->fa_num_to_en($request->off_price);
       }
+      switch ($request->input('action')) {
+        case 'justSave':
+
       $shop = \Auth::user()->shop()->first()->products()->create([
         'title' => $request->title,
         'type' => $request->type,
@@ -160,6 +163,68 @@ class ProductController extends Controller
 
       alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
+
+
+    break;
+
+case 'saveAndContinue':
+$shop = \Auth::user()->shop()->first()->products()->create([
+    'title' => $request->title,
+    'type' => $request->type,
+    'color_1' => $request->color_1,
+    'productCat_id' => $request->product_category,
+    'color_2' => $request->color_2,
+    'color_3' => $request->color_3,
+    'color_4' => $request->color_4,
+    'color_5' => $request->color_5,
+    'amount' => $request->amount,
+    'weight' => $request->weight,
+    'price' => $this->fa_num_to_en($request->price),
+    'off_price' => $request->off_price,
+    'fast_sending' => $request->fast_sending,
+    'money_back' => $request->money_back,
+    'support' => $request->support,
+    'secure_payment' => $request->secure_payment,
+    'feature_1' => $request->feature_1,
+    'feature_2' => $request->feature_2,
+    'feature_3' => $request->feature_3,
+    'feature_4' => $request->feature_4,
+    'description' => $request->description,
+    'image' => $image,
+    'attachment' => $attachment,
+    'description' => $request->description,
+    'file_size' => $file_size,
+  ]);
+
+
+if($shop)
+{
+    $tagNames = explode(',',$request->get('tags'));
+    $tagIds = [];
+    foreach($tagNames as $tagName)
+    {
+        $tag = Tag::firstOrCreate(['name'=>$tagName]);
+        if($tag)
+        {
+          $tagIds[] = $tag->id;
+        }
+    }
+    $shop->tags()->sync($tagIds);
+}
+if ($request->type == 'file') {
+    session()->flash('flashModalFile');
+}
+elseif($request->type == 'service'){
+    session()->flash('flashModalService');
+}
+else{
+    session()->flash('flashModalProduct');
+}
+  alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+  return redirect()->route('product-list.index');
+  break;
+
+}
     }
     /**
      * Display the specified resource.

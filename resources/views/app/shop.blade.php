@@ -54,11 +54,16 @@
                             </div>
                         </li>
                         @endguest
+                        @auth
                         @if(\Auth::user()->id == $shop->user_id)
-                        <div class="search-icon d-lg-block ml-5 mt-4">
-                                <a href="{{ route('login') }}" style="font-size:15px;"><i class="fas fa-sign-in-alt ml-1 pt-1"></i>ورود به پنل مدیریت فروشگاه</a>
-                            </div>
+                        <div class="search-icon d-flex align-items-center ml-5 ">
+                            <a href="{{ route('dashboard-shop.index') }}" style="font-size:13px;">
+                            <button type="button" class="btn btn-outline-primary">ورود به پنل مدیریت</button>
+                            </a>
+                        </div>
                         @endif
+                        @endauth
+
               <li class="nav-item">
                   <a href="{{ route('show.shop', $shop->first()->english_name) }}">
                   <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
@@ -105,7 +110,7 @@
 @else
         <!-- end page title end breadcrumb -->
 
-        <h2><span>اخرین محصولات </span></h2>
+        <h2 class="line-throw"><span>اخرین محصولات </span></h2>
 
 
          <div class="row p-5">
@@ -248,7 +253,7 @@
 
 
 
-            <h2 class="mt-5"><span>پرفروش ترین محصولات</span></h2>
+            <h2 class="mt-5 line-throw"><span>پرفروش ترین محصولات</span></h2>
 
             <div class="row p-5">
                     @if(isset($bestSelling[0]))

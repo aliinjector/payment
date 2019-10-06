@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ShopController extends Controller
 {
@@ -21,6 +22,7 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $discountedPrice;
     public function index()
     {
 
@@ -99,41 +101,6 @@ class ShopController extends Controller
     {
         //
     }
-    public function downlaodFile($shop , $id)
-    {
-        if(\Auth::guest()){
-            return redirect()->route('register');
-        }
-        else{
-            return  redirect(URL::temporarySignedRoute(
-            'download.link',
-            now()->addMinutes(30),
-            ['shop' => $shop , 'id' => $id]
-        ));
-        }
-    }
-
-    public function downlaodLink(Request $request,$shop, $id)
-    {
-        if (! $request->hasValidSignature()) {
-            abort(401);
-        }
-        $uri = Shop::where('english_name' , $shop)->get()->first()->products()->where('id', $id)->get()->first()->attachment;
-        $uri = ltrim($uri, '/');
-        $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
-        $purchase = new UserPurchase;
-        $purchase->product_id = $id;
-        $purchase->shop_id = $shopId;
-        if(\Auth::guest()){
-            $purchase->user_id = null;
-        }
-        else{
-            $purchase->user_id = \Auth::user()->id;
-        }
-        $purchase->save();
-        return response()->file($uri);
-
-    }
 
     public function purchaseList($shop , $id){
         $product = Product::where('id' , $id)->get()->first();
@@ -161,8 +128,12 @@ class ShopController extends Controller
             ['expires_at','>', now()],
             ['starts_at','<', now()],
         ])->get()->first() == null){
+            $shop = Shop::where('english_name' , $shopName)->first();
+            $product = Product::where('id' , $productId)->get()->first();
+            $shopCategories = $shop->ProductCategories()->get();
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
-            return redirect()->back();
+            return view('app.purchase-list', compact('shop','shopCategories','product'));
+
         }
         if(Product::where([['id' , $productId] , ['off_price' , null]])->get()->first()->shop()->get()->first()->english_name == $shopName and Voucher::where([
             ['code', $request->code],
@@ -174,8 +145,12 @@ class ShopController extends Controller
             $product = Product::where('id' , $productId)->get()->first();
             $shopCategories = $shop->ProductCategories()->get();
             $productPrice = Product::where('id' , $productId)->get()->first()->price;
+            $productOffPrice = Product::where('id' , $productId)->get()->first()->off_price;
             $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             $discountedPrice =  $productPrice - $voucherDiscount;
+            Session::put('discountedPrice', $discountedPrice);
+            Session::put('price', $productPrice);
+            Session::put('off_price', $productOffPrice);
             alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
             return view('app.purchase-list', compact('shop','shopCategories','product','discountedPrice','voucherDiscount'));
         }
@@ -184,6 +159,58 @@ class ShopController extends Controller
             return redirect()->back();
         }
     }
+
+
+    public function downlaodFile($shop , $id)
+    {
+        if(\Auth::guest()){
+            return redirect()->route('register');
+        }
+        else{
+            return  redirect(URL::temporarySignedRoute(
+            'download.link',
+            now()->addMinutes(30),
+            ['shop' => $shop , 'id' => $id]
+        ));
+        }
+    }
+
+    public function downlaodLink(Request $request,$shop, $id)
+    {
+        $this->approved($shop,$id,$request);
+        if (! $request->hasValidSignature()) {
+            abort(401);
+        }
+        $uri = Shop::where('english_name' , $shop)->get()->first()->products()->where('id', $id)->get()->first()->attachment;
+        $uri = ltrim($uri, '/');
+        $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
+        $product = Product::where('id' , $id)->get()->first();
+        $purchase = new UserPurchase;
+        $purchase->product_id = $id;
+        $purchase->shop_id = $shopId;
+        if($product->off_price == null){
+            if (Session::get('discountedPrice') == null) {
+                $purchase->total_price = $product->price;
+            }
+            else{
+                $purchase->total_price = Session::get('discountedPrice');
+            }
+         }
+        else{
+            $purchase->total_price = $product->off_price;
+        }
+        Session::pull('discountedPrice');
+        if(\Auth::guest()){
+            $purchase->user_id = null;
+        }
+        else{
+            $purchase->user_id = \Auth::user()->id;
+        }
+        $purchase->save();
+        return response()->file($uri);
+
+    }
+
 
     /**
      * Update the specified resource in storage.

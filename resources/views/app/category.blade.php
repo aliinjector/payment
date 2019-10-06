@@ -6,9 +6,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - داشبورد اصلی</title>
+    <title>صفحه اصلی فروشگاه {{ $shop->name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta content="پایان پی - داشبورد اصلی" name="description">
+    <meta content="صفحه اصلی فروشگاه {{ $shop->name }}" name="description">
     <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
@@ -20,39 +20,6 @@
     <link href="/dashboard/assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
-
-    <style>
-        .main-icon-menu{
-            overflow: scroll!important;
-        }
-        .dataTables_info{
-            font-family: BYekan!important;
-        }
-        .custom-select{
-            font-family: BYekan!important;
-        }
-        .page-link{
-            font-family: BYekan!important;
-        }
-        h1 {
-  overflow: hidden;
-  text-align: center;
-}
-h2 {
-    width: 80%;
-    text-align: center;
-    border-bottom: 1px solid #50649C;
-    line-height: 0.1em;
-    margin: 8px 11% 20px;
-    font-size: 23px!important;
-
-}
-
- h2 span {
-     background:#EAF0F7;
-     padding:0 17px;
- }
-    </style>
 </head>
 
 <body>@section('content')
@@ -85,6 +52,15 @@ h2 {
                             </div>
                         </li>
                         @endguest
+                        @auth
+                        @if(\Auth::user()->id == $shop->user_id)
+                        <div class="search-icon d-flex align-items-center ml-5 ">
+                            <a href="{{ route('dashboard-shop.index') }}" style="font-size:13px;">
+                            <button type="button" class="btn btn-outline-primary">ورود به پنل مدیریت</button>
+                            </a>
+                        </div>
+                        @endif
+                        @endauth
               <li class="nav-item">
                   <a href="{{ route('show.shop', $shop->first()->english_name) }}">
                   <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
@@ -115,7 +91,7 @@ h2 {
 
 </div>
 @if(isset($products[0]))
-        <h2><span>اخرین محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
+        <h2 class="line-throw"><span>اخرین محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
         @else
 <div class="d-flex justify-content-center align-items-center" style="height:80vh">
 <h4>

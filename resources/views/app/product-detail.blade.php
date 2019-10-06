@@ -6,9 +6,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - داشبورد اصلی</title>
+    <title>صفحه اصلی فروشگاه {{ $shop->name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta content="پایان پی - داشبورد اصلی" name="description">
+    <meta content="صفحه اصلی فروشگاه {{ $shop->name }}" name="description">
     <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
@@ -52,6 +52,15 @@
                                     </div>
                                 </li>
                                 @endguest
+                                @auth
+                        @if(\Auth::user()->id == $shop->user_id)
+                        <div class="search-icon d-flex align-items-center ml-5 ">
+                            <a href="{{ route('dashboard-shop.index') }}" style="font-size:13px;">
+                            <button type="button" class="btn btn-outline-primary">ورود به پنل مدیریت</button>
+                            </a>
+                        </div>
+                        @endif
+                        @endauth
                       <li class="nav-item">
                           <a href="{{ route('show.shop', $shop->first()->english_name) }}">
                           <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
@@ -313,11 +322,7 @@
                                         <h4 class="header-title">مجموع فروش</h4>
                                     </div>
 
-                                    <div class="review-box text-center align-item-center">
-                                        <h3 class="byekan">100%</h3>
-                                        <h4 class="header-title">رضایت مشتری</h4>
-                                        <p class="text-muted mb-0">درصد عدم استرداد کالا توسط مشتری.</p>
-                                    </div>
+
                                     <h4 class="mt-3 mb-3">برچسب ها :</h4>
                                     <ul class="tags iranyekan">
                                         @foreach ($product->tags()->get() as $tag)
