@@ -75,7 +75,7 @@
 
                                 </div>
                             </div>
-                            <input name="type" type="hidden" value="user">
+                            <input name="type" type="hidden" value="customer">
                             <input name="shop_id" type="hidden" value="{{ $shop_id }}">
 
                             <!--end form-group-->

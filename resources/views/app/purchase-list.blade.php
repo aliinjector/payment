@@ -121,9 +121,8 @@
                                                     <thead class="thead-light">
                                                         <tr>
                                                             <th>نام محصول</th>
-                                                            <th>قیمت کالا</th>
                                                             <th>میزان تخفیف</th>
-                                                            <th> قیمت</th>
+                                                            <th> قیمت کالا</th>
                                                         </tr>
                                                         <!--end tr-->
                                                     </thead>
@@ -135,18 +134,17 @@
                                                                 <h5 class="mt-0 mb-1">{{ $product->title }}</h5>
                                                             </a>
                                                             </td>
-                                                            <td>{{ $product->price }}</td>
-                                                            <td> @if(isset($discountedPrice)){{ $voucherDiscount }} @elseif($product->off_price == null) 0 @else {{ $product->price-$product->off_price}} @endif </td>
-                                                            <td>{{ $product->price }}</td>
+                                                            <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
+                                                            <td>{{ number_format($product->price) }}</td>
                                                         </tr>
                                                         <!--end tr-->
 
 
                                                         <!--end tr-->
                                                         <tr class="bg-dark text-white">
-                                                            <th colspan="2" class="border-0"></th>
+                                                            <th colspan="1" class="border-0"></th>
                                                             <td class="border-0 font-14"><b>جمع کل</b></td>
-                                                            <td>@if(isset($discountedPrice)){{ $discountedPrice }}@elseif($product->off_price != null){{ $product->off_price}} @else {{ $product->price }} @endif</td>
+                                                            <td>@if(isset($discountedPrice)){{ number_format($discountedPrice) }}@elseif($product->off_price != null){{ number_format($product->off_price)}} @else {{ number_format($product->price) }} @endif</td>
                                                             </tr>
                                                         <!--end tr-->
                                                     </tbody>
@@ -154,26 +152,111 @@
                                                 <!--end table-->
                                             </div>
 
+                                            <div class="col-lg-4 mt-3 mr-lg-n4">
+                                            <form class="form-inline col-lg-12" action="{{ route('approved',['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post">
+                                                    @csrf
+                                                    <input type="text" name="code" class="form-control col-lg-6 col-md-12 col-sm-12" placeholder="کد" aria-describedby="button-addon2">
+
+                                        <button class="btn btn-outline-pink col-lg-6" type="submit" id="button-addon2">اعمال  تخفیف</button>
+                                        </form>
+                                    </div>
+
+                                            <form action="{{ route('purchase.submit', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post" class="form-horizontal">
+                                                    @csrf
+                                            <div class="col-md-6 mt-5">
+                                                <div class="total-payment">
+                                                    <h4 class="header-title">مجموع پرداختی</h4>
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="payment-title">قیمت کالا :</td>
+                                                                <td> {{ number_format($product->price) }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="payment-title">میزان تخفیف :</td>
+                                                                <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif تومان</td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td class="payment-title"> روش ارسال :</td>
+
+                                                            <td>
+                                                                <ul class="list-unstyled mb-0">
+                                                                    <li>
+                                                                        <div class="radio radio-info">
+                                                                            <input type="radio" name="shipping_way" id="quick_way" value="quick_way" checked="checked">
+                                                                            <label for="quick_way">ارسال سریع</label>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div class="radio radio-info mt-2">
+                                                                            <input type="radio" name="shipping_way" id="posting_way" value="posting_way">
+                                                                            <label for="posting_way">ارسال پستی</label>
+                                                                        </div>
+                                                                        <div class="radio radio-info mt-2">
+                                                                            <input type="radio" name="shipping_way" id="person_way" value="person_way">
+                                                                            <label for="person_way">دریافت حضوری</label>
+                                                                        </div>
+                                                                    </li>
+                                                                     <li class="mt-2 "><span class=" showAddresses btn btn-soft-primary font-weight-bolder">انتخاب آدرس
+                                                                    </span>
+                                                                </li>
+                                                                <li>
+                                                                    @if(\auth::user()->userInformation()->get()->first()->address != null)
+                                                                        <div class="radio radio-info mt-3 d-none address_1">
+                                                                            <input type="radio" name="address" id="address_1" value="address_1" checked>
+                                                                            <label class="min-width-100-fix" for="address_1">{{ \auth::user()->userInformation()->get()->first()->address }}</label>
+                                                                        </div>
+                                                                        @endif
+
+                                                                        @if(\auth::user()->userInformation()->get()->first()->address_2 != null)
+                                                                        <div class="radio radio-info mt-3 d-none address_2">
+                                                                            <input type="radio" name="address" id="address_2" value="address_2">
+                                                                            <label class="min-width-100-fix" for="address_2">{{ \auth::user()->userInformation()->get()->first()->address_2 }}</label>
+                                                                        </div>
+                                                                        @endif
+
+                                                                        @if(\auth::user()->userInformation()->get()->first()->address_3 != null)
+                                                                        <div class="radio radio-info mt-3 d-none address_3">
+                                                                            <input type="radio" name="address" id="address_3" value="address_3">
+                                                                            <label class="min-width-100-fix" for="address_3">{{ \auth::user()->userInformation()->get()->first()->address_3 }}</label>
+                                                                        </div>
+                                                                        @endif
+
+                                                                    </li>
+                                                                    <span class="btn btn-soft-primary font-weight-bolder d-none newAddress mt-3"><i class="fa fa-plus mr-2"></i> اضافه کردن آدرس
+                                                                    </span>
+                                                                    <li class="col-lg-12 address_input d-none">
+                                                                        <textarea class="form-control mt-3" name="new_address" id="" cols="90" rows="5" placeholder="در صورت تمایل به ارسال به آدرس جدید لطفا آدرس مورد نظر را در کادر زیر وارد کنید"></textarea>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                            <tr>
+                                                                <td class="payment-title font-weight-bolder">مبلغ قابل پرداخت :</td>
+                                                                <td class="text-dark font-weight-bolder"> @if(isset($discountedPrice)){{ number_format($discountedPrice) }}@elseif($product->off_price != null){{ number_format($product->off_price)}} @else {{ number_format($product->price) }} @endif</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                             <!--end /div-->
                                         </div>
-                                        <div class="d-lg-flex col-lg-12 justify-content-lg-between justify-content-sm-end mb-5">
-                                                <div class="mt-4 col-lg-4 col-sm-12">
+                                        <div class="d-lg-flex col-lg-12 justify-content-end">
+                                                <div class="mt-4">
                                                         <div class="input-group">
                                                             <div class="input-group-append">
-                                                                    <form class="form-inline" action="{{ route('approved',['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post">
-                                                                            @csrf
-                                                                            <input type="text" name="code" class="form-control" placeholder="کد" aria-describedby="button-addon2">
+                                                                    <button type="submit" class="btn btn-success mt-4">ثبت فاکتور</button>
+                                                                </form>
 
-                                                                <button class="btn btn-outline-pink" type="submit" id="button-addon2">اعمال کد تخفیف</button>
-                                                                    </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                            <a @if($product->type == 'file')href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @else href="#" @endif>
-                                        <button type="button" class="btn btn-success mt-4 col-sm-12">تایید فاکتور</button>
-                                             </a>
+                                                </div>
 
-                                    </div>
+
+                                                            {{--  <a @if($product->type == 'file')href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @else href="" @endif>
+                                        <button type="button" class="btn btn-success mt-4 col-sm-12">تایید فاکتور</button>
+                                             </a>  --}}
                                         <!--end col-->
                                     </div>
                                     </div>
@@ -197,13 +280,14 @@
     <!--end row-->
     </div>
     <!-- container -->
-    <footer class="footer text-center text-sm-left">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
+    <footer class="footer text-center text-sm-left pt-0">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
     <!--end footer-->
 </div>
 <!-- end page content -->
 </div>
 <!-- end page-wrapper -->
 <!-- jQuery  -->
+
 <script src="/dashboard/assets/js/jquery.min.js"></script>
 <script src="/dashboard/assets/js/bootstrap.bundle.min.js"></script>
 <script src="/dashboard/assets/js/metisMenu.min.js"></script>
@@ -219,6 +303,30 @@
 <!-- App js -->
 <script src="/dashboard/assets/js/app.js"></script>
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
+<script>
+        $(document).ready(function() {
+            $(".showAddresses").click(function() {
+                $(".address_1").removeClass("d-none");
+                $(".address_2").removeClass("d-none");
+                $(".address_3").removeClass("d-none");
+                $(".newAddress").removeClass("d-none");
+                $(".showAddresses").addClass("d-none");
+                $(".address_input").addClass("d-none");
+            });
+        });
+        $(document).ready(function() {
+            $(".newAddress").click(function() {
+                $(".address_input").removeClass("d-none");
+                $(".newAddress").addClass("d-none");
+                $(".address_1").addClass("d-none");
+                $(".address_2").addClass("d-none");
+                $(".address_3").addClass("d-none");
+                $(".showAddresses").removeClass("d-none");
+
+            });
+        });
+
+</script>
 @include('sweet::alert')
 @yield('pageScripts')
 </body>

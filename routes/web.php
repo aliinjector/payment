@@ -72,6 +72,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
 });
 Route::any('/{shop}/purchase-list/{id}/voucher', 'ShopController@approved')->name('approved');
 Route::get('/{shop}/purchase-list/{id}', 'ShopController@purchaseList')->name('purchaseList');
+Route::post('/{shop}/purchase-list/{id}/store', 'ShopController@purchaseSubmit')->name('purchase.submit');
 Route::get('/file-download', 'ShopController@test');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
 Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');

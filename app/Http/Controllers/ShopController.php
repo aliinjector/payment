@@ -211,7 +211,52 @@ class ShopController extends Controller
 
     }
 
+    public function purchaseSubmit($shop ,$id ,Request $request){
+        $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
+        $product = Product::where('id' , $id)->get()->first();
+        $userAddress1 = \Auth::user()->userInformation()->get()->first()->address;
+        $userAddress2 = \Auth::user()->userInformation()->get()->first()->address_2;
+        $userAddress3 = \Auth::user()->userInformation()->get()->first()->address_3;
+        $purchase = new UserPurchase;
+        $purchase->product_id = $id;
+        $purchase->user_id = \Auth::user()->id;
+        $purchase->shop_id = $shopId;
+        if($request->new_address == null){
+            if($request->address == "address_1"){
+                $purchase->address = $userAddress1;
+            }
+            elseif($request->address == "address_2"){
+            $purchase->address = $userAddress2;
+        }
+        elseif($request->address == "address_3"){
+        $purchase->address = $userAddress3;
+    }
+        }
+        else{
+            $purchase->address = $request->new_address;
+        }
+        $purchase->shipping = $request->shipping_way;
 
+
+
+
+        if($product->off_price == null){
+            if (Session::get('discountedPrice') == null) {
+                $purchase->total_price = $product->price;
+            }
+            else{
+                $purchase->total_price = Session::get('discountedPrice');
+            }
+         }
+        else{
+            $purchase->total_price = $product->off_price;
+        }
+        Session::pull('discountedPrice');
+
+        $purchase->save();
+        alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
+        return redirect()->back();
+    }
     /**
      * Update the specified resource in storage.
      *

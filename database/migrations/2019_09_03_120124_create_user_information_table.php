@@ -20,6 +20,8 @@ class CreateUserInformationTable extends Migration
             $table->string('tel')->nullable();
             $table->string('city')->nullable();
             $table->string('address')->nullable();
+            $table->string('address_2')->nullable();
+            $table->string('address_3')->nullable();
             $table->string('nationalCode')->nullable();
             $table->string('shenasnamehCode')->nullable();
             $table->string('placeOfIssue')->nullable();

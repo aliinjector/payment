@@ -75,7 +75,7 @@
 
                                 </div>
                             </div>
-                            <input name="type" type="hidden" value="shopOwner">
+                            <input name="type" type="hidden" value="user">
 
 
                             <!--end form-group-->
