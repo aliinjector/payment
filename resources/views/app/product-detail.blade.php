@@ -181,10 +181,14 @@
                                                     </div>
                                                   @endif
                                                 <div class="quantity mt-3">
+                                                    @if($product->type == 'file' and $purchasedProductCount >= 1)
+                                                    <a href="" class="btn btn-primary text-white px-4 d-inline-block comming-soon"><i class="fa fa-download mr-2"></i>شما قبلا این فایل را خریداری کرده اید</a>
+                                                    @else
                                                     @if($product->type == 'file')
                                                     <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @if(\auth::user())target="_blank" @endif class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
                                                     @else
                                                     <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>خرید </a>
+                                                    @endif
                                                     @endif
 
                                                     </div>

@@ -73,10 +73,11 @@ class ShopController extends Controller
         if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
             return abort(404);
         }
+    $purchasedProductCount = Product::find($id)->purchases()->get()->where('user_id' , \Auth::user()->id)->count();
     $shop = Shop::where('english_name' , $shop)->first();
     $shopCategories = $shop->ProductCategories()->get();
     $product = $shop->products()->where('id', $id)->first();
-    return view('app.product-detail', compact('product','shop','shopCategories'));
+    return view('app.product-detail', compact('product','shop','shopCategories','purchasedProductCount'));
     }
 
     public function showCategory($shop, $categroyId)
@@ -103,10 +104,15 @@ class ShopController extends Controller
     }
 
     public function purchaseList($shop , $id){
-        $product = Product::where('id' , $id)->get()->first();
-        $shop = Shop::where('english_name' , $shop)->first();
-        $shopCategories = $shop->ProductCategories()->get();
-        return view('app.purchase-list', compact('shop','shopCategories','product'));
+        if (\Auth::guest()) {
+            return redirect()->route('register');
+        }
+        else{
+            $product = Product::where('id' , $id)->get()->first();
+            $shop = Shop::where('english_name' , $shop)->first();
+            $shopCategories = $shop->ProductCategories()->get();
+            return view('app.purchase-list', compact('shop','shopCategories','product'));
+        }
     }
 
     public function tagProduct($shop, $name){
@@ -214,9 +220,15 @@ class ShopController extends Controller
     public function purchaseSubmit($shop ,$id ,Request $request){
         $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
         $product = Product::where('id' , $id)->get()->first();
-        $userAddress1 = \Auth::user()->userInformation()->get()->first()->address;
-        $userAddress2 = \Auth::user()->userInformation()->get()->first()->address_2;
-        $userAddress3 = \Auth::user()->userInformation()->get()->first()->address_3;
+        if(isset(\Auth::user()->userInformation()->get()->first()->address)){
+            $userAddress1 = \Auth::user()->userInformation()->get()->first()->address;
+        }
+        if(isset(\Auth::user()->userInformation()->get()->first()->address_2)){
+            $userAddress2 = \Auth::user()->userInformation()->get()->first()->address_2;
+        }
+        if(isset(\Auth::user()->userInformation()->get()->first()->address_3)){
+            $userAddress3 = \Auth::user()->userInformation()->get()->first()->address_3;
+        }
         $purchase = new UserPurchase;
         $purchase->product_id = $id;
         $purchase->user_id = \Auth::user()->id;
@@ -251,9 +263,8 @@ class ShopController extends Controller
         else{
             $purchase->total_price = $product->off_price;
         }
-        Session::pull('discountedPrice');
-
         $purchase->save();
+        Session::pull('discountedPrice');
         alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
         return redirect()->back();
     }

@@ -18,7 +18,7 @@ class CreateUserPurchasesTable extends Migration
             $table->unsignedInteger('user_id')->nullable();
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('shop_id');
-            $table->integer('price');
+            $table->integer('total_price');
             $table->string('address')->nullable();
             $table->string('shipping')->nullable();
             $table->integer('status')->default(0);
