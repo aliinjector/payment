@@ -1,10 +1,10 @@
 @extends('dashboard.layouts.master')
 @section('content')
-    <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
-    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
 <div class="page-content">
     <div class="container-fluid">
@@ -62,7 +62,7 @@
                         <div class="group">
                             <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
                             <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
-                    </div>
+                        </div>
                     </div>
 
                     </form>
@@ -112,118 +112,115 @@
 
 
 
-  <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="mt-0 header-title">لیست دسته بندی ها</h4>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">لیست دسته بندی ها</h4>
 
 
-                    <p class="text-muted mb-4 font-13">لیست تمامی دسته بندی های شما</p>
-                    <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <p class="text-muted mb-4 font-13">لیست تمامی دسته بندی های شما</p>
+                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
-                        <div class="row">
-                            <div class="col-sm-12">
-
-
-
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
-                                    <thead>
-                                        <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام
-                                                محصول
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="byekan">
-                                        @foreach($categoires as $category)
-                                        <tr role="row" class="odd icon-hover hover-color">
-                                            <td>{{ $category->name }}</td>
-                                            <td class="d-flex justify-content-between ">{{ $category->description }}
-                                                <div class="d-none icon-show">
-                                                <a href="{{ $category->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $category->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
-                                                </a>
-
-                                                <a href="" id="removeCat" data-id="{{ $category->id }}" ><i class="far fa-trash-alt text-danger font-15"></i></a>
-                                                <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$category->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
-                                                </a>
-                                            </div>
-                                            </td>
-
-                                        </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
+                            <div class="row">
+                                <div class="col-sm-12">
 
 
 
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام
+                                                    محصول
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="byekan">
+                                            @foreach($categoires as $category)
+                                            <tr role="row" class="odd icon-hover hover-color">
+                                                <td>{{ $category->name }}</td>
+                                                <td class="d-flex justify-content-between">{{ $category->description }}
+                                                    <div class="d-none icon-show">
+                                                        <a href="{{ $category->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $category->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        </a>
+
+                                                        <a href="" id="removeCat" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$category->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+
+
+
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- end col -->
         </div>
-        <!-- end col -->
     </div>
-</div>
 
 
 
 
-<!-- Attachment Modal -->
+    <!-- Attachment Modal -->
 
-@endsection
-
-
-@section('pageScripts')
-
-        <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+    @endsection
 
 
+    @section('pageScripts')
 
-        <script>
-    $(document).on('click', '#removeCat', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        swal("آیا اطمینان دارید؟", {
-            dangerMode: true,
-            buttons: ["انصراف", "حذف"],
+    <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
 
-          })
-        .then(function(isConfirm) {
-            if (isConfirm) {
-        $.ajax({
-            type: "post",
-            url: "{{url('dashboard/shop/product-category/delete')}}",
-            data: {
-                id: id,
-                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-            },
-            success: function(data) {
-                var url = document.location.origin + "/dashboard/shop/product-category";
-                location.href = url;
-            }
+
+
+    <script>
+        $(document).on('click', '#removeCat', function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            swal("آیا اطمینان دارید؟", {
+                    dangerMode: true,
+                    buttons: ["انصراف", "حذف"],
+
+                })
+                .then(function(isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('dashboard/shop/product-category/delete')}}",
+                            data: {
+                                id: id,
+                                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                            },
+                            success: function(data) {
+                                var url = document.location.origin + "/dashboard/shop/product-category";
+                                location.href = url;
+                            }
+                        });
+                    } else {
+                        swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                    }
+                });
         });
-    } else {
-        swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
-    }
-    });
-    });
-
-
-
-</script>
-@if(session()->has('flashModal'))
-<script>
-  $('#AddProductCategoryModal').modal('show');
-</script>
-@endif
-@stop
+    </script>
+    @if(session()->has('flashModal'))
+        <script>
+            $('#AddProductCategoryModal').modal('show');
+        </script>
+        @endif
+        @stop

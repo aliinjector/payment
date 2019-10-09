@@ -61,6 +61,12 @@
                             <button type="button" class="btn btn-outline-primary">ورود به پنل مدیریت</button>
                             </a>
                         </div>
+                      @else
+                        <div class="search-icon d-flex align-items-center ml-5 ">
+                            <a href="{{ route('user.purchased.list' , ['userID' => \Auth::user()->id]) }}" style="font-size:13px;">
+                            <button type="button" class="btn btn-outline-primary"> مدیریت سفارشات</button>
+                            </a>
+                        </div>
                         @endif
                         @endauth
 

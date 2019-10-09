@@ -73,7 +73,12 @@ class ShopController extends Controller
         if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
             return abort(404);
         }
-    $purchasedProductCount = Product::find($id)->purchases()->get()->where('user_id' , \Auth::user()->id)->count();
+        if(Auth::user()){
+          $purchasedProductCount = Product::find($id)->purchases()->get()->where('user_id' , \Auth::user()->id)->count();
+        }
+        else{
+          $purchasedProductCount = null;
+        }
     $shop = Shop::where('english_name' , $shop)->first();
     $shopCategories = $shop->ProductCategories()->get();
     $product = $shop->products()->where('id', $id)->first();
@@ -169,15 +174,24 @@ class ShopController extends Controller
 
     public function downlaodFile($shop , $id)
     {
-        if(\Auth::guest()){
-            return redirect()->route('register');
-        }
+      $product = Product::find($id);
+      $purchase = $product->purchases()->get();
+      if(\auth::user()){
+      $userPurchase = $purchase->where('user_id' , \auth::user()->id);
+      }
+      else{
+        $userPurchase = null;
+
+      }
+      if($userPurchase->count() > 0){
+        return  redirect(URL::temporarySignedRoute(
+        'download.link',
+        now()->addMinutes(30),
+        ['shop' => $shop , 'id' => $id]
+    ));
+      }
         else{
-            return  redirect(URL::temporarySignedRoute(
-            'download.link',
-            now()->addMinutes(30),
-            ['shop' => $shop , 'id' => $id]
-        ));
+            return redirect()->route('login');
         }
     }
 
@@ -266,8 +280,24 @@ class ShopController extends Controller
         $purchase->save();
         Session::pull('discountedPrice');
         alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
-        return redirect()->back();
+        return redirect()->route('user.purchased.list' , ['userID' => \auth::user()->id]);
     }
+
+
+
+    public function userPurchaseList($userID){
+      if($userID != \auth::user()->id){
+      alert()->error('شما به این بخش دسترسی ندارید','خطا');
+      return redirect()->back();
+      }
+      else{
+        $purchases = \auth::user()->purchases()->orderBy('id', 'DESC')->get();
+        return view('app.user-purchased-list' , compact('purchases'));
+      }
+    }
+
+
+
     /**
      * Update the specified resource in storage.
      *
