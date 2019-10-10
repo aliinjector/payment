@@ -86,7 +86,7 @@
                                             <td><img class="product-img" src="{{ $purchase->product()->withTrashed()->first()->image['80,80']}}" alt="user"></td>
                                             <td>{{ $purchase->product()->withTrashed()->first()->title}}</td>
                                             <td>{{ jdate($purchase->created_at) }}</td>
-                                            <td>{{ $purchase->product()->withTrashed()->first()->price }}تومان</td>
+                                            <td>{{ $purchase->total_price }} تومان</td>
                                             <td class="d-flex justify-content-between align-items-center h-25vh"><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span>
                                               @if($purchase->product()->get()->first()->type == 'file')
                                               <div class="icon-show">

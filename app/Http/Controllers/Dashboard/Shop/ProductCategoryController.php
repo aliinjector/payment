@@ -18,7 +18,9 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
         return view('dashboard.shop.product-category', compact('categoires' , 'shop'));
@@ -101,7 +103,7 @@ class ProductCategoryController extends Controller
      */
     public function edit(Request $request)
     {
-       
+
 
     }
 

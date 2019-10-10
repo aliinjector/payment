@@ -232,8 +232,20 @@ class ShopController extends Controller
     }
 
     public function purchaseSubmit($shop ,$id ,Request $request){
-        $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
         $product = Product::where('id' , $id)->get()->first();
+        $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
+        if ($product->type != 'file') {
+            if(!isset(\Auth::user()->userInformation()->get()->first()->address) or !isset(\Auth::user()->userInformation()->get()->first()->address_2) or !isset(\Auth::user()->userInformation()->get()->first()->address_3)){
+                $request->validate([
+                    'new_address' => 'required'
+                ]);
+            }
+            else{
+                $request->validate([
+            'address' => 'required'
+        ]);
+            }
+        }
         if(isset(\Auth::user()->userInformation()->get()->first()->address)){
             $userAddress1 = \Auth::user()->userInformation()->get()->first()->address;
         }

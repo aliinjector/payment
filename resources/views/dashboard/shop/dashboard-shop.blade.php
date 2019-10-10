@@ -892,6 +892,7 @@
                <table class="table table-hover mb-0">
                   <thead class="thead-light">
                      <tr class="byekan">
+                        <th class="border-top-0">شناسه</th>
                         <th class="border-top-0">محصول</th>
                         <th class="border-top-0">نام</th>
                         <th class="border-top-0">زمان سفارش</th>
@@ -903,10 +904,11 @@
                   <tbody>
                      @foreach($purchases as $purchase)
                      <tr class="byekan">
+                        <td>{{ $purchase->product()->withTrashed()->first()->id}}</td>
                         <td><img class="product-img" src="{{ $purchase->product()->withTrashed()->first()->image['80,80']}}" alt="user"></td>
                         <td>{{ $purchase->product()->withTrashed()->first()->title}}</td>
                         <td>{{ jdate($purchase->created_at) }}</td>
-                        <td>{{ number_format($purchase->product()->withTrashed()->first()->price) }}تومان</td>
+                        <td>{{ number_format($purchase->total_price) }}تومان</td>
                         <td><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span></td>
                      </tr>
                      @endforeach

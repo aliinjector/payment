@@ -20,6 +20,10 @@ class ShopSettingController extends Controller
      */
      public function index()
         {
+            if(\Auth::user()->type == 'customer'){
+                return redirect()->back();
+            }
+
           if(\Auth::user()->shop()->count() == 0){
               $shop = new Shop;
               $shop->name = "نام تست";

@@ -21,6 +21,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }
       if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0) {
         alert()->warning('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
         return redirect()->route('product-category.index');

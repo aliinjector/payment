@@ -1202,6 +1202,8 @@
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                     <thead>
                                         <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                            </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام
                                                 محصول
                                             </th>
@@ -1216,6 +1218,7 @@
                                     <tbody class="byekan">
                                         @foreach($products as $product)
                                         <tr role="row" class="odd icon-hover hover-color">
+                                            <td class="sorting_1" style="width:5%">{{ $product->id }}</td>
                                             <td class="sorting_1 w-25 "><img src="{{ $product->image['80,80'] }}" class="rounded" alt="">
         <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product-list.show',$product->id) }}" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
             </td>

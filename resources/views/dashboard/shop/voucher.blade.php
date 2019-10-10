@@ -174,13 +174,15 @@
                     <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 table-responsive">
 
 
 
                                 <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                     <thead>
                                         <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                                    </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 205px;">نام
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت </th>
@@ -195,6 +197,7 @@
                                     <tbody class="byekan">
                                         @foreach($vouchers as $voucher)
                                         <tr role="row" class="odd icon-hover hover-color">
+                                            <td>{{ $voucher->id }}</td>
                                             <td>{{ $voucher->name }}</td>
                                             <td>
                                                 <form class="form-inline" action="{{ route('change.status.voucher', $voucher->id) }}" method="post">
@@ -224,7 +227,7 @@
                                             <td>{{ $voucher->uses }}</td>
                                             <td>{{ $voucher->discount_amount }}</td>
                                             <td>{{ jdate($voucher->starts_at) }}</td>
-                                            <td class="d-flex justify-content-between p-3">{{ jdate($voucher->expires_at) }}
+                                            <td class=" p-3">{{ jdate($voucher->expires_at) }}
                                                 <div class="d-none icon-show">
                                                 <a href="{{ $voucher->id }}" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                 </a>

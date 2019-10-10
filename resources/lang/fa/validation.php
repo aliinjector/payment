@@ -176,5 +176,6 @@ return array(
         'telegram_url' => 'لینک تلگرام',
         'instagram_url' => 'لینک اینستاگرام',
         'facebook_url' => 'لینک فیسبوک',
+        'new_address' => 'آدرس جدید',
     ),
 );
