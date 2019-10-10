@@ -235,7 +235,7 @@ class ShopController extends Controller
         $product = Product::where('id' , $id)->get()->first();
         $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
         if ($product->type != 'file') {
-            if(!isset(\Auth::user()->userInformation()->get()->first()->address) or !isset(\Auth::user()->userInformation()->get()->first()->address_2) or !isset(\Auth::user()->userInformation()->get()->first()->address_3)){
+            if(!isset($request->address)){
                 $request->validate([
                     'new_address' => 'required'
                 ]);

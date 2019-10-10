@@ -15,11 +15,14 @@ class DashboardController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
+
+        $shopName = Shop::where('id' ,\auth::user()->shop_id)->get()->first()->english_name;
+        $address = route('index') .'/'. Shop::where('id' ,\auth::user()->shop_id)->get()->first()->english_name;
         if(\Auth::user()->type == 'user'){
             return view('dashboard.index');
         }
         else{
-            return redirect()->back();
+           return redirect()->to($address);
         }
     }
 
