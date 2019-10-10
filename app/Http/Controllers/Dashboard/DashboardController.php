@@ -19,8 +19,7 @@ class DashboardController extends \App\Http\Controllers\Controller
             return view('dashboard.index');
         }
         else{
-            $shopName = Shop::where('id' , \Auth::user()->shop_id)->get()->first()->english_name;
-            return redirect()->route('show.shop', ['shop' => $shopName]);
+            return redirect()->back();
         }
     }
 
