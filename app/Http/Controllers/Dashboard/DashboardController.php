@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Dashboard;
+use App\Shop;
 use Illuminate\Http\Request;
 
 class DashboardController extends \App\Http\Controllers\Controller
@@ -14,7 +15,13 @@ class DashboardController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        if(\Auth::user()->type == 'user'){
+            return view('dashboard.index');
+        }
+        else{
+            $shopName = Shop::where('id' , \Auth::user()->shop_id)->get()->first()->english_name;
+            return redirect()->route('show.shop', ['shop' => $shopName]);
+        }
     }
 
     /**

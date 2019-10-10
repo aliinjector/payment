@@ -153,3 +153,10 @@ h2 span {
     background: #EAF0F7;
     padding: 0 17px;
 }
+
+.min-width-100-fix {
+    min-width: 100%;
+}
+.h-25vh{
+    height: 25vh;
+}

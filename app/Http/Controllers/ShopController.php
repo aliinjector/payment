@@ -73,10 +73,16 @@ class ShopController extends Controller
         if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
             return abort(404);
         }
+        if(Auth::user()){
+          $purchasedProductCount = Product::find($id)->purchases()->get()->where('user_id' , \Auth::user()->id)->count();
+        }
+        else{
+          $purchasedProductCount = null;
+        }
     $shop = Shop::where('english_name' , $shop)->first();
     $shopCategories = $shop->ProductCategories()->get();
     $product = $shop->products()->where('id', $id)->first();
-    return view('app.product-detail', compact('product','shop','shopCategories'));
+    return view('app.product-detail', compact('product','shop','shopCategories','purchasedProductCount'));
     }
 
     public function showCategory($shop, $categroyId)
@@ -103,10 +109,15 @@ class ShopController extends Controller
     }
 
     public function purchaseList($shop , $id){
-        $product = Product::where('id' , $id)->get()->first();
-        $shop = Shop::where('english_name' , $shop)->first();
-        $shopCategories = $shop->ProductCategories()->get();
-        return view('app.purchase-list', compact('shop','shopCategories','product'));
+        if (\Auth::guest()) {
+            return redirect()->route('register');
+        }
+        else{
+            $product = Product::where('id' , $id)->get()->first();
+            $shop = Shop::where('english_name' , $shop)->first();
+            $shopCategories = $shop->ProductCategories()->get();
+            return view('app.purchase-list', compact('shop','shopCategories','product'));
+        }
     }
 
     public function tagProduct($shop, $name){
@@ -163,15 +174,24 @@ class ShopController extends Controller
 
     public function downlaodFile($shop , $id)
     {
-        if(\Auth::guest()){
-            return redirect()->route('register');
-        }
+      $product = Product::find($id);
+      $purchase = $product->purchases()->get();
+      if(\auth::user()){
+      $userPurchase = $purchase->where('user_id' , \auth::user()->id);
+      }
+      else{
+        $userPurchase = null;
+
+      }
+      if($userPurchase->count() > 0){
+        return  redirect(URL::temporarySignedRoute(
+        'download.link',
+        now()->addMinutes(30),
+        ['shop' => $shop , 'id' => $id]
+    ));
+      }
         else{
-            return  redirect(URL::temporarySignedRoute(
-            'download.link',
-            now()->addMinutes(30),
-            ['shop' => $shop , 'id' => $id]
-        ));
+            return redirect()->route('login');
         }
     }
 
@@ -210,6 +230,72 @@ class ShopController extends Controller
         return response()->file($uri);
 
     }
+
+    public function purchaseSubmit($shop ,$id ,Request $request){
+        $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
+        $product = Product::where('id' , $id)->get()->first();
+        if(isset(\Auth::user()->userInformation()->get()->first()->address)){
+            $userAddress1 = \Auth::user()->userInformation()->get()->first()->address;
+        }
+        if(isset(\Auth::user()->userInformation()->get()->first()->address_2)){
+            $userAddress2 = \Auth::user()->userInformation()->get()->first()->address_2;
+        }
+        if(isset(\Auth::user()->userInformation()->get()->first()->address_3)){
+            $userAddress3 = \Auth::user()->userInformation()->get()->first()->address_3;
+        }
+        $purchase = new UserPurchase;
+        $purchase->product_id = $id;
+        $purchase->user_id = \Auth::user()->id;
+        $purchase->shop_id = $shopId;
+        if($request->new_address == null){
+            if($request->address == "address_1"){
+                $purchase->address = $userAddress1;
+            }
+            elseif($request->address == "address_2"){
+            $purchase->address = $userAddress2;
+        }
+        elseif($request->address == "address_3"){
+        $purchase->address = $userAddress3;
+    }
+        }
+        else{
+            $purchase->address = $request->new_address;
+        }
+        $purchase->shipping = $request->shipping_way;
+
+
+
+
+        if($product->off_price == null){
+            if (Session::get('discountedPrice') == null) {
+                $purchase->total_price = $product->price;
+            }
+            else{
+                $purchase->total_price = Session::get('discountedPrice');
+            }
+         }
+        else{
+            $purchase->total_price = $product->off_price;
+        }
+        $purchase->save();
+        Session::pull('discountedPrice');
+        alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
+        return redirect()->route('user.purchased.list' , ['userID' => \auth::user()->id]);
+    }
+
+
+
+    public function userPurchaseList($userID){
+      if($userID != \auth::user()->id){
+      alert()->error('شما به این بخش دسترسی ندارید','خطا');
+      return redirect()->back();
+      }
+      else{
+        $purchases = \auth::user()->purchases()->orderBy('id', 'DESC')->get();
+        return view('app.user-purchased-list' , compact('purchases'));
+      }
+    }
+
 
 
     /**

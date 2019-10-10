@@ -69,6 +69,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Checkout');
     }
+    public function purchases()
+    {
+        return $this->hasMany('App\UserPurchase');
+    }
+
 
 
 

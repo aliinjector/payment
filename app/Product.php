@@ -25,4 +25,8 @@ class Product extends Model
  {
      return $this->belongsToMany('App\Tag');
  }
+ public function purchases()
+ {
+     return $this->hasMany('App\UserPurchase');
+ }
 }
