@@ -17,6 +17,9 @@ class VoucherController extends Controller
      */
     public function index()
     {
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }
         $shop = \Auth::user()->shop()->first();
         $vouchers = Voucher::all();
         return view('dashboard.shop.voucher', compact('vouchers','shop'));

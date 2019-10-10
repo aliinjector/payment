@@ -59,6 +59,7 @@
       @stop
       @yield('content')
       <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12">
+            @include('dashboard.layouts.errors')
          <div class="card-body invoice-head">
             <div class="row">
                <div class="col-md-4 align-self-center">
@@ -149,6 +150,7 @@
                   </div>
                   <form action="{{ route('purchase.submit', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post" class="form-horizontal">
                      @csrf
+                     @if($product->type != 'file')
                      <div class="col-md-6 mt-5">
                         <div class="total-payment">
                            <h4 class="header-title">مجموع پرداختی</h4>
@@ -227,6 +229,7 @@
                            </table>
                         </div>
                      </div>
+                     @endif
                      <!--end /div-->
                </div>
                <div class="d-lg-flex col-lg-12 justify-content-end">

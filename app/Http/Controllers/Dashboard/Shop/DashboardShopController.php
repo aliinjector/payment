@@ -15,13 +15,16 @@ class DashboardShopController extends Controller
      */
     public function index()
     {
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }
         $purchases = UserPurchase::where('shop_id' , \Auth::user()->shop()->first()->id)->get();
         $shop = \Auth::user()->shop()->first();
         $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(3)->get();
         $sumPrices = $shop->purchases()->get();
         $sum = 0;
         foreach($sumPrices as $sumPrice){
-            $sum += $sumPrice->product()->withTrashed()->first()->price;
+            $sum += $sumPrice->total_price;
             }
         return view('dashboard.shop.dashboard-shop', compact('purchases','shop','bestSelling' , 'sum'));
     }

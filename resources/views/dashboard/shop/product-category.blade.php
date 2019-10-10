@@ -130,6 +130,8 @@
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                         <thead>
                                             <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                                        </th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام
                                                     محصول
                                                 </th>
@@ -139,6 +141,7 @@
                                         <tbody class="byekan">
                                             @foreach($categoires as $category)
                                             <tr role="row" class="odd icon-hover hover-color">
+                                                <td style="width:5%">{{ $category->id }}</td>
                                                 <td>{{ $category->name }}</td>
                                                 <td class="d-flex justify-content-between">{{ $category->description }}
                                                     <div class="d-none icon-show">
