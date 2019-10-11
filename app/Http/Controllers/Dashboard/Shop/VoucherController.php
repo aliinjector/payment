@@ -21,7 +21,7 @@ class VoucherController extends Controller
             return redirect()->back();
         }
         $shop = \Auth::user()->shop()->first();
-        $vouchers = Voucher::all();
+        $vouchers = \Auth::user()->shop()->first()->vouchers()->get();
         return view('dashboard.shop.voucher', compact('vouchers','shop'));
     }
 
@@ -60,6 +60,10 @@ class VoucherController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+              'name' => 'required',
+              'discount_amount' => 'required',
+        ]);
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
         $voucher = \Auth::user()->shop()->first()->vouchers()->create([

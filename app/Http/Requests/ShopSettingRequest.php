@@ -23,10 +23,5 @@ class ShopSettingRequest extends FormRequest
      */
     public function rules()
     {
-      return [
-          'icon' => 'required',
-          'logo' => 'required',
-          'english_name' => 'required|unique:shops|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/',
-      ];
     }
 }

@@ -100,8 +100,22 @@ class ShopSettingController extends Controller
      * @param  \App\ShopSetting  $shopSetting
      * @return \Illuminate\Http\Response
      */
-    public function update(ShopSettingRequest $request)
+    public function update(Request $request)
     {
+        if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
+            $request->validate([
+            'icon' => 'required',
+              'logo' => 'required',
+              'english_name' => 'required|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/'
+        ]);
+        }
+        else{
+            $request->validate([
+                'icon' => 'required',
+                  'logo' => 'required',
+                  'english_name' => 'required|unique:shops|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/'
+            ]);
+        }
         if ( $request->quick_way != "on")
         $request->quick_way = 'disable';
      else
