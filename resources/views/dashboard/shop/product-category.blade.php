@@ -127,6 +127,20 @@
 
 
 
+
+
+                                  <div class="searchBox">
+                                    <input type="text" id="myInputTextField" class="searchInput">
+                                      <button class="searchButton" href="#">
+                                          <i class="fa fa-search"></i>
+                                      </button>
+                                  </div>
+
+
+
+
+
+
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                         <thead>
                                             <tr role="row">
@@ -189,8 +203,12 @@
     <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-
-
+    <script>
+    oTable = $('#datatable').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+    $('#myInputTextField').keyup(function(){
+        oTable.search($(this).val()).draw() ;
+    })
+    </script>
 
     <script>
         $(document).on('click', '#removeCat', function(e) {
@@ -221,9 +239,12 @@
                 });
         });
     </script>
+
     @if(session()->has('flashModal'))
         <script>
             $('#AddProductCategoryModal').modal('show');
         </script>
+
+
         @endif
         @stop
