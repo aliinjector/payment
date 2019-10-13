@@ -41,17 +41,17 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body modal-scroll">
+                    <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                         <form action="{{ route('product-category.store', ['continue', 1]) }}" method="post" class="form-horizontal">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
                                     <input type="text" class="form-control inputfield" name="name" placeholder="مثال: ورزشی">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
                                     <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد دسته بندی">
                                 </div>
                             </div>
@@ -81,18 +81,18 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body modal-scroll">
+                    <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                         <form action="{{ route('product-category.update', $category->id) }}" method="post" class="form-horizontal">
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
                                     <input type="text" class="form-control inputfield" name="name" value="{{ $category->name }}">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
                                     <input type="text" class="form-control inputfield" name="description" value="{{ $category->description }}">
                                 </div>
                             </div>

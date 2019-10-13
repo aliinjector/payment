@@ -54,34 +54,35 @@
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
                                     <input type="text" class="form-control inputfield" name="name" placeholder="مثال: کد تخفیف 10000 تومانی">
                                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد  :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد  :</span></div>
                                     <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد کد تخفیف مانند مناسبت آن">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" placeholder="مثال: 10">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
-                                    <input type="number" class="form-control inputfield" name="discount_amount" placeholder="مثال: 15000">
-                                    <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
-                                </div>
+                                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
+                                        <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000">
+                                        <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+
+                                    </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
                                     <input type="hidden" class="start-alt-field col h-50px border-0" name="starts_at" />
                                     <input class="start-field-example col h-50px border-0" name="" />
 
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
                                     <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
                                     <input class="expire-field-example col h-50px border-0" name="" />
                                 </div>
@@ -104,7 +105,7 @@
             <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">افزودن کد تخفیف جدید</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">ویرایش کد تخفیف</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -115,34 +116,35 @@
                                         {{ method_field('PATCH') }}
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
                                             <input type="text" class="form-control inputfield" name="name" value="{{ $voucher->name }}">
                                             <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد  :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد  :</span></div>
                                             <input type="text" class="form-control inputfield" name="description" value="{{ $voucher->description }}" >
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
                                             <input type="number" class="form-control inputfield" name="uses" value="{{ $voucher->uses }}">
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
-                                            <input type="number" class="form-control inputfield" name="discount_amount" value="{{ $voucher->discount_amount }}">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
-                                        </div>
+                                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
+                                                <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000">
+                                                <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+
+                                            </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
                                             <input type="hidden" class="start-alt-field col h-50px border-0" name="starts_at" />
                                             <input class="start-field-example col h-50px border-0" name="" value="{{ $voucher->starts_at }}"/>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
                                             <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
                                             <input class="expire-field-example col h-50px border-0" name="" value="{{ $voucher->expires_at }}"/>
                                         </div>

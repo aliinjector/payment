@@ -43,7 +43,11 @@
 }
 
 .min-width-140 {
-    min-width: 140px;
+    min-width: 100%!important;
+}
+
+.min-width-180 {
+    min-width: 180px;
 }
 
 .modal-scroll {
@@ -112,7 +116,7 @@
 }
 
 .hover-color:hover {
-    background-color: #F1F5FA;
+    background-color: #fbfcff;
 }
 
 .icon-hover:hover .icon-show {
@@ -157,7 +161,8 @@ h2 span {
 .min-width-100-fix {
     min-width: 100%;
 }
-.h-25vh{
+
+.h-25vh {
     height: 25vh;
 }
 
@@ -165,20 +170,19 @@ h2 span {
     position: absolute;
     bottom: 100%;
     left: 50%;
-    transform:  translate(-50%,50%);
+    transform: translate(-50%, 50%);
     background: #2f3640;
     border-radius: 40px;
-
 }
 
-.searchBox:hover > .searchInput {
+.searchBox:hover>.searchInput {
     width: 240px;
     padding: 0 6px;
 }
 
-.searchBox:hover > .searchButton {
-  background: white;
-  color : #2f3640;
+.searchBox:hover>.searchButton {
+    background: white;
+    color: #2f3640;
 }
 
 .searchButton {
@@ -195,22 +199,24 @@ h2 span {
 }
 
 .searchInput {
-    border:none;
+    border: none;
     background: none;
-    outline:none;
-    float:left;
+    outline: none;
+    float: left;
     padding: 0;
     color: white;
     font-size: 16px;
     transition: 0.4s;
     line-height: 40px;
     width: 0px;
-
 }
 
 @media screen and (max-width: 620px) {
-.searchBox:hover > .searchInput {
-    width: 150px;
-    padding: 0 6px;
-}
+    .searchBox:hover>.searchInput {
+        width: 150px;
+        padding: 0 6px;
+    }
+    .f-18px {
+        font-size: 18px;
+    }
 }

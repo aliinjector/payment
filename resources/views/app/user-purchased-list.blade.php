@@ -22,6 +22,9 @@
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
     <style media="screen">
+        body {
+            font-size: 18px!important;
+        }
     .blink_me {
       animation: blinker 1s linear infinite;
     }

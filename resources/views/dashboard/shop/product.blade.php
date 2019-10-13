@@ -93,29 +93,29 @@
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">افزودن کالای </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">افزودن کالای فیزیکی </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body modal-scroll">
+                            <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                                 <form action="{{ route('Product.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="title" placeholder="مثال: جاروبرقی">
                                             <input name="type" type="hidden" value="product">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول">
                                         </div>
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="product_category" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
@@ -135,60 +135,60 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت  بعد از تخفیف :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت  بعد از تخفیف :</span></div>
                                             <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
                                             <input type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="weight" placeholder="2مثال: 30">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" placeholder="#122272" id="example-color-input" name="color_1">
                                             <div class="input-group-append"><a href="#" class="color1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 d-none color_1">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_2">
                                             <div class="input-group-append"><a href="#" class="color2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 d-none color_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_3">
                                             <div class="input-group-append"><a href="#" class="color3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 d-none color_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_4">
                                             <div class="input-group-append"><a href="#" class="color4"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 d-none color_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_5">
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -196,7 +196,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -204,7 +204,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -212,28 +212,28 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
                                         </div>
                                         <div class="input-group mt-3">
-                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
                                                 <input type="text" name="tags" class="form-control"/>
                                             </div>
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportProduct" name="support">
                                                 <label class="custom-control-label iranyekan font-15" for="supportProduct">پشتیبانی</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backProduct" name="money_back">
                                                 <label class="custom-control-label iranyekan font-15" for="money_backProduct">بازگشت وجه</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingProduct" name="fast_sending">
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingProduct">ارسال سریع</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentProduct" name="secure_payment">
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentProduct">پرداخت امن</label>
                                             </div>
@@ -299,26 +299,26 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body modal-scroll">
+                            <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                                 <form action="{{ route('product-list.update', $product->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     {{ method_field('PATCH') }}
 
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="title" placeholder="مثال: جاروبرقی" value="{{ $product->title }}">
                                             <input name="type" type="hidden" value="product">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول" value="{{ $product->description }}">
                                         </div>
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             <select class="form-control inputfield" name="product_category" id="">
                                                 <option style="font-family: BYekan!important;" value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option>
                                                 @foreach($productCategories as $productCategory)
@@ -329,60 +329,60 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en" value="{{ $product->price }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت  بعد از تخفیف :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت  بعد از تخفیف :</span></div>
                                             <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en" value="{{ $product->off_price }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
                                             <input type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3" value="{{ $product->amount }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="weight" placeholder="2مثال: 30" value="{{ $product->weight }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" placeholder="#122272" id="example-color-input" name="color_1" value="{{ $product->color_1 }}">
                                             <div class="input-group-append"><a href="#" class="color1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 @if($product->color_2 == null) d-none @endif color_1">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" @if($product->color_2 == null) value="#a89d8e"  @endif id="example-color-input" name="color_2" value="{{ $product->color_2 }}">
                                             <div class="input-group-append"><a href="#" class="color2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 @if($product->color_3 == null) d-none @endif color_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" @if($product->color_3 == null) value="#a89d8e"  @endif id="example-color-input" name="color_3" value="{{ $product->color_3 }}">
                                             <div class="input-group-append"><a href="#" class="color3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 @if($product->color_4 == null) d-none @endif color_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" @if($product->color_4 == null) value="#a89d8e"  @endif  id="example-color-input" name="color_4" value="{{ $product->color_4 }}">
                                             <div class="input-group-append"><a href="#" class="color4"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                         </div>
                                         <div class="input-group mt-3 @if($product->color_5 == null) d-none @endif color_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
                                             <input class="form-control h-50px" type="color" @if($product->color_5 == null) value="#a89d8e"  @endif  id="example-color-input" name="color_5" value="{{ $product->color_5 }}">
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب " value="{{ $product->feature_1 }}">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -390,7 +390,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_2 == null) d-none @endif feature_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب " value="{{ $product->feature_2 }}">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -398,7 +398,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_3 == null) d-none @endif feature_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب " value="{{ $product->feature_3 }}">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -406,25 +406,25 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_4 == null) d-none @endif feature_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب "  value="{{ $product->feature_4 }}">
                                         </div>
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportProductUpdate{{ $product->id }}" name="support" @if($product->support == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="supportProductUpdate{{ $product->id }}">پشتیبانی</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backProductUpdate{{ $product->id }}" name="money_back" @if($product->money_back == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="money_backProductUpdate{{ $product->id }}">بازگشت وجه</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingProductUpdate{{ $product->id }}" name="fast_sending" @if($product->fast_sending == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingProductUpdate{{ $product->id }}">ارسال سریع</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentProductUpdate{{ $product->id }}" name="secure_payment" @if($product->secure_payment == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentProductUpdate{{ $product->id }}">پرداخت امن</label>
                                             </div>
@@ -488,27 +488,27 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body modal-scroll">
+                            <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                                 <form action="{{ route('product-list.update', $product->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     {{ method_field('PATCH') }}
 
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان" value="{{ $product->title }}">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل" value="{{ $product->description }}">
                                         </div>
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
 
                                             <select class="form-control inputfield" name="product_category" id="">
                                                 <option style="font-family: BYekan!important;" value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option>                                                @foreach($productCategories as $productCategory)
@@ -519,13 +519,13 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" value="{{ $product->price }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف:</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف:</span></div>
                                             <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" value="{{ $product->off_price }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
@@ -534,16 +534,14 @@
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">حجم فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="file_size" placeholder="مثال: 45">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">مگابایت</span></div>
-
                                         </div>  --}}
                                         {{--  <div class="input-group mt-3">
                                             <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> موجودی فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="amount" placeholder=" مثال: 100">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> عدد</span></div>
-
                                         </div>  --}}
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_1 }}">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -551,7 +549,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_2 == null) d-none @endif feature_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_2 }}">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -559,7 +557,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_3 == null) d-none @endif feature_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_3 }}">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -567,7 +565,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_4 == null) d-none @endif feature_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_4 }}">
 
 
@@ -576,20 +574,20 @@
 
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportFileUpdate{{ $product->id }}" name="support" @if($product->support == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="supportFileUpdate{{ $product->id }}">پشتیبانی</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backFileUpdate{{ $product->id }}" name="money_back" @if($product->money_back == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="money_backFileUpdate{{ $product->id }}">بازگشت وجه</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingFileUpdate{{ $product->id }}" name="fast_sending" @if($product->fast_sending == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingFileUpdate{{ $product->id }}">ارسال سریع</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentFileUpdate{{ $product->id }}" name="secure_payment" @if($product->secure_payment == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentFileUpdate{{ $product->id }}">پرداخت امن</label>
                                             </div>
@@ -688,26 +686,26 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body modal-scroll">
+                            <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                                 <form action="{{ route('product-list.update', $product->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     {{ method_field('PATCH') }}
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="title" placeholder="مثال: تدریس خصوصی" value="{{ $product->title }}">
                                             <input name="type" type="hidden" value="service" >
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد خدمت" value="{{ $product->description }}">
                                         </div>
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             <select class="form-control inputfield" name="product_category" id="">
                                                 <option style="font-family: BYekan!important;" value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option>                                                @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
@@ -717,20 +715,20 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" value="{{ $product->price }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
                                             <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" value="{{ $product->off_price }}">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب " value="{{ $product->feature_1 }}">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -738,7 +736,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_2 == null) d-none @endif feature_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب "  value="{{ $product->feature_2 }}">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -746,7 +744,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_3 == null) d-none @endif feature_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب " value="{{ $product->feature_3 }}">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -754,27 +752,27 @@
 
                                         </div>
                                         <div class="input-group mt-3 @if($product->feature_4 == null) d-none @endif feature_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب " value="{{ $product->feature_4 }}">
 
 
                                         </div>
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportServiceUpdate{{ $product->id }}" name="support" @if($product->support == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="supportServiceUpdate{{ $product->id }}">پشتیبانی</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backServiceUpdate{{ $product->id }}" name="money_back" @if($product->money_back == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="money_backServiceUpdate{{ $product->id }}">بازگشت وجه</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingServiceUpdate{{ $product->id }}" name="fast_sending" @if($product->fast_sending == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingServiceUpdate{{ $product->id }}">ارسال سریع</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentServiceUpdate{{ $product->id }}" name="secure_payment" @if($product->secure_payment == 1) checked @endif>
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentServiceUpdate{{ $product->id }}">پرداخت امن</label>
                                             </div>
@@ -831,25 +829,25 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body modal-scroll">
+                            <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                                 <form action="{{ route('Product.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
                                         </div>
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="product_category" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
@@ -869,20 +867,20 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
                                             <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -890,7 +888,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -898,7 +896,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -906,29 +904,29 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا ">
                                         </div>
                                         <div class="input-group mt-3">
-                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
                                                 <input type="text" name="tags" class="form-control"/>
                                             </div>
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportFile" name="support">
                                                 <label class="custom-control-label iranyekan font-15" for="supportFile">پشتیبانی</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backFile" name="money_back">
                                                 <label class="custom-control-label iranyekan font-15" for="money_backFile">بازگشت وجه</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingFile" name="fast_sending">
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingFile">ارسال سریع</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentFile" name="secure_payment">
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentFile">پرداخت امن</label>
                                             </div>
@@ -1025,25 +1023,25 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body modal-scroll">
+                            <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
                                 <form action="{{ route('Product.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="title" placeholder="مثال: تدریس خصوصی">
                                             <input name="type" type="hidden" value="service">
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد خدمت">
                                         </div>
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="product_category" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید</option>
@@ -1063,20 +1061,20 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت  بعد از تخفیف :</span></div>
                                             <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -1084,7 +1082,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -1092,7 +1090,7 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
@@ -1100,29 +1098,29 @@
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_4">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
                                         </div>
                                         <div class="input-group mt-3">
-                                                <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
                                                 <input type="text" name="tags" class="form-control"/>
                                             </div>
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportService" name="support">
                                                 <label class="custom-control-label iranyekan font-15" for="supportService">پشتیبانی</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backService" name="money_back">
                                                 <label class="custom-control-label iranyekan font-15" for="money_backService">بازگشت وجه</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingService" name="fast_sending">
                                                 <label class="custom-control-label iranyekan font-15" for="fast_sendingService">ارسال سریع</label>
                                             </div>
-                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentService" name="secure_payment">
                                                 <label class="custom-control-label iranyekan font-15" for="secure_paymentService">پرداخت امن</label>
                                             </div>
@@ -1322,52 +1320,44 @@
         $(".test2").click(function() {
             $(".feature_3").removeClass("d-none");
             $(".test2").addClass("d-none");
-
         });
     });
     $(document).ready(function() {
         $(".test3").click(function() {
             $(".feature_4").removeClass("d-none");
             $(".test3").addClass("d-none");
-
         });
     });
     $(document).ready(function() {
         $(".color1").click(function() {
             $(".color_1").removeClass("d-none");
             $(".color1").addClass("d-none");
-
         });
     });
     $(document).ready(function() {
         $(".color2").click(function() {
             $(".color_2").removeClass("d-none");
             $(".color2").addClass("d-none");
-
         });
     });
     $(document).ready(function() {
         $(".color3").click(function() {
             $(".color_3").removeClass("d-none");
             $(".color3").addClass("d-none");
-
         });
     });
     $(document).ready(function() {
         $(".color4").click(function() {
             $(".color_4").removeClass("d-none");
             $(".color4").addClass("d-none");
-
         });
     });
-
     $(document).on('click', '#removerProduct', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
         swal("آیا اطمینان دارید؟", {
             dangerMode: true,
             buttons: ["انصراف", "حذف"],
-
           })
           .then(function(isConfirm) {
             if (isConfirm) {
@@ -1388,8 +1378,6 @@
     }
     });
     });
-
-
 </script>
 @if(session()->has('flashModalProduct'))
 <script>
