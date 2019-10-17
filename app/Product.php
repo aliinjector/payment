@@ -25,6 +25,10 @@ class Product extends Model
  {
      return $this->belongsToMany('App\Tag');
  }
+ public function carts()
+ {
+     return $this->belongsToMany('App\Cart');
+ }
  public function purchases()
  {
      return $this->hasMany('App\UserPurchase');

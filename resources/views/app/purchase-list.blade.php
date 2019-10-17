@@ -242,9 +242,6 @@
                </div>
                </div>
                </div>
-               {{--  <a @if($product->type == 'file')href="{{ route('download.file', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @else href="" @endif>
-               <button type="button" class="btn btn-success mt-4 col-sm-12">تایید فاکتور</button>
-               </a>  --}}
                <!--end col-->
             </div>
          </div>
