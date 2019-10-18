@@ -122,12 +122,15 @@
                                         @endif
 
                                 </div>
+                                @if(\Auth::user())
+
                                 @if($product->type == 'file' and $product->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
                                 <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
                                     <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') دریافت فایل  @else خرید @endif</button>
                         </a>
+                        @endif
                         @endif
                             </div>
                             <!--end card-body-->
