@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Shop;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class CartController extends Controller
 {
@@ -47,16 +49,23 @@ class CartController extends Controller
      */
     public function show($shop , $userID)
     {
+      $shop = Shop::where('english_name' , $shop)->first();
+      $shopCategories = $shop->ProductCategories()->get();
+      if (\Auth::user()->cart()->get()->count() != 0) {
         $products = \Auth::user()->cart()->get()->first()->products();
-        $shop = Shop::where('english_name' , $shop)->first();
-        $shopCategories = $shop->ProductCategories()->get();
         return view('app.cart', compact('shop','shopCategories','products'));
+      }
+      else {
+        return view('app.cart', compact('shop','shopCategories'));
+      }
+
     }
 
 
     public function quantity(Request $request){
-        
-        dd($request);
+
+        dd($request->all());
+
     }
 
     /**

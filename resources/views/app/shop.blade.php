@@ -69,7 +69,7 @@
                         </div>
                         <div class="search-icon d-flex align-items-center ml-5 ">
                             <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}" style="font-size:13px;">
-                                <button type="button" class="btn btn-primary px-3 border-success">سبد خرید شما<i class="mr-2 fas fa-shopping-cart"></i>2</button>
+                                  <button type="button" class="btn btn-primary px-3 border-success">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
                             </a>
                         </div>
                         @endif

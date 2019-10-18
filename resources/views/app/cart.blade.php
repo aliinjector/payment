@@ -67,7 +67,7 @@
                         </div>
                         <div class="search-icon d-flex align-items-center ml-5 ">
                             <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}" style="font-size:13px;">
-                            <button type="button" class="btn btn-primary px-3 border-success">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>{{ \Auth::user()->cart()->get()->first()->products()->count() }}</button>
+                            <button type="button" class="btn btn-primary px-3 border-success">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
                             </a>
                         </div>
                         @endif
@@ -82,7 +82,11 @@
         </div>
       </nav>
 <div class="page-content">
+  <h1>
+
+  </h1>
     <div class="container-fluid">
+
         <!-- Page-Title -->
         <div class="row">
             <div class="col-sm-12">
@@ -106,6 +110,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
+          @if(isset($products))
+
             <div class="card-body">
                 <h4 class="header-title mt-0">سبد خرید </h4>
                 <p class="mb-4 text-muted">لیست محصولات سبد خرید.</p>
@@ -123,6 +129,8 @@
                         </thead>
                         <tbody>
 
+                        <form  action="{{ route('quantity',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
+                          @csrf
                             @foreach ($products as $product)
                             <tr>
                                 <td><img src="{{ $product->image['80,80'] }}" alt="" height="52">
@@ -132,15 +140,15 @@
                                 <td>{{ number_format($product->price) }} تومان </td>
                                 <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
                                 <td>
-                                        <form class="form-inline" action="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}" style="font-size:13px;" method="post">
-                                    <select class="form-control col-lg-5" name="category_id">
-                                            <option value="">یک مورد را انتخاب نمایید</option>
-                                            <button type="submit" class="btn btn-info"><option value="">1</option></button>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                    </select>
-                                    </form>
+
+                                                <select class="c-ui-select js-ui-select" id="expressShipping-count-{{ $product->id }}" autocomplete="off" tabindex="-1" name="quantity{{ $product->id }}">
+                                                <a href="#"><option value="1">۱</option></a>
+                                                  <option value="2">۲</option>
+                                                  <option value="3">۳</option>
+                                                  <option value="4">۴</option>
+                                                  <option value="5">۵</option>
+                                                </select>
+
                                 </td>
                                 <td>@if(isset($discountedPrice)){{ number_format($discountedPrice) }}@elseif($product->off_price != null){{ number_format($product->off_price)}} @else {{ number_format($product->price) }} @endif</td>
                                 <td>
@@ -148,15 +156,24 @@
                                 </td>
                             </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>
                 <div class="d-flex input-group-append justify-content-end">
                     <button type="submit" class="btn btn-success mt-4">ثبت و ادامه</button>
+                  </form>
+
                     </div>
 
                 <!--end row-->
             </div>
+          @else
+
+            <h4 class="d-flex justify-content-center p-4">محصولی در سبد خرید شما وجود ندارد</h4>
+
+          @endif
+
             <!--end card-->
         </div>
         <!--end card-body-->
@@ -170,26 +187,6 @@
 
 
 @section('pageScripts')
-<script>
-    $(document).on('click', '#ttttt', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var test = $(this).data('test');
-        $.ajax({
-            type: "post",
-            url: "{{url('dashboard/product-category/delete')}}",
-            data: {
-                id: id,
-                test: test,
-                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-            },
-            success: function(data) {
-                var url = document.location.origin + "/dashboard/product-category";
-                location.href = url;
-            }
-        });
-    });
-</script>
 @stop
 <!-- Page Content-->
 <div class="page-content">
@@ -222,6 +219,25 @@
 <!-- App js -->
 <script src="/dashboard/assets/js/app.js"></script>
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
+{{-- @foreach ($products as $product)
+<script type="text/javascript">
+$(function(){
+ $('#expressShipping-count-{{$product->id}}').on('change', function(){
+     var value = $(this).val();
+     console.log(value);
+         $.ajax({
+           type:'put',
+             url: "{{url('/user-cart/digikala/7/quantity-change/1')}}",
+             data: {
+                 value: value,
+                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+             },
+
+         });
+    });
+});
+</script>
+@endforeach --}}
 @include('sweet::alert')
 @yield('pageScripts')
 </body>

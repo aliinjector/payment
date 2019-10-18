@@ -78,7 +78,7 @@ Route::get('/{shop}/purchase-list/{id}', 'ShopController@purchaseList')->name('p
 Route::post('/{shop}/purchase-list/{id}/store', 'ShopController@purchaseSubmit')->middleware('auth')->name('purchase.submit');
 Route::get('/user-purchased-list/{userID}', 'ShopController@userPurchaseList')->middleware('auth')->name('user.purchased.list');
 Route::get('/user-cart/{shop}/{userID}', 'CartController@show')->middleware('auth')->name('cart.show');
-Route::put('/user-cart/{shop}/{userID}/quantity-change/{id}', 'CartController@quantity')->middleware('auth')->name('quantity');
+Route::post('/user-cart/{shop}/{userID}/quantity-change', 'CartController@quantity')->middleware('auth')->name('quantity');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
 Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');
 Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
