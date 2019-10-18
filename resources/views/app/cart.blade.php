@@ -22,7 +22,7 @@
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body>@section('content')
+<body style="font-size:18px!important">@section('content')
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
@@ -67,7 +67,7 @@
                         </div>
                         <div class="search-icon d-flex align-items-center ml-5 ">
                             <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}" style="font-size:13px;">
-                                <button type="button" class="btn btn-primary px-3 border-success">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>2</button>
+                            <button type="button" class="btn btn-primary px-3 border-success">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>{{ \Auth::user()->cart()->get()->first()->products()->count() }}</button>
                             </a>
                         </div>
                         @endif
@@ -101,53 +101,68 @@
         </div>
 
 </div>
-@if(isset($products[0]))
-        <h2 class="line-throw"><span>اخرین محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
-        @else
-<div class="d-flex justify-content-center align-items-center" style="height:80vh">
-<h4>
-    هیچ محصولی در این دسته بندی وجود ندارد
 
-</h4>
-</div>
-        @endif
-         <div class="row p-5">
-                @foreach ($products as $product)
 
-                    <div class="col-lg-2">
-                        <div class="card e-co-product">
-                            <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>
-                                <div class="d-flex justify-content-between my-2 byekan">
-                                        @if($product->off_price != null)
-                                    <p class="product-price byekan">{{  number_format($product->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($product->price) }} تومان</del></span>
-                                    </p>
-                                    @else
-                                    <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span>
-                                        @endif
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title mt-0">سبد خرید </h4>
+                <p class="mb-4 text-muted">لیست محصولات سبد خرید.</p>
+                <div class="table-responsive shopping-cart">
+                    <table class="table mb-0">
+                        <thead>
+                            <tr>
+                                <th>محصول</th>
+                                <th>قیمت واحد کالا</th>
+                                <th>میزان تخفیف</th>
+                                <th>تعداد</th>
+                                <th>مجموع</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                                </div>
-                                @if(\Auth::user())
-
-                                @if($product->type == 'file' and $product->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
-                                @else
-                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
-                        @endif
-                        @endif
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    @endforeach
-
+                            @foreach ($products as $product)
+                            <tr>
+                                <td><img src="{{ $product->image['80,80'] }}" alt="" height="52">
+                                    <p class="d-inline-block align-middle mb-0"><a href="" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
+                                        <br><span class="text-muted font-13">رنگ قرمز</span></p>
+                                </td>
+                                <td>{{ number_format($product->price) }} تومان </td>
+                                <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
+                                <td>
+                                        <form class="form-inline" action="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}" style="font-size:13px;" method="post">
+                                    <select class="form-control col-lg-5" name="category_id">
+                                            <option value="">یک مورد را انتخاب نمایید</option>
+                                            <button type="submit" class="btn btn-info"><option value="">1</option></button>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                            <option value="">4</option>
+                                    </select>
+                                    </form>
+                                </td>
+                                <td>@if(isset($discountedPrice)){{ number_format($discountedPrice) }}@elseif($product->off_price != null){{ number_format($product->off_price)}} @else {{ number_format($product->price) }} @endif</td>
+                                <td>
+                                    <a href="" class="text-danger"><i class="mdi mdi-close-circle-outline font-18"></i></a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
+                <div class="d-flex input-group-append justify-content-end">
+                    <button type="submit" class="btn btn-success mt-4">ثبت و ادامه</button>
+                    </div>
 
-    <!-- container -->
-
+                <!--end row-->
+            </div>
+            <!--end card-->
+        </div>
+        <!--end card-body-->
+    </div>
+    <!--end col-->
+</div>
 
 
 </div>
@@ -209,37 +224,6 @@
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
 @include('sweet::alert')
 @yield('pageScripts')
-
-<script>
-$(window).on('load', function() {
-
-    // if (window.location.href.indexOf("wallet") == -1) {
-    //     $('#PardakhtYari').removeClass("active");
-    //     $("a[href$='PardakhtYari']").removeClass("active");
-    //
-    // }
-    // if (window.location.href.indexOf("card") == -1) {
-    //     $('#PardakhtYari').removeClass("active");
-    //     $("a[href$='PardakhtYari']").removeClass("active");
-    // }
-    //
-    //
-    //
-    // if (window.location.href.indexOf("wallet") > -1) {
-    //     $('#PardakhtYari').addClass("active");
-    //     $("a[href$='PardakhtYari']").addClass("active");
-    //
-    // }
-    // if (window.location.href.indexOf("card") > -1) {
-    //     $('#PardakhtYari').addeClass("active");
-    //     $("a[href$='PardakhtYari']").addClass("active");
-    // }
-
-
-
-    });
-
-</script>
 </body>
 
 </html>

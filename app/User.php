@@ -65,6 +65,11 @@ class User extends Authenticatable
        return $this->hasOne('App\Shop');
    }
 
+    public function cart()
+   {
+       return $this->hasOne('App\Cart');
+   }
+
     public function checkouts()
     {
         return $this->hasMany('App\Checkout');
