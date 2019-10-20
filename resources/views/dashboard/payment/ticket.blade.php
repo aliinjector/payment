@@ -114,7 +114,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد تیکت های ثبت شده شما</h4>
+                    <h4 class="title-text mt-0"> تیکت های ثبت شده</h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold"> {{ $tickets->count() }} </h3><i class="dripicons-user-group card-eco-icon text-pink align-self-center"></i></div>
                 </div>
@@ -126,7 +126,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد تیکت های باز شما</h4>
+                    <h4 class="title-text mt-0"> تیکت های باز</h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">{{ $tickets->where('status', 'باز')->count() }}</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
                 </div>
@@ -138,7 +138,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد تیکت های در انتظار پاسخ </h4>
+                    <h4 class="title-text mt-0">  انتظار پاسخ </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold"> {{ $tickets->where('status', 'در انتظار پاسخ')->count() }} </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
                 </div>
@@ -150,7 +150,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد تیکت های در بسته شده </h4>
+                    <h4 class="title-text mt-0"> بسته شده </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold"> {{ $tickets->where('status', 'بسته شده')->count() }} </h3><i class="dripicons-wallet card-eco-icon text-success align-self-center"></i></div>
                 </div>

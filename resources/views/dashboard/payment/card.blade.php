@@ -183,7 +183,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد کل کارت های بانکی شما</h4>
+                    <h4 class="title-text mt-0"> کل کارت ها</h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold byekan">{{ $cards->count() }}</h3><i class="dripicons-card card-eco-icon text-secondary align-self-center"></i></div>
                 </div>
@@ -195,7 +195,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد کارت های تایید شده</h4>
+                    <h4 class="title-text mt-0">  تایید شده</h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold byekan">{{ $cards->where('status', 'تایید شده')->count() }}</h3><i class="dripicons-card card-eco-icon text-success align-self-center"></i></div>
                 </div>
@@ -207,7 +207,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">کارت های در انتظار تایید </h4>
+                    <h4 class="title-text mt-0"> در انتظار تایید </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold byekan">{{ $cards->where('status', 'در انتظار تایید')->count() }}</h3><i class="dripicons-card card-eco-icon text-warning align-self-center"></i></div>
                 </div>
@@ -219,7 +219,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">کارت های تایید نشده </h4>
+                    <h4 class="title-text mt-0"> تایید نشده </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold byekan">{{ $cards->where('status', 'تایید نشده')->count() }}</h3><i class="dripicons-card card-eco-icon text-danger align-self-center"></i></div>
                 </div>

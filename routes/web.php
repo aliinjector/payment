@@ -25,6 +25,7 @@ Route::get('/docs', 'DocumentationController@index')->name('documentation');
 
 
 Route::get('/', 'IndexController@index')->name('index');
+Route::get('fast-pay/{id}', 'Dashboard\Payment\FastPayController@show')->name('fast-pay.show');
 
 
 
@@ -48,6 +49,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::get('card/delete/{id}', 'CardController@destroy')->name('card.delete');
         Route::resource('wallet', 'WalletController');
         Route::get('wallet/delete/{id}', 'WalletController@destroy')->name('wallet.delete');
+        Route::resource('fast-pay', 'FastPayController');
+        Route::get('fast-pay/delete/{id}', 'FastPayController@destroy')->name('fast-pay.delete');
         Route::resource('gateway', 'GatewayController');
         Route::get('gateway/delete/{id}', 'GatewayController@destroy')->name('gateway.delete');
         Route::resource('bill', 'BillController');

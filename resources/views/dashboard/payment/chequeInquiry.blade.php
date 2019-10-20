@@ -34,7 +34,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد چک های زمان بندی شده</h4>
+                    <h4 class="title-text mt-0"> زمان بندی شده</h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">۲</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
                 </div>
@@ -46,7 +46,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد چک های پاس شده </h4>
+                    <h4 class="title-text mt-0"> پاس شده </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">۰ </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
                 </div>
@@ -58,7 +58,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد تمامی چک ها </h4>
+                    <h4 class="title-text mt-0"> تمامی چک ها </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">۰</h3><i class="dripicons-wallet card-eco-icon text-success align-self-center"></i></div>
                 </div>

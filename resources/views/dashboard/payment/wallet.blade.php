@@ -128,9 +128,10 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تاریخ آخرین تسویه انجام شده</h4>
+                    <h4 class="title-text mt-0">تاریخ آخرین تسویه </h4>
                     <div class="d-flex justify-content-between">
-                        <h3 class="font-weight-bold"> {{ jdate($checkouts->where('status', 'انجام شده')->orderBy('updated_at', 'desc')->first()->value('updated_at')) }} </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
+{{--                        <h3 class="font-weight-bold"> {{ jdate($checkouts->where('status', 'انجام شده')->orderBy('updated_at', 'desc')->first()->value('updated_at')) }} </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>--}}
+                        <h3 class="font-weight-bold"> </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
                 </div>
                 <!--end card-body-->
             </div>
@@ -140,7 +141,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">مجموع تسویه های انجام شده </h4>
+                    <h4 class="title-text mt-0">مجموع تسویه ها </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">  {{ number_format($checkouts->where('status', 'انجام شده')->sum('amount')) }} تومان </h3></div>
                 </div>

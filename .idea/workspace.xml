@@ -2,23 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Jobs/PurchaseAddedSms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendRegisterEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Jobs/SendRegisterSms.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Mail/UserRegistred.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_20_140025_create_jobs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/FastPay.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/FastPayController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/FastPayRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FastPayFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_20_164639_create_fast_pays_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/10/20/1571574727_dd.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay-show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShopController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/queue.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/queue.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/bill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/bill.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +174,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Olympic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/payment" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -178,16 +182,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\payment\resources\views\dashboard\payment" />
       <recent name="E:\payment\app\Http\Controllers\Api" />
       <recent name="E:\payment\resources\views\dashboard" />
       <recent name="E:\payment\resources\views\documnetation" />
       <recent name="$PROJECT_DIR$/resources/views/dashboard" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
-      <recent name="E:\payment\resources\views\dashboard\payment" />
       <recent name="E:\payment\app\Http\Controllers\Dashboard" />
+      <recent name="E:\payment\resources\views\dashboard\payment" />
       <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
   </component>
@@ -516,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570705885195</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Job System Added">
+      <created>1571570992445</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1571570992445</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +548,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="user information added" />
     <MESSAGE value="Ticket added" />
     <MESSAGE value="Card added" />
     <MESSAGE value="Gateway added" />
@@ -562,6 +572,7 @@
     <MESSAGE value="Upload Pic Server Solved" />
     <MESSAGE value="jwt Solved" />
     <MESSAGE value="API Token Solved" />
-    <option name="LAST_COMMIT_MESSAGE" value="API Token Solved" />
+    <MESSAGE value="Job System Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Job System Added" />
   </component>
 </project>

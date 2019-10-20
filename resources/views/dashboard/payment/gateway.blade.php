@@ -248,7 +248,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">مجموع تراکنش های شما</h4>
+                    <h4 class="title-text mt-0">مجموع تراکنش ها</h4>
                     <div class="d-flex justify-content-between">
 {{--                        <h3 class="font-weight-bold">{{ $gateways->sum('amount') }} تومان </h3></div>--}}
                         <h3 class="font-weight-bold">300,000 تومان </h3></div>
@@ -262,7 +262,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تعداد درگاه ها</h4>
+                    <h4 class="title-text mt-0"> درگاه ها</h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">{{ $gateways->count() }}</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
                 </div>
@@ -274,7 +274,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">تاریخ آخرین تسویه </h4>
+                    <h4 class="title-text mt-0"> آخرین تسویه </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">1398/05/29 </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
                 </div>
@@ -286,7 +286,7 @@
         <div class="col-lg-3">
             <div class="card card-eco">
                 <div class="card-body">
-                    <h4 class="title-text mt-0">مجموع تسویه های شما </h4>
+                    <h4 class="title-text mt-0">مجموع تسویه ها </h4>
                     <div class="d-flex justify-content-between">
                         <h3 class="font-weight-bold">    100,300,000 تومان </h3></div>
                 </div>
