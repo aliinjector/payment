@@ -142,7 +142,7 @@
                                 <td>
 
                                                 <select class="c-ui-select js-ui-select" id="expressShipping-count-{{ $product->id }}" autocomplete="off" tabindex="-1" name="quantity{{ $product->id }}">
-                                                <a href="#"><option value="1">۱</option></a>
+                                                  <option value="1">۱</option>
                                                   <option value="2">۲</option>
                                                   <option value="3">۳</option>
                                                   <option value="4">۴</option>
