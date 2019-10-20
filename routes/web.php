@@ -1,7 +1,10 @@
 <?php
 
+use App\Events\UserRegistred;
+use App\Listeners\SendUserRegistredSms;
 use App\User;
 use Illuminate\Http\Request;
+use function foo\func;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,9 @@ Route::get('/docs', 'DocumentationController@index')->name('documentation');
 
 
 Route::get('/', 'IndexController@index')->name('index');
+
+
+
 
 Route::get('/paymentHelper', function(Request $request){
 //    return $request->user();

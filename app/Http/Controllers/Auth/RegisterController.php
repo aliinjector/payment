@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Jobs\SendRegisterSms;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -69,7 +70,7 @@ class RegisterController extends Controller
 if(!isset($data['shop_id'])){
     $data['shop_id'] = null;
 }
-        return User::create([
+        $user = User::create([
             'firstName' => $data['firstName'],
             'lastName' => $data['lastName'],
             'mobile' => $data['mobile'],
@@ -78,5 +79,9 @@ if(!isset($data['shop_id'])){
             'shop_id' => $data['shop_id'],
             'password' => Hash::make($data['password']),
         ]);
+
+//        $this->dispatch(new SendRegisterSms($user));
+        return $user;
+
     }
 }

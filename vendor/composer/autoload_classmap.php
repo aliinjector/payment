@@ -65,6 +65,7 @@ return array(
     'App\\Http\\Requests\\UserInformationRequest' => $baseDir . '/app/Http/Requests/UserInformationRequest.php',
     'App\\Http\\Requests\\WalletRequest' => $baseDir . '/app/Http/Requests/WalletRequest.php',
     'App\\Index' => $baseDir . '/app/Index.php',
+    'App\\Mail\\UserRegistred' => $baseDir . '/app/Mail/UserRegistred.php',
     'App\\Product' => $baseDir . '/app/Product.php',
     'App\\ProductCategory' => $baseDir . '/app/ProductCategory.php',
     'App\\ProductVoucher' => $baseDir . '/app/ProductVoucher.php',
