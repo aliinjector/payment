@@ -123,13 +123,12 @@
                                 <th>قیمت واحد کالا</th>
                                 <th>میزان تخفیف</th>
                                 <th>تعداد</th>
-                                <th>مجموع</th>
                                 <th>عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                        <form  action="{{ route('quantity',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
+                        <form  action="{{ route('purchaseList',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                           @csrf
                             @foreach ($products as $product)
                             <tr>
@@ -141,7 +140,7 @@
                                 <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
                                 <td>
 
-                                                <select class="c-ui-select js-ui-select" id="expressShipping-count-{{ $product->id }}" autocomplete="off" tabindex="-1" name="quantity{{ $product->id }}">
+                                                <select class="c-ui-select js-ui-select" id="expressShipping-count-{{ $product->id }}" autocomplete="off" tabindex="-1" name="{{ $product->id }}">
                                                   <option value="1">۱</option>
                                                   <option value="2">۲</option>
                                                   <option value="3">۳</option>
@@ -150,7 +149,7 @@
                                                 </select>
 
                                 </td>
-                                <td>@if(isset($discountedPrice)){{ number_format($discountedPrice) }}@elseif($product->off_price != null){{ number_format($product->off_price)}} @else {{ number_format($product->price) }} @endif</td>
+
                                 <td>
                                     <a href="" class="text-danger"><i class="mdi mdi-close-circle-outline font-18"></i></a>
                                 </td>

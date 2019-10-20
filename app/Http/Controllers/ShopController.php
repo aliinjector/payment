@@ -232,6 +232,7 @@ class ShopController extends Controller
     }
 
     public function purchaseSubmit($shop ,$id ,Request $request){
+        dd($request->all());
         $product = Product::where('id' , $id)->get()->first();
         $shopId = Shop::where('english_name' , $shop)->get()->first()->id;
         if ($product->type != 'file') {

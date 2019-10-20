@@ -10,4 +10,8 @@ class Cart extends Model
     {
         return $this->belongsToMany('App\Product')->get();
     }
+    public function cartProduct()
+    {
+        return $this->hasMany('App\CartProduct');
+    }
 }

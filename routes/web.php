@@ -74,11 +74,10 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 });
 Route::any('/{shop}/purchase-list/{id}/voucher', 'ShopController@approved')->middleware('auth')->name('approved');
-Route::get('/{shop}/purchase-list/{id}', 'ShopController@purchaseList')->name('purchaseList');
+Route::any('/{shop}/purchase-list/{userID}', 'CartController@purchaseList')->name('purchaseList');
 Route::post('/{shop}/purchase-list/{id}/store', 'ShopController@purchaseSubmit')->middleware('auth')->name('purchase.submit');
 Route::get('/user-purchased-list/{userID}', 'ShopController@userPurchaseList')->middleware('auth')->name('user.purchased.list');
-Route::get('/user-cart/{shop}/{userID}', 'CartController@show')->middleware('auth')->name('cart.show');
-Route::post('/user-cart/{shop}/{userID}/quantity-change', 'CartController@quantity')->middleware('auth')->name('quantity');
+Route::get('/{shop}/user-cart/{userID}', 'CartController@show')->middleware('auth')->name('cart.show');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
 Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');
 Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
