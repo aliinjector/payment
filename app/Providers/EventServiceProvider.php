@@ -17,22 +17,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
-
-            //
-            // 'App\Events\UserRegistred' => [
-            //     'App\Listeners\SendUserRegistredEmail',
-            //     'App\Listeners\SendUserRegistredSms',
-            // ],
-            //
-            //
-            // 'App\Events\PaymentDone' => [
-            //     'App\Listeners\SendPaymentDonedSmsToBuyer',
-            //     'App\Listeners\SendPaymentDonedEmailToSeller',
-            // ],
-            //
-
-
         ],
+
+
+
     ];
 
     /**

@@ -565,6 +565,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Requests\\UserInformationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserInformationRequest.php',
         'App\\Http\\Requests\\WalletRequest' => __DIR__ . '/../..' . '/app/Http/Requests/WalletRequest.php',
         'App\\Index' => __DIR__ . '/../..' . '/app/Index.php',
+        'App\\Mail\\UserRegistred' => __DIR__ . '/../..' . '/app/Mail/UserRegistred.php',
         'App\\Product' => __DIR__ . '/../..' . '/app/Product.php',
         'App\\ProductCategory' => __DIR__ . '/../..' . '/app/ProductCategory.php',
         'App\\ProductVoucher' => __DIR__ . '/../..' . '/app/ProductVoucher.php',
