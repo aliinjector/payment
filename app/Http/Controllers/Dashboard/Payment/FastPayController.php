@@ -48,7 +48,7 @@ class FastPayController extends \App\Http\Controllers\Controller
         $FastPay->buy_count = 0;
         $FastPay->save();
 
-        alert()->success('تیکت شما باموفقیت اضافه شد.', 'ثبت شد');
+        alert()->success('لینک شما باموفقیت اضافه شد.', 'ثبت شد');
         return redirect()->route('fast-pay.index');
 
     }
@@ -61,7 +61,7 @@ class FastPayController extends \App\Http\Controllers\Controller
      */
     public function show(FastPay $FastPay)
     {
-        return view('dashboard.payment.fast-pay-show');
+        return view('dashboard.payment.fast-pay-show', compact('FastPay'));
 
     }
 

@@ -29,7 +29,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group row">
                                                         <label for="example-text-input"
-                                                               class="col-sm-2 col-form-label text-center">مبلغ</label>
+                                                               class="col-sm-2 col-form-label text-center">مبلغ (تومان)</label>
                                                         <div class="col-sm-10">
                                                             <input class="form-control" type="number" name="price" value="{{ $fastPay->price }}" id="example-text-input">
                                                         </div>
@@ -147,7 +147,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">مبلغ:</label>
+                                            <label for="">مبلغ (تومان):</label>
                                             <input class="form-control" type="number"
                                                     value="{{ old('price') }}" name="price" id="">
                                         </div>
@@ -190,7 +190,7 @@
                         <tr>
                             <th>عنوان</th>
                             <th>توضیحات</th>
-                            <th>مبلغ</th>
+                            <th>مبلغ (تومان)</th>
                             <th>تعداد خرید</th>
                             <th>مشاهده لینک</th>
                             <th>تاریخ آخرین تغییر</th>
