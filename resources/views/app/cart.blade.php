@@ -140,7 +140,7 @@
                                 <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
                                 <td>
 
-                                                <select class="c-ui-select js-ui-select" id="expressShipping-count-{{ $product->id }}" autocomplete="off" tabindex="-1" name="{{ $product->id }}">
+                                                <select class="c-ui-select js-ui-select" autocomplete="off" tabindex="-1" name="{{ $product->id }}">
                                                   <option value="1">۱</option>
                                                   <option value="2">۲</option>
                                                   <option value="3">۳</option>
@@ -151,7 +151,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="" class="text-danger"><i class="mdi mdi-close-circle-outline font-18"></i></a>
+                                    <a href="" class="text-danger" id="removeProduct" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $product->id }}"><i class="mdi mdi-close-circle-outline font-18"></i></a>
                                 </td>
                             </tr>
                             @endforeach
@@ -218,25 +218,37 @@
 <!-- App js -->
 <script src="/dashboard/assets/js/app.js"></script>
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
-{{-- @foreach ($products as $product)
-<script type="text/javascript">
-$(function(){
- $('#expressShipping-count-{{$product->id}}').on('change', function(){
-     var value = $(this).val();
-     console.log(value);
-         $.ajax({
-           type:'put',
-             url: "{{url('/user-cart/digikala/7/quantity-change/1')}}",
-             data: {
-                 value: value,
-                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-             },
+<script>
+    $(document).on('click', '#removeProduct', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var cart = $(this).data('cart');
+        swal("آیا اطمینان دارید؟", {
+                dangerMode: true,
+                buttons: ["انصراف", "حذف"],
 
-         });
+            })
+            .then(function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('user-cart/remove')}}",
+                        data: {
+                            id: id,
+                            cart: cart,
+                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                        },
+                        success: function(data) {
+                          var url = document.location.replace(document.referrer)
+                          location.href = url;
+                        }
+                    });
+                } else {
+                    swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                }
+            });
     });
-});
 </script>
-@endforeach --}}
 @include('sweet::alert')
 @yield('pageScripts')
 </body>

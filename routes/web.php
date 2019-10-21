@@ -87,6 +87,8 @@ Route::any('/{shop}/purchase-list/{userID}', 'CartController@purchaseList')->nam
 Route::post('/{shop}/purchase-list/{id}/store', 'ShopController@purchaseSubmit')->middleware('auth')->name('purchase.submit');
 Route::get('/user-purchased-list/{userID}', 'ShopController@userPurchaseList')->middleware('auth')->name('user.purchased.list');
 Route::get('/{shop}/user-cart/{userID}', 'CartController@show')->middleware('auth')->name('cart.show');
+Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->middleware('auth')->name('cart.add');
+Route::post('/user-cart/remove', 'CartController@removeFromCart')->middleware('auth')->name('cart.remove');
 Route::get('/{shop}', 'ShopController@show')->name('show.shop');
 Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');
 Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');

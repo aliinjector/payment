@@ -142,9 +142,12 @@
                                 @if($lastProducts[0]->type == 'file' and $lastProducts[0]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[0]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}">
-                                        <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[0]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                            </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$lastProducts[0]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[0]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
+
                             @endif
                             @endif
 
@@ -174,12 +177,15 @@
                                 </div>
                                 @if(\Auth::user())
 
-                                @if($lastProducts[0]->type == 'file' and $lastProducts[1]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
+                                @if($lastProducts[1]->type == 'file' and $lastProducts[1]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[1]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}" >
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[1]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$lastProducts[1]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[1]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
+
                         @endif
                         @endif
 
@@ -209,12 +215,16 @@
                                 </div>
                                 @if(\Auth::user())
 
-                                @if($lastProducts[2]->type == 'file' and $lastProducts[0]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
+                                @if($lastProducts[2]->type == 'file' and $lastProducts[2]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}">
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$lastProducts[2]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
+
+
                         @endif
                         @endif
 
@@ -243,12 +253,15 @@
                                 </div>
                                 @if(\Auth::user())
 
-                                @if($lastProducts[3]->type == 'file' and $lastProducts[0]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
+                                @if($lastProducts[3]->type == 'file' and $lastProducts[3]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[3]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}">
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[3]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$lastProducts[3]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[3]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
+
                         @endif
                         @endif
                             </div>
@@ -313,9 +326,11 @@
                                 @if($bestSelling[0]->type == 'file' and $bestSelling[0]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[0]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}">
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[0]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$bestSelling[0]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[0]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
                         @endif
                         @endif
 
@@ -348,9 +363,12 @@
                                 @if($bestSelling[1]->type == 'file' and $bestSelling[1]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[1]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}">
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[1]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$bestSelling[1]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[1]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
+
                         @endif
                         @endif
 
@@ -382,9 +400,11 @@
                                 @if($bestSelling[2]->type == 'file' and $bestSelling[2]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[2]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}">
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[2]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$bestSelling[2]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[2]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
                         @endif
                         @endif
                             </div>
@@ -414,9 +434,11 @@
                                 @if($bestSelling[3]->type == 'file' and $bestSelling[3]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[3]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                                 @else
-                                <a  href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}">
-                                    <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[3]->type == 'file') دریافت فایل  @else خرید @endif</button>
-                        </a>
+                                  <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$bestSelling[3]->id}}">
+                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[3]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                    </form>
                             @endif
                             @endif
                             </div>

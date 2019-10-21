@@ -196,11 +196,19 @@
                                                     <a href="" class="btn btn-primary text-white px-4 d-inline-block comming-soon"><i class="fa fa-download mr-2"></i>شما قبلا این فایل را خریداری کرده اید</a>
                                                     @else
                                                     @if($product->type == 'file')
-                                                    <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" @if(\auth::user())target="_blank" @endif class="btn btn-primary text-white px-4 d-inline-block"><i class="fa fa-download mr-2"></i>دریافت فایل</a>
+                                                      <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                      <button type="submit" class="btn btn-primary iranyekan"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
+                                                    </form>
                                                     @else
-                                                    <a href="{{ route('purchaseList', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="btn btn-primary text-white px-4 d-inline-block"><i class="mdi mdi-cart mr-2"></i>خرید </a>
+                                                      <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                                        @csrf
+                                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                                    <button type="submit" class="btn btn-primary iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
                                                     @endif
                                                     @endif
+                                                  </form>
 
                                                     </div>
                                                 </div>
