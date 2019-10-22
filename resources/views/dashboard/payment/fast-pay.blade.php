@@ -203,7 +203,7 @@
                             <tr>
                                 <td>{{ $fastPay->title }}</td>
                                 <td>{{ $fastPay->description }}</td>
-                                <td>{{ $fastPay->price }}</td>
+                                <td>{{ number_format($fastPay->price) }}</td>
                                 <td>{{ $fastPay->buy_count }}</td>
                                 <td><a target="_blank" href="{{ route('fast-pay.show', $fastPay->id ) }}"><i class="fas fa-link"></i></a></td>
                                 <td style="font-family: BYekan; direction: ltr">{{ jdate($fastPay->updated_at) }}</td>

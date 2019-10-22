@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/FastPay.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/FastPayController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/FastPayRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/FastPayFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_10_20_164639_create_fast_pays_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/10/20/1571574727_dd.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay-show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/notifications/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/bill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/bill.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/card.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/chequeInquiry.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/gateway.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/ticket.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/wallet.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -295,6 +282,7 @@
       <workItem from="1570703523534" duration="3699000" />
       <workItem from="1570777540676" duration="4435000" />
       <workItem from="1570961164769" duration="3731000" />
+      <workItem from="1571724664628" duration="2844000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -527,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571570992445</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Fast Pay Added">
+      <created>1571583374437</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1571583374437</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Ticket added" />
     <MESSAGE value="Card added" />
     <MESSAGE value="Gateway added" />
     <MESSAGE value="Menu added" />
@@ -573,6 +567,7 @@
     <MESSAGE value="jwt Solved" />
     <MESSAGE value="API Token Solved" />
     <MESSAGE value="Job System Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Job System Added" />
+    <MESSAGE value="Fast Pay Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fast Pay Added" />
   </component>
 </project>
