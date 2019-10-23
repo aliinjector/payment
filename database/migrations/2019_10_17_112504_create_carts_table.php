@@ -17,7 +17,7 @@ class CreateCartsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('shop_id');
-            $table->unsignedInteger('status')->default(1);
+            $table->unsignedInteger('status')->default(0);
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();
             $table->softDeletes( );

@@ -138,7 +138,7 @@
                                  </a>
                               </td>
                               <td>{{ number_format($product->price) }}</td>
-                              <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
+                              <td>  @if($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
                                 <td>{{ $quantity[$i] }}</td>
                                 {{-- <td>@if($product->off_price != null){{ number_format($product->off_price * $quantity[$i])}} @else {{ number_format($product->price * $quantity[$j]) }} @endif</td> --}}
                                 <td> {{ number_format($productTotal_price[$j]) }} </td>
@@ -152,7 +152,7 @@
                            <tr class="bg-dark text-white">
                               <th colspan="3" class="border-0"></th>
                               <td class="border-0 font-14"><b>جمع کل</b></td>
-                              <td>{{ number_format($total_price) }}</td>
+                              <td>  @if(isset($discountedPrice)) {{number_format($discountedPrice)}} @else {{ number_format($total_price) }} @endif</td>
                            </tr>
                            <!--end tr-->
                         </tbody>
@@ -162,11 +162,12 @@
                   <div class="col-lg-6 mt-3 mr-lg-n4">
                      <form class="form-inline col-lg-12" action="{{ route('approved',['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post">
                         @csrf
+                        <input type="hidden" name="total_price" value="{{ $total_price }}">
                         <input type="text" name="code" class="border-muted form-control col-lg-6 col-md-12 col-sm-12" placeholder="کد" aria-describedby="button-addon2">
                         <button class="btn btn-outline-pink col-lg-6" type="submit" id="button-addon2">اعمال  تخفیف</button>
                      </form>
                   </div>
-                  <form action="{{ route('purchase.submit', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post" class="form-horizontal">
+                  <form action="{{ route('purchase.submit', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
                      @csrf
                      @if($product->type != 'file')
                      <div class="col-md-6 mt-5">
@@ -176,12 +177,10 @@
                               <tbody>
                                  <tr>
                                     <td class="payment-title">قیمت کل :</td>
-                                    <td> {{ number_format($total_price) }}</td>
+                                    <td>  @if(isset($discountedPrice)) {{number_format($discountedPrice)}} @else {{ number_format($total_price) }} @endif</td>
                                  </tr>
                                  <tr>
-                                    <td class="payment-title">مجموع تخفیف:</td>
                                     {{-- <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif تومان</td> --}}
-                                    <td> {{ number_format($productTotal_discounted) }} تومان</td>
                                  </tr>
                                  <tr>
                                     <td class="payment-title"> روش ارسال :</td>
@@ -243,7 +242,7 @@
                                  <tr>
                                     <td class="payment-title font-weight-bolder">مبلغ قابل پرداخت :</td>
                                     {{-- <td class="text-dark font-weight-bolder"> @if(isset($discountedPrice)){{ number_format($discountedPrice) }}@elseif($product->off_price != null){{ number_format($product->off_price)}} @else {{ number_format($product->price) }} @endif</td> --}}
-                                    <td class="text-dark font-weight-bolder">{{ number_format($total_price) }}</td>
+                                    <td>  @if(isset($discountedPrice)) {{number_format($discountedPrice)}} @else {{ number_format($total_price) }} @endif</td>
                                  </tr>
                               </tbody>
                            </table>

@@ -53,11 +53,16 @@ class CartController extends Controller {
         }
     }
     public function purchaseList($shop, Request $request) {
+      $cart = \Auth::user()->cart()->get()->first()->id;
+      $productsID = [];
+      foreach(DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a){
+        $productsID[] = $a->product_id;
+      }
         if (\Auth::guest()) {
             return redirect()->route('register');
         } else {
             $cart = \Auth::user()->cart()->get()->first()->id;
-            foreach (array_keys($request->except('_token')) as $productID) {
+            foreach ($productsID as $productID) {
               if (Product::where('id', $productID)->get()->first()->off_price == null) {
                 $singleProductPrice = Product::where('id', $productID)->get()->first()->price;
               }
@@ -70,7 +75,7 @@ class CartController extends Controller {
             $productTotal_price = [];
             $productTotal_discount = [];
             $quantity = $request->all();
-            foreach (array_keys($request->except('_token')) as $productID) {
+            foreach ($productsID as $productID) {
                 $product = Product::where('id', $productID)->get()->first();
                 $products[] = $product;
                 if ($product->off_price == null) {
@@ -82,10 +87,13 @@ class CartController extends Controller {
                 $total_price = array_sum($productTotal_price);
                 $productTotal_discounted = array_sum($productTotal_discount);
             }
+            $cartUpdate = \Auth::user()->cart()->get()->first()->update([
+                'total_price' => $total_price,
+                ]);
             array_shift($quantity);
             $shop = Shop::where('english_name', $shop)->first();
             $shopCategories = $shop->ProductCategories()->get();
-            return view('app.purchase-list', compact('shop', 'shopCategories', 'products', 'quantity', 'productTotal_price', 'total_price', 'productTotal_discounted'));
+            return view('app.purchase-list', compact('shop', 'shopCategories', 'products', 'quantity', 'productTotal_price','total_price','productTotal_discounted'));
         }
     }
     public function addToCart($shop, $userID, Request $request) {
@@ -93,7 +101,7 @@ class CartController extends Controller {
             $cart = new Cart;
             $cart->user_id = \Auth::user()->id;
             $cart->shop_id = Shop::where('english_name', $shop)->first()->id;
-            $cart->status = 1;
+            $cart->status = 0;
             $cart->save();
         }
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->first();

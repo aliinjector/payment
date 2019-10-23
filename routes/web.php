@@ -84,7 +84,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
 });
 Route::any('/{shop}/purchase-list/{id}/voucher', 'ShopController@approved')->middleware('auth')->name('approved');
 Route::any('/{shop}/purchase-list/{userID}', 'CartController@purchaseList')->name('purchaseList');
-Route::post('/{shop}/purchase-list/{id}/store', 'ShopController@purchaseSubmit')->middleware('auth')->name('purchase.submit');
+Route::post('/{shop}/purchase-list/{cartID}/store', 'ShopController@purchaseSubmit')->middleware('auth')->name('purchase.submit');
 Route::get('/user-purchased-list/{userID}', 'ShopController@userPurchaseList')->middleware('auth')->name('user.purchased.list');
 Route::get('/{shop}/user-cart/{userID}', 'CartController@show')->middleware('auth')->name('cart.show');
 Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->middleware('auth')->name('cart.add');

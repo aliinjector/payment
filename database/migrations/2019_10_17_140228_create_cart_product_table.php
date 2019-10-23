@@ -18,8 +18,10 @@ class CreateCartProductTable extends Migration
             $table->bigInteger('product_id')->unsigned()->index();
             $table->bigInteger('cart_id')->unsigned()->index();
             $table->integer('quantity')->default(1);
-            $table->integer('total_price');
+            $table->integer('total_price')->nullable();
             $table->timestamps();
+            $table->softDeletes( );
+
 
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');

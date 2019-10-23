@@ -129,15 +129,13 @@
                                 </div>
                                 @if(\Auth::user())
 
-                                @if($product->type == 'file' and $product->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
-                                @else
+
                                   <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
                                     </form>
-                        @endif
+
                         @endif
                             </div>
                             <!--end card-body-->

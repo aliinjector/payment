@@ -16,7 +16,7 @@ class CreateUserPurchasesTable extends Migration
         Schema::create('user_purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id')->nullable();
-            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('cart_id');
             $table->unsignedInteger('shop_id');
             $table->integer('total_price');
             $table->string('address')->nullable();
