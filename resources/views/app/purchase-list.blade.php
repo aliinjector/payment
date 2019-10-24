@@ -105,9 +105,12 @@
          <!--end card-body-->
          <div class="card-body">
             <div class="row">
-               <div class="col-md-3 mb-3">
-                  <div class="">
+               <div class="col-md-12 mb-3">
+                  <div class="d-flex d-flex justify-content-between">
                      <h6 class="mb-0"><b>تاریخ ثبت فاکتور :</b> {{ jdate() }}</h6>
+                     <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
+                     <button class="btn btn-primary"><i class="fas fa-undo pl-1"></i>سبد خرید</button>
+                     </a>
                   </div>
                </div>
                <!--end col-->

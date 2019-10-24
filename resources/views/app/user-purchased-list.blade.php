@@ -119,12 +119,14 @@
                           @foreach ($purchases as $purchase)
                             <div class="accordion" id="accordionExample{{$purchase->id}}">
                                 <div class="card border mb-0 shadow-none">
-                                    <div class="card-header p-0" id="headingOne{{$purchase->id}}">
+                                    <div class="card-header p-0  d-flex justify-content-between align-items-center px-4 byekan" id="headingOne{{$purchase->id}}">
                                         <h5 class="my-1">
                                                 <button class="btn btn-link text-dark collapsed" type="button" data-toggle="collapse" data-target="#collapseOne{{$purchase->id}}" aria-expanded="false" aria-controls="collapseOne">
                                                 سفارش شماره @php echo $i @endphp
                                                 </button>
                                             </h5>
+                                            {{ jdate($purchase->created_at) }}
+
                                     </div>
 
                                     <div id="collapseOne{{$purchase->id}}" class="collapse" aria-labelledby="headingOne{{$purchase->id}}" data-parent="#accordionExample{{$purchase->id}}" style="">

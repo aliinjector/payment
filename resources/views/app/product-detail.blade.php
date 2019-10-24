@@ -192,9 +192,6 @@
                                                     </div>
                                                   @endif
                                                 <div class="quantity mt-3">
-                                                    @if($product->type == 'file' and $purchasedProductCount >= 1)
-                                                    <a href="" class="btn btn-primary text-white px-4 d-inline-block comming-soon"><i class="fa fa-download mr-2"></i>شما قبلا این فایل را خریداری کرده اید</a>
-                                                    @else
                                                     @if($product->type == 'file')
                                                       <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                                         @csrf
@@ -207,7 +204,7 @@
                                                         <input type="hidden" name="product_id" value="{{$product->id}}">
                                                     <button type="submit" class="btn btn-primary iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
                                                     @endif
-                                                    @endif
+                                                    
                                                   </form>
 
                                                     </div>

@@ -59,15 +59,10 @@ class ShopController extends Controller {
         if (Shop::where('english_name', $shop)->first() == null || Shop::where('english_name', $shop)->first()->products()->where('id', $id)->first() == null) {
             return abort(404);
         }
-        if (Auth::user()) {
-            $purchasedProductCount = Product::find($id)->purchases()->get()->where('user_id', \Auth::user()->id)->count();
-        } else {
-            $purchasedProductCount = null;
-        }
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $product = $shop->products()->where('id', $id)->first();
-        return view('app.product-detail', compact('product', 'shop', 'shopCategories', 'purchasedProductCount'));
+        return view('app.product-detail', compact('product', 'shop', 'shopCategories'));
     }
     public function showCategory($shop, $categroyId) {
         // if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
@@ -127,7 +122,7 @@ class ShopController extends Controller {
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
             return view('app.purchase-list', compact('shop', 'shopCategories', 'product','products','quantity','productTotal_price','total_price'));
         }
-        if (Product::where([['id', $productId], ['off_price', null]])->get()->first()->shop()->get()->first()->english_name == $shopName and Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
+        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
             $shop = Shop::where('english_name', $shopName)->first();
             $product = Product::where('id', $productId)->get()->first();
             $shopCategories = $shop->ProductCategories()->get();
@@ -207,6 +202,23 @@ class ShopController extends Controller {
 
 
     public function purchaseSubmit($shop, $cartID, Request $request) {
+      $total_price = \Auth::user()->cart()->get()->first()->total_price;
+      $cart = \Auth::user()->cart()->get()->first()->id;
+      $productsID = [];
+      $quantity = [];
+      $productTotal_price = [];
+      foreach(DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a){
+       $productsID[] = $a->product_id;
+       $quantity[] = $a->quantity;
+       $productTotal_price[] = $a->total_price;
+      }
+     $products = [];
+     foreach ($productsID as $productID) {
+         $product = Product::where('id', $productID)->get()->first();
+         $products[] = $product;
+     }
+
+
         $cart = Cart::where('id', $cartID)->get()->first();
         $shopId = Shop::where('english_name', $shop)->get()->first()->id;
             if (!isset($request->address)) {
@@ -256,8 +268,7 @@ class ShopController extends Controller {
             alert()->error('شما به این بخش دسترسی ندارید', 'خطا');
             return redirect()->back();
         } else {
-            $purchases = \auth::user()->purchases()->orderBy('id', 'DESC')->get();
-            // dd($purchases->first()->cart()->withTrashed()->where('status' , 1)->get()->first()->products());
+            $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
             return view('app.user-purchased-list', compact('purchases'));
         }
     }
