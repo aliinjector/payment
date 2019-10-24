@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/vendor/notifications/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/payment/fast-pay.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/SettingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/setting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/setting.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -282,7 +279,11 @@
       <workItem from="1570703523534" duration="3699000" />
       <workItem from="1570777540676" duration="4435000" />
       <workItem from="1570961164769" duration="3731000" />
-      <workItem from="1571724664628" duration="2844000" />
+      <workItem from="1571724664628" duration="4343000" />
+      <workItem from="1571733255938" duration="4140000" />
+      <workItem from="1571753250729" duration="5256000" />
+      <workItem from="1571821028613" duration="814000" />
+      <workItem from="1571903146195" duration="1788000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -522,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571583374437</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Reset And Forget Password Added">
+      <created>1571730824190</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1571730824190</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Card added" />
     <MESSAGE value="Gateway added" />
     <MESSAGE value="Menu added" />
     <MESSAGE value="Menu and auth added" />
@@ -568,6 +575,7 @@
     <MESSAGE value="API Token Solved" />
     <MESSAGE value="Job System Added" />
     <MESSAGE value="Fast Pay Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fast Pay Added" />
+    <MESSAGE value="Reset And Forget Password Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reset And Forget Password Added" />
   </component>
 </project>
