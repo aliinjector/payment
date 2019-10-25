@@ -13,12 +13,12 @@
 <!-- Site Title  -->
     <title>پایان پی - راهکار های نوین پرداخت پایان پی</title>
     <!-- Bundle and Base CSS -->
-    <link rel="stylesheet" href="/assets/css/vendor.bundlee332.css?ver=161">
-    <link rel="stylesheet" href="/assets/css/stylee332.css?ver=161">
+    <link rel="stylesheet" href="/app/css/vendor.bundlee332.css?ver=161">
+    <link rel="stylesheet" href="/app/css/stylee332.css?ver=161">
     <!-- Color Scheme CSS -->
-    <link rel="stylesheet" href="/assets/css/themee332.css?ver=161" id="theming">
+    <link rel="stylesheet" href="/app/css/themee332.css?ver=161" id="theming">
     <!-- RTL Styles -->
-    <link rel="stylesheet" href="/assets/css/rtle332.css?ver=161">
+    <link rel="stylesheet" href="/app/css/rtle332.css?ver=161">
 
 
 </head>
@@ -1160,12 +1160,11 @@
     </footer>
 </div>
 
-<div class="preloader"><span class="spinner spinner-round"></span></div>
 
 <!-- JavaScript -->
-<script src="/assets/js/jquery.bundlee332.js?ver=161"></script>
-<script src="/assets/js/scriptse332.js?ver=161"></script>
-<script src="/assets/js/charts.js"></script>
+<script src="/app/js/jquery.bundlee332.js?ver=161"></script>
+<script src="/app/js/scriptse332.js?ver=161"></script>
+<script src="/app/js/charts.js"></script>
 </body>
 
 </html>

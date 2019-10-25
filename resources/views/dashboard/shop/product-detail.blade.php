@@ -68,14 +68,6 @@ input[type='radio']:checked:after {
                                         <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
                                       @endif
                                     @endif
-                                    {{-- <ul class="list-inline mb-2 product-review">
-                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                            <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
-                                            <li class="list-inline-item">4.5 (30 reviews)</li>
-                                        </ul> --}}
                                     <h2 class="pro-price">{{ $product->price }} تومان</h2>
                                     <h6 class="text-muted font-13">ویژگی ها :</h6>
                                     <ul class="list-unstyled pro-features border-0 iranyekan">
@@ -260,43 +252,7 @@ input[type='radio']:checked:after {
                     <div class="review-box text-center align-item-center">
                         <h1 class="byekan">{{ $product->buyCount }}</h1>
                         <h4 class="header-title">مجموع فروش   </h4>
-                        {{-- <ul class="list-inline mb-0 product-review">
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
-                                <li class="list-inline-item"><small class="text-muted">Total Review (700)</small></li>
-                            </ul> --}}
                     </div>
-                    {{-- <ul class="list-unstyled mt-3">
-                            <li class="mb-2"><span class="text-info">5 Star</span> <small class="float-right text-muted ml-3 font-14">593</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 80%; border-radius:5px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="mb-2"><span class="text-info">4 Star</span> <small class="float-right text-muted ml-3 font-14">99</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 18%; border-radius:5px;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="mb-2"><span class="text-info">3 Star</span> <small class="float-right text-muted ml-3 font-14">6</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 10%; border-radius:5px;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li class="mb-2"><span class="text-info">2 Star</span> <small class="float-right text-muted ml-3 font-14">2</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 1%; border-radius:5px;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                            <li><span class="text-info">1 Star</span> <small class="float-right text-muted ml-3 font-14">0</small>
-                                <div class="progress mt-2" style="height:5px;">
-                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%; border-radius:5px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </li>
-                        </ul> --}}
-
                 </div>
                 <!--end card-body-->
             </div>
