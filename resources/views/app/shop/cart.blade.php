@@ -77,8 +77,6 @@
 </div>
 @endsection
 @section('pageScripts')
-@stop
-
 <script>
     $(document).on('click', '#removeProduct', function(e) {
         e.preventDefault();
@@ -100,8 +98,8 @@
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
-                          var url = document.location.replace(document.referrer)
-                          location.href = url;
+                          location.reload();
+
                         }
                     });
                 } else {
@@ -111,3 +109,4 @@
     });
 </script>
 @include('sweet::alert')
+@stop

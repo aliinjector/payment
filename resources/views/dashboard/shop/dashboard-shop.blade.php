@@ -902,16 +902,17 @@
                      <!--end tr-->
                   </thead>
                   <tbody>
-                     @foreach($purchases as $purchase)
+
+                     {{-- @foreach($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products() as $product)
                      <tr class="byekan">
-                        <td>{{ $purchase->product()->withTrashed()->first()->id}}</td>
-                        <td><img class="product-img" src="{{ $purchase->product()->withTrashed()->first()->image['80,80']}}" alt="user"></td>
-                        <td>{{ $purchase->product()->withTrashed()->first()->title}}</td>
+                        <td>{{ $productv->id}}</td>
+                        <td><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></td>
+                        <td>{{ $product->title}}</td>
                         <td>{{ jdate($purchase->created_at) }}</td>
                         <td>{{ number_format($purchase->total_price) }}تومان</td>
                         <td><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span></td>
                      </tr>
-                     @endforeach
+                     @endforeach --}}
                      <!--end tr-->
                   </tbody>
                </table>
@@ -928,4 +929,3 @@
 @endsection
 @section('pageScripts')
 @stop
-

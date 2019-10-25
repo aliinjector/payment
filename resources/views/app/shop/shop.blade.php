@@ -179,10 +179,10 @@
                             <div class="row">
                                 <div class="col-md-4 mx-auto">
                                     <div class="offer-content text-center justify-content-center">
-                                        <p class="text-muted">پیشنهاد ویژه</p>
-                                        <h3 class="mb-3">50% صرفه جویی در هزینه ها</h3>
+                                        <p class="text-white">پیشنهاد ویژه</p>
+                                        <h3 class="mb-3 text-white">50% صرفه جویی در هزینه ها</h3>
                                         <hr class="thick">
-                                        <h5 class="text-muted iranyekan">با خرید از سامانه آنلاین</h5></div>
+                                        <h5 class="text-white iranyekan">با خرید از سامانه آنلاین</h5></div>
                                 </div>
                             </div>
                         </div>

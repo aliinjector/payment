@@ -119,7 +119,7 @@
                                                       <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                                         @csrf
                                                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                    <button type="submit" class="btn btn-primary iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
+                                                    <button type="submit" class="text-white btn bg-blue-omid iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
                                                     @endif
 
                                                   </form>
@@ -151,18 +151,18 @@
                                     <div class="row">
                                       @if ($product->fast_sending == 1)
                                         <div class="col-lg-3">
-                                            <div class="pro-order-box min-height-160 border"><i class="mdi mdi-truck-fast text-success"></i>
-                                                <h4 class="header-title">ارسال سریع</h4>
-                                                <p class="text-muted mb-0">امکان ارسال در سریع ترین زمان ممکن پس از ثبت سفارش در سامانه.</p>
+                                            <div class="pro-order-box min-height-160 border bg-orange-rock"><i class="mdi mdi-truck-fast text-white"></i>
+                                                <h4 class="header-title text-white font-weight-bold">ارسال سریع</h4>
+                                                <p class="text-white mb-0">امکان ارسال در سریع ترین زمان ممکن پس از ثبت سفارش در سامانه.</p>
                                             </div>
                                         </div>
                                       @endif
                                         <!--end col-->
                                         @if ($product->money_back == 1)
                                         <div class="col-lg-3">
-                                            <div class="pro-order-box min-height-160 border"><i class="mdi mdi-refresh text-danger"></i>
-                                                <h4 class="header-title">تضمین بازگشت وجه</h4>
-                                                <p class="text-muted mb-0">درصورت عدم رضایت از محصول وجه دریافتی بازگشت داده میشود.</p>
+                                            <div class="pro-order-box min-height-160 border bg-red-rock"><i class="mdi mdi-refresh text-white"></i>
+                                                <h4 class="header-title text-white font-weight-bold">تضمین بازگشت وجه</h4>
+                                                <p class="text-white mb-0">درصورت عدم رضایت از محصول وجه دریافتی بازگشت داده میشود.</p>
                                             </div>
                                         </div>
                                       @endif
@@ -170,9 +170,9 @@
                                         <!--end col-->
                                         @if ($product->support == 1)
                                         <div class="col-lg-3">
-                                            <div class="pro-order-box min-height-160 border"><i class="mdi mdi-headset text-warning"></i>
-                                                <h4 class="header-title">پشتیبانی 24 ساعته</h4>
-                                                <p class="text-muted mb-0">تیم پشتیبانی مجموعه به صورت 24 ساعته آماده پاسخگویی به سوالات شما میباشند.</p>
+                                            <div class="pro-order-box min-height-160 border bg-green-rock"><i class="mdi mdi-headset text-white"></i>
+                                                <h4 class="header-title text-white font-weight-bold">پشتیبانی 24 ساعته</h4>
+                                                <p class="mb-0 text-white">تیم پشتیبانی مجموعه به صورت 24 ساعته آماده پاسخگویی به سوالات شما میباشند.</p>
                                             </div>
                                         </div>
                                       @endif
@@ -180,9 +180,9 @@
                                         <!--end col-->
                                         @if ($product->secure_payment == 1)
                                         <div class="col-lg-3">
-                                            <div class="pro-order-box mb-0 min-height-160 border"><i class="mdi mdi-wallet text-purple"></i>
-                                                <h4 class="header-title">پرداخت امن</h4>
-                                                <p class="text-muted mb-0">امکان پرداخت امن در سامانه و تجربه پرداخت امن.</p>
+                                            <div class="pro-order-box mb-0 min-height-160 border bg-blue-rock"><i class="mdi mdi-wallet text-white"></i>
+                                                <h4 class="header-title text-white font-weight-bold">پرداخت امن</h4>
+                                                <p class="text-white mb-0">امکان پرداخت امن در سامانه و تجربه پرداخت امن.</p>
                                             </div>
                                         </div>
                                       @endif

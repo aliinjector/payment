@@ -75,7 +75,7 @@
 
 .menu-shop {
     font-size: 17px!important;
-    color: #50649c!important;
+    color: #465f73!important;
 }
 
 .font-3em {
@@ -147,14 +147,15 @@ h1 {
 h2.line-throw {
     width: 80%;
     text-align: center;
-    border-bottom: 1px solid #50649C;
+    border-bottom: 1px solid #989898;
     line-height: 0.1em;
     margin: 8px 11% 20px;
     font-size: 23px!important;
+    box-shadow: 0 7px 8px 0 rgba(0,0,0,.04);
 }
 
 h2 span {
-    background: #EAF0F7;
+    background: white;
     padding: 0 17px;
 }
 
@@ -219,4 +220,106 @@ h2 span {
     .f-18px {
         font-size: 18px;
     }
+}
+.bg-dark-top{
+  background-color: #2c373b!important;
+}
+.card{
+  background-color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
+    border: 1px solid #e4e4e4;
+}
+.shadow-header{
+  box-shadow: 0 7px 8px 0 rgba(0,0,0,.08);
+}
+.main-bg-color{
+    background-color: white!important;
+}
+.bg-blue-omid{
+  background-color: #15939D!important;
+}
+.bg-orange-omid{
+  background-color: #F68712!important;
+}
+.bg-orange-rock{
+      background: linear-gradient(180deg,#fdc830,#f37335);
+}
+.bg-red-rock{
+      background: linear-gradient(180deg,#ff416c,#ff4b2b);
+}
+.bg-green-rock{
+    background: linear-gradient(0deg,#348f50,#56b4d3);
+  }
+.bg-blue-rock{
+      background: linear-gradient(180deg,#3a7bd5,#3a6073);
+}
+.bg-blue-rock::before{
+  background-position: 50%;
+    -webkit-background-size: 600px 600px;
+    -moz-background-size: 600px;
+    background-size: 600px;
+    background-image: url(/app/images/icon-background.png);
+    position: absolute;
+    display: block;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12em;
+    content: "";
+    opacity: .05;
+    pointer-events: none;
+}
+.bg-green-rock::before{
+  background-position: 50%;
+    -webkit-background-size: 600px 600px;
+    -moz-background-size: 600px;
+    background-size: 600px;
+    background-image: url(/app/images/icon-background.png);
+    position: absolute;
+    display: block;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12em;
+    content: "";
+    opacity: .05;
+    pointer-events: none;
+}
+.bg-red-rock::before{
+  background-position: 50%;
+    -webkit-background-size: 600px 600px;
+    -moz-background-size: 600px;
+    background-size: 600px;
+    background-image: url(/app/images/icon-background.png);
+    position: absolute;
+    display: block;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12em;
+    content: "";
+    opacity: .05;
+    pointer-events: none;
+}
+.bg-orange-rock::before{
+  background-position: 50%;
+    -webkit-background-size: 600px 600px;
+    -moz-background-size: 600px;
+    background-size: 600px;
+    background-image: url(/app/images/icon-background.png);
+    position: absolute;
+    display: block;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 12em;
+    content: "";
+    opacity: .05;
+    pointer-events: none;
 }

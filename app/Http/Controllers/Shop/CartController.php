@@ -45,7 +45,7 @@ class CartController extends \App\Http\Controllers\Controller {
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show($shop, $userID) {
+    public function show($shop) {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         if (\Auth::user()->cart()->get()->count() != 0) {

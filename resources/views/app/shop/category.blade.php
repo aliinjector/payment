@@ -1,14 +1,9 @@
 @extends('app.shop.layouts.master')
 @section('content')
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
-                    {{--  <div class="float-right">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item "> دسته بندی </li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
-                        </ol>
-                    </div>  --}}
                     <h4 class="page-title iranyekan">فروشگاه {{ $shop->name }}</h4>
                 </div>
                 <!--end page-title-box-->
@@ -17,6 +12,15 @@
         </div>
 
 </div>
+
+<div class="card e-co-product" style="max-width: 18rem;">
+  <h4 class="card-header text-dark">فیلتر بر اساس نوع کالا</h4>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div>
+
 @if(isset($products[0]))
         <h2 class="line-throw"><span>اخرین محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
         @else
@@ -30,7 +34,7 @@
          <div class="row p-5">
                 @foreach ($products as $product)
 
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <div class="card e-co-product">
                             <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>

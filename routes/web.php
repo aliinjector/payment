@@ -24,6 +24,7 @@ Auth::routes();
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('fast-pay/{id}', 'Dashboard\Payment\FastPayController@show')->name('fast-pay.show');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 
 
@@ -71,16 +72,16 @@ Route::get('/paymentHelper', function(Request $request){
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('voucher.destroy');
         Route::put('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('change.status.voucher');
     });
-    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-});
+    });
     Route::namespace('Shop')->middleware('auth')->group(function () {
-        Route::any('/{shop}/purchase-list/{id}/voucher', 'ShopController@approved')->middleware('auth')->name('approved');
-        Route::post('/{shop}/purchase-list/{cartID}/store', 'ShopController@purchaseSubmit')->middleware('auth')->name('purchase.submit');
+        Route::any('/{shop}/purchase-list/{id}/voucher', 'ShopController@approved')->name('approved');
+        Route::post('/{shop}/purchase-list/{cartID}/store', 'ShopController@purchaseSubmit')->name('purchase.submit');
         Route::any('/{shop}/purchase-list/{userID}', 'CartController@purchaseList')->name('purchaseList');
-        Route::get('/user-purchased-list', 'ShopController@userPurchaseList')->middleware('auth')->name('user.purchased.list');
-        Route::get('/{shop}/user-cart/{userID}', 'CartController@show')->middleware('auth')->name('cart.show');
-        Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->middleware('auth')->name('cart.add');
-        Route::post('/user-cart/remove', 'CartController@removeFromCart')->middleware('auth')->name('cart.remove');    Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
+        Route::get('/user-purchased-list', 'ShopController@userPurchaseList')->name('user.purchased.list');
+        Route::get('/{shop}/user-cart', 'CartController@show')->name('cart.show');
+        Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('cart.add');
+        Route::post('/user-cart/remove', 'CartController@removeFromCart')->name('cart.remove');
+        Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
         Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');
         Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
 });

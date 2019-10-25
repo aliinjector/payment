@@ -15,12 +15,12 @@
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
     <!-- App css -->
-    <link href="/dashboard/assets/css/jquery.steps.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/css/icons.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/asset/css/jquery.steps.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/css/custom.css" rel="stylesheet" type="text/css">
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
@@ -52,7 +52,7 @@
                   <!--end col-->
               </div>
         @else
-<nav class="navbar navbar-expand-lg navbar-light bg-white mb-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-white mb-3 shadow-header">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -70,31 +70,33 @@
           </ul>
           <ul class="navbar-nav ml-2">
                 @guest
-                <li class="nav-item mt-4 pl-4">
-                        <div class="search-icon d-lg-block">
-                                <a href="{{ route('login') }}" style="font-size:15px;" ><i class="fas fa-sign-in-alt"></i> ورود</a>
-
-                                <a href="{{ route('register') }}" class="pr-2">
-                                    <span class="" style="font-size:15px;"><i class="fa fa-user"></i> عضویت</span></a>
-                            </div>
-                        </li>
+                  <div class="search-icon d-flex align-items-center mx-3 ">
+                      <a href="{{ route('register') }}" style="font-size:13px;">
+                      <button type="button" class="btn bg-blue-omid text-white">عضویت</button>
+                      </a>
+                  </div>
+                  <div class="search-icon d-flex align-items-center ml-5 ">
+                      <a href="{{ route('login') }}" style="font-size:13px;">
+                            <button type="button" class="btn bg-orange-omid px-3 text-white">ورود</button>
+                      </a>
+                  </div>
                         @endguest
                         @auth
                         @if(\Auth::user()->id == $shop->user_id)
                         <div class="search-icon d-flex align-items-center ml-5 ">
                             <a href="{{ route('dashboard-shop.index') }}" style="font-size:13px;">
-                            <button type="button" class="btn btn-outline-primary">ورود به پنل مدیریت</button>
+                            <button type="button" class="btn bg-blue-omid text-white">ورود به پنل مدیریت</button>
                             </a>
                         </div>
                       @else
                         <div class="search-icon d-flex align-items-center mx-3 ">
-                            <a href="{{ route('user.purchased.list' , ['userID' => \Auth::user()->id]) }}" style="font-size:13px;">
-                            <button type="button" class="btn btn-outline-primary"> مدیریت سفارشات</button>
+                            <a href="{{ route('user.purchased.list') }}" style="font-size:13px;">
+                            <button type="button" class="btn bg-blue-omid text-white"> مدیریت سفارشات</button>
                             </a>
                         </div>
                         <div class="search-icon d-flex align-items-center ml-5 ">
-                            <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}" style="font-size:13px;">
-                                  <button type="button" class="btn btn-primary px-3 border-success">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
+                            <a href="{{ route('cart.show' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
+                                  <button type="button" class="btn bg-orange-omid px-3 text-white">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
                             </a>
                         </div>
                         @endif
@@ -111,35 +113,35 @@
       </nav>
     @endif
 
-<div class="page-content">
+<div class="page-content main-bg-color">
     <div class="container-fluid">
             <!-- Page-Title -->
             @yield('content')
             <!--end row-->
         </div>
         <!-- container -->
-        <footer class="footer text-center text-sm-left">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
+        <footer class="footer text-center text-sm-left text-muted">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
         <!--end footer-->
     </div>
     <!-- end page content -->
     </div>
     <!-- end page-wrapper -->
     <!-- jQuery  -->
-    <script src="/dashboard/assets/js/jquery.min.js"></script>
-    <script src="/dashboard/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/dashboard/assets/js/metisMenu.min.js"></script>
-    <script src="/dashboard/assets/js/waves.min.js"></script>
-    <script src="/dashboard/assets/js/jquery.slimscroll.min.js"></script>
-    <script src="/dashboard/assets/plugins/moment/moment.js"></script>
-    <script src="/dashboard/assets/plugins/apexcharts/apexcharts.min.js"></script>
-    <script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="/dashboard/assets/pages/jquery.eco_dashboard.init.js"></script>
-    <script src="/dashboard/assets/js/jquery.form-wizard.init.js"></script>
-    <script src="/dashboard/assets/js/jquery.steps.min.js"></script>
+    <script src="/app/shop/assets/js/jquery.min.js"></script>
+    <script src="/app/shop/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/app/shop/assets/js/metisMenu.min.js"></script>
+    <script src="/app/shop/assets/js/waves.min.js"></script>
+    <script src="/app/shop/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="/app/shop/assets/plugins/moment/moment.js"></script>
+    <script src="/app/shop/assets/plugins/apexcharts/apexcharts.min.js"></script>
+    <script src="/app/shop/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="/app/shop/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="/app/shop/assets/pages/jquery.eco_dashboard.init.js"></script>
+    <script src="/app/shop/assets/js/jquery.form-wizard.init.js"></script>
+    <script src="/app/shop/assets/js/jquery.steps.min.js"></script>
     <!-- App js -->
-    <script src="/dashboard/assets/js/app.js"></script>
-    <script src="/dashboard/assets/js/sweetalert.min.js"></script>
+    <script src="/app/shop/assets/js/app.js"></script>
+    <script src="/app/shop/assets/js/sweetalert.min.js"></script>
     @include('sweet::alert')
     @yield('pageScripts')
 

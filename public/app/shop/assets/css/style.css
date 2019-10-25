@@ -3,16 +3,16 @@
 html {
     position: relative;
     min-height: 100%;
-    background-color: #eaf0f7
+    background-color: #eeeff1
 }
 
 body {
     margin: 0;
     overflow-x: hidden;
     font-size: 13px;
-    background-color: #eaf0f7;
+    background-color: #f5f5f5;
     font-family: Poppins, sans-serif;
-    color: #50649c
+    color: #989898;
 }
 
 .h1,
@@ -88,7 +88,7 @@ a:hover {
     font-size: 15px;
     font-weight: 500;
     margin-top: 0;
-    color: #50649c;
+    color: #515151;
     text-shadow: 0 0 1px rgba(239, 242, 249, .1)
 }
 
@@ -99,7 +99,7 @@ a:hover {
 .page-title-box .page-title {
     font-size: 18px;
     margin: 0;
-    color: #50649c
+    color: #515151
 }
 
 .page-title-box .breadcrumb {
@@ -1280,7 +1280,7 @@ small {
     position: absolute;
     right: 0;
     left: 0;
-    color: #7081b9
+    color: #515151
 }
 
 
@@ -1434,7 +1434,7 @@ small {
 }
 
 .card-header {
-    background-color: #eff2f9;
+    background-color: #eeeff1;
     border-bottom: 1px solid #eff2f9
 }
 
@@ -8130,7 +8130,7 @@ tr:first-child>td>.fc-day-grid-event {
 }
 
 .e-co-product a img {
-    height: 230px
+    height: 120px
 }
 
 .e-co-product .ribbon-box {
@@ -8163,11 +8163,11 @@ tr:first-child>td>.fc-day-grid-event {
 
 .e-co-product .product-info .product-title {
     font-size: 15px;
-    color: #50649c
+    color: #989898
 }
 
 .e-co-product .product-info .product-price {
-    color: #50649c;
+    color: #515151;
     font-weight: 600;
     padding: 5px 0;
     margin-bottom: 0;
@@ -8190,8 +8190,8 @@ tr:first-child>td>.fc-day-grid-event {
 
 .e-co-product .product-info .btn-cart {
     border-color: #eff2f9;
-    background-color: #f3f6f7;
-    color: #50649c;
+    background-color: #15939D;
+    color: white;
     border-radius: 30px;
     padding: 4px 16px
 }
@@ -8228,10 +8228,8 @@ tr:first-child>td>.fc-day-grid-event {
 }
 
 .offer-box {
-    background-image: url(../images/products/offer.jpg);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat
+  background: rgb(246,135,18);
+  background: linear-gradient(90deg, rgba(246,135,18,1) 29%, rgba(21,147,157,1) 69%);
 }
 
 .offer-box .offer-content {
