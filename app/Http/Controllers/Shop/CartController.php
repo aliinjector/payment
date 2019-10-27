@@ -98,7 +98,7 @@ class CartController extends \App\Http\Controllers\Controller {
                 ]);
             $shop = Shop::where('english_name', $shop)->first();
             $shopCategories = $shop->ProductCategories()->get();
-            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'products', 'quantity', 'productTotal_price','total_price','productTotal_discounted'));
+            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'products', 'quantity', 'productTotal_price','total_price'));
         }
     }
     public function addToCart($shop, $userID, Request $request) {

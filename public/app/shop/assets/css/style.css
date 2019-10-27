@@ -451,8 +451,8 @@ small {
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #122272;
-    border-color: #122272;
+    background-color: #15939D!important;
+    border-color: #15939D!important;
     color: #fff
 }
 
@@ -1804,9 +1804,32 @@ a.bg-secondary:focus,
 a.bg-secondary:hover,
 button.bg-secondary:focus,
 button.bg-secondary:hover {
-    background-color: #33c0ea!important;
-    border: 1px solid #33c0ea;
-    color: #f3f6f7
+    background-color: #15939D!important;
+    color: #f3f6f7!important;
+}
+.btn-outline-orange.active,
+.btn-outline-orange:active,
+.btn-outline-orange:hover,
+.btn-outline-orange:not(:disabled):not(.disabled).active,
+.btn-outline-orange:not(:disabled):not(.disabled):active,
+.btn-orange.active,
+.btn-orange.disabled,
+.btn-orange.focus,
+.btn-orange:active,
+.btn-orange:disabled,
+.btn-orange:focus,
+.btn-orange:hover,
+.btn-orange:not(:disabled):not(.disabled).active,
+.btn-orange:not(:disabled):not(.disabled):active,
+.open>.dropdown-toggle.btn-orange,
+.show>.btn-outline-orange.dropdown-toggle,
+.show>.btn-orange.dropdown-toggle,
+a.bg-orange:focus,
+a.bg-orange:hover,
+button.bg-orange:focus,
+button.bg-orange:hover {
+    background-color: #F68712!important;
+    color: #f3f6f7!important;
 }
 
 .btn-outline-secondary.focus,
@@ -2107,10 +2130,10 @@ button.bg-white:hover {
 }
 
 .btn-outline-secondary {
-    color: #4ac7ec;
+    color: #15939D!important;
     background-image: none;
     background-color: transparent;
-    border-color: #4ac7ec
+    border-color: #15939D!important
 }
 
 .btn-outline-pink {
@@ -2752,7 +2775,7 @@ button.bg-white:hover {
 }
 
 .text-dark {
-    color: #2f4686!important
+    color: #2c373b!important
 }
 
 .badge {

@@ -94,12 +94,12 @@
                             <button type="button" class="btn bg-blue-omid text-white"> مدیریت سفارشات</button>
                             </a>
                         </div>
+                        @endif
                         <div class="search-icon d-flex align-items-center ml-5 ">
                             <a href="{{ route('cart.show' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
                                   <button type="button" class="btn bg-orange-omid px-3 text-white">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
                             </a>
                         </div>
-                        @endif
                         @endauth
 
               <li class="nav-item">

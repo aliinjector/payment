@@ -19,7 +19,7 @@
                                 <th>عملیات</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="">
 
                         <form  action="{{ route('purchaseList',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                           @csrf
@@ -53,7 +53,7 @@
                     </table>
                 </div>
                 <div class="d-flex input-group-append justify-content-end">
-                    <button type="submit" class="btn btn-success mt-4">ثبت و ادامه</button>
+                    <button type="submit" class="btn bg-blue-omid mt-4 text-white">ثبت و ادامه</button>
                   </form>
 
                     </div>

@@ -67,13 +67,11 @@ class ShopController extends \App\Http\Controllers\Controller {
         return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories'));
     }
     public function showCategory($shop, $categroyId) {
-        // if(Shop::where('english_name' , $shop)->first() == null || Shop::where('english_name' , $shop)->first()->products()->where('id', $id)->first() == null){
-        //     return abort(404);
-        // }
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
-        $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->get();
-        return view('app.shop.category', compact('products', 'shopCategories', 'shop'));
+        $category = ProductCategory::where('id' , $categroyId)->get()->first()->id;
+        $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
+        return view('app.shop.category', compact('products', 'shopCategories', 'shop','category'));
     }
     /**
      * Show the form for editing the specified resource.
@@ -269,6 +267,7 @@ class ShopController extends \App\Http\Controllers\Controller {
         $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
         return view('app.shop.user-purchased-list', compact('purchases'));
     }
+
     /**
      * Update the specified resource in storage.
      *
