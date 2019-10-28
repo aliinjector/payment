@@ -256,7 +256,7 @@
   </div>
 
     <div class="text-right mb-3">
-            <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan ">ثبت تغییرات</button><br>
+            <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">ثبت تغییرات</button><br>
         </div>
       </form>
 
@@ -347,7 +347,7 @@
         <!--end col-->
     </div>
     <div class="text-right mb-3">
-            <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan ">ثبت تغییرات</button><br>
+            <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded">ثبت تغییرات</button><br>
         </div>
   </form>
 

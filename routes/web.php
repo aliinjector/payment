@@ -86,7 +86,7 @@ Route::get('/paymentHelper', function(Request $request){
         Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
 });
 
-Route::namespace('Shop')->group(function () {
+    Route::namespace('Shop')->group(function () {
         Route::get('/{shop}', 'ShopController@show')->name('show.shop');
         Route::get('/{shop}/{id}', 'ShopController@showProduct')->name('shop.show.product');
         Route::get('/{shop}/category/{categroyId}', 'ShopController@showCategory')->name('shop.show.category');

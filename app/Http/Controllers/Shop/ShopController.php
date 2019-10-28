@@ -66,11 +66,25 @@ class ShopController extends \App\Http\Controllers\Controller {
         $product = $shop->products()->where('id', $id)->first();
         return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories'));
     }
-    public function showCategory($shop, $categroyId) {
+    public function showCategory($shop, $categroyId,Request $request) {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $category = ProductCategory::where('id' , $categroyId)->get()->first()->id;
+        if($request->has('type') and $request->has('sortBy')){
+          $orderBy = $request->sortBy['orderBy'];
+          $filterBy = $request->type;
+          $sortBy = $request->sortBy['field'];
+          $perPage = 8;
+          if($request->type == 'all'){
+            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->orderBy($sortBy , $orderBy)->paginate($perPage);
+          }
+          else{
+            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type' , $request->type)->orderBy($sortBy , $orderBy)->paginate($perPage);
+          }
+        }
+        else{
         $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
+      }
         return view('app.shop.category', compact('products', 'shopCategories', 'shop','category'));
     }
     /**

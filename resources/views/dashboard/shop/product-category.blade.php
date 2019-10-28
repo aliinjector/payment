@@ -26,7 +26,7 @@
         </div>
 
         <div class="text-right">
-            <a href="#" data-toggle="modal" data-target="#AddProductCategoryModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold"><i class="fa fa-plus mr-2"></i>اضافه کردن دسته بندی</a>
+            <a href="#" data-toggle="modal" data-target="#AddProductCategoryModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>اضافه کردن دسته بندی</a>
         </div>
 
 
@@ -37,7 +37,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">افزودن دسته بندی جدید</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -58,10 +58,10 @@
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
                         <div class="group">
-                            <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
-                            <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                            <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست</button>
+                            <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه </button>
                         </div>
                     </div>
 
@@ -99,8 +99,8 @@
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                        <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
+                        <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
                     </div>
 
                     </form>
@@ -216,6 +216,7 @@
             var id = $(this).data('id');
             swal("آیا اطمینان دارید؟", {
                     dangerMode: true,
+                    icon: "warning",
                     buttons: ["انصراف", "حذف"],
 
                 })

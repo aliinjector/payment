@@ -7,9 +7,9 @@
     @if (\Request::route()->getName() == 'user.purchased.list')
       <title>لیست سفارشات شما</title>
     @else
-    <title>صفحه اصلی فروشگاه {{ $shop->name }}</title>
+    <title> فروشگاه {{ $shop->name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta content="صفحه اصلی فروشگاه {{ $shop->name }}" name="description">
+    <meta content=" فروشگاه{{ $shop->name }}" name="description">
   @endif
     <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
     <!-- App favicon -->
@@ -39,7 +39,7 @@
                               <ol style="direction: ltr" class="breadcrumb">
                                   <li class="breadcrumb-item active mb-3 ml-lg-4">
                                       <a href="{{ route('logout') }}">
-                                          <button class="btn-sm small btn-primary">
+                                          <button class="btn-sm small btn-primary rounded">
                                               خروج از حساب کاربری
                                           </button>
                                       </a>
@@ -72,12 +72,12 @@
                 @guest
                   <div class="search-icon d-flex align-items-center mx-3 ">
                       <a href="{{ route('register') }}" style="font-size:13px;">
-                      <button type="button" class="btn bg-blue-omid text-white">عضویت</button>
+                      <button type="button" class="btn bg-blue-omid text-white rounded">عضویت</button>
                       </a>
                   </div>
                   <div class="search-icon d-flex align-items-center ml-5 ">
                       <a href="{{ route('login') }}" style="font-size:13px;">
-                            <button type="button" class="btn bg-orange-omid px-3 text-white">ورود</button>
+                            <button type="button" class="btn bg-orange-omid px-3 text-white rounded">ورود</button>
                       </a>
                   </div>
                         @endguest
@@ -85,19 +85,19 @@
                         @if(\Auth::user()->id == $shop->user_id)
                         <div class="search-icon d-flex align-items-center ml-5 ">
                             <a href="{{ route('dashboard-shop.index') }}" style="font-size:13px;">
-                            <button type="button" class="btn bg-blue-omid text-white">ورود به پنل مدیریت</button>
+                            <button type="button" class="btn bg-blue-omid text-white rounded">ورود به پنل مدیریت</button>
                             </a>
                         </div>
                       @else
                         <div class="search-icon d-flex align-items-center mx-3 ">
                             <a href="{{ route('user.purchased.list') }}" style="font-size:13px;">
-                            <button type="button" class="btn bg-blue-omid text-white"> مدیریت سفارشات</button>
+                            <button type="button" class="btn bg-blue-omid text-white rounded"> مدیریت سفارشات</button>
                             </a>
                         </div>
                         @endif
                         <div class="search-icon d-flex align-items-center ml-5 ">
                             <a href="{{ route('cart.show' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
-                                  <button type="button" class="btn bg-orange-omid px-3 text-white">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
+                                  <button type="button" class="btn bg-orange-omid px-3 text-white rounded">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
                             </a>
                         </div>
                         @endauth

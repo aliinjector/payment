@@ -26,7 +26,12 @@ trait RegistersUsers
             $base_url = parse_url(RequestFacade::server('HTTP_REFERER'),PHP_URL_PATH);
             $uri = ltrim($base_url, '/');
             $shopName = explode('/',$uri);
+            if(Shop::where('english_name' , $shopName[0])->get()->count() == 0){
+              $shop_id = null;
+            }
+            else{
             $shop_id = Shop::where('english_name' , $shopName[0])->get()->first()->id;
+            }
             return view('auth.registerUser',compact('shop_id'));
         }
     }

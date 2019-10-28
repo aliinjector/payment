@@ -15,7 +15,7 @@
 
 
 @if(isset($products[0]))
-        <h2 class="line-throw line-height-none"><span>اخرین محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
+        <h2 class="line-throw line-height-none"><span> محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
         @else
 <div class="d-flex justify-content-center align-items-center" style="height:80vh">
 <h4>
@@ -31,43 +31,44 @@
                <div class="card-body d-flex justify-content-center text-primary">
                 <form action="{{ route('shop.show.category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
                  <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
-                 <label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary active border-left-0 iranyekan crouser" style="cursor:pointer">
-                     <input type="radio" name="type" value="all" id="available-filter-1" checked=""> همه
+                 <label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
+                     <input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == 'all') checked="" @endif> همه
                  </label>
-                 <label id="available-filter-2" for="available-filter-2" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0 border-left-0 iranyekan" style="cursor:pointer">
-                     <input type="radio" name="type" value="product" id="available-filter-2"> فیزیکی
+                 <label id="available-filter-2" for="available-filter-2" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan" style="cursor:pointer">
+                     <input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
                  </label>
-                 <label id="available-filter-3" for="available-filter-3" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0 border-left-0 iranyekan" style="cursor:pointer">
-                     <input type="radio" name="type" value="file" id="available-filter-3"> فایل
+                 <label id="available-filter-3" for="available-filter-3" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan" style="cursor:pointer">
+                     <input type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
                  </label>
-                 <label id="available-filter-4" for="available-filter-4" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0 iranyekan" style="cursor:pointer">
-                     <input type="radio" name="type" value="service" id="available-filter-4"> خدماتی
+                 <label id="available-filter-4" for="available-filter-4" class="border-top-down-radius-0 btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan" style="cursor:pointer">
+                     <input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
                  </label>
              </div>
                  </div>
              </div>
            </div>
 
-
            <div class="col-lg-9 d-flex flex-wrap">
              <div class="row d-flex justify-content-center mr-2">
                <h6 class="iranyekan text-dark">مرتب سازی بر اساس :</h6>
                <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
-               <label id="available-order-1" for="available-order-1" class="btn btn-outline-orange active border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
-                   <input type="radio" id="available-order-1" name="orderby" value="new" id="option1" checked=""> جدید ترین ها
+               <label id="available-order-1" for="available-order-1" class="btn btn-outline-orange  @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
+                   <input type="radio" class="available-order-1" id="available-order-1" name="sortBy[field]" value="created_at" @if(request()->sortBy['field'] == 'created_at') checked="" @endif> جدید ترین ها
+                   <input type="radio" class="available-order-1" name="sortBy[orderBy]" value="desc" checked="">
                </label>
-               <label id="available-order-2" for="available-order-2" class="btn btn-outline-orange border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
-                   <input type="radio" id="available-order-2" name="orderby" value="cheapest" id="option2"> ارزان ترین ها
+               <label id="available-order-2" for="available-order-2" class="btn btn-outline-orange @if(request()->sortBy['field'] == 'price'  and request()->sortBy['orderBy'] == 'asc')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
+                   <input type="radio" class="available-order-2" id="available-order-2" name="sortBy[field]" value="price" @if(request()->sortBy['field'] == 'price' and request()->sortBy['orderBy'] == 'asc') checked="" @endif> ارزان ترین ها
+                   <input type="radio" class="available-order-2" name="sortBy[orderBy]" value="asc">
                </label>
-               <label id="available-order-3" for="available-order-3" class="btn btn-outline-orange border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
-                   <input type="radio" id="available-order-3" name="orderby" value="expensive" id="option2 rounded"> گران ترین ها
+               <label id="available-order-3" for="available-order-3" class="btn btn-outline-orange  @if(request()->sortBy['field'] == 'price' and request()->sortBy['orderBy'] == 'desc')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
+                   <input type="radio" class="available-order-3" id="available-order-3" name="sortBy[field]" value="price" @if(request()->sortBy['field'] == 'price' and request()->sortBy['orderBy'] == 'desc') checked="" @endif> گران ترین ها
+                   <input type="radio" class="available-order-3" name="sortBy[orderBy]" value="desc">
                </label>
-               <label id="available-order-4" for="available-order-4" class="btn btn-outline-orange border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
-                   <input type="radio" id="available-order-4" name="orderby" value="bestselling" id="option3"> پرفروش ترین ها
+               <label id="available-order-4" for="available-order-4" class="btn btn-outline-orange @if(request()->sortBy['field'] == 'buyCount')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
+                   <input type="radio" class="available-order-4" id="available-order-4" name="sortBy[field]" value="buyCount" @if(request()->sortBy['field'] == 'buyCount') checked="" @endif> پرفروش ترین ها
+                   <input type="radio" class="available-order-4" name="sortBy[orderBy]" value="desc">
                </label>
-               <label id="available-order-5" for="available-order-5" class="btn btn-outline-orange border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
-                   <input type="radio" id="available-order-5" name="orderby" value="offer" id="option3"> دارای تخفیف
-               </label>
+
            </div>
              </div>
            </form>
@@ -147,32 +148,33 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#available-filter-1').click(function() {
-      setInterval("$('#submit').submit()",100);
+      setInterval("$('#submit').submit()",700);
     });
     $('#available-filter-2').click(function() {
-        setInterval("$('#submit').submit()",100);
+        setInterval("$('#submit').submit()",700);
     });
     $('#available-filter-3').click(function() {
-      setInterval("$('#submit').submit()",100);
+      setInterval("$('#submit').submit()",700);
     });
     $('#available-filter-4').click(function() {
-      setInterval("$('#submit').submit()",100);
+      setInterval("$('#submit').submit()",700);
     });
     $('#available-order-1').click(function() {
-      setInterval("$('#submit').submit()",100);
+      $('.available-order-1').attr('checked', true);
+      setInterval("$('#submit').submit()",700);
     });
     $('#available-order-2').click(function() {
-      setInterval("$('#submit').submit()",100);
+      $('.available-order-2').attr('checked', true);
+      setInterval("$('#submit').submit()",700);
     });
     $('#available-order-3').click(function() {
-      setInterval("$('#submit').submit()",100);
+      $('.available-order-3').attr('checked', true);
+      setInterval("$('#submit').submit()",700);
     });
     $('#available-order-4').click(function() {
-      setInterval("$('#submit').submit()",100);
+      $('.available-order-4').attr('checked', true);
+      setInterval("$('#submit').submit()",700);
     });
-    $('#available-order-5').click(function() {
-      setInterval("$('#submit').submit()",100);
-    });
-
-}); </script>
+});
+</script>
 @endsection

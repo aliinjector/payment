@@ -34,7 +34,7 @@
         </div>
 
         <div class="text-right">
-            <a href="#" data-toggle="modal" data-target="#AddVoucherModal" class="btn btn-primary text-white d-inline-block text-right mb-4 font-weight-bold mt-3"><i class="fa fa-plus mr-2"></i>افزودن کد تخفیف</a>
+            <a href="#" data-toggle="modal" data-target="#AddVoucherModal" class="btn btn-primary text-white d-inline-block text-right mb-4 font-weight-bold mt-3 rounded"><i class="fa fa-plus mr-2"></i>افزودن کد تخفیف</a>
         </div>
 
 
@@ -45,7 +45,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">افزودن کد تخفیف جدید</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -90,8 +90,8 @@
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                        <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
+                        <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
                     </div>
 
                     </form>
@@ -106,7 +106,7 @@
                     <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">ویرایش کد تخفیف</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -152,8 +152,8 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
+                                <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
                             </div>
 
                             </form>
@@ -180,7 +180,7 @@
 
 
 
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer rounded" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                     <thead>
                                         <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
@@ -282,6 +282,7 @@
         var id = $(this).data('id');
         swal("آیا اطمینان دارید؟", {
             dangerMode: true,
+            icon: "warning",
             buttons: ["انصراف", "حذف"],
 
           })

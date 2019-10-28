@@ -45,7 +45,7 @@
                   <div class="d-flex d-flex justify-content-between">
                      <h6 class="mb-0"><b>تاریخ ثبت فاکتور :</b> {{ jdate() }}</h6>
                      <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
-                     <button class="btn btn-primary"><i class="fas fa-undo pl-1"></i>سبد خرید</button>
+                     <button class="btn btn-primary rounded"><i class="fas fa-undo pl-1"></i>سبد خرید</button>
                      </a>
                   </div>
                </div>
@@ -55,7 +55,7 @@
             <div class="row">
                <div class="col-lg-12">
                   <div class="table-responsive project-invoice">
-                     <table class="table table-bordered mb-0">
+                     <table class="table table-bordered mb-0 rounded">
                         <thead class="thead-light">
                            <tr>
                               <th>نام محصول</th>
@@ -103,7 +103,7 @@
                         @csrf
                         <input type="hidden" name="total_price" value="{{ $total_price }}">
                         <input type="text" name="code" class="border-muted form-control col-lg-6 col-md-12 col-sm-12" placeholder="کد" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-pink col-lg-6" type="submit" id="button-addon2">اعمال  تخفیف</button>
+                        <button class="btn btn-outline-pink col-lg-6 rounded" type="submit" id="button-addon2">اعمال  تخفیف</button>
                      </form>
                   </div>
                   <form action="{{ route('purchase.submit', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
@@ -207,21 +207,6 @@
          <!--end row-->
          <!--end row-->
       </div>
-      <!--end card-body-->
-      </div>
-      <!--end card-->
-      </div>
-      <!--end col-->
-      <!--end footer-->
-      </div>
-      <!--end row-->
-      </div>
-      <!-- container -->
-      <footer class="footer text-center text-sm-left pt-0">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
-      <!--end footer-->
-      </div>
-      <!-- end page content -->
-      </div>
           @endsection
           @section('pageScripts')
 
@@ -249,5 +234,6 @@
          });
 
       </script>
+    
       @include('sweet::alert')
     @stop

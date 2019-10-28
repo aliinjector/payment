@@ -5,7 +5,7 @@
         <div class="card">
           @if(isset($products))
 
-            <div class="card-body">
+            <div class="card-body font-18">
                 <h4 class="header-title mt-0">سبد خرید </h4>
                 <p class="mb-4 text-muted">لیست محصولات سبد خرید.</p>
                 <div class="table-responsive shopping-cart">
@@ -33,7 +33,7 @@
                                 <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif </td>
                                 <td>
 
-                                                <select class="c-ui-select js-ui-select" autocomplete="off" tabindex="-1" name="{{ $product->id }}">
+                                                <select class="form-control col-lg-5 p-1" autocomplete="off" tabindex="-1" name="{{ $product->id }}">
                                                   <option value="1">۱</option>
                                                   <option value="2">۲</option>
                                                   <option value="3">۳</option>
@@ -53,7 +53,7 @@
                     </table>
                 </div>
                 <div class="d-flex input-group-append justify-content-end">
-                    <button type="submit" class="btn bg-blue-omid mt-4 text-white">ثبت و ادامه</button>
+                    <button type="submit" class="btn bg-blue-omid mt-4 text-white rounded">ثبت و ادامه</button>
                   </form>
 
                     </div>

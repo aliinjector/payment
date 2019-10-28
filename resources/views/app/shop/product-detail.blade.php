@@ -113,20 +113,20 @@
                                                       <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                                         @csrf
                                                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                      <button type="submit" class="btn btn-primary iranyekan"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
+                                                      <button type="submit" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
                                                     </form>
                                                     @else
                                                       <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                                         @csrf
                                                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                                                    <button type="submit" class="text-white btn bg-blue-omid iranyekan"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
+                                                    <button type="submit" class="text-white btn bg-blue-omid iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
                                                     @endif
 
                                                   </form>
                                                 @endauth
                                                 @guest
                                                   <a href="{{ route('register') }}">
-                                                  <button type="button" class="btn btn-primary iranyekan"><i class="mdi mdi-cart mr-1"></i> ثبت نام و خرید </button>
+                                                  <button type="button" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> ثبت نام و خرید </button>
                                                   </a>
                                                 @endguest
                                                     </div>
@@ -212,7 +212,7 @@
                                             <div class="newsletters-input">
                                                 <form class="position-relative">
                                                     <input type="email" placeholder="ایمیل خود را وارد کنید" required="" style="direction: ltr">
-                                                    <button type="submit" class="btn btn-success">دنبال کردن</button>
+                                                    <button type="submit" class="btn btn-success rounded">دنبال کردن</button>
                                                 </form>
                                             </div>
                                         </div>

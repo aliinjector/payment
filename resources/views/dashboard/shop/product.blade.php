@@ -21,7 +21,7 @@
                 @include('dashboard.layouts.errors')
 
                 <div class="text-right">
-                    <a href="#" data-toggle="modal" data-target="#AddSelectModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold"><i class="fa fa-plus mr-2"></i>اضافه کردن محصول</a>
+                    <a href="#" data-toggle="modal" data-target="#AddSelectModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>اضافه کردن محصول</a>
                 </div>
 
                 <div class="modal fade bd-example-modal-xl" id="AddSelectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -38,7 +38,7 @@
                                     @csrf
                                     <div class="form-group mb-0">
                                         <a data-dismiss="modal" data-toggle="modal" href="#AddProductModal">
-                                            <div class="input-group mt-3 border">
+                                            <div class="input-group mt-3 border rounded">
                                                 <div class="p-4">
                                                     <span class="sett-card-icon set-icon-purple"><i class="fa fa-boxes f-em5"></i></span>
                                                 </div>
@@ -50,7 +50,7 @@
 
 
                                         <a data-dismiss="modal" data-toggle="modal" href="#AddFileModal">
-                                            <div class="input-group mt-3 border">
+                                            <div class="input-group mt-3 border rounded">
                                                 <div class="p-4">
                                                     <span class="sett-card-icon set-icon-purple"><i class="fa fa-download f-em5"></i></span>
                                                 </div>
@@ -62,7 +62,7 @@
 
 
                                         <a data-dismiss="modal" data-toggle="modal" href="#AddServiceModal">
-                                            <div class="input-group mt-3 border">
+                                            <div class="input-group mt-3 border rounded">
                                                 <div class="p-4">
                                                     <span class="sett-card-icon set-icon-purple"><i class="fa fa-user-friends f-em5"></i></span>
                                                 </div>
@@ -76,7 +76,7 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
                                 {{-- <button type="submit" class="btn btn-primary">ثبت درخواست</button> --}}
                                 {{-- <a data-dismiss="modal" data-toggle="modal" href="#AddProductModal1">Click</a> --}}
 
@@ -94,7 +94,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">افزودن کالای فیزیکی </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -104,7 +104,7 @@
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="title" placeholder="مثال: جاروبرقی">
+                                            <input type="text" class="form-control inputfield rounded" name="title" placeholder="مثال: جاروبرقی">
                                             <input name="type" type="hidden" value="product">
                                         </div>
 
@@ -255,7 +255,7 @@
                                                         <ul></ul>
                                                     </div>
                                                     <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                                                    <button type="button" class="dropify-clear">حذف</button>
+                                                    <button type="button" class="dropify-clear rounded">حذف</button>
                                                     <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/labtop.jpg"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
@@ -273,10 +273,10 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
                                 <div class="group">
-                                    <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
-                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست</button>
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه </button>
                             </div>
                             </div>
 
@@ -295,7 +295,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">ویرایش کالای فیزیکی </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -447,7 +447,7 @@
                                                         <ul></ul>
                                                     </div>
                                                     <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                                                    <button type="button" class="dropify-clear">حذف</button>
+                                                    <button type="button" class="dropify-clear rounded">حذف</button>
                                                     <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="{{ $product->image['250,250'] }}"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
@@ -465,8 +465,8 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
+                                <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
                             </div>
 
                             </form>
@@ -484,7 +484,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">ویرایش فایل </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -530,16 +530,7 @@
                                             <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
-                                        {{--  <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7">حجم فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="file_size" placeholder="مثال: 45">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8">مگابایت</span></div>
-                                        </div>  --}}
-                                        {{--  <div class="input-group mt-3">
-                                            <div class="input-group-prepend"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> موجودی فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="amount" placeholder=" مثال: 100">
-                                            <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> عدد</span></div>
-                                        </div>  --}}
+
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_1 }}">
@@ -636,7 +627,7 @@
                                                         <ul></ul>
                                                     </div>
                                                     <input type="file" id="input-file-now" class="dropify" name="attachment">
-                                                    <button type="button" class="dropify-clear">حذف</button>
+                                                    <button type="button" class="dropify-clear rounded">حذف</button>
 
 
 
@@ -661,8 +652,8 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
+                                <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
                             </div>
 
                             </form>
@@ -682,7 +673,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">ویرایش خدمت </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -793,7 +784,7 @@
                                                         <ul></ul>
                                                     </div>
                                                     <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/teacher.jpg">
-                                                    <button type="button" class="dropify-clear">حذف</button>
+                                                    <button type="button" class="dropify-clear rounded">حذف</button>
                                                     <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img class="col-12" src="{{ $product->image['250,250'] }}"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
@@ -809,8 +800,8 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                                <button type="submit" class="btn btn-primary">ثبت درخواست</button>
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
+                                <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
                             </div>
 
                             </form>
@@ -825,7 +816,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">افزودن فایل </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -975,7 +966,7 @@
                                                         <ul></ul>
                                                     </div>
                                                     <input type="file" id="input-file-now" class="dropify" name="attachment">
-                                                    <button type="button" class="dropify-clear">حذف</button>
+                                                    <button type="button" class="dropify-clear rounded">حذف</button>
 
 
 
@@ -1000,10 +991,10 @@
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
                                 <div class="group">
-                                    <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
-                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست</button>
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه </button>
                             </div>
                             </div>
 
@@ -1019,7 +1010,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLabel">افزودن خدمت </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
@@ -1142,7 +1133,7 @@
                                                         <ul></ul>
                                                     </div>
                                                     <input name="image" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/teacher.jpg">
-                                                    <button type="button" class="dropify-clear">حذف</button>
+                                                    <button type="button" class="dropify-clear rounded">حذف</button>
                                                     <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img class="col-12" src="/dashboard/assets/images/teacher.jpg"></span>
                                                         <div class="dropify-infos">
                                                             <div class="dropify-infos-inner">
@@ -1160,8 +1151,8 @@
                             <div class="modal-footer justify-content-between">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                 <div class="group">
-                                    <button type="submit" name="action" value="justSave" class="btn btn-primary">ثبت درخواست</button>
-                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary">ثبت درخواست و ادامه </button>
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست</button>
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه </button>
                             </div>
                             </div>
 
@@ -1197,7 +1188,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer rounded" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
@@ -1357,6 +1348,7 @@
         var id = $(this).data('id');
         swal("آیا اطمینان دارید؟", {
             dangerMode: true,
+            icon: "warning",
             buttons: ["انصراف", "حذف"],
           })
           .then(function(isConfirm) {
