@@ -347,3 +347,14 @@ h2 span {
 .color-blue{
   color: #15939D!important;
 }
+@media print {
+     .d-none-print{
+       display: none;
+     }
+     .print-big{
+       max-width: 100%!important;
+     }
+     .printable{
+       display: flex!important;
+     }
+  }

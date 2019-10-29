@@ -371,9 +371,9 @@ else{
       return redirect()->route('product-list.index');
     }
 
-    public function changeStatus($id){
-
-        $product = Product::find($id);
+    public function changeStatus(Request $request){
+      
+        $product = Product::find($request->id);
         if($product->status == 0)
             $product->status = 1;
         else

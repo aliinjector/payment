@@ -198,30 +198,38 @@
                                     </thead>
                                     <tbody class="byekan">
                                         @foreach($vouchers as $voucher)
-                                        <tr role="row" class="odd icon-hover hover-color">
+                                        <tr role="row" class="odd icon-hover hover-color" id="{{ $voucher->id }}">
                                             <td>{{ $voucher->id }}</td>
                                             <td>{{ $voucher->name }}</td>
                                             <td>
-                                                <form class="form-inline" action="{{ route('change.status.voucher', $voucher->id) }}" method="post">
+                                                {{-- <form class="form-inline" action="" method="post"> --}}
                                                         @csrf
                                                         {{ method_field('put') }}
-                                                        <button class="btn btn-link p-0" type="submit">
+                                                        <button class="btn btn-link p-0 change" type="submit" data-id="{{ $voucher->id }}">
                                                             @if($voucher->status == 1)
-                                                                <i class="fa fa-toggle-on text-success"></i>
+                                                                <i class="fa fa-toggle-on text-success show{{ $voucher->id }}"></i>
+                                                                <i  class="fa fa-toggle-off text-muted d-none {{ $voucher->id }}"></i>
                                                             @else
-                                                                <i class="fa fa-toggle-off text-muted"></i>
+                                                              <i class="fa fa-toggle-on text-success d-none {{ $voucher->id }}"></i>
+                                                              <i class="fa fa-toggle-off text-muted show{{ $voucher->id }}"></i>
                                                             @endif
                                                         </button>
                                                 @if ($voucher->status == 1)
-                                            <span class="badge badge-soft-success">
+                                            <span class="badge badge-soft-success show{{ $voucher->id }}">
                                                 فعال
                                             </span>
+                                            <span class="badge badge-soft-pink d-none {{ $voucher->id }}">
+                                                    غیرفعال
+                                                </span>
                                             @else
-                                            <span class="badge badge-soft-pink">
+                                              <span class="badge badge-soft-success d-none {{ $voucher->id }}">
+                                                  فعال
+                                              </span>
+                                            <span class="badge badge-soft-pink show{{ $voucher->id }}">
                                                     غیرفعال
                                                 </span>
                                                 @endif
-                                            </form>
+                                            {{-- </form> --}}
 
                                         </td>
                                             <td>{{ $voucher->description }}</td>
@@ -305,6 +313,29 @@
     }
     });
     });
+
+</script>
+
+<script>
+$(".change").click(function(){
+    var id = $(this).data("id");
+    $.ajax(
+        {
+            url: "vouchers/change-status/"+id,
+            type: 'put',
+            dataType: "JSON",
+            data: {
+                "id": id,
+                "_method": 'put',
+                "_token": "{{ csrf_token() }}",
+            }
+
+        });
+                $("i."+id).toggleClass("d-none");
+                $("span."+id).toggleClass("d-none");
+                $("i.show"+id).toggleClass("d-none");
+                $("span.show"+id).toggleClass("d-none");
+});
 
 </script>
 @stop

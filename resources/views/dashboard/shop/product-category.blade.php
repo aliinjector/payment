@@ -240,7 +240,6 @@
                 });
         });
     </script>
-
     @if(session()->has('flashModal'))
         <script>
             $('#AddProductCategoryModal').modal('show');

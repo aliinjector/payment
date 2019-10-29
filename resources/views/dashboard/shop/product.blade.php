@@ -1206,7 +1206,7 @@
                                     </thead>
                                     <tbody class="byekan">
                                         @foreach($products as $product)
-                                        <tr role="row" class="odd icon-hover hover-color">
+                                        <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                             <td class="sorting_1" style="width:5%">{{ $product->id }}</td>
                                             <td class="sorting_1 w-25 "><img src="{{ $product->image['80,80'] }}" class="rounded" alt="">
         <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product-list.show',$product->id) }}" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
@@ -1216,26 +1216,32 @@
             <td>{{ $product->off_price }}</td>
 
             <td>
-                    <form class="form-inline" action="{{ route('change.status.product', $product->id) }}" method="post">
                             @csrf
                             {{ method_field('put') }}
-                            <button class="btn btn-link" type="submit">
-                                @if($product->status == 1)
-                                    <i class="fa fa-toggle-on text-success"></i>
-                                @else
-                                    <i class="fa fa-toggle-off text-muted"></i>
-                                @endif
-                            </button>
-                    @if ($product->status == 1)
-                <span class="badge badge-soft-success">
+                            <button class="btn btn-link change" type="submit" data-id="{{ $product->id }}">
+                              @if($product->status == 1)
+                                  <i class="fa fa-toggle-on text-success show{{ $product->id }}"></i>
+                                  <i  class="fa fa-toggle-off text-muted d-none {{ $product->id }}"></i>
+                              @else
+                                <i class="fa fa-toggle-on text-success d-none {{ $product->id }}"></i>
+                                <i class="fa fa-toggle-off text-muted show{{ $product->id }}"></i>
+                              @endif
+                          </button>
+                  @if ($product->status == 1)
+              <span class="badge badge-soft-success show{{ $product->id }}">
+                  فعال
+              </span>
+              <span class="badge badge-soft-pink d-none {{ $product->id }}">
+                      غیرفعال
+                  </span>
+              @else
+                <span class="badge badge-soft-success d-none {{ $product->id }}">
                     فعال
                 </span>
-                @else
-                <span class="badge badge-soft-pink">
-                        غیرفعال
-                    </span>
-                    @endif
-                </form>
+              <span class="badge badge-soft-pink show{{ $product->id }}">
+                      غیرفعال
+                  </span>
+                  @endif
 
             </td>
 
@@ -1300,6 +1306,28 @@
 <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+<script>
+$(".change").click(function(){
+    var id = $(this).data("id");
+    $.ajax(
+        {
+            url: "product-list/change-status/"+id,
+            type: 'put',
+            dataType: "JSON",
+            data: {
+                "id": id,
+                "_method": 'put',
+                "_token": "{{ csrf_token() }}",
+            }
+
+        });
+                $("i."+id).toggleClass("d-none");
+                $("span."+id).toggleClass("d-none");
+                $("i.show"+id).toggleClass("d-none");
+                $("span.show"+id).toggleClass("d-none");
+});
+
+</script>
 <script>
     $(document).ready(function() {
         $(".test1").click(function() {

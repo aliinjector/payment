@@ -1,6 +1,6 @@
 @extends('app.shop.layouts.master')
 @section('content')
-      <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12">
+      <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
             @include('dashboard.layouts.errors')
          <div class="card-body invoice-head">
             <div class="row">
@@ -45,7 +45,7 @@
                   <div class="d-flex d-flex justify-content-between">
                      <h6 class="mb-0"><b>تاریخ ثبت فاکتور :</b> {{ jdate() }}</h6>
                      <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
-                     <button class="btn btn-primary rounded"><i class="fas fa-undo pl-1"></i>سبد خرید</button>
+                     <button class="btn btn-primary rounded d-none-print"><i class="fas fa-undo pl-1"></i>سبد خرید</button>
                      </a>
                   </div>
                </div>
@@ -98,7 +98,7 @@
                      </table>
                      <!--end table-->
                   </div>
-                  <div class="col-lg-6 mt-3 mr-lg-n4">
+                  <div class="col-lg-6 mt-3 mr-lg-n4 d-none-print">
                      <form class="form-inline col-lg-12" action="{{ route('approved',['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="total_price" value="{{ $total_price }}">
@@ -109,7 +109,7 @@
                   <form action="{{ route('purchase.submit', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
                      @csrf
                      @if($product->type != 'file')
-                     <div class="col-md-6 mt-5">
+                     <div class="col-lg-6 mt-5 d-none-print">
                         <div class="total-payment">
                            <h4 class="header-title">مجموع پرداختی</h4>
                            <table class="table">
@@ -118,9 +118,7 @@
                                     <td class="payment-title">قیمت کل :</td>
                                     <td>  @if(isset($discountedPrice)) {{number_format($discountedPrice)}} @else {{ number_format($total_price) }} @endif</td>
                                  </tr>
-                                 <tr>
-                                    {{-- <td> @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0 @else {{ number_format($product->price-$product->off_price)}} @endif تومان</td> --}}
-                                 </tr>
+
                                  <tr>
                                     <td class="payment-title"> روش ارسال :</td>
                                     <td>
@@ -190,12 +188,21 @@
                      @endif
                      <!--end /div-->
                </div>
-               <div class="d-lg-flex col-lg-12 justify-content-end">
+               <div class="col-12 justify-content-between mt-5 d-none printable">
+                 <div class="">
+                   محل امضای فروشنده
+                 </div>
+                 <div class="">
+                   محل امضای مشتری
+                 </div>
+               </div>
+               <div class="d-lg-flex col-lg-12 justify-content-end d-none-print">
                <div class="mt-4">
                <div class="input-group">
                <div class="input-group-append">
-               <button type="submit" class="btn btn-success mt-4">ثبت فاکتور</button>
+               <button type="submit" class="btn bg-blue-omid text-white mt-4">ثبت فاکتور</button>
                </form>
+               <button  onclick="myFunction()" class="btn bg-orange-omid text-white mt-4 mr-2">چاپ فاکتور</button>
                </div>
                </div>
                </div>
@@ -209,7 +216,11 @@
       </div>
           @endsection
           @section('pageScripts')
-
+            <script>
+                function myFunction() {
+                    window.print();
+                }
+            </script>
       <script>
          $(document).ready(function() {
              $(".showAddresses").click(function() {
@@ -234,6 +245,6 @@
          });
 
       </script>
-    
+
       @include('sweet::alert')
     @stop

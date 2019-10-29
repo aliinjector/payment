@@ -127,15 +127,13 @@ class VoucherController extends Controller
           return redirect()->route('vouchers.index');
     }
 
-    public function changeStatus($id){
-
-        $voucher = Voucher::find($id);
+    public function changeStatus(Request $request){
+        $voucher = Voucher::find($request->id);
         if($voucher->status == 0)
             $voucher->status = 1;
         else
             $voucher->status = 0;
         $voucher->save();
-        return back();
     }
 
 
