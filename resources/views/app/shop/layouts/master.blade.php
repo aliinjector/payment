@@ -15,7 +15,7 @@
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
     <!-- App css -->
-    <link href="/app/shop/asset/css/jquery.steps.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/assets/css/jquery.steps.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
