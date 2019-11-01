@@ -67,20 +67,21 @@ class ShopController extends \App\Http\Controllers\Controller {
         return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories'));
     }
     public function showCategory($shop, $categroyId,Request $request) {
-      
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $category = ProductCategory::where('id' , $categroyId)->get()->first()->id;
-        if($request->has('type') and $request->has('sortBy')){
+        if($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')){
           $orderBy = $request->sortBy['orderBy'];
+          $minPrice = $request->minprice;
+          $maxPrice = $request->maxprice;
           $filterBy = $request->type;
           $sortBy = $request->sortBy['field'];
           $perPage = 8;
           if($request->type == 'all'){
-            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->orderBy($sortBy , $orderBy)->paginate($perPage);
+            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy , $orderBy)->paginate($perPage);
           }
           else{
-            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type' , $request->type)->orderBy($sortBy , $orderBy)->paginate($perPage);
+            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type' , $request->type)->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy , $orderBy)->paginate($perPage);
           }
         }
         else{

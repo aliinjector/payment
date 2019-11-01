@@ -45,9 +45,9 @@
                  </label>
              </div>
              <h5 class="text-dark pr-1 border-btm font-weight-500 m-2">فیلتر بر اساس قیمت کالا</h5>
-                   <input type="text" id="available-price-1" name="price" class="w-100 p-2" style="border:0; color:#F68712 !important; font-weight:bold;">
-                   <input type="hidden" id="min-price" name="min-price" value="2">
-                   <input type="hidden" id="max-price" name="max-price" value="2">
+                   <input type="text" id="available-price-1"  class="w-100 p-2 iranyekan font-14" style="border:0; color:#F68712 !important; font-weight:bold;">
+                   <input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
+                   <input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 1000000 @else {{ request()->maxprice }} @endif">
                </h5>
 
                <div id="mySlider"></div>
@@ -91,7 +91,7 @@
                             <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
                                         @if($product->off_price != null)
-                                    <p class="product-price byekan">{{  number_format($product->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($product->price) }} تومان</del></span>
+                                    <p class="product-price byekan">{{  number_format($product->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del class="byekan font-16">{{  number_format($product->price) }} تومان</del></span>
                                     </p>
                                     @else
                                     <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span>
@@ -120,7 +120,6 @@
                   </div>
 
                   </div>
-
 
                 </div>
 
@@ -178,8 +177,12 @@ $(document).ready(function() {
       $('.available-order-4').attr('checked', true);
       setInterval("$('#submit').submit()",700);
     });
-    $('#available-price-1').click(function() {
-      $('.available-price-1').attr('checked', true);
+    $('#available-price-min').click(function() {
+      $('.available-price-min').attr('checked', true);
+      setInterval("$('#submit').submit()",700);
+    });
+    $('#mySlider').click(function() {
+      $('.available-price-max').attr('checked', true);
       setInterval("$('#submit').submit()",700);
     });
 });
@@ -190,16 +193,28 @@ $(document).ready(function() {
          $("#mySlider").slider({
              range: true,
              min: 1000,
-             max: 10000000,
-             values: [1000, 10000000],
+             max: 1000000,
+             values: [@if(request()->minprice != null){{request()->minprice}} @else 1000 @endif, @if(request()->maxprice != null){{request()->maxprice}} @else 1000000 @endif],
              slide: function(event, ui) {
-                 $("#price").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+               if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
+                 $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 1000000 + " تومان ");
+                 $("#available-price-min").val(1000);
+                 $("#available-price-max").val(1000000);
+               }
+               else{
+                 $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+                 $("#available-price-min").val(ui.values[0]);
+                 $("#available-price-max").val(ui.values[1]);
+               }
              }
          });
-
-         $("#price").val(+ $("#mySlider").slider("values", 1) +
-             " - " + $("#mySlider").slider("values", 0));
-             $("#min-price").val(text)
+         if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
+           $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 1000000 + " تومان ");
+         }
+         else{
+           $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0) + " تومان " +
+               " - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
+         }
 
      });
  </script>

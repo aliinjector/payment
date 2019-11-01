@@ -678,6 +678,9 @@ button.ui-button::-moz-focus-inner {
 	top: -.3em;
 	margin-left: -.6em;
 }
+.ui-slider-handle{
+	    width: 5%!important;
+}
 .ui-slider-horizontal .ui-slider-range {
 	top: 0;
 	height: 100%;
@@ -859,7 +862,7 @@ background-color: #F68712 !important;
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-	border: 1px solid #15939D;
+	border: 1px solid white;
 	background-color: #15939D !important;
 	font-weight: bold;
 	color: #333333;
