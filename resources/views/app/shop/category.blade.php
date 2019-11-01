@@ -1,6 +1,6 @@
 @extends('app.shop.layouts.master')
 @section('content')
-
+  <link rel="stylesheet" href="/app/shop/assets/css/jquery-ui.css" />
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box">
@@ -44,6 +44,14 @@
                      <input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
                  </label>
              </div>
+             <h5 class="text-dark pr-1 border-btm font-weight-500 m-2">فیلتر بر اساس قیمت کالا</h5>
+                   <input type="text" id="available-price-1" name="price" class="w-100 p-2" style="border:0; color:#F68712 !important; font-weight:bold;">
+                   <input type="hidden" id="min-price" name="min-price" value="2">
+                   <input type="hidden" id="max-price" name="max-price" value="2">
+               </h5>
+
+               <div id="mySlider"></div>
+
                  </div>
              </div>
            </div>
@@ -53,7 +61,7 @@
                <h6 class="iranyekan text-dark">مرتب سازی بر اساس :</h6>
                <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
                <label id="available-order-1" for="available-order-1" class="btn btn-outline-orange  @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
-                   <input type="radio" class="available-order-1" id="available-order-1" name="sortBy[field]" value="created_at" @if(request()->sortBy['field'] == 'created_at') checked="" @endif> جدید ترین ها
+                   <input type="radio" class="available-order-1" id="available-order-1" name="sortBy[field]" value="created_at" @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at') checked="" @endif> جدید ترین ها
                    <input type="radio" class="available-order-1" name="sortBy[orderBy]" value="desc" checked="">
                </label>
                <label id="available-order-2" for="available-order-2" class="btn btn-outline-orange @if(request()->sortBy['field'] == 'price'  and request()->sortBy['orderBy'] == 'asc')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
@@ -116,11 +124,6 @@
 
                 </div>
 
-    <!-- container -->
-
-
-
-</div>
 @endsection
 
 
@@ -175,6 +178,29 @@ $(document).ready(function() {
       $('.available-order-4').attr('checked', true);
       setInterval("$('#submit').submit()",700);
     });
+    $('#available-price-1').click(function() {
+      $('.available-price-1').attr('checked', true);
+      setInterval("$('#submit').submit()",700);
+    });
 });
 </script>
+ <script src="/app/shop/assets/js/jquery-ui.js"></script>
+ <script>
+     $(document).ready(function() {
+         $("#mySlider").slider({
+             range: true,
+             min: 1000,
+             max: 10000000,
+             values: [1000, 10000000],
+             slide: function(event, ui) {
+                 $("#price").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+             }
+         });
+
+         $("#price").val(+ $("#mySlider").slider("values", 1) +
+             " - " + $("#mySlider").slider("values", 0));
+             $("#min-price").val(text)
+
+     });
+ </script>
 @endsection
