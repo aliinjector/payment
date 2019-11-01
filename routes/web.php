@@ -70,7 +70,7 @@ Route::get('/paymentHelper', function(Request $request){
         Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.updateContact');
         Route::resource('vouchers', 'VoucherController');
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('voucher.destroy');
-        Route::put('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('change.status.voucher');
+        Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('change.status.voucher');
     });
     });
     Route::namespace('Shop')->middleware('auth')->group(function () {

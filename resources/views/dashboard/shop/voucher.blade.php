@@ -4,6 +4,7 @@
     <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('.start-field-example').persianDatepicker({
@@ -322,12 +323,12 @@ $(".change").click(function(){
     $.ajax(
         {
             url: "vouchers/change-status/"+id,
-            type: 'put',
+            type: 'POST',
+            contentType: 'application/json',
             dataType: "JSON",
             data: {
                 "id": id,
-                "_method": 'put',
-                "_token": "{{ csrf_token() }}",
+                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             }
 
         });

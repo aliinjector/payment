@@ -32,7 +32,7 @@
                 <form action="{{ route('shop.show.category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
                  <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
                  <label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
-                     <input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == 'all') checked="" @endif> همه
+                     <input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
                  </label>
                  <label id="available-filter-2" for="available-filter-2" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan" style="cursor:pointer">
                      <input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
@@ -53,7 +53,7 @@
                <h6 class="iranyekan text-dark">مرتب سازی بر اساس :</h6>
                <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
                <label id="available-order-1" for="available-order-1" class="btn btn-outline-orange  @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
-                   <input type="radio" class="available-order-1" id="available-order-1" name="sortBy[field]" value="created_at" @if(request()->sortBy['field'] == 'created_at') checked="" @endif> جدید ترین ها
+                   <input type="radio" class="available-order-1" id="available-order-1" name="sortBy[field]" value="created_at" @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at') checked="" @endif> جدید ترین ها
                    <input type="radio" class="available-order-1" name="sortBy[orderBy]" value="desc" checked="">
                </label>
                <label id="available-order-2" for="available-order-2" class="btn btn-outline-orange @if(request()->sortBy['field'] == 'price'  and request()->sortBy['orderBy'] == 'asc')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">

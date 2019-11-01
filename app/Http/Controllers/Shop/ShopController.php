@@ -67,6 +67,7 @@ class ShopController extends \App\Http\Controllers\Controller {
         return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories'));
     }
     public function showCategory($shop, $categroyId,Request $request) {
+      
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $category = ProductCategory::where('id' , $categroyId)->get()->first()->id;
