@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Index;
+use App\User;
+use App\Product;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -14,6 +16,14 @@ class IndexController extends Controller
      */
     public function index()
     {
+        $user = User::first();
+        $post = Product::find(38);
+
+        // $rating = $post->rating([
+        //     'rating' => 4
+        // ], $user);
+
+        dd($post->rates()->get());
         return view('app.index');
     }
 

@@ -144,6 +144,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'Ghanem\\Rating\\' => 14,
         ),
         'F' => 
         array (
@@ -414,6 +415,10 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'Ghanem\\Rating\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ghanem/rating/src',
+        ),
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
@@ -510,6 +515,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Bill' => __DIR__ . '/../..' . '/app/Bill.php',
         'App\\Card' => __DIR__ . '/../..' . '/app/Card.php',
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
+        'App\\CartProduct' => __DIR__ . '/../..' . '/app/CartProduct.php',
         'App\\CheckInquiry' => __DIR__ . '/../..' . '/app/CheckInquiry.php',
         'App\\Checkout' => __DIR__ . '/../..' . '/app/Checkout.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
@@ -523,7 +529,6 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
-        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Dashboard\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/DashboardController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\BankController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/BankController.php',
@@ -531,6 +536,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Dashboard\\Payment\\CardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/CardController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\CheckInquiryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/CheckInquiryController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\CheckoutController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/CheckoutController.php',
+        'App\\Http\\Controllers\\Dashboard\\Payment\\FastPayController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/FastPayController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\GatewayController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/GatewayController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\SettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/SettingController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\TicketController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/TicketController.php',
@@ -545,7 +551,8 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\DocumentationController' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentationController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
-        'App\\Http\\Controllers\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/ShopController.php',
+        'App\\Http\\Controllers\\Shop\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CartController.php',
+        'App\\Http\\Controllers\\Shop\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/ShopController.php',
         'App\\Http\\Controllers\\TPGController' => __DIR__ . '/../..' . '/app/Http/Controllers/TPGController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -557,6 +564,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\CardRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CardRequest.php',
         'App\\Http\\Requests\\CheckoutRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CheckoutRequest.php',
+        'App\\Http\\Requests\\FastPayRequest' => __DIR__ . '/../..' . '/app/Http/Requests/FastPayRequest.php',
         'App\\Http\\Requests\\GatewayRequest' => __DIR__ . '/../..' . '/app/Http/Requests/GatewayRequest.php',
         'App\\Http\\Requests\\ProductCategoryRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductCategoryRequest.php',
         'App\\Http\\Requests\\ProductRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProductRequest.php',
@@ -1233,6 +1241,9 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'Firebase\\JWT\\ExpiredException' => __DIR__ . '/..' . '/firebase/php-jwt/src/ExpiredException.php',
         'Firebase\\JWT\\JWT' => __DIR__ . '/..' . '/firebase/php-jwt/src/JWT.php',
         'Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
+        'Ghanem\\Rating\\Commands\\MigrationCommand' => __DIR__ . '/..' . '/ghanem/rating/src/Commands/MigrationCommand.php',
+        'Ghanem\\Rating\\Models\\Rating' => __DIR__ . '/..' . '/ghanem/rating/src/Models/Rating.php',
+        'Ghanem\\Rating\\Traits\\Ratingable' => __DIR__ . '/..' . '/ghanem/rating/src/Traits/Ratingable.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',

@@ -259,11 +259,59 @@
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="review-box text-center align-item-center">
-                                        <h1 class="byekan">{{ $product->buyCount }}</h1>
-                                        <h4 class="header-title">مجموع فروش</h4>
-                                    </div>
+                                    <div class="review-box text-center align-item-center" style="direction:ltr">
+                                        <h5 style="color: #f1646c;" class="p-3">امتیاز خود را به این کالا ثبت کنید</h5>
+                                            <select id="combostar">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                        </select>
+                                        <br>
+                                        <span id="starcount">0</span>
+                                        <h4 class="header-title pt-4">مجموع فروش</h4>
+                                        <div class="review-box text-center align-item-center p-3">
+                                            <h1 class="byekan p-2">{{ $product->buyCount }}</h1>
+                                            <ul class="list-inline mb-0 product-review">
+                                                <li class="list-inline-item"><small class="text-muted font-14">مجموع  آرا ({{ $productRates->count() }})</small></li>
+                                                <li class="list-inline-item"><small class="text-muted font-14">متوسط  آرا ({{ (int)$product->avgRating }})</small></li>
+                                             </ul>
+                                             <ul class="list-inline mb-0 product-review">
 
+                                                    @for ($i = 1; $i <= (int)$product->avgRating; $i++)
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    @endfor
+                                                </ul>
+                                        </div>
+                                    </div>
+                                    <ul class="list-unstyled mt-3 font-15 p-1">
+                                        <li class="mb-2"><span class="text-info">5 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 5)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width:{{$productRates->where('rating' , 5)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2"><span class="text-info">4 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 4)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 4)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2"><span class="text-info">3 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 3)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 3)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2"><span class="text-info">2 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 2)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 2)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li><span class="text-info">1 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 1)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 1)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
 
                                     <h4 class="mt-3 mb-3">برچسب ها :</h4>
                                     <ul class="tags iranyekan">
@@ -276,6 +324,8 @@
                                 </div>
                                 <!--end card-body-->
                             </div>
+
+
                             <!--end card-->
                         </div>
                         <!--end col-->
@@ -286,6 +336,14 @@
 
 @endsection
 @section('pageScripts')
-
+<script src="/app/shop/assets/js/jquery.combostars.js"></script>
+<script>
+    $(function() {
+        $('#combostar').on('change', function() {
+            $('#starcount').text($(this).val());
+        });
+        $('#combostar').combostars();
+    });
+</script>
 @include('sweet::alert')
 @stop

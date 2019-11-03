@@ -1,10 +1,11 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ghanem\Rating\Traits\Ratingable as Rating;
 use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes,Rating;
      protected $dates = ['deleted_at'];
      protected $guarded = ['id'];
     protected $casts = [
@@ -32,5 +33,9 @@ class Product extends Model
  public function purchases()
  {
      return $this->hasMany('App\UserPurchase');
+ }
+ public function rates()
+ {
+     return $this->hasMany('App\Rating','ratingable_id');
  }
 }
