@@ -9,6 +9,7 @@ use App\Voucher;
 use App\ShopCategory;
 use App\UserPurchase;
 use App\Cart;
+use App\Rating;
 use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,7 +66,13 @@ class ShopController extends \App\Http\Controllers\Controller {
         $shopCategories = $shop->ProductCategories()->get();
         $product = $shop->products()->where('id', $id)->first();
         $productRates = $product->rates()->get();
-        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories','productRates'));
+        $userProducts = [];
+        foreach (\auth::user()->cart()->withTrashed()->where('status' , 1)->get() as $cart) {
+        foreach($cart->products() as $single_product){
+          $userProducts[] = $single_product;
+        }
+        }
+        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories','productRates' , 'userProducts'));
     }
     public function showCategory($shop, $categroyId,Request $request) {
         $shop = Shop::where('english_name', $shop)->first();
@@ -298,6 +305,23 @@ class ShopController extends \App\Http\Controllers\Controller {
     public function userPurchaseList() {
         $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
         return view('app.shop.user-purchased-list', compact('purchases'));
+    }
+
+    public function updateRate(Request $request){
+      $user = \auth::user();
+      $product = Product::find($request->id);
+      if(Rating::where([['author_id' ,$user->id] , ['ratingable_id' , $product->id]])->get()->count() == 0){
+        $rating = $product->rating([
+            'rating' => $request->rate
+        ], $user);
+        alert()->success('امتیاز شما با موفقیت ثبت شد', 'انجام شد');
+        return redirect()->route('shop.show.product', ['shop' => $request->shop , 'id' => $request->id]);
+      }
+      else{
+        alert()->error('شما قبلا برای این محصول نظر ثبت کرده اید', 'خطا');
+        return redirect()->route('shop.show.product', ['shop' => $request->shop , 'id' => $request->id]);
+      }
+
     }
 
     /**

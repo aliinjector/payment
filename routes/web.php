@@ -84,6 +84,7 @@ Route::get('/paymentHelper', function(Request $request){
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
         Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');
         Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
+        Route::patch('/{shop}/{id}/rate', 'ShopController@updateRate')->name('shop.rate');
 });
 
     Route::namespace('Shop')->group(function () {
