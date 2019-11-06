@@ -16,15 +16,15 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $user = User::first();
-        $post = Product::find(11);
-        //
-        $rating = $post->rating([
-            'rating' => 1
-        ], $user);
-
+//        $user = User::first();
+//        $post = Product::find(11);
+//        //
+//        $rating = $post->rating([
+//            'rating' => 1
+//        ], $user);
         // dd($post->rates()->get());
-        // return view('app.index');
+
+         return view('app.index');
     }
 
     /**

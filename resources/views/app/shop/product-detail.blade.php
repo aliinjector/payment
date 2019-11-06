@@ -1,5 +1,6 @@
 @extends('app.shop.layouts.master')
 @section('content')
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
@@ -339,11 +340,18 @@
 
                             <!--end card-->
                         </div>
+
+
                         <!--end col-->
                     </div>
 
+
+                    @include('app.shop.layouts.partials.comments')
+
+
                     <!-- container -->
                 </div>
+            </div>
 
 @endsection
 @section('pageScripts')

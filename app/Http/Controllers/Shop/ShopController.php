@@ -92,6 +92,7 @@ class ShopController extends \App\Http\Controllers\Controller {
             $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type' , $request->type)->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy , $orderBy)->paginate($perPage);
           }
         }
+
         else{
         $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
       }

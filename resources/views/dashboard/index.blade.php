@@ -90,7 +90,7 @@
                     <script src="https://code.highcharts.com/modules/exporting.js"></script>
                     <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-                    <div id="monthly" style="min-width: 310px; height: 400px; margin: 0 auto; direction: rtl"></div>
+                    <div id="monthly" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
 
 
 
@@ -454,6 +454,9 @@
             chart: {
                 type: 'line',
             },
+            style:{
+                direction: 'rtl'
+            },
             title: {
                 text: ''
             },
@@ -473,7 +476,7 @@
                     dataLabels: {
                         enabled: true
                     },
-                    enableMouseTracking: false
+                    enableMouseTracking: true
                 }
             },
             series: [{
