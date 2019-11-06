@@ -23,6 +23,7 @@ class ProductCategoryController extends Controller
         }
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
+      // dd(\Auth::user()->shop()->first()->ProductCategories()->get()[1]->children()->get()->first()->children()->get()->first()->children()->get());
         return view('dashboard.shop.product-category', compact('categoires' , 'shop'));
     }
 
@@ -50,6 +51,7 @@ class ProductCategoryController extends Controller
                 if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
+                    $productCategory->parent_id = $request->parent_id;
                     $productCategory->description = $request->description;
                     $productCategory->shop_id = \Auth::user()->shop()->first()->id;
                     $productCategory->save();
@@ -67,6 +69,7 @@ class ProductCategoryController extends Controller
                 if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
+                    $productCategory->parent_id = $request->parent_id;
                     $productCategory->description = $request->description;
                     $productCategory->shop_id = \Auth::user()->shop()->first()->id;
                     $productCategory->save();
