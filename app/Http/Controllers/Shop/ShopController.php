@@ -92,6 +92,7 @@ class ShopController extends \App\Http\Controllers\Controller
     {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
+        $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id' , null);
         $category = ProductCategory::where('id', $categroyId)->get()->first()->id;
         if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
             $orderBy = $request->sortBy['orderBy'];
@@ -108,7 +109,7 @@ class ShopController extends \App\Http\Controllers\Controller
         } else {
             $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
         }
-        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category'));
+        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category' , 'categories'));
     }
 
     /**
