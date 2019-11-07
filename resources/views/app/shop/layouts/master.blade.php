@@ -62,9 +62,10 @@
                 <li class="nav-item">
                         <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop',$shop->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
                       </li>
-              @foreach ($shopCategories->where('parent_id' , null) as $shopCategorie)
+              @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
+              {{-- {{ dd() }} --}}
             <li class="nav-item">
-              <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategorie->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategorie->name }}</a>
+              <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategory->name }}</a>
             </li>
             @endforeach
           </ul>

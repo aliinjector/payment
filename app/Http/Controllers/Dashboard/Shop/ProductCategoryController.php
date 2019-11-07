@@ -23,7 +23,6 @@ class ProductCategoryController extends Controller
         }
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
-      // dd(\Auth::user()->shop()->first()->ProductCategories()->get()[1]->children()->get()->first()->children()->get()->first()->children()->get());
         return view('dashboard.shop.product-category', compact('categoires' , 'shop'));
     }
 
