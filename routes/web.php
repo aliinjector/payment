@@ -60,6 +60,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product.destroy');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('change.status.product');
+        Route::resource('product-comments', 'CommentsController');
         Route::resource('product-detail', 'ProductDetailController');
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy');
@@ -70,10 +71,10 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('change.status.voucher');
 
         //Comment
-        Route::get('comment/notApproved', 'CommentController@notApproved')->name('comment.notApproved');
-        Route::post('comment/delete', 'CommentController@destroy');
-        Route::get('comment/approve/{id}/{commentable}', 'CommentController@approve')->name('comment.approve');
-        Route::resource('comment', 'CommentController');
+        Route::get('comment/notApproved', 'CommentsController@notApproved')->name('comment.notApproved');
+        Route::post('comment/delete', 'CommentsController@destroy');
+        Route::get('comment/approve/{id}/{commentable}', 'CommentsController@approve')->name('comment.approve');
+        Route::resource('comment', 'CommentsController');
 
     });
 });
