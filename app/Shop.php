@@ -40,4 +40,9 @@ class Shop extends Model
        return $this->belongsTo('App\ShopCategory' , 'category_id');
    }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
 }

@@ -17,6 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('parent_id');
+            $table->unsignedInteger('shop_id');
             $table->boolean('approved')->default(0);
             $table->text('comment');
             $table->integer('commentable_id');
