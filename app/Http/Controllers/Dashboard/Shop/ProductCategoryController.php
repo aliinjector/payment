@@ -50,6 +50,10 @@ class ProductCategoryController extends Controller
                 if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
+                    if($request->parent_id == 'null')
+                      $productCategory->parent_id = null;
+                    else
+                    $productCategory->parent_id = $request->parent_id;
                     $productCategory->description = $request->description;
                     $productCategory->shop_id = \Auth::user()->shop()->first()->id;
                     $productCategory->save();
@@ -67,6 +71,7 @@ class ProductCategoryController extends Controller
                 if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
+                    $productCategory->parent_id = $request->parent_id;
                     $productCategory->description = $request->description;
                     $productCategory->shop_id = \Auth::user()->shop()->first()->id;
                     $productCategory->save();

@@ -1,12 +1,15 @@
 <?php
 namespace App;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Ghanem\Rating\Traits\Ratingable as Rating;
 use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
-    use SoftDeletes;
-     protected $dates = ['deleted_at'];
-     protected $guarded = ['id'];
+    use SoftDeletes, Rating;
+
+    protected $dates = ['deleted_at'];
+    protected $guarded = ['id'];
     protected $casts = [
     'image' => 'array'
 ];
@@ -33,4 +36,20 @@ class Product extends Model
  {
      return $this->hasMany('App\UserPurchase');
  }
+ public function rates()
+ {
+     return $this->hasMany('App\Rating','ratingable_id');
+ }
+
+    public function comments()
+    {
+        return $this->morphMany('App\Comment', 'commentable');
+    }
+
+    public function galleries()
+    {
+        return $this->belongsTo('App\Gallery');
+    }
+
+
 }

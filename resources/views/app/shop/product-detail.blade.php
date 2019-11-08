@@ -1,5 +1,6 @@
 @extends('app.shop.layouts.master')
 @section('content')
+
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
@@ -24,22 +25,12 @@
                                                 <div class="single-pro-detail">
                                                     <h3 class="pro-title iranyekan pb-5">{{ $product->title }}
                                                         <div class="custom-border mt-3"></div>
-
                                                     </h3>
-
                                                     @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
                                                     <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجود</span>
                                                       @else
                                                         <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
                                                     @endif
-                                                    {{-- <ul class="list-inline mb-2 product-review">
-                                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                                            <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                                            <li class="list-inline-item"><i class="mdi mdi-star-half text-warning"></i></li>
-                                                            <li class="list-inline-item">4.5 (30 reviews)</li>
-                                                        </ul> --}}
                                                         @if($product->off_price != null)
                                                     <h2 class="pro-price">{{  number_format($product->off_price) }} تومان</h2>
                                                     <span><del>{{  number_format($product->price) }} تومان</del></span>
@@ -259,11 +250,80 @@
                         <div class="col-md-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="review-box text-center align-item-center">
-                                        <h1 class="byekan">{{ $product->buyCount }}</h1>
-                                        <h4 class="header-title">مجموع فروش</h4>
-                                    </div>
+                                    <div class="review-box text-center align-item-center" style="direction:ltr">
+                                      @auth
+                                        @if(collect($userProducts)->where('id' ,$product->id)->count() > 0)
+                                        <h5 style="color: #f1646c;" class="p-3">امتیاز خود را به این کالا ثبت کنید</h5>
+                                        <form class="" action="{{route('shop.rate' , ['shop'=>$shop->english_name, 'id'=>$product->id])}}" method="post">
+                                          @csrf
+                                          {{ method_field('PATCH') }}
+                                          @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
+                                      @else
+                                        <select id="combostar">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                    </select>
+                                      @endif
+                                        <input id="starcount" type="hidden" name="rate" value="">
+                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                        <input type="hidden" name="shop" value="{{ $shop->english_name }}">
+                                        <br>
+                                        @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
+                                          <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded comming-soon">شما قبلا امتیاز ثبت کرده اید </button>
+                                        @else
+                                          <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded">ثبت امتیاز</button>
+                                        @endif
+                                      </form>
+                                      @endif
+                                      @endauth
+                                        <br>
+                                        <h4 class="header-title pt-4">مجموع فروش</h4>
+                                        <div class="review-box text-center align-item-center p-3">
+                                            <h1 class="byekan p-2">{{ $product->buyCount }}</h1>
+                                            <ul class="list-inline mb-0 product-review">
+                                                <li class="list-inline-item"><small class="text-muted font-14">مجموع  آرا ({{ $productRates->count() }})</small></li>
+                                                <li class="list-inline-item"><small class="text-muted font-14">متوسط  آرا ({{ (int)$product->avgRating }})</small></li>
+                                             </ul>
+                                             <ul class="list-inline mb-0 product-review">
 
+                                                    @for ($i = 1; $i <= (int)$product->avgRating; $i++)
+                                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
+                                                    @endfor
+                                                </ul>
+                                        </div>
+                                    </div>
+                                    @if ($productRates->count() > 0)
+                                    <ul class="list-unstyled mt-3 font-15 p-1">
+                                        <li class="mb-2"><span class="text-info">5 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 5)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width:{{$productRates->where('rating' , 5)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2"><span class="text-info">4 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 4)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 4)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="18" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2"><span class="text-info">3 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 3)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 3)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li class="mb-2"><span class="text-info">2 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 2)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 2)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                        <li><span class="text-info">1 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 1)->count() }}</small>
+                                            <div class="progress mt-2" style="height:5px;">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 1)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                  @endif
 
                                     <h4 class="mt-3 mb-3">برچسب ها :</h4>
                                     <ul class="tags iranyekan">
@@ -276,16 +336,64 @@
                                 </div>
                                 <!--end card-body-->
                             </div>
+
+
                             <!--end card-->
                         </div>
+
+
                         <!--end col-->
                     </div>
 
+
+                    @include('app.shop.layouts.partials.comments')
+
+
                     <!-- container -->
                 </div>
+            </div>
 
 @endsection
 @section('pageScripts')
+<script src="/app/shop/assets/js/jquery.combostars.js"></script>
+<script>
+    $(function() {
+        $('#combostar').on('change', function() {
+            $('#starcount').val($(this).val());
+        });
+        $('#combostar').combostars();
+    });
+</script>
+{{-- <script>
+    $(document).on('click', '#combostar', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var cart = $(this).data('cart');
+        swal("آیا اطمینان دارید؟", {
+                dangerMode: true,
+                buttons: ["انصراف", "حذف"],
 
+            })
+            .then(function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('user-cart/remove')}}",
+                        data: {
+                            id: id,
+                            cart: cart,
+                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                        },
+                        success: function(data) {
+                          location.reload();
+
+                        }
+                    });
+                } else {
+                    swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                }
+            });
+    });
+</script> --}}
 @include('sweet::alert')
 @stop

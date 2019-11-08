@@ -9,6 +9,7 @@ use App\Voucher;
 use App\ShopCategory;
 use App\UserPurchase;
 use App\Cart;
+use App\Rating;
 use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,37 +18,46 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class ShopController extends \App\Http\Controllers\Controller {
+class ShopController extends \App\Http\Controllers\Controller
+{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public $discountedPrice;
-    public function index() {
+
+    public function index()
+    {
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    protected function create(array $data) {
+    protected function create(array $data)
+    {
     }
+
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
     }
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Shop  $shop
+     * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function show($shop) {
+    public function show($shop)
+    {
         if (Shop::where('english_name', $shop)->first() == null) {
             return abort(404);
         }
@@ -57,47 +67,67 @@ class ShopController extends \App\Http\Controllers\Controller {
         $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
         return view('app.shop.shop', compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
     }
-    public function showProduct($shop, $id) {
+
+    public function showProduct($shop, $id)
+    {
         if (Shop::where('english_name', $shop)->first() == null || Shop::where('english_name', $shop)->first()->products()->where('id', $id)->first() == null) {
             return abort(404);
         }
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $product = $shop->products()->where('id', $id)->first();
-        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories'));
+        $productRates = $product->rates()->get();
+        $userProducts = [];
+        if(\auth::user()){
+        foreach (\auth::user()->cart()->withTrashed()->where('status', 1)->get() as $cart) {
+            foreach ($cart->products() as $single_product) {
+                $userProducts[] = $single_product;
+            }
+        }
+        }
+        $comments = $product->comments;
+
+        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments'));
     }
-    public function showCategory($shop, $categroyId,Request $request) {
+
+    public function showCategory($shop, $categroyId, Request $request)
+    {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
-        $category = ProductCategory::where('id' , $categroyId)->get()->first()->id;
-        if($request->has('type') and $request->has('sortBy')){
-          $orderBy = $request->sortBy['orderBy'];
-          $filterBy = $request->type;
-          $sortBy = $request->sortBy['field'];
-          $perPage = 8;
-          if($request->type == 'all'){
-            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->orderBy($sortBy , $orderBy)->paginate($perPage);
-          }
-          else{
-            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type' , $request->type)->orderBy($sortBy , $orderBy)->paginate($perPage);
-          }
+        $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id' , null);
+        $category = ProductCategory::where('id', $categroyId)->get()->first()->id;
+        if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
+            $orderBy = $request->sortBy['orderBy'];
+            $minPrice = $request->minprice;
+            $maxPrice = $request->maxprice;
+            $filterBy = $request->type;
+            $sortBy = $request->sortBy['field'];
+            $perPage = 8;
+            if ($request->type == 'all') {
+                $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy, $orderBy)->paginate($perPage);
+            } else {
+                $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy, $orderBy)->paginate($perPage);
+            }
+        } else {
+            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
         }
-        else{
-        $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
-      }
-        return view('app.shop.category', compact('products', 'shopCategories', 'shop','category'));
+        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category' , 'categories'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Shop  $shop
+     * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shop $shop) {
+    public function edit(Shop $shop)
+    {
         //
 
     }
-    public function purchaseList($shop, $id) {
+
+    public function purchaseList($shop, $id)
+    {
         if (\Auth::guest()) {
             return redirect()->route('register');
         } else {
@@ -107,36 +137,31 @@ class ShopController extends \App\Http\Controllers\Controller {
             return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product'));
         }
     }
-    public function tagProduct($shop, $name) {
+
+    public function tagProduct($shop, $name, Request $request)
+    {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
-        $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->get();
-        return view('app.shop.tags-product', compact('products', 'shop', 'shopCategories'));
-    }
-    public function approved($shopName, $productId, Request $request) {
-        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first() == null) {
-            $shop = Shop::where('english_name', $shopName)->first();
-            $product = Product::where('id', $productId)->get()->first();
-            $shopCategories = $shop->ProductCategories()->get();
-            $total_price = \Auth::user()->cart()->get()->first()->total_price;
-            $cart = \Auth::user()->cart()->get()->first()->id;
-            $productsID = [];
-            $quantity = [];
-            $productTotal_price = [];
-            foreach(DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a){
-             $productsID[] = $a->product_id;
-             $quantity[] = $a->quantity;
-             $productTotal_price[] = $a->total_price;
+        $tagName = Tag::where('name', $name)->get()->first()->name;
+        if ($request->has('type') and $request->has('sortBy')) {
+            $orderBy = $request->sortBy['orderBy'];
+            $filterBy = $request->type;
+            $sortBy = $request->sortBy['field'];
+            $perPage = 16;
+            if ($request->type == 'all') {
+                $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->orderBy($sortBy, $orderBy)->paginate($perPage);
+            } else {
+                $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->where('type', $request->type)->orderBy($sortBy, $orderBy)->paginate($perPage);
             }
-           $products = [];
-           foreach ($productsID as $productID) {
-               $product = Product::where('id', $productID)->get()->first();
-               $products[] = $product;
-           }
-            alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
-            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product','products','quantity','productTotal_price','total_price'));
+        } else {
+            $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->paginate(8);
         }
-        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
+        return view('app.shop.tags-product', compact('products', 'shop', 'shopCategories', 'tagName'));
+    }
+
+    public function approved($shopName, $productId, Request $request)
+    {
+        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now()], ['starts_at', '<', now()],])->get()->first() == null) {
             $shop = Shop::where('english_name', $shopName)->first();
             $product = Product::where('id', $productId)->get()->first();
             $shopCategories = $shop->ProductCategories()->get();
@@ -145,31 +170,53 @@ class ShopController extends \App\Http\Controllers\Controller {
             $productsID = [];
             $quantity = [];
             $productTotal_price = [];
-            foreach(DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a){
-             $productsID[] = $a->product_id;
-             $quantity[] = $a->quantity;
-             $productTotal_price[] = $a->total_price;
+            foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
+                $productsID[] = $a->product_id;
+                $quantity[] = $a->quantity;
+                $productTotal_price[] = $a->total_price;
             }
-           $products = [];
-           foreach ($productsID as $productID) {
-               $product = Product::where('id', $productID)->get()->first();
-               $products[] = $product;
-           }
+            $products = [];
+            foreach ($productsID as $productID) {
+                $product = Product::where('id', $productID)->get()->first();
+                $products[] = $product;
+            }
+            alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
+            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'products', 'quantity', 'productTotal_price', 'total_price'));
+        }
+        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now()], ['starts_at', '<', now()],])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
+            $shop = Shop::where('english_name', $shopName)->first();
+            $product = Product::where('id', $productId)->get()->first();
+            $shopCategories = $shop->ProductCategories()->get();
+            $total_price = \Auth::user()->cart()->get()->first()->total_price;
+            $cart = \Auth::user()->cart()->get()->first()->id;
+            $productsID = [];
+            $quantity = [];
+            $productTotal_price = [];
+            foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
+                $productsID[] = $a->product_id;
+                $quantity[] = $a->quantity;
+                $productTotal_price[] = $a->total_price;
+            }
+            $products = [];
+            foreach ($productsID as $productID) {
+                $product = Product::where('id', $productID)->get()->first();
+                $products[] = $product;
+            }
             $cartTotalPrice = \Auth::user()->cart()->get()->first()->total_price;
             $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             $discountedPrice = $cartTotalPrice - $voucherDiscount;
             Session::put('discountedPrice', $discountedPrice);
             alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount','products' , 'quantity','productTotal_price','total_price'));
-        }
-        else {
+            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
+        } else {
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
             return redirect()->back();
         }
     }
 
 
-    public function downlaodFile($shop, $id) {
+    public function downlaodFile($shop, $id)
+    {
         $product = Product::find($id);
         $purchase = $product->purchases()->get();
         if (\auth::user()) {
@@ -183,7 +230,9 @@ class ShopController extends \App\Http\Controllers\Controller {
             return redirect()->route('login');
         }
     }
-    public function downlaodLink(Request $request, $shop, $id) {
+
+    public function downlaodLink(Request $request, $shop, $id)
+    {
         $this->approved($shop, $id, $request);
         if (!$request->hasValidSignature()) {
             abort(401);
@@ -215,31 +264,32 @@ class ShopController extends \App\Http\Controllers\Controller {
     }
 
 
-    public function purchaseSubmit($shop, $cartID, Request $request) {
-      $total_price = \Auth::user()->cart()->get()->first()->total_price;
-      $cart = \Auth::user()->cart()->get()->first()->id;
-      $productsID = [];
-      $quantity = [];
-      $productTotal_price = [];
-      foreach(DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a){
-       $productsID[] = $a->product_id;
-       $quantity[] = $a->quantity;
-       $productTotal_price[] = $a->total_price;
-      }
-     $products = [];
-     foreach ($productsID as $productID) {
-         $product = Product::where('id', $productID)->get()->first();
-         $products[] = $product;
-     }
+    public function purchaseSubmit($shop, $cartID, Request $request)
+    {
+        $total_price = \Auth::user()->cart()->get()->first()->total_price;
+        $cart = \Auth::user()->cart()->get()->first()->id;
+        $productsID = [];
+        $quantity = [];
+        $productTotal_price = [];
+        foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
+            $productsID[] = $a->product_id;
+            $quantity[] = $a->quantity;
+            $productTotal_price[] = $a->total_price;
+        }
+        $products = [];
+        foreach ($productsID as $productID) {
+            $product = Product::where('id', $productID)->get()->first();
+            $products[] = $product;
+        }
 
 
         $cart = Cart::where('id', $cartID)->get()->first();
         $shopId = Shop::where('english_name', $shop)->get()->first()->id;
-            if (!isset($request->address)) {
-                $request->validate(['new_address' => 'required']);
-            } else {
-                $request->validate(['address' => 'required']);
-            }
+        if (!isset($request->address)) {
+            $request->validate(['new_address' => 'required']);
+        } else {
+            $request->validate(['address' => 'required']);
+        }
         if (isset(\Auth::user()->userInformation()->get()->first()->address)) {
             $userAddress1 = \Auth::user()->userInformation()->get()->first()->address;
         }
@@ -265,11 +315,11 @@ class ShopController extends \App\Http\Controllers\Controller {
             $purchase->address = $request->new_address;
         }
         $purchase->shipping = $request->shipping_way;
-            if (Session::get('discountedPrice') == null) {
-                $purchase->total_price = \Auth::user()->cart()->get()->first()->total_price;
-            } else {
-                $purchase->total_price = Session::get('discountedPrice');
-            }
+        if (Session::get('discountedPrice') == null) {
+            $purchase->total_price = \Auth::user()->cart()->get()->first()->total_price;
+        } else {
+            $purchase->total_price = Session::get('discountedPrice');
+        }
         $purchase->save();
         Session::pull('discountedPrice');
         DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
@@ -277,29 +327,51 @@ class ShopController extends \App\Http\Controllers\Controller {
         alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
         return redirect()->route('user.purchased.list', ['userID' => \auth::user()->id]);
     }
-    public function userPurchaseList() {
+
+    public function userPurchaseList()
+    {
         $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
         return view('app.shop.user-purchased-list', compact('purchases'));
+    }
+
+    public function updateRate(Request $request)
+    {
+        $user = \auth::user();
+        $product = Product::find($request->id);
+        if (Rating::where([['author_id', $user->id], ['ratingable_id', $product->id]])->get()->count() == 0) {
+            $rating = $product->rating([
+                'rating' => $request->rate
+            ], $user);
+            alert()->success('امتیاز شما با موفقیت ثبت شد', 'انجام شد');
+            return redirect()->route('shop.show.product', ['shop' => $request->shop, 'id' => $request->id]);
+        } else {
+            alert()->error('شما قبلا برای این محصول نظر ثبت کرده اید', 'خطا');
+            return redirect()->route('shop.show.product', ['shop' => $request->shop, 'id' => $request->id]);
+        }
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Shop  $shop
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shop $shop) {
+    public function update(Request $request, Shop $shop)
+    {
         //
 
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Shop  $shop
+     * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shop $shop) {
+    public function destroy(Shop $shop)
+    {
         //
 
     }
