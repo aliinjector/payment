@@ -85,18 +85,36 @@
       <i class="fa fa-angle-left light-dark-text-color font-12 mr-2"></i>{{ $category->name }}
       </a>
       <div class="list-group collapse border-0" id="item-{{$category->id}}">
-      <a href="#item-{{$category->id}}-{{$category->id}}" class="border-0 iranyekan  dark-text-color p-2" data-toggle="collapse">
-      @if($category->children()->exists())
+      {{-- @if($category->children()->exists()) --}}
         @foreach ($category->children()->get() as $subCategory)
+          <a href="#item-{{$category->id}}-{{$subCategory->id}}" class="border-0 iranyekan  dark-text-color p-2" data-toggle="collapse">
         <i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i> {{ $subCategory->name}} </br>
-      @endforeach
-      @endif
       </a>
-      <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$category->id}}">
-          @if($category->children()->exists())
-      <a href="#" class="border-0 iranyekan dark-text-color p-2 mr-5">{{ $category->children()->get()->first()->children()->get()->first()->name}}</a>
-    @endif
+        <a href="">{{ $subCategory->name}} لینک </a></br>
+""      <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$subCategory->id}}">
+          {{-- @if($subCategory->children()->exists() and $category->children()->get()->first()->children()->exists()) --}}
+            @foreach ($subCategory->children()->get() as $subSubCategory)
+      <a href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}" class="border-0 iranyekan dark-text-color p-2 mr-5" data-toggle="collapse">{{ $subSubCategory->name}}</a>
+      <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}">
+          {{-- @if($subCategory->children()->exists() and $category->children()->get()->first()->children()->exists()) --}}
+            @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
+      <a href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}-{{$subSubSubCategory->id}}" class="border-0 iranyekan dark-text-color p-2 mr-5 pr-4" data-toggle="collapse">{{ $subSubSubCategory->name}}
+      </a>
+      <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}-{{$subSubSubCategory->id}}">
+          {{-- @if($subCategory->children()->exists() and $category->children()->get()->first()->children()->exists()) --}}
+            @foreach ($subSubSubCategory->children()->get() as $subSubSubSubCategory)
+      <a href="#" class="border-0 iranyekan dark-text-color p-2 mr-5  pr-5">{{ $subSubSubSubCategory->name}}
+      </a>
+      @endforeach
+    </div>
+      @endforeach
+          {{-- @endif --}}
       </div>
+      @endforeach
+          {{-- @endif --}}
+      </div>
+        @endforeach
+      {{-- @endif --}}
       </div>
     @endforeach
 

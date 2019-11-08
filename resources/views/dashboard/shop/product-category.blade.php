@@ -48,7 +48,7 @@
                      <div class="input-group mt-3">
                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">شاخه دسته بندی:</span></div>
                         <select class="form-control inputfield" name="parent_id">
-                           <option selected>دسته بندی اصلی</option>
+                           <option selected value="null">دسته بندی اصلی</option>
                            @foreach($categoires as $category)
                              @unless($category->parent()->get()->first() != null and $category->parent()->get()->first()->parent()->get()->first() != null and $category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first() != null and $category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists() and !$category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists())
                            <option value="{{ $category->id }}">{{ $category->name }}</option>
