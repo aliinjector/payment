@@ -1,6 +1,12 @@
 @extends('app.shop.layouts.master')
 @section('content')
 
+    <link href='/app/shop/assets/css//simplelightbox.min.css' rel='stylesheet' type='text/css'>
+    <style>
+        .sl-navigation{
+            direction: ltr!important;
+        }
+    </style>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="page-title-box">
@@ -123,6 +129,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="gallery mt-4 mr-4">
+                                                @foreach ($galleries as $gallery)
+                                                    <a href="/{{ $gallery->filename }}"><img width="100px" src="/{{ $gallery->filename }}" alt="" title=""/></a>
+                                                @endforeach
+                                            </div>
+
                                             <!--end col-->
                                         </div>
                                         <!--end row-->
@@ -395,5 +408,16 @@
             });
     });
 </script> --}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="/app/shop/assets/js/simple-lightbox.min.js"></script>
+<script>
+    $(function(){
+        var $gallery = $('.gallery a').simpleLightbox();
+    });
+</script>
+
+
 @include('sweet::alert')
 @stop

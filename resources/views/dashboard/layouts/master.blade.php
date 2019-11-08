@@ -185,7 +185,7 @@ Author: Ali Rahmani
                     </ul>
                 </div>
                 <!-- end Crypto -->
-                <div id="PayanPayShopMaker" class="main-icon-menu-pane">
+                <div id="PayanPayShopMaker" class="main-icon-menu-pane {{ request()->is('*galleries*') == 1 ? 'active' : '' }}">
                     <div class="title-box">
 
                         <h6 class="menu-title">فروشگاه ساز</h6></div>
@@ -194,10 +194,10 @@ Author: Ali Rahmani
                             @endif
                     <ul class="nav">
                   @if (\Auth::user()->shop()->count() == 0)
-                    <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>ایجاد فروشگاه</a></li>
+                    <li class="nav-item"><a class="nav-link " href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>ایجاد فروشگاه</a></li>
                 @else
                         <li class="nav-item"><a class="nav-link" href="{{ route('dashboard-shop.index') }}"><i class="dripicons-view-thumb"></i>گزارشات فروشگاه شما</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>لیست کالاها / خدمات</a></li>
+                        <li class="nav-item"><a class="nav-link {{ request()->is('*galleries*') == 1 ? 'active' : '' }}" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>لیست کالاها / خدمات</a></li>
                          <li class="nav-item"><a class="nav-link" href="{{ route('product-comments.index') }}"><i class="dripicons-calendar"></i>مدیریت نظرات</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('product-category.index') }}"><i class="dripicons-trophy"></i> دسته بندی</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.index') }}"><i class="mdi mdi-gift"></i>  کدهای تخفیف</a></li>

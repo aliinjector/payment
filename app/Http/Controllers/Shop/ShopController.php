@@ -86,8 +86,9 @@ class ShopController extends \App\Http\Controllers\Controller
         }
         }
         $comments = $product->comments;
+        $galleries = $product->galleries;
 
-        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments'));
+        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries'));
     }
 
     public function showCategory($shop, $categroyId, Request $request)

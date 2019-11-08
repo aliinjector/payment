@@ -20,6 +20,12 @@
                     </div>
                     {{-- <h4 class="page-title">لیست محصولات دسته بندی شماره یک</h4> --}}
                 </div>
+
+                <div class="text-right mt-4">
+                    <a href="{{ route('product-list.index') }}" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold rounded"> بازگشت به لیست محصولات</a>
+                </div>
+
+
                 <!--end page-title-box-->
             </div>
             <!--end col-->
@@ -71,7 +77,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">گالری تصاویر</h4>
+                        <h4 class="mt-2 mb-4 header-title">تصاویر مربوط به {{ $product->title }}</h4>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
                             <div class="row">
@@ -83,6 +89,7 @@
 
                                     <form method="post" action="{{ url('/dashboard/shop/image/upload/store/' . collect(request()->segments())->last() )}}" enctype="multipart/form-data"
                                           class="dropzone" id="dropzone">
+                                        <div class="dz-message" data-dz-message><span>جهت افزودن تصویر به گالری، اینجا کلیک کنید</span></div>
                                         @csrf
                                     </form>
 
@@ -121,29 +128,18 @@
             Dropzone.options.dropzone =
                 {
 
-                    // Create the mock file:
-                    var mockFile = { name: "a.jpg", size: 12345 };
-
-            // Call the default addedfile event handler
-            myDropzone.emit("addedfile", mockFile);
-
-            // And optionally show the thumbnail of the file:
-            myDropzone.emit("thumbnail", mockFile, "/image/url");
-
-
-
-            maxFilesize: 12,
+            maxFilesize: 2,
                     renameFile: function(file) {
                         var dt = new Date();
                         var time = dt.getTime();
                         return time+file.name;
                     },
-                    acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.PNG,.JPG",
                     addRemoveLinks: true,
                     timeout: 50000,
                     removedfile: function(file)
                     {
-                        var name = file.upload.filename;
+                        var name = file.name;
                         $.ajax({
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -162,15 +158,21 @@
                             fileRef.parentNode.removeChild(file.previewElement) : void 0;
                     },
 
-                    success: function(file, response)
-                    {
-                        console.log(response);
-                    },
-                    error: function(file, response)
-                    {
-                        return false;
+                    init: function () {
+
+                                @foreach($galleries as $gallery)
+                                var mockFile = {name: "{{ url("$gallery->filename") }}", size: 12345, type: 'image/jpeg'};
+                                    this.options.addedfile.call(this, mockFile);
+                                    this.options.thumbnail.call(this, mockFile, "{{ url("$gallery->filename") }}");
+                                    mockFile.previewElement.classList.add('dz-success');
+                                    mockFile.previewElement.classList.add('dz-complete');
+                                @endforeach
+
+
                     }
                 };
+
+
         </script>
 
 

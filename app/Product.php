@@ -48,7 +48,7 @@ class Product extends Model
 
     public function galleries()
     {
-        return $this->belongsTo('App\Gallery');
+        return $this->hasMany('App\Gallery');
     }
 
 

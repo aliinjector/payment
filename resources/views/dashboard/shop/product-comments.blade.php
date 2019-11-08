@@ -72,11 +72,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">نظر ها</h4>
-
-
-                        <p class="text-muted mb-4 font-13">لیست تمامی دسته بندی های شما</p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <h4 class="mt-0 header-title">نظر ها</h4><div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
                             <div class="row">
                                 <div class="col-sm-12">
