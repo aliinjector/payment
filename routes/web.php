@@ -70,6 +70,14 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('voucher.destroy');
         Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('change.status.voucher');
 
+
+        //Gallery
+        Route::post('image/delete','GalleryController@fileDestroy');
+        Route::get('galleries/{product}', 'GalleryController@index')->name('galleries.index');
+        Route::get('image/upload','GalleryController@fileCreate');
+        Route::post('image/upload/store/{product}','GalleryController@fileStore');
+
+
         //Comment
         Route::get('comment/notApproved', 'CommentsController@notApproved')->name('comment.notApproved');
         Route::post('comment/delete', 'CommentsController@destroy');

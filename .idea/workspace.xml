@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="Comment Added">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Shop/CommentsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product-comments.blade.php" afterDir="false" />
+    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Gallery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Shop/GalleryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/GalleryFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_08_153817_create_galleries_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/photo_2019-11-06_10-35-44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/photo_2019-11-06_10-35-45.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222048354photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222059570Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222244401photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222296804photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222396735photo_2019-11-06_10-35-44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222470851photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222522528photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222586406photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222626436Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223019656photo_2019-11-06_10-35-44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223038904photo_2019-11-06_10-35-45.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309452Dashboard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309455Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309456photo_2019-11-06_10-35-41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309458photo_2019-11-06_10-35-44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309459photo_2019-11-06_10-35-45.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309460Untitled3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309461Untitled4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/photo_2019-11-06_10-35-44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/photo_2019-11-06_10-35-45.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product-galleries.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/ShopController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/ShopController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Shop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_06_114029_create_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_06_114029_create_comments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/layouts/partials/comments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/layouts/partials/comments.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/sayyad.PNG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shop/product-comments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product-comments.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shop/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -171,19 +197,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\payment\resources\views\dashboard\shop" />
-      <recent name="E:\payment\resources\views\dashboard\payment" />
-      <recent name="E:\payment\app\Http\Controllers\Api" />
-      <recent name="E:\payment\resources\views\dashboard" />
-      <recent name="E:\payment\resources\views\documnetation" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\payment\app\Http\Controllers\Dashboard\Shop" />
       <recent name="E:\payment\app\Http\Controllers\Shop" />
       <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
       <recent name="E:\payment\app\Http\Controllers\Dashboard" />
       <recent name="E:\payment\resources\views\dashboard\payment" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\payment\resources\views\dashboard\shop" />
+      <recent name="E:\payment\resources\views\dashboard\payment" />
+      <recent name="E:\payment\app\Http\Controllers\Api" />
+      <recent name="E:\payment\resources\views\dashboard" />
+      <recent name="E:\payment\resources\views\documnetation" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -300,7 +326,9 @@
       <workItem from="1572609945819" duration="1480000" />
       <workItem from="1572612374420" duration="1164000" />
       <workItem from="1573026783776" duration="7797000" />
-      <workItem from="1573116255435" duration="9780000" />
+      <workItem from="1573116255435" duration="11974000" />
+      <workItem from="1573213850876" duration="1426000" />
+      <workItem from="1573215657011" duration="8473000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -561,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573034717149</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Comment Completed">
+      <created>1573129839099</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1573129839099</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +617,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Menu and auth added" />
     <MESSAGE value="Documentation Is Added" />
     <MESSAGE value="Bill Is Added" />
     <MESSAGE value="Cheque Is Added" />
@@ -607,6 +641,7 @@
     <MESSAGE value="Reset And Forget Password Added" />
     <MESSAGE value="Change Passowrd Added" />
     <MESSAGE value="Comment Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment Added" />
+    <MESSAGE value="Comment Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Comment Completed" />
   </component>
 </project>
