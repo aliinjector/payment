@@ -76,22 +76,26 @@
                <div id="mySlider"></div>
          </div>
       </div>
-      <div class="card p-3 w-70 align-items-start iranyekan font-14">
+      <div class="card p-3 w-70 align-items-start iranyekan font-15">
       <h5 class="text-dark pr-3 border-btm font-weight-500 m-4 col-lg-10">دسته بندی نتایج</h5>
       <div class="border-0">
       <div class="list-group list-group-root well border-0">
         @foreach($categories as $category)
-      <a href="#item-{{$category->id}}" class="border-0 iranyekan p-0 @if( Request::is('*/category/'.$category->id)) font-weight-bolder text-dark @endif" data-toggle="collapse">
+      <a href="#item-{{$category->id}}" class="border-0 iranyekan p-0 py-1 @if( Request::is('*/category/'.$category->id)) font-weight-bolder text-dark @endif" data-toggle="collapse">
       <i class="fa fa-angle-left light-dark-text-color font-12 mr-2"></i>{{ $category->name }}
       </a>
       <div class="list-group collapse border-0" id="item-{{$category->id}}">
       <a href="#item-{{$category->id}}-{{$category->id}}" class="border-0 iranyekan  dark-text-color p-2" data-toggle="collapse">
-      <i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i>@if($category->children()->exists() and !$category->children()->get()->first()->children()->exists())
-        {{ $category->children()->get()->first()->name}}
+      @if($category->children()->exists())
+        @foreach ($category->children()->get() as $subCategory)
+        <i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i> {{ $subCategory->name}} </br>
+      @endforeach
       @endif
       </a>
       <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$category->id}}">
-      <a href="#" class="border-0 iranyekan dark-text-color p-2 mr-5">زیر دسته اول اول</a>
+          @if($category->children()->exists())
+      <a href="#" class="border-0 iranyekan dark-text-color p-2 mr-5">{{ $category->children()->get()->first()->children()->get()->first()->name}}</a>
+    @endif
       </div>
       </div>
     @endforeach
@@ -104,7 +108,7 @@
    <div class="col-lg-9 d-flex flex-wrap">
    <div class="row d-flex justify-content-center mr-2">
    <h6 class="iranyekan text-dark">مرتب سازی بر اساس :</h6>
-   <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
+   <div class="btn-group btn-group-toggle mb-4 flex-wrap d-inline" data-toggle="buttons">
    <label id="available-order-1" for="available-order-1" class="btn btn-outline-orange  @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
    <input type="radio" class="available-order-1" id="available-order-1" name="sortBy[field]" value="created_at" @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at') checked="" @endif> جدید ترین ها
    <input type="radio" class="available-order-1" name="sortBy[orderBy]" value="desc" checked="">

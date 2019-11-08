@@ -78,10 +78,12 @@ class ShopController extends \App\Http\Controllers\Controller
         $product = $shop->products()->where('id', $id)->first();
         $productRates = $product->rates()->get();
         $userProducts = [];
+        if(\auth::user()){
         foreach (\auth::user()->cart()->withTrashed()->where('status', 1)->get() as $cart) {
             foreach ($cart->products() as $single_product) {
                 $userProducts[] = $single_product;
             }
+        }
         }
         $comments = $product->comments;
 
