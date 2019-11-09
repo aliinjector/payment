@@ -2,42 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Gallery.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Shop/GalleryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/GalleryFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_11_08_153817_create_galleries_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/photo_2019-11-06_10-35-44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/photo_2019-11-06_10-35-45.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222048354photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222059570Login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222244401photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222296804photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222396735photo_2019-11-06_10-35-44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222470851photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222522528photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222586406photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573222626436Login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223019656photo_2019-11-06_10-35-44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223038904photo_2019-11-06_10-35-45.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309452Dashboard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309455Login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309456photo_2019-11-06_10-35-41.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309458photo_2019-11-06_10-35-44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309459photo_2019-11-06_10-35-45.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309460Untitled3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/1573223309461Untitled4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/photo_2019-11-06_10-35-44.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/product-galleries/1/photo_2019-11-06_10-35-45.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product-galleries.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/sayyad.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shop/product-comments.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product-comments.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shop/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/SettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Payment/SettingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/setting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/setting.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +148,6 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/laravel/passport" />
       <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
-      <path value="$PROJECT_DIR$/vendor/ghanem/rating" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QK36TGsVYwU7bBOhm2wrd2VwGC" />
@@ -190,26 +158,25 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/payment" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\payment\app\Http\Controllers\Dashboard\Shop" />
-      <recent name="E:\payment\app\Http\Controllers\Shop" />
-      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
-      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
-      <recent name="E:\payment\resources\views\dashboard\payment" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\payment\resources\views\dashboard\shop" />
       <recent name="E:\payment\resources\views\dashboard\payment" />
       <recent name="E:\payment\app\Http\Controllers\Api" />
       <recent name="E:\payment\resources\views\dashboard" />
       <recent name="E:\payment\resources\views\documnetation" />
+      <recent name="$PROJECT_DIR$/resources/views/dashboard" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
+      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
+      <recent name="E:\payment\resources\views\dashboard\payment" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -316,19 +283,7 @@
       <workItem from="1571733255938" duration="4140000" />
       <workItem from="1571753250729" duration="5256000" />
       <workItem from="1571821028613" duration="814000" />
-      <workItem from="1571903146195" duration="7265000" />
-      <workItem from="1571984710391" duration="606000" />
-      <workItem from="1571986031617" duration="12000" />
-      <workItem from="1572266637489" duration="605000" />
-      <workItem from="1572501153421" duration="1509000" />
-      <workItem from="1572504286213" duration="1261000" />
-      <workItem from="1572518344305" duration="1206000" />
-      <workItem from="1572609945819" duration="1480000" />
-      <workItem from="1572612374420" duration="1164000" />
-      <workItem from="1573026783776" duration="7797000" />
-      <workItem from="1573116255435" duration="11974000" />
-      <workItem from="1573213850876" duration="1426000" />
-      <workItem from="1573215657011" duration="8473000" />
+      <workItem from="1571903146195" duration="1788000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -575,28 +530,7 @@
       <option name="project" value="LOCAL" />
       <updated>1571730824190</updated>
     </task>
-    <task id="LOCAL-00036" summary="Change Passowrd Added">
-      <created>1571908268451</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1571908268451</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Comment Added">
-      <created>1573034717149</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1573034717149</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Comment Completed">
-      <created>1573129839099</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1573129839099</updated>
-    </task>
-    <option name="localTasksCounter" value="39" />
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -617,6 +551,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Gateway added" />
+    <MESSAGE value="Menu added" />
+    <MESSAGE value="Menu and auth added" />
     <MESSAGE value="Documentation Is Added" />
     <MESSAGE value="Bill Is Added" />
     <MESSAGE value="Cheque Is Added" />
@@ -639,9 +576,6 @@
     <MESSAGE value="Job System Added" />
     <MESSAGE value="Fast Pay Added" />
     <MESSAGE value="Reset And Forget Password Added" />
-    <MESSAGE value="Change Passowrd Added" />
-    <MESSAGE value="Comment Added" />
-    <MESSAGE value="Comment Completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comment Completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reset And Forget Password Added" />
   </component>
 </project>
