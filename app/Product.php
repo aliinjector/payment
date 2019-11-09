@@ -1,13 +1,14 @@
 <?php
 namespace App;
-use Iatstuti\Database\Support\CascadeSoftDeletes;
+
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Ghanem\Rating\Traits\Ratingable as Rating;
 use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
-    use SoftDeletes, Rating;
-
+    use SoftDeletes, Rating,CascadeSoftDeletes;
+    protected $cascadeDeletes = ['galleries'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [
@@ -48,7 +49,7 @@ class Product extends Model
 
     public function galleries()
     {
-        return $this->belongsTo('App\Gallery');
+        return $this->hasMany('App\Gallery');
     }
 
 

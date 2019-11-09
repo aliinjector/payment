@@ -121,14 +121,14 @@
             Dropzone.options.dropzone =
                 {
 
-                    // Create the mock file:
-                    var mockFile = { name: "a.jpg", size: 12345 };
-
-            // Call the default addedfile event handler
-            myDropzone.emit("addedfile", mockFile);
-
-            // And optionally show the thumbnail of the file:
-            myDropzone.emit("thumbnail", mockFile, "/image/url");
+            //         // Create the mock file:
+            //         var mockFile = { name: "a.jpg", size: 12345 };
+            //
+            // // Call the default addedfile event handler
+            // myDropzone.emit("addedfile", mockFile);
+            //
+            // // And optionally show the thumbnail of the file:
+            // myDropzone.emit("thumbnail", mockFile, "/image/url");
 
 
 

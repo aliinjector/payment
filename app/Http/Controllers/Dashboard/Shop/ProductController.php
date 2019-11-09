@@ -372,7 +372,7 @@ else{
     }
 
     public function changeStatus(Request $request){
-      
+
         $product = Product::find($request->id);
         if($product->status == 0)
             $product->status = 1;
