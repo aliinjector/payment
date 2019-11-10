@@ -1580,7 +1580,7 @@
                                                         </option>
                                                         @foreach($productCategories as $productCategory)
                                                             <option style="font-family: BYekan!important;"
-                                                                    value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
+                                                                    value="{{ $productCategory->id }}"> @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} > @endif {{ $productCategory->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 @endif

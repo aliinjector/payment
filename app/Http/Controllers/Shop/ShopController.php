@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 
 class ShopController extends \App\Http\Controllers\Controller
 {
@@ -110,9 +112,46 @@ class ShopController extends \App\Http\Controllers\Controller
                 $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy, $orderBy)->paginate($perPage);
             }
         } else {
-            $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
+                $products = $this->getAllCategoriesProducts($categroyId);
+                $total = count($products);
+                $perPage = 2; // How many items do you want to display.
+                $currentPage = 1; // The index page.
+                $products = new LengthAwarePaginator($products, $total, $perPage, $currentPage);
+            // $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
+            // dd($this->getAllCategoriesProducts(31)->paginate(8));
+            // $products = $this->getAllCategoriesProducts($categroyId)->paginate(8);
         }
         return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category' , 'categories'));
+    }
+
+
+    public function getAllCategoriesProducts($cat_id){
+      $allProducts = [];
+      
+      foreach(ProductCategory::find($cat_id)->children()->get() as $subCategory){
+        if($subCategory->children()->exists()){
+          foreach($subCategory->children()->get() as $subSubCategory){
+            foreach($subSubCategory->products()->get() as $product){
+            $allProducts[] = $product;
+            }
+          }
+          if($subSubCategory->children()->exists()){
+            foreach($subSubCategory->children()->get() as $subSubSubCategory){
+              foreach($subSubSubCategory->products()->get() as $product){
+              $allProducts[] = $product;
+              }
+              if($subSubSubCategory->children()->exists()){
+                foreach($subSubSubCategory->children()->get() as $subSubSubSubCategory){
+                  foreach($subSubSubSubCategory->products()->get() as $product){
+                  $allProducts[] = $product;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      return $allProducts;
     }
 
     /**

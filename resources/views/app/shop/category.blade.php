@@ -84,14 +84,13 @@
       <a href="#item-{{$category->id}}" class="border-0 iranyekan p-0 py-1 @if( Request::is('*/category/'.$category->id)) font-weight-bolder text-dark @endif" data-toggle="collapse">
       <i class="fa fa-angle-left light-dark-text-color font-12 mr-2"></i>{{ $category->name }}
       </a>
-      <div class="list-group collapse border-0" id="item-{{$category->id}}">
+      <div class="list-group collapse border-0  @if( Request::is('*/category/'.$category->id)) show @endif" id="item-{{$category->id}}">
       {{-- @if($category->children()->exists()) --}}
         @foreach ($category->children()->get() as $subCategory)
           <a href="#item-{{$category->id}}-{{$subCategory->id}}" class="border-0 iranyekan  dark-text-color p-2" data-toggle="collapse">
         <i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i> {{ $subCategory->name}} </br>
       </a>
-        <a href="">{{ $subCategory->name}} لینک </a></br>
-""      <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$subCategory->id}}">
+     <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$subCategory->id}}">
           {{-- @if($subCategory->children()->exists() and $category->children()->get()->first()->children()->exists()) --}}
             @foreach ($subCategory->children()->get() as $subSubCategory)
       <a href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}" class="border-0 iranyekan dark-text-color p-2 mr-5" data-toggle="collapse">{{ $subSubCategory->name}}</a>

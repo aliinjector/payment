@@ -29,7 +29,7 @@ class ProductController extends Controller
         return redirect()->route('product-category.index');
       }
       else{
-        $productCategories = \Auth::user()->shop()->first()->ProductCategories()->get();
+        $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
         $products = \Auth::user()->shop()->first()->products()->get();
         return view('dashboard.shop.product', compact('productCategories','products'));
       }
