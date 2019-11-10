@@ -2,10 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/120,50_1573400059_Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/1573400059_Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/1573400082_contract zolanvari.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/1573400136_contract zolanvari.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/1573400277_contract zolanvari.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/16,16_1573400059_Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/200,100_1573400059_Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/250,250_1573400059_Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/400,400_1573400059_Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/410,270_1573400059_Login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/storage/upload/2019/11/10/80,80_1573400059_Login.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/category.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/product-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/product-detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/shop.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shop/product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -289,7 +298,7 @@
       <workItem from="1573371719458" duration="8155000" />
       <workItem from="1573382046266" duration="4819000" />
       <workItem from="1573392295332" duration="2639000" />
-      <workItem from="1573395089525" duration="883000" />
+      <workItem from="1573395089525" duration="4036000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -578,7 +587,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573394256950</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Product Compare Doveloped">
+      <created>1573396102732</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1573396102732</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Photo Upload Added">
+      <created>1573399340354</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1573399340354</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,8 +622,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Checkout Is Added" />
-    <MESSAGE value="Report Is Added" />
     <MESSAGE value="Card &amp; GateWay Is Updated" />
     <MESSAGE value="TransActionReport Is Updated" />
     <MESSAGE value="MongoDb Is Updated" />
@@ -624,6 +645,8 @@
     <MESSAGE value="Compare Addedd" />
     <MESSAGE value="Status Notification Added" />
     <MESSAGE value="Delete Confirmation is Updated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete Confirmation is Updated." />
+    <MESSAGE value="Product Compare Doveloped" />
+    <MESSAGE value="Photo Upload Added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Photo Upload Added" />
   </component>
 </project>

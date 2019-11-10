@@ -203,7 +203,7 @@
                                                         class="input-group-text bg-light min-width-140"
                                                         id="basic-addon7">وزن محصول :</span></div>
                                                 <input type="text" class="form-control inputfield" name="weight"
-                                                       placeholder="2مثال: 30">
+                                                       placeholder="مثال: 30">
                                                 <div class="input-group-append"><span
                                                         class="input-group-text bg-primary text-white font-weight-bold iranyekan"
                                                         id="basic-addon8">گرم</span></div>
@@ -348,8 +348,7 @@
                                             <div class="card mt-3">
                                                 <div class="card-body">
                                                     <h4 class="mt-0 header-title">تصویر اصلی محصول</h4>
-                                                    <input type="file" id="input-file-now" class="dropify">
-
+                                                    <input type="file" id="input-file-now" name="image" class="dropify">
                                                 </div>
                                             </div>
 
@@ -473,7 +472,7 @@
                                                             class="input-group-text bg-light min-width-140"
                                                             id="basic-addon7">وزن محصول :</span></div>
                                                     <input type="text" class="form-control inputfield" name="weight"
-                                                           placeholder="2مثال: 30" value="{{ $product->weight }}">
+                                                           placeholder="مثال: 30" value="{{ $product->weight }}">
                                                     <div class="input-group-append"><span
                                                             class="input-group-text bg-primary text-white font-weight-bold iranyekan"
                                                             id="basic-addon8">گرم</span></div>
@@ -648,37 +647,7 @@
                                                 <div class="card mt-3">
                                                     <div class="card-body">
                                                         <h4 class="mt-0 header-title">تصویر محصول</h4>
-                                                        <div class="dropify-wrapper has-preview h-280px">
-                                                            <div class="dropify-message"><span class="file-icon"></span>
-                                                                <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل
-                                                                    را آپلود نمایید.</p>
-                                                                <p class="dropify-error">خطا</p>
-                                                            </div>
-                                                            <div class="dropify-loader" style="display: none;"></div>
-                                                            <div class="dropify-errors-container">
-                                                                <ul></ul>
-                                                            </div>
-                                                            <input name="image" type="file" id="input-file-now-custom-1"
-                                                                   class="dropify"
-                                                                   data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                                                            <button type="button" class="dropify-clear rounded">حذف
-                                                            </button>
-                                                            <div class="dropify-preview" style="display: block;"><span
-                                                                    class="dropify-render"><img
-                                                                        src="{{ $product->image['250,250'] }}"></span>
-                                                                <div class="dropify-infos">
-                                                                    <div class="dropify-infos-inner">
-                                                                        <p class="dropify-filename"><span
-                                                                                class="file-icon"></span> <span
-                                                                                class="dropify-filename-inner">نمونه لوگو</span>
-                                                                        </p>
-                                                                        <p class="dropify-infos-message">با استفاده از
-                                                                            درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                            آپلود نمایید</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <input type="file" id="input-file-now" name="image" class="dropify">
                                                     </div>
 
                                                 </div>
@@ -887,36 +856,7 @@
                                                 <div class="card mt-3">
                                                     <div class="card-body">
                                                         <h4 class="mt-0 header-title">تصویر محصول</h4>
-                                                        <div class="dropify-wrapper has-preview h-280px">
-                                                            <div class="dropify-message"><span class="file-icon"></span>
-                                                                <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل
-                                                                    را آپلود نمایید.</p>
-                                                                <p class="dropify-error">خطا</p>
-                                                            </div>
-                                                            <div class="dropify-loader" style="display: none;"></div>
-                                                            <div class="dropify-errors-container">
-                                                                <ul></ul>
-                                                            </div>
-                                                            <input name="image" type="file" id="input-file-now-custom-1"
-                                                                   class="dropify"
-                                                                   data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                                                            <button type="button" class="dropify-clear">حذف</button>
-                                                            <div class="dropify-preview" style="display: block;"><span
-                                                                    class="dropify-render"><img
-                                                                        src="{{ $product->image['250,250'] }}"></span>
-                                                                <div class="dropify-infos">
-                                                                    <div class="dropify-infos-inner">
-                                                                        <p class="dropify-filename"><span
-                                                                                class="file-icon"></span> <span
-                                                                                class="dropify-filename-inner">نمونه تصویر محصول</span>
-                                                                        </p>
-                                                                        <p class="dropify-infos-message">با استفاده از
-                                                                            درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                            آپلود نمایید</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <input type="file" id="input-file-now" name="attachment" class="dropify">
                                                     </div>
 
 
@@ -927,37 +867,7 @@
                                                         <h4 class="mt-0 header-title">اپلود فایل</h4>
                                                         <p class="text-muted mb-3">فایل شما میتواند از نوع pdf یا docs
                                                             باشد</p>
-                                                        <div class="dropify-wrapper">
-                                                            <div class="dropify-message"><span class="file-icon"></span>
-                                                                <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل
-                                                                    را آپلود نمایید.</p>
-                                                                <p class="dropify-error">خطا</p>
-                                                            </div>
-                                                            <div class="dropify-loader"></div>
-                                                            <div class="dropify-errors-container">
-                                                                <ul></ul>
-                                                            </div>
-                                                            <input type="file" id="input-file-now" class="dropify"
-                                                                   name="attachment">
-                                                            <button type="button" class="dropify-clear rounded">حذف
-                                                            </button>
-
-
-                                                            <div class="dropify-preview"><span
-                                                                    class="dropify-render"></span>
-                                                                <div class="dropify-infos">
-                                                                    <div class="dropify-infos-inner">
-                                                                        <p class="dropify-filename"><span
-                                                                                class="file-icon"></span> <span
-                                                                                class="dropify-filename-inner"></span>
-                                                                        </p>
-                                                                        <p class="dropify-infos-message">با استفاده از
-                                                                            درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                            آپلود نمایید</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <input type="file" id="input-file-now" name="image" class="dropify">
                                                     </div>
                                                     <!--end card-body-->
                                                 </div>
@@ -1168,37 +1078,7 @@
                                                 <div class="card mt-3">
                                                     <div class="card-body">
                                                         <h4 class="mt-0 header-title">تصویر خدمت</h4>
-                                                        <div class="dropify-wrapper has-preview h-280px">
-                                                            <div class="dropify-message"><span class="file-icon"></span>
-                                                                <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل
-                                                                    را آپلود نمایید.</p>
-                                                                <p class="dropify-error">خطا</p>
-                                                            </div>
-                                                            <div class="dropify-loader" style="display: none;"></div>
-                                                            <div class="dropify-errors-container">
-                                                                <ul></ul>
-                                                            </div>
-                                                            <input name="image" type="file" id="input-file-now-custom-1"
-                                                                   class="dropify"
-                                                                   data-default-file="/dashboard/assets/images/teacher.jpg">
-                                                            <button type="button" class="dropify-clear rounded">حذف
-                                                            </button>
-                                                            <div class="dropify-preview" style="display: block;"><span
-                                                                    class="dropify-render"><img class="col-12"
-                                                                                                src="{{ $product->image['250,250'] }}"></span>
-                                                                <div class="dropify-infos">
-                                                                    <div class="dropify-infos-inner">
-                                                                        <p class="dropify-filename"><span
-                                                                                class="file-icon"></span> <span
-                                                                                class="dropify-filename-inner">نمونه تصویر از خدمت</span>
-                                                                        </p>
-                                                                        <p class="dropify-infos-message">با استفاده از
-                                                                            درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                            آپلود نمایید</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                        <input type="file" id="input-file-now" name="image" class="dropify">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1395,36 +1275,7 @@
                                             <div class="card mt-3">
                                                 <div class="card-body">
                                                     <h4 class="mt-0 header-title">تصویر محصول</h4>
-                                                    <div class="dropify-wrapper has-preview h-280px">
-                                                        <div class="dropify-message"><span class="file-icon"></span>
-                                                            <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                آپلود نمایید.</p>
-                                                            <p class="dropify-error">خطا</p>
-                                                        </div>
-                                                        <div class="dropify-loader" style="display: none;"></div>
-                                                        <div class="dropify-errors-container">
-                                                            <ul></ul>
-                                                        </div>
-                                                        <input name="image" type="file" id="input-file-now-custom-1"
-                                                               class="dropify"
-                                                               data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                                                        <button type="button" class="dropify-clear">حذف</button>
-                                                        <div class="dropify-preview" style="display: block;"><span
-                                                                class="dropify-render"><img
-                                                                    src="/dashboard/assets/images/english.jpg"></span>
-                                                            <div class="dropify-infos">
-                                                                <div class="dropify-infos-inner">
-                                                                    <p class="dropify-filename"><span
-                                                                            class="file-icon"></span> <span
-                                                                            class="dropify-filename-inner">نمونه تصویر محصول</span>
-                                                                    </p>
-                                                                    <p class="dropify-infos-message">با استفاده از درگ
-                                                                        دراپ ویا کلیک برروی کادر زیر فایل را آپلود
-                                                                        نمایید</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input type="file" id="input-file-now" name="image" class="dropify">
                                                 </div>
 
 
@@ -1435,35 +1286,7 @@
                                                     <h4 class="mt-0 header-title">اپلود فایل</h4>
                                                     <p class="text-muted mb-3">فایل شما میتواند از نوع pdf یا docs
                                                         باشد</p>
-                                                    <div class="dropify-wrapper">
-                                                        <div class="dropify-message"><span class="file-icon"></span>
-                                                            <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                آپلود نمایید.</p>
-                                                            <p class="dropify-error">خطا</p>
-                                                        </div>
-                                                        <div class="dropify-loader"></div>
-                                                        <div class="dropify-errors-container">
-                                                            <ul></ul>
-                                                        </div>
-                                                        <input type="file" id="input-file-now" class="dropify"
-                                                               name="attachment">
-                                                        <button type="button" class="dropify-clear rounded">حذف</button>
-
-
-                                                        <div class="dropify-preview"><span
-                                                                class="dropify-render"></span>
-                                                            <div class="dropify-infos">
-                                                                <div class="dropify-infos-inner">
-                                                                    <p class="dropify-filename"><span
-                                                                            class="file-icon"></span> <span
-                                                                            class="dropify-filename-inner"></span></p>
-                                                                    <p class="dropify-infos-message">با استفاده از درگ
-                                                                        دراپ ویا کلیک برروی کادر زیر فایل را آپلود
-                                                                        نمایید</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input type="file" id="input-file-now" name="image" class="dropify">
                                                 </div>
                                                 <!--end card-body-->
                                             </div>
@@ -1670,36 +1493,7 @@
                                             <div class="card mt-3">
                                                 <div class="card-body">
                                                     <h4 class="mt-0 header-title">تصویر خدمت</h4>
-                                                    <div class="dropify-wrapper has-preview h-280px">
-                                                        <div class="dropify-message"><span class="file-icon"></span>
-                                                            <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                آپلود نمایید.</p>
-                                                            <p class="dropify-error">خطا</p>
-                                                        </div>
-                                                        <div class="dropify-loader" style="display: none;"></div>
-                                                        <div class="dropify-errors-container">
-                                                            <ul></ul>
-                                                        </div>
-                                                        <input name="image" type="file" id="input-file-now-custom-1"
-                                                               class="dropify"
-                                                               data-default-file="/dashboard/assets/images/teacher.jpg">
-                                                        <button type="button" class="dropify-clear rounded">حذف</button>
-                                                        <div class="dropify-preview" style="display: block;"><span
-                                                                class="dropify-render"><img class="col-12"
-                                                                                            src="/dashboard/assets/images/teacher.jpg"></span>
-                                                            <div class="dropify-infos">
-                                                                <div class="dropify-infos-inner">
-                                                                    <p class="dropify-filename"><span
-                                                                            class="file-icon"></span> <span
-                                                                            class="dropify-filename-inner">نمونه تصویر از خدمت</span>
-                                                                    </p>
-                                                                    <p class="dropify-infos-message">با استفاده از درگ
-                                                                        دراپ ویا کلیک برروی کادر زیر فایل را آپلود
-                                                                        نمایید</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input type="file" id="input-file-now" name="image" class="dropify">
                                                 </div>
                                             </div>
                                         </div>
@@ -1794,7 +1588,7 @@
                                                                 class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                                     </td>
                                                     <td>{{ $product->productCategory()->first()->name }}</td>
-                                                    <td>{{ $product->price }}</td>
+                                                    <td>{{ number_format($product->price) }}</td>
                                                     <td>{{ $product->off_price }}</td>
 
                                                     <td>
@@ -1914,8 +1708,6 @@
     <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 
     <script>
-
-
         $(".change").click(function () {
             var id = $(this).data("id");
             $.ajax(
@@ -1934,6 +1726,7 @@
             $("span." + id).toggleClass("d-none");
             $("i.show" + id).toggleClass("d-none");
             $("span.show" + id).toggleClass("d-none");
+            toastr.success('انجام شد.', '', [])
         });
 
     </script>
