@@ -30,7 +30,7 @@
                         </div>
                         <!--end auth-logo-box-->
                         <div class="text-center auth-logo-text">
-                            <h4 class="mt-0 mb-3 mt-5"> bedoone shopعضویت در سامانه پایان پی</h4>
+                            <h4 class="mt-0 mb-3 mt-5"> عضویت در سامانه پایان پی</h4>
                             <p class="text-muted mb-0">پس از تکمیل فرم، برروی گزینه عضویت کلیک نمایید.</p>
                         </div>
                         <!--end auth-logo-text-->

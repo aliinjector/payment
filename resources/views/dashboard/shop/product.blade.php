@@ -1891,8 +1891,11 @@
 
                                                                 </a>
 
+
                                                                 <a href="" id="removerProduct"
-                                                                   data-id="{{ $product->id }}">
+                                                                   data-id="{{ $product->id }}"
+                                                                   data-name="{{ $product->title }}"
+                                                                >
                                                                     <i class="far fa-trash-alt text-danger font-15"></i></a>
 
                                                                 <a href="{{ route('galleries.index', $product->id ) }}"><i class="fa fa-image text-info mr-1 button font-15"></i></a>
@@ -2003,7 +2006,9 @@
         $(document).on('click', '#removerProduct', function (e) {
             e.preventDefault();
             var id = $(this).data('id');
-            swal("آیا اطمینان دارید؟", {
+            var name = $(this).data('name');
+            console.log(name)
+            swal(` ${'حذف محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
                 dangerMode: true,
                 icon: "warning",
                 buttons: ["انصراف", "حذف"],
@@ -2023,7 +2028,7 @@
                             }
                         });
                     } else {
-                        swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                        toastr.warning('لغو شد.', '', []);
                     }
                 });
         });
