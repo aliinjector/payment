@@ -98,6 +98,10 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('download.file');
     Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
     Route::patch('/{shop}/{id}/rate', 'ShopController@updateRate')->name('shop.rate');
+
+    //Compare
+    Route::get('/{shop}/compare', 'CompareController@index')->name('compare');
+
 });
 
 Route::namespace('Shop')->group(function () {
