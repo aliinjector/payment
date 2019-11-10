@@ -348,36 +348,8 @@
                                             <div class="card mt-3">
                                                 <div class="card-body">
                                                     <h4 class="mt-0 header-title">تصویر اصلی محصول</h4>
-                                                    <div class="dropify-wrapper has-preview h-280px">
-                                                        <div class="dropify-message"><span class="file-icon"></span>
-                                                            <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را
-                                                                آپلود نمایید.</p>
-                                                            <p class="dropify-error">خطا</p>
-                                                        </div>
-                                                        <div class="dropify-loader" style="display: none;"></div>
-                                                        <div class="dropify-errors-container">
-                                                            <ul></ul>
-                                                        </div>
-                                                        <input name="image" type="file" id="input-file-now-custom-1"
-                                                               class="dropify"
-                                                               data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                                                        <button type="button" class="dropify-clear rounded">حذف</button>
-                                                        <div class="dropify-preview" style="display: block;"><span
-                                                                class="dropify-render"><img
-                                                                    src="/dashboard/assets/images/labtop.jpg"></span>
-                                                            <div class="dropify-infos">
-                                                                <div class="dropify-infos-inner">
-                                                                    <p class="dropify-filename"><span
-                                                                            class="file-icon"></span> <span
-                                                                            class="dropify-filename-inner">نمونه لوگو</span>
-                                                                    </p>
-                                                                    <p class="dropify-infos-message">با استفاده از درگ
-                                                                        دراپ ویا کلیک برروی کادر زیر فایل را آپلود
-                                                                        نمایید</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input type="file" id="input-file-now" class="dropify">
+
                                                 </div>
                                             </div>
 
@@ -1891,8 +1863,11 @@
 
                                                                 </a>
 
+
                                                                 <a href="" id="removerProduct"
-                                                                   data-id="{{ $product->id }}">
+                                                                   data-id="{{ $product->id }}"
+                                                                   data-name="{{ $product->title }}"
+                                                                >
                                                                     <i class="far fa-trash-alt text-danger font-15"></i></a>
 
                                                                 <a href="{{ route('galleries.index', $product->id ) }}"><i class="fa fa-image text-info mr-1 button font-15"></i></a>
@@ -1935,7 +1910,12 @@
     <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+    <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+    <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+
     <script>
+
+
         $(".change").click(function () {
             var id = $(this).data("id");
             $.ajax(
@@ -2003,7 +1983,9 @@
         $(document).on('click', '#removerProduct', function (e) {
             e.preventDefault();
             var id = $(this).data('id');
-            swal("آیا اطمینان دارید؟", {
+            var name = $(this).data('name');
+            console.log(name)
+            swal(` ${'حذف محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
                 dangerMode: true,
                 icon: "warning",
                 buttons: ["انصراف", "حذف"],
@@ -2023,7 +2005,7 @@
                             }
                         });
                     } else {
-                        swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                        toastr.warning('لغو شد.', '', []);
                     }
                 });
         });

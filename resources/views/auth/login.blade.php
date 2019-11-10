@@ -30,7 +30,7 @@
                         </div>
                         <!--end auth-logo-box-->
                         <div class="text-center auth-logo-text">
-                            <h4 class="mt-0 mb-3 mt-5">ورود به داشبورد پایان پی</h4>
+                            <h4 class="mt-0 mb-3 mt-5">ورود به پایان پی</h4>
                             <p class="text-muted mb-0">اطلاعات حساب کاربری خودرا جهت ورود به سیستم وارد نمایید:</p>
                         </div>
                         <!--end auth-logo-text-->

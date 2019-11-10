@@ -243,7 +243,7 @@
                                                 <a href="{{ $voucher->id }}" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                 </a>
 
-                                                <a href="" id="removeVoucher" data-id="{{ $voucher->id }}" ><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                <a href="" id="removeVoucher" data-id="{{ $voucher->id }}" data-name="{{ $voucher->description }}" ><i class="far fa-trash-alt text-danger font-15"></i></a>
                                             </div>
                                             </td>
 
@@ -289,7 +289,8 @@
     $(document).on('click', '#removeVoucher', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        swal("آیا اطمینان دارید؟", {
+        var name = $(this).data('name');
+        swal(` ${'حذف کد:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
             dangerMode: true,
             icon: "warning",
             buttons: ["انصراف", "حذف"],
@@ -310,7 +311,7 @@
             }
         });
     } else {
-        swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+            toastr.warning('لغو شد.', '', []);
     }
     });
     });
@@ -330,7 +331,6 @@ $(".change").click(function(){
                 "id": id,
                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
             }
-
         });
                 $("i."+id).toggleClass("d-none");
                 $("span."+id).toggleClass("d-none");

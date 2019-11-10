@@ -159,7 +159,7 @@
                                     <div class="d-none icon-show">
                                        <a href="{{ $category->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $category->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                        </a>
-                                       <a href="" id="removeCat" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                       <a href="" id="removeCat" data-name="{{ $category->name }}" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                        <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$category->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
                                        </a>
                                     </div>
@@ -196,11 +196,11 @@
    $(document).on('click', '#removeCat', function(e) {
        e.preventDefault();
        var id = $(this).data('id');
-       swal("آیا اطمینان دارید؟", {
+       var name = $(this).data('name');
+       swal(` ${'حذف دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
                dangerMode: true,
                icon: "warning",
                buttons: ["انصراف", "حذف"],
-
            })
            .then(function(isConfirm) {
                if (isConfirm) {
@@ -217,7 +217,7 @@
                        }
                    });
                } else {
-                   swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                   toastr.warning('لغو شد.', '', []);
                }
            });
    });
