@@ -29,7 +29,7 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/css/persian-datepicker.css" rel="stylesheet" type="text/css">
     <link href="/app/css/toastr.min.css" rel="stylesheet" type="text/css">
     @toastr_css
-
+{{--ا--}}
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     <style>
         .toast-message{
