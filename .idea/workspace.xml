@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/product-detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/product-detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/shop.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -163,19 +166,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\payment\app\Http\Controllers\Shop" />
-      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
-      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
-      <recent name="E:\payment\resources\views\dashboard\payment" />
-      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\payment\resources\views\app\shop" />
       <recent name="E:\payment\resources\views\dashboard\payment" />
       <recent name="E:\payment\app\Http\Controllers\Api" />
       <recent name="E:\payment\resources\views\dashboard" />
       <recent name="E:\payment\resources\views\documnetation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\payment\app\Http\Controllers\Shop" />
+      <recent name="E:\payment\app\Http\Controllers\Dashboard\Payment" />
+      <recent name="E:\payment\app\Http\Controllers\Dashboard" />
+      <recent name="E:\payment\resources\views\dashboard\payment" />
+      <recent name="$PROJECT_DIR$/app/Http/Controllers/Dashboard" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -284,7 +287,9 @@
       <workItem from="1571821028613" duration="814000" />
       <workItem from="1571903146195" duration="1788000" />
       <workItem from="1573371719458" duration="8155000" />
-      <workItem from="1573382046266" duration="1452000" />
+      <workItem from="1573382046266" duration="4819000" />
+      <workItem from="1573392295332" duration="2639000" />
+      <workItem from="1573395089525" duration="883000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -559,7 +564,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573383460674</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Status Notification Added">
+      <created>1573383508172</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1573383508172</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Delete Confirmation is Updated.">
+      <created>1573394256950</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1573394256950</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +599,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Cheque Is Added" />
     <MESSAGE value="Checkout Is Added" />
     <MESSAGE value="Report Is Added" />
     <MESSAGE value="Card &amp; GateWay Is Updated" />
@@ -605,6 +623,7 @@
     <MESSAGE value="Compare Added" />
     <MESSAGE value="Compare Addedd" />
     <MESSAGE value="Status Notification Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Status Notification Added" />
+    <MESSAGE value="Delete Confirmation is Updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Delete Confirmation is Updated." />
   </component>
 </project>
