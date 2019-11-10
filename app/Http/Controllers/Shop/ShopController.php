@@ -107,27 +107,36 @@ class ShopController extends \App\Http\Controllers\Controller
             $sortBy = $request->sortBy['field'];
             $perPage = 8;
             if ($request->type == 'all') {
-                $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy, $orderBy)->paginate($perPage);
+              if($orderBy == 'desc'){
+                $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
+              }
+              else{
+                $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
+              }
             } else {
-                $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->orderBy($sortBy, $orderBy)->paginate($perPage);
+              if($orderBy == 'desc'){
+                $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
+              }
+              else{
+                $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
+              }
             }
         } else {
-                $products = $this->getAllCategoriesProducts($categroyId);
-                $total = count($products);
-                $perPage = 2; // How many items do you want to display.
-                $currentPage = 1; // The index page.
-                $products = new LengthAwarePaginator($products, $total, $perPage, $currentPage);
-            // $products = $shop->ProductCategories()->where('id', $categroyId)->get()->first()->products()->paginate(8);
-            // dd($this->getAllCategoriesProducts(31)->paginate(8));
-            // $products = $this->getAllCategoriesProducts($categroyId)->paginate(8);
+                $products = $this->getAllCategoriesProducts((int)$categroyId);
         }
-        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category' , 'categories'));
+        $total = $products->count();
+         $perPage = 16; // How many items do you want to display.
+         $currentPage = request()->page; // The index page.
+         $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
+        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category' , 'categories','productsPaginate'));
     }
 
 
     public function getAllCategoriesProducts($cat_id){
-      $allProducts = [];
-      
+      $allProducts = collect();
+      foreach(ProductCategory::find($cat_id)->products()->get() as $product){
+        $allProducts[] = $product;
+      }
       foreach(ProductCategory::find($cat_id)->children()->get() as $subCategory){
         if($subCategory->children()->exists()){
           foreach($subCategory->children()->get() as $subSubCategory){

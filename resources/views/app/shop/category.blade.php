@@ -146,7 +146,7 @@
    </div>
    </form>
    <div class="row col-lg-12">
-   @foreach ($products as $product)
+   @foreach ($productsPaginate as $product)
    <div class="col-lg-3 row">
    <div class="card e-co-product min-height-60 col-lg-12">
    <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
@@ -173,7 +173,7 @@
    </div>
    @endforeach
    <div class="col-lg-12 d-flex justify-content-center">
-   {!! $products->render() !!}
+   {!! $productsPaginate->render() !!}
    </div>
    </div>
    </div>
