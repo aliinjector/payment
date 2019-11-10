@@ -1,9 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="Compare Addedd">
+    <list default="true" id="e9bb29af-3cca-4c3d-8ccb-24cae0a80696" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/app/css/toastr.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/js/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/app/js/toastr.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/.flintci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/.github/ISSUE_TEMPLATE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/.styleci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/config/toastr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/phpcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/src/Facades/Toastr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/src/Toastr.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/src/ToastrServiceProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/yoeunes/toastr/src/helpers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/payment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/payment.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/shop.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Shop/ProductCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Shop/ProductCategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Shop/VoucherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Shop/VoucherController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/CompareController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/CompareController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app/shop/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app/shop/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shop/product-category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/product-category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/shop/voucher.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/shop/voucher.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/autoload.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/autoload.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -146,6 +184,7 @@
       <path value="$PROJECT_DIR$/vendor/laravel/passport" />
       <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
       <path value="$PROJECT_DIR$/vendor/ghanem/rating" />
+      <path value="$PROJECT_DIR$/vendor/yoeunes/toastr" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QK36TGsVYwU7bBOhm2wrd2VwGC" />
@@ -283,7 +322,8 @@
       <workItem from="1571753250729" duration="5256000" />
       <workItem from="1571821028613" duration="814000" />
       <workItem from="1571903146195" duration="1788000" />
-      <workItem from="1573371719458" duration="6184000" />
+      <workItem from="1573371719458" duration="8155000" />
+      <workItem from="1573382046266" duration="1284000" />
     </task>
     <task id="LOCAL-00001" summary="user information added">
       <created>1567519130862</created>
@@ -544,7 +584,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573378479803</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Compare Addedd">
+      <created>1573380045972</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1573380045972</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -565,7 +612,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Documentation Is Added" />
     <MESSAGE value="Bill Is Added" />
     <MESSAGE value="Cheque Is Added" />
     <MESSAGE value="Checkout Is Added" />
@@ -590,6 +636,7 @@
     <MESSAGE value="Lighbox fixed" />
     <MESSAGE value="q" />
     <MESSAGE value="Compare Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Compare Added" />
+    <MESSAGE value="Compare Addedd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Compare Addedd" />
   </component>
 </project>

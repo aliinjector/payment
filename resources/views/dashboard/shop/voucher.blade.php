@@ -336,6 +336,7 @@ $(".change").click(function(){
                 $("span."+id).toggleClass("d-none");
                 $("i.show"+id).toggleClass("d-none");
                 $("span.show"+id).toggleClass("d-none");
+                toastr.success('وضعیت تغییر کرد.', '', []);
 });
 
 </script>

@@ -134,6 +134,7 @@ class VoucherController extends Controller
         else
             $voucher->status = 0;
         $voucher->save();
+
     }
 
 

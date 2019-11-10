@@ -37,6 +37,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         'e4e590a9b5afe940db71ee1662c02677' => __DIR__ . '/..' . '/morilog/jalali/src/helpers.php',
         'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
+        '101b35f72e0ccb1b5ef72aa86bba3ef9' => __DIR__ . '/..' . '/yoeunes/toastr/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -48,6 +49,10 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'Z' => 
         array (
             'Zend\\Diactoros\\' => 15,
+        ),
+        'Y' => 
+        array (
+            'Yoeunes\\Toastr\\' => 15,
         ),
         'X' => 
         array (
@@ -197,6 +202,10 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'Zend\\Diactoros\\' => 
         array (
             0 => __DIR__ . '/..' . '/zendframework/zend-diactoros/src',
+        ),
+        'Yoeunes\\Toastr\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/yoeunes/toastr/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -547,6 +556,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Dashboard\\Payment\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/WalletController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\CommentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/CommentsController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\DashboardShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/DashboardShopController.php',
+        'App\\Http\\Controllers\\Dashboard\\Shop\\GalleryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/GalleryController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\ProductCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/ProductCategoryController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/ProductController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\ShopSettingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/ShopSettingController.php',
@@ -556,6 +566,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\IndexController' => __DIR__ . '/../..' . '/app/Http/Controllers/IndexController.php',
         'App\\Http\\Controllers\\Shop\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CartController.php',
         'App\\Http\\Controllers\\Shop\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CommentController.php',
+        'App\\Http\\Controllers\\Shop\\CompareController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CompareController.php',
         'App\\Http\\Controllers\\Shop\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/ShopController.php',
         'App\\Http\\Controllers\\TPGController' => __DIR__ . '/../..' . '/app/Http/Controllers/TPGController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -4563,6 +4574,9 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
+        'Yoeunes\\Toastr\\Facades\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Facades/Toastr.php',
+        'Yoeunes\\Toastr\\Toastr' => __DIR__ . '/..' . '/yoeunes/toastr/src/Toastr.php',
+        'Yoeunes\\Toastr\\ToastrServiceProvider' => __DIR__ . '/..' . '/yoeunes/toastr/src/ToastrServiceProvider.php',
         'Zend\\Diactoros\\AbstractSerializer' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/AbstractSerializer.php',
         'Zend\\Diactoros\\CallbackStream' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/CallbackStream.php',
         'Zend\\Diactoros\\Exception\\DeserializationException' => __DIR__ . '/..' . '/zendframework/zend-diactoros/src/Exception/DeserializationException.php',
