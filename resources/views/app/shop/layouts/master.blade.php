@@ -23,13 +23,18 @@
     <link href="/app/shop/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/css/custom.css" rel="stylesheet" type="text/css">
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+    @toastr_css
 
 
 </head>
 
 <body>
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
-
+<style>
+    .toast-message{
+        font-size: 20px;
+    }
+</style>
 @if(\Request::route()->getName() == 'user.purchased.list')
   <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
               <div class="row">
@@ -143,9 +148,12 @@
     <!-- App js -->
     <script src="/app/shop/assets/js/app.js"></script>
     <script src="/app/shop/assets/js/sweetalert.min.js"></script>
+
+    @toastr_js
+    @toastr_render
+
     @include('sweet::alert')
     @yield('pageScripts')
-
     </body>
 
     </html>

@@ -27,8 +27,15 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/persian-datepicker.css" rel="stylesheet" type="text/css">
-
+    <link href="/app/css/toastr.min.css" rel="stylesheet" type="text/css">
+    @toastr_css
+{{--ا--}}
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        .toast-message{
+            font-size: 20px;
+        }
+    </style>
 
     <style>
         .main-icon-menu{
@@ -310,39 +317,14 @@ Author: Ali Rahmani
 <!-- App js -->
 <script src="/dashboard/assets/js/app.js"></script>
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
+
+@toastr_js
+@toastr_render
+
 @include('sweet::alert')
 @yield('pageScripts')
 
-<script>
-    $(window).on('load', function() {
 
-        // if (window.location.href.indexOf("wallet") == -1) {
-        //     $('#PardakhtYari').removeClass("active");
-        //     $("a[href$='PardakhtYari']").removeClass("active");
-        //
-        // }
-        // if (window.location.href.indexOf("card") == -1) {
-        //     $('#PardakhtYari').removeClass("active");
-        //     $("a[href$='PardakhtYari']").removeClass("active");
-        // }
-        //
-        //
-        //
-        // if (window.location.href.indexOf("wallet") > -1) {
-        //     $('#PardakhtYari').addClass("active");
-        //     $("a[href$='PardakhtYari']").addClass("active");
-        //
-        // }
-        // if (window.location.href.indexOf("card") > -1) {
-        //     $('#PardakhtYari').addeClass("active");
-        //     $("a[href$='PardakhtYari']").addClass("active");
-        // }
-
-
-
-        });
-
-</script>
 </body>
 
 </html>

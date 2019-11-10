@@ -37,14 +37,12 @@
                                             @endif
                                 </div>
                                 @if(\Auth::user())
-                                {{-- @if($lastProducts[0]->type == 'file' and $lastProducts[0]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
-                                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[0]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
-                                @else --}}
                                   <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$lastProducts[0]->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[0]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                  </form>
 
 
                             @endif
@@ -80,7 +78,9 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$lastProducts[1]->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[1]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+
+                                  </form>
 
                         @endif
 
@@ -116,8 +116,9 @@
                                   <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$lastProducts[2]->id}}">
-                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                  </form>
 
 
                         @endif
@@ -128,6 +129,8 @@
                         <!--end card-->
                     </div>
                     @endif
+
+{{--                hjkl--}}
 
                     <!--end col-->
                     @if(isset($lastProducts[3]))
@@ -154,7 +157,8 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$lastProducts[3]->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[3]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                  </form>
 
                         @endif
                             </div>
@@ -223,7 +227,8 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$bestSelling[0]->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[0]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                  </form>
                         @endif
 
                             </div>
@@ -259,7 +264,8 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$bestSelling[1]->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[1]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                  </form>
 
 
                         @endif
@@ -296,7 +302,8 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$bestSelling[2]->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[2]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                  </form>
 
                         @endif
                             </div>
@@ -330,7 +337,8 @@
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$bestSelling[3]->id}}">
                                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[3]->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
-                                    </form>
+                                      <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                  </form>
 
                             @endif
                             </div>
