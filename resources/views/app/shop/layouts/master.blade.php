@@ -132,16 +132,16 @@
         </div>
             @endforeach
           </ul>
-          <ul class="navbar-nav ml-2">
+          <ul class="navbar-nav float-right ">
                 @guest
                   <div class="search-icon d-flex align-items-center mx-3 ">
                       <a href="{{ route('register') }}" style="font-size:13px;">
                       <button type="button" class="btn bg-blue-omid text-white rounded">عضویت</button>
                       </a>
                   </div>
-                  <div class="search-icon d-flex align-items-center ml-5 ">
+                  <div class="search-icon d-flex align-items-center ml-5 mt-2 ">
                       <a href="{{ route('login') }}" style="font-size:13px;">
-                            <button type="button" class="btn bg-orange-omid px-3 text-white rounded">ورود</button>
+                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">ورود</button>
                       </a>
                   </div>
                         @endguest
@@ -159,9 +159,9 @@
                             </a>
                         </div>
                         @endif
-                        <div class="search-icon d-flex align-items-center ml-5 ">
+                        <div class="search-icon d-flex align-items-center ml-5">
                             <a href="{{ route('cart.show' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
-                                  <button type="button" class="btn bg-orange-omid px-3 text-white rounded">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
+                                  <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>@if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }} @else 0 @endif</button>
                             </a>
                         </div>
                         @endauth
