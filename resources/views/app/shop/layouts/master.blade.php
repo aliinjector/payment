@@ -22,6 +22,36 @@
     <link href="/app/shop/assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/css/custom.css" rel="stylesheet" type="text/css">
+    <style>
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        right: 100%!important;
+        margin-top: -6px;
+        margin-left: -1px;
+        -webkit-border-radius: 0 6px 6px 6px;
+        -moz-border-radius: 0 6px 6px;
+        border-radius: 0 6px 6px 6px;
+    }
+
+    .dropdown-submenu:hover>.dropdown-menu {
+        display: block;
+    }
+    .dropdown-submenu.pull-left {
+        float: none;
+    }
+
+    .dropdown-submenu.pull-left>.dropdown-menu {
+        left: -100%;
+        margin-left: 10px;
+        -webkit-border-radius: 6px 0 6px 6px;
+        -moz-border-radius: 6px 0 6px 6px;
+        border-radius: 6px 0 6px 6px;
+    }
+</style>
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     @toastr_css
 
@@ -69,9 +99,37 @@
                       </li>
               @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
               {{-- {{ dd() }} --}}
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategory->name }}</a>
-            </li>
+            </li> --}}
+
+        <div class="dropdown mx-3">
+            <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #465f73!important">
+                  {{ $shopCategory->name }}
+                  </button>
+            <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="right:.2em!important">
+                <li class="dropdown-item"><a href="#">زیر منو</a></li>
+                <li class="dropdown-divider"></li>
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item" tabindex="-1" href="#">زیر منو <i class="fa fa-angle-left light-dark-text-color font-12"></i></a>
+
+                    <ul class="dropdown-menu font-16">
+                        <li class="dropdown-item"><a tabindex="-1" href="#">زیر زیر منو</a></li>
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item" href="#">زیر منو <i class="fa fa-angle-left light-dark-text-color font-12"></i></a>
+                            <ul class="dropdown-menu font-16">
+                                <li class="dropdown-item"><a href="#">زیر زیر زیر من</a></li>
+                                <li class="dropdown-submenu"><a class="dropdown-item" href="#">زیر زیر زیر منو <i class="fa fa-angle-left light-dark-text-color font-12"></i></a>
+                                    <ul class="dropdown-menu font-16">
+                                        <li class="dropdown-item"><a href="#">زیر زیر زیر زیر منو </a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
             @endforeach
           </ul>
           <ul class="navbar-nav ml-2">

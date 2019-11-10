@@ -76,8 +76,8 @@
                <div id="mySlider"></div>
          </div>
       </div>
-      <div class="card p-3 w-70 align-items-start iranyekan font-15">
-      <h5 class="text-dark pr-3 border-btm font-weight-500 m-4 col-lg-10">دسته بندی نتایج</h5>
+      <div class="card p-3 align-items-start iranyekan font-15" style="max-width: 18rem;">
+      <h5 class="text-dark pr-1 border-btm font-weight-500 m-2">دسته بندی نتایج</h5>
       <div class="border-0">
       <div class="list-group list-group-root well border-0">
         @foreach($categories as $category)
@@ -122,8 +122,8 @@
       </div>
       </div>
    </div>
-   <div class="col-lg-9 d-flex flex-wrap">
-   <div class="row d-flex justify-content-center mr-2">
+   <div class="col-lg-9">
+   <div class="row d-flex mr-2">
    <h6 class="iranyekan text-dark">مرتب سازی بر اساس :</h6>
    <div class="btn-group btn-group-toggle mb-4 flex-wrap d-inline" data-toggle="buttons">
    <label id="available-order-1" for="available-order-1" class="btn btn-outline-orange  @if(request()->sortBy['field'] == '' or request()->sortBy['field'] == 'created_at')  active @endif border-0 rounded px-2 mx-2 iranyekan color-blue font-weight-bold" style="cursor:pointer">
