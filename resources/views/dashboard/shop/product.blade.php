@@ -158,7 +158,7 @@
                                                         </option>
                                                         @foreach($productCategories as $productCategory)
                                                             <option style="font-family: BYekan!important;"
-                                                                    value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
+                                                                    value="{{ $productCategory->id }}"> @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} > @endif {{ $productCategory->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 @endif
@@ -172,7 +172,7 @@
                                                 <input type="text" class="form-control inputfield" name="price"
                                                        placeholder="مثال: 30000" Lang="en">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8"> تومان</span></div>
 
                                             </div>
@@ -183,7 +183,7 @@
                                                 <input type="text" class="form-control inputfield" name="off_price"
                                                        placeholder="مثال: 30000" Lang="en">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8"> تومان</span></div>
 
                                             </div>
@@ -194,7 +194,7 @@
                                                 <input type="text" class="form-control inputfield" name="amount"
                                                        placeholder="مثال: 3">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8">عدد</span></div>
 
                                             </div>
@@ -205,7 +205,7 @@
                                                 <input type="text" class="form-control inputfield" name="weight"
                                                        placeholder="مثال: 30">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8">گرم</span></div>
 
                                             </div>
@@ -216,7 +216,7 @@
                                                 <input class="form-control h-50px" type="color" placeholder="#122272"
                                                        id="example-color-input" name="color_1">
                                                 <div class="input-group-append"><a href="#" class="color1"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                             </div>
@@ -227,7 +227,7 @@
                                                 <input class="form-control h-50px" type="color" value="#a89d8e"
                                                        id="example-color-input" name="color_2">
                                                 <div class="input-group-append"><a href="#" class="color2"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                             </div>
@@ -238,7 +238,7 @@
                                                 <input class="form-control h-50px" type="color" value="#a89d8e"
                                                        id="example-color-input" name="color_3">
                                                 <div class="input-group-append"><a href="#" class="color3"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                             </div>
@@ -249,7 +249,7 @@
                                                 <input class="form-control h-50px" type="color" value="#a89d8e"
                                                        id="example-color-input" name="color_4">
                                                 <div class="input-group-append"><a href="#" class="color4"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                             </div>
@@ -268,7 +268,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_1"
                                                        placeholder=" مثال: ضد آب ">
                                                 <div class="input-group-append"><a href="#" class="test1"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -281,7 +281,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_2"
                                                        placeholder=" مثال: ضد آب ">
                                                 <div class="input-group-append"><a href="#" class="test2"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -294,7 +294,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_3"
                                                        placeholder=" مثال: ضد آب ">
                                                 <div class="input-group-append"><a href="#" class="test3"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -420,15 +420,16 @@
                                                     <div class="input-group-prepend min-width-180"><span
                                                             class="input-group-text bg-light inputfield min-width-140"
                                                             id="basic-addon7">دسته بندی محصول :</span></div>
-                                                    <select class="form-control inputfield" name="product_category"
-                                                            id="">
-                                                        <option style="font-family: BYekan!important;"
-                                                                value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option>
-                                                        @foreach($productCategories as $productCategory)
-                                                            <option style="font-family: BYekan!important;"
-                                                                    value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                        <select class="form-control inputfield" name="product_category"
+                                                                id="">
+                                                                <option style="font-family: BYekan!important;"
+                                                                        value="{{ $productCategory->id }}">{{ $productCategory->name }}
+                                                                </option>
+                                                            @foreach($productCategories as $productCategory)
+                                                                <option style="font-family: BYekan!important;"
+                                                                        value="{{ $productCategory->id }}"> @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} > @endif {{ $productCategory->name }}</option>
+                                                            @endforeach
+                                                        </select>
 
 
                                                 </div>
@@ -440,7 +441,7 @@
                                                            placeholder="مثال: 30000" Lang="en"
                                                            value="{{ $product->price }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"> تومان</span></div>
 
                                                 </div>
@@ -452,7 +453,7 @@
                                                            placeholder="مثال: 30000" Lang="en"
                                                            value="{{ $product->off_price }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"> تومان</span></div>
 
                                                 </div>
@@ -463,7 +464,7 @@
                                                     <input type="text" class="form-control inputfield" name="amount"
                                                            placeholder="مثال: 3" value="{{ $product->amount }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8">عدد</span></div>
 
                                                 </div>
@@ -474,7 +475,7 @@
                                                     <input type="text" class="form-control inputfield" name="weight"
                                                            placeholder="مثال: 30" value="{{ $product->weight }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8">گرم</span></div>
 
                                                 </div>
@@ -486,7 +487,7 @@
                                                            placeholder="#122272" id="example-color-input" name="color_1"
                                                            value="{{ $product->color_1 }}">
                                                     <div class="input-group-append"><a href="#" class="color1"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                                 </div>
@@ -500,7 +501,7 @@
                                                            @endif id="example-color-input" name="color_2"
                                                            value="{{ $product->color_2 }}">
                                                     <div class="input-group-append"><a href="#" class="color2"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                                 </div>
@@ -514,7 +515,7 @@
                                                            @endif id="example-color-input" name="color_3"
                                                            value="{{ $product->color_3 }}">
                                                     <div class="input-group-append"><a href="#" class="color3"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                                 </div>
@@ -528,7 +529,7 @@
                                                            @endif  id="example-color-input" name="color_4"
                                                            value="{{ $product->color_4 }}">
                                                     <div class="input-group-append"><a href="#" class="color4"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
                                                     </span></a></div>
                                                 </div>
@@ -551,7 +552,7 @@
                                                            placeholder=" مثال: ضد آب "
                                                            value="{{ $product->feature_1 }}">
                                                     <div class="input-group-append"><a href="#" class="test1"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -566,7 +567,7 @@
                                                            placeholder=" مثال: ضد آب "
                                                            value="{{ $product->feature_2 }}">
                                                     <div class="input-group-append"><a href="#" class="test2"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -581,7 +582,7 @@
                                                            placeholder=" مثال: ضد آب "
                                                            value="{{ $product->feature_3 }}">
                                                     <div class="input-group-append"><a href="#" class="test3"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -710,21 +711,20 @@
                                                            placeholder="مثال: توضیحات مختصری درمورد فایل"
                                                            value="{{ $product->description }}">
                                                 </div>
-
-
                                                 <div class="input-group mt-3">
                                                     <div class="input-group-prepend min-width-180"><span
                                                             class="input-group-text bg-light inputfield min-width-140"
                                                             id="basic-addon7">دسته بندی محصول :</span></div>
-
-                                                    <select class="form-control inputfield" name="product_category"
-                                                            id="">
-                                                        <option style="font-family: BYekan!important;"
-                                                                value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option> @foreach($productCategories as $productCategory)
-                                                            <option style="font-family: BYekan!important;"
-                                                                    value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
-                                                        @endforeach
-                                                    </select>
+                                                        <select class="form-control inputfield" name="product_category"
+                                                                id="">
+                                                                <option style="font-family: BYekan!important;"
+                                                                        value="{{ $productCategory->id }}">{{ $productCategory->name }}
+                                                                </option>
+                                                            @foreach($productCategories as $productCategory)
+                                                                <option style="font-family: BYekan!important;"
+                                                                        value="{{ $productCategory->id }}"> @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} > @endif {{ $productCategory->name }}</option>
+                                                            @endforeach
+                                                        </select>
 
 
                                                 </div>
@@ -735,7 +735,7 @@
                                                     <input type="text" class="form-control inputfield" name="price"
                                                            placeholder="مثال: 30000" value="{{ $product->price }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"> تومان</span></div>
 
                                                 </div>
@@ -746,7 +746,7 @@
                                                     <input type="text" class="form-control inputfield" name="off_price"
                                                            placeholder="مثال: 30000" value="{{ $product->off_price }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"> تومان</span></div>
 
                                                 </div>
@@ -759,7 +759,7 @@
                                                            placeholder=" مثال: کیفیت بالا "
                                                            value="{{ $product->feature_1 }}">
                                                     <div class="input-group-append"><a href="#" class="test1"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -774,7 +774,7 @@
                                                            placeholder=" مثال: کیفیت بالا "
                                                            value="{{ $product->feature_2 }}">
                                                     <div class="input-group-append"><a href="#" class="test2"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -789,7 +789,7 @@
                                                            placeholder=" مثال: کیفیت بالا "
                                                            value="{{ $product->feature_3 }}">
                                                     <div class="input-group-append"><a href="#" class="test3"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -938,16 +938,16 @@
                                                     <div class="input-group-prepend min-width-180"><span
                                                             class="input-group-text bg-light inputfield min-width-140"
                                                             id="basic-addon7">دسته بندی محصول :</span></div>
-                                                    <select class="form-control inputfield" name="product_category"
-                                                            id="">
-                                                        <option style="font-family: BYekan!important;"
-                                                                value="{{ $product->productCategory()->first()->id }}">{{ $product->productCategory()->first()->name }}</option> @foreach($productCategories as $productCategory)
-                                                            <option style="font-family: BYekan!important;"
-                                                                    value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
-                                                        @endforeach
-                                                    </select>
-
-
+                                                        <select class="form-control inputfield" name="product_category"
+                                                                id="">
+                                                                <option style="font-family: BYekan!important;"
+                                                                        value="{{ $productCategory->id }}">{{ $productCategory->name }}
+                                                                </option>
+                                                            @foreach($productCategories as $productCategory)
+                                                                <option style="font-family: BYekan!important;"
+                                                                        value="{{ $productCategory->id }}"> @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} > @endif {{ $productCategory->name }}</option>
+                                                            @endforeach
+                                                        </select>
                                                 </div>
                                                 <div class="input-group mt-3">
                                                     <div class="input-group-prepend min-width-180"><span
@@ -956,7 +956,7 @@
                                                     <input type="text" class="form-control inputfield" name="price"
                                                            placeholder="مثال: 30000" value="{{ $product->price }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"> ریال</span></div>
 
                                                 </div>
@@ -967,7 +967,7 @@
                                                     <input type="text" class="form-control inputfield" name="off_price"
                                                            placeholder="مثال: 30000" value="{{ $product->off_price }}">
                                                     <div class="input-group-append"><span
-                                                            class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"> ریال</span></div>
 
                                                 </div>
@@ -980,7 +980,7 @@
                                                            placeholder=" مثال: ضد آب "
                                                            value="{{ $product->feature_1 }}">
                                                     <div class="input-group-append"><a href="#" class="test1"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -995,7 +995,7 @@
                                                            placeholder=" مثال: ضد آب "
                                                            value="{{ $product->feature_2 }}">
                                                     <div class="input-group-append"><a href="#" class="test2"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1010,7 +1010,7 @@
                                                            placeholder=" مثال: ضد آب "
                                                            value="{{ $product->feature_3 }}">
                                                     <div class="input-group-append"><a href="#" class="test3"><span
-                                                                class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                                class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                                 id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1158,13 +1158,14 @@
                                                         </option>
                                                         @foreach($productCategories as $productCategory)
                                                             <option style="font-family: BYekan!important;"
-                                                                    value="{{ $productCategory->id }}">{{ $productCategory->name }}</option>
+                                                                    value="{{ $productCategory->id }}"> @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} > @endif {{ $productCategory->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 @endif
 
 
                                             </div>
+
                                             <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span
                                                         class="input-group-text bg-light min-width-140"
@@ -1172,7 +1173,7 @@
                                                 <input type="text" class="form-control inputfield" name="price"
                                                        placeholder="مثال: 30000">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8"> تومان</span></div>
 
                                             </div>
@@ -1183,7 +1184,7 @@
                                                 <input type="text" class="form-control inputfield" name="off_price"
                                                        placeholder="مثال: 30000">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8"> تومان</span></div>
 
                                             </div>
@@ -1195,7 +1196,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_1"
                                                        placeholder=" مثال: کیفیت بالا ">
                                                 <div class="input-group-append"><a href="#" class="test1"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1208,7 +1209,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_2"
                                                        placeholder=" مثال: کیفیت بالا ">
                                                 <div class="input-group-append"><a href="#" class="test2"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1221,7 +1222,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_3"
                                                        placeholder=" مثال: کیفیت بالا ">
                                                 <div class="input-group-append"><a href="#" class="test3"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1389,7 +1390,7 @@
                                                 <input type="text" class="form-control inputfield" name="price"
                                                        placeholder="مثال: 30000">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8"> ریال</span></div>
 
                                             </div>
@@ -1400,7 +1401,7 @@
                                                 <input type="text" class="form-control inputfield" name="off_price"
                                                        placeholder="مثال: 30000">
                                                 <div class="input-group-append"><span
-                                                        class="input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                        class="input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                         id="basic-addon8"> ریال</span></div>
 
                                             </div>
@@ -1412,7 +1413,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_1"
                                                        placeholder=" مثال: ضد آب ">
                                                 <div class="input-group-append"><a href="#" class="test1"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1425,7 +1426,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_2"
                                                        placeholder=" مثال: ضد آب ">
                                                 <div class="input-group-append"><a href="#" class="test2"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1438,7 +1439,7 @@
                                                 <input type="text" class="form-control inputfield" name="feature_3"
                                                        placeholder=" مثال: ضد آب ">
                                                 <div class="input-group-append"><a href="#" class="test3"><span
-                                                            class="h-50px input-group-text bg-primary text-white font-weight-bold iranyekan"
+                                                            class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan"
                                                             id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1538,7 +1539,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <table id="datatable"
-                                               class="table table-bordered dt-responsive nowrap dataTable no-footer rounded"
+                                               class="table table-bordered dt-responsive nowrap dataTable no-footer rounded font-16"
                                                style="border-collapse: collapse; border-spacing: 0px; width: 100%;"
                                                role="grid" aria-describedby="datatable_info">
                                             <thead>

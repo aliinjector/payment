@@ -35,6 +35,12 @@ class CreateProductsTable extends Migration
             $table->text('feature_2')->nullable();
             $table->text('feature_3')->nullable();
             $table->text('feature_4')->nullable();
+            $table->text('feature_5')->nullable();
+            $table->text('feature_6')->nullable();
+            $table->text('feature_7')->nullable();
+            $table->text('feature_8')->nullable();
+            $table->text('feature_9')->nullable();
+            $table->text('feature_10')->nullable();
             $table->integer('viewCount')->default(0);
             $table->integer('amount')->default(0)->nullable();
             $table->integer('refund')->default(0);

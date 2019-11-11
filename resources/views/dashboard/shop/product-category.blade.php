@@ -94,6 +94,17 @@
                         <input type="text" class="form-control inputfield" name="name" value="{{ $category->name }}">
                      </div>
                      <div class="input-group mt-3">
+                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">شاخه دسته بندی:</span></div>
+                        <select class="form-control inputfield" name="parent_id">
+                           <option selected value="null">دسته بندی اصلی</option>
+                           @foreach($categoires as $category)
+                             @unless($category->parent()->get()->first() != null and $category->parent()->get()->first()->parent()->get()->first() != null and $category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first() != null and $category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists() and !$category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists())
+                           <option value="{{ $category->id }}">{{ $category->name }}</option>
+                         @endunless
+                           @endforeach
+                        </select>
+                     </div>
+                     <div class="input-group mt-3">
                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
                         <input type="text" class="form-control inputfield" name="description" value="{{ $category->description }}">
                      </div>
@@ -124,16 +135,16 @@
                            <i class="fa fa-search"></i>
                            </button>
                         </div>
-                        <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+                        <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                            <thead>
                               <tr role="row">
                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
                                  </th>
-                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 55px;">نام
-                                    محصول
+                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">نام
+                                    دسته بندی
                                  </th>
                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">شاخه دسته بندی</th>
-                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات</th>
+                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">توضیحات</th>
                               </tr>
                            </thead>
                            <tbody class="byekan">

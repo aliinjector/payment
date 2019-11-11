@@ -126,8 +126,12 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request,$id)
     {
+      if($request->parent_id == 'null'){
+        $request->parent_id = null;
+        }
         $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id',$id)->get()->first()->update([
             'name' => $request->name,
+            'parent_id' => $request->parent_id,
             'description' => $request->description,
         ]);
 

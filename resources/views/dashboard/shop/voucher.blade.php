@@ -72,7 +72,7 @@
                                 <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
                                         <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000">
-                                        <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                        <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                     </div>
 
@@ -134,7 +134,7 @@
                                         <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
                                                 <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000">
-                                                <div class="input-group-append"><span class="input-group-text bg-primary text-white font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                                <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                             </div>
 
@@ -181,15 +181,15 @@
 
 
 
-                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer rounded" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer rounded font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
                                     <thead>
                                         <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 20px;">شناسه
                                                     </th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 205px;">نام
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 115px;">نام
                                             </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت </th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات </th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 55px;">وضعیت </th>
+                                            {{-- <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات </th> --}}
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">کد تخفیف</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">تعداد استفاده</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;"> میزان تخفیف</th>
@@ -202,7 +202,7 @@
                                         <tr role="row" class="odd icon-hover hover-color" id="{{ $voucher->id }}">
                                             <td>{{ $voucher->id }}</td>
                                             <td>{{ $voucher->name }}</td>
-                                            <td>
+                                            <td class="font-18">
                                                 {{-- <form class="form-inline" action="" method="post"> --}}
                                                         @csrf
                                                         {{ method_field('put') }}
@@ -233,7 +233,7 @@
                                             {{-- </form> --}}
 
                                         </td>
-                                            <td>{{ $voucher->description }}</td>
+                                            {{-- <td>{{ $voucher->description }}</td> --}}
                                             <td>{{ $voucher->code }}</td>
                                             <td>{{ $voucher->uses }}</td>
                                             <td>{{ $voucher->discount_amount }}</td>
