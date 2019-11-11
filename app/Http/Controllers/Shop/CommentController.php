@@ -92,7 +92,6 @@ class CommentController extends  \App\Http\Controllers\Controller
 
     public function comment(Request $request)
     {
-
         $this->validate($request, [
             'comment' => 'required|min:3|max:1000'
         ]);
@@ -100,6 +99,10 @@ class CommentController extends  \App\Http\Controllers\Controller
             'user_id' => auth()->user()->id,
         ], $request->all() ));
         alert()->success('نظر شما با موفقیت ثبت شد.', 'انجام شد');
+        SEOTools::setTitle($shop->name);
+        SEOTools::setDescription($shop->description);
+        SEOTools::opengraph()->addProperty('type', 'website');
+
         return redirect()->back();
     }
     public function answer(Request $request)

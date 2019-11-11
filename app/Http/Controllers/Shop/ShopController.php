@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 
 class ShopController extends \App\Http\Controllers\Controller
@@ -67,6 +68,12 @@ class ShopController extends \App\Http\Controllers\Controller
         $shop = Shop::where('english_name', $shop)->first();
         $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
         $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
+
+        SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
+        SEOTools::setDescription($shop->description);
+        SEOTools::opengraph()->addProperty('type', 'website');
+
+
         return view('app.shop.shop', compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
     }
 
@@ -91,6 +98,11 @@ class ShopController extends \App\Http\Controllers\Controller
         $comments = $product->comments;
         $galleries = $product->galleries;
         $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(4)->get();
+
+        SEOTools::setTitle($shop->name . ' | ' . $product->title);
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
+
         return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries', 'offeredProducts'));
     }
 
@@ -129,6 +141,11 @@ class ShopController extends \App\Http\Controllers\Controller
          $perPage = 16; // How many items do you want to display.
          $currentPage = request()->page; // The index page.
          $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
+
+        SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);
+        SEOTools::setDescription($shop->description);
+        SEOTools::opengraph()->addProperty('type', 'website');
+
         return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category' , 'categories','productsPaginate'));
     }
 
@@ -208,6 +225,12 @@ class ShopController extends \App\Http\Controllers\Controller
             $product = Product::where('id', $id)->get()->first();
             $shop = Shop::where('english_name', $shop)->first();
             $shopCategories = $shop->ProductCategories()->get();
+
+            SEOTools::setTitle($shop->name . ' | ' . 'لیست سفارشات');
+            SEOTools::setDescription($shop->description);
+            SEOTools::opengraph()->addProperty('type', 'website');
+
+
             return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product'));
         }
     }
@@ -230,6 +253,11 @@ class ShopController extends \App\Http\Controllers\Controller
         } else {
             $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->paginate(8);
         }
+
+        SEOTools::setTitle($shop->name . ' | ' . $tagName);
+        SEOTools::setDescription($shop->description);
+        SEOTools::opengraph()->addProperty('type', 'website');
+
         return view('app.shop.tags-product', compact('products', 'shop', 'shopCategories', 'tagName'));
     }
 
@@ -399,6 +427,11 @@ class ShopController extends \App\Http\Controllers\Controller
         DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
         Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
         alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
+
+        SEOTools::setTitle($shop->name );
+        SEOTools::setDescription($shop->description);
+        SEOTools::opengraph()->addProperty('type', 'website');
+
         return redirect()->route('user.purchased.list', ['userID' => \auth::user()->id]);
     }
 

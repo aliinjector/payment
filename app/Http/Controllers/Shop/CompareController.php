@@ -18,6 +18,11 @@ class CompareController extends \App\Http\Controllers\Controller
         $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
         $shop = Shop::where('english_name', $shop)->first();
         toastr()->info('محصولات اضافه شدند.');
+
+        SEOTools::setTitle($shop->name . ' | ' . 'مقایسه محصولات');
+        SEOTools::setDescription($shop->description);
+        SEOTools::opengraph()->addProperty('type', 'website');
+
         return view('app.shop.compare', compact('shop', 'shopCategories'));
 
     }

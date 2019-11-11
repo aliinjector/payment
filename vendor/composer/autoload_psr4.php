@@ -81,5 +81,6 @@ return array(
     'Barryvdh\\Cors\\' => array($vendorDir . '/barryvdh/laravel-cors/src'),
     'Assert\\' => array($vendorDir . '/beberlei/assert/lib/Assert'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src/Asm89/Stack'),
+    'Artesaos\\SEOTools\\' => array($vendorDir . '/artesaos/seotools/src/SEOTools'),
     'App\\' => array($baseDir . '/app'),
 );

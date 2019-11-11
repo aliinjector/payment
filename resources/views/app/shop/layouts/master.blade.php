@@ -3,13 +3,12 @@
 <html lang="en">
 
 <head>
+    {!! SEO::generate() !!}
     <meta charset="utf-8">
     @if (\Request::route()->getName() == 'user.purchased.list')
       <title>لیست سفارشات شما</title>
     @else
-    <title> فروشگاه {{ $shop->name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta content=" فروشگاه{{ $shop->name }}" name="description">
   @endif
     <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
     <!-- App favicon -->
