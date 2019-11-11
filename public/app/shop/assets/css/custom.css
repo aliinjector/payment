@@ -370,3 +370,6 @@ h2 span {
 .light-dark-text-color{
   color: #6b6b6b!important;
 }
+.pointer-crouser{
+  cursor: pointer;
+}

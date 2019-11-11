@@ -40,6 +40,10 @@
     .dropdown-submenu:hover>.dropdown-menu {
         display: block;
     }
+    .dropdown:hover> .dropdown-menu{
+        display: block;
+    }
+
     .dropdown-submenu.pull-left {
         float: none;
     }
@@ -98,37 +102,41 @@
                         <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop',$shop->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
                       </li>
               @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
-              {{-- {{ dd() }} --}}
-            {{-- <li class="nav-item">
-              <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}" tabindex="-1" aria-disabled="true">{{ $shopCategory->name }}</a>
-            </li> --}}
-
         <div class="dropdown mx-3">
-            <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #465f73!important">
+          <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
+            <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" style="color: #465f73!important">
                   {{ $shopCategory->name }}
                   </button>
+                  </a>
+            @if($shopCategory->children()->exists())
             <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="right:.2em!important">
-                <li class="dropdown-item"><a href="#">زیر منو</a></li>
-                <li class="dropdown-divider"></li>
+              @foreach ($shopCategory->children()->get() as $subCategory)
+                @if (!$subCategory->children()->exists())
+                  <li class="dropdown-item dropdown-submenu"><a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;">{{ $subCategory->name }}</a></li>
+              @else
                 <li class="dropdown-submenu">
-                    <a class="dropdown-item" tabindex="-1" href="#">زیر منو <i class="fa fa-angle-left light-dark-text-color font-12"></i></a>
-
+                    <a class="dropdown-item pointer-crouser" style="color: #465f73!important;" tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                     <ul class="dropdown-menu font-16">
-                        <li class="dropdown-item"><a tabindex="-1" href="#">زیر زیر منو</a></li>
+                      @foreach ($subCategory->children()->get() as $subSubCategory)
+                        @if (!$subSubCategory->children()->exists())
+                        <li class="dropdown-item"><a tabindex="-1" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}">{{ $subSubCategory->name }}</a></li>
+                      @else
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item" href="#">زیر منو <i class="fa fa-angle-left light-dark-text-color font-12"></i></a>
+                            <a class="dropdown-item pointer-crouser" style="color: #465f73!important;">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                             <ul class="dropdown-menu font-16">
-                                <li class="dropdown-item"><a href="#">زیر زیر زیر من</a></li>
-                                <li class="dropdown-submenu"><a class="dropdown-item" href="#">زیر زیر زیر منو <i class="fa fa-angle-left light-dark-text-color font-12"></i></a>
-                                    <ul class="dropdown-menu font-16">
-                                        <li class="dropdown-item"><a href="#">زیر زیر زیر زیر منو </a></li>
-                                    </ul>
-                                </li>
+                              @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
+                                <li class="dropdown-item"><a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}" style="color: #465f73!important;">{{ $subSubSubCategory->name }}</a></li>
+                              @endforeach
                             </ul>
+                          @endif
                         </li>
+                      @endforeach
                     </ul>
-                </li>
+                  </li>
+                  @endif
+                @endforeach
             </ul>
+          @endif
         </div>
             @endforeach
           </ul>
@@ -141,7 +149,7 @@
                   </div>
                   <div class="search-icon d-flex align-items-center ml-5 mt-2 ">
                       <a href="{{ route('login') }}" style="font-size:13px;">
-                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">ورود</button>
+                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 mt-lg-n2 px-sm-4 mr-sm-3 rounded text-white">ورود</button>
                       </a>
                   </div>
                         @endguest

@@ -163,6 +163,30 @@ class ShopController extends \App\Http\Controllers\Controller
       return $allProducts;
     }
 
+     public static function getAllSubCategories($cat_id)
+    {
+      $allSubCategories = collect();
+      foreach(ProductCategory::find($cat_id)->children()->get() as $subCategory){
+        $allSubCategories[] = $subCategory;
+        if($subCategory->children()->exists()){
+          foreach($subCategory->children()->get() as $subSubCategory){
+            $allSubCategories[] = $subSubCategory;
+          }
+          if($subSubCategory->children()->exists()){
+            foreach($subSubCategory->children()->get() as $subSubSubCategory){
+              $allSubCategories[] = $subSubSubCategory;
+              if($subSubSubCategory->children()->exists()){
+                foreach($subSubSubCategory->children()->get() as $subSubSubSubCategory){
+                  $allSubCategories[] = $subSubSubSubCategory;
+                }
+              }
+            }
+          }
+        }
+      }
+      return $allSubCategories;
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
