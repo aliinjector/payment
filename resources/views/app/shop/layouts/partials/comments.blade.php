@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="/app/shop/assets/css/comment.css">
 
 <div style="font-family: iranyekan" class="comments-container">
-    <h1>نظرات محصول</h1>
+    <h2 class="line-throw"><span>نظرات محصول </span></h2>
 
     <div class="mt-4">
         @auth

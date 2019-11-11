@@ -87,10 +87,11 @@ class ShopController extends \App\Http\Controllers\Controller
             }
         }
         }
+
         $comments = $product->comments;
         $galleries = $product->galleries;
-
-        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries'));
+        $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(4)->get();
+        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries', 'offeredProducts'));
     }
 
     public function showCategory($shop, $categroyId, Request $request)
