@@ -53,6 +53,7 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+         // dd($request->all());
            if($request->type == 'file') {
             $file_size = $request->file('attachment')->getSize();
            }
@@ -141,6 +142,12 @@ class ProductController extends Controller
         'feature_2' => $request->feature_2,
         'feature_3' => $request->feature_3,
         'feature_4' => $request->feature_4,
+        'feature_5' => $request->feature_5,
+        'feature_6' => $request->feature_6,
+        'feature_7' => $request->feature_7,
+        'feature_8' => $request->feature_8,
+        'feature_9' => $request->feature_9,
+        'feature_10' => $request->feature_10,
         'description' => $request->description,
         'image' => $image,
         'attachment' => $attachment,
@@ -192,6 +199,12 @@ $shop = \Auth::user()->shop()->first()->products()->create([
     'feature_2' => $request->feature_2,
     'feature_3' => $request->feature_3,
     'feature_4' => $request->feature_4,
+    'feature_5' => $request->feature_5,
+    'feature_6' => $request->feature_6,
+    'feature_7' => $request->feature_7,
+    'feature_8' => $request->feature_8,
+    'feature_9' => $request->feature_9,
+    'feature_10' => $request->feature_10,
     'description' => $request->description,
     'image' => $image,
     'attachment' => $attachment,
@@ -361,6 +374,12 @@ else{
         'feature_2' => $request->feature_2,
         'feature_3' => $request->feature_3,
         'feature_4' => $request->feature_4,
+        'feature_5' => $request->feature_5,
+        'feature_6' => $request->feature_6,
+        'feature_7' => $request->feature_7,
+        'feature_8' => $request->feature_8,
+        'feature_9' => $request->feature_9,
+        'feature_10' => $request->feature_10,
         'description' => $request->description,
         'image' => $image,
         'attachment' => $attachment,
