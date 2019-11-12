@@ -4487,7 +4487,7 @@ dt {
 
 .modal-content {
     background-color: #f3f6f7;
-    border-radius: 0
+    /* border-radius: 0 */
 }
 
 .modal-content .modal-footer,

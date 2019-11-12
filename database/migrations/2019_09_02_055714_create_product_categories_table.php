@@ -17,6 +17,7 @@ class CreateProductCategoriesTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
            $table->text('description')->nullable();
+           $table->text('icon')->nullable();
            $table->unsignedInteger('parent_id')->nullable();
            $table->bigInteger('shop_id')->unsigned()->index();
             $table->timestamps();

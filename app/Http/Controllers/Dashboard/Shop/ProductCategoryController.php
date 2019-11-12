@@ -46,6 +46,7 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+      $image = $this->uploadFile($request->file('icon'), false, true);
         switch ($request->input('action')) {
             case 'justSave':
 
@@ -57,6 +58,7 @@ class ProductCategoryController extends Controller
                     else
                     $productCategory->parent_id = $request->parent_id;
                     $productCategory->description = $request->description;
+                    $productCategory->icon = $image;
                     $productCategory->shop_id = \Auth::user()->shop()->first()->id;
                     $productCategory->save();
                     alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
@@ -78,6 +80,7 @@ class ProductCategoryController extends Controller
                     else
                     $productCategory->parent_id = $request->parent_id;
                     $productCategory->description = $request->description;
+                    $productCategory->icon = $image;
                     $productCategory->shop_id = \Auth::user()->shop()->first()->id;
                     $productCategory->save();
                     session()->flash('flashModal');
@@ -126,6 +129,7 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request,$id)
     {
+      $image = $this->uploadFile($request->file('icon'), false, true);
       if($request->parent_id == 'null'){
         $request->parent_id = null;
         }
@@ -133,6 +137,7 @@ class ProductCategoryController extends Controller
             'name' => $request->name,
             'parent_id' => $request->parent_id,
             'description' => $request->description,
+            'icon' => $image,
         ]);
 
 

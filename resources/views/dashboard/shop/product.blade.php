@@ -1499,7 +1499,7 @@
             $(".feature_10").removeClass("d-none");
             $(".test9").addClass("d-none");
         });
-            });
+    });
     $(document).ready(function() {
         $(".color1").click(function() {
             $(".color_1").removeClass("d-none");

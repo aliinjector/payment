@@ -53,7 +53,6 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
-         // dd($request->all());
            if($request->type == 'file') {
             $file_size = $request->file('attachment')->getSize();
            }

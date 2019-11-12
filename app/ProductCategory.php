@@ -12,6 +12,7 @@ class ProductCategory extends Model
 
   protected $dates = ['deleted_at'];
   protected $guarded = ['id'];
+  protected $casts = ['icon' => 'array'];
 
   public function products()
    {

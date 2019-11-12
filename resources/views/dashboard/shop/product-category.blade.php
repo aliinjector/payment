@@ -38,7 +38,7 @@
                </button>
             </div>
             <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-               <form action="{{ route('product-category.store', ['continue', 1]) }}" method="post" class="form-horizontal">
+               <form action="{{ route('product-category.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                   @csrf
                   <div class="form-group mb-0">
                      <div class="input-group mt-3">
@@ -59,6 +59,12 @@
                      <div class="input-group mt-3">
                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
                         <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد دسته بندی">
+                     </div>
+                     <div class="card mt-3">
+                         <div class="card-body">
+                             <h4 class="mt-0 header-title">آیکون دسته بندی</h4>
+                             <input type="file" id="input-file-now" name="icon" class="dropify">
+                         </div>
                      </div>
                   </div>
                   <!--end form-group-->
@@ -85,7 +91,7 @@
                </button>
             </div>
             <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-               <form action="{{ route('product-category.update', $category->id) }}" method="post" class="form-horizontal">
+               <form action="{{ route('product-category.update', $category->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                   @csrf
                   {{ method_field('PATCH') }}
                   <div class="form-group mb-0">
@@ -107,6 +113,12 @@
                      <div class="input-group mt-3">
                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
                         <input type="text" class="form-control inputfield" name="description" value="{{ $category->description }}">
+                     </div>
+                     <div class="card mt-3">
+                         <div class="card-body">
+                             <h4 class="mt-0 header-title">آیکون دسته بندی</h4>
+                             <input type="file" id="input-file-now" name="icon" class="dropify">
+                         </div>
                      </div>
                   </div>
                   <!--end form-group-->
@@ -140,6 +152,8 @@
                               <tr role="row">
                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
                                  </th>
+                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">آیکون
+                                 </th>
                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">نام
                                     دسته بندی
                                  </th>
@@ -151,7 +165,8 @@
                               @foreach($categoires as $category)
                               <tr role="row" class="odd icon-hover hover-color">
                                  <td style="width:5%">{{ $category->id }}</td>
-                                 <td>{{ $category->name }}</td>
+                                 <td style="width:5%"> @if($category->icon == null) <img src="{{ asset('/dashboard/assets/images/img-na.png') }}" class="rounded w-100" alt="">  @endif <img src="{{ $category->icon['80,80'] }}" class="rounded" alt=""></td>
+                                 <td><{{ $category->name }}</td>
                                  <td>
                                     @if($category->parent()->exists() and !$category->parent()->get()->first()->parent()->exists())
                                     {{ $category->parent()->get()->first()->name}}
@@ -197,6 +212,8 @@
 <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+<script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+<script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 <script>
    oTable = $('#datatable').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
    $('#myInputTextField').keyup(function(){
