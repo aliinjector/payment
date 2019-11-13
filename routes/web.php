@@ -65,6 +65,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy');
         Route::resource('shop-setting', 'ShopSettingController');
+        Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
         Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.updateContact');
         Route::resource('vouchers', 'VoucherController');
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('voucher.destroy');

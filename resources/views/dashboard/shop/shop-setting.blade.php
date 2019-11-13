@@ -18,9 +18,9 @@
 </div>
 @include('dashboard.layouts.errors')
 
-<form method="post" action="{{ route('shop-setting.update', \Auth::user()->id) }}"  enctype="multipart/form-data">
-  @csrf
-  @method('PUT')
+<form method="post" action="{{ route('shop-setting.update', \Auth::user()->id) }}" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -45,8 +45,7 @@
                             <div class="form-group row">
                                 <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام فروشگاه</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="name" placeholder="مثال: پایان پی"                                                value="{{ old('title', $shopInformation->name) }}"
-                                    >
+                                    <input class="form-control" type="text" name="name" placeholder="مثال: پایان پی" value="{{ old('title', $shopInformation->name) }}">
                                 </div>
                             </div>
                             <div class="form-group row  mb-0">
@@ -54,22 +53,22 @@
                                     <p class="text-muted mt-1" style="font-size: 11px;">این نام به عنوان آدرس اینترنتی شما انتخاب خواهد شد </p>
                                 </label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="english_name"   value="{{ old('english_name', $shopInformation->english_name) }}">
+                                    <input class="form-control" type="text" name="english_name" value="{{ old('english_name', $shopInformation->english_name) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                    <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی فروشگاه </label>
-                                     <div class="col-sm-10">
-                                            <select class="form-control" name="category_id">
-                                                @if($shopInformation->category_id != null)
-                                                <option value="{{ $shopInformation->shopCategory()->first()->id }}">{{ $shopInformation->shopCategory()->first()->name }}</option>
-                                                @else
-                                                    <option value="">یک مورد را انتخاب نمایید</option>
-                                                    @endif
-                                                    @foreach ($shopCategories as $shopCategory)
-                                                    <option value="{{ $shopCategory->id }}">{{ $shopCategory->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی فروشگاه </label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" name="category_id">
+                                        @if($shopInformation->category_id != null)
+                                            <option value="{{ $shopInformation->shopCategory()->first()->id }}">{{ $shopInformation->shopCategory()->first()->name }}</option>
+                                            @else
+                                            <option value="">یک مورد را انتخاب نمایید</option>
+                                            @endif
+                                            @foreach ($shopCategories as $shopCategory)
+                                            <option value="{{ $shopCategory->id }}">{{ $shopCategory->name }}</option>
+                                            @endforeach
+                                    </select>
                                 </div>
 
                             </div>
@@ -83,83 +82,83 @@
                         </div>
 
                     </div>
-    <div class="row mt-4">
-        <div class="col-lg-4 border-left p-3">
-                    <div class="media setting-card"><span class="sett-card-icon set-icon-purple"><i class="fa fa-shipping-fast"></i></span>
-                        <div class="media-body align-self-center">
-                            <div class="setting-detail">
-                                <h3 class="mb-0 mt-0 iranyekan">ارسال سریع</h3>
-                                <p class="text-muted mb-0">
-                                    حداقل مبلغ سبد خرید فقط برای تهران ۰ تومان.</p>
-                            </div>
-                            <div class="mt-3 row">
-                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                    <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way" @if($shopInformation->quick_way == 'enable') checked @endif>
-                                    <label class="custom-control-label iranyekan font-15" for="quick_way_on">رفعال</label>
+                    <div class="row mt-4">
+                        <div class="col-lg-4 border-left p-3">
+                            <div class="media setting-card"><span class="sett-card-icon set-icon-purple"><i class="fa fa-shipping-fast"></i></span>
+                                <div class="media-body align-self-center">
+                                    <div class="setting-detail">
+                                        <h3 class="mb-0 mt-0 iranyekan">ارسال سریع</h3>
+                                        <p class="text-muted mb-0">
+                                            حداقل مبلغ سبد خرید فقط برای تهران ۰ تومان.</p>
+                                    </div>
+                                    <div class="mt-3 row">
+                                        <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way" @if($shopInformation->quick_way == 'enable') checked @endif>
+                                                <label class="custom-control-label iranyekan font-15" for="quick_way_on">رفعال</label>
+                                        </div>
+
+                                    </div>
+                                    <!--end /div-->
                                 </div>
-
+                                <!--end media body-->
                             </div>
-                            <!--end /div-->
+                            <!--end media-->
+
                         </div>
-                        <!--end media body-->
-                    </div>
-                    <!--end media-->
+                        <!--end col-->
+                        <div class="col-lg-4 border-left p-3">
+                            <div class="media setting-card"><span class="sett-card-icon set-icon-success"><i class="fa fa-truck"></i></span>
+                                <div class="media-body align-self-center">
+                                    <div class="setting-detail">
+                                        <h3 class="mb-0 mt-0 iranyekan"> ارسال پستی</h3>
+                                        <p class="text-muted mb-0">
 
-        </div>
-        <!--end col-->
-        <div class="col-lg-4 border-left p-3">
-                    <div class="media setting-card"><span class="sett-card-icon set-icon-success"><i class="fa fa-truck"></i></span>
-                        <div class="media-body align-self-center">
-                            <div class="setting-detail">
-                                <h3 class="mb-0 mt-0 iranyekan"> ارسال پستی</h3>
-                                <p class="text-muted mb-0">
+                                            هزینه ارسال برای تهران ۵٫۰۰۰ تومان.</p>
+                                    </div>
+                                    <div class="mt-3 row">
+                                        <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <input type="checkbox" class="custom-control-input" id="posting_way_on" name="posting_way" @if($shopInformation->posting_way == 'enable') checked @endif>
+                                                <label class="custom-control-label iranyekan font-15" for="posting_way_on">فعال</label>
+                                        </div>
 
-                                    هزینه ارسال برای تهران ۵٫۰۰۰ تومان.</p>
-                            </div>
-                            <div class="mt-3 row">
-                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                    <input type="checkbox" class="custom-control-input" id="posting_way_on" name="posting_way" @if($shopInformation->posting_way == 'enable') checked @endif>
-                                    <label class="custom-control-label iranyekan font-15" for="posting_way_on">فعال</label>
+                                    </div>
+                                    <!--end /div-->
                                 </div>
-
+                                <!--end media body-->
                             </div>
-                            <!--end /div-->
+                            <!--end media-->
+
                         </div>
-                        <!--end media body-->
-                    </div>
-                    <!--end media-->
+                        <!--end col-->
+                        <div class="col-lg-4  p-3">
+                            <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fas fa-people-carry"></i></span>
+                                <div class="media-body align-self-center">
+                                    <div class="setting-detail">
+                                        <h3 class="mb-0 mt-0 iranyekan">دریافت حضوری</h3>
+                                        <p class="text-muted mb-0">
 
-        </div>
-        <!--end col-->
-        <div class="col-lg-4  p-3">
-                    <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fas fa-people-carry"></i></span>
-                        <div class="media-body align-self-center">
-                            <div class="setting-detail">
-                                <h3 class="mb-0 mt-0 iranyekan">دریافت حضوری</h3>
-                                <p class="text-muted mb-0">
+                                            امکان دریافت حضوری محصولات فروشگاه.</p>
+                                    </div>
+                                    <div class="mt-3 row">
+                                        <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                            <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way" @if($shopInformation->person_way == 'enable') checked @endif>
+                                                <label class="custom-control-label iranyekan font-15" for="person_way_on">فعال</label>
+                                        </div>
 
-                                   امکان دریافت حضوری محصولات فروشگاه.</p>
-                            </div>
-                            <div class="mt-3 row">
-                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
-                                    <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way" @if($shopInformation->person_way == 'enable') checked @endif>
-                                    <label class="custom-control-label iranyekan font-15" for="person_way_on">فعال</label>
+                                    </div>
+                                    <!--end /div-->
                                 </div>
-
+                                <!--end media body-->
                             </div>
-                            <!--end /div-->
+                            <!--end media-->
                         </div>
-                        <!--end media body-->
                     </div>
-                    <!--end media-->
-                  </div>
-                  </div>
 
-                  </div>
+                </div>
 
-                  <!--end card-body-->
-                  </div>
-                  <!--end card-->
+                <!--end card-body-->
+            </div>
+            <!--end card-->
         </div>
         <!--end col-->
 
@@ -226,7 +225,7 @@
         </div>
     </div>
 
-    <div class="row comming-soon" >
+    <div class="row comming-soon">
         <div class="col-xl-12">
             <div class="card">
                 <div class="card-body">
@@ -253,16 +252,49 @@
 
         <!--end col-->
     </div>
-  </div>
+    </div>
 
     <div class="text-right mb-3">
-            <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">ثبت تغییرات</button><br>
+        <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">ثبت تغییرات</button><br>
+    </div>
+</form>
+
+<form method="post" action="{{ route('shop-setting.setting-update', \Auth::user()->shop()->first()->id) }}">
+    @csrf
+    @method('PUT')
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="mt-0 header-title">تنظیمات صفحه فروشگاه</h4>
+                    <p class="text-muted mb-3">در این بخش میتوانید تنظیمات کلی صفحه اختصاصی فروشگاه خود را مدیریت کنید<p>
+                </div>
+                <div class="form-group row">
+                    <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش دسته بندی های سایت</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="menu_show">
+                            <option value="nestead_menu">منوی تو در تو در هدر فروشگاه</option>
+                            <option value="nestead_box" @if(\Auth::user()->shop()->first()->menu_show == 'nestead_box') selected @endif>باکس تو در تو در صفحه نمایش محصولات</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!--end card-body-->
+            </div>
+            <!--end card-->
         </div>
-      </form>
+        <!--end col-->
+
+        <!--end col-->
+    </div>
+    <div class="text-right mb-3">
+        <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">ثبت تغییرات</button><br>
+    </div>
+</form>
 
 <form method="post" action="{{ route('shop.setting.updateContact', \Auth::user()->shop()->first()->id) }}">
-  @csrf
-  @method('PUT')
+    @csrf
+    @method('PUT')
 
     <div class="row">
         <div class="col-xl-12">
@@ -275,7 +307,7 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-password-input" class="col-sm-2 col-form-label text-center">ایمیل فروشگاه</label>
-                        <input class="form-control" type="email" name="shop_email" style="direction: ltr" id="example-password-input" value="{{ old('shop_email', $shopContactInformation->shop_email) }}" >
+                        <input class="form-control" type="email" name="shop_email" style="direction: ltr" id="example-password-input" value="{{ old('shop_email', $shopContactInformation->shop_email) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-envelope text-dark font-18"></i></span></div>
                     </div>
                 </div>
@@ -287,12 +319,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                  <div class="col-sm-12 input-group">
-                    <label for="example-tel-input" class="col-sm-2 col-form-label text-center">تلفن همراه</label>
+                    <div class="col-sm-12 input-group">
+                        <label for="example-tel-input" class="col-sm-2 col-form-label text-center">تلفن همراه</label>
                         <input class="form-control" type="text" name="phone" disabled value="{{ \Auth::user()->mobile }}" id="example-tel-input">
-                          <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
+                        <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
                     </div>
-              </div>
+                </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-week-input" class="col-sm-2 col-form-label text-center">شهر فروشگاه</label>
@@ -347,14 +379,14 @@
         <!--end col-->
     </div>
     <div class="text-right mb-3">
-            <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded">ثبت تغییرات</button><br>
-        </div>
-  </form>
+        <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded">ثبت تغییرات</button><br>
+    </div>
+</form>
 
 
 
 
-    {{-- <div class="row">
+{{-- <div class="row">
                                 <div class="card col-6">
                                     <div class="card-body">
                                         <h4 class="mt-0 header-title">نماد الکترونیک</h4>

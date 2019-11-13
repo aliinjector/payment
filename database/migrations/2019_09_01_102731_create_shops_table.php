@@ -24,6 +24,7 @@ class CreateShopsTable extends Migration
             $table->enum('quick_way',['enable', 'disable'])->default('disable');
             $table->enum('posting_way',['enable', 'disable'])->default('disable');
             $table->enum('person_way',['enable', 'disable'])->default('disable');
+            $table->enum('menu_show',['nestead_menu', 'nestead_box'])->default('nestead_menu');
             $table->text('icon')->nullable();
             $table->text('logo')->nullable();
             $table->string('description');

@@ -168,6 +168,14 @@ class ShopSettingController extends Controller
       return redirect()->route('shop-setting.index');
     }
 
+    public function updateSetting(Request $request){
+      $shop = \Auth::user()->shop()->first()->update([
+        'menu_show' => $request->menu_show,
+      ]);
+      alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('shop-setting.index');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
