@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -61,12 +61,10 @@
                                 <div class="col-sm-10">
                                     <select class="form-control" name="category_id">
                                         @if($shopInformation->category_id != null)
-                                            <option value="{{ $shopInformation->shopCategory()->first()->id }}">{{ $shopInformation->shopCategory()->first()->name }}</option>
-                                            @else
                                             <option value="">یک مورد را انتخاب نمایید</option>
                                             @endif
                                             @foreach ($shopCategories as $shopCategory)
-                                            <option value="{{ $shopCategory->id }}">{{ $shopCategory->name }}</option>
+                                            <option {{ $shopCategory->id == $shopInformation->category_id ? 'selected' : ''}} value="{{ $shopCategory->id }}">{{ $shopCategory->name }}</option>
                                             @endforeach
                                     </select>
                                 </div>
@@ -165,28 +163,9 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mt-0 header-title">ایکون فروشگاه</h4>
-                    <p class="text-muted mb-3">لطفا ایکون فروشگاه خود را آپلود نمایید.</p>
-                    <div class="dropify-wrapper has-preview">
-                        <div class="dropify-message"><span class="file-icon"></span>
-                            <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
-                            <p class="dropify-error">خطا</p>
-                        </div>
-                        <div class="dropify-loader" style="display: none;"></div>
-                        <div class="dropify-errors-container">
-                            <ul></ul>
-                        </div>
-                        <input name="icon" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                        <button type="button" class="dropify-clear">حذف</button>
-                        <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/BrandNameHere.jpg"></span>
-                            <div class="dropify-infos">
-                                <div class="dropify-infos-inner">
-                                    <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">نمونه ایکون</span></p>
-                                    <p class="dropify-infos-message">با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h4 class="mt-0 header-title">آیکون فروشگاه</h4>
+                    <p class="text-muted mb-3">لطفا آیکون فروشگاه خود را آپلود نمایید.</p>
+                    <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->icon['original'] }}">
                 </div>
                 <!--end card-body-->
             </div>
@@ -198,26 +177,7 @@
                 <div class="card-body">
                     <h4 class="mt-0 header-title">لوگوی فروشگاه</h4>
                     <p class="text-muted mb-3">لطفا لوگوی فروشگاه خود را آپلود نمایید.</p>
-                    <div class="dropify-wrapper has-preview">
-                        <div class="dropify-message"><span class="file-icon"></span>
-                            <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
-                            <p class="dropify-error">خطا</p>
-                        </div>
-                        <div class="dropify-loader" style="display: none;"></div>
-                        <div class="dropify-errors-container">
-                            <ul></ul>
-                        </div>
-                        <input name="logo" type="file" id="input-file-now-custom-1" class="dropify" data-default-file="/dashboard/assets/images/BrandNameHere.jpg">
-                        <button type="button" class="dropify-clear">حذف</button>
-                        <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="/dashboard/assets/images/BrandNameHere.jpg"></span>
-                            <div class="dropify-infos">
-                                <div class="dropify-infos-inner">
-                                    <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">نمونه لوگو</span></p>
-                                    <p class="dropify-infos-message">با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <input type="file" id="input-file-now" name="logo" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->logo['original'] }}">
                 </div>
                 <!--end card-body-->
             </div>
@@ -441,5 +401,6 @@
 
 
 @section('pageScripts')
-<script src="/dashboard/assets/js/dropify.min.js"></script>
+    <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+    <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 @stop

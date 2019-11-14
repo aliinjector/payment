@@ -142,7 +142,7 @@
 
                     <div class="gallery mt-4 mr-4">
                         @foreach ($galleries as $gallery)
-                        <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
+                            <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
                         @endforeach
                     </div>
 

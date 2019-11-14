@@ -117,7 +117,7 @@
                      <div class="card mt-3">
                          <div class="card-body">
                              <h4 class="mt-0 header-title">آیکون دسته بندی</h4>
-                             <input type="file" id="input-file-now" name="icon" class="dropify">
+                             <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ $category->icon['original'] }}">
                          </div>
                      </div>
                   </div>

@@ -516,7 +516,7 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title">تصویر محصول</h4>
-                                                <input type="file" id="input-file-now" name="image" class="dropify">
+                                                <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $product->image['original'] }}">
                                             </div>
 
                                         </div>

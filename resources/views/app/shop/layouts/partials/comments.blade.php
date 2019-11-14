@@ -79,8 +79,8 @@
                             <!-- Contenedor del Comentario -->
                             <div class="comment-box">
                                 <div class="comment-head">
-                                    <h6 class="comment-name">{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</h6>
-                                    <span>{{ jdate($comment->created_at)->ago() }}</span>
+                                    <h6 class="comment-name">{{ $answer->user->firstName . ' ' . $answer->user->lastName }}</h6>
+                                    <span>{{ jdate($answer->created_at)->ago() }}</span>
                                 </div>
                                 <div class="comment-content">
                                     {{ $answer->comment }}

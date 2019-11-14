@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shop;
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class CommentController extends  \App\Http\Controllers\Controller
 {
@@ -98,10 +99,7 @@ class CommentController extends  \App\Http\Controllers\Controller
         Comment::create(array_merge([
             'user_id' => auth()->user()->id,
         ], $request->all() ));
-        alert()->success('نظر شما با موفقیت ثبت شد.', 'انجام شد');
-        SEOTools::setTitle($shop->name);
-        SEOTools::setDescription($shop->description);
-        SEOTools::opengraph()->addProperty('type', 'website');
+        alert()->success('نظر شما پس از تایید قرارداده خواهد شد.', 'ثبت شد');
 
         return redirect()->back();
     }
@@ -112,8 +110,8 @@ class CommentController extends  \App\Http\Controllers\Controller
         ]);
         Comment::create(array_merge([
             'user_id' => auth()->user()->id,
-        ], $request->all() ));
-        alert()->success('نظر شما با موفقیت ثبت شد.', 'انجام شد');
+        ], $request->all()));
+        alert()->success('پاسخ شما با موفقیت ثبت شد.', 'انجام شد');
         return redirect()->back();
     }
 

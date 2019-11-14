@@ -24,7 +24,7 @@ class CommentsController extends \App\Http\Controllers\Controller
     public function approve($id, $commentable_id)
     {
         Comment::where('id', $id)->update(['approved' => 1]);
-        alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+        alert()->success('نظر باموفقیت تایید شد.', 'انجام شد');
         return redirect()->back();
     }
     /**

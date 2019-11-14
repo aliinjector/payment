@@ -19,6 +19,7 @@ class CreateCartsTable extends Migration
             $table->unsignedInteger('shop_id');
             $table->unsignedInteger('status')->default(0);
             $table->timestamp('expires_at')->nullable();
+            $table->integer('total_price');
             $table->timestamps();
             $table->softDeletes( );
         });

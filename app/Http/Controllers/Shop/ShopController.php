@@ -77,7 +77,7 @@ class ShopController extends \App\Http\Controllers\Controller {
             }
         }
         $comments = $product->comments;
-        $galleries = $product->galleries;
+        $galleries = $product->galleries->take(4);
         $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(4)->get();
         SEOTools::setTitle($shop->name . ' | ' . $product->title);
         SEOTools::setDescription($shop->name);
@@ -367,8 +367,9 @@ class ShopController extends \App\Http\Controllers\Controller {
             $purchase->address = $request->new_address;
         }
         $purchase->shipping = $request->shipping_way;
+        $shop = Shop::where('english_name', $shop)->first();
+
         if (Session::get('discountedPrice') == null) {
-          $shop = Shop::where('english_name', $shop)->first();
           if($shop->VAT == 'enable') {
             $purchase->total_price = (\Auth::user()->cart()->get()->first()->total_price) + (\Auth::user()->cart()->get()->first()->total_price * $shop->VAT_amount / 100);
           }

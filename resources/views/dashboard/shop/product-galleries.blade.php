@@ -85,7 +85,7 @@
 
                                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
                                     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-                                    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
+                                    <script src="/dashboard/assets/plugins/dropzone/dropzone.js"></script>
 
                                     <form method="post" action="{{ url('/dashboard/shop/image/upload/store/' . collect(request()->segments())->last() )}}" enctype="multipart/form-data"
                                           class="dropzone" id="dropzone">
@@ -137,6 +137,7 @@
                     acceptedFiles: ".jpeg,.jpg,.png,.gif,.PNG,.JPG",
                     addRemoveLinks: true,
                     timeout: 50000,
+                    maxFiles: 4,
                     removedfile: function(file)
                     {
                         var name = file.name;
