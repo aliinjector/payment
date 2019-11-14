@@ -2,7 +2,7 @@
 @section('content')
                     <div class="card">
                         <div class="card-body">
-                          @php $i=0 @endphp
+                          @php $i=1 @endphp
                           @foreach ($purchases as $purchase)
                             <div class="accordion" id="accordionExample{{$purchase->id}}">
                                 <div class="card border mb-0 shadow-none">
@@ -30,8 +30,8 @@
                                               <tbody
                                                 @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products() as $product)
                                                   <tr class="byekan">
-                                                      <td><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></td>
-                                                      <td>{{ $product->title }}</td>
+                                                      <td><a href="{{ route('shop.show.product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></a></td>
+                                                      <td><a href="{{ route('shop.show.product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
                                                       <td class="d-flex justify-content-between align-items-center h-25vh">{{ jdate($purchase->created_at) }} @if($product->type == 'file')
                                                           <div class="icon-show">
                                                               <a href="{{ route('download.file', ['shop'=>$purchase->product()->first()->shop()->first()->english_name, 'id'=>$purchase->product()->first()->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-15"></i>

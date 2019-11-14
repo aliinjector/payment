@@ -46,7 +46,12 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
-      $image = $this->uploadFile($request->file('icon'), false, true);
+      if($request->file('icon') == null){
+        $image = null;
+      }
+      else{
+        $image = $this->uploadFile($request->file('icon'), false, true);
+      }
         switch ($request->input('action')) {
             case 'justSave':
 
@@ -129,7 +134,12 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request,$id)
     {
-      $image = $this->uploadFile($request->file('icon'), false, true);
+      if($request->file('icon') == null){
+        $image = null;
+      }
+      else{
+        $image = $this->uploadFile($request->file('icon'), false, true);
+      }
       if($request->parent_id == 'null'){
         $request->parent_id = null;
         }

@@ -99,7 +99,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mr-2">
                     <li class="nav-item">
-                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop',$shop->first()->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
+                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
                     </li>
                     @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
                     <div class="dropdown mx-3">
@@ -183,7 +183,7 @@
                         @endauth
 
                         <li class="nav-item">
-                            <a href="{{ route('show.shop', $shop->first()->english_name) }}">
+                            <a href="{{ route('show.shop', $shop->english_name) }}">
                                 <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
                             </a>
                         </li>

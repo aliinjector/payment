@@ -161,12 +161,12 @@
                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">توضیحات</th>
                               </tr>
                            </thead>
-                           <tbody class="byekan">
+                           <tbody class="iranyekan">
                               @foreach($categoires as $category)
                               <tr role="row" class="odd icon-hover hover-color">
                                  <td style="width:5%">{{ $category->id }}</td>
                                  <td style="width:5%"> @if($category->icon == null) <img src="{{ asset('/dashboard/assets/images/img-na.png') }}" class="rounded w-100" alt="">  @endif <img src="{{ $category->icon['80,80'] }}" class="rounded" alt=""></td>
-                                 <td><{{ $category->name }}</td>
+                                 <td>{{ $category->name }}</td>
                                  <td>
                                     @if($category->parent()->exists() and !$category->parent()->get()->first()->parent()->exists())
                                     {{ $category->parent()->get()->first()->name}}

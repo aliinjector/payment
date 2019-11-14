@@ -319,6 +319,7 @@ class ShopController extends \App\Http\Controllers\Controller {
         return response()->file($uri);
     }
     public function purchaseSubmit($shop, $cartID, Request $request) {
+      
         $total_price = \Auth::user()->cart()->get()->first()->total_price;
         $cart = \Auth::user()->cart()->get()->first()->id;
         $productsID = [];

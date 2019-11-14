@@ -19,7 +19,7 @@
 @else
         <!-- end page title end breadcrumb -->
 
-        <h2 class="line-throw"><span>اخرین محصولات </span></h2>
+        <h2 class="line-throw"><span>آخرین محصولات </span></h2>
 
 
          <div class="row p-5">

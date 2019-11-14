@@ -194,7 +194,7 @@ input[type='radio']:checked:after {
                         <div class="col-md-6">
                             <div class="newsletters-text">
                                 <h4>ثبت نام در خبرنامه</h4>
-                                <p class="text-muted mb-0">برای دریافت اخرین اخبار سامانه میتوانید در خبرنامه ثبت نام کنید.</p>
+                                <p class="text-muted mb-0">برای دریافت آخرین اخبار سامانه میتوانید در خبرنامه ثبت نام کنید.</p>
                             </div>
                         </div>
                         <!--end col-->

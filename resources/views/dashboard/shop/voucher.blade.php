@@ -133,7 +133,7 @@
                                         </div>
                                         <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
-                                                <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000">
+                                                <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000" value="{{ $voucher->discount_amount }}">
                                                 <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                             </div>

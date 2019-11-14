@@ -323,7 +323,7 @@
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-password-input" class="col-sm-2 col-form-label text-center">تلفن ثابت فروشگاه</label>
-                        <input class="form-control" type="text" name="tel" placeholder="مثال: example@gmail.com" id="example-password-input" value="{{ old('tel', $shopContactInformation->tel) }}">
+                        <input class="form-control" type="text" name="tel" placeholder="مثال: 22657485-021" id="example-password-input" value="{{ old('tel', $shopContactInformation->tel) }}">
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-phone text-dark font-18"></i></span></div>
                     </div>
                 </div>
@@ -334,6 +334,15 @@
                         <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12 input-group">
+                        <label for="example-week-input" class="col-sm-2 col-form-label text-center">استان فروشگاه</label>
+                        <input class="form-control" type="text" name="province" placeholder=" مثال: تهران" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
+                        <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-week-input" class="col-sm-2 col-form-label text-center">شهر فروشگاه</label>
@@ -342,14 +351,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-12 input-group">
-                        <label for="example-week-input" class="col-sm-2 col-form-label text-center">استان فروشگاه</label>
-                        <input class="form-control" type="text" name="province" placeholder=" مثال: تهران" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
-                        <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
-                    </div>
-
-                </div>
                 <div class="form-group">
                     <div class="col-sm-12 input-group">
                         <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">آدرس فروشگاه</label>
