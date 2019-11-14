@@ -25,6 +25,8 @@ class CreateShopsTable extends Migration
             $table->enum('posting_way',['enable', 'disable'])->default('disable');
             $table->enum('person_way',['enable', 'disable'])->default('disable');
             $table->enum('menu_show',['nestead_menu', 'nestead_box'])->default('nestead_menu');
+            $table->enum('VAT',['enable', 'disable'])->default('disable');
+            $table->unsignedInteger('VAT_amount')->default(9);
             $table->text('icon')->nullable();
             $table->text('logo')->nullable();
             $table->string('description');

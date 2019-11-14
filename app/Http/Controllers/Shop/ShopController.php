@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Shop;
-
 use App\Tag;
 use App\Shop;
 use App\Product;
@@ -19,48 +17,37 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Artesaos\SEOTools\Facades\SEOTools;
-
-
-class ShopController extends \App\Http\Controllers\Controller
-{
+class ShopController extends \App\Http\Controllers\Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public $discountedPrice;
-
-    public function index()
-    {
+    public function index() {
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
     }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
     }
-
     /**
      * Display the specified resource.
      *
      * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function show($shop)
-    {
+    public function show($shop) {
         if (Shop::where('english_name', $shop)->first() == null) {
             return abort(404);
         }
@@ -68,17 +55,12 @@ class ShopController extends \App\Http\Controllers\Controller
         $shop = Shop::where('english_name', $shop)->first();
         $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
         $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
-
         SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-
-
         return view('app.shop.shop', compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
     }
-
-    public function showProduct($shop, $id)
-    {
+    public function showProduct($shop, $id) {
         if (Shop::where('english_name', $shop)->first() == null || Shop::where('english_name', $shop)->first()->products()->where('id', $id)->first() == null) {
             return abort(404);
         }
@@ -87,30 +69,25 @@ class ShopController extends \App\Http\Controllers\Controller
         $product = $shop->products()->where('id', $id)->first();
         $productRates = $product->rates()->get();
         $userProducts = [];
-        if(\auth::user()){
-        foreach (\auth::user()->cart()->withTrashed()->where('status', 1)->get() as $cart) {
-            foreach ($cart->products() as $single_product) {
-                $userProducts[] = $single_product;
+        if (\auth::user()) {
+            foreach (\auth::user()->cart()->withTrashed()->where('status', 1)->get() as $cart) {
+                foreach ($cart->products() as $single_product) {
+                    $userProducts[] = $single_product;
+                }
             }
         }
-        }
-
         $comments = $product->comments;
         $galleries = $product->galleries;
         $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(4)->get();
-
         SEOTools::setTitle($shop->name . ' | ' . $product->title);
         SEOTools::setDescription($shop->name);
         SEOTools::opengraph()->addProperty('type', 'website');
-
         return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries', 'offeredProducts'));
     }
-
-    public function showCategory($shop, $categroyId, Request $request)
-    {
+    public function showCategory($shop, $categroyId, Request $request) {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
-        $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id' , null);
+        $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id', null);
         $category = ProductCategory::where('id', $categroyId)->get()->first()->id;
         if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
             $orderBy = $request->sortBy['orderBy'];
@@ -120,126 +97,109 @@ class ShopController extends \App\Http\Controllers\Controller
             $sortBy = $request->sortBy['field'];
             $perPage = 8;
             if ($request->type == 'all') {
-              if($orderBy == 'desc'){
-                $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
-              }
-              else{
-                $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
-              }
+                if ($orderBy == 'desc') {
+                    $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
+                } else {
+                    $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
+                }
             } else {
-              if($orderBy == 'desc'){
-                $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
-              }
-              else{
-                $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
-              }
+                if ($orderBy == 'desc') {
+                    $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
+                } else {
+                    $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
+                }
             }
         } else {
-                $products = $this->getAllCategoriesProducts((int)$categroyId);
+            $products = $this->getAllCategoriesProducts((int)$categroyId);
         }
         $total = $products->count();
-         $perPage = 16; // How many items do you want to display.
-         $currentPage = request()->page; // The index page.
-         $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
-
+        $perPage = 16; // How many items do you want to display.
+        $currentPage = request()->page; // The index page.
+        $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
         SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-
-        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category' , 'categories','productsPaginate'));
+        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate'));
     }
-
-
-    public function getAllCategoriesProducts($cat_id){
-      $allProducts = collect();
-      foreach(ProductCategory::find($cat_id)->products()->get() as $product){
-        $allProducts[] = $product;
-      }
-      foreach(ProductCategory::find($cat_id)->children()->get() as $subCategory){
-        foreach($subCategory->products()->get() as $product){
-          $allProducts[] = $product;
-        }
-        if($subCategory->children()->exists()){
-          foreach($subCategory->children()->get() as $subSubCategory){
-            foreach($subSubCategory->products()->get() as $product){
+    public function getAllCategoriesProducts($cat_id) {
+        $allProducts = collect();
+        foreach (ProductCategory::find($cat_id)->products()->get() as $product) {
             $allProducts[] = $product;
-            }
-          }
-          if($subSubCategory->children()->exists()){
-            foreach($subSubCategory->children()->get() as $subSubSubCategory){
-              foreach($subSubSubCategory->products()->get() as $product){
-              $allProducts[] = $product;
-              }
-              if($subSubSubCategory->children()->exists()){
-                foreach($subSubSubCategory->children()->get() as $subSubSubSubCategory){
-                  foreach($subSubSubSubCategory->products()->get() as $product){
-                  $allProducts[] = $product;
-                  }
-                }
-              }
-            }
-          }
         }
-      }
-      return $allProducts;
-    }
-
-     public static function getAllSubCategories($cat_id)
-    {
-      $allSubCategories = collect();
-      foreach(ProductCategory::find($cat_id)->children()->get() as $subCategory){
-        $allSubCategories[] = $subCategory;
-        if($subCategory->children()->exists()){
-          foreach($subCategory->children()->get() as $subSubCategory){
-            $allSubCategories[] = $subSubCategory;
-          }
-          if($subSubCategory->children()->exists()){
-            foreach($subSubCategory->children()->get() as $subSubSubCategory){
-              $allSubCategories[] = $subSubSubCategory;
-              if($subSubSubCategory->children()->exists()){
-                foreach($subSubSubCategory->children()->get() as $subSubSubSubCategory){
-                  $allSubCategories[] = $subSubSubSubCategory;
-                }
-              }
+        foreach (ProductCategory::find($cat_id)->children()->get() as $subCategory) {
+            foreach ($subCategory->products()->get() as $product) {
+                $allProducts[] = $product;
             }
-          }
+            if ($subCategory->children()->exists()) {
+                foreach ($subCategory->children()->get() as $subSubCategory) {
+                    foreach ($subSubCategory->products()->get() as $product) {
+                        $allProducts[] = $product;
+                    }
+                }
+                if ($subSubCategory->children()->exists()) {
+                    foreach ($subSubCategory->children()->get() as $subSubSubCategory) {
+                        foreach ($subSubSubCategory->products()->get() as $product) {
+                            $allProducts[] = $product;
+                        }
+                        if ($subSubSubCategory->children()->exists()) {
+                            foreach ($subSubSubCategory->children()->get() as $subSubSubSubCategory) {
+                                foreach ($subSubSubSubCategory->products()->get() as $product) {
+                                    $allProducts[] = $product;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
-      return $allSubCategories;
+        return $allProducts;
     }
-
+    public static function getAllSubCategories($cat_id) {
+        $allSubCategories = collect();
+        foreach (ProductCategory::find($cat_id)->children()->get() as $subCategory) {
+            $allSubCategories[] = $subCategory;
+            if ($subCategory->children()->exists()) {
+                foreach ($subCategory->children()->get() as $subSubCategory) {
+                    $allSubCategories[] = $subSubCategory;
+                }
+                if ($subSubCategory->children()->exists()) {
+                    foreach ($subSubCategory->children()->get() as $subSubSubCategory) {
+                        $allSubCategories[] = $subSubSubCategory;
+                        if ($subSubSubCategory->children()->exists()) {
+                            foreach ($subSubSubCategory->children()->get() as $subSubSubSubCategory) {
+                                $allSubCategories[] = $subSubSubSubCategory;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return $allSubCategories;
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function edit(Shop $shop)
-    {
+    public function edit(Shop $shop) {
         //
 
     }
-
-    public function purchaseList($shop, $id)
-    {
+    public function purchaseList($shop, $id) {
         if (\Auth::guest()) {
             return redirect()->route('register');
         } else {
             $product = Product::where('id', $id)->get()->first();
             $shop = Shop::where('english_name', $shop)->first();
             $shopCategories = $shop->ProductCategories()->get();
-
             SEOTools::setTitle($shop->name . ' | ' . 'لیست سفارشات');
             SEOTools::setDescription($shop->description);
             SEOTools::opengraph()->addProperty('type', 'website');
-
-
             return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product'));
         }
     }
-
-    public function tagProduct($shop, $name, Request $request)
-    {
+    public function tagProduct($shop, $name, Request $request) {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $tagName = Tag::where('name', $name)->get()->first()->name;
@@ -256,17 +216,13 @@ class ShopController extends \App\Http\Controllers\Controller
         } else {
             $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->paginate(8);
         }
-
         SEOTools::setTitle($shop->name . ' | ' . $tagName);
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-
         return view('app.shop.tags-product', compact('products', 'shop', 'shopCategories', 'tagName'));
     }
-
-    public function approved($shopName, $productId, Request $request)
-    {
-        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now()], ['starts_at', '<', now()],])->get()->first() == null) {
+    public function approved($shopName, $productId, Request $request) {
+        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first() == null) {
             $shop = Shop::where('english_name', $shopName)->first();
             $product = Product::where('id', $productId)->get()->first();
             $shopCategories = $shop->ProductCategories()->get();
@@ -288,7 +244,7 @@ class ShopController extends \App\Http\Controllers\Controller
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
             return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'products', 'quantity', 'productTotal_price', 'total_price'));
         }
-        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now()], ['starts_at', '<', now()],])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
+        if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
             $shop = Shop::where('english_name', $shopName)->first();
             $product = Product::where('id', $productId)->get()->first();
             $shopCategories = $shop->ProductCategories()->get();
@@ -318,10 +274,7 @@ class ShopController extends \App\Http\Controllers\Controller
             return redirect()->back();
         }
     }
-
-
-    public function downlaodFile($shop, $id)
-    {
+    public function downlaodFile($shop, $id) {
         $product = Product::find($id);
         $purchase = $product->purchases()->get();
         if (\auth::user()) {
@@ -335,9 +288,7 @@ class ShopController extends \App\Http\Controllers\Controller
             return redirect()->route('login');
         }
     }
-
-    public function downlaodLink(Request $request, $shop, $id)
-    {
+    public function downlaodLink(Request $request, $shop, $id) {
         $this->approved($shop, $id, $request);
         if (!$request->hasValidSignature()) {
             abort(401);
@@ -367,10 +318,7 @@ class ShopController extends \App\Http\Controllers\Controller
         $purchase->save();
         return response()->file($uri);
     }
-
-
-    public function purchaseSubmit($shop, $cartID, Request $request)
-    {
+    public function purchaseSubmit($shop, $cartID, Request $request) {
         $total_price = \Auth::user()->cart()->get()->first()->total_price;
         $cart = \Auth::user()->cart()->get()->first()->id;
         $productsID = [];
@@ -386,8 +334,6 @@ class ShopController extends \App\Http\Controllers\Controller
             $product = Product::where('id', $productID)->get()->first();
             $products[] = $product;
         }
-
-
         $cart = Cart::where('id', $cartID)->get()->first();
         $shopId = Shop::where('english_name', $shop)->get()->first()->id;
         if (!isset($request->address)) {
@@ -421,46 +367,48 @@ class ShopController extends \App\Http\Controllers\Controller
         }
         $purchase->shipping = $request->shipping_way;
         if (Session::get('discountedPrice') == null) {
+          $shop = Shop::where('english_name', $shop)->first();
+          if($shop->VAT == 'enable') {
+            $purchase->total_price = (\Auth::user()->cart()->get()->first()->total_price) + (\Auth::user()->cart()->get()->first()->total_price * $shop->VAT_amount / 100);
+          }
+          else{
             $purchase->total_price = \Auth::user()->cart()->get()->first()->total_price;
-        } else {
+          }
+        }
+        else {
+          if($shop->VAT == 'enable') {
+            $purchase->total_price = (Session::get('discountedPrice')) + (Session::get('discountedPrice') * $shop->VAT_amount / 100);
+          }
+          else{
             $purchase->total_price = Session::get('discountedPrice');
+          }
         }
         $purchase->save();
         Session::pull('discountedPrice');
         DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
         Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
         alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
-
-        SEOTools::setTitle($shop->name );
+        SEOTools::setTitle($shop->name);
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-
         return redirect()->route('user.purchased.list', ['userID' => \auth::user()->id]);
     }
-
-    public function userPurchaseList()
-    {
+    public function userPurchaseList() {
         $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
         return view('app.shop.user-purchased-list', compact('purchases'));
     }
-
-    public function updateRate(Request $request)
-    {
+    public function updateRate(Request $request) {
         $user = \auth::user();
         $product = Product::find($request->id);
         if (Rating::where([['author_id', $user->id], ['ratingable_id', $product->id]])->get()->count() == 0) {
-            $rating = $product->rating([
-                'rating' => $request->rate
-            ], $user);
+            $rating = $product->rating(['rating' => $request->rate], $user);
             alert()->success('امتیاز شما با موفقیت ثبت شد', 'انجام شد');
             return redirect()->route('shop.show.product', ['shop' => $request->shop, 'id' => $request->id]);
         } else {
             alert()->error('شما قبلا برای این محصول نظر ثبت کرده اید', 'خطا');
             return redirect()->route('shop.show.product', ['shop' => $request->shop, 'id' => $request->id]);
         }
-
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -468,20 +416,17 @@ class ShopController extends \App\Http\Controllers\Controller
      * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Shop $shop)
-    {
+    public function update(Request $request, Shop $shop) {
         //
 
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param \App\Shop $shop
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Shop $shop)
-    {
+    public function destroy(Shop $shop) {
         //
 
     }

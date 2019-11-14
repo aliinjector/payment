@@ -171,6 +171,7 @@ class ShopSettingController extends Controller
     public function updateSetting(Request $request){
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
+        'VAT' => $request->VAT,
       ]);
       alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('shop-setting.index');
