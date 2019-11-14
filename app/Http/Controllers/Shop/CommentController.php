@@ -103,6 +103,8 @@ class CommentController extends  \App\Http\Controllers\Controller
 
         return redirect()->back();
     }
+
+
     public function answer(Request $request)
     {
         $this->validate($request, [

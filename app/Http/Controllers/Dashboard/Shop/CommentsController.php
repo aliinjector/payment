@@ -86,9 +86,12 @@ class CommentsController extends \App\Http\Controllers\Controller
     public function destroy(Comment $comment, Request $request)
     {
         Comment::find($request->id)->delete();
+        Comment::where('parent_id', $request->id)->delete();
         alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
         return redirect()->back();
     }
+
+
     public function comment(Request $request)
     {
         $this->validate($request, [
@@ -100,6 +103,9 @@ class CommentsController extends \App\Http\Controllers\Controller
         alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
         return redirect()->back();
     }
+
+
+
     public function answer(Request $request)
     {
         $this->validate($request, [

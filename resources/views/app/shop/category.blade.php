@@ -110,7 +110,8 @@
                             <p class="product-price byekan">{{ number_format($product->price) }} تومان <span class="ml-2 byekan"></span>
                                 @endif
                     </div>
-                    @if(\Auth::user())
+                    <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                @if(\Auth::user())
                     <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$product->id}}">

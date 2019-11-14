@@ -114,6 +114,8 @@ class CartController extends \App\Http\Controllers\Controller {
         $currentshopID = Shop::where('english_name' , $shop)->get()->first()->id;
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
             DB::table('cart_product')->insert([['product_id' => $request->product_id, 'cart_id' => \Auth::user()->cart()->get()->first()->id], ]);
+            toastr()->success('افزوده شد.', '');
+
             return redirect()->back();
         } else {
             alert()->error('محصول از قبل در سبد خرید شما وجود دارد و یا محصول متعلق به یک فروشگاه نمیباشد', 'خطا');
