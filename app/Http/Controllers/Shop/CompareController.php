@@ -6,6 +6,7 @@ use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class CompareController extends \App\Http\Controllers\Controller
 {

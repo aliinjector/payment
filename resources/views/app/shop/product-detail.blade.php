@@ -367,7 +367,7 @@
 </div>
 
 
-{{-- @include('app.shop.layouts.partials.offers') --}}
+ @include('app.shop.layouts.partials.offers')
 @include('app.shop.layouts.partials.comments')
 
 
