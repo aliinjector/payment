@@ -55,7 +55,7 @@ class ProductCategoryController extends Controller
         switch ($request->input('action')) {
             case 'justSave':
 
-                if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
+                  $request->validate(['name' => 'required']);
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
                     if($request->parent_id == 'null')
@@ -68,16 +68,10 @@ class ProductCategoryController extends Controller
                     $productCategory->save();
                     alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
                     return redirect()->route('product-category.index');
-                }
-                else{
-                    alert()->error('دسته بندی با این نام قبلا در فروشگاه شما ثبت شده است ', 'خطا');
-                    return redirect()->route('product-category.index');
-                }
-
                 break;
 
             case 'saveAndContinue':
-                if(\Auth::user()->shop()->first()->ProductCategories()->where('name',$request->name)->get()->count() == null){
+                  $request->validate(['name' => 'required']);
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
                     if($request->parent_id == 'null')
@@ -91,12 +85,6 @@ class ProductCategoryController extends Controller
                     session()->flash('flashModal');
                     alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
                     return redirect()->route('product-category.index');
-                }
-                else{
-                    alert()->error('دسته بندی با این نام قبلا در فروشگاه شما ثبت شده است ', 'خطا');
-                    return redirect()->route('product-category.index');
-                }
-
                 break;
 
         }
@@ -143,6 +131,7 @@ class ProductCategoryController extends Controller
       if($request->parent_id == 'null'){
         $request->parent_id = null;
         }
+        $request->validate(['name' => 'required']);
         $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id',$id)->get()->first()->update([
             'name' => $request->name,
             'parent_id' => $request->parent_id,
