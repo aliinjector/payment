@@ -97,18 +97,18 @@
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان محصول :</span></div>
                                             <input type="text" class="form-control inputfield rounded" name="title" placeholder="مثال: جاروبرقی">
                                             <input name="type" type="hidden" value="product">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات محصول :</span></div>
                                             <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
@@ -133,7 +133,7 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت محصول :</span></div>
                                             <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
@@ -145,7 +145,7 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> موجودی در انبار :</span></div>
                                             <input value="{{ old('amount') }}" type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
@@ -289,7 +289,7 @@
 
                                         <div class="card mt-3">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title">تصویر اصلی محصول</h4>
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> تصویر اصلی محصول</h4>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
                                         </div>
@@ -919,19 +919,19 @@
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان فایل :</span></div>
                                             <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات فایل :</span></div>
                                             <input  value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
@@ -957,7 +957,7 @@
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت فایل :</span></div>
                                             <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
@@ -1073,7 +1073,7 @@
 
                                         <div class="card mt-3">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title">تصویر محصول</h4>
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> تصویر محصول</h4>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
 
@@ -1081,7 +1081,7 @@
 
                                         <div class="card">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title">اپلود فایل</h4>
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> اپلود فایل</h4>
                                                 <p class="text-muted mb-3">فایل شما میتواند از نوع pdf یا docs باشد
                                                 </p>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
@@ -1123,19 +1123,19 @@
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان خدمت :</span></div>
                                             <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: تدریس خصوصی">
                                             <input name="type" type="hidden" value="service">
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات خدمت :</span></div>
                                             <input value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد خدمت">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
@@ -1160,7 +1160,7 @@
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت خدمت :</span></div>
                                             <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
@@ -1276,7 +1276,7 @@
 
                                         <div class="card mt-3">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title">تصویر خدمت</h4>
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> تصویر خدمت</h4>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
                                         </div>

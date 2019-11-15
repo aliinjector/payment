@@ -220,3 +220,7 @@ h2 span {
         font-size: 18px;
     }
 }
+.required-star{
+  font-size: 7px!important;
+  color: red!important;
+}
