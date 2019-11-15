@@ -99,12 +99,12 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
                                             <input type="text" class="form-control inputfield rounded" name="title" placeholder="مثال: جاروبرقی">
-                                            <input name="type" type="hidden" value="product">
+                                            <input name="type" type="hidden" value="{{ old('title') }}">
                                         </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول">
+                                            <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول">
                                         </div>
 
                                         <div class="input-group mt-3">
@@ -134,25 +134,25 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en">
+                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت بعد از تخفیف :</span></div>
-                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en">
+                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
-                                            <input type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3">
+                                            <input value="{{ old('amount') }}" type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="weight" placeholder="مثال: 30">
+                                            <input value="{{ old('weight') }}" type="text" class="form-control inputfield" name="weight" placeholder="مثال: 30">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
 
                                         </div>
@@ -187,7 +187,7 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -195,7 +195,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -203,7 +203,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -212,7 +212,7 @@
 
                                         <div class="input-group mt-3 d-none feature_4">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -220,7 +220,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_5">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -228,7 +228,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_6">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -236,7 +236,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_7">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -244,7 +244,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_8">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -252,7 +252,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_9">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -260,11 +260,11 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_10">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: ضد آب ">
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
-                                            <input type="text" name="tags" class="form-control" />
+                                            <input value="{{ old('tags') }}" type="text" name="tags" class="form-control" />
                                         </div>
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
@@ -920,14 +920,14 @@
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
+                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
+                                            <input  value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
                                         </div>
 
                                         <div class="input-group mt-3">
@@ -958,20 +958,20 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
+                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت بعد از تخفیف :</span></div>
-                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
+                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                         </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -979,7 +979,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -987,7 +987,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -995,7 +995,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_4">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1003,7 +1003,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_5">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1011,7 +1011,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_6">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1019,7 +1019,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_7">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1027,7 +1027,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_8">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1035,7 +1035,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_9">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: کیفیت بالا ">
                                             <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1043,11 +1043,11 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_10">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: کیفیت بالا ">
+                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: کیفیت بالا ">
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
-                                            <input type="text" name="tags" class="form-control" />
+                                            <input value="{{ old('tags') }}" type="text" name="tags" class="form-control" />
                                         </div>
 
                                         <div class="input-group mt-3 bg-white">
@@ -1124,14 +1124,14 @@
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="title" placeholder="مثال: تدریس خصوصی">
+                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: تدریس خصوصی">
                                             <input name="type" type="hidden" value="service">
 
                                         </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد خدمت">
+                                            <input value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد خدمت">
                                         </div>
 
                                         <div class="input-group mt-3">
@@ -1161,20 +1161,20 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
+                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت بعد از تخفیف :</span></div>
-                                            <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
+                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
 
                                         </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1182,7 +1182,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1190,7 +1190,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1198,7 +1198,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_4">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1206,7 +1206,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_5">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1214,7 +1214,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_6">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1222,7 +1222,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_7">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1230,7 +1230,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_8">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1238,7 +1238,7 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_9">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: ضد آب ">
                                             <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
@@ -1246,11 +1246,11 @@
                                         </div>
                                         <div class="input-group mt-3 d-none feature_10">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: ضد آب ">
+                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: ضد آب ">
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
-                                            <input type="text" name="tags" class="form-control" />
+                                            <input value="{{ old('tags') }}" type="text" name="tags" class="form-control" />
                                         </div>
 
                                         <div class="input-group mt-3 bg-white">

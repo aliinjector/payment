@@ -27,6 +27,7 @@ class ProductRequest extends FormRequest
       if ($request->type == 'product') {
         return [
             'title' => 'required',
+            'description' => 'required',
             'product_category' => 'required',
             'amount' => 'required',
             'price' => 'required',
@@ -36,6 +37,7 @@ class ProductRequest extends FormRequest
 else if($request->type == 'file'){
   return [
     'title' => 'required',
+    'description' => 'required',
     'product_category' => 'required',
     'image' => 'required',
     'price' => 'required',
@@ -46,6 +48,7 @@ else if($request->type == 'file'){
 else{
   return [
     'title' => 'required',
+    'description' => 'required',
     'product_category' => 'required',
     'image' => 'required',
     'price' => 'required',
