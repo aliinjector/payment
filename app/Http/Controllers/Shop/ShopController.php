@@ -104,9 +104,10 @@ class ShopController extends \App\Http\Controllers\Controller {
                 }
             } else {
                 if ($orderBy == 'desc') {
-                    $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
+                  // dd($products);
+                    $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
                 } else {
-                    $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $request->type)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
+                    $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
                 }
             }
         } else {
@@ -319,7 +320,7 @@ class ShopController extends \App\Http\Controllers\Controller {
         return response()->file($uri);
     }
     public function purchaseSubmit($shop, $cartID, Request $request) {
-      
+
         $total_price = \Auth::user()->cart()->get()->first()->total_price;
         $cart = \Auth::user()->cart()->get()->first()->id;
         $productsID = [];

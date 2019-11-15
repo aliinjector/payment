@@ -46,7 +46,7 @@
     <!--end col-->
 </div>
 </div>
-@if(!isset($products[0]))
+@if($products->count() == null)
 <div class="d-flex justify-content-center align-items-center" style="height:80vh">
     <div class="col-12 row">
       <div class="col-6">
@@ -60,7 +60,7 @@
     </div>
 </div>
 @else
-<h2 class="line-throw line-height-none"><span> محصولات دسته بندی {{ $products[0]->productCategory()->get()->first()->name }}</span></h2>
+<h2 class="line-throw line-height-none"><span> محصولات دسته بندی</span></h2>
 <div class="row p-5">
 @include('app.shop.layouts.filtering')
 <div class="col-lg-9">
@@ -203,13 +203,13 @@
        $("#mySlider").slider({
            range: true,
            min: 1000,
-           max: 1000000,
-           values: [@if(request()->minprice != null){{request()->minprice}} @else 1000 @endif, @if(request()->maxprice != null){{request()->maxprice}} @else 1000000 @endif],
+           max: 100000000,
+           values: [@if(request()->minprice != null){{request()->minprice}} @else 1000 @endif, @if(request()->maxprice != null){{request()->maxprice}} @else 100000000 @endif],
            slide: function(event, ui) {
              if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
-               $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 1000000 + " تومان ");
+               $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
                $("#available-price-min").val(1000);
-               $("#available-price-max").val(1000000);
+               $("#available-price-max").val(100000000);
              }
              else{
                $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
@@ -219,7 +219,7 @@
            }
        });
        if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
-         $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 1000000 + " تومان ");
+         $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
        }
        else{
          $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0) + " تومان " +
