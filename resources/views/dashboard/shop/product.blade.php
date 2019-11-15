@@ -99,7 +99,7 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
                                             <input type="text" class="form-control inputfield rounded" name="title" placeholder="مثال: جاروبرقی">
-                                            <input name="type" type="hidden" value="{{ old('title') }}">
+                                            <input name="type" type="hidden" value="product">
                                         </div>
 
                                         <div class="input-group mt-3">
@@ -110,7 +110,7 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
-                                            <select class="form-control inputfield" name="product_category" id="" disabled>
+                                            <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
                                                 </option>
                                             </select>
@@ -119,8 +119,8 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <select class="form-control inputfield" name="product_category" id="">
-                                                <option style="font-family: BYekan!important;">انتخاب دسته بندی
+                                            <select class="form-control inputfield" name="productCat_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">
@@ -343,7 +343,7 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            <select class="form-control inputfield" name="product_category" id="">
+                                            <select class="form-control inputfield" name="productCat_id" id="">
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
@@ -566,7 +566,7 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            <select class="form-control inputfield" name="product_category" id="">
+                                            <select class="form-control inputfield" name="productCat_id" id="">
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
@@ -756,7 +756,7 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                            <select class="form-control inputfield" name="product_category" id="">
+                                            <select class="form-control inputfield" name="productCat_id" id="">
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">{{ $productCategory->name }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
@@ -933,7 +933,7 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
-                                            <select class="form-control inputfield" name="product_category" id="" disabled>
+                                            <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
                                                 </option>
                                             </select>
@@ -942,8 +942,8 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <select class="form-control inputfield" name="product_category" id="">
-                                                <option style="font-family: BYekan!important;">انتخاب دسته بندی
+                                            <select class="form-control inputfield" name="productCat_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">
@@ -1137,7 +1137,7 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
-                                            <select class="form-control inputfield" name="product_category" id="" disabled>
+                                            <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
                                                 </option>
                                             </select>
@@ -1146,8 +1146,8 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <select class="form-control inputfield" name="product_category" id="">
-                                                <option style="font-family: BYekan!important;">انتخاب دسته بندی
+                                            <select class="form-control inputfield" name="productCat_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">

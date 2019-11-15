@@ -178,5 +178,6 @@ return array(
         'facebook_url' => 'لینک فیسبوک',
         'new_address' => 'آدرس جدید',
         'new-password' => 'رمز عبور جدید',
+        'productCat_id' => 'دسته بندی محصول',
     ),
 );

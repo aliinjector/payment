@@ -53,6 +53,10 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+         if($request->productCat_id == "null"){
+           $request->merge(['productCat_id' => null]);
+         }
+         $request->validate(['productCat_id' => 'required']);
            if($request->type == 'file') {
             $file_size = $request->file('attachment')->getSize();
            }
@@ -124,7 +128,7 @@ class ProductController extends Controller
         'title' => $request->title,
         'type' => $request->type,
         'color_1' => $request->color_1,
-        'productCat_id' => $request->product_category,
+        'productCat_id' => $request->productCat_id,
         'color_2' => $request->color_2,
         'color_3' => $request->color_3,
         'color_4' => $request->color_4,
@@ -181,7 +185,7 @@ $shop = \Auth::user()->shop()->first()->products()->create([
     'title' => $request->title,
     'type' => $request->type,
     'color_1' => $request->color_1,
-    'productCat_id' => $request->product_category,
+    'productCat_id' => $request->productCat_id,
     'color_2' => $request->color_2,
     'color_3' => $request->color_3,
     'color_4' => $request->color_4,
@@ -356,7 +360,7 @@ else{
         'title' => $request->title,
         'type' => $request->type,
         'color_1' => $request->color_1,
-        'productCat_id' => $request->product_category,
+        'productCat_id' => $request->productCat_id,
         'color_2' => $request->color_2,
         'color_3' => $request->color_3,
         'color_4' => $request->color_4,
