@@ -114,8 +114,9 @@
                                 <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="right:.2em!important">
                                     @foreach ($shopCategory->children()->get() as $subCategory)
                                     @if (!$subCategory->children()->exists())
-                                    <li class="dropdown-item dropdown-submenu"><a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;">{{ $subCategory->name }}</a>
+                                    <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;"><li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
                                     </li>
+                                    </a>
                                     @else
                                     <li class="dropdown-submenu">
                                         <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;" tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
