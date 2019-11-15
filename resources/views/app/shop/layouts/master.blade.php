@@ -122,14 +122,14 @@
                                         <ul class="dropdown-menu font-16">
                                             @foreach ($subCategory->children()->get() as $subSubCategory)
                                             @if (!$subSubCategory->children()->exists())
-                                            <li class="dropdown-item"><a tabindex="-1" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}">{{ $subSubCategory->name }}</a></li>
+                                            <a tabindex="-1" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"><li class="dropdown-item">{{ $subSubCategory->name }}</li></a>
                                             @else
                                             <li class="dropdown-submenu">
                                                 <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                                 <ul class="dropdown-menu font-16">
                                                     @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                                                    <li class="dropdown-item"><a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
-                                                          style="color: #465f73!important;">{{ $subSubSubCategory->name }}</a></li>
+                                                      <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
+                                                            style="color: #465f73!important;"><li class="dropdown-item">{{ $subSubSubCategory->name }}</li></a>
                                                     @endforeach
                                                 </ul>
                                                 @endif
