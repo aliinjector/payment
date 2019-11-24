@@ -58,7 +58,7 @@ class ShopController extends \App\Http\Controllers\Controller {
         SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-        return view('app.shop.shop', compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
+        return view('app.new-shop.01.index', compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
     }
     public function showProduct($shop, $id) {
         if (Shop::where('english_name', $shop)->first() == null || Shop::where('english_name', $shop)->first()->products()->where('id', $id)->first() == null) {
