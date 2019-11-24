@@ -104,7 +104,7 @@
                                         <tbody class="byekan">
                                             @foreach($comments as $comment)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td style="width:5%"><a target="_blank" href="{{ route('shop.show.product', ['shop' => $comment->shop->english_name, 'product' => $comment->commentable->id]) }}">{{ $comment->commentable->title }}</a></td>
+                                                <td style="width:5%"><a target="_blank" href="{{ route('product', ['shop' => $comment->shop->english_name, 'product' => $comment->commentable->id]) }}">{{ $comment->commentable->title }}</a></td>
                                                 <td>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</td>
                                                 <td class="d-flex justify-content-between">{{ $comment->comment }}
                                                     <div class="d-none icon-show">

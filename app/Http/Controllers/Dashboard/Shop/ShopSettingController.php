@@ -23,7 +23,7 @@ class ShopSettingController extends Controller
             if(\Auth::user()->type == 'customer'){
                 return redirect()->back();
             }
-
+          //check if there is no shop for logged in user
           if(\Auth::user()->shop()->count() == 0){
               $shop = new Shop;
               $shop->name = "نام تست";
@@ -103,6 +103,7 @@ class ShopSettingController extends Controller
     public function update(Request $request)
     {
         if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
+          //check for unique name for shop
             $request->validate([
             'icon' => 'required',
               'logo' => 'required',

@@ -261,7 +261,7 @@
     </div>
 </form>
 
-<form method="post" action="{{ route('shop.setting.updateContact', \Auth::user()->shop()->first()->id) }}">
+<form method="post" action="{{ route('shop.setting.update-contact', \Auth::user()->shop()->first()->id) }}">
     @csrf
     @method('PUT')
 

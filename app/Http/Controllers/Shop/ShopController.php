@@ -406,10 +406,10 @@ class ShopController extends \App\Http\Controllers\Controller {
         if (Rating::where([['author_id', $user->id], ['ratingable_id', $product->id]])->get()->count() == 0) {
             $rating = $product->rating(['rating' => $request->rate], $user);
             alert()->success('امتیاز شما با موفقیت ثبت شد', 'انجام شد');
-            return redirect()->route('shop.show.product', ['shop' => $request->shop, 'id' => $request->id]);
+            return redirect()->route('product', ['shop' => $request->shop, 'id' => $request->id]);
         } else {
             alert()->error('شما قبلا برای این محصول نظر ثبت کرده اید', 'خطا');
-            return redirect()->route('shop.show.product', ['shop' => $request->shop, 'id' => $request->id]);
+            return redirect()->route('product', ['shop' => $request->shop, 'id' => $request->id]);
         }
     }
     /**

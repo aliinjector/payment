@@ -73,7 +73,7 @@ class CartController extends \App\Http\Controllers\Controller {
                 $singleProductPrice = Product::where('id', $productID)->get()->first()->off_price;
               }
 
-              if(RequestFacade::server('HTTP_REFERER') !== route('purchaseList',['shop'=>$shop, 'userID' => \Auth::user()->id])){
+              if(RequestFacade::server('HTTP_REFERER') !== route('purchase-list',['shop'=>$shop, 'userID' => \Auth::user()->id])){
                   $quantity = DB::table('cart_product')->where([['cart_id', '=', $cart], ['product_id', '=', $productID]])->update(['quantity' => $request->except('_token') [$productID], 'total_price' => $singleProductPrice * $request->except('_token') [$productID]]);
               }
             }

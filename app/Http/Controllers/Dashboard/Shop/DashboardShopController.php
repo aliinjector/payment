@@ -17,21 +17,22 @@ class DashboardShopController extends Controller
     {
         if(\Auth::user()->type == 'customer'){
             return redirect()->back();
-        }
-        $purchases = UserPurchase::where('shop_id' , \Auth::user()->shop()->first()->id)->get();
+        }else{
         $shop = \Auth::user()->shop()->first();
         $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(3)->get();
-        $sumPrices = $shop->purchases()->get();
-        $sum = 0;
-        foreach($sumPrices as $sumPrice){
-            $sum += $sumPrice->total_price;
+        $shopPurchases = $shop->purchases()->get();
+        $sumPurchasesPrice = 0;
+        foreach($shopPurchases as $shopPurchase){
+            $sumPurchasesPrice += $shopPurchase->total_price;
             }
-        return view('dashboard.shop.dashboard-shop', compact('purchases','shop','bestSelling' , 'sum'));
-    }
+        return view('dashboard.shop.dashboard-shop', compact('purchases','shop','bestSelling' , 'sumPurchasesPrice'));
+            }
+      }
 
     public function purchaseStatus()
     {
-        $purchases = UserPurchase::where('user_id' , \Auth::user()->id)->get();
+        $shop = \Auth::user()->shop()->first();
+        $purchases = UserPurchase::where('shop_id' , $shop->id)->get()->sortByDesc('created_at');
         return view('dashboard.shop.purchase-status', compact('purchases'));
     }
 

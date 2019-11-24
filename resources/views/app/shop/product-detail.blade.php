@@ -117,13 +117,13 @@
                                 <div class="quantity mt-3">
                                     @auth
                                     @if($product->type == 'file')
-                                        <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                        <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                                             <button type="submit" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
                                         </form>
                                         @else
-                                        <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                        <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                             @csrf
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                                             <button type="submit" class="text-white btn bg-blue-omid iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
@@ -270,7 +270,7 @@
                     @auth
                     @if(collect($userProducts)->where('id' ,$product->id)->count() > 0)
                         <h5 style="color: #f1646c;" class="p-3">امتیاز خود را به این کالا ثبت کنید</h5>
-                        <form class="" action="{{route('shop.rate' , ['shop'=>$shop->english_name, 'id'=>$product->id])}}" method="post">
+                        <form class="" action="{{route('rate' , ['shop'=>$shop->english_name, 'id'=>$product->id])}}" method="post">
                             @csrf {{ method_field('PATCH') }}
                             @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
                                 @else
@@ -349,7 +349,7 @@
                 <h4 class="mt-3 mb-3">برچسب ها :</h4>
                 <ul class="tags iranyekan">
                     @foreach ($product->tags()->get() as $tag)
-                    <li><a href="{{ route('shop.tag.product', ['shop'=>$shop->english_name, 'name'=>$tag->name]) }}" class="tag iranyekan">{{ $tag->name }}</a></li>
+                    <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$tag->name]) }}" class="tag iranyekan">{{ $tag->name }}</a></li>
                     @endforeach
                 </ul>
 

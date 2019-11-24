@@ -224,3 +224,15 @@ h2 span {
   font-size: 7px!important;
   color: red!important;
 }
+.text-red{
+  color: #e6604a!important;
+}
+.text-green{
+  color: #23c99d!important;
+}
+.font-1-4em{
+  font-size: 1.4em!important;
+}
+.h-15vh{
+  height: 15vh!important;
+}

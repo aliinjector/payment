@@ -20,10 +20,11 @@ class ProductCategoryController extends Controller
     {
         if(\Auth::user()->type == 'customer'){
             return redirect()->back();
-        }
+        }else{
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
         return view('dashboard.shop.product-category', compact('categoires' , 'shop'));
+              }
     }
 
 
@@ -46,6 +47,7 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+      //check if icon is null or not
       if($request->file('icon') == null){
         $image = null;
       }
@@ -53,9 +55,9 @@ class ProductCategoryController extends Controller
         $image = $this->uploadFile($request->file('icon'), false, true);
       }
         switch ($request->input('action')) {
+          //save and close modal
             case 'justSave':
-
-                  $request->validate(['name' => 'required']);
+                    $request->validate(['name' => 'required']);
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
                     if($request->parent_id == 'null')
@@ -69,9 +71,9 @@ class ProductCategoryController extends Controller
                     alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
                     return redirect()->route('product-category.index');
                 break;
-
+            //save and open new modal
             case 'saveAndContinue':
-                  $request->validate(['name' => 'required']);
+                    $request->validate(['name' => 'required']);
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
                     if($request->parent_id == 'null')
@@ -122,6 +124,7 @@ class ProductCategoryController extends Controller
      */
     public function update(Request $request,$id)
     {
+      //check if icon is null or not
       if($request->file('icon') == null){
         $image = null;
       }
@@ -136,7 +139,7 @@ class ProductCategoryController extends Controller
             'name' => $request->name,
             'parent_id' => $request->parent_id,
             'description' => $request->description,
-            'icon' => $image,
+            'icon' => $image
         ]);
 
 
@@ -153,10 +156,10 @@ class ProductCategoryController extends Controller
     public function destroy(ProductCategory $productCategory , Request $request)
     {
       $productCategory = ProductCategory::find($request->id);
-              if ($productCategory->shop->user_id !== \Auth::user()->id) {
-                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
-                  return redirect()->back();
-              }
+      if ($productCategory->shop->user_id !== \Auth::user()->id) {
+              alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+              return redirect()->back();
+            }
                $productCategory->delete();
                alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                return redirect()->back();

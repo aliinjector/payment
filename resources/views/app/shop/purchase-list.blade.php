@@ -44,7 +44,7 @@
             <div class="col-md-12 mb-3">
                 <div class="d-flex d-flex justify-content-between">
                     <h6 class="mb-0"><b>تاریخ ثبت فاکتور :</b> {{ jdate() }}</h6>
-                    <a href="{{ route('cart.show' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
+                    <a href="{{ route('user-cart' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
                         <button class="btn btn-primary rounded d-none-print"><i class="fas fa-undo pl-1"></i>سبد خرید</button>
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                             @foreach($products as $product)
                             <tr>
                                 <td>
-                                    <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
+                                    <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
                                         <h5 class="mt-0 mb-1">{{ $product->title }}</h5>
                                     </a>
                                 </td>
@@ -119,7 +119,7 @@
                         <button class="btn btn-outline-pink col-lg-6 rounded" type="submit" id="button-addon2">اعمال تخفیف</button>
                     </form>
                 </div>
-                <form action="{{ route('purchase.submit', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
+                <form action="{{ route('purchase-list.store', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
                     @csrf
                     @if($product->type != 'file')
                         <div class="col-lg-6 mt-5 d-none-print">

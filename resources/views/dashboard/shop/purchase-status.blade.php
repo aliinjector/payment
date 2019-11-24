@@ -1,71 +1,92 @@
 @extends('dashboard.layouts.master')
 @section('content')
 <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
-<div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <div class="float-right">
-                    <ol style="direction: ltr" class="breadcrumb">
-                        <li class="breadcrumb-item active">  وضعیت سفارش</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">لیست سفارشات شما</h4></div>
-            <!--end page-title-box-->
-        </div>
-        <!--end col-->
-    </div>
-<div class="page-content">
-    <div class="container-fluid">
-        <!-- Page-Title -->
-        <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body order-list">
-                            <h4 class="header-title mt-0 mb-3">لیست سفارشات</h4>
-                            <div class="table-responsive">
-                                <table class="table table-hover mb-0">
-                                    <thead class="thead-light">
-                                        <tr class="byekan">
-                                            <th class="border-top-0">محصول</th>
-                                            <th class="border-top-0">نام</th>
-                                            <th class="border-top-0">زمان سفارش</th>
-                                            <th class="border-top-0">مبلغ (تومان)</th>
-                                            <th class="border-top-0">وضعیت</th>
-                                        </tr>
-                                        <!--end tr-->
-                                    </thead>
-                                    <tbody>
-                                        @foreach($purchases as $purchase)
-                                        <tr class="byekan">
-
-                                            <td><img class="product-img" src="{{ $purchase->product()->withTrashed()->first()->image['80,80']}}" alt="user"></td>
-                                            <td>{{ $purchase->product()->withTrashed()->first()->title}}</td>
-                                            <td>{{ jdate($purchase->created_at) }}</td>
-                                            <td>{{ $purchase->product()->withTrashed()->first()->price }}تومان</td>
-                                            <td><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span></td>
-                                        </tr>
-                                        @endforeach
-                                        <!--end tr-->
-                                    </tbody>
-                                </table>
-                                <!--end table-->
-                            </div>
-                            <!--end /div-->
-                        </div>
-                        <!--end card-body-->
+<div class="card mt-4">
+    <div class="card-body">
+        @php $i=$purchases->count();
+        @endphp
+        @foreach ($purchases as $purchase)
+        <div class="accordion" id="accordionExample{{$purchase->id}}">
+            <div class="card border mb-0 shadow-none">
+                <div class="card-header p-0  d-flex justify-content-between align-items-center px-4 byekan" id="headingOne{{$purchase->id}}">
+                    <h5 class="my-1">
+                        <button class="btn btn-link text-dark collapsed byekan font-18" type="button" data-toggle="collapse" data-target="#collapseOne{{$purchase->id}}" aria-expanded="false" aria-controls="collapseOne">
+                            سفارش شماره
+                            @php echo $i
+                            @endphp
+                        </button>
+                    </h5>
+                    <div class="">
+                    <div>
+                        وضعیت سفارش : <span class="@if($purchase->status == 0) text-red @else text-green @endif">@if($purchase->status == 0) پرداخت نشده @else پرداخت شده @endif</span>
                     </div>
-                    <!--end card-->
+                    <div class="byekan mt-1">
+                    {{ jdate($purchase->created_at) }}
+                      </div>
+                    </div>
                 </div>
-                <!--end col-->
+
+                <div id="collapseOne{{$purchase->id}}" class="collapse" aria-labelledby="headingOne{{$purchase->id}}" data-parent="#accordionExample{{$purchase->id}}" style="">
+                    <div class="card-body">
+                        <table class="table table-hover mb-0">
+                            <thead class="thead-light">
+                                <tr class="iranyekan">
+                                    <th class="border-top-0">محصول</th>
+                                    <th class="border-top-0">نام</th>
+                                    <th class="border-top-0">تعداد</th>
+                                    <th class="border-top-0">قیمت واحد کالا</th>
+                                    <th class="border-top-0">قیمت جمع کالا</th>
+                                    <th class="border-top-0">زمان سفارش</th>
+                                </tr>
+                                <!--end tr-->
+                            </thead>
+                            <tbody class="font-18">
+                              @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products() as $product)
+                            <tr class="byekan">
+                                <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></a></td>
+                                <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
+                                <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}</td>
+                                <td>{{ number_format($product->price) }}</td>
+                                <td>{{ number_format($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price) }}</td>
+                                <td class="d-flex justify-content-lg-end align-items-center h-25vh" style="direction: ltr">{{ jdate($purchase->created_at) }}
+                                    @if($product->type == 'file')
+                                        <div class="icon-show">
+                                            <a href="{{ route('file-download', ['shop'=>$purchase->product()->first()->shop()->first()->english_name, 'id'=>$purchase->product()->first()->id]) }}" id="downloadFile"><i
+                                                  class="fa fa-download text-success mr-1 button font-15"></i>
+                                            </a>
+                                        </div>
+                                        @endif
+                                </td>
+                            </tr>
+                            @endforeach
+
+                            <!--end tr-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row d-flex justify-content-around p-4 text-white" style="background-color: #122272!important">
+                      <div class="font-1-4em">
+                        مشخصات سفارش دهنده : <br />
+                        نام و نام خانوادگی : {{ $purchase->user->firstName . ' ' . $purchase->user->lastName }}  <br />
+                        تلفن : {{ $purchase->user->mobile }} <br />
+                        آدرس : {{ $purchase->address }} <br />
+                      </div>
+                      <div class="font-1-4em">
+                        جمع کل سفارش : <span class="byekan">{{ number_format($purchase->total_price) }}</span>
+                      </div>
+                    </div>
+                </div>
             </div>
-        <!-- end page title end breadcrumb -->
-<!-- end row -->
-</div>
-<!-- container -->
+        </div>
+        @php $i--
+        @endphp
+        @endforeach
+    </div>
+    <!--end card-body-->
 </div>
 
 @endsection
@@ -76,72 +97,4 @@
 <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-<script>
-    $(document).ready(function() {
-        $(".test1").click(function() {
-            $(".feature_2").removeClass("d-none");
-            $(".test1").addClass("d-none");
-        });
-    });
-    $(document).ready(function() {
-        $(".test2").click(function() {
-            $(".feature_3").removeClass("d-none");
-            $(".test2").addClass("d-none");
-
-        });
-    });
-    $(document).ready(function() {
-        $(".test3").click(function() {
-            $(".feature_4").removeClass("d-none");
-            $(".test3").addClass("d-none");
-
-        });
-    });
-    $(document).ready(function() {
-        $(".color1").click(function() {
-            $(".color_1").removeClass("d-none");
-            $(".color1").addClass("d-none");
-
-        });
-    });
-    $(document).ready(function() {
-        $(".color2").click(function() {
-            $(".color_2").removeClass("d-none");
-            $(".color2").addClass("d-none");
-
-        });
-    });
-    $(document).ready(function() {
-        $(".color3").click(function() {
-            $(".color_3").removeClass("d-none");
-            $(".color3").addClass("d-none");
-
-        });
-    });
-    $(document).ready(function() {
-        $(".color4").click(function() {
-            $(".color_4").removeClass("d-none");
-            $(".color4").addClass("d-none");
-
-        });
-    });
-
-    $(document).on('click', '#aaa', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        $.ajax({
-            type: "post",
-            url: "{{url('/dashboard/product-list/delete')}}",
-            data: {
-                id: id,
-                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-            },
-            success: function(data) {
-                console.log(data)
-                var url = document.location.origin + "/dashboard/product-list";
-                location.href = url;
-            }
-        });
-    });
-</script>
 @stop

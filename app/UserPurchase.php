@@ -22,4 +22,8 @@ class UserPurchase extends Model
   {
        return $this->belongsTo('App\Cart');
    }
+    public function user()
+  {
+       return $this->belongsTo('App\User');
+   }
 }

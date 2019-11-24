@@ -99,11 +99,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mr-2">
                     <li class="nav-item">
-                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('show.shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
+                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
                     </li>
                     @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
                     <div class="dropdown mx-3">
-                        <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
+                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
                             <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" style="color:
                             #465f73!important">
                             {{ $shopCategory->name }}
@@ -114,22 +114,22 @@
                                 <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="right:.2em!important">
                                     @foreach ($shopCategory->children()->get() as $subCategory)
                                     @if (!$subCategory->children()->exists())
-                                    <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;"><li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
+                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;"><li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
                                     </li>
                                     </a>
                                     @else
                                     <li class="dropdown-submenu">
-                                        <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;" tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
+                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;" tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                         <ul class="dropdown-menu font-16">
                                             @foreach ($subCategory->children()->get() as $subSubCategory)
                                             @if (!$subSubCategory->children()->exists())
-                                            <a tabindex="-1" href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"><li class="dropdown-item">{{ $subSubCategory->name }}</li></a>
+                                            <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"><li class="dropdown-item">{{ $subSubCategory->name }}</li></a>
                                             @else
                                             <li class="dropdown-submenu">
-                                                <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
+                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                                 <ul class="dropdown-menu font-16">
                                                     @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                                                      <a href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
+                                                      <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
                                                             style="color: #465f73!important;"><li class="dropdown-item">{{ $subSubSubCategory->name }}</li></a>
                                                     @endforeach
                                                 </ul>
@@ -174,7 +174,7 @@
                         </div>
                         @endif
                         <div class="search-icon d-flex align-items-center ml-5">
-                            <a href="{{ route('cart.show' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
+                            <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
                                 <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>
                                     @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
                                         @else 0
@@ -184,7 +184,7 @@
                         @endauth
 
                         <li class="nav-item">
-                            <a href="{{ route('show.shop', $shop->english_name) }}">
+                            <a href="{{ route('shop', $shop->english_name) }}">
                                 <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
                             </a>
                         </li>

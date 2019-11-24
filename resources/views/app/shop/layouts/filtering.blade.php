@@ -2,7 +2,7 @@
     <div class="card e-co-product" style="max-width: 18rem;">
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">فیلتر بر اساس نوع کالا</h5>
         <div class="card-body d-flex justify-content-center text-primary">
-            <form action="{{ route('shop.show.category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
+            <form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
                 <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
                     <label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
                         <input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
@@ -40,7 +40,7 @@
                   class="list-group collapse border-0  @if( Request::is('*/category/'.$category->id)) show @elseif($category->children()->exists() and App\Http\Controllers\Shop\ShopController::getAllSubCategories($category->id)->where('id' , (int)Request::segment(3))->count() != 0) show @endif"
                 id="item-{{$category->id}}">
                 @foreach ($category->children()->get() as $subCategory)
-                <a @if($shop->menu_show == 'nestead_box') href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}"
+                <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}"
                     @else href="#item-{{$category->id}}-{{$subCategory->id}}"
                     @endif class="border-0 iranyekan dark-text-color p-2" @if($shop->menu_show != 'nestead_box') data-toggle="collapse"
                         @endif>
@@ -50,7 +50,7 @@
                   class="list-group collapse border-0 @if(App\Http\Controllers\Shop\ShopController::getAllSubCategories($subCategory->id)->where('id' , (int)Request::segment(3))->count() != 0) show @elseif($shop->menu_show == 'nestead_box') show @endif"
                 id="item-{{$category->id}}-{{$subCategory->id}}">
                 @foreach ($subCategory->children()->get() as $subSubCategory)
-                <a @if($shop->menu_show == 'nestead_box') href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"
+                <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"
                     @else href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}"
                     @endif class="border-0 iranyekan dark-text-color p-2 mr-5" @if($shop->menu_show != 'nestead_box') data-toggle="collapse"
                         @endif ><i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i>{{ $subSubCategory->name}}</a>
@@ -58,7 +58,7 @@
                   class="list-group collapse border-0 @if(App\Http\Controllers\Shop\ShopController::getAllSubCategories($subSubCategory->id)->where('id' , (int)Request::segment(3))->count() != 0) show @elseif($shop->menu_show == 'nestead_box') show @endif"
                 id="item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}">
                 @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                <a @if($shop->menu_show == 'nestead_box') href="{{ route('shop.show.category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
+                <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
                     @else href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}-{{$subSubSubCategory->id}}"
                     @endif class="border-0 iranyekan dark-text-color p-2 mr-5 pr-4" @if($shop->menu_show != 'nestead_box') data-toggle="collapse" @endif>{{ $subSubSubCategory->name}}
                 </a>

@@ -23,16 +23,17 @@ class ProductController extends Controller
     {
         if(\Auth::user()->type == 'customer'){
             return redirect()->back();
-        }
-      if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0) {
-        alert()->warning('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
-        return redirect()->route('product-category.index');
-      }
-      else{
-        $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
-        $products = \Auth::user()->shop()->first()->products()->get();
-        return view('dashboard.shop.product', compact('productCategories','products'));
-      }
+        }else{
+          if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0) {
+              alert()->warning('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
+              return redirect()->route('product-category.index');
+          }
+          else{
+              $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+              $products = \Auth::user()->shop()->first()->products()->get();
+              return view('dashboard.shop.product', compact('productCategories','products'));
+              }
+            }
     }
 
     /**
@@ -53,10 +54,13 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+         //check if product category is null
          if($request->productCat_id == "null"){
            $request->merge(['productCat_id' => null]);
          }
+         //validate product category if is null or not
          $request->validate(['productCat_id' => 'required']);
+         //check if product is file to calculate size of uploaded file
            if($request->type == 'file') {
             $file_size = $request->file('attachment')->getSize();
            }
@@ -64,15 +68,17 @@ class ProductController extends Controller
             $file_size = null;
            }
       $image = $this->uploadFile($request->file('image'), false, true);
+      //check if product is file to save attachment file
       if($request->type == 'file')
-
       $attachment = $this->uploadFile($request->file('attachment'), false, false);
       else
       $attachment = null;
+      //check if enable if off to change enable to 0
       if ( $request->enable != "on")
       $request->enable = 0;
      else
      $request->enable = 1;
+     //get colors
      if($request->color_2 == '#a89d8e')
       $request->color_2 = null;
       else
@@ -92,7 +98,7 @@ class ProductController extends Controller
        $request->color_5 = null;
        else
        $request->color_5 = $request->color_5;
-
+       //check options of products
        if ( $request->fast_sending != "on")
          $request->fast_sending = 0;
       else
@@ -112,18 +118,21 @@ class ProductController extends Controller
          $request->secure_payment = 0;
       else
       $request->secure_payment = 1;
+      //check amount of product and change fa number to en
       if($request->amount != null){
         $request->amount = $this->fa_num_to_en($request->amount);
       }
+      //check weight of product and change fa number to en
       if($request->weight != null){
         $request->weight = $this->fa_num_to_en($request->weight);
       }
+      //check off_price of product and change fa number to en
       if($request->off_price != null){
         $request->off_price = $this->fa_num_to_en($request->off_price);
       }
       switch ($request->input('action')) {
+        //save new product and close model
         case 'justSave':
-
       $shop = \Auth::user()->shop()->first()->products()->create([
         'title' => $request->title,
         'type' => $request->type,
@@ -158,7 +167,7 @@ class ProductController extends Controller
         'file_size' => $file_size,
       ]);
 
-
+  //add tags to the product
     if($shop)
     {
         $tagNames = explode(',',$request->get('tags'));
@@ -180,8 +189,9 @@ class ProductController extends Controller
 
     break;
 
-case 'saveAndContinue':
-$shop = \Auth::user()->shop()->first()->products()->create([
+    //save new product and open new model
+    case 'saveAndContinue':
+    $shop = \Auth::user()->shop()->first()->products()->create([
     'title' => $request->title,
     'type' => $request->type,
     'color_1' => $request->color_1,
@@ -215,7 +225,7 @@ $shop = \Auth::user()->shop()->first()->products()->create([
     'file_size' => $file_size,
   ]);
 
-
+  //add tags to the product
 if($shop)
 {
     $tagNames = explode(',',$request->get('tags'));
@@ -253,14 +263,8 @@ else{
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        return view('dashboard.shop.product-detail', compact('product'));
+      //
     }
-
-    public function showProduct($productCategory ,$productId)
-    {
-    }
-
 
     /**
      * Show the form for editing the specified resource.

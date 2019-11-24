@@ -100,8 +100,8 @@
         @foreach ($productsPaginate as $product)
         <div class="col-lg-3 row">
             <div class="card e-co-product min-height-60 col-lg-12">
-                <a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
-                <div class="card-body product-info"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>
                     <div class="d-flex justify-content-between my-2 byekan">
                         @if($product->off_price != null)
                             <p class="product-price byekan">{{ number_format($product->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del class="byekan font-16">{{ number_format($product->price) }} تومان</del></span>
@@ -112,7 +112,7 @@
                     </div>
                     <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
                 @if(\Auth::user())
-                    <form action="{{ route('cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$product->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>

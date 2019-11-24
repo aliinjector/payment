@@ -21,12 +21,12 @@
                         </thead>
                         <tbody class="">
 
-                            <form action="{{ route('purchaseList',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
+                            <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                                 @csrf
                                 @foreach ($products as $product)
                                 <tr>
                                     <td><img src="{{ $product->image['80,80'] }}" alt="" height="52">
-                                        <p class="d-inline-block align-middle mb-0"><a href="{{ route('shop.show.product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank"
+                                        <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank"
                                               class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                             <br><span class="text-muted font-13">رنگ قرمز</span></p>
                                     </td>

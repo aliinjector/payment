@@ -197,7 +197,7 @@ Author: Ali Rahmani
 
                         <h6 class="menu-title">فروشگاه ساز</h6></div>
                         @if (\Auth::user()->shop()->count() != 0)
-                            <li class="nav-item bg-light p-2 pr-4 mb-2 mt-2"><a class="nav-link" target="_blank" href="{{ route('show.shop', \Auth::user()->shop()->first()->english_name) }}"><i class="fa fa-eye"></i> مشاهده فروشگاه </a></li>
+                            <li class="nav-item bg-light p-2 pr-4 mb-2 mt-2"><a class="nav-link" target="_blank" href="{{ route('shop', \Auth::user()->shop()->first()->english_name) }}"><i class="fa fa-eye"></i> مشاهده فروشگاه </a></li>
                             @endif
                     <ul class="nav">
                   @if (\Auth::user()->shop()->count() == 0)

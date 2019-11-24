@@ -56,7 +56,7 @@
             <h4 class="title-text mt-0"></h4>
             مجموع فروش شما</h4>
             <div class="d-flex justify-content-between">
-               <h3 class="font-weight-bold byekan">{{ number_format($sum) }}</h3>
+               <h3 class="font-weight-bold byekan">{{ number_format($sumPurchasesPrice) }}</h3>
                <i class="dripicons-wallet card-eco-icon text-success align-self-center"></i>
             </div>
             <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> افزایش نسبت به دیروز</p>
