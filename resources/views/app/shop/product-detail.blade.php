@@ -38,7 +38,13 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6"><img src="{{ $product->image['400,400'] }}" alt="" class="col-8 d-block img-thumbnail" height="400"></div>
+                    <div class="col-lg-6"><img src="{{ $product->image['400,400'] }}" alt="" class="col-8 d-block img-thumbnail" height="400">
+                        <div class="gallery mt-4 mr-4">
+                            @foreach ($galleries as $gallery)
+                                <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
+                            @endforeach
+                        </div>
+                    </div>
                     <!--end col-->
                     <div class="col-lg-6 align-self-center">
                         <div class="single-pro-detail">
@@ -140,11 +146,7 @@
                         </div>
                     </div>
 
-                    <div class="gallery mt-4 mr-4">
-                        @foreach ($galleries as $gallery)
-                            <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
-                        @endforeach
-                    </div>
+
 
                     <!--end col-->
                 </div>

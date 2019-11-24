@@ -5,7 +5,11 @@
 <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
 
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
-
+<style>
+    .dz-image > img {
+        width: 100%!important;
+    }
+</style>
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -83,7 +87,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
 
-                                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+                                    <link rel="stylesheet" href="/dashboard/assets/plugins/dropzone/dropzone.min.css">
                                     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
                                     <script src="/dashboard/assets/plugins/dropzone/dropzone.js"></script>
 
