@@ -31,6 +31,10 @@ class Shop extends Model
    {
        return $this->hasMany('App\UserPurchase');
    }
+    public function users()
+   {
+       return $this->hasMany('App\User');
+   }
     public function vouchers()
    {
        return $this->hasMany('App\Voucher');

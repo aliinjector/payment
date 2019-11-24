@@ -10,6 +10,7 @@ use App\Cart;
 use App\Rating;
 use App\ProductCategory;
 use Illuminate\Http\Request;
+use Request as RequestFacade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
@@ -104,7 +105,6 @@ class ShopController extends \App\Http\Controllers\Controller {
                 }
             } else {
                 if ($orderBy == 'desc') {
-                  // dd($products);
                     $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
                 } else {
                     $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
@@ -222,7 +222,10 @@ class ShopController extends \App\Http\Controllers\Controller {
         SEOTools::opengraph()->addProperty('type', 'website');
         return view('app.shop.tags-product', compact('products', 'shop', 'shopCategories', 'tagName'));
     }
+
+
     public function approved($shopName, $productId, Request $request) {
+      $userVoucherName =  \Auth::user()->firstName .' '.   \Auth::user()->lastName . '-' . \Auth::user()->email;
         if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first() == null) {
             $shop = Shop::where('english_name', $shopName)->first();
             $product = Product::where('id', $productId)->get()->first();
@@ -246,6 +249,7 @@ class ShopController extends \App\Http\Controllers\Controller {
             return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'products', 'quantity', 'productTotal_price', 'total_price'));
         }
         if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
+          if(Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->users == null){
             $shop = Shop::where('english_name', $shopName)->first();
             $product = Product::where('id', $productId)->get()->first();
             $shopCategories = $shop->ProductCategories()->get();
@@ -270,11 +274,47 @@ class ShopController extends \App\Http\Controllers\Controller {
             Session::put('discountedPrice', $discountedPrice);
             alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
             return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
+          }
+          else{
+            $voucherId = Voucher::where('code', $request->code)->get()->first()->id;
+            if(collect($this->getVochersUsers($voucherId))->contains($userVoucherName)){
+              $shop = Shop::where('english_name', $shopName)->first();
+              $product = Product::where('id', $productId)->get()->first();
+              $shopCategories = $shop->ProductCategories()->get();
+              $total_price = \Auth::user()->cart()->get()->first()->total_price;
+              $cart = \Auth::user()->cart()->get()->first()->id;
+              $productsID = [];
+              $quantity = [];
+              $productTotal_price = [];
+              foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
+                  $productsID[] = $a->product_id;
+                  $quantity[] = $a->quantity;
+                  $productTotal_price[] = $a->total_price;
+              }
+              $products = [];
+              foreach ($productsID as $productID) {
+                  $product = Product::where('id', $productID)->get()->first();
+                  $products[] = $product;
+              }
+              $cartTotalPrice = \Auth::user()->cart()->get()->first()->total_price;
+              $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
+              $discountedPrice = $cartTotalPrice - $voucherDiscount;
+              Session::put('discountedPrice', $discountedPrice);
+              alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
+              return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
+            }
+            else{
+              alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
+              return redirect()->back();
+            }
+          }
         } else {
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
             return redirect()->back();
         }
     }
+
+
     public function downlaodFile($shop, $id) {
         $product = Product::find($id);
         $purchase = $product->purchases()->get();
@@ -432,5 +472,11 @@ class ShopController extends \App\Http\Controllers\Controller {
     public function destroy(Shop $shop) {
         //
 
+    }
+
+    public function getVochersUsers($id){
+    $shop = Shop::where('english_name', RequestFacade::segment(1))->get()->first();
+    $users = $shop->vouchers()->where('id' , $id)->get()->first()->users;
+    return $users;
     }
 }

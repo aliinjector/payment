@@ -10,6 +10,7 @@ class Voucher extends Model
 {
     use SoftDeletes;
 
+    protected $casts = ['users' => 'array'];
     protected $dates = ['deleted_at'];
 
     protected $guarded = ['id'];
