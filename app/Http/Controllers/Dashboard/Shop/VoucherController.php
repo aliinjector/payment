@@ -17,12 +17,17 @@ class VoucherController extends Controller
      */
     public function index()
     {
+      dd(collect($this->getVochersUsers(10))->contains('علی رحمانی-operator@gmail.com'));
         if(\Auth::user()->type == 'customer'){
             return redirect()->back();
         }
         $shop = \Auth::user()->shop()->first();
         $vouchers = \Auth::user()->shop()->first()->vouchers()->get();
-        return view('dashboard.shop.voucher', compact('vouchers','shop'));
+        $usersFullName = [];
+        foreach($shop->users as $user){
+          $usersFullName[] = $user->firstName .' '.  $user->lastName . '-' .$user->email;
+        }
+        return view('dashboard.shop.voucher', compact('vouchers','shop' , 'usersFullName'));
     }
 
     /**
@@ -73,6 +78,7 @@ class VoucherController extends Controller
             'description' => $request->description,
             'uses' => $request->uses,
             'discount_amount' => $request->discount_amount,
+            'users' => $request->users,
             'starts_at' => date('Y-m-d H:i:s', (int)$realTimestampStart),
             'expires_at' => date('Y-m-d H:i:s', (int)$realTimestampExpire),
           ]);
@@ -156,5 +162,5 @@ class VoucherController extends Controller
                  $voucherDelete = \Auth::user()->shop()->first()->vouchers()->where('id' , $request->id)->first()->delete();
                  alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                   return redirect()->back();
-              }
+    }
 }

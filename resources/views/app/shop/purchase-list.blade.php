@@ -1,6 +1,7 @@
 @extends('app.shop.layouts.master')
 @section('content')
 <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
+{{-- {{ dd(\Auth::user()->email) }} --}}
     @include('dashboard.layouts.errors')
     <div class="card-body invoice-head">
         <div class="row">
