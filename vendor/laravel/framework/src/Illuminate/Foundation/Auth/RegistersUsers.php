@@ -19,18 +19,16 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        if(RequestFacade::server('HTTP_REFERER') === route('index').'/' or RequestFacade::server('HTTP_REFERER') === route('login')){
+        if(RequestFacade::server('HTTP_REFERER') === route('index').'/' or RequestFacade::server('HTTP_REFERER') === route('login') or RequestFacade::server('HTTP_REFERER') === route('register')){
             return view('auth.register');
         }
         else{
-            $base_url = parse_url(RequestFacade::server('HTTP_REFERER'),PHP_URL_PATH);
-            $uri = ltrim($base_url, '/');
-            $shopName = explode('/',$uri);
-            if(Shop::where('english_name' , $shopName[0])->get()->count() == 0){
+            $shopName = request()->shop;
+            if(Shop::where('english_name' , $shopName)->get()->count() == 0){
               $shop_id = null;
             }
             else{
-            $shop_id = Shop::where('english_name' , $shopName[0])->get()->first()->id;
+            $shop_id = Shop::where('english_name' , $shopName)->get()->first()->id;
             }
             return view('auth.registerUser',compact('shop_id'));
         }

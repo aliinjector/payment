@@ -149,7 +149,7 @@
                 <ul class="navbar-nav float-right ">
                     @guest
                     <div class="search-icon d-flex align-items-center mx-3 ">
-                        <a href="{{ route('register') }}" style="font-size:13px;">
+                        <a href="{{ route('register', ['shop' => $shop->english_name]) }}" style="font-size:13px;">
                             <button type="button" class="btn bg-blue-omid text-white rounded">عضویت</button>
                         </a>
                     </div>
