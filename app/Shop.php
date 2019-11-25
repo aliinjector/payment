@@ -48,5 +48,10 @@ class Shop extends Model
     {
         return $this->hasMany('App\Comment');
     }
+    public function userVoucher()
+    {
+        return $this->hasMany('App\UserVoucher');
+    }
+
 
 }

@@ -225,13 +225,15 @@ class ShopController extends \App\Http\Controllers\Controller {
 
 
     public function approved($shopName, $productId, Request $request) {
+      $shop = Shop::where('english_name', $shopName)->first();
+      $product = Product::where('id', $productId)->get()->first();
+      $shopCategories = $shop->ProductCategories()->get();
+      $total_price = \Auth::user()->cart()->get()->first()->total_price;
+      $cart = \Auth::user()->cart()->get()->first()->id;
+      $voucher = Voucher::where('code' , $request->code)->get()->first();
+      $userID = \Auth::user()->id;
       $userVoucherName =  \Auth::user()->firstName .' '.   \Auth::user()->lastName . '-' . \Auth::user()->email;
         if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first() == null) {
-            $shop = Shop::where('english_name', $shopName)->first();
-            $product = Product::where('id', $productId)->get()->first();
-            $shopCategories = $shop->ProductCategories()->get();
-            $total_price = \Auth::user()->cart()->get()->first()->total_price;
-            $cart = \Auth::user()->cart()->get()->first()->id;
             $productsID = [];
             $quantity = [];
             $productTotal_price = [];
@@ -250,11 +252,6 @@ class ShopController extends \App\Http\Controllers\Controller {
         }
         if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
           if(Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->users == null){
-            $shop = Shop::where('english_name', $shopName)->first();
-            $product = Product::where('id', $productId)->get()->first();
-            $shopCategories = $shop->ProductCategories()->get();
-            $total_price = \Auth::user()->cart()->get()->first()->total_price;
-            $cart = \Auth::user()->cart()->get()->first()->id;
             $productsID = [];
             $quantity = [];
             $productTotal_price = [];
@@ -271,18 +268,14 @@ class ShopController extends \App\Http\Controllers\Controller {
             $cartTotalPrice = \Auth::user()->cart()->get()->first()->total_price;
             $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             $discountedPrice = $cartTotalPrice - $voucherDiscount;
-            Session::put('discountedPrice', $discountedPrice);
+            Session::put( \Auth::user()->id .'-'. $shop->english_name, $discountedPrice);
+            Session::put('voucher_code', $request->code);
             alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
             return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
           }
           else{
             $voucherId = Voucher::where('code', $request->code)->get()->first()->id;
             if(collect($this->getVochersUsers($voucherId))->contains($userVoucherName)){
-              $shop = Shop::where('english_name', $shopName)->first();
-              $product = Product::where('id', $productId)->get()->first();
-              $shopCategories = $shop->ProductCategories()->get();
-              $total_price = \Auth::user()->cart()->get()->first()->total_price;
-              $cart = \Auth::user()->cart()->get()->first()->id;
               $productsID = [];
               $quantity = [];
               $productTotal_price = [];
@@ -299,7 +292,8 @@ class ShopController extends \App\Http\Controllers\Controller {
               $cartTotalPrice = \Auth::user()->cart()->get()->first()->total_price;
               $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
               $discountedPrice = $cartTotalPrice - $voucherDiscount;
-              Session::put('discountedPrice', $discountedPrice);
+              Session::put(\Auth::user()->id .'-'. $shop->english_name, $discountedPrice);
+              Session::put('voucher_code', $request->code);
               alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
               return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
             }
@@ -342,15 +336,15 @@ class ShopController extends \App\Http\Controllers\Controller {
         $purchase->product_id = $id;
         $purchase->shop_id = $shopId;
         if ($product->off_price == null) {
-            if (Session::get('discountedPrice') == null) {
+            if (Session::get(\Auth::user()->id .'-'. $shop->english_name) == null) {
                 $purchase->total_price = $product->price;
             } else {
-                $purchase->total_price = Session::get('discountedPrice');
+                $purchase->total_price = Session::get(\Auth::user()->id .'-'. $shop->english_name);
             }
         } else {
             $purchase->total_price = $product->off_price;
         }
-        Session::pull('discountedPrice');
+        Session::pull(\Auth::user()->id .'-'. $shop->english_name);
         if (\Auth::guest()) {
             $purchase->user_id = null;
         } else {
@@ -359,6 +353,8 @@ class ShopController extends \App\Http\Controllers\Controller {
         $purchase->save();
         return response()->file($uri);
     }
+
+
     public function purchaseSubmit($shop, $cartID, Request $request) {
 
         $total_price = \Auth::user()->cart()->get()->first()->total_price;
@@ -410,7 +406,8 @@ class ShopController extends \App\Http\Controllers\Controller {
         $purchase->shipping = $request->shipping_way;
         $shop = Shop::where('english_name', $shop)->first();
 
-        if (Session::get('discountedPrice') == null) {
+        if (Session::get(\Auth::user()->id .'-'. $shop->english_name) == null) {
+
           if($shop->VAT == 'enable') {
             $purchase->total_price = (\Auth::user()->cart()->get()->first()->total_price) + (\Auth::user()->cart()->get()->first()->total_price * $shop->VAT_amount / 100);
           }
@@ -419,15 +416,21 @@ class ShopController extends \App\Http\Controllers\Controller {
           }
         }
         else {
+          $voucher = Voucher::where('code' , Session::get('voucher_code'))->get()->first();
           if($shop->VAT == 'enable') {
-            $purchase->total_price = (Session::get('discountedPrice')) + (Session::get('discountedPrice') * $shop->VAT_amount / 100);
+            $purchase->total_price = (Session::get(\Auth::user()->id .'-'. $shop->english_name)) + (Session::get(\Auth::user()->id .'-'. $shop->english_name) * $shop->VAT_amount / 100);
           }
           else{
-            $purchase->total_price = Session::get('discountedPrice');
+            $purchase->total_price = Session::get(\Auth::user()->id .'-'. $shop->english_name);
           }
         }
         $purchase->save();
-        Session::pull('discountedPrice');
+        // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
+        if(isset($voucher)){
+          DB::table('user_vouchers')->insert(['user_id' => \Auth::user()->id, 'voucher_id' => $voucher->id, 'user_purchase_id' => $purchase->id, 'shop_id' => $shop->id]);
+          Session::pull('voucher_code', $request->code);
+        }
+        Session::pull(\Auth::user()->id .'-'. $shop->english_name);
         DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
         Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
         alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
@@ -436,10 +439,14 @@ class ShopController extends \App\Http\Controllers\Controller {
         SEOTools::opengraph()->addProperty('type', 'website');
         return redirect()->route('user.purchased.list', ['userID' => \auth::user()->id]);
     }
+
+
     public function userPurchaseList() {
         $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
         return view('app.shop.user-purchased-list', compact('purchases'));
     }
+
+
     public function updateRate(Request $request) {
         $user = \auth::user();
         $product = Product::find($request->id);

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Product;
 use App\Shop;
 use App\Voucher;
+use App\UserVoucher;
 
 class VoucherController extends Controller
 {
@@ -17,7 +18,6 @@ class VoucherController extends Controller
      */
     public function index()
     {
-      dd(collect($this->getVochersUsers(10))->contains('علی رحمانی-operator@gmail.com'));
         if(\Auth::user()->type == 'customer'){
             return redirect()->back();
         }
@@ -143,7 +143,10 @@ class VoucherController extends Controller
 
     }
 
-
+    public function voucherReport(){
+      $vouchersReports = \Auth::user()->shop()->first()->userVoucher;
+      return view('dashboard.shop.voucher-report' , compact('vouchersReports'));
+    }
 
     /**
      * Remove the specified resource from storage.
