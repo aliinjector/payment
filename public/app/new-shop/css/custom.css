@@ -116,8 +116,8 @@ h6 {
 }
 
 p,
-a,
 div,
+li,
 h1 {
     font-family: iranyekan!important;
 }
@@ -126,12 +126,20 @@ input {
     font-family: iranyekan!important;
 }
 
-button {
-    font-family: iranyekan!important;
-    font-weight: 600!important;
-}
-
 select {
     font-family: iranyekan!important;
     font-weight: 600!important;
+}
+.btn {
+    font-family: iranyekan!important;
+}
+.tt-btn-addtocart {
+    font-family: iranyekan!important;
+}
+.tt-desktop-header{
+  background: #f7f8fa;
+}
+.dropdown{
+  font-family: iranyekan!important;
+
 }

@@ -83,13 +83,13 @@ class ShopController extends \App\Http\Controllers\Controller {
         SEOTools::setTitle($shop->name . ' | ' . $product->title);
         SEOTools::setDescription($shop->name);
         SEOTools::opengraph()->addProperty('type', 'website');
-        return view('app.shop.product-detail', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries', 'offeredProducts'));
+        return view('app.new-shop.01.product', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries', 'offeredProducts'));
     }
     public function showCategory($shop, $categroyId, Request $request) {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id', null);
-        $category = ProductCategory::where('id', $categroyId)->get()->first()->id;
+        $category = ProductCategory::where('id', $categroyId)->get()->first();
         if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
             $orderBy = $request->sortBy['orderBy'];
             $minPrice = $request->minprice;
@@ -120,7 +120,7 @@ class ShopController extends \App\Http\Controllers\Controller {
         SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-        return view('app.shop.category', compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate'));
+        return view('app.new-shop.01.category', compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate'));
     }
     public function getAllCategoriesProducts($cat_id) {
         $allProducts = collect();
