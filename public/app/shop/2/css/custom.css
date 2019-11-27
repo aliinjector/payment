@@ -141,5 +141,10 @@ select {
 }
 .dropdown{
   font-family: iranyekan!important;
-
+}
+.nav-link{
+  font-family: iranyekan!important;
+}
+.btn-link{
+  font-family: iranyekan!important;
 }
