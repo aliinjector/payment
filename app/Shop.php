@@ -52,6 +52,11 @@ class Shop extends Model
     {
         return $this->hasMany('App\UserVoucher');
     }
+    public function template()
+    {
+        return $this->belongsTo('App\Template');
+    }
+
 
 
 }

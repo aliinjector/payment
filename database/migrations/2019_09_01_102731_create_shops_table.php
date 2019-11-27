@@ -30,6 +30,7 @@ class CreateShopsTable extends Migration
             $table->text('icon')->nullable();
             $table->text('logo')->nullable();
             $table->string('description');
+            $table->unsignedInteger('template_id')->default(1);
             $table->timestamps();
             $table->softDeletes();
 
