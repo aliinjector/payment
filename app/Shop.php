@@ -56,6 +56,9 @@ class Shop extends Model
     {
         return $this->hasMany('App\Brand');
     }
-
+    public function feedbacks()
+    {
+        return $this->hasMany('App\Feedback');
+    }
 
 }

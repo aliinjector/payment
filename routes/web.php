@@ -87,6 +87,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         //Brand
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
+        //Feedback
+        Route::resource('feedback', 'FeedbackController');
+        Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
     });
 });
 Route::namespace('Shop')->middleware('auth')->group(function () {
