@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Bank' => $baseDir . '/app/Bank.php',
     'App\\Bill' => $baseDir . '/app/Bill.php',
+    'App\\Brand' => $baseDir . '/app/Brand.php',
     'App\\Card' => $baseDir . '/app/Card.php',
     'App\\Cart' => $baseDir . '/app/Cart.php',
     'App\\CartProduct' => $baseDir . '/app/CartProduct.php',
@@ -18,6 +19,7 @@ return array(
     'App\\Dashboard' => $baseDir . '/app/Dashboard.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\FastPay' => $baseDir . '/app/FastPay.php',
+    'App\\Feedback' => $baseDir . '/app/Feedback.php',
     'App\\Gallery' => $baseDir . '/app/Gallery.php',
     'App\\Gateway' => $baseDir . '/app/Gateway.php',
     'App\\Http\\Controllers\\Api\\AuthController' => $baseDir . '/app/Http/Controllers/Api/AuthController.php',
@@ -40,6 +42,7 @@ return array(
     'App\\Http\\Controllers\\Dashboard\\Payment\\TransactionReportController' => $baseDir . '/app/Http/Controllers/Dashboard/Payment/TransactionReportController.php',
     'App\\Http\\Controllers\\Dashboard\\Payment\\UserInformationController' => $baseDir . '/app/Http/Controllers/Dashboard/Payment/UserInformationController.php',
     'App\\Http\\Controllers\\Dashboard\\Payment\\WalletController' => $baseDir . '/app/Http/Controllers/Dashboard/Payment/WalletController.php',
+    'App\\Http\\Controllers\\Dashboard\\Shop\\BrandController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/BrandController.php',
     'App\\Http\\Controllers\\Dashboard\\Shop\\CommentsController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/CommentsController.php',
     'App\\Http\\Controllers\\Dashboard\\Shop\\DashboardShopController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/DashboardShopController.php',
     'App\\Http\\Controllers\\Dashboard\\Shop\\GalleryController' => $baseDir . '/app/Http/Controllers/Dashboard/Shop/GalleryController.php',

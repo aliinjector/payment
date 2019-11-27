@@ -30,8 +30,9 @@ class ProductController extends Controller
           }
           else{
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+              $brands = \Auth::user()->shop()->first()->brands()->get();
               $products = \Auth::user()->shop()->first()->products()->get();
-              return view('dashboard.shop.product', compact('productCategories','products'));
+              return view('dashboard.shop.product', compact('productCategories','products', 'brands'));
               }
             }
     }
@@ -57,6 +58,9 @@ class ProductController extends Controller
          //check if product category is null
          if($request->productCat_id == "null"){
            $request->merge(['productCat_id' => null]);
+         }
+         if($request->brand_id == "null"){
+           $request->merge(['brand_id' => null]);
          }
          //validate product category if is null or not
          $request->validate(['productCat_id' => 'required']);
@@ -138,6 +142,7 @@ class ProductController extends Controller
         'type' => $request->type,
         'color_1' => $request->color_1,
         'productCat_id' => $request->productCat_id,
+        'brand_id' => $request->brand_id,
         'color_2' => $request->color_2,
         'color_3' => $request->color_3,
         'color_4' => $request->color_4,
@@ -196,6 +201,7 @@ class ProductController extends Controller
     'type' => $request->type,
     'color_1' => $request->color_1,
     'productCat_id' => $request->productCat_id,
+    'brand_id' => $request->brand_id,
     'color_2' => $request->color_2,
     'color_3' => $request->color_3,
     'color_4' => $request->color_4,
@@ -365,6 +371,7 @@ else{
         'type' => $request->type,
         'color_1' => $request->color_1,
         'productCat_id' => $request->productCat_id,
+        'brand_id' => $request->brand_id,
         'color_2' => $request->color_2,
         'color_3' => $request->color_3,
         'color_4' => $request->color_4,

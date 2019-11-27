@@ -52,9 +52,13 @@ class Shop extends Model
     {
         return $this->hasMany('App\UserVoucher');
     }
-    public function template()
+    public function brands()
     {
-        return $this->belongsTo('App\Template');
+        return $this->hasMany('App\Brand');
+    }
+    public function feedbacks()
+    {
+        return $this->hasMany('App\Feedback');
     }
 
 

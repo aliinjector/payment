@@ -179,5 +179,6 @@ return array(
         'new_address' => 'آدرس جدید',
         'new-password' => 'رمز عبور جدید',
         'productCat_id' => 'دسته بندی محصول',
+        'feedback' => 'بازخورد',
     ),
 );

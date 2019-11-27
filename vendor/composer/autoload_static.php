@@ -527,6 +527,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
     public static $classMap = array (
         'App\\Bank' => __DIR__ . '/../..' . '/app/Bank.php',
         'App\\Bill' => __DIR__ . '/../..' . '/app/Bill.php',
+        'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
         'App\\Card' => __DIR__ . '/../..' . '/app/Card.php',
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\CartProduct' => __DIR__ . '/../..' . '/app/CartProduct.php',
@@ -537,6 +538,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Dashboard' => __DIR__ . '/../..' . '/app/Dashboard.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\FastPay' => __DIR__ . '/../..' . '/app/FastPay.php',
+        'App\\Feedback' => __DIR__ . '/../..' . '/app/Feedback.php',
         'App\\Gallery' => __DIR__ . '/../..' . '/app/Gallery.php',
         'App\\Gateway' => __DIR__ . '/../..' . '/app/Gateway.php',
         'App\\Http\\Controllers\\Api\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/AuthController.php',
@@ -559,6 +561,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Dashboard\\Payment\\TransactionReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/TransactionReportController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\UserInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/UserInformationController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\WalletController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/WalletController.php',
+        'App\\Http\\Controllers\\Dashboard\\Shop\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/BrandController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\CommentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/CommentsController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\DashboardShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/DashboardShopController.php',
         'App\\Http\\Controllers\\Dashboard\\Shop\\GalleryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Shop/GalleryController.php',
