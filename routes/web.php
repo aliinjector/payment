@@ -84,6 +84,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::get('comment/notApproved', 'CommentsController@notApproved')->name('comment.notApproved');
         Route::post('comment/delete', 'CommentsController@destroy');
         Route::get('comment/approve/{id}/{commentable}', 'CommentsController@approve')->name('comment.approve');
+        //Brand
+        Route::resource('brand', 'BrandController');
+        Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
     });
 });
 Route::namespace('Shop')->middleware('auth')->group(function () {

@@ -527,6 +527,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
     public static $classMap = array (
         'App\\Bank' => __DIR__ . '/../..' . '/app/Bank.php',
         'App\\Bill' => __DIR__ . '/../..' . '/app/Bill.php',
+        'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',
         'App\\Card' => __DIR__ . '/../..' . '/app/Card.php',
         'App\\Cart' => __DIR__ . '/../..' . '/app/Cart.php',
         'App\\CartProduct' => __DIR__ . '/../..' . '/app/CartProduct.php',
@@ -617,6 +618,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserInformation' => __DIR__ . '/../..' . '/app/UserInformation.php',
         'App\\UserPurchase' => __DIR__ . '/../..' . '/app/UserPurchase.php',
+        'App\\UserVoucher' => __DIR__ . '/../..' . '/app/UserVoucher.php',
         'App\\Voucher' => __DIR__ . '/../..' . '/app/Voucher.php',
         'App\\Wallet' => __DIR__ . '/../..' . '/app/Wallet.php',
         'Artesaos\\SEOTools\\Contracts\\JsonLd' => __DIR__ . '/..' . '/artesaos/seotools/src/SEOTools/Contracts/JsonLd.php',

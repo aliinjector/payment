@@ -52,6 +52,10 @@ class Shop extends Model
     {
         return $this->hasMany('App\UserVoucher');
     }
+    public function brands()
+    {
+        return $this->hasMany('App\Brand');
+    }
 
 
 }

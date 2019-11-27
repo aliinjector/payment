@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Bank' => $baseDir . '/app/Bank.php',
     'App\\Bill' => $baseDir . '/app/Bill.php',
+    'App\\Brand' => $baseDir . '/app/Brand.php',
     'App\\Card' => $baseDir . '/app/Card.php',
     'App\\Cart' => $baseDir . '/app/Cart.php',
     'App\\CartProduct' => $baseDir . '/app/CartProduct.php',
@@ -98,6 +99,7 @@ return array(
     'App\\User' => $baseDir . '/app/User.php',
     'App\\UserInformation' => $baseDir . '/app/UserInformation.php',
     'App\\UserPurchase' => $baseDir . '/app/UserPurchase.php',
+    'App\\UserVoucher' => $baseDir . '/app/UserVoucher.php',
     'App\\Voucher' => $baseDir . '/app/Voucher.php',
     'App\\Wallet' => $baseDir . '/app/Wallet.php',
     'Artesaos\\SEOTools\\Contracts\\JsonLd' => $vendorDir . '/artesaos/seotools/src/SEOTools/Contracts/JsonLd.php',

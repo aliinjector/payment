@@ -132,6 +132,19 @@
                                             @endif
 
                                         </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <select class="form-control inputfield" name="brand_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                </option>
+                                                @foreach($brands as $brand)
+                                                <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
+                                                     {{ $brand->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت محصول :</span></div>
                                             <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en">
@@ -355,6 +368,20 @@
                                             </select>
 
                                         </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <select class="form-control inputfield" name="brand_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                </option>
+                                                @foreach($brands as $brand)
+                                                  <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
+                                                  </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en" value="{{ $product->price }}">
@@ -578,6 +605,20 @@
                                             </select>
 
                                         </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <select class="form-control inputfield" name="brand_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                </option>
+                                                @foreach($brands as $brand)
+                                                  <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
+                                                  </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" value="{{ $product->price }}">
@@ -767,6 +808,20 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <select class="form-control inputfield" name="brand_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                </option>
+                                                @foreach($brands as $brand)
+                                                  <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
+                                                  </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت خدمت :</span></div>
                                             <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" value="{{ $product->price }}">
@@ -954,6 +1009,19 @@
                                             </select>
                                             @endif
 
+                                        </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <select class="form-control inputfield" name="brand_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                </option>
+                                                @foreach($brands as $brand)
+                                                <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
+                                                     {{ $brand->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
                                         <div class="input-group mt-3">
@@ -1159,6 +1227,20 @@
                                             @endif
 
                                         </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <select class="form-control inputfield" name="brand_id" id="">
+                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                </option>
+                                                @foreach($brands as $brand)
+                                                <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
+                                                     {{ $brand->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت خدمت :</span></div>
                                             <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
