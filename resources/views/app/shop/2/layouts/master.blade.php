@@ -10,8 +10,8 @@
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet" href="/app/new-shop/css/style.css">
-    <link rel="stylesheet" href="/app/new-shop/css/custom.css">
+    <link rel="stylesheet" href="/app/shop/2/css/style.css">
+    <link rel="stylesheet" href="/app/shop/2/css/custom.css">
     @yield('headerScripts')
 </head>
 
@@ -467,7 +467,7 @@
                                             <ul>
                                                 <li>
                                                     <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-03.jpg" alt=""></div>
+                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-03.jpg" alt=""></div>
                                                         <div class="tt-description">
                                                             <div class="tt-title">Flared Shift Bag</div>
                                                             <div class="tt-price"><span class="new-price">تومان 14</span> <span class="old-price">تومان 24</span></div>
@@ -476,7 +476,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-02.jpg" alt=""></div>
+                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-02.jpg" alt=""></div>
                                                         <div class="tt-description">
                                                             <div class="tt-title">Flared Shift Bag</div>
                                                             <div class="tt-price">تومان 24</div>
@@ -485,7 +485,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01.jpg" alt=""></div>
+                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01.jpg" alt=""></div>
                                                         <div class="tt-description">
                                                             <div class="tt-title">Flared Shift Bag</div>
                                                             <div class="tt-price">تومان 14</div>
@@ -494,7 +494,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-04.jpg" alt=""></div>
+                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-04.jpg" alt=""></div>
                                                         <div class="tt-description">
                                                             <div class="tt-title">Flared Shift Bag</div>
                                                             <div class="tt-price">تومان 24</div>
@@ -503,7 +503,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-05.jpg" alt=""></div>
+                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-05.jpg" alt=""></div>
                                                         <div class="tt-description">
                                                             <div class="tt-title">Flared Shift Bag</div>
                                                             <div class="tt-price">تومان 17</div>
@@ -512,7 +512,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-06.jpg" alt=""></div>
+                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-06.jpg" alt=""></div>
                                                         <div class="tt-description">
                                                             <div class="tt-title">Flared Shift Bag</div>
                                                             <div class="tt-price">تومان 20</div>
@@ -548,7 +548,7 @@
                                             <div class="tt-cart-list">
                                                 <div class="tt-item">
                                                     <a href="product.html">
-                                                        <div class="tt-item-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01.jpg" alt=""></div>
+                                                        <div class="tt-item-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01.jpg" alt=""></div>
                                                         <div class="tt-item-descriptions">
                                                             <h2 class="tt-title">عنوان محصول</h2>
                                                             <ul class="tt-add-info">
@@ -565,7 +565,7 @@
                                                 </div>
                                                 <div class="tt-item">
                                                     <a href="product.html">
-                                                        <div class="tt-item-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-02.jpg" alt=""></div>
+                                                        <div class="tt-item-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-02.jpg" alt=""></div>
                                                         <div class="tt-item-descriptions">
                                                             <h2 class="tt-title">عنوان محصول</h2>
                                                             <ul class="tt-add-info">
@@ -853,7 +853,7 @@
         <div class="box-disable">غیرفعال کردن</div>
     </div>
     <div class="rtlbutton-color">
-        <div class="box-btn"><img src="/app/new-shop/images/custom/rtlbutton-color.png" alt=""></div>
+        <div class="box-btn"><img src="/app/shop/2/images/custom/rtlbutton-color.png" alt=""></div>
         <div class="box-description"><span class="box-title byekan">رنگ</span>
             <ul>
                 <li class="active">
@@ -899,7 +899,7 @@
                         <div class="col-12 col-lg-6">
                             <div class="tt-modal-messages"><i class="icon-f-68"></i> Added to cart successfully!</div>
                             <div class="tt-modal-product">
-                                <div class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01.jpg" alt=""></div>
+                                <div class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01.jpg" alt=""></div>
                                 <h2 class="tt-title"><a href="product.html">عنوان محصول</a></h2>
                                 <div class="tt-qty">QTY: <span>1</span></div>
                             </div>
@@ -926,16 +926,16 @@
                     <div class="row">
                         <div class="col-12 col-md-5 col-lg-6">
                             <div class="tt-mobile-product-slider arrow-location-center">
-                                <div><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01.jpg" alt=""></div>
-                                <div><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01-02.jpg" alt=""></div>
-                                <div><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01-03.jpg" alt=""></div>
-                                <div><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01-04.jpg" alt=""></div>
+                                <div><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01.jpg" alt=""></div>
+                                <div><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01-02.jpg" alt=""></div>
+                                <div><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01-03.jpg" alt=""></div>
+                                <div><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01-04.jpg" alt=""></div>
                                 <!--
                             //video insertion template
                             <div>
                                 <div class="tt-video-block">
                                     <a href="#" class="link-video"></a>
-                                    <video class="movie" src="/app/new-shop/video/video.mp4" poster="video/video_img.jpg"></video>
+                                    <video class="movie" src="/app/shop/2/video/video.mp4" poster="video/video_img.jpg"></video>
                                 </div>
                             </div> --></div>
                         </div>
@@ -980,11 +980,11 @@
                                     <div class="tt-wrapper">
                                         <div class="tt-title-options">TEXTURE:</div>
                                         <ul class="tt-options-swatch options-large">
-                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/custom/texture-img-01.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
-                                            <li class="active"><a class="options-color" href="#"><span class="swatch-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/custom/texture-img-02.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
-                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/custom/texture-img-03.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
-                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/custom/texture-img-04.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
-                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/custom/texture-img-05.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
+                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/custom/texture-img-01.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
+                                            <li class="active"><a class="options-color" href="#"><span class="swatch-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/custom/texture-img-02.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
+                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/custom/texture-img-03.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
+                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/custom/texture-img-04.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
+                                            <li><a class="options-color" href="#"><span class="swatch-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/custom/texture-img-05.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1033,7 +1033,7 @@
 </div>
 <!-- Modal (newsletter) -->
 
-<script async src="/app/new-shop/js/bundle.js"></script><a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a></body>
-<link rel="stylesheet" href="/app/new-shop/css/rtl.css">
+<script async src="/app/shop/2/js/bundle.js"></script><a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a></body>
+<link rel="stylesheet" href="/app/shop/2/css/rtl.css">
 @yield('footerScripts')
 </html>

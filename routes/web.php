@@ -115,8 +115,8 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
 
 Route::namespace('Shop')->group(function () {
   //shop
-    Route::get('/{shop}', 'ShopController@show')->name('shop');
-    Route::get('/{shop}/product/{id}', 'ShopController@showProduct')->name('product');
+    Route::get('/{shop}', 'ShopController@index')->name('shop');
+    Route::get('/{shop}/product/{id}', 'ProductContoller@show')->name('product');
     Route::get('/{shop}/category/{categroyId}', 'ShopController@showCategory')->name('category');
     Route::get('/{shop}/tag/{name}', 'ShopController@tagProduct')->name('tag');
     //Comment

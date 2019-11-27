@@ -14,12 +14,12 @@
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
     <!-- App css -->
-    <link href="/app/shop/assets/css/jquery.steps.css" rel="stylesheet" type="text/css">
-    <link href="/app/shop/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/app/shop/assets/css/icons.css" rel="stylesheet" type="text/css">
-    <link href="/app/shop/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
-    <link href="/app/shop/assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="/app/shop/assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/jquery.steps.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/css/custom.css" rel="stylesheet" type="text/css">
     <style>
         .dropdown-submenu {
@@ -208,21 +208,21 @@
         </div>
         <!-- end page-wrapper -->
         <!-- jQuery  -->
-        <script src="/app/shop/assets/js/jquery.min.js"></script>
-        <script src="/app/shop/assets/js/bootstrap.bundle.min.js"></script>
-        <script src="/app/shop/assets/js/metisMenu.min.js"></script>
-        <script src="/app/shop/assets/js/waves.min.js"></script>
-        <script src="/app/shop/assets/js/jquery.slimscroll.min.js"></script>
-        <script src="/app/shop/assets/plugins/moment/moment.js"></script>
-        <script src="/app/shop/assets/plugins/apexcharts/apexcharts.min.js"></script>
-        <script src="/app/shop/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-        <script src="/app/shop/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="/app/shop/assets/pages/jquery.eco_dashboard.init.js"></script>
-        <script src="/app/shop/assets/js/jquery.form-wizard.init.js"></script>
-        <script src="/app/shop/assets/js/jquery.steps.min.js"></script>
+        <script src="/app/shop/1/assets/js/jquery.min.js"></script>
+        <script src="/app/shop/1/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/app/shop/1/assets/js/metisMenu.min.js"></script>
+        <script src="/app/shop/1/assets/js/waves.min.js"></script>
+        <script src="/app/shop/1/assets/js/jquery.slimscroll.min.js"></script>
+        <script src="/app/shop/1/assets/plugins/moment/moment.js"></script>
+        <script src="/app/shop/1/assets/plugins/apexcharts/apexcharts.min.js"></script>
+        <script src="/app/shop/1/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="/app/shop/1/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="/app/shop/1/assets/pages/jquery.eco_dashboard.init.js"></script>
+        <script src="/app/shop/1/assets/js/jquery.form-wizard.init.js"></script>
+        <script src="/app/shop/1/assets/js/jquery.steps.min.js"></script>
         <!-- App js -->
-        <script src="/app/shop/assets/js/app.js"></script>
-        <script src="/app/shop/assets/js/sweetalert.min.js"></script>
+        <script src="/app/shop/1/assets/js/app.js"></script>
+        <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
 
         @toastr_js
         @toastr_render

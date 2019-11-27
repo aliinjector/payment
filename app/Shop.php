@@ -60,6 +60,10 @@ class Shop extends Model
     {
         return $this->hasMany('App\Feedback');
     }
+    public function template()
+    {
+        return $this->belongsTo('App\Template');
+    }
 
 
 

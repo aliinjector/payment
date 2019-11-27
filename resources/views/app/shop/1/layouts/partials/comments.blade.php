@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/app/shop/assets/css/comment.css">
+<link rel="stylesheet" href="/app/shop/1/assets/css/comment.css">
 
 <div style="font-family: iranyekan" class="comments-container">
     <h2 class="line-throw"><span>نظرات محصول </span></h2>

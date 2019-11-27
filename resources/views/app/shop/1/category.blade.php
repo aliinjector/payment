@@ -1,6 +1,6 @@
-@extends('app.shop.layouts.master')
+@extends('app.shop.1.layouts.master')
 @section('content')
-<link rel="stylesheet" href="/app/shop/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
 <style>
     .just-padding {
         padding: 15px;
@@ -50,7 +50,7 @@
 <div class="d-flex justify-content-center align-items-center" style="height:80vh">
     <div class="col-12 row">
       <div class="col-6">
-        @include('app.shop.layouts.filtering')
+        @include('app.shop.1.layouts.partials.filtering')
       </div>
       <div class="col-6">
         <h4>
@@ -62,7 +62,7 @@
 @else
 <h2 class="line-throw line-height-none"><span> محصولات دسته بندی</span></h2>
 <div class="row p-5">
-@include('app.shop.layouts.filtering')
+@include('app.shop.1.layouts.partials.filtering')
 <div class="col-lg-9">
     <div class="row d-flex mr-2">
         <h6 class="iranyekan text-dark">مرتب سازی بر اساس :</h6>
@@ -197,7 +197,7 @@
         });
     });
 </script>
-<script src="/app/shop/assets/js/jquery-ui.js"></script>
+<script src="/app/shop/1/assets/js/jquery-ui.js"></script>
 <script>
    $(document).ready(function() {
        $("#mySlider").slider({

@@ -1,7 +1,7 @@
-@extends('app.shop.layouts.master')
+@extends('app.shop.1.layouts.master')
 @section('content')
 
-<link href='/app/shop/assets/css//simplelightbox.min.css' rel='stylesheet' type='text/css'>
+<link href='/app/shop/1/assets/css//simplelightbox.min.css' rel='stylesheet' type='text/css'>
 <style>
     .sl-navigation {
         direction: ltr !important;
@@ -369,8 +369,8 @@
 </div>
 
 
- @include('app.shop.layouts.partials.offers')
-@include('app.shop.layouts.partials.comments')
+@include('app.shop.1.layouts.partials.offers')
+@include('app.shop.1.layouts.partials.comments')
 
 
 <!-- container -->
@@ -379,7 +379,7 @@
 
 @endsection
 @section('pageScripts')
-<script src="/app/shop/assets/js/jquery.combostars.js"></script>
+<script src="/app/shop/1/assets/js/jquery.combostars.js"></script>
 <script>
     $(function() {
         $('#combostar').on('change', function() {
@@ -405,7 +405,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-<script type="text/javascript" src="/app/shop/assets/js/simple-lightbox.min.js"></script>
+<script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
 <script>
     $(function() {
         var $gallery = $('.gallery a').simpleLightbox();

@@ -1,90 +1,54 @@
 <?php
-namespace App\Http\Controllers\Shop;
-use App\Tag;
-use App\Shop;
-use App\Product;
-use App\Voucher;
-use App\ShopCategory;
-use App\UserPurchase;
-use App\Cart;
-use App\Rating;
-use App\ProductCategory;
-use Illuminate\Http\Request;
-use Request as RequestFacade;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\URL;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Artesaos\SEOTools\Facades\SEOTools;
-class ShopController extends \App\Http\Controllers\Controller {
+  namespace App\Http\Controllers\Shop;
+
+  use App\Tag;
+  use App\Shop;
+  use App\Product;
+  use App\Voucher;
+  use App\ShopCategory;
+  use App\UserPurchase;
+  use App\Cart;
+  use App\Rating;
+  use App\ProductCategory;
+  use Illuminate\Http\Request;
+  use Request as RequestFacade;
+  use Illuminate\Support\Facades\DB;
+  use Illuminate\Support\Facades\URL;
+  use App\Http\Controllers\Controller;
+  use Illuminate\Support\Facades\Auth;
+  use Illuminate\Support\Facades\Session;
+  use Illuminate\Pagination\LengthAwarePaginator;
+  use Artesaos\SEOTools\Facades\SEOTools;
+
+  class ShopController extends \App\Http\Controllers\Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public $discountedPrice;
-    public function index() {
+
+    public function index($shop) {
+
+      if (Shop::where('english_name', $shop)->first() == null) {
+          return abort(404);
+      }
+
+      $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
+      $shop = Shop::where('english_name', $shop)->first();
+      $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
+      $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
+      $template_folderName = $shop->template->folderName;
+
+      SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
+      SEOTools::setDescription($shop->description);
+      SEOTools::opengraph()->addProperty('type', 'website');
+
+      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
+
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function create(array $data) {
-    }
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request) {
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Shop $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function show($shop) {
-        if (Shop::where('english_name', $shop)->first() == null) {
-            return abort(404);
-        }
-        $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
-        $shop = Shop::where('english_name', $shop)->first();
-        $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
-        $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
-        SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
-        SEOTools::setDescription($shop->description);
-        SEOTools::opengraph()->addProperty('type', 'website');
-        return view('app.new-shop.01.index', compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
-    }
-    public function showProduct($shop, $id) {
-        if (Shop::where('english_name', $shop)->first() == null || Shop::where('english_name', $shop)->first()->products()->where('id', $id)->first() == null) {
-            return abort(404);
-        }
-        $shop = Shop::where('english_name', $shop)->first();
-        $shopCategories = $shop->ProductCategories()->get();
-        $product = $shop->products()->where('id', $id)->first();
-        $productRates = $product->rates()->get();
-        $userProducts = [];
-        if (\auth::user()) {
-            foreach (\auth::user()->cart()->withTrashed()->where('status', 1)->get() as $cart) {
-                foreach ($cart->products() as $single_product) {
-                    $userProducts[] = $single_product;
-                }
-            }
-        }
-        $comments = $product->comments;
-        $galleries = $product->galleries->take(4);
-        $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(4)->get();
-        SEOTools::setTitle($shop->name . ' | ' . $product->title);
-        SEOTools::setDescription($shop->name);
-        SEOTools::opengraph()->addProperty('type', 'website');
-        return view('app.new-shop.01.product', compact('product', 'shop', 'shopCategories', 'productRates', 'userProducts', 'comments', 'galleries', 'offeredProducts'));
-    }
+
+
     public function showCategory($shop, $categroyId, Request $request) {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
@@ -118,10 +82,15 @@ class ShopController extends \App\Http\Controllers\Controller {
         $currentPage = request()->page; // The index page.
         $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
         SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);
+        $template_folderName = $shop->template->folderName;
+
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-        return view('app.new-shop.01.category', compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate'));
+
+        return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate'));
     }
+
+
     public function getAllCategoriesProducts($cat_id) {
         $allProducts = collect();
         foreach (ProductCategory::find($cat_id)->products()->get() as $product) {
@@ -155,6 +124,8 @@ class ShopController extends \App\Http\Controllers\Controller {
         }
         return $allProducts;
     }
+
+
     public static function getAllSubCategories($cat_id) {
         $allSubCategories = collect();
         foreach (ProductCategory::find($cat_id)->children()->get() as $subCategory) {
@@ -177,16 +148,9 @@ class ShopController extends \App\Http\Controllers\Controller {
         }
         return $allSubCategories;
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Shop $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Shop $shop) {
-        //
 
-    }
+
+
     public function purchaseList($shop, $id) {
         if (\Auth::guest()) {
             return redirect()->route('register');
@@ -194,12 +158,17 @@ class ShopController extends \App\Http\Controllers\Controller {
             $product = Product::where('id', $id)->get()->first();
             $shop = Shop::where('english_name', $shop)->first();
             $shopCategories = $shop->ProductCategories()->get();
+            $template_folderName = $shop->template->folderName;
+
             SEOTools::setTitle($shop->name . ' | ' . 'لیست سفارشات');
             SEOTools::setDescription($shop->description);
             SEOTools::opengraph()->addProperty('type', 'website');
-            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product'));
+
+            return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product'));
         }
     }
+
+
     public function tagProduct($shop, $name, Request $request) {
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
@@ -217,10 +186,13 @@ class ShopController extends \App\Http\Controllers\Controller {
         } else {
             $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->paginate(8);
         }
+        $template_folderName = $shop->template->folderName;
+
         SEOTools::setTitle($shop->name . ' | ' . $tagName);
         SEOTools::setDescription($shop->description);
         SEOTools::opengraph()->addProperty('type', 'website');
-        return view('app.shop.tags-product', compact('products', 'shop', 'shopCategories', 'tagName'));
+
+        return view("app.shop.$template_folderName.tags-product", compact('products', 'shop', 'shopCategories', 'tagName'));
     }
 
 
@@ -248,7 +220,10 @@ class ShopController extends \App\Http\Controllers\Controller {
                 $products[] = $product;
             }
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
-            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'products', 'quantity', 'productTotal_price', 'total_price'));
+
+            $template_folderName = $shop->template->folderName;
+
+            return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'products', 'quantity', 'productTotal_price', 'total_price'));
         }
         if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
           if(Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->users == null){
@@ -271,7 +246,9 @@ class ShopController extends \App\Http\Controllers\Controller {
             Session::put( \Auth::user()->id .'-'. $shop->english_name, $discountedPrice);
             Session::put('voucher_code', $request->code);
             alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-            return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
+            $template_folderName = $shop->template->folderName;
+
+            return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
           }
           else{
             $voucherId = Voucher::where('code', $request->code)->get()->first()->id;
@@ -295,7 +272,9 @@ class ShopController extends \App\Http\Controllers\Controller {
               Session::put(\Auth::user()->id .'-'. $shop->english_name, $discountedPrice);
               Session::put('voucher_code', $request->code);
               alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-              return view('app.shop.purchase-list', compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
+              $template_folderName = $shop->template->folderName;
+
+              return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
             }
             else{
               alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
@@ -323,6 +302,8 @@ class ShopController extends \App\Http\Controllers\Controller {
             return redirect()->route('login');
         }
     }
+
+
     public function downlaodLink(Request $request, $shop, $id) {
         $this->approved($shop, $id, $request);
         if (!$request->hasValidSignature()) {
@@ -443,7 +424,9 @@ class ShopController extends \App\Http\Controllers\Controller {
 
     public function userPurchaseList() {
         $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
-        return view('app.shop.user-purchased-list', compact('purchases'));
+        $template_folderName = $shop->template->folderName;
+
+        return view("app.shop.$template_folderName.user-purchased-list", compact('purchases'));
     }
 
 
@@ -459,27 +442,8 @@ class ShopController extends \App\Http\Controllers\Controller {
             return redirect()->route('product', ['shop' => $request->shop, 'id' => $request->id]);
         }
     }
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Shop $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Shop $shop) {
-        //
 
-    }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Shop $shop
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Shop $shop) {
-        //
 
-    }
 
     public function getVochersUsers($id){
     $shop = Shop::where('english_name', RequestFacade::segment(1))->get()->first();

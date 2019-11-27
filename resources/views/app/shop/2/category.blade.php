@@ -1,4 +1,4 @@
-@extends('app.new-shop.01.master')
+@extends('app.shop.2.layouts.master')
 
 @section('headerScripts')
 

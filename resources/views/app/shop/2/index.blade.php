@@ -1,4 +1,4 @@
-@extends('app.new-shop.01.master')
+@extends('app.shop.2.layouts.master')
 
 @section('headerScripts')
 
@@ -10,7 +10,7 @@
         <div class="container-fluid-custom">
             <div class="row tt-layout-promo-box">
                 <div class="col-sm-12 col-md-6">
-                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/promo/index09-promo-img-01.jpg" alt="">
+                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/promo/index09-promo-img-01.jpg" alt="">
                         <div class="tt-description">
                             <div class="tt-description-wrapper">
                                 <div class="tt-background"></div>
@@ -20,7 +20,7 @@
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6">
-                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/promo/index09-promo-img-02.jpg" alt="">
+                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/promo/index09-promo-img-02.jpg" alt="">
                         <div class="tt-description">
                             <div class="tt-description-wrapper">
                                 <div class="tt-background"></div>
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/promo/index09-promo-img-03.jpg" alt="">
+                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/promo/index09-promo-img-03.jpg" alt="">
                         <div class="tt-description">
                             <div class="tt-description-wrapper">
                                 <div class="tt-background"></div>
@@ -68,7 +68,7 @@
                                 <div style="height: 350px;" class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="{{ $lastProduct->galleries->first()->filename }}" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="{{ $lastProduct->galleries[1]->filename }}" alt=""></span></a>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/{{ $lastProduct->galleries->first()->filename }}" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/{{ $lastProduct->galleries[1]->filename }}" alt=""></span></a>
                                     <div class="tt-countdown_box">
                                         <div class="tt-countdown_inner">
                                             <div class="tt-countdown" data-date="2020-01-01" data-year="سال" data-month="Mths" data-week="هفته" data-day="روز" data-hour="ساعت" data-minute="دقیقه" data-second="ثانیه"></div>
@@ -127,7 +127,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-10.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-10-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-10.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-10-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -153,7 +153,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -178,7 +178,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-01-02.jpg" alt=""></span><span class="tt-label-location"><span class="tt-label-sale">Sale 15%</span></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01-02.jpg" alt=""></span><span class="tt-label-location"><span class="tt-label-sale">Sale 15%</span></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -215,7 +215,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-45.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-45-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-45.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-45-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -259,7 +259,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-45.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-45-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-45.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-45-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -297,7 +297,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-14.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-14-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-14.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-14-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -324,7 +324,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-10.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-10-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-10.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-10-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -350,7 +350,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -381,7 +381,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -408,7 +408,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-45.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-45-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-45.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-45-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -446,7 +446,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-14.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-14-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-14.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-14-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -471,7 +471,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-15.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-15-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-15.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-15-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -503,7 +503,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-41.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-41-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-41.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-41-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -529,7 +529,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-18.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-18-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-18.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-18-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -555,7 +555,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-07-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-07-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -584,7 +584,7 @@
                                 <div class="tt-image-box">
                                     <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                     <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-15.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/new-shop/images/loader.svg" data-src="/app/new-shop/images/product/product-15-01.jpg" alt=""></span></a></div>
+                                    <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-15.jpg" alt=""></span><span class="tt-img-roll-over"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-15-01.jpg" alt=""></span></a></div>
                                 <div class="tt-description">
                                     <div class="tt-row">
                                         <ul class="tt-add-info">
@@ -622,28 +622,28 @@
         <div class="container">
             <div class="row tt-carousel-brands arrow-location-center-02 tt-arrow-hover slick-animated-show-js">
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-01.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-01.png" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-05.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-05.png" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-06.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-06.png" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-02.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-02.png" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-07.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-07.png" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-04.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-04.png" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-03.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-03.png" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/app/new-shop/images/custom/brand-img-08.png" alt=""></a>
+                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-08.png" alt=""></a>
                 </div>
             </div>
         </div>

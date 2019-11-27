@@ -1,4 +1,4 @@
-@extends('app.shop.layouts.master')
+@extends('app.shop.1.layouts.master')
 @section('content')
 <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
 {{-- {{ dd(\Auth::user()->email) }} --}}

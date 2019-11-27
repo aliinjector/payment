@@ -1,4 +1,4 @@
-@extends('app.shop.layouts.master')
+@extends('app.shop.1.layouts.master')
 @section('content')
         <div class="row">
             <div class="col-sm-12">

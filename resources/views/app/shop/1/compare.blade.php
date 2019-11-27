@@ -1,6 +1,6 @@
-@extends('app.shop.layouts.master')
+@extends('app.shop.1.layouts.master')
 @section('content')
-    <link rel="stylesheet" href="/app/shop/assets/css/compare.css">
+    <link rel="stylesheet" href="/app/shop/1/assets/css/compare.css">
 
     <div class="row">
             <div class="col-sm-12">
@@ -45,7 +45,7 @@
                 <ul class="cd-products-columns">
                     <li class="product">
                         <div class="top-info">
-                            <img src="/app/shop/assets/images/labtop.jpg" alt="product image">
+                            <img src="/app/shop/1/assets/images/labtop.jpg" alt="product image">
                             <h3>Sumsung Series 6 J6300</h3>
                         </div> <!-- .top-info -->
 
@@ -66,7 +66,7 @@
 
                     <li class="product">
                         <div class="top-info">
-                            <img src="/app/shop/assets/images/labtop.jpg" alt="product image">
+                            <img src="/app/shop/1/assets/images/labtop.jpg" alt="product image">
                             <h3>Sumsung Series 6 J6300</h3>
                         </div> <!-- .top-info -->
 
@@ -86,7 +86,7 @@
 
                     <li class="product">
                         <div class="top-info">
-                            <img src="/app/shop/assets/images/labtop.jpg" alt="product image">
+                            <img src="/app/shop/1/assets/images/labtop.jpg" alt="product image">
                             <h3>Sumsung Series 6 J6300</h3>
                         </div> <!-- .top-info -->
 
@@ -106,7 +106,7 @@
 
                     <li class="product">
                         <div class="top-info">
-                            <img src="/app/shop/assets/images/labtop.jpg" alt="product image">
+                            <img src="/app/shop/1/assets/images/labtop.jpg" alt="product image">
                             <h3>Sumsung Series 6 J6300</h3>
                         </div> <!-- .top-info -->
 
@@ -139,6 +139,6 @@
 
 @endsection
 @section('pageScripts')
-    <script src="/app/shop/assets/js//modernizr.js"></script> <!-- Modernizr -->
-    <script src="/app/shop/assets/js//compare.js"></script>
+    <script src="/app/shop/1/assets/js//modernizr.js"></script> <!-- Modernizr -->
+    <script src="/app/shop/1/assets/js//compare.js"></script>
 @stop
