@@ -13,17 +13,21 @@
 									@foreach ($galleries as $gallery)
 											<div><img src="/{{ $gallery->filename }}" alt=""></div>
 									@endforeach
-                    <div>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/GhyKqj_P2E4" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="tt-video-block">
-                            <a href="#" class="link-video"></a>
-                            <video class="movie" src="video/video.mp4" poster="video/video_img.jpg"></video>
-                        </div>
-                    </div>
+
+
+                  @foreach ($galleries->where('filename', 'like', '%.mp4%') as $gallery)
+                  <div>
+                      <div class="tt-video-block">
+                          <a href="#" class="link-video"></a>
+                          <video class="movie" src="/{{ $gallery->filename }}" poster="/app/shop/2/video/video_img.jpg"></video>
+                      </div>
+                  </div>
+                @endforeach
+
+
+
+
+
                 </div>
             </div>
             <!-- /mobile product slider  -->
@@ -47,13 +51,10 @@
 
 
 
+
+
                                   <li>
-                                      <div class="video-link-product" data-toggle="modal" data-type="youtube" data-target="#modalVideoProduct" data-value="http://www.youtube.com/embed/GhyKqj_P2E4"><img src="/app/shop/2/images/product//product-small-empty.png" alt="">
-                                          <div><i class="icon-f-32"></i></div>
-                                      </div>
-                                  </li>
-                                  <li>
-                                      <div class="video-link-product" data-toggle="modal" data-type="video" data-target="#modalVideoProduct" data-value="video/video.mp4" data-poster="video/video_img.jpg"><img src="/app/shop/2/images/product//product-small-empty.png" alt="">
+                                      <div class="video-link-product" data-toggle="modal" data-type="video" data-target="#modalVideoProduct" data-value="/images/product-galleries/3/1574871570_1574871568492Review- 2019 15-inch eight-core MacBook Pro - Refinement before redesign.mp4" data-poster="video/video_img.jpg"><img src="/app/shop/2/images/product//product-small-empty.png" alt="">
                                           <div><i class="icon-f-32"></i></div>
                                       </div>
                                   </li>

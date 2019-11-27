@@ -132,13 +132,13 @@
             Dropzone.options.dropzone =
                 {
 
-            maxFilesize: 2,
+            maxFilesize: 30,
                     renameFile: function(file) {
                         var dt = new Date();
                         var time = dt.getTime();
                         return time+file.name;
                     },
-                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.PNG,.JPG",
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.PNG,.JPG, .mp4, .mkv, .avi",
                     addRemoveLinks: true,
                     timeout: 50000,
                     maxFiles: 4,
