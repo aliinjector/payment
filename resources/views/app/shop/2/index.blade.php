@@ -447,8 +447,17 @@
     <div class="container-indent mt-5 mb-5">
         <div class="container">
             <div class="tt-slider-fullwidth arrow-location-center-02 slick-animated-show-js">
-                <div class="item"><a href="blog-single-post.html" class="tt-content-info"><h2 class="tt-title">نظر مشتریان درباره فروشگاه امید</h2><p>عالیه.</p><div class="tt-subscription"><div class="tt-text-large">علی رحمانی</div><div class="tt-text-small">وارد کننده</div></div></a></div>
-                <div class="item"><a href="blog-single-post.html" class="tt-content-info"><h2 class="tt-title">نظر مشتریان درباره فروشگاه امید</h2><p>فروشگاه خوبی است.</p><div class="tt-subscription"><div class="tt-text-lage">حسن خسروجردی</div><div class="tt-text-small">تولید کننده</div></div></a></div>
+              @foreach($feedbacks as $feedback)
+              <div class="item">
+                <a href="blog-single-post.html" class="tt-content-info">
+                  <h2 class="tt-title">نظر مشتریان درباره فروشگاه امید</h2>
+                  <p>{{ $feedback->feedback }}</p>
+                  <div class="tt-subscription">
+                    <div class="tt-text-large">{{ $feedback->title }}</div>
+                  </div>
+                </a>
+              </div>
+              @endforeach
             </div>
         </div>
     </div>
@@ -458,30 +467,13 @@
     <div class="container-indent mt-5  mb-5">
         <div class="container">
             <div class="row tt-carousel-brands arrow-location-center-02 tt-arrow-hover slick-animated-show-js">
+
+              @foreach($brands as $brand)
                 <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-01.png" alt=""></a>
+                    <a href="/brands/{{ $brand->id }}"><img src="{{ $brand->icon['120,50'] }}" alt=""></a>
                 </div>
-                <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-05.png" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-06.png" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-02.png" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-07.png" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-04.png" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-03.png" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/app/shop/2/images/custom/brand-img-08.png" alt=""></a>
-                </div>
+              @endforeach
+
             </div>
         </div>
     </div>
