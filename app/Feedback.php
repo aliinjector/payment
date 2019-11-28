@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feedback extends Model
 {
-  protected $guarded = ['id'];
+    protected $guarded = ['id'];
+    protected $table = 'feedbacks';
 
-  public function shop()
-  {
-      return $this->belongsTo('App\Feedback');
-  }
+    public function shop(){
+      return belongTo('App\Shop');
+    }
 }
