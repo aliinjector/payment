@@ -171,7 +171,6 @@ class ProductController extends Controller
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
-
   //add tags to the product
     if($shop)
     {
@@ -179,7 +178,7 @@ class ProductController extends Controller
         $tagIds = [];
         foreach($tagNames as $tagName)
         {
-            $tag = Tag::firstOrCreate(['name'=>$tagName]);
+            $tag = Tag::firstOrCreate(['name'=>$tagName, 'shop_id' =>Auth::user()->shop()->first()->id]);
             if($tag)
             {
               $tagIds[] = $tag->id;

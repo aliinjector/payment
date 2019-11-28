@@ -1034,7 +1034,9 @@
 </div>
 <!-- Modal (newsletter) -->
 
-<script async src="/app/shop/2/js/bundle.js"></script><a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a></body>
+<script async src="/app/shop/2/js/bundle.js"></script>
+<script src="/app/shop/1/assets/js/jquery.min.js"></script>
+<a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a></body>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
 @yield('footerScripts')
 </html>

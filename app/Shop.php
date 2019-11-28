@@ -64,6 +64,10 @@ class Shop extends Model
     {
         return $this->belongsTo('App\Template');
     }
+    public function tags()
+    {
+        return $this->hasMany('App\Tag');
+    }
 
 
 

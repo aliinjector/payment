@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection as BaseCollection;
 use Laravel\Scout\Jobs\MakeSearchable;
 
-trait Searchable
+<!-- trait Searchable -->
 {
     /**
      * Additional metadata attributes managed by Scout.
