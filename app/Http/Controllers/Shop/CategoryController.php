@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
@@ -8,10 +7,10 @@ use App\Shop;
 use App\ProductCategory;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Pagination\LengthAwarePaginator;
-
 class CategoryController extends Controller
 {
   public function index($shop, $categroyId, Request $request) {
+
       $shop = Shop::where('english_name', $shop)->first();
       $shopCategories = $shop->ProductCategories()->get();
       $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id', null);
@@ -45,14 +44,11 @@ class CategoryController extends Controller
       $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
       SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);
       $template_folderName = $shop->template->folderName;
-
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
-
       return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate'));
+      
   }
-
-
       public function getAllCategoriesProducts($cat_id) {
           $allProducts = collect();
           foreach (ProductCategory::find($cat_id)->products()->get() as $product) {
@@ -86,8 +82,6 @@ class CategoryController extends Controller
           }
           return $allProducts;
       }
-
-
       public static function getAllSubCategories($cat_id) {
           $allSubCategories = collect();
           foreach (ProductCategory::find($cat_id)->children()->get() as $subCategory) {
@@ -110,5 +104,5 @@ class CategoryController extends Controller
           }
           return $allSubCategories;
       }
-      
+
 }

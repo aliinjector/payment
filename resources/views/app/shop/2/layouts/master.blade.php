@@ -455,74 +455,16 @@
                             <button class="tt-dropdown-toggle" data-tooltip="جستجو" data-tposition="bottom"><i class="icon-f-85"></i></button>
                             <div class="tt-dropdown-menu">
                                 <div class="container">
-                                    <form>
+                                    <form action="{{ route('search', $shop->english_name) }}" method="post">
                                         <div class="tt-col">
-                                            <input type="text" class="tt-search-input" placeholder="نام محصول یا سازنده ...">
+                                          @csrf
+                                            <input type="text" name="queryy" class="tt-search-input" placeholder="نام محصول یا سازنده ...">
                                             <button class="tt-btn-search" type="submit"></button>
                                         </div>
                                         <div class="tt-col">
                                             <button class="tt-btn-close icon-g-80"></button>
                                         </div>
                                         <div class="tt-info-text">دنبال چه میگردید</div>
-                                        <div class="search-results">
-                                            <ul>
-                                                <li>
-                                                    <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-03.jpg" alt=""></div>
-                                                        <div class="tt-description">
-                                                            <div class="tt-title">Flared Shift Bag</div>
-                                                            <div class="tt-price"><span class="new-price">تومان 14</span> <span class="old-price">تومان 24</span></div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-02.jpg" alt=""></div>
-                                                        <div class="tt-description">
-                                                            <div class="tt-title">Flared Shift Bag</div>
-                                                            <div class="tt-price">تومان 24</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01.jpg" alt=""></div>
-                                                        <div class="tt-description">
-                                                            <div class="tt-title">Flared Shift Bag</div>
-                                                            <div class="tt-price">تومان 14</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-04.jpg" alt=""></div>
-                                                        <div class="tt-description">
-                                                            <div class="tt-title">Flared Shift Bag</div>
-                                                            <div class="tt-price">تومان 24</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-05.jpg" alt=""></div>
-                                                        <div class="tt-description">
-                                                            <div class="tt-title">Flared Shift Bag</div>
-                                                            <div class="tt-price">تومان 17</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="product.html">
-                                                        <div class="thumbnail"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-06.jpg" alt=""></div>
-                                                        <div class="tt-description">
-                                                            <div class="tt-title">Flared Shift Bag</div>
-                                                            <div class="tt-price">تومان 20</div>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                            <button type="button" class="tt-view-all">View all products</button>
-                                        </div>
                                     </form>
                                 </div>
                             </div>
