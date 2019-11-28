@@ -96,9 +96,4 @@
     }
 
 
-    public function getVochersUsers($id){
-    $shop = Shop::where('english_name', RequestFacade::segment(1))->get()->first();
-    $users = $shop->vouchers()->where('id' , $id)->get()->first()->users;
-    return $users;
-    }
 }
