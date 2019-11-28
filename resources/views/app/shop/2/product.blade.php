@@ -178,73 +178,84 @@
                                     </div>
                                 </div>
                                 <div class="tt-item">
-                                    <div class="tt-collapse-title tt-poin-comments">نظرات (3)</div>
+                                    <div class="tt-collapse-title tt-poin-comments">نظرات ({{ $product->comments->where('approved', '1')->count() }})</div>
                                     <div class="tt-collapse-content">
                                         <div class="tt-review-block">
                                             <div class="tt-row-custom-02">
-                                                <div class="col-item">
-                                                    <h2 class="tt-title">1 REVIEW FOR VARIABLE PRODUCT</h2></div>
-                                                <div class="col-item"><a href="#">ثبت نظر جدید</a></div>
                                             </div>
                                             <div class="tt-review-comments">
-                                                <div class="tt-item">
-                                                    <div class="tt-avatar">
-                                                        <a href="#"><img src="/app/shop/2/images/product//single/review-comments-img-01.jpg" alt=""></a>
-                                                    </div>
-                                                    <div class="tt-content">
-                                                        <div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-half"></i> <i class="icon-star-empty"></i></div>
-                                                        <div class="tt-comments-info"><span class="username">by <span>ADRIAN</span></span> <span class="time">on January 14, 2017</span></div>
-                                                        <div class="tt-comments-title">Very Good!</div>
-                                                        <p>Ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.</p>
-                                                    </div>
-                                                </div>
-                                                <div class="tt-item">
-                                                    <div class="tt-avatar">
-                                                        <a href="#"><img src="/app/shop/2/images/product//single/review-comments-img-02.jpg" alt=""></a>
-                                                    </div>
-                                                    <div class="tt-content">
-                                                        <div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-half"></i> <i class="icon-star-empty"></i></div>
-                                                        <div class="tt-comments-info"><span class="username">by <span>JESICA</span></span> <span class="time">on January 14, 2017</span></div>
-                                                        <div class="tt-comments-title">Bad!</div>
-                                                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                                    </div>
-                                                </div>
+
+                                              @foreach ($comments->where('approved', '1')->where('parent_id', '0') as $comment)
                                                 <div class="tt-item">
                                                     <div class="tt-avatar">
                                                         <a href="#"></a>
                                                     </div>
                                                     <div class="tt-content">
-                                                        <div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-half"></i> <i class="icon-star-empty"></i></div>
-                                                        <div class="tt-comments-info"><span class="username">by <span>ADAM</span></span> <span class="time">on January 14, 2017</span></div>
-                                                        <div class="tt-comments-title">Very Good!</div>
-                                                        <p>Diusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                        <div class="tt-comments-info"><span class="username">توسط: <span>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</span></span> <span class="time"> - {{ jdate($comment->created_at)->ago() }}</span></div>
+                                                        <p style="padding: 10px 10px 10px 10px;  margin: 10px 10px 10px 10px;  background-color: #f7f8fa;  border-radius: 5px;">{{ $comment->comment }}</p>
                                                     </div>
                                                 </div>
+
+                                                @foreach ($comments->where('approved', '1')->where('parent_id', $comment->id) as $comment)
+                                                  <div class="tt-item">
+                                                      <div class="tt-avatar">
+                                                          <i style="margin: 40px;" class="fa fa-reply"></i>
+                                                      </div>
+                                                      <div class="tt-content">
+                                                          <div class="tt-comments-info"><span class="username">توسط: <span>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</span></span> <span class="time"> - {{ jdate($comment->created_at)->ago() }}</span></div>
+                                                          <p style="padding: 10px 10px 10px 10px;  margin: 10px 10px 10px 10px;  background-color: #f7f8fa;  border-radius: 5px;">{{ $comment->comment }}</p>
+                                                      </div>
+                                                  </div>
+                                                  @endforeach
+
+
+
+
+                                                @endforeach
+
                                             </div>
                                             <div class="tt-review-form">
-                                                <div class="tt-message-info">BE THE FIRST TO REVIEW <span>“BLOUSE WITH SHEER &AMP; SOLID PANELS”</span></div>
-                                                <p>Your email address will not be published. Required fields are marked *</p>
-                                                <div class="tt-rating-indicator">
-                                                    <div class="tt-title">YOUR RATING *</div>
-                                                    <div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-half"></i> <i class="icon-star-empty"></i></div>
-                                                </div>
-                                                <form class="form-default">
-                                                    <div class="form-group">
-                                                        <label for="inputName" class="control-label">نام *</label>
-                                                        <input type="email" class="form-control" id="inputName" placeholder="Enter your name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="inputEmail" class="control-label">ایمیل *</label>
-                                                        <input type="password" class="form-control" id="inputEmail" placeholder="Enter your e-mail">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="textarea" class="control-label">متن نظر *</label>
-                                                        <textarea class="form-control" id="textarea" placeholder="Enter your review" rows="8"></textarea>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button type="submit" class="btn">ثبت</button>
-                                                    </div>
-                                                </form>
+
+
+                                              @auth
+
+                                                  @if($errors->any())
+                                                      <div class="alert alert-danger">
+                                                          <p><strong>متاسفانه مشکلی در ارسال نظر رخ داده است:</strong></p>
+                                                          <ul>
+                                                              @foreach ($errors->all() as $error)
+                                                                  <li>{{ $error }}</li>
+                                                              @endforeach
+                                                          </ul>
+                                                      </div>
+                                                  @endif
+
+
+
+                                                  <form class="form-default" method="post" action="/comment">
+                                                  @csrf
+                                                  <div class="form-group">
+                                                      <label class="" for="">ثبت نظر شما:</label>
+                                                      <textarea style="font-family: iranyekan" placeholder="متن نظر را وارد نمایید" class="form-control" name="comment" id="" cols="30" rows="5"></textarea>
+                                                      <input type="hidden" name="parent_id" value="0">
+                                                      <input type="hidden" name="commentable_id" value="{{ $product->id }}">
+                                                      <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                                      <input type="hidden" name="commentable_type" value="{{ get_class($product) }}">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <center><button style="color: white" class="btn bg-blue-omid mt-4">ارسال نظر</button></center>
+                                                  </div>
+                                              </form>
+                                                  @endauth
+
+                                                      @guest()
+                                                          <a href="{{ route('login')  }}">
+                                                              <div class="alert alert-danger">جهت ثبت نظر درسایت باید وارد شوید‌. برای ورود یا عضویت اینجا
+                                                                  کلیک کنید.
+                                                              </div>
+                                                          </a>
+                                                      @endguest
+
                                             </div>
                                         </div>
                                     </div>
@@ -258,21 +269,20 @@
         <div class="container-indent wrapper-social-icon">
             <div class="container">
                 <ul class="tt-social-icon justify-content-center">
-                    <li>
-                        <a class="icon-g-64" href="http://www.facebook.com/"></a>
-                    </li>
-                    <li>
-                        <a class="icon-h-58" href="http://www.facebook.com/"></a>
-                    </li>
-                    <li>
-                        <a class="icon-g-66" href="http://www.twitter.com/"></a>
-                    </li>
-                    <li>
-                        <a class="icon-g-67" href="http://www.google.com/"></a>
-                    </li>
-                    <li>
-                        <a class="icon-g-70" href="https://instagram.com/"></a>
-                    </li>
+
+                      @if(strlen($shop->shopContact->facebook_url) > 3 )
+                        <li><a target="_blank" class="fa fa-facebook" href="{{ $shop->shopContact->facebook_url }}"></a></li>
+                      @endif
+
+                      @if(strlen($shop->shopContact->instagram_url) > 3 )
+                      <li><a class="fa fa-instagram" href="{{ $shop->shopContact->instagram_url }}"></a></li>
+                      @endif
+
+                      @if(strlen($shop->shopContact->telegram_url) > 3 )
+                      <li><a class="fa fa-telegram" href="{{ $shop->shopContact->telegram_url }}"></a></li>
+                      @endif
+
+
                 </ul>
             </div>
         </div>

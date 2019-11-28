@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="stylesheet" href="/app/shop/2/css/style.css">
     <link rel="stylesheet" href="/app/shop/2/css/custom.css">
+    <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     @yield('headerScripts')
 </head>
 
@@ -41,9 +42,9 @@
     <!-- tt-mobile menu -->
     <nav class="panel-menu mobile-main-menu">
         <ul>
-            <li><a href="index.html">صفحه اصلی فروشگاه</a>
+            <li><a href="/{{ $shop->english_name }}">صفحه اصلی فروشگاه</a>
                 <ul>
-                    <li><a href="index.html">HOME STYLES</a>
+                    <li><a href="/{{ $shop->english_name }}">HOME STYLES</a>
                         <ul>
                             <li><a href="index.html">Home — Example 1 <span class="tt-badge tt-fatured">Popular</span></a></li>
                             <li><a href="index-02.html">Home — Example 2</a></li>
@@ -432,7 +433,7 @@
             <div class="row">
                 <div class="tt-logo-container">
                     <!-- mobile logo -->
-                    <a class="tt-logo tt-logo-alignment" href="index.html"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""></a>
+                    <a class="tt-logo tt-logo-alignment" href="/{{ $shop->english_name }}"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""></a>
                     <!-- /mobile logo -->
                 </div>
             </div>
@@ -444,7 +445,7 @@
             <div class="tt-header-holder">
                 <div class="tt-obj-logo obj-aligment-center">
                     <!-- logo -->
-                    <a class="tt-logo tt-logo-alignment" href="index.html"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""><span style="padding: 10px">{{ $shop->name }}</span></a>
+                    <a class="tt-logo tt-logo-alignment" href="/{{ $shop->english_name }}"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""><span style="padding: 10px">{{ $shop->name }}</span></a>
                     <!-- /logo -->
                 </div>
                 <div class="tt-obj-options obj-move-right tt-position-absolute">
@@ -655,7 +656,7 @@
                         <div class="tt-desctop-menu tt-menu-small">
                             <nav>
                                 <ul>
-                                  <li class="dropdown"><a class="iranyekan" href="index-rtl.html">صفحه اصلی</a></li>
+                                  <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}">صفحه اصلی</a></li>
 
 
                                     <li class="dropdown tt-megamenu-col-01"><a class="iranyekan" href="about.html">گوشی موبایل</a>

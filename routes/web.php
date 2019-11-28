@@ -117,7 +117,7 @@ Route::namespace('Shop')->group(function () {
   //shop
     Route::get('/{shop}', 'ShopController@index')->name('shop');
     Route::get('/{shop}/product/{id}', 'ProductContoller@show')->name('product');
-    Route::get('/{shop}/category/{categroyId}', 'ShopController@showCategory')->name('category');
+    Route::get('/{shop}/category/{categroyId}', 'CategoryController@index')->name('category');
     Route::get('/{shop}/tag/{name}', 'ShopController@tagProduct')->name('tag');
     //Comment
     Route::post('comment', 'CommentController@comment')->middleware('auth');
