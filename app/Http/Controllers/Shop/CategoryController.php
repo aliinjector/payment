@@ -15,6 +15,7 @@ class CategoryController extends Controller
       $shopCategories = $shop->ProductCategories()->get();
       $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id', null);
       $category = ProductCategory::where('id', $categroyId)->get()->first();
+      $subCategories = $this->getAllSubCategories($categroyId)->where('parent_id',$categroyId);
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
           $orderBy = $request->sortBy['orderBy'];
           $minPrice = $request->minprice;
@@ -46,8 +47,8 @@ class CategoryController extends Controller
       $template_folderName = $shop->template->folderName;
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
-      return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate'));
-      
+
+      return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories'));
   }
       public function getAllCategoriesProducts($cat_id) {
           $allProducts = collect();

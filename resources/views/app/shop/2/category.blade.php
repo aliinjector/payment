@@ -1,11 +1,5 @@
 @extends('app.shop.2.layouts.master')
-
-@section('headerScripts')
-
-@endsection
-
 @section('content')
-
 <div id="tt-pageContent">
 	<div class="container-indent">
 			<div class="container">
@@ -29,21 +23,13 @@
 													</ul><a href="#" class="btn-link-02">حذف فیلتر</a></div>
 									</div>
 									<div class="tt-collapse">
-											<h3 class="tt-collapse-title">دسته بندی محصولات</h3>
+											<h3 class="tt-collapse-title">زیر دسته بندی ها</h3>
 											<div class="tt-collapse-content">
 													<ul class="tt-list-row">
-															<li class="active"><a href="#">Dresses</a></li>
-															<li><a href="#">Shirts &amp; Tops</a></li>
-															<li><a href="#">Polo Shirts</a></li>
-															<li><a href="#">Sweaters</a></li>
-															<li><a href="#">Blazers &amp; Vests</a></li>
-															<li><a href="#">Jackets &amp; Outerwear</a></li>
-															<li><a href="#">Activewear</a></li>
-															<li><a href="#">Pants</a></li>
-															<li><a href="#">Jumpsuits &amp; Shorts</a></li>
-															<li><a href="#">Jeans</a></li>
-															<li><a href="#">Skirts</a></li>
-															<li><a href="#">Swimwear</a></li>
+														<li class="active"><a href="#">{{ $category->name }}</a></li>
+														@foreach($subCategories as $subCategory)
+															<li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}">{{ $subCategory->name }}</a></li>
+														@endforeach
 													</ul>
 											</div>
 									</div>
