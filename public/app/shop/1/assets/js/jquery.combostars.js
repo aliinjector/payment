@@ -22,7 +22,7 @@ $(function() {
         'use strict';
 
         var options = {
-            starUrl: '/app/shop/assets/images/stars.png',
+            starUrl: '/app/shop/1/assets/images/stars.png',
             starWidth: 23,
             starHeight: 22,
             clickMiddle: true
