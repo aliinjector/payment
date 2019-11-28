@@ -99,10 +99,14 @@
                      <div class="input-group mt-3">
                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">شاخه دسته بندی:</span></div>
                         <select class="form-control inputfield" name="parent_id">
-                           <option value="null">دسته بندی اصلی</option>
+                          @if($category->parent == null)
+                          <option value="null">دسته بندی اصلی</option>
+                          @endif
                            @foreach($categoires as $singleCategory)
                              @unless($singleCategory->parent()->get()->first() != null and $singleCategory->parent()->get()->first()->parent()->get()->first() != null and $singleCategory->parent()->get()->first()->parent()->get()->first()->parent()->get()->first() != null and $singleCategory->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists() and !$singleCategory->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists())
-                           <option {{ $singleCategory->id == $category->id ? 'selected' : ''}} value="{{ $singleCategory->id }}">{{ $singleCategory->name }}</option>
+                           <option @if($category->parent != null) value="{{ $singleCategory->id }}"  @if($singleCategory->id == $category->parent->id) selected @endif @endif >{{ $singleCategory->name }}</option>
+                           {{-- <option {{ $singleCategory->id == $category->id ? 'selected' : ''}} @if($singleCategory->parent != null) value="{{ $singleCategory->parent->id }}">{{ $singleCategory->parent->name }} @else value="null"> دسته بندی اصلی @endif</option> --}}
+
                          @endunless
                            @endforeach
                         </select>
