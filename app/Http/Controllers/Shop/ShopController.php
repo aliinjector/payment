@@ -38,12 +38,14 @@
       $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
       $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
       $template_folderName = $shop->template->folderName;
+      $brands = $shop->brands;
+      $feedbacks = $shop->feedbacks;
 
       SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling'));
+      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling', 'brands', 'feedbacks'));
 
     }
 
