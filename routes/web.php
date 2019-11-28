@@ -94,11 +94,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
 });
 Route::namespace('Shop')->middleware('auth')->group(function () {
     //Purchase (invoice)
-    Route::any('/{shop}/purchase-list/{id}/voucher', 'ShopController@approved')->name('approved');
-    Route::post('/{shop}/purchase-list/{cartID}/store', 'ShopController@purchaseSubmit')->name('purchase-list.store');
-    Route::any('/{shop}/purchase-list/{userID}', 'CartController@purchaseList')->name('purchase-list');
+    Route::any('/{shop}/purchase-list/{id}/voucher', 'PurchaseController@approved')->name('approved');
+    Route::post('/{shop}/purchase-list/{cartID}/store', 'PurchaseController@purchaseSubmit')->name('purchase-list.store');
+    Route::any('/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list');
     //User-pruchased List
-    Route::get('/user-purchased-list', 'ShopController@userPurchaseList')->name('user.purchased.list');
+    Route::get('/user-purchased-list', 'UserPurchasesController@userPurchaseList')->name('user.purchased.list');
     //Cart
     Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart');
     Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');
@@ -107,7 +107,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('file-download');
     Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
     //Rating
-    Route::patch('/{shop}/{id}/rate', 'ShopController@updateRate')->name('rate');
+    Route::patch('/{shop}/{id}/rate', 'RatingController@updateRate')->name('rate');
     //Compare
     Route::get('/{shop}/compare', 'CompareController@index')->name('compare');
 
@@ -118,7 +118,7 @@ Route::namespace('Shop')->group(function () {
     Route::get('/{shop}', 'ShopController@index')->name('shop');
     Route::get('/{shop}/product/{id}', 'ProductContoller@show')->name('product');
     Route::get('/{shop}/category/{categroyId}', 'CategoryController@index')->name('category');
-    Route::get('/{shop}/tag/{name}', 'ShopController@tagProduct')->name('tag');
+    Route::get('/{shop}/tag/{name}', 'TagController@tagProduct')->name('tag');
     //Comment
     Route::post('comment', 'CommentController@comment')->middleware('auth');
     Route::post('/comment/answer', 'CommentController@answer')->middleware('auth');
