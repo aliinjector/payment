@@ -22,10 +22,10 @@
                             <div class="tt-item">
                                 <h2 class="tt-title">ورود</h2>درصورتی که حساب کاربری دارید، فرم را تکمیل نمایید
                                 <div class="form-default form-top">
-                                    <form id="customer_login" method="post" novalidate="novalidate">
+                                    <form method="POST" action="{{ route('template.login.show') }}" novalidate="novalidate">
+                                        @csrf
                                         <div class="form-group">
                                             <label for="loginInputName">آدرس ایمیل *</label>
-                                            <div class="tt-required">* فیلد الزامی</div>
                                             <input type="text" name="name" class="form-control" id="loginInputName" placeholder="Enter Username or E-mail">
                                         </div>
                                         <div class="form-group">

@@ -16,24 +16,85 @@
                             <div class="tt-item">
                                 <h2 class="tt-title">اطلاعات کاربری</h2>
                                 <div class="form-default">
-                                    <form id="contactform" method="post" novalidate="novalidate">
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li style="color: red">{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
+
+
+                                    <form action="{{ route('template.register', $shop->english_name) }}" method="post" novalidate="novalidate">
+                                        @csrf
+                                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+
                                         <div class="form-group">
                                             <label for="loginInputName">نام *</label>
-                                            <div class="tt-required">* فیلد های الزامی</div>
-                                            <input type="text" name="name" class="form-control" id="loginInputName" placeholder="Enter First Name">
+                                            <input type="text" name="firstName" value="{{ old('firstName') }}" class="form-control @error('firstName') is-invalid @enderror" placeholder="مثال: رضا">
+                                            @error('firstName')
+                                            <span class="invalid-feedback" role="alert">
+                                             <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="loginLastName">نام خانوادگی *</label>
-                                            <input type="text" name="lastName" class="form-control" id="loginLastName" placeholder="Enter Last Name">
+                                            <input type="text" name="lastName"  value="{{ old('lastName') }}"  class="form-control  @error('lastName') is-invalid @enderror" placeholder="مثال: رحیمی">
+                                            @error('lastName')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="loginLastName">شماره موبایل *</label>
+                                            <input type="text" name="mobile" value="{{ old('mobile') }}"  class="form-control @error('mobile') is-invalid @enderror" placeholder="مثال: ۰۹۲۰۲۰۲۰۲۲۲">
+                                            @error('mobile')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+
                                         <div class="form-group">
                                             <label for="loginInputEmail">آدرس ایمیل *</label>
-                                            <input type="text" name="email" class="form-control" id="loginInputEmail" placeholder="Enter E-mail">
+                                            <input type="text" name="email" value="{{ old('email') }}"  class="form-control  @error('email') is-invalid @enderror" placeholder="مثال: reza@rahimi.com">
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="loginInputPassword">رمز عبور *</label>
-                                            <input type="text" name="passowrd" class="form-control" id="loginInputPassword" placeholder="Enter Password">
+                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" >
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
+
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="loginInputPassword">تایید رمز عبور *</label>
+                                            <input type="password" name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="رمز عبور را مجددا وارد نمایید" >
+                                            @error('password_confirmation')
+                                            <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                            @enderror
+                                        </div>
+
+
+
+
                                         <div class="row">
                                             <div class="col-auto">
                                                 <div class="form-group">

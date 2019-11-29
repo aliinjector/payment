@@ -1,9 +1,11 @@
 <?php
   namespace App\Http\Controllers\Shop;
 
+  use App\Http\Requests\UserRequest;
   use App\Tag;
   use App\Shop;
   use App\Product;
+  use App\User;
   use App\Voucher;
   use App\ShopCategory;
   use App\UserPurchase;
@@ -97,5 +99,40 @@
         return response()->file($uri);
     }
 
+      public function registerShow($shop)
+      {
+          if (Shop::where('english_name', $shop)->first() == null) {
+              return abort(404);
+          }
+
+          $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
+          $shop = Shop::where('english_name', $shop)->first();
+          $template_folderName = $shop->template->folderName;
+
+          SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
+          SEOTools::setDescription($shop->description);
+          SEOTools::opengraph()->addProperty('type', 'website');
+
+          return view("app.shop.$template_folderName.register", compact('shop', 'shopCategories'));
+
+      }
+
+      public function register(UserRequest $request, $shop)
+      {
+          $shop = Shop::where('english_name', $shop)->first();
+          $user = User::create([
+              'firstName' => $request['firstName'],
+              'lastName' => $request['lastName'],
+              'mobile' => $request['mobile'],
+              'email' => $request['email'],
+              'type' => 'customer',
+              'shop_id' => $request['shop_id'],
+              'password' => \Hash::make($request['password']),
+          ]);
+
+          alert()->success('حساب کاربری ایجاد شد.', 'انجام شد');
+          return redirect()->route('shop', ['shop' => $shop->english_name] );
+
+      }
 
 }
