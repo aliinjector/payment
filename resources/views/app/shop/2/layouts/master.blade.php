@@ -14,16 +14,16 @@
     <link rel="stylesheet" href="/app/shop/2/css/custom.css">
     <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     @yield('headerScripts')
-    @toastr_css
-
     <style>
-        .toast-message {
-            font-size: 20px;
-        }
-
         .dropdown-menu {
             width: 130px !important;
             display: none!important;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+            width: 130px !important;
+
         }
 
         .dropdown-submenu>.dropdown-menu {
@@ -36,7 +36,7 @@
         }
 
         .dropdown-submenu:hover>.dropdown-menu {
-            display: inline-grid!important;
+            display: block!important;
         }
 
         .dropdown:hover>.dropdown-menu {
@@ -45,16 +45,9 @@
         }
 
         .dropdown-submenu.pull-left {
-            float: none!important;
+            float: none;
         }
 
-        .dropdown-submenu.pull-left>.dropdown-menu {
-            right: -100%;
-            margin-left: 10px;
-            -webkit-border-radius: 6px 0 6px 6px;
-            -moz-border-radius: 6px 0 6px 6px;
-            border-radius: 6px 0 6px 6px;
-        }
     </style>
 </head>
 
@@ -592,16 +585,12 @@
                                     </div>
                                     <div class="tt-dropdown-inner">
                                         <ul>
-                                            @auth()
-                                                <li><a href=""><i class="icon-f-94"></i>پنل کاربری</a></li>
-                                                <li><a href=""><i class="icon-n-072"></i>علاقه مندی ها</a></li>
-                                                <li><a href=""><i class="icon-f-68"></i>لیست سفارشات</a></li>
-                                                <li><a href=""><i class="icon-f-77"></i>خروج</a></li>
-                                            @endauth
-                                            @guest()
-                                                 <li><a href="{{ route('template.login.show', $shop->english_name) }}"><i class="icon-f-76"></i>ورود</a></li>
-                                                 <li><a href="{{ route('template.register.show', $shop->english_name) }}"><i class="icon-f-94"></i>عضویت</a></li>
-                                            @endguest
+                                            <li><a href="login.html"><i class="icon-f-94"></i>حساب کاربری</a></li>
+                                            <li><a href="wishlist.html"><i class="icon-n-072"></i>علاقه مندی ها</a></li>
+                                            <li><a href="page404.html"><i class="icon-f-68"></i>پرداخت</a></li>
+                                            <li><a href="login.html"><i class="icon-f-76"></i>ورود</a></li>
+                                            <li><a href="page404.html"><i class="icon-f-77"></i>خروج</a></li>
+                                            <li><a href="create-account.html"><i class="icon-f-94"></i>عضویت</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -652,7 +641,7 @@
                                             <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
                                                 <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal" style="color:
                                                 #465f73!important;background-color:transparent">
-                                                {{ $shopCategory->name }}
+                                                    {{ $shopCategory->name }}
                                                 </button>
                                             </a>
                                             @if($shop->menu_show == "nestead_menu")
@@ -660,23 +649,29 @@
                                                     <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important">
                                                         @foreach ($shopCategory->children()->get() as $subCategory)
                                                         @if (!$subCategory->children()->exists())
-                                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;"><li class="dropdown-item dropdown-submenu" style="display:block!important">{{ $subCategory->name }}
-                                                        </li>
+                                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;">
+                                                            <li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
+                                                            </li>
                                                         </a>
                                                         @else
-                                                        <li class="dropdown-submenu" style="display:block!important">
-                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;" tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
-                                                            <ul class="dropdown-menu font-16">
+                                                        <li class="dropdown-submenu">
+                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;"
+                                                              tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
+                                                              <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important">
                                                                 @foreach ($subCategory->children()->get() as $subSubCategory)
                                                                 @if (!$subSubCategory->children()->exists())
-                                                                <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"><li class="dropdown-item">{{ $subSubCategory->name }}</li></a>
+                                                                <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}">
+                                                                    <li class="dropdown-item">{{ $subSubCategory->name }}</li>
+                                                                </a>
                                                                 @else
-                                                                <li class="dropdown-submenu">
-                                                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
-                                                                    <ul class="dropdown-menu font-16">
+                                                                  <li class="dropdown-submenu">
+                                                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;"
+                                                                      tabindex="-1">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
+                                                                      <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important">
                                                                         @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                                                                          <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
-                                                                                style="color: #465f73!important;"><li class="dropdown-item">{{ $subSubSubCategory->name }}</li></a>
+                                                                          <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}">
+                                                                              <li class="dropdown-item">{{ $subSubSubCategory->name }}</li>
+                                                                          </a>
                                                                         @endforeach
                                                                     </ul>
                                                                     @endif
@@ -692,58 +687,6 @@
                                         </div>
                                         @endforeach
                                     </ul>
-                                            {{-- <div class="dropdown-menu">
-                                                <div class="row tt-col-list">
-                                                    <div class="col">
-                                                        <ul class="tt-megamenu-submenu">
-
-
-                                                            <li><a href="about.html">منو 1</a>
-                                                                <ul>
-                                                                    <li><a href="about.html">منو 1</a></li>
-                                                                    <li><a href="about.html">منو 1</a>
-                                                                        <ul>
-                                                                            <li><a href="about.html">منو 2</a></li>
-                                                                            <li><a href="about.html">منو 2</a>
-                                                                                <ul>
-                                                                                    <li><a href="about.html">منو 3</a></li>
-                                                                                    <li><a href="about.html">منو 3</a></li>
-                                                                                    <li><a href="about.html">منو 3</a></li>
-                                                                                    <li><a href="about.html">منو 3</a>
-                                                                                        <ul>
-                                                                                            <li><a href="about.html">منو 4</a>
-                                                                                                <ul>
-                                                                                                    <li><a href="about.html">منو 5</a></li>
-                                                                                                    <li><a href="about.html">منو 5</a></li>
-                                                                                                    <li><a href="about.html">منو 5</a></li>
-                                                                                                    <li><a href="about.html">منو 5</a></li>
-                                                                                                    <li><a href="about.html">منو 5</a></li>
-                                                                                                </ul>
-                                                                                            </li>
-                                                                                            <li><a href="about.html">منو 4</a></li>
-                                                                                        </ul>
-                                                                                    </li>
-                                                                                    <li><a href="about.html">منو 3</a></li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="about.html">منو 2</a></li>
-                                                                            <li><a href="about.html">منو 2</a></li>
-                                                                        </ul>
-                                                                    </li>
-                                                                    <li><a href="about.html">منو 1</a></li>
-                                                                    <li><a href="about.html">منو 1</a></li>
-                                                                    <li><a href="about.html">منو 1</a></li>
-                                                                </ul>
-                                                            </li>
-
-
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div> --}}
-
-
-
                                 </nav>
                             </div>
                         </div>
@@ -1083,13 +1026,9 @@
 
     <script async src="/app/shop/2/js/bundle.js"></script>
     <script src="/app/shop/1/assets/js/jquery.min.js"></script>
-    <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
-
     <a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a>
 </body>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
-@include('sweet::alert')
-
 @yield('footerScripts')
 
 </html>
