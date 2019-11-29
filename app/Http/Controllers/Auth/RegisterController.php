@@ -69,6 +69,10 @@ class RegisterController extends Controller
     {
 if(!isset($data['shop_id'])){
     $data['shop_id'] = null;
+    $data['type'] = 'user';
+}
+else{
+  $data['type'] = 'customer';
 }
         $user = User::create([
             'firstName' => $data['firstName'],
