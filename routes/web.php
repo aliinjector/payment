@@ -124,4 +124,8 @@ Route::namespace('Shop')->group(function () {
     Route::post('comment', 'CommentController@comment')->middleware('auth');
     Route::post('/comment/answer', 'CommentController@answer')->middleware('auth');
 
+    Route::get('/{shop}/register', 'ShopController@registerShow')->name('template.register.show');
+    Route::post('/{shop}/register', 'ShopController@register')->name('template.register');
+    Route::get('/{shop}/login', 'ShopController@login')->name('template.login.show');
+
 });
