@@ -27,9 +27,9 @@
         }
 
         .dropdown-submenu>.dropdown-menu {
-            top: 0;
+            top: -33px!important;
             width: 130px !important;
-            right: 70% !important;
+            right: 72% !important;
             -webkit-border-radius: 0 6px 6px 6px;
             -moz-border-radius: 0 6px 6px;
             border-radius: 0 6px 6px 6px;
@@ -41,6 +41,7 @@
 
         .dropdown:hover>.dropdown-menu {
             display: block!important;
+
         }
 
         .dropdown-submenu.pull-left {
