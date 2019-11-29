@@ -104,7 +104,7 @@
                           @endif
                            @foreach($categoires as $singleCategory)
                              @unless($singleCategory->parent()->get()->first() != null and $singleCategory->parent()->get()->first()->parent()->get()->first() != null and $singleCategory->parent()->get()->first()->parent()->get()->first()->parent()->get()->first() != null and $singleCategory->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists() and !$singleCategory->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->parent()->exists())
-                           <option @if($category->parent != null) value="{{ $singleCategory->id }}"  @if($singleCategory->id == $category->parent->id) selected @endif @endif >{{ $singleCategory->name }}</option>
+                           <option  value="{{ $singleCategory->id }}" @if($category->parent != null)  @if($singleCategory->id == $category->parent->id) selected @endif @endif >{{ $singleCategory->name }}</option>
                            {{-- <option {{ $singleCategory->id == $category->id ? 'selected' : ''}} @if($singleCategory->parent != null) value="{{ $singleCategory->parent->id }}">{{ $singleCategory->parent->name }} @else value="null"> دسته بندی اصلی @endif</option> --}}
 
                          @endunless

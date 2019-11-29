@@ -87,6 +87,7 @@ class CategoryController extends Controller
       }
       public static function getAllSubCategories($cat_id) {
           $allSubCategories = collect();
+          if (ProductCategory::find($cat_id)->children()->exists()) {
           foreach (ProductCategory::find($cat_id)->children()->get() as $subCategory) {
               $allSubCategories[] = $subCategory;
               if ($subCategory->children()->exists()) {
@@ -105,6 +106,7 @@ class CategoryController extends Controller
                   }
               }
           }
+        }
           return $allSubCategories;
       }
 
