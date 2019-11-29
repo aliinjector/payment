@@ -47,8 +47,14 @@
         .dropdown-submenu.pull-left {
             float: none;
         }
+        .toast-message {
+            font-size: 20px;
+        }
+
 
     </style>
+    @toastr_css
+
 </head>
 
 <body>
@@ -585,12 +591,16 @@
                                     </div>
                                     <div class="tt-dropdown-inner">
                                         <ul>
-                                            <li><a href="login.html"><i class="icon-f-94"></i>حساب کاربری</a></li>
-                                            <li><a href="wishlist.html"><i class="icon-n-072"></i>علاقه مندی ها</a></li>
-                                            <li><a href="page404.html"><i class="icon-f-68"></i>پرداخت</a></li>
-                                            <li><a href="login.html"><i class="icon-f-76"></i>ورود</a></li>
-                                            <li><a href="page404.html"><i class="icon-f-77"></i>خروج</a></li>
-                                            <li><a href="create-account.html"><i class="icon-f-94"></i>عضویت</a></li>
+                                            @auth()
+                                            <li><a href=""><i class="icon-f-94"></i>پنل کاربری</a></li>
+                                            <li><a href=""><i class="icon-n-072"></i>علاقه مندی ها</a></li>
+                                            <li><a href=""><i class="icon-f-77"></i>خروج</a></li>
+                                            @endauth
+
+                                            @guest()
+                                            <li><a href="{{ route('template.login.show', $shop->english_name) }}"><i class="icon-f-76"></i>ورود</a></li>
+                                            <li><a href="{{ route('template.register.show', $shop->english_name) }}"><i class="icon-f-94"></i>عضویت</a></li>
+                                            @endguest
                                         </ul>
                                     </div>
                                 </div>
@@ -1026,9 +1036,16 @@
 
     <script async src="/app/shop/2/js/bundle.js"></script>
     <script src="/app/shop/1/assets/js/jquery.min.js"></script>
+    <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
+
     <a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a>
 </body>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
+@toastr_js
+@toastr_render
+
+@include('sweet::alert')
+
 @yield('footerScripts')
 
 </html>
