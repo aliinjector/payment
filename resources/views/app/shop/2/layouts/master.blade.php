@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/app/shop/2/css/style.css">
     <link rel="stylesheet" href="/app/shop/2/css/custom.css">
     <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
+    <script src="/app/shop/1/assets/js/jquery.min.js"></script>
+
     @yield('headerScripts')
     <style>
         .dropdown-menu {
@@ -1035,8 +1038,16 @@
     <!-- Modal (newsletter) -->
 
     <script async src="/app/shop/2/js/bundle.js"></script>
-    <script src="/app/shop/1/assets/js/jquery.min.js"></script>
+    <script src="/app/shop/1/assets/js/jquery-ui.js"></script>
+
     <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+    });
+    </script>
+
+
 
     <a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a>
 </body>

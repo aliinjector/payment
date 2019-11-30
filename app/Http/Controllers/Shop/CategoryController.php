@@ -10,7 +10,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class CategoryController extends Controller
 {
   public function index($shop, $categroyId, Request $request) {
-
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
       $shopCategories = $shop->ProductCategories()->get();
@@ -19,11 +18,18 @@ class CategoryController extends Controller
       $subCategories = $this->getAllSubCategories($categroyId)->where('parent_id',$categroyId);
       $brands = $shop->brands;
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
-          $orderBy = $request->sortBy['orderBy'];
           $minPrice = $request->minprice;
           $maxPrice = $request->maxprice;
           $filterBy = $request->type;
           $sortBy = $request->sortBy['field'];
+          if($shop->template->folderName == 2){
+            $sortBy_array = explode('|', $request->sortBy['field']);
+            $sortBy = $sortBy_array[0];
+            $orderBy = $sortBy_array[1];
+          }
+          else{
+            $orderBy = $request->sortBy['orderBy'];
+          }
           $perPage = 8;
           if ($request->type == 'all') {
               if ($orderBy == 'desc') {

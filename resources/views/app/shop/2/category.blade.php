@@ -14,6 +14,12 @@
 		border-bottom: 1px dashed #2879fe;
 		width: 25%;
 	}
+	.ui-slider-range{
+		background-color: #2979fe!important;
+	}
+	.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
+		background-color: grey!important;
+	}
 </style>
 <div id="tt-pageContent">
 	<div class="container-indent">
@@ -42,32 +48,17 @@
 					<div class="tt-collapse">
 						<h3 class="tt-collapse-title">فیلتر براساس قیمت</h3>
 						<div class="tt-collapse-content">
-							<ul class="tt-list-row">
-								<li class="active"><a href="#">$0 — $50</a></li>
-								<li><a href="#">$50 — $100</a></li>
-								<li><a href="#">$100 — $150</a></li>
-								<li><a href="#">$150 — $200</a></li>
-							</ul>
+							<form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
+
+								<ul class="tt-list-row">
+									<input type="hidden" class="available-order-1" name="type" value="all">
+									<input type="text" id="available-price-1" class="w-100 p-2 iranyekan font-14" style="border:0; color:#2979FE !important; font-weight:bold;">
+									<input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
+									<input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
+									<div id="mySlider"></div>
+								</ul>
 						</div>
 					</div>
-					{{-- <div class="tt-collapse">
-						<h3 class="tt-collapse-title">براساس سایز</h3>
-						<div class="tt-collapse-content">
-							<ul class="tt-options-swatch options-middle">
-								<li><a href="#">4</a></li>
-								<li class="active"><a href="#">6</a></li>
-								<li><a href="#">8</a></li>
-								<li><a href="#">10</a></li>
-								<li><a href="#">12</a></li>
-								<li><a href="#">14</a></li>
-								<li><a href="#">16</a></li>
-								<li><a href="#">18</a></li>
-								<li><a href="#">20</a></li>
-								<li><a href="#">22</a></li>
-								<li><a href="#">24</a></li>
-							</ul>
-						</div>
-					</div> --}}
 					<div class="tt-collapse">
 						<h3 class="tt-collapse-title">براساس رنگ</h3>
 						<div class="tt-collapse-content">
@@ -128,7 +119,7 @@
 						<div class="tt-collapse-content">
 							<ul class="tt-list-inline">
 								@foreach($shopTags as $shopTag)
-									<li><a href="#">{{ $shopTag->name }}</a></li>
+								<li><a href="#">{{ $shopTag->name }}</a></li>
 								@endforeach
 							</ul>
 						</div>
@@ -142,12 +133,15 @@
 						<div class="tt-filters-options" id="js-tt-filters-options">
 							<h1 class="tt-title">{{ $category->name }} <span class="tt-title-total byekan">({{ $products->count() }})</span></h1>
 							<div class="tt-btn-toggle"><a href="#">فیلتر</a></div>
-							<div class="tt-sort">
-								<select>
-									<option value="Default Sorting">سورتینگ</option>
-									<option value="Default Sorting">Default Sorting 02</option>
-									<option value="Default Sorting">Default Sorting 03</option>
+							<div class="tt-sort d-flex">
+								<select class="available-filter-1" name="sortBy[field]">
+									<option value="created_at|desc" @if(request()->sortBy['field'] == 'created_at|desc') selected @endif>جدیدترین ها</option>
+									<option value="buyCount|desc" @if(request()->sortBy['field'] == 'buyCount|desc') selected @endif>پرفروش ترین ها</option>
+									<option value="price|asc" @if(request()->sortBy['field'] == 'price|asc') selected @endif>ارزان ترین ها</option>
+									<option value="price|desc" @if(request()->sortBy['field'] == 'price|desc') selected @endif>گران ترین ها
+									</option>
 								</select>
+								</form>
 								<select>
 									<option value="Show">تعداد</option>
 									<option value="9">9</option>
@@ -194,9 +188,6 @@
 							</div>
 							@endforeach
 						</div>
-						{{-- <div class="text-center tt_product_showmore"><a href="#" class="btn btn-border">مشاهده ادامه</a>
-							<div class="tt_item_all_js"><a href="#" class="btn btn-border01">محصول بیشتری وجود ندارد</a></div>
-						</div> --}}
 					</div>
 				</div>
 			</div>
@@ -207,6 +198,47 @@
 @endsection
 
 @section('footerScripts')
+<script>
+	$(document).ready(function() {
+		$("#mySlider").slider({
+			range: true,
+			min: 1000,
+			max: 100000000,
+			values: [1000, 100000000],
+			slide: function(event, ui) {
+				if (isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true) {
+					$("#available-price-1").val(" از " + 1000 + " تومان " + " - " + " تا " + 100000000 + " تومان ");
+					$("#available-price-min").val(1000);
+					$("#available-price-max").val(100000000);
+				} else {
+					$("#available-price-1").val(" از " + ui.values[0] + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+					$("#available-price-min").val(ui.values[0]);
+					$("#available-price-max").val(ui.values[1]);
+				}
+			}
+		});
+		if (isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true) {
+			$("#available-price-1").val(" از " + 1000 + " تومان " + " - " + " تا " + 100000000 + " تومان ");
+		} else {
+			$("#available-price-1").val(" از " + $("#mySlider").slider("values", 0) + " تومان " +
+				" - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
+		}
+
+	});
+</script>
+<script type="text/javascript">
+	$('select').on('change', function() {
+		setInterval("$('#submit').submit()", 800);
+	});
+	$('#available-price-min').click(function() {
+					 $('.available-price-min').attr('checked', true);
+					 setInterval("$('#submit').submit()", 800);
+			 });
+			 $('#mySlider').click(function() {
+					 $('.available-price-max').attr('checked', true);
+					 setInterval("$('#submit').submit()", 800);
+			 });
+</script>
 <script>
 	if ($('.ty-compact-list').length > 5) {
 		$('.ty-compact-list:gt(2)').hide();
