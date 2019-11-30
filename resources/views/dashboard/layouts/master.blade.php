@@ -10,6 +10,8 @@ Author: Ali Rahmani
 
 <head>
     <script src="/dashboard/assets/js/jquery.min.js"></script>
+    <script src="/dashboard/assets/js/jquery.form-xeditable.init.js"></script>
+    <script src="/dashboard/assets/js/bootstrap-editable.min.js"></script>
     <script src="/dashboard/assets/js/persian-date.js"></script>
     <script src="/dashboard/assets/js/persian-datepicker.js"></script>
     <meta charset="utf-8">
@@ -20,6 +22,7 @@ Author: Ali Rahmani
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
     <!-- App css -->
+    <link href="/dashboard/assets/css/bootstrap-editable.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/jquery.steps.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/icons.css" rel="stylesheet" type="text/css">
@@ -363,6 +366,8 @@ Author: Ali Rahmani
     <script src="/dashboard/assets/js/waves.min.js"></script>
     <script src="/dashboard/assets/js/jquery.slimscroll.min.js"></script>
     <script src="/dashboard/assets/plugins/moment/moment.js"></script>
+    <script src="/dashboard/assets/js/bootstrap-editable.min.js"></script>
+    <script src="/dashboard/assets/js/jquery.form-xeditable.init.js"></script>
     <script src="/dashboard/assets/plugins/apexcharts/apexcharts.min.js"></script>
     <script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>

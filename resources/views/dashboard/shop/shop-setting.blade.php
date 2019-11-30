@@ -1,6 +1,7 @@
 @extends('dashboard.layouts.master')
 @section('content')
-    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -247,6 +248,23 @@
                         </select>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش پیغام پیشنهاد ویژه در بالای تمامی صفحات
+                        <br /><button type="button" class="btn btn-outline-pink btn-sm" data-toggle="collapse" data-target="#demo">ویرایش پیغام</button>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="special_offer">
+                            <option value="enable">فعال</option>
+                            <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>غیرفعال</option>
+                              <input type="hidden" name="special_offer_text" value="{{ \Auth::user()->shop()->first()->special_offer_text }}">
+                        </select>
+                        <div id="demo" class="collapse mt-2">
+
+                            <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->special_offer_text }}</a>
+                        </div>
+
+                    </div>
+                </div>
 
                 <!--end card-body-->
             </div>
@@ -354,53 +372,10 @@
 </form>
 
 
-
-
-{{-- <div class="row">
-                                <div class="card col-6">
-                                    <div class="card-body">
-                                        <h4 class="mt-0 header-title">نماد الکترونیک</h4>
-                                        <p class="text-muted mb-3">لطفا تصویر اسکن شده نماد الکترونیک خود را آپلود نمایید.</p>
-                                        <div class="dropify-wrapper has-preview">
-                                            <div class="dropify-message"><span class="file-icon"></span>
-                                                <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
-                                                <p class="dropify-error">خطا</p>
-                                            </div>
-                                            <div class="dropify-loader"></div>
-                                            <div class="dropify-errors-container">
-                                                <ul></ul>
-                                            </div>
-                                            <input type="file" id="input-file-now" class="dropify">
-                                            <button type="button" class="dropify-clear">حذف</button>
-                                            <div class="dropify-preview"><span class="dropify-render"></span>
-                                                <div class="dropify-infos">
-                                                    <div class="dropify-infos-inner">
-                                                        <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner"></span></p>
-                                                        <p class="dropify-infos-message">با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--end card-body-->
-                                </div>
-                                <!--end card-->
-                            <!--end col-->
-                                <div class="card col-6">
-                                    <div class="form-group mt-5">
-                                        <label for="message" class="text-muted mt-2">کد نماد الکترونیک</label>
-                                        <textarea class="form-control border-muted" rows="10" id="message" placeholder="کد نماد الکترونیک را وارد کنید"></textarea>
-                                    </div>
-                                </div>
-                                <!--end card-->
-                            <!--end col-->
-                        </div> --}}
-
-
 @endsection
 
 
 @section('pageScripts')
-    <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-    <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+<script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+<script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 @stop
