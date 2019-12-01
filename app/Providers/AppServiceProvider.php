@@ -25,7 +25,13 @@ class AppServiceProvider extends ServiceProvider
    {
        view()->composer('app.shop.2.layouts.master', function($view) {
            if (\Auth::check()){
-               $products = \Auth::user()->cart()->get()->first()->products();
+          if(\Auth::user()->cart()->get()->first() != null){
+            $products = \Auth::user()->cart()->get()->first()->products();
+
+          }
+          else{
+            $products = [];
+          }
                $view->with('products', $products);
            }
        });

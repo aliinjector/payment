@@ -37,7 +37,13 @@
             </ul>
         </div>
         <div class="tt-product-inside-hover">
-            <div class="tt-row-btn"><a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">افزودن به سبد خرید</a></div>
+          @if(\Auth::user())
+                <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                  @csrf
+                  <input type="hidden" name="product_id" value="{{$product->id}}">
+                  <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i> @if($product->type == 'file') دریافت فایل  @else اضافه به سبد خرید @endif</button>
+                </form>
+          @endif
             <div class="tt-row-btn">
                 <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
                 <a href="#" class="tt-btn-wishlist"></a>

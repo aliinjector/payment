@@ -68,7 +68,7 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="#" class="tt-btn-close"></a>
+                                <a href="" id="removeProduct" class="tt-btn-close" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $product->id }}"></a>
                             </td>
                         </tr>
                         @endforeach
