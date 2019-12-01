@@ -41,15 +41,12 @@
                                   <li><a href="#" data-image="/{{ $gallery->filename }}" data-zoom-image="/{{ $gallery->filename }}"><img src="/{{ $gallery->filename }}" alt=""></a></li>
                                   @endforeach
 
-
-
-
-                                  @foreach (\DB::table('galleries')->where('filename', 'like', '%.mp4%')->get() as $video)
-                                  <li>
-                                      <div class="video-link-product" data-toggle="modal" data-type="video" data-target="#modalVideoProduct" data-value="/{{ $video->filename }}" data-poster="video/video_img.jpg"><img src="/app/shop/2/images/product//product-small-empty.png" alt="">
-                                          <div><i class="icon-f-32"></i></div>
-                                      </div>
-                                  </li>
+                                  @foreach ($galleries->where('product_id', $product->id)->where('type', 'video')->take(1) as $video)
+                                    <li>
+                                        <div class="video-link-product" data-toggle="modal" data-type="video" data-target="#modalVideoProduct" data-value="/{{ $video->filename }}" data-poster="video/video_img.jpg"><img src="/app/shop/2/images/product//product-small-empty.png" alt="">
+                                            <div><i class="icon-f-32"></i></div>
+                                        </div>
+                                    </li>
                                   @endforeach
 
 

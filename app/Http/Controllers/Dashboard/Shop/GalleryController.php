@@ -27,9 +27,17 @@ class GalleryController extends \App\Http\Controllers\Controller
         $imageName = time() . '_' . $image->getClientOriginalName();
         $image->move(public_path('images/product-galleries/' . \Auth::user()->id), $imageName);
 
+        if(strtolower(@end(explode(".",$imageName))) == "mp4" or strtolower(@end(explode(".",$imageName))) == "avi" or strtolower(@end(explode(".",$imageName))) =="wma"){
+            $type = 'video';
+          }else{
+            $type = 'picture';
+          }
+
+
         $imageAddress = 'images/product-galleries/' . \Auth::user()->id . '/' . $imageName;
         $imageUpload = new Gallery();
         $imageUpload->filename = $imageAddress;
+        $imageUpload->type = $type;
         $imageUpload->product_id = $request->product;
         $imageUpload->save();
         return response()->json(['success'=>$imageName]);
@@ -40,10 +48,11 @@ class GalleryController extends \App\Http\Controllers\Controller
         $filename =  $request->get('filename');
         $imageAddress = implode('/', array_slice(explode('/', $filename), -4, 4, true));
         Gallery::where('filename', $imageAddress)->delete();
-//        $path = public_path() . 'images/product-galleries/' . \Auth::user()->id . '/' . $filename;
-//        if (file_exists($path)) {
-//            unlink($path);
-//        }
+        $path = public_path() . '/images/product-galleries/' . \Auth::user()->id . '/' . @end(explode("/",$filename));
+
+       if (file_exists($path)) {
+           unlink($path);
+       }
         return $filename;
     }
 

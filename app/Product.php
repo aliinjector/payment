@@ -9,18 +9,19 @@ use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-    use SoftDeletes, Rating, CascadeSoftDeletes;
+  // use SoftDeletes, Rating, CascadeSoftDeletes;
+  use Searchable, SoftDeletes, Rating, CascadeSoftDeletes;
     protected $cascadeDeletes = ['galleries'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [
     'image' => 'array'
 ];
-//
-// public function searchableAs()
-// {
-//     return 'title';
-// }
+
+public function searchableAs()
+{
+    return 'title';
+}
 
 
   public function productCategory()

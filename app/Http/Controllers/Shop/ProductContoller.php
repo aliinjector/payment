@@ -27,7 +27,7 @@ class ProductContoller extends \App\Http\Controllers\Controller
           }
       }
       $comments = $product->comments;
-      $galleries = $product->galleries->take(10);
+      $galleries = $product->galleries;
       $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(4)->get();
       $template_folderName = $shop->template->folderName;
 
