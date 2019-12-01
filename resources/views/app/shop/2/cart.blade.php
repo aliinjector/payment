@@ -6,64 +6,85 @@
 
 @section('content')
 
-    <div id="tt-pageContent">
-        <div class="container-indent">
-            <div class="container">
-                <h1 class="tt-title-subpages noborder">سبد خرید</h1>
-                <div class="tt-shopcart-table-02">
-                    <table>
-                        <tbody>
+<div id="tt-pageContent">
+    <div class="container-indent">
+        <div class="container">
+            <h3 class="noborder text-center iranyekan">سبد خرید</h3>
+            @isset($products)
+            <div class="tt-shopcart-table-02">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>محصول</th>
+                            <th>قیمت واحد کالا</th>
+                            <th>میزان تخفیف</th>
+                            <th>تعداد</th>
+                            <th>عملیات</th>
+                        </tr>
+                        <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
+                            @csrf
+                        @foreach ($products as $product)
+                        <tr>
+
+                            <td>
+                                <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></h2>
+                                <ul class="tt-list-description">
+                                    <li>Color: Green</li>
+                                </ul>
+                                <ul class="tt-list-parameters">
+                                    <li>
+                                        <div class="tt-price">320 تومان</div>
+                                    </li>
+                                    <li>
+                                        <div class="detach-quantity-mobile"></div>
+                                    </li>
+                                    <li>
+                                        <div class="tt-price subtotal">320 تومان</div>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <div class="tt-price">{{ number_format($product->price) }}</div>
+                            </td>
+                            <td>
+                                <div class="tt-price subtotal">
+                                    @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0
+                                        @else {{ number_format($product->price-$product->off_price)}}
+                                        @endif
+                                </div>
+                            </td>
+                            <td>
+                                <div class="detach-quantity-desctope">
+                                    <div class="tt-input-counter style-01"><span class="minus-btn"></span>
+                                        <input name="{{ $product->id }}" type="text" @if($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 1)
+                                        value="1" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 1)
+                                            value="1" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 2)
+                                                value="2" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 3)
+                                                    value="3" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 4)
+                                                        value="4"
+                                                        @else
+                                                        value="5"
+                                                        @endif size="5"> <span class="plus-btn"></span></div>
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#" class="tt-btn-close"></a>
+                            </td>
+                        </tr>
+                        @endforeach
 
 
-                            <tr>
-                                <td>
-                                    <div class="tt-product-img"><img src="images/loader.svg" data-src="images/product/product-03.jpg" alt=""></div>
-                                </td>
-                                <td>
-                                    <h2 class="tt-title"><a href="#">Flared Shift Dress</a></h2>
-                                    <ul class="tt-list-description">
-                                        <li>Size: 22</li>
-                                        <li>Color: Green</li>
-                                    </ul>
-                                    <ul class="tt-list-parameters">
-                                        <li>
-                                            <div class="tt-price">$317</div>
-                                        </li>
-                                        <li>
-                                            <div class="detach-quantity-mobile"></div>
-                                        </li>
-                                        <li>
-                                            <div class="tt-price subtotal">$317</div>
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    <div class="tt-price">$317</div>
-                                </td>
-                                <td>
-                                    <div class="detach-quantity-desctope">
-                                        <div class="tt-input-counter style-01"><span class="minus-btn"></span>
-                                            <input type="text" value="1" size="5"> <span class="plus-btn"></span></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="tt-price subtotal">$317</div>
-                                </td>
-                                <td>
-                                    <a href="#" class="tt-btn-close"></a>
-                                </td>
-                            </tr>
 
-
-
-                        </tbody>
-                    </table>
-                    <div class="tt-shopcart-btn">
-                        <div class="col-left"><a class="btn-link" href="#"><i class="icon-e-19"></i>بازگشت به فروشگاه</a></div>
-                        <div class="col-right"><a class="btn-link" href="#"><i class="icon-h-02"></i>حدف تمامی موارد از سب خرید</a> <a class="btn-link" href="#"><i class="icon-h-48"></i>بروزرسانی سبد خرید</a></div>
-                    </div>
+                    </tbody>
+                </table>
+                <div class="tt-shopcart-btn d-flex input-group-append justify-content-end iranyekan">
+                    <button type="submit" class="btn bg-blue-omid mt-4 text-white rounded">ثبت و ادامه</button>
+                    </form>
                 </div>
-                <div class="tt-shopcart-col">
+            </div>
+            @endisset
+
+            {{-- <div class="tt-shopcart-col">
                     <div class="row">
                         <div class="col-md-6 col-lg-4">
                             <div class="tt-shopcart-box">
@@ -140,13 +161,43 @@
                                 </table><a href="#" class="btn btn-lg"><span class="icon icon-check_circle"></span>تسویه حساب</a></div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> --}}
         </div>
     </div>
+</div>
 
-		@endsection
+@endsection
 
-		@section('footerScripts')
+@section('footerScripts')
+  <script>
+      $(document).on('click', '#removeProduct', function(e) {
+          e.preventDefault();
+          var id = $(this).data('id');
+          var cart = $(this).data('cart');
+          swal("آیا اطمینان دارید؟", {
+                  dangerMode: true,
+                  buttons: ["انصراف", "حذف"],
 
-		@endsection
+              })
+              .then(function(isConfirm) {
+                  if (isConfirm) {
+                      $.ajax({
+                          type: "post",
+                          url: "{{url('user-cart/remove')}}",
+                          data: {
+                              id: id,
+                              cart: cart,
+                              "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                          },
+                          success: function(data) {
+                              location.reload();
+
+                          }
+                      });
+                  } else {
+                      swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                  }
+              });
+      });
+  </script>
+@endsection
