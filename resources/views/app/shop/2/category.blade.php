@@ -119,7 +119,7 @@
 						<div class="tt-collapse-content">
 							<ul class="tt-list-inline">
 								@foreach($shopTags as $shopTag)
-								<li><a href="#">{{ $shopTag->name }}</a></li>
+								<li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$shopTag->name]) }}">{{ $shopTag->name }}</a></li>
 								@endforeach
 							</ul>
 						</div>

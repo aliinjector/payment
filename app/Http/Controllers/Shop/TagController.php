@@ -17,18 +17,18 @@ class TagController extends Controller
       $tagName = Tag::where('name', $name)->get()->first()->name;
       $brands = $shop->brands;
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
-          $minPrice = $request->minprice;
-          $maxPrice = $request->maxprice;
-          $filterBy = $request->type;
-          $sortBy = $request->sortBy['field'];
-          if($shop->template->folderName == 2){
-            $sortBy_array = explode('|', $request->sortBy['field']);
-            $sortBy = $sortBy_array[0];
-            $orderBy = $sortBy_array[1];
-          }
-          else{
-            $orderBy = $request->sortBy['orderBy'];
-          }
+        $minPrice = $request->minprice;
+        $maxPrice = $request->maxprice;
+        $filterBy = $request->type;
+        $sortBy = $request->sortBy['field'];
+        if($shop->template->folderName == 2){
+          $sortBy_array = explode('|', $request->sortBy['field']);
+          $sortBy = $sortBy_array[0];
+          $orderBy = $sortBy_array[1];
+        }
+        else{
+          $orderBy = $request->sortBy['orderBy'];
+        }
           $perPage = 8;
           if ($request->type == 'all') {
               $products = Tag::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->orderBy($sortBy, $orderBy)->paginate($perPage);
