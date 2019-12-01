@@ -511,9 +511,12 @@
                             </div>
                             <!-- /tt-search -->
                             <!-- tt-cart -->
+                            @auth
                             <div class="tt-desctop-parent-cart tt-parent-box">
                                 <div class="tt-cart tt-dropdown-obj" data-tooltip="سبد خرید" data-tposition="bottom">
-                                    <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart">3</span></button>
+                                    <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart">  @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
+                                          @else 0
+                                          @endif</span></button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
                                             <h6 class="tt-title">سبد خرید</h6>
@@ -528,48 +531,29 @@
                                     </a> -->
                                                 <div class="tt-cart-content">
                                                     <div class="tt-cart-list">
+                                                      @foreach ($products as $product)
                                                         <div class="tt-item">
                                                             <a href="product.html">
-                                                                <div class="tt-item-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-01.jpg" alt=""></div>
+                                                                <div class="tt-item-img"><img src="{{ $product->image['80,80'] }}" data-src="{{ $product->image['80,80'] }}" alt=""></div>
                                                                 <div class="tt-item-descriptions">
-                                                                    <h2 class="tt-title">عنوان محصول</h2>
+                                                                    <h2 class="tt-title">{{ $product->title }}</h2>
                                                                     <ul class="tt-add-info">
-                                                                        <li>زرد, سایز 15,</li>
-                                                                        <li>سازنده: اپل</li>
+                                                                        <li>زرد</li>
                                                                     </ul>
-                                                                    <div class="tt-quantity">1 X</div>
-                                                                    <div class="tt-price">تومان 12</div>
+                                                                    <div class="tt-quantity">{{ $product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }} عدد</div><br />
+                                                                    <div class="tt-price">{{ number_format($product->price) }} تومان</div>
                                                                 </div>
                                                             </a>
                                                             <div class="tt-item-close">
                                                                 <a href="#" class="tt-btn-close"></a>
                                                             </div>
                                                         </div>
-                                                        <div class="tt-item">
-                                                            <a href="product.html">
-                                                                <div class="tt-item-img"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/product/product-02.jpg" alt=""></div>
-                                                                <div class="tt-item-descriptions">
-                                                                    <h2 class="tt-title">عنوان محصول</h2>
-                                                                    <ul class="tt-add-info">
-                                                                        <li>زرد, سایز 15,</li>
-                                                                        <li>سازنده: اپل</li>
-                                                                    </ul>
-                                                                    <div class="tt-quantity">1 X</div>
-                                                                    <div class="tt-price">تومان 18</div>
-                                                                </div>
-                                                            </a>
-                                                            <div class="tt-item-close">
-                                                                <a href="#" class="tt-btn-close"></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="tt-cart-total-row">
-                                                        <div class="tt-cart-total-title">کل:</div>
-                                                        <div class="tt-cart-total-price">تومان 324</div>
+                                                      @endforeach
+
                                                     </div>
                                                     <div class="tt-cart-btn">
                                                         <div class="tt-item"><a href="#" class="btn">تسویه حساب</a></div>
-                                                        <div class="tt-item"><a href="shopping_cart_02.html" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a href="shopping_cart_02.html" class="btn btn-border tt-hidden-desctope">مشاهده سبد
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
                                                                 خرید</a></div>
                                                     </div>
                                                 </div>
@@ -578,6 +562,7 @@
                                     </div>
                                 </div>
                             </div>
+                          @endauth
                             <!-- /tt-cart -->
                             <!-- tt-account -->
                             <div class="tt-desctop-parent-account tt-parent-box">

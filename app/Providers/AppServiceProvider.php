@@ -21,8 +21,13 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        //
-    }
+     public function boot()
+   {
+       view()->composer('app.shop.2.layouts.master', function($view) {
+           if (\Auth::check()){
+               $products = \Auth::user()->cart()->get()->first()->products();
+               $view->with('products', $products);
+           }
+       });
+   }
 }
