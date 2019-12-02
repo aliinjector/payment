@@ -11,10 +11,10 @@
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet" href="/app/shop/2/css/style.css">
     <link href="/app/shop/1/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/1/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/app/shop/2/css/style.css">
+    <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/app/shop/2/css/custom.css">
     <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
