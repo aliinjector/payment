@@ -634,7 +634,7 @@
                     <div class="tt-header-holder">
                         <div class="tt-obj-menu obj-aligment-center">
                             <!-- tt-menu -->
-                            <div class="collapse navbar-collapse">
+                            <div class="navbar-collapse">
                                 <div class="tt-desctop-menu tt-menu-small">
                                     <nav>
                                         <ul>
