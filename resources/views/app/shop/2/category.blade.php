@@ -222,8 +222,9 @@
 									<div class="tt-image-box">
 										<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
 										<a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-										<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}"
-												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a></div>
+										<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img
+												  src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg"
+												  alt=""></span></a></div>
 									<div class="tt-description">
 										<div class="tt-row">
 											<ul class="tt-add-info">
@@ -231,10 +232,18 @@
 											</ul>
 											<div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
 										</div>
-										<h2 class="tt-title"><a href="product.html">{{ $product->title }}</a></h2>
+										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">{{ $product->title }}</a></h2>
 										<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
 										<div class="tt-product-inside-hover">
-											<div class="tt-row-btn"><a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">افزودن به سبد خرید</a></div>
+											<form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+												@csrf
+												<input type="hidden" name="product_id" value="{{$product->id}}">
+												<button type="submit" class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
+													@if($product->type == 'file') دریافت فایل
+														@else اضافه به سبد خرید
+														@endif</button>
+											</form>
+											{{-- <div class="tt-row-btn"><a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">افزودن به سبد خرید</a></div> --}}
 											<div class="tt-row-btn">
 												<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
 												<a href="#" class="tt-btn-wishlist"></a>
