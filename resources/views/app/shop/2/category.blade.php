@@ -1,7 +1,40 @@
 @extends('app.shop.2.layouts.master')
 @section('content')
-	
+
 <style media="screen">
+	.btn-outline-secondary.active,
+	.btn-outline-secondary:active,
+	.btn-outline-secondary:hover,
+	.btn-outline-secondary:not(:disabled):not(.disabled).active,
+	.btn-outline-secondary:not(:disabled):not(.disabled):active,
+	.btn-secondary.active,
+	.btn-secondary.disabled,
+	.btn-secondary.focus,
+	.btn-secondary:active,
+	.btn-secondary:disabled,
+	.btn-secondary:focus,
+	.btn-secondary:hover,
+	.btn-secondary:not(:disabled):not(.disabled).active,
+	.btn-secondary:not(:disabled):not(.disabled):active,
+	.open>.dropdown-toggle.btn-secondary,
+	.show>.btn-outline-secondary.dropdown-toggle,
+	.show>.btn-secondary.dropdown-toggle,
+	a.bg-secondary:focus,
+	a.bg-secondary:hover,
+	button.bg-secondary:focus,
+	button.bg-secondary:hover {
+		background-color: #2879fe !important;
+		color: #f3f6f7 !important;
+	}
+
+	.btn-outline-secondary {
+		color: #2879fe !important;
+	}
+
+	.btn {
+		background: none !important;
+	}
+
 	.ty-compact-list {
 		padding: 5px 5px 5px 0px;
 		float: left;
@@ -15,11 +48,15 @@
 		border-bottom: 1px dashed #2879fe;
 		width: 25%;
 	}
-	.ui-slider-range{
-		background-color: #2979fe!important;
+
+	.ui-slider-range {
+		background-color: #2979fe !important;
 	}
-	.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{
-		background-color: grey!important;
+
+	.ui-state-default,
+	.ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+		background-color: grey !important;
 	}
 </style>
 <div id="tt-pageContent">
@@ -52,7 +89,6 @@
 							<form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
 
 								<ul class="tt-list-row">
-									<input type="hidden" class="available-order-1" name="type" value="all">
 									<input type="text" id="available-price-1" class="w-100 p-2 iranyekan font-14" style="border:0; color:#2979FE !important; font-weight:bold;">
 									<input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
 									<input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
@@ -64,21 +100,20 @@
 						<h3 class="tt-collapse-title">فیلتر بر اساس نوع کالا</h3>
 						<div class="tt-collapse-content">
 							<div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
-									<label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
-											<input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
-									</label>
-									<label id="available-filter-2" for="available-filter-2" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan"
-										style="cursor:pointer">
-											<input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
-									</label>
-									<label id="available-filter-3" for="available-filter-3" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan"
-										style="cursor:pointer">
-											<input type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
-									</label>
-									<label id="available-filter-4" for="available-filter-4" class="border-top-down-radius-0 btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan"
-										style="cursor:pointer">
-											<input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
-									</label>
+								<label id="available-filter-1" for="available-filter-1" class="rounded btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
+									<input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
+								</label>
+								<label id="available-filter-2" for="available-filter-2" class="rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan"
+								  style="cursor:pointer">
+									<input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
+								</label>
+								<label id="available-filter-3" for="available-filter-3" class="rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan"
+								  style="cursor:pointer">
+									<input type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
+								</label>
+								<label id="available-filter-4" for="available-filter-4" class="rounded btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan" style="cursor:pointer">
+									<input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
+								</label>
 							</div>
 						</div>
 					</div>
@@ -223,6 +258,22 @@
 @section('footerScripts')
 <script>
 	$(document).ready(function() {
+		$('#available-filter-1').click(function() {
+			setInterval("$('#submit').submit()", 700);
+		});
+		$('#available-filter-2').click(function() {
+			setInterval("$('#submit').submit()", 700);
+		});
+		$('#available-filter-3').click(function() {
+			setInterval("$('#submit').submit()", 700);
+		});
+		$('#available-filter-4').click(function() {
+			setInterval("$('#submit').submit()", 700);
+		});
+	});
+</script>
+<script>
+	$(document).ready(function() {
 		$("#mySlider").slider({
 			range: true,
 			min: 1000,
@@ -254,13 +305,13 @@
 		setInterval("$('#submit').submit()", 800);
 	});
 	$('#available-price-min').click(function() {
-					 $('.available-price-min').attr('checked', true);
-					 setInterval("$('#submit').submit()", 800);
-			 });
-			 $('#mySlider').click(function() {
-					 $('.available-price-max').attr('checked', true);
-					 setInterval("$('#submit').submit()", 800);
-			 });
+		$('.available-price-min').attr('checked', true);
+		setInterval("$('#submit').submit()", 800);
+	});
+	$('#mySlider').click(function() {
+		$('.available-price-max').attr('checked', true);
+		setInterval("$('#submit').submit()", 800);
+	});
 </script>
 <script>
 	if ($('.ty-compact-list').length > 5) {

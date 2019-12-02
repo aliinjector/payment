@@ -24,7 +24,7 @@
     @yield('headerScripts')
     <style>
         header .tt-desctop-menu .dropdown-menu {
-            padding: 33px 5px 27px 39px!important;
+            padding: 33px 5px 27px 39px !important;
         }
 
         .dropdown-menu .dropdown-item.active,
