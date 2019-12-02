@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script src="/app/shop/1/assets/js/jquery.min.js"></script>
     <meta charset="utf-8">
     <title>فروشگاه امید الکترونیک</title>
     <meta name="keywords" content="HTML5 Template">
@@ -11,18 +12,30 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="stylesheet" href="/app/shop/2/css/style.css">
+    <link href="/app/shop/1/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
+    <link href="/app/shop/1/assets/css/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/app/shop/2/css/custom.css">
     <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
-    <script src="/app/shop/1/assets/js/jquery.min.js"></script>
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 
 
     @yield('headerScripts')
     <style>
-    .tt-desctop-menu {
-      display: block!important;
-    }
+        .tt-filters-options .tt-quantity>a,
+        .tt-filters-options .tt-quantity>a:active,
+        .tt-filters-options .tt-quantity>a:focus {
+            font-family: wokiee !important;
+            color: #191919;
+            opacity: .15;
+            transition: opacity .2s linear;
+        }
+
+        .tt-desctop-menu {
+            display: block !important;
+        }
+
         .dropdown-menu {
             width: 130px !important;
             display: none !important;
@@ -516,9 +529,11 @@
                             @auth
                             <div class="tt-desctop-parent-cart tt-parent-box">
                                 <div class="tt-cart tt-dropdown-obj" data-tooltip="سبد خرید" data-tposition="bottom">
-                                    <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart">  @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
-                                          @else 0
-                                          @endif</span></button>
+                                    <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart">
+                                            @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
+                                                @else 0
+                                                @endif
+                                        </span></button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
                                             <h6 class="tt-title">سبد خرید</h6>
@@ -527,14 +542,10 @@
                                         <div class="tt-dropdown-inner">
                                             <div class="tt-cart-layout">
                                                 <!-- layout emty cart -->
-                                                <!-- <a href="empty-cart.html" class="tt-cart-empty">
-                                        <i class="icon-f-39"></i>
-                                        <p>No Products in the Cart</p>
-                                    </a> -->
                                                 <div class="tt-cart-content">
                                                     <div class="tt-cart-list">
-                                                      @foreach ($products as $product)
-                                                        <div class="tt-item">
+                                                        @foreach ($products as $product)
+                                                        <div class="tt-item border-btm">
                                                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">
                                                                 <div class="tt-item-img"><img src="{{ $product->image['80,80'] }}" data-src="{{ $product->image['80,80'] }}" alt=""></div>
                                                                 <div class="tt-item-descriptions">
@@ -546,16 +557,14 @@
                                                                     <div class="tt-price">{{ number_format($product->price) }} تومان</div>
                                                                 </div>
                                                             </a>
-                                                            {{-- <div class="tt-item-close"> --}}
-                                                                {{-- <a href="#" class="tt-btn-close"></a> --}}
-                                                            {{-- </div> --}}
                                                         </div>
-                                                      @endforeach
+                                                        @endforeach
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item"><a href="#" class="btn">تسویه حساب</a></div>
-                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
+                                                        <div class="tt-item bg-blue"><a href="#" class="btn text-white">تسویه حساب</a></div>
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a
+                                                              href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
                                                                 خرید</a></div>
                                                     </div>
                                                 </div>
@@ -564,7 +573,7 @@
                                     </div>
                                 </div>
                             </div>
-                          @endauth
+                            @endauth
                             <!-- /tt-cart -->
                             <!-- tt-account -->
                             <div class="tt-desctop-parent-account tt-parent-box">
