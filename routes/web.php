@@ -128,4 +128,6 @@ Route::namespace('Shop')->group(function () {
     Route::post('/{shop}/register', 'ShopController@register')->name('template.register');
     Route::get('/{shop}/login', 'ShopController@login')->name('template.login.show');
 
+    Route::post('/{shop}/subscribe', 'SubscribersController@subscribe')->name('subscribe');
+
 });
