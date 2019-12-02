@@ -23,6 +23,28 @@
 
     @yield('headerScripts')
     <style>
+        header .tt-desctop-menu .dropdown-menu {
+            padding: 33px 5px 27px 39px!important;
+        }
+
+        .dropdown-menu .dropdown-item.active,
+        .dropdown-menu .dropdown-item:active,
+        .dropdown-menu .dropdown-item:hover {
+            background-color: #fff !important;
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            background-color: #fff !important;
+
+        }
+
+        .dropdown-item.active,
+        .dropdown-item:active {
+            background-color: #fff !important;
+
+        }
+
         .tt-filters-options .tt-quantity>a,
         .tt-filters-options .tt-quantity>a:active,
         .tt-filters-options .tt-quantity>a:focus {
@@ -37,6 +59,7 @@
         }
 
         .dropdown-menu {
+            left: auto !important;
             width: 130px !important;
             display: none !important;
         }
@@ -50,7 +73,7 @@
         .dropdown-submenu>.dropdown-menu {
             top: -33px !important;
             width: 130px !important;
-            right: 72% !important;
+            right: 94% !important;
             -webkit-border-radius: 0 6px 6px 6px;
             -moz-border-radius: 0 6px 6px;
             border-radius: 0 6px 6px 6px;
@@ -58,6 +81,8 @@
 
         .dropdown-submenu:hover>.dropdown-menu {
             display: block !important;
+            right: 120% !important;
+
         }
 
         .dropdown:hover>.dropdown-menu {
@@ -641,7 +666,7 @@
                                             <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}">صفحه اصلی</a></li>
 
                                             @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
-                                            <div class="dropdown mx-3" style="top:30px!important">
+                                            <div class="dropdown mx-3 font-10" style="top:30px!important">
                                                 <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
                                                     <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal" style="color:
                                                 #465f73!important;background-color:transparent">
@@ -759,7 +784,7 @@
                                 <h4 class="tt-collapse-title">عضویت در خبرنامه</h4>
                                 <div class="tt-collapse-content">
                                     <p>جهت عضویت در سیستم خبرنامه، آدرس ایمیل خودرا در فرم زیر وارد نموده و برروی گزینه عضویت کلیک نمایید.</p>
-                                    <form  class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
+                                    <form class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
                                         <div class="form-group">
                                             @csrf
                                             <input type="email" name="email" class="form-control" placeholder="آدرس ایمیل">
