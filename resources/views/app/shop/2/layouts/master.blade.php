@@ -542,14 +542,10 @@
                                         <div class="tt-dropdown-inner">
                                             <div class="tt-cart-layout">
                                                 <!-- layout emty cart -->
-                                                <!-- <a href="empty-cart.html" class="tt-cart-empty">
-                                        <i class="icon-f-39"></i>
-                                        <p>No Products in the Cart</p>
-                                    </a> -->
                                                 <div class="tt-cart-content">
                                                     <div class="tt-cart-list">
                                                         @foreach ($products as $product)
-                                                        <div class="tt-item">
+                                                        <div class="tt-item border-btm">
                                                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">
                                                                 <div class="tt-item-img"><img src="{{ $product->image['80,80'] }}" data-src="{{ $product->image['80,80'] }}" alt=""></div>
                                                                 <div class="tt-item-descriptions">
@@ -561,15 +557,12 @@
                                                                     <div class="tt-price">{{ number_format($product->price) }} تومان</div>
                                                                 </div>
                                                             </a>
-                                                            {{-- <div class="tt-item-close"> --}}
-                                                            {{-- <a href="#" class="tt-btn-close"></a> --}}
-                                                            {{-- </div> --}}
                                                         </div>
                                                         @endforeach
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item"><a href="#" class="btn">تسویه حساب</a></div>
+                                                        <div class="tt-item bg-blue"><a href="#" class="btn text-white">تسویه حساب</a></div>
                                                         <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a
                                                               href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
                                                                 خرید</a></div>
