@@ -759,9 +759,10 @@
                                 <h4 class="tt-collapse-title">عضویت در خبرنامه</h4>
                                 <div class="tt-collapse-content">
                                     <p>جهت عضویت در سیستم خبرنامه، آدرس ایمیل خودرا در فرم زیر وارد نموده و برروی گزینه عضویت کلیک نمایید.</p>
-                                    <form id="newsletterform" class="form-inline form-default" method="post" novalidate="novalidate" action="#">
+                                    <form  class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
                                         <div class="form-group">
-                                            <input type="text" name="email" class="form-control" placeholder="آدرس ایمیل">
+                                            @csrf
+                                            <input type="email" name="email" class="form-control" placeholder="آدرس ایمیل">
                                             <button type="submit" class="btn">عضویت</button>
                                         </div>
                                     </form>

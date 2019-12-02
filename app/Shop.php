@@ -69,6 +69,17 @@ class Shop extends Model
         return $this->hasMany('App\Tag');
     }
 
+    public function subscribers()
+    {
+        return $this->hasMany('App\Subscriber');
+    }
+
+    public function newsletters()
+    {
+        return $this->hasMany('App\Newsletter');
+    }
+
+
 
 
 }

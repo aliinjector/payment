@@ -4,10 +4,10 @@
         <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
         <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>
         <a style="margin: auto;" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
-          <span class="tt-img">
-            <img src="/app/shop/2/images/loader.svg" data-src="/{{ $product->galleries->first()->filename }}" alt="">
+            <span class="tt-img">
+            <img src="/app/shop/2/images/loader.svg" data-src="{{ $product->image['original'] }}" alt="">
           </span>
-          @if($product->galleries[1]->filename)
+          @if(0)
             <span class="tt-img-roll-over">
               <img src="/app/shop/2/images/loader.svg" data-src="/{{ $product->galleries[1]->filename }}" alt="">
             </span>
