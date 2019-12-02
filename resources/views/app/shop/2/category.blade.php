@@ -1,5 +1,6 @@
 @extends('app.shop.2.layouts.master')
 @section('content')
+	
 <style media="screen">
 	.ty-compact-list {
 		padding: 5px 5px 5px 0px;
@@ -57,6 +58,28 @@
 									<input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
 									<div id="mySlider"></div>
 								</ul>
+						</div>
+					</div>
+					<div class="tt-collapse">
+						<h3 class="tt-collapse-title">فیلتر بر اساس نوع کالا</h3>
+						<div class="tt-collapse-content">
+							<div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
+									<label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
+											<input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
+									</label>
+									<label id="available-filter-2" for="available-filter-2" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan"
+										style="cursor:pointer">
+											<input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
+									</label>
+									<label id="available-filter-3" for="available-filter-3" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan"
+										style="cursor:pointer">
+											<input type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
+									</label>
+									<label id="available-filter-4" for="available-filter-4" class="border-top-down-radius-0 btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan"
+										style="cursor:pointer">
+											<input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
+									</label>
+							</div>
 						</div>
 					</div>
 					<div class="tt-collapse">
