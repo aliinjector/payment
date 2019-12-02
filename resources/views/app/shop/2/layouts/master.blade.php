@@ -66,7 +66,7 @@
 
         .dropdown-submenu {
             position: relative;
-            width: 130px !important;
+            width: 130% !important;
 
         }
 
@@ -81,7 +81,7 @@
 
         .dropdown-submenu:hover>.dropdown-menu {
             display: block !important;
-            right: 120% !important;
+            right: 100% !important;
 
         }
 
