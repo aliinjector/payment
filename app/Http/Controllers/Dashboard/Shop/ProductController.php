@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Tag;
 use App\Shop;
 use App\Product;
+use App\Brand;
+use App\Color;
 use App\Dashboard;
 use App\ProductCategory;
 use Illuminate\Http\Request;
@@ -31,8 +33,9 @@ class ProductController extends Controller
           else{
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
               $brands = \Auth::user()->shop()->first()->brands()->get();
+              $colors = Color::all();
               $products = \Auth::user()->shop()->first()->products()->get();
-              return view('dashboard.shop.product', compact('productCategories','products', 'brands'));
+              return view('dashboard.shop.product', compact('productCategories','products', 'brands', 'colors'));
               }
             }
     }

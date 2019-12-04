@@ -3,6 +3,9 @@
 <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
 <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <div class="page-content">
     <div class="container-fluid">
@@ -108,7 +111,8 @@
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span>
+                                            </div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
@@ -140,7 +144,7 @@
                                                 </option>
                                                 @foreach($brands as $brand)
                                                 <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
-                                                     {{ $brand->name }}
+                                                    {{ $brand->name }}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -171,33 +175,14 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" placeholder="#122272" id="example-color-input" name="color_1">
-                                            <div class="input-group-append"><a href="#" class="color1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
-                                                    </span></a></div>
-                                        </div>
-                                        <div class="input-group mt-3 d-none color_1">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_2">
-                                            <div class="input-group-append"><a href="#" class="color2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
-                                                    </span></a></div>
-                                        </div>
-                                        <div class="input-group mt-3 d-none color_2">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_3">
-                                            <div class="input-group-append"><a href="#" class="color3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
-                                                    </span></a></div>
-                                        </div>
-                                        <div class="input-group mt-3 d-none color_3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_4">
-                                            <div class="input-group-append"><a href="#" class="color4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن رنگ
-                                                    </span></a></div>
-                                        </div>
-                                        <div class="input-group mt-3 d-none color_4">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
-                                            <input class="form-control h-50px" type="color" value="#a89d8e" id="example-color-input" name="color_5">
 
+                                            <select class="selectpicker" multiple data-live-search="true">
+                                              @foreach($colors as $color)
+                                                <option>{{ $color->name }}</option>
+                                              @endforeach
+                                            </select>
                                         </div>
+
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
                                             <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
@@ -375,8 +360,8 @@
                                                 <option style="font-family: BYekan!important;" value="null">فاقد برند
                                                 </option>
                                                 @foreach($brands as $brand)
-                                                  <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
-                                                  </option>
+                                                <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -612,8 +597,8 @@
                                                 <option style="font-family: BYekan!important;" value="null">فاقد برند
                                                 </option>
                                                 @foreach($brands as $brand)
-                                                  <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
-                                                  </option>
+                                                <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -815,8 +800,8 @@
                                                 <option style="font-family: BYekan!important;" value="null">فاقد برند
                                                 </option>
                                                 @foreach($brands as $brand)
-                                                  <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
-                                                  </option>
+                                                <option {{ $brand->id == $product->brand_id ? 'selected' : ''}} value="{{ $brand->id }}">{{ $brand->name }}
+                                                </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -982,11 +967,12 @@
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات فایل :</span></div>
-                                            <input  value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
+                                            <input value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span>
+                                            </div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
@@ -1018,7 +1004,7 @@
                                                 </option>
                                                 @foreach($brands as $brand)
                                                 <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
-                                                     {{ $brand->name }}
+                                                    {{ $brand->name }}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -1203,7 +1189,8 @@
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span>
+                                            </div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
                                                 <option style="font-family: BYekan!important;">دسته بندی وجود ندارد لطفا ابتدا دسته بندی ایجاد کنید
@@ -1235,7 +1222,7 @@
                                                 </option>
                                                 @foreach($brands as $brand)
                                                 <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
-                                                     {{ $brand->name }}
+                                                    {{ $brand->name }}
                                                 </option>
                                                 @endforeach
                                             </select>
@@ -1425,7 +1412,8 @@
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                                 <td class="sorting_1" style="width:5%">{{ $product->id }}</td>
                                                 <td class="sorting_1 w-25 "><img src="{{ $product->image['80,80'] }}" class="rounded" alt="">
-                                                    <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product', ['shop'=>\Auth::user()->shop()->first()->english_name, 'id'=>$product->id]) }}" target="_blank" class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
+                                                    <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product', ['shop'=>\Auth::user()->shop()->first()->english_name, 'id'=>$product->id]) }}" target="_blank"
+                                                          class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                                 </td>
                                                 <td>{{ $product->productCategory()->first()->name }}</td>
                                                 <td>{{ number_format($product->price) }}</td>
@@ -1521,7 +1509,6 @@
 <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
-
 <script>
     $(".change").click(function() {
         var id = $(this).data("id");
@@ -1649,4 +1636,14 @@
                 $('#AddServiceModal').modal('show');
             </script>
             @endif
+            <script>
+            $( window ).on( "load", function() {
+            $('.filter-option-inner-inner').text('موردی انتخاب نشده است');
+            $('.show-tick').addClass("col-lg-10");
+            $('.filter-option-inner-inner').addClass("d-flex");
+            $('.bs-placeholder').removeClass("btn-light");
+            $('.show-tick').addClass("p-1");
+            $('.show-tick').addClass("border");
+            });
+            </script>
             @stop

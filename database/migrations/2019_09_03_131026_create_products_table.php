@@ -27,11 +27,7 @@ class CreateProductsTable extends Migration
             $table->string('type');
             $table->text('description');
             $table->text('image')->nullable();
-            $table->text('color_1')->nullable();
-            $table->text('color_2')->nullable();
-            $table->text('color_3')->nullable();
-            $table->text('color_4')->nullable();
-            $table->text('color_5')->nullable();
+            $table->text('color')->nullable();
             $table->text('feature_1')->nullable();
             $table->text('feature_2')->nullable();
             $table->text('feature_3')->nullable();
