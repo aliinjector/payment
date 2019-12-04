@@ -2,62 +2,42 @@
 @section('content')
 
 <style media="screen">
-	.btn-outline-secondary.active,
-	.btn-outline-secondary:active,
-	.btn-outline-secondary:hover,
-	.btn-outline-secondary:not(:disabled):not(.disabled).active,
-	.btn-outline-secondary:not(:disabled):not(.disabled):active,
-	.btn-secondary.active,
-	.btn-secondary.disabled,
-	.btn-secondary.focus,
-	.btn-secondary:active,
-	.btn-secondary:disabled,
-	.btn-secondary:focus,
-	.btn-secondary:hover,
-	.btn-secondary:not(:disabled):not(.disabled).active,
-	.btn-secondary:not(:disabled):not(.disabled):active,
-	.open>.dropdown-toggle.btn-secondary,
-	.show>.btn-outline-secondary.dropdown-toggle,
-	.show>.btn-secondary.dropdown-toggle,
-	a.bg-secondary:focus,
-	a.bg-secondary:hover,
-	button.bg-secondary:focus,
-	button.bg-secondary:hover {
-		background-color: #2879fe !important;
-		color: #f3f6f7 !important;
-	}
-
-	.btn-outline-secondary {
-		color: #2879fe !important;
-	}
-
-	.btn {
-		background: none !important;
-	}
-
-	.ty-compact-list {
-		padding: 5px 5px 5px 0px;
-		float: left;
-		width: 100%;
-	}
-
-	.show-more {
-		display: none;
-		cursor: pointer;
-		color: #2879fe;
-		border-bottom: 1px dashed #2879fe;
-		width: 25%;
-	}
-
-	.ui-slider-range {
+.ui-slider-range {
 		background-color: #2979fe !important;
-	}
+}
+.btn-outline-secondary.active,
+.btn-outline-secondary:active,
+.btn-outline-secondary:hover,
+.btn-outline-secondary:not(:disabled):not(.disabled).active,
+.btn-outline-secondary:not(:disabled):not(.disabled):active,
+.btn-secondary.active,
+.btn-secondary.disabled,
+.btn-secondary.focus,
+.btn-secondary:active,
+.btn-secondary:disabled,
+.btn-secondary:focus,
+.btn-secondary:hover,
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.open>.dropdown-toggle.btn-secondary,
+.show>.btn-outline-secondary.dropdown-toggle,
+.show>.btn-secondary.dropdown-toggle,
+a.bg-secondary:focus,
+a.bg-secondary:hover,
+button.bg-secondary:focus,
+button.bg-secondary:hover {
+    background-color: #2879fe !important;
+    color: #f3f6f7 !important;
+}
 
-	.ui-state-default,
-	.ui-widget-content .ui-state-default,
-	.ui-widget-header .ui-state-default {
-		background-color: grey !important;
-	}
+.btn-outline-secondary {
+    color: #2879fe !important;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    background-color: grey !important;
+}
 </style>
 <div id="tt-pageContent">
 	<div class="container-indent">
