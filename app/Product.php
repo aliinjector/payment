@@ -15,7 +15,7 @@ class Product extends Model
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [
-    'image' => 'array'
+    'image' => 'array','color' => 'array'
 ];
 
 public function searchableAs()
@@ -40,6 +40,10 @@ public function searchableAs()
  public function tags()
  {
      return $this->belongsToMany('App\Tag');
+ }
+ public function colors()
+ {
+     return $this->belongsToMany('App\Color');
  }
  public function carts()
  {

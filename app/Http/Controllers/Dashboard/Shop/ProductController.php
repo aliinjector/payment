@@ -85,26 +85,6 @@ class ProductController extends Controller
       $request->enable = 0;
      else
      $request->enable = 1;
-     //get colors
-     if($request->color_2 == '#a89d8e')
-      $request->color_2 = null;
-      else
-      $request->color_2 = $request->color_2;
-
-      if($request->color_3 == '#a89d8e')
-       $request->color_3 = null;
-       else
-       $request->color_3 = $request->color_3;
-
-      if($request->color_4 == '#a89d8e')
-       $request->color_4 = null;
-       else
-       $request->color_4 = $request->color_4;
-
-      if($request->color_5 == '#a89d8e')
-       $request->color_5 = null;
-       else
-       $request->color_5 = $request->color_5;
        //check options of products
        if ( $request->fast_sending != "on")
          $request->fast_sending = 0;
@@ -143,13 +123,8 @@ class ProductController extends Controller
       $shop = \Auth::user()->shop()->first()->products()->create([
         'title' => $request->title,
         'type' => $request->type,
-        'color_1' => $request->color_1,
         'productCat_id' => $request->productCat_id,
         'brand_id' => $request->brand_id,
-        'color_2' => $request->color_2,
-        'color_3' => $request->color_3,
-        'color_4' => $request->color_4,
-        'color_5' => $request->color_5,
         'amount' => $request->amount,
         'weight' => $request->weight,
         'price' => $this->fa_num_to_en($request->price),
@@ -174,11 +149,13 @@ class ProductController extends Controller
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
-  //add tags to the product
+  //add tags and colors to the product
     if($shop)
     {
-        $tagNames = explode(',',$request->get('tags'));
         $tagIds = [];
+        $colorIds = [];
+        //get all tags of product
+        $tagNames = explode(',',$request->get('tags'));
         foreach($tagNames as $tagName)
         {
             $tag = Tag::firstOrCreate(['name'=>$tagName, 'shop_id' =>Auth::user()->shop()->first()->id]);
@@ -186,6 +163,18 @@ class ProductController extends Controller
             {
               $tagIds[] = $tag->id;
             }
+        }
+        // get all color of product
+        if($request->get('color')){
+          foreach($request->get('color') as $colorName)
+          {
+              $color = Color::firstOrCreate(['id'=>$colorName]);
+              if($color)
+              {
+                $colorIds[] = $color->id;
+              }
+          }
+          $shop->colors()->sync($colorIds);
         }
         $shop->tags()->sync($tagIds);
     }

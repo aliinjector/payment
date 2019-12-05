@@ -176,10 +176,10 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
 
-                                            <select class="selectpicker" multiple data-live-search="true">
-                                              @foreach($colors as $color)
-                                                <option>{{ $color->name }}</option>
-                                              @endforeach
+                                            <select class="selectpicker" multiple data-live-search="true" name="color[]">
+                                                @foreach($colors as $color)
+                                                <option value="{{ $color->id }}">{{ $color->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -1398,6 +1398,8 @@
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت
                                                 </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">رنگ ها
+                                                </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت بعد از تخفیف
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت
@@ -1408,6 +1410,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="byekan">
+                                          {{-- {{ dd($products[0]->color[0]->code) }} --}}
                                             @foreach($products as $product)
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                                 <td class="sorting_1" style="width:5%">{{ $product->id }}</td>
@@ -1417,6 +1420,17 @@
                                                 </td>
                                                 <td>{{ $product->productCategory()->first()->name }}</td>
                                                 <td>{{ number_format($product->price) }}</td>
+                                                <td>
+                                                    <div class="tt-collapse-content" style="display: block;">
+                                                        <ul class="tt-options-swatch options-middle">
+                                                          @foreach($product->colors as $color)
+                                                            <li>
+                                                                <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                                                            </li>
+                                                          @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </td>
                                                 <td>{{ $product->off_price }}</td>
 
                                                 <td>
@@ -1637,13 +1651,13 @@
             </script>
             @endif
             <script>
-            $( window ).on( "load", function() {
-            $('.filter-option-inner-inner').text('موردی انتخاب نشده است');
-            $('.show-tick').addClass("col-lg-10");
-            $('.filter-option-inner-inner').addClass("d-flex");
-            $('.bs-placeholder').removeClass("btn-light");
-            $('.show-tick').addClass("p-1");
-            $('.show-tick').addClass("border");
-            });
+                $(window).on("load", function() {
+                    $('.filter-option-inner-inner').text('موردی انتخاب نشده است');
+                    $('.show-tick').addClass("col-lg-10");
+                    $('.filter-option-inner-inner').addClass("d-flex");
+                    $('.bs-placeholder').removeClass("btn-light");
+                    $('.show-tick').addClass("p-1");
+                    $('.show-tick').addClass("border");
+                });
             </script>
             @stop
