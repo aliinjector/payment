@@ -190,13 +190,8 @@ class ProductController extends Controller
     $shop = \Auth::user()->shop()->first()->products()->create([
     'title' => $request->title,
     'type' => $request->type,
-    'color_1' => $request->color_1,
     'productCat_id' => $request->productCat_id,
     'brand_id' => $request->brand_id,
-    'color_2' => $request->color_2,
-    'color_3' => $request->color_3,
-    'color_4' => $request->color_4,
-    'color_5' => $request->color_5,
     'amount' => $request->amount,
     'weight' => $request->weight,
     'price' => $this->fa_num_to_en($request->price),
@@ -223,20 +218,34 @@ class ProductController extends Controller
   ]);
 
   //add tags to the product
-if($shop)
-{
-    $tagNames = explode(',',$request->get('tags'));
-    $tagIds = [];
-    foreach($tagNames as $tagName)
-    {
-        $tag = Tag::firstOrCreate(['name'=>$tagName]);
-        if($tag)
+  if($shop)
+  {
+      $tagIds = [];
+      $colorIds = [];
+      //get all tags of product
+      $tagNames = explode(',',$request->get('tags'));
+      foreach($tagNames as $tagName)
+      {
+          $tag = Tag::firstOrCreate(['name'=>$tagName, 'shop_id' =>Auth::user()->shop()->first()->id]);
+          if($tag)
+          {
+            $tagIds[] = $tag->id;
+          }
+      }
+      // get all color of product
+      if($request->get('color')){
+        foreach($request->get('color') as $colorName)
         {
-          $tagIds[] = $tag->id;
+            $color = Color::firstOrCreate(['id'=>$colorName]);
+            if($color)
+            {
+              $colorIds[] = $color->id;
+            }
         }
-    }
-    $shop->tags()->sync($tagIds);
-}
+        $shop->colors()->sync($colorIds);
+      }
+      $shop->tags()->sync($tagIds);
+  }
 if ($request->type == 'file') {
     session()->flash('flashModalFile');
 }
@@ -304,31 +313,10 @@ else{
            }
 
 
-
       if ( $request->enable != "on")
       $request->enable = 0;
      else
      $request->enable = 1;
-     if($request->color_2 == '#a89d8e')
-      $request->color_2 = null;
-      else
-      $request->color_2 = $request->color_2;
-
-      if($request->color_3 == '#a89d8e')
-       $request->color_3 = null;
-       else
-       $request->color_3 = $request->color_3;
-
-      if($request->color_4 == '#a89d8e')
-       $request->color_4 = null;
-       else
-       $request->color_4 = $request->color_4;
-
-      if($request->color_5 == '#a89d8e')
-       $request->color_5 = null;
-       else
-       $request->color_5 = $request->color_5;
-
        if ( $request->fast_sending != "on")
          $request->fast_sending = 0;
       else
@@ -360,13 +348,8 @@ else{
       $shop = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
         'title' => $request->title,
         'type' => $request->type,
-        'color_1' => $request->color_1,
         'productCat_id' => $request->productCat_id,
         'brand_id' => $request->brand_id,
-        'color_2' => $request->color_2,
-        'color_3' => $request->color_3,
-        'color_4' => $request->color_4,
-        'color_5' => $request->color_5,
         'amount' => $request->amount,
         'weight' => $request->weight,
         'price' => $this->fa_num_to_en($request->price),
@@ -391,6 +374,34 @@ else{
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
+      if($shop)
+      {
+          $tagIds = [];
+          $colorIds = [];
+          //get all tags of product
+          $tagNames = explode(',',$request->get('tags'));
+          foreach($tagNames as $tagName)
+          {
+              $tag = Tag::firstOrCreate(['name'=>$tagName, 'shop_id' =>Auth::user()->shop()->first()->id]);
+              if($tag)
+              {
+                $tagIds[] = $tag->id;
+              }
+          }
+          // get all color of product
+          if($request->get('color')){
+            foreach($request->get('color') as $colorName)
+            {
+                $color = Color::firstOrCreate(['id'=>$colorName]);
+                if($color)
+                {
+                  $colorIds[] = $color->id;
+                }
+            }
+            \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->colors()->sync($colorIds);
+          }
+          \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->tags()->sync($tagIds);
+      }
       alert()->success('محصول جدید شما باموفقیت ویرایش شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
     }

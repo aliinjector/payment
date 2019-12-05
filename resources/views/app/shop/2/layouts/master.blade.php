@@ -534,7 +534,7 @@
                                                 <div class="tt-cart-content">
                                                     <div class="tt-cart-list">
                                                       @foreach ($products as $product)
-                                                        <div class="tt-item">
+                                                        <div class="tt-item border-bottom p-3">
                                                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">
                                                                 <div class="tt-item-img"><img src="{{ $product->image['80,80'] }}" data-src="{{ $product->image['80,80'] }}" alt=""></div>
                                                                 <div class="tt-item-descriptions">
@@ -554,7 +554,7 @@
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item"><a href="#" class="btn">تسویه حساب</a></div>
+                                                        <div class="tt-item bg-primary"><a href="#" class="btn">تسویه حساب</a></div>
                                                         <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
                                                                 خرید</a></div>
                                                     </div>
