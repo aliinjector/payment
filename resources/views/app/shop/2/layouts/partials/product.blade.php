@@ -1,13 +1,11 @@
 <div class="tt-product thumbprod-center">
     <div style="height: 400px;display:flex;" class="tt-image-box">
         <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
-        <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post">
+        <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="myForm">
             @csrf
 
-              <button type="submit" name="button" class="tt-btn-wishlist">
-                ارسال
-            {{-- <a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a> --}}
-          </button>
+            <a class="tt-btn-wishlist submit" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
+
         </form>
 
         <a href="#" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>

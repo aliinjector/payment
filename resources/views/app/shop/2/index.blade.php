@@ -117,7 +117,7 @@
                                         </ul>
                                     </div>
                                     <div class="tt-product-inside-hover">
-                                      
+
                                         <div class="tt-row-btn"><a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">افزودن به سبد خرید</a></div>
                                         <div class="tt-row-btn">
                                             <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
@@ -485,5 +485,11 @@
 @endsection
 
 @section('footerScripts')
-
+<script>
+$(document).ready(function(){
+  $("a.submit").click(function(){
+      document.getElementById("myForm").submit();
+  });
+});
+</script>
 @endsection

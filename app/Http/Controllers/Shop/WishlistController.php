@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Shop;
+namespace App\Http\Controllers\Shop;
 
 use App\wishlist;
+use App\shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -34,9 +35,22 @@ class WishlistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $shop)
     {
-        dd('hi');
+      $shop =  Shop::where('english_name', $shop)->first();
+      // if(\Auth::user()->wishlist == null){
+      //   $wishlist = new Wishlist;
+      //   $wishlist->user_id = \Auth::user()->id;
+      //   $wishlist->shop_id = $shop->id;
+      //   $wishlist->save();
+      //   return redirect()->back();
+      // }
+      if(\Auth::user()->wishlist == null)
+      {
+              $wish = Wishlist::firstOrCreate(['user_id'=>\Auth::user()->id, 'shop_id' =>$shop]);
+
+          \Auth::user()->wishlist()->sync($wish->id);
+      }
     }
 
     /**
