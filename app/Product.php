@@ -41,6 +41,10 @@ public function searchableAs()
  {
      return $this->belongsToMany('App\Tag');
  }
+ public function wishlist()
+ {
+     return $this->belongsToMany('App\Wishlist');
+ }
  public function colors()
  {
      return $this->belongsToMany('App\Color');

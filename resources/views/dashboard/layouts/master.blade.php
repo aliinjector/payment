@@ -253,7 +253,7 @@ Author: Ali Rahmani
                             <div class="collapse mr-4" id="collapseExample">
                             <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>تنظیمات فروشگاه</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="dripicons-brush"></i>قالب ها</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="fa fa-question-circle"></i>سوالات متداول</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fa fa-question-circle"></i>سوالات متداول</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="fa fa-bell"></i>رویدادها</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="dripicons-calendar"></i> بازخورد مشتریان</a></li>
                             </div>
