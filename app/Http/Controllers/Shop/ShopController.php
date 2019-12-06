@@ -131,8 +131,27 @@
           ]);
 
           alert()->success('حساب کاربری ایجاد شد.', 'انجام شد');
-          return redirect()->route('shop', ['shop' => $shop->english_name] );
+          return redirect()->route('shop', ['shop' => $shop->english_name]);
 
       }
+
+      public function contact($shop)
+      {
+          if (Shop::where('english_name', $shop)->first() == null) {
+              return abort(404);
+          }
+
+          $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
+          $shop = Shop::where('english_name', $shop)->first();
+          $template_folderName = $shop->template->folderName;
+
+          SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
+          SEOTools::setDescription($shop->description);
+          SEOTools::opengraph()->addProperty('type', 'website');
+
+          return view("app.shop.$template_folderName.contact", compact('shop', 'shopCategories'));
+
+      }
+
 
 }

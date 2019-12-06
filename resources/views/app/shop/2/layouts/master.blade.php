@@ -767,13 +767,14 @@
                     </div>
                     <div class="col-md-3 col-lg-3 col-xl-3">
                         <div class="tt-mobile-collapse">
-                            <h4 class="tt-collapse-title">حساب کاربری</h4>
+                            <h4 class="tt-collapse-title">سایر صفحات </h4>
                             <div class="tt-collapse-content">
                                 <ul class="tt-list">
                                     <li><a href="account_order.html">سفارشات</a></li>
                                     <li><a href="page404.html">علاقه مندی ها</a></li>
                                     <li><a href="login.html">ورود</a></li>
-                                    <li><a href="create-account.html">عضویت</a></li>
+                                    <li><a href="{{ route('template.contact', $shop->english_name) }}">درباره ما و تماس</a></li>
+                                    <li><a href="create-account.html">سوالات متداول</a></li>
                                 </ul>
                             </div>
                         </div>

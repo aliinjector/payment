@@ -21,7 +21,7 @@
                                         <div class="alert alert-danger">
                                             <ul>
                                                 @foreach ($errors->all() as $error)
-                                                    <li style="color: red">{{ $error }}</li>
+                                                    <li style="color: white">{{ $error }}</li>
                                                 @endforeach
                                             </ul>
                                         </div>
@@ -101,13 +101,7 @@
                                                     <button class="btn btn-border" type="submit">ایجاد حساب کاربری</button>
                                                 </div>
                                             </div>
-                                            <div class="col-auto align-self-center">
-                                                <div class="form-group">
-                                                    <ul class="additional-links">
-                                                        <li>و یا <a href="#">بازگشت به فروشگاه</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                          
                                         </div>
                                     </form>
                                 </div>

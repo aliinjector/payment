@@ -32,15 +32,15 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-4 ml-sm-auto mr-sm-auto">
                             <div class="tt-contact-info"><i class="tt-icon icon-f-93"></i>
-                                <h6 class="tt-title">شماره تماس:</h6><address>021-22322323:<br>09201010328</address></div>
+                                <h6 class="tt-title">شماره تماس:</h6>{{ $shop->shopContact->tel}}</div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="tt-contact-info"><i class="tt-icon icon-f-24"></i>
-                                <h6 class="tt-title">آدرس:</h6><address>میدان تست,<br>خیابان تست,<br>تهران</address></div>
+                                <h6 class="tt-title">آدرس:</h6><address>{{ $shop->shopContact->address }}</address></div>
                         </div>
                         <div class="col-sm-6 col-md-4">
-                            <div class="tt-contact-info"><i class="tt-icon icon-f-92"></i>
-                                <h6 class="tt-title">ساعات کاری</h6><address>همه روزه <br>8 صبح تا 18 عصر</address></div>
+                            <div class="tt-contact-info"><i class="tt-icon icon-f-93"></i>
+                                <h6 class="tt-title">ایمیل: </h6>{{ $shop->shopContact->shop_email}}</div>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn">ارسال پیام</button>
+                        <button style="color: blue" type="submit" class="btn btn-success">ارسال پیام</button>
                     </div>
                 </form>
             </div>
