@@ -19,6 +19,10 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        'api/*'
+        'api/*',
+        'http://127.0.0.1:8000/*',
+        'https://amargir.net/*',
+        'http://amargir.net/*',
+
     ];
 }

@@ -161,13 +161,15 @@
                                         </thead>
                                         <tbody style="text-align: center" class="iranyekan">
                                           @foreach($users as $user)
-                                          <td>{{ $user->firstName }}</td>
-                                          <td>{{ $user->lastName }}</td>
-                                          <td>{{ $user->email }}</td>
-                                          <td>{{ $user->mobile }}</td>
-                                          <td>{{ $user->created_at }}</td>
-                                          <td>{{ $user->created_at }}</td>
-                                          <td> ویرایش | حذف | لیست خرید ها </td>
+                                          <tr>
+                                              <td>{{ $user->firstName }}</td>
+                                              <td>{{ $user->lastName }}</td>
+                                              <td>{{ $user->email }}</td>
+                                              <td>{{ $user->mobile }}</td>
+                                              <td>{{ $user->created_at }}</td>
+                                              <td>{{ $user->created_at }}</td>
+                                              <td> ویرایش | حذف | لیست خرید ها </td>
+                                          </tr>
                                           @endforeach
                                         </tbody>
                                     </table>

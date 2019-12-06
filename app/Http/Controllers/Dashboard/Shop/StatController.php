@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Stat;
+use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Jenssegers\Agent\Agent;
@@ -18,7 +19,8 @@ class StatController extends Controller
     public function index()
     {
         $shop = \Auth::user()->shop()->first();
-        return view('dashboard.shop.stats', compact('shop'));
+        $stats = $shop->stats()->get();
+        return view('dashboard.shop.stats', compact('shop', 'stats'));
     }
 
     /**
@@ -37,7 +39,8 @@ class StatController extends Controller
 
 
         $ip = (isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR']);
-        $geoip->setIp($ip);
+        $geoip->setIp('46.4.219.148');
+//        $geoip->setIp($ip);
         $country = visitor_country($geoip->getRaw()['countryCode']);
         $countryCode = ($geoip->getRaw()['countryCode']);
         $city = visitor_city($geoip->getRaw()['city']);
@@ -47,7 +50,8 @@ class StatController extends Controller
         $loc = $_POST['loc'];
         $ref = $_POST['ref'];
         $page = $_POST['page'];
-
+        $shop = explode('/', $page);
+        $shop = $shop[1];
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
         $today = jdate()->forge('today')->format('Y/m/d');
@@ -61,11 +65,11 @@ class StatController extends Controller
         $hour = jdate()->forge('now')->getHour();
 
         $osName = visitor_os($agent->platform());
-        $osVersion = $agent->version($osName);
+        $osVersion = $agent->version($agent->platform());
         $device = $agent->device();
 
         $browserName = visitor_browser($agent->browser());
-        $browserVersion = $agent->version($browserName);
+        $browserVersion = $agent->version($agent->browser());
         $userAagent = $_SERVER['HTTP_USER_AGENT'];
 
         if ($ref == '') {
@@ -86,7 +90,7 @@ class StatController extends Controller
         }
 
 
-        $stat = Website::where('url', $loc)->first()->stats()->create([
+        $stat = Shop::where('english_name', $shop)->first()->stats()->create([
             'url' => $loc,
             'osName' => $osName,
             'osVersion' => $osVersion,

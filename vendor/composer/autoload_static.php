@@ -42,6 +42,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         '9663d254ef6aa39b98709595aaf6a99e' => __DIR__ . '/..' . '/pulkitjalan/geoip/helpers.php',
         'a806c12c6e24e7e4e900847766218dba' => __DIR__ . '/..' . '/uxweb/sweet-alert/src/SweetAlert/functions.php',
         '101b35f72e0ccb1b5ef72aa86bba3ef9' => __DIR__ . '/..' . '/yoeunes/toastr/src/helpers.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -674,7 +675,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\ColorController' => __DIR__ . '/../..' . '/app/Http/Controllers/ColorController.php',
-        'App\\Http\\Controllers\\CompareController' => __DIR__ . '/../..' . '/app/Http/Controllers/CompareController.php',
+        'App\\Http\\Controllers\\CompareController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CompareController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\Dashboard\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/DashboardController.php',
         'App\\Http\\Controllers\\Dashboard\\Payment\\BankController' => __DIR__ . '/../..' . '/app/Http/Controllers/Dashboard/Payment/BankController.php',
@@ -709,7 +710,6 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'App\\Http\\Controllers\\Shop\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CartController.php',
         'App\\Http\\Controllers\\Shop\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CategoryController.php',
         'App\\Http\\Controllers\\Shop\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CommentController.php',
-        'App\\Http\\Controllers\\Shop\\CompareController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/CompareController.php',
         'App\\Http\\Controllers\\Shop\\ProductContoller' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/ProductContoller.php',
         'App\\Http\\Controllers\\Shop\\PurchaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/PurchaseController.php',
         'App\\Http\\Controllers\\Shop\\RatingController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/RatingController.php',

@@ -39,7 +39,7 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                          <h4 class="mt-0 mb-1">35</h4></div>
+                                          <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
                                             <p class="mb-1 text-muted">بازدید</p>
                                     </div>
                                 </div>
@@ -61,8 +61,8 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                            <p class="mb-1 text-muted">بازدیدکننده</p>
-                                            <h4 class="mt-0 mb-1">12</h4></div>
+                                            <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
+                                        <p class="mb-1 text-muted">بازدید</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -83,8 +83,8 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                            <p class="mb-0 text-muted">بازدید</p>
-                                            <h4 class="mt-0 mb-1 d-inline-block">40</h4></div>
+                                            <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
+                                        <p class="mb-1 text-muted">بازدید</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -105,8 +105,8 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                            <p class="mb-0 text-muted">بازدیدکننده</p>
-                                            <h4 class="mt-0 mb-1 d-inline-block">40</h4></div>
+                                            <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
+                                        <p class="mb-1 text-muted">بازدید</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -147,17 +147,31 @@
                                     </div>
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
                                       aria-describedby="datatable_info">
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
-                                                </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">عنوان
-                                                    بازخورد
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">بازخورد</th>
-                                            </tr>
+                                        <thead style="text-align: center">
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" >زمان</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">سیستم عامل	</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">مرورگر</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">IP	</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">کشور</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">شهر</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ISP</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">لینک دهنده</th>
+                                        </tr>
                                         </thead>
-                                        <tbody class="iranyekan">
+                                        <tbody style="text-align: center" class="iranyekan">
+                                        @foreach($stats as $stat)
+                                            <tr>
+                                                <td>{{ jdate($stat->updated_at) }}</td>
+                                                <td>{{ $stat->osName }}</td>
+                                                <td>{{ $stat->browserName }}</td>
+                                                <td>{{ $stat->ip }}</td>
+                                                <td>{{ $stat->country }}</td>
+                                                <td>{{ $stat->city }}</td>
+                                                <td>{{ $stat->isp }}</td>
+                                                <td>{{ $stat->ref }}</td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

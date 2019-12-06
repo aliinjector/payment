@@ -28,6 +28,8 @@ class CreateStatsTable extends Migration
             $table->string('wh');
             $table->string('timestamp');
             $table->string('ref');
+            $table->string('searchEngine');
+            $table->string('device');
             $table->string('country');
             $table->string('countryCode');
             $table->string('city');
