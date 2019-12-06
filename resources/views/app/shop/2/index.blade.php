@@ -485,11 +485,4 @@
 @endsection
 
 @section('footerScripts')
-<script>
-$(document).ready(function(){
-  $("a.submit").click(function(){
-      document.getElementById("myForm").submit();
-  });
-});
-</script>
 @endsection
