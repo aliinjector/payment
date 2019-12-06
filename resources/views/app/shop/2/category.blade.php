@@ -2,42 +2,44 @@
 @section('content')
 
 <style media="screen">
-.ui-slider-range {
+	.ui-slider-range {
 		background-color: #2979fe !important;
-}
-.btn-outline-secondary.active,
-.btn-outline-secondary:active,
-.btn-outline-secondary:hover,
-.btn-outline-secondary:not(:disabled):not(.disabled).active,
-.btn-outline-secondary:not(:disabled):not(.disabled):active,
-.btn-secondary.active,
-.btn-secondary.disabled,
-.btn-secondary.focus,
-.btn-secondary:active,
-.btn-secondary:disabled,
-.btn-secondary:focus,
-.btn-secondary:hover,
-.btn-secondary:not(:disabled):not(.disabled).active,
-.btn-secondary:not(:disabled):not(.disabled):active,
-.open>.dropdown-toggle.btn-secondary,
-.show>.btn-outline-secondary.dropdown-toggle,
-.show>.btn-secondary.dropdown-toggle,
-a.bg-secondary:focus,
-a.bg-secondary:hover,
-button.bg-secondary:focus,
-button.bg-secondary:hover {
-    background-color: #2879fe !important;
-    color: #f3f6f7 !important;
-}
+	}
 
-.btn-outline-secondary {
-    color: #2879fe !important;
-}
-.ui-state-default,
-.ui-widget-content .ui-state-default,
-.ui-widget-header .ui-state-default {
-    background-color: grey !important;
-}
+	.btn-outline-secondary.active,
+	.btn-outline-secondary:active,
+	.btn-outline-secondary:hover,
+	.btn-outline-secondary:not(:disabled):not(.disabled).active,
+	.btn-outline-secondary:not(:disabled):not(.disabled):active,
+	.btn-secondary.active,
+	.btn-secondary.disabled,
+	.btn-secondary.focus,
+	.btn-secondary:active,
+	.btn-secondary:disabled,
+	.btn-secondary:focus,
+	.btn-secondary:hover,
+	.btn-secondary:not(:disabled):not(.disabled).active,
+	.btn-secondary:not(:disabled):not(.disabled):active,
+	.open>.dropdown-toggle.btn-secondary,
+	.show>.btn-outline-secondary.dropdown-toggle,
+	.show>.btn-secondary.dropdown-toggle,
+	a.bg-secondary:focus,
+	a.bg-secondary:hover,
+	button.bg-secondary:focus,
+	button.bg-secondary:hover {
+		background-color: #2879fe !important;
+		color: #f3f6f7 !important;
+	}
+
+	.btn-outline-secondary {
+		color: #2879fe !important;
+	}
+
+	.ui-state-default,
+	.ui-widget-content .ui-state-default,
+	.ui-widget-header .ui-state-default {
+		background-color: grey !important;
+	}
 </style>
 <div id="tt-pageContent">
 	<div class="container-indent">
@@ -201,7 +203,11 @@ button.bg-secondary:hover {
 								<div class="tt-product thumbprod-center">
 									<div class="tt-image-box">
 										<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
-										<a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
+										<form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
+												@csrf
+												<a href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
+									</form>
+
 										<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img
 												  src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg"
 												  alt=""></span></a></div>
