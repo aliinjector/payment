@@ -15,9 +15,13 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+     public function index($shop) {
+      $shop = Shop::where('english_name', $shop)->first();
+      $shopCategories = $shop->ProductCategories()->get();
+      $wishlistProducts = \Auth::user()->wishlist->products;
+      $template_folderName = $shop->template->folderName;
+
+      return view("app.shop.$template_folderName.account.wishlist", compact('shop', 'shopCategories', 'wishlistProducts'));
     }
 
     /**
@@ -81,6 +85,15 @@ class WishlistController extends Controller
     {
         //
     }
+
+
+    public function deleteFromWishlist(Request $request){
+      $shop = Shop::where('english_name', $request->shop)->get()->first();
+      Wishlist::find($request->wishlist)->products()->detach($request->id);
+      toastr()->success('حذف شد.', '');
+
+    }
+
 
     /**
      * Remove the specified resource from storage.

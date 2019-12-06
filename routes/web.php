@@ -138,6 +138,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     //Wishlist
     Route::post('/{shop}/wishlist/store', 'WishlistController@store')->name('wishlist.store');
     Route::get('/{shop}/wishlist', 'WishlistController@index')->name('wishlist');
+    Route::post('{shop}/wishlist/remove', 'WishlistController@deleteFromWishlist')->name('wishlist.remove');
 
 });
 
