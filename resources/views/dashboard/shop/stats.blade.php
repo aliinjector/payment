@@ -21,9 +21,7 @@
             </div>
             <!--end col-->
         </div>
-        <div class="text-right">
-            <a href="#" data-toggle="modal" data-target="#AddProductCategoryModal" class="btn btn-primary text-white d-inline-block text-right mb-3 mt-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>اضافه کردن بازخورد</a>
-        </div>
+
         @include('dashboard.layouts.errors')
 
 

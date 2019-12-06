@@ -17,11 +17,13 @@
         "guzzlehttp/guzzle": "^6.3",
         "iatstuti/laravel-cascade-soft-deletes": "^1.5",
         "intervention/image": "^2.5",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "5.8.*",
         "laravel/passport": "^7.5",
         "laravel/scout": "^7.2",
         "laravel/tinker": "^1.0",
         "morilog/jalali": "3.*",
+        "pulkitjalan/geoip": "^4.0",
         "uxweb/sweet-alert": "^2.0",
         "yoeunes/toastr": "^1.2"
     },

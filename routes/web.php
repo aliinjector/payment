@@ -161,3 +161,5 @@ Route::namespace('Shop')->group(function () {
     Route::post('/{shop}/subscribe', 'SubscribersController@subscribe')->name('subscribe');
 
 });
+
+Route::post('/addStat', 'Dashboard\Shop\StatController@addStat')->name('stats.add');

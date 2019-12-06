@@ -1043,5 +1043,6 @@
 @include('sweet::alert')
 
 @yield('footerScripts')
+<script src="{{url('stats/script.js')}}"></script>
 
 </html>

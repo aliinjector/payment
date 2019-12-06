@@ -15,6 +15,26 @@ class CreateStatsTable extends Migration
     {
         Schema::create('stats', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('shop_id');
+            $table->string('url');
+            $table->string('osName');
+            $table->string('osVersion');
+            $table->string('browserName');
+            $table->string('browserVersion');
+            $table->string('userAgent');
+            $table->string('dateTime');
+            $table->string('day');
+            $table->string('ip');
+            $table->string('wh');
+            $table->string('timestamp');
+            $table->string('ref');
+            $table->string('country');
+            $table->string('countryCode');
+            $table->string('city');
+            $table->string('isp');
+            $table->string('weekDay');
+            $table->string('hour');
+            $table->string('page');
             $table->timestamps();
         });
     }
