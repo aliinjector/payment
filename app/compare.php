@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class compare extends Model
+class Compare extends Model
 {
   use SoftDeletes;
   protected $guarded = ['id'];

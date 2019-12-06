@@ -97,13 +97,20 @@
                         </div>
                         <div class="tt-wrapper m-4">
                             <ul class="tt-list-btn">
-                              <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
-                              <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
-                                  @csrf
-                                <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();"><i class="icon-n-072"></i>افزودن به علاقه مندی</a></li>
-                              </form>
+                                <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
+                                <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
+                                    @csrf
 
-                                <li><a class="btn-link" href="#"><i class="icon-n-08"></i>افزودن به مقایسه</a></li>
+                                    <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();"><i class="icon-n-072"></i>افزودن به علاقه مندی</a></li>
+                                </form>
+
+                                <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
+                                    @csrf
+
+                                    <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"><i class="icon-n-08"></i>افزودن به مقایسه</a></li>
+
+                                  </form>
+
                             </ul>
                         </div>
                         <div class="tt-wrapper m-4">

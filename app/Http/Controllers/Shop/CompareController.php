@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shop;
 
-use App\Shop;
+use App\shop;
+use App\Compare;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -46,11 +48,11 @@ class CompareController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+     public function store(Request $request, $shopName)
     {
       $product = Product::find($request->productID);
       $shop =  Shop::where('english_name', $shopName)->first();
-      $compare = Wishlist::firstOrCreate(['user_id'=>\Auth::user()->id, 'shop_id' =>$shop->id]);
+      $compare = Compare::firstOrCreate(['user_id'=>\Auth::user()->id, 'shop_id' =>$shop->id]);
       $product->compare()->sync($compare->id);
 
 
