@@ -4,9 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>فروشگاه امید الکترونیک</title>
-    <meta name="keywords" content="HTML5 Template">
-    <meta name="description" content="Wokiee - Responsive HTML5 Template">
-    <meta name="author" content="wokiee">
     <link rel="shortcut icon" href="favicon.ico">
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
@@ -579,7 +576,7 @@
                                                 @auth()
                                                 <li><a href=""><i class="icon-f-94"></i>پنل کاربری</a></li>
                                                 <li><a href=""><i class="icon-n-072"></i>علاقه مندی ها</a></li>
-                                                <li><a href=""><i class="icon-f-77"></i>خروج</a></li>
+                                                <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>خروج</a></li>
                                                 @endauth
 
                                                 @guest()
@@ -591,6 +588,10 @@
                                     </div>
                                 </div>
                             </div>
+                            @auth()
+                              <p>{{ Auth::user()->firstName}} عزیز، خوش آمدی</p>
+                            @endauth
+
                             <!-- /tt-account -->
                             <!-- tt-langue and tt-currency -->
                             <div style="display:none" class="tt-desctop-parent-multi tt-parent-box">

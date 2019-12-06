@@ -78,90 +78,12 @@
                     </tbody>
                 </table>
                 <div class="tt-shopcart-btn d-flex input-group-append justify-content-end iranyekan">
-                    <button type="submit" class="btn bg-blue-omid mt-4 text-white rounded">ثبت و ادامه</button>
+                    <button type="submit" style="color: black" class="btn bg-blue-omid mt-4 text-white rounded">ثبت و ادامه</button>
                     </form>
                 </div>
             </div>
             @endisset
 
-            {{-- <div class="tt-shopcart-col">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="tt-shopcart-box">
-                                <h4 class="tt-title">محاسبه هزینه ارسال و مالیات</h4>
-                                <p>مقصد و روش ارسال خودرا وارد نمایید</p>
-                                <form class="form-default">
-                                    <div class="form-group">
-                                        <label for="address_country">کشور <sup>*</sup></label>
-                                        <select id="address_country" class="form-control">
-                                            <option>Austria</option>
-                                            <option>Belgium</option>
-                                            <option>Cyprus</option>
-                                            <option>Croatia</option>
-                                            <option>Czech Republic</option>
-                                            <option>Denmark</option>
-                                            <option>Finland</option>
-                                            <option>France</option>
-                                            <option>Germany</option>
-                                            <option>Greece</option>
-                                            <option>Hungary</option>
-                                            <option>Ireland</option>
-                                            <option>France</option>
-                                            <option>Italy</option>
-                                            <option>Luxembourg</option>
-                                            <option>Netherlands</option>
-                                            <option>Poland</option>
-                                            <option>Portugal</option>
-                                            <option>Slovakia</option>
-                                            <option>Slovenia</option>
-                                            <option>Spain</option>
-                                            <option>United Kingdom</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="address_province">شهر <sup>*</sup></label>
-                                        <select id="address_province" class="form-control">
-                                            <option>State/Province</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="address_zip">کد پستی <sup>*</sup></label>
-                                        <input type="text" name="name" class="form-control" id="address_zip" placeholder="Zip/Postal Code">
-                                    </div><a href="#" class="btn btn-border">محاسبه هزینه</a>
-                                    <ul class="tt-list-dot list-dot-large">
-                                        <li><a href="#">هزینه ارسال پیک در تهران: 15 هزار تومان</a></li>
-                                    </ul>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="tt-shopcart-box">
-                                <h4 class="tt-title">یادداشت</h4>
-                                <p>درصورتی که توضیحاتی جهت ارسال سفارش دارید اینجا وارد نمایید</p>
-                                <form class="form-default">
-                                    <textarea class="form-control" rows="7"></textarea>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="tt-shopcart-box tt-boredr-large">
-                                <table class="tt-shopcart-table01">
-                                    <tbody>
-                                        <tr>
-                                            <th>جمع</th>
-                                            <td>$324</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>جمع کل</th>
-                                            <td>$324</td>
-                                        </tr>
-                                    </tfoot>
-                                </table><a href="#" class="btn btn-lg"><span class="icon icon-check_circle"></span>تسویه حساب</a></div>
-                        </div>
-                    </div>
-                </div> --}}
         </div>
     </div>
 </div>
