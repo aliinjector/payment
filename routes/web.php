@@ -53,46 +53,62 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::get('transactionReport/gateway/{gateway}', 'TransactionReportController@gatewayReport')->name('transactionReport.gateway');
     });
     Route::namespace('Shop')->prefix('shop')->middleware('auth')->group(function () {
+
         //Shop Dashboard
         Route::resource('dashboard-shop', 'DashboardShopController');
+
         //Purchase Status
         Route::get('purchase-status', 'DashboardShopController@purchaseStatus')->name('purchase.status');
+
         //Products
         Route::resource('product-list', 'ProductController');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product-list.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status');
+
         //Product-Category
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy')->name('product-category.delete');
+
         //Shop-Setting
         Route::resource('shop-setting', 'ShopSettingController');
         Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
         Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
+
         //Vouchers
         Route::get('vouchers/voucher-report', 'VoucherController@voucherReport')->name('vouchers.voucher-report');
         Route::resource('vouchers', 'VoucherController');
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('vouchers.delete');
         Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('vouchers.change-status');
+
         //Gallery
         Route::post('image/delete','GalleryController@fileDestroy');
         Route::get('galleries/{product}', 'GalleryController@index')->name('galleries.index');
         Route::get('image/upload','GalleryController@fileCreate');
         Route::post('image/upload/store/{product}','GalleryController@fileStore');
+
         //Comment
         Route::resource('product-comments', 'CommentsController');
         Route::get('comment/notApproved', 'CommentsController@notApproved')->name('comment.notApproved');
         Route::post('comment/delete', 'CommentsController@destroy');
         Route::get('comment/approve/{id}/{commentable}', 'CommentsController@approve')->name('comment.approve');
+
         //Brand
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
+
         //FAQ
         Route::resource('faq', 'FAQController');
         Route::post('faq/delete', 'FAQController@destroy')->name('faq.delete');
+
         //Feedback
         Route::resource('feedback', 'FeedbackController');
         Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
+
+        //Feedback
+        Route::resource('stats', 'StatController');
+        Route::post('stats/add', 'StatController@add')->name('stats.add');
+
     });
 });
 Route::namespace('Shop')->middleware('auth')->group(function () {

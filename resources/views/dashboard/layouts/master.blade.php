@@ -260,6 +260,7 @@ Author: Ali Rahmani
 
                             @endif
                             <li class="nav-item"><a class="nav-link" href="{{ route('purchase.status') }}"><i class="fa fa-clipboard"></i>وضعیت سفارشات </a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('stats.index') }}"><i class="fas fa-chart-bar"></i>آمار بازدید</a></li>
 
                         </ul>
                         </li>
