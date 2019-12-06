@@ -105,9 +105,14 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('feedback', 'FeedbackController');
         Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
 
-        //Feedback
+        //Stats
         Route::resource('stats', 'StatController');
         Route::post('stats/add', 'StatController@add')->name('stats.add');
+
+        //Stats
+        Route::resource('users', 'UserController');
+        Route::post('users/delete', 'UserController@destroy')->name('user.delete');
+
 
     });
 });
