@@ -9,8 +9,9 @@ class UserController extends Controller
 {
     public function index(){
       $shop = \Auth::user()->shop()->first();
-      $users = \Auth::user()->shop()->first();
-      return view('dashboard.shop.stats', compact('shop'));
+      $users = $shop->users()->get();
+
+      return view('dashboard.shop.users', compact('shop', 'users'));
 
     }
 

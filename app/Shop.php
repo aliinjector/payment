@@ -87,6 +87,10 @@ class Shop extends Model
         return $this->hasMany('App\Wishlist');
     }
 
+    public function stats()
+    {
+        return $this->hasMany('App\Stat');
+    }
 
 
 
