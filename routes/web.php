@@ -134,6 +134,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::patch('/{shop}/{id}/rate', 'RatingController@updateRate')->name('rate');
     //Compare
     Route::get('/{shop}/compare', 'CompareController@index')->name('compare');
+    Route::post('/{shop}/compare/store', 'CompareController@store')->name('compare.store');
     //Wishlist
     Route::post('/{shop}/wishlist/store', 'WishlistController@store')->name('wishlist.store');
     Route::get('/{shop}/wishlist', 'WishlistController@index')->name('wishlist');

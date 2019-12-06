@@ -45,6 +45,10 @@ public function searchableAs()
  {
      return $this->belongsToMany('App\Wishlist');
  }
+ public function compare()
+ {
+     return $this->belongsToMany('App\Compare');
+ }
  public function colors()
  {
      return $this->belongsToMany('App\Color');

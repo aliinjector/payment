@@ -86,6 +86,10 @@ class Shop extends Model
     {
         return $this->hasMany('App\Wishlist');
     }
+    public function compares()
+    {
+        return $this->hasMany('App\Compare');
+    }
 
     public function stats()
     {
