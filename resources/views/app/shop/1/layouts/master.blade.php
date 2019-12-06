@@ -229,6 +229,7 @@
 
         @include('sweet::alert')
         @yield('pageScripts')
+    <script src="{{url('stats/script.js')}}"></script>
 </body>
 
 </html>
