@@ -78,6 +78,14 @@ class Shop extends Model
     {
         return $this->hasMany('App\Newsletter');
     }
+    public function faqs()
+    {
+        return $this->hasMany('App\FAQ');
+    }
+    public function wishlists()
+    {
+        return $this->hasMany('App\Wishlist');
+    }
 
 
 

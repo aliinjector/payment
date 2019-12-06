@@ -87,6 +87,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         //Brand
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
+        //FAQ
+        Route::resource('faq', 'FAQController');
+        Route::post('faq/delete', 'FAQController@destroy')->name('faq.delete');
         //Feedback
         Route::resource('feedback', 'FeedbackController');
         Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
@@ -110,6 +113,9 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::patch('/{shop}/{id}/rate', 'RatingController@updateRate')->name('rate');
     //Compare
     Route::get('/{shop}/compare', 'CompareController@index')->name('compare');
+    //Wishlist
+    Route::post('/{shop}/wishlist/store', 'WishlistController@store')->name('wishlist.store');
+    Route::get('/{shop}/wishlist', 'WishlistController@index')->name('wishlist');
 
 });
 

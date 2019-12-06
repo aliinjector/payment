@@ -49,6 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\UserInformation');
     }
+    public function wishlist()
+    {
+        return $this->hasOne('App\Wishlist');
+    }
 
     public function tickets()
     {
