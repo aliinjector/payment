@@ -110,6 +110,8 @@ class PurchaseController extends Controller
   }
 
 
+
+
       public function purchaseList($shop, Request $request) {
         $cart = \Auth::user()->cart()->get()->first()->id;
         $productsID = [];
