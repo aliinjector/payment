@@ -157,9 +157,9 @@
                                                 <td class="d-flex justify-content-between">
                                                     {{ $slideshow->url }}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $slideshow->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $slideshow->id }}" id="editSlide" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeCat" data-name="{{ $slideshow->title }}" data-id="{{ $slideshow->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeSlide" data-name="{{ $slideshow->title }}" data-id="{{ $slideshow->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -193,7 +193,7 @@
         })
     </script>
     <script>
-        $(document).on('click', '#removeCat', function(e) {
+        $(document).on('click', '#removeSlide', function(e) {
             e.preventDefault();
             var id = $(this).data('id');
             var name = $(this).data('name');
@@ -206,13 +206,13 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "post",
-                            url: "{{url('dashboard/shop/product-category/delete')}}",
+                            url: "{{url('dashboard/shop/slideshow/delete')}}",
                             data: {
                                 id: id,
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                             },
                             success: function(data) {
-                                var url = document.location.origin + "/dashboard/shop/product-category";
+                                var url = document.location.origin + "/dashboard/shop/slideshow";
                                 location.href = url;
                             }
                         });

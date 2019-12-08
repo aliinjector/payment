@@ -110,7 +110,7 @@ class SlideshowController extends Controller
         $image = $this->uploadFile($request->file('image'), false, true);
 
         $request->validate(['title' => 'required']);
-        $productCategory = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->update([
+        $slideshow = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->update([
             'title' => $request->title,
             'url' => $request->url,
             'description' => $request->description,
@@ -128,8 +128,15 @@ class SlideshowController extends Controller
      * @param  \App\Slideshow  $slideshow
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Slideshow $slideshow)
+    public function destroy(Slideshow $slideshow, Request $request)
     {
-        //
+      $slideshow = Slideshow::find($request->id);
+      if ($slideshow->shop->user_id !== \Auth::user()->id) {
+              alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+              return redirect()->back();
+            }
+               $slideshow->delete();
+               alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+               return redirect()->back();
+           }
     }
-}
