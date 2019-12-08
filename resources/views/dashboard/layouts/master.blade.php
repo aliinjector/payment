@@ -230,7 +230,7 @@ Author: Ali Rahmani
                         </ul>
                     </div>
                     <!-- end Crypto -->
-                    <div id="PayanPayShopMaker" class="main-icon-menu-pane {{ request()->is('*galleries*') == 1 ? 'active' : '' }}">
+                    <div id="PayanPayShopMaker" class="main-icon-menu-pane {{ request()->is('*shop*') == 1 ? 'active' : '' }}">
                         <div class="title-box">
 
                             <h6 class="menu-title">فروشگاه ساز</h6>
@@ -250,11 +250,9 @@ Author: Ali Rahmani
                             <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.index') }}"><i class="mdi mdi-gift"></i> کدهای تخفیف</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.voucher-report') }}"><i class="fa fa-check-square"></i>گزارشات کدهای تخفیف</a></li>
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="far fa-edit"></i>مدیریت فروشگاه</a></li>
-                            <div class="collapse mr-4" id="collapseExample">
+                            <div class="collapse mr-4 {{ request()->is('*managment*') == 1 ? 'show' : '' }}" id="collapseExample">
                             <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>تنظیمات فروشگاه</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="dripicons-brush"></i>قالب ها</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fa fa-question-circle"></i>سوالات متداول</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="fa fa-bell"></i>رویدادها</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('slideshow.index') }}"><i class="fa fa-bell"></i>اسلایدر</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="dripicons-calendar"></i> بازخورد مشتریان</a></li>
                             </div>
