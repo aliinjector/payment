@@ -113,6 +113,10 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('users', 'UserController');
         Route::post('users/delete', 'UserController@destroy')->name('user.delete');
 
+        //Slideshow
+        Route::resource('slideshow', 'SlideshowController');
+        Route::post('slideshow/delete', 'SlideshowController@destroy')->name('slideshow.delete');
+
 
     });
 });

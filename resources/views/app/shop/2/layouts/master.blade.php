@@ -617,6 +617,7 @@
                                                           @else 0
                                                           @endif
                                                   </span></i>علاقه مندی ها</a></li>
+                                                <li><a href="{{ route('user.purchased.list') }}"><i class="icon-f-47"></i>لیست سفارشات</a></li>
                                                 <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>خروج</a></li>
                                                 @endauth
 

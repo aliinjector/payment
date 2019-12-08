@@ -18,6 +18,10 @@ class Shop extends Model
     {
         return $this->hasOne('App\ShopContact','shop_id');
     }
+    public function slideshows()
+    {
+        return $this->hasMany('App\Slideshow');
+    }
 
    public function ProductCategories()
     {
