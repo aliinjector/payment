@@ -17,9 +17,10 @@
 
     @yield('headerScripts')
     <style>
-    .tt-desctop-menu {
-      display: block!important;
-    }
+        .tt-desctop-menu {
+            display: block !important;
+        }
+
         .dropdown-menu {
             width: 130px !important;
             display: none !important;
@@ -513,9 +514,12 @@
                             @auth
                             <div class="tt-desctop-parent-cart tt-parent-box">
                                 <div class="tt-cart tt-dropdown-obj" data-tooltip="سبد خرید" data-tposition="bottom">
-                                    <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart">  @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
-                                          @else 0
-                                          @endif</span></button>
+                                    <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart ml-1">
+                                            @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
+                                                @else 0
+                                                @endif
+                                        </span>
+                                    </button>
                                     <div class="tt-dropdown-menu">
                                         <div class="tt-mobile-add">
                                             <h6 class="tt-title">سبد خرید</h6>
@@ -530,7 +534,7 @@
                                     </a> -->
                                                 <div class="tt-cart-content">
                                                     <div class="tt-cart-list">
-                                                      @foreach ($products as $product)
+                                                        @foreach ($products as $product)
                                                         <div class="tt-item border-bottom p-3">
                                                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">
                                                                 <div class="tt-item-img"><img src="{{ $product->image['80,80'] }}" data-src="{{ $product->image['80,80'] }}" alt=""></div>
@@ -544,15 +548,16 @@
                                                                 </div>
                                                             </a>
                                                             {{-- <div class="tt-item-close"> --}}
-                                                                {{-- <a href="#" class="tt-btn-close"></a> --}}
+                                                            {{-- <a href="#" class="tt-btn-close"></a> --}}
                                                             {{-- </div> --}}
                                                         </div>
-                                                      @endforeach
+                                                        @endforeach
 
                                                     </div>
                                                     <div class="tt-cart-btn">
                                                         <div class="tt-item bg-primary"><a href="#" class="btn">تسویه حساب</a></div>
-                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a
+                                                              href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
                                                                 خرید</a></div>
                                                     </div>
                                                 </div>
@@ -560,8 +565,20 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="tt-cart tt-dropdown-obj" data-tooltip="سبد خرید" data-tposition="bottom">
+                                  <a href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><button class="tt-dropdown-toggle"><i class="fa fa-heart"></i>
+                                        <span class="tt-badge-cart">
+                                            @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->first()->products()->count() }}
+                                                @else 0
+                                                @endif
+                                        </span>
+                                    </button>
+                                  </a>
+                                </div>
+
                             </div>
-                          @endauth
+                            @endauth
                             <!-- /tt-cart -->
                             <!-- tt-account -->
                             <div class="tt-desctop-parent-account tt-parent-box">
@@ -589,7 +606,7 @@
                                 </div>
                             </div>
                             @auth()
-                              <p>{{ Auth::user()->firstName}} عزیز، خوش آمدی</p>
+                            <p>{{ Auth::user()->firstName}} عزیز، خوش آمدی</p>
                             @endauth
 
                             <!-- /tt-account -->
@@ -752,7 +769,7 @@
                                 <h4 class="tt-collapse-title">عضویت در خبرنامه</h4>
                                 <div class="tt-collapse-content">
                                     <p>جهت عضویت در سیستم خبرنامه، آدرس ایمیل خودرا در فرم زیر وارد نموده و برروی گزینه عضویت کلیک نمایید.</p>
-                                    <form  class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
+                                    <form class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
                                         <div class="form-group">
                                             @csrf
                                             <input type="email" name="email" class="form-control" placeholder="آدرس ایمیل">
