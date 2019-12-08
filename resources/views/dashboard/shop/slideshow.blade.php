@@ -86,16 +86,20 @@
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان اسلاید :</span></div>
                                     <input type="text" class="form-control inputfield" name="title" value="{{ $slideshow->title }}">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات اسلاید :</span></div>
                                     <input type="text" class="form-control inputfield" name="description" value="{{ $slideshow->description }}">
+                                </div>
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">آدرس اسلاید :</span></div>
+                                    <input type="text" class="form-control inputfield" name="url" value="{{ $slideshow->url }}">
                                 </div>
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">آیکون دسته بندی</h4>
+                                        <h4 class="mt-0 header-title">عکس اسلاید</h4>
                                         <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $slideshow->image['original'] }}">
                                     </div>
                                 </div>

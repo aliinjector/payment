@@ -20,7 +20,7 @@ class Shop extends Model
     }
     public function slideshows()
     {
-        return $this->hasMany('App\Slideshow');
+        return $this->hasMany('App\Slideshow', 'shop_id');
     }
 
    public function ProductCategories()

@@ -104,9 +104,22 @@ class SlideshowController extends Controller
      * @param  \App\Slideshow  $slideshow
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slideshow $slideshow)
+    public function update(Request $request, $id)
     {
-        //
+
+        $image = $this->uploadFile($request->file('image'), false, true);
+
+        $request->validate(['title' => 'required']);
+        $productCategory = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->update([
+            'title' => $request->title,
+            'url' => $request->url,
+            'description' => $request->description,
+            'image' => $image
+        ]);
+
+
+        alert()->success(' اسلاید شما با موفقیت ویرایش شد.', 'ثبت شد');
+        return redirect()->route('slideshow.index');
     }
 
     /**
