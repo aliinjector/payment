@@ -597,17 +597,6 @@
                                     </div>
                                 </div>
 
-                                <div class="tt-cart tt-dropdown-obj" data-tooltip="سبد خرید" data-tposition="bottom">
-                                    <a href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><button class="tt-dropdown-toggle"><i class="fa fa-heart"></i>
-                                            <span class="tt-badge-cart">
-                                                @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->first()->products()->count() }}
-                                                    @else 0
-                                                    @endif
-                                            </span>
-                                        </button>
-                                    </a>
-                                </div>
-
                             </div>
                             @endauth
                             <!-- /tt-cart -->
@@ -623,7 +612,11 @@
                                             <ul>
                                                 @auth()
                                                 <li><a href=""><i class="icon-f-94"></i>پنل کاربری</a></li>
-                                                <li><a href=""><i class="icon-n-072"></i>علاقه مندی ها</a></li>
+                                                <li><a href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="icon-n-072"><span class="tt-badge-cart">
+                                                      @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->first()->products()->count() }}
+                                                          @else 0
+                                                          @endif
+                                                  </span></i>علاقه مندی ها</a></li>
                                                 <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>خروج</a></li>
                                                 @endauth
 
