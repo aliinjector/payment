@@ -25,6 +25,7 @@ class CreateVouchersTable extends Migration
             $table->boolean('is_fixed')->default(true);
             $table->unsignedInteger('status')->default(1);
             $table->text('users')->nullable();
+            $table->enum('first_purchase',['on'])->nullable();
             $table->timestamp('starts_at')->nullable();
             $table->timestamp('expires_at')->nullable();
             $table->timestamps();

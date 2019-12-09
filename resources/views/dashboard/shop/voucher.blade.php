@@ -96,8 +96,14 @@
                                     <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
                                     <input class="expire-field-example col h-50px border-0" name="" />
                                 </div>
+
                                 <div class="input-group-append mt-3"><a href="#" class="voucher"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>تخفیف به کاربران خاص
-                                        </span></a></div>
+                                        </span></a>
+                                </div>
+                            </div>
+                            <div class="custom-control custom-switch switch-blue input-group-append mt-3 m-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitchBlue" name="first_purchase">
+                                <label class="custom-control-label font-15 text-dark"  for="customSwitchBlue">فقط برای سفارش اول کاربران فعال باشد</label>
                             </div>
                             <!--end form-group-->
                     </div>
@@ -351,6 +357,6 @@
         $(".voucher").click(function() {
             $(".users-voucher").removeClass("d-none");
             $(".voucher").addClass("d-none");
-          });
+        });
     </script>
     @stop
