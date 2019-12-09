@@ -12,9 +12,9 @@
         overflow: hidden;
         position: relative;
         float: left;
-        height: 300px;
+        height: 250px;
         width: 400px;
-        border: 5px solid #BBB;
+        border: 2px solid #122272;
         border-radius: 5px 5px 5px 5px;
     }
 
@@ -23,7 +23,7 @@
         top: 0;
         width: 400px;
         height: auto;
-        transition: top 5s ease-out 0s;
+        transition: top 2s ease-out 0s;
     }
 
     .extrem-height-image:hover {
@@ -31,10 +31,6 @@
     }
 </style>
 <div class="row">
-  <div class="img-wrapper">
-    <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-1.png') }}"/>
-</div>
-
     <div class="col-sm-12">
         <div class="page-title-box">
             <div class="float-right">
@@ -285,15 +281,6 @@
                             <p class="text-muted mb-3">در این بخش میتوانید تنظیمات کلی صفحه اختصاصی فروشگاه خود را مدیریت کنید<p>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">تم وبسایت</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name="menu_show">
-                                    <option value="nestead_menu">قالب پیشفرض</option>
-                                    <option value="nestead_box">قالب فروشگاه امید شاپ</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش دسته بندی های سایت</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="menu_show">
@@ -327,6 +314,22 @@
                                 </div>
 
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">تم وبسایت</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="menu_show" id="AgencyDetails">
+                                    <option value='<div class="img-wrapper m-5">
+                                        <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-default.png') }}"/>
+                                    </div>'>قالب پیشفرض</option>
+                                    <option value='<div class="img-wrapper m-5">
+                                        <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-1.png') }}"/>
+                                    </div>'>قالب فروشگاه امید شاپ</option>
+                                </select>
+                            </div>
+                            <div id="result"></div>
+
                         </div>
 
                         <!--end card-body-->
@@ -449,6 +452,11 @@
 
 
 @section('pageScripts')
+  <script type="text/javascript">
+  $('#AgencyDetails').on('change',function(){
+    $('#result').html($(this).val());
+});
+  </script>
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 @stop

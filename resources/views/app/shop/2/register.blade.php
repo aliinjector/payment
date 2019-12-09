@@ -1,7 +1,37 @@
 @extends('app.shop.2.layouts.master')
 
 @section('headerScripts')
+<style media="screen">
+.btn {
+    font-family: iranyekan!important;
+    border: none !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    font-weight: 400 !important;
+    letter-spacing: .03em !important;
+    position: relative !important;
+    outline: 0 !important;
+    padding: 6px 31px 4px !important;
+    display: inline-flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    height: 40px !important;
+    cursor: pointer !important;
+    border-radius: 6px !important;
+    transition: color .2s linear, background-color .2s linear !important;
+}
+.tt-btn-addtocart {
 
+
+    background-color: #2879fe!important;
+    color: #fff!important;
+    padding: 3px 16px 9px!important;
+    border-radius: 6px!important;
+    transition: .2s linear!important;
+}
+</style>
 @endsection
 
 @section('content')
@@ -98,10 +128,10 @@
                                         <div class="row">
                                             <div class="col-auto">
                                                 <div class="form-group">
-                                                    <button class="btn btn-border" type="submit">ایجاد حساب کاربری</button>
+                                                    <button class="btn btn-border tt-btn-addtocart" type="submit">ایجاد حساب کاربری</button>
                                                 </div>
                                             </div>
-                                          
+
                                         </div>
                                     </form>
                                 </div>
