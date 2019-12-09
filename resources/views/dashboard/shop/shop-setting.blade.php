@@ -319,13 +319,13 @@
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">تم وبسایت</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="menu_show" id="AgencyDetails">
-                                    <option value='<div class="img-wrapper m-5">
+                                <select class="form-control" name="template_id" id="AgencyDetails">
+                                    <option {{ $templates[0]->id == \Auth::user()->shop()->first()->template->id ? 'selected' : ''}} value="{{ $templates[0]->id }}" data-type='<div class="img-wrapper m-5">
                                         <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-default.png') }}"/>
-                                    </div>'>قالب پیشفرض</option>
-                                    <option value='<div class="img-wrapper m-5">
+                                    </div>'>{{ $templates[0]->name }}</option>
+                                    <option {{ $templates[1]->id == \Auth::user()->shop()->first()->template->id ? 'selected' : ''}} value="{{ $templates[1]->id }}" data-type='<div class="img-wrapper m-5">
                                         <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-1.png') }}"/>
-                                    </div>'>قالب فروشگاه امید شاپ</option>
+                                    </div>'>{{ $templates[1]->name }}</option>
                                 </select>
                             </div>
                             <div id="result"></div>
@@ -454,7 +454,7 @@
 @section('pageScripts')
   <script type="text/javascript">
   $('#AgencyDetails').on('change',function(){
-    $('#result').html($(this).val());
+    $('#result').html($(this).find('option:selected').data('type'));
 });
   </script>
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
