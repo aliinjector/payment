@@ -100,6 +100,10 @@ class Shop extends Model
         return $this->hasMany('App\Stat');
     }
 
+    public function invoice()
+    {
+        return $this->hasOne('App\Invoice','shop_id');
+    }
 
 
 }
