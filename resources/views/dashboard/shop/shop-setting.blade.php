@@ -7,8 +7,34 @@
         background-color: #122272 !important;
         color: white;
     }
+
+    .img-wrapper {
+        overflow: hidden;
+        position: relative;
+        float: left;
+        height: 300px;
+        width: 400px;
+        border: 5px solid #BBB;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+    .extrem-height-image {
+        position: absolute;
+        top: 0;
+        width: 400px;
+        height: auto;
+        transition: top 5s ease-out 0s;
+    }
+
+    .extrem-height-image:hover {
+        top: -300px;
+    }
 </style>
 <div class="row">
+  <div class="img-wrapper">
+    <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-1.png') }}"/>
+</div>
+
     <div class="col-sm-12">
         <div class="page-title-box">
             <div class="float-right">
@@ -257,6 +283,15 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">تنظیمات صفحه فروشگاه</h4>
                             <p class="text-muted mb-3">در این بخش میتوانید تنظیمات کلی صفحه اختصاصی فروشگاه خود را مدیریت کنید<p>
+                        </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">تم وبسایت</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="menu_show">
+                                    <option value="nestead_menu">قالب پیشفرض</option>
+                                    <option value="nestead_box">قالب فروشگاه امید شاپ</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش دسته بندی های سایت</label>
