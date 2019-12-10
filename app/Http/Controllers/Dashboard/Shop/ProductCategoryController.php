@@ -122,7 +122,7 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
       //check if icon is null or not
       if($request->file('icon') == null){
@@ -143,7 +143,7 @@ class ProductCategoryController extends Controller
         ]);
 
 
-        alert()->success('دسته بندی جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+        alert()->success(' دسته بندی شما با موفقیت ویرایش شد.', 'ثبت شد');
         return redirect()->route('product-category.index');
     }
 

@@ -18,7 +18,11 @@ class WishlistController extends Controller
      public function index($shop) {
       $shop = Shop::where('english_name', $shop)->first();
       $shopCategories = $shop->ProductCategories()->get();
-      $wishlistProducts = \Auth::user()->wishlist->products;
+      if(\Auth::user()->wishlist != null)
+        $wishlistProducts = \Auth::user()->wishlist->products;
+
+      else
+      $wishlistProducts = [];
       $template_folderName = $shop->template->folderName;
 
       return view("app.shop.$template_folderName.account.wishlist", compact('shop', 'shopCategories', 'wishlistProducts'));

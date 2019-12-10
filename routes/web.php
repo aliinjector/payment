@@ -70,11 +70,6 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy')->name('product-category.delete');
 
-        //Shop-Setting
-        Route::resource('shop-setting', 'ShopSettingController');
-        Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
-        Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
-
         //Vouchers
         Route::get('vouchers/voucher-report', 'VoucherController@voucherReport')->name('vouchers.voucher-report');
         Route::resource('vouchers', 'VoucherController');
@@ -97,14 +92,6 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
 
-        //FAQ
-        Route::resource('faq', 'FAQController');
-        Route::post('faq/delete', 'FAQController@destroy')->name('faq.delete');
-
-        //Feedback
-        Route::resource('feedback', 'FeedbackController');
-        Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
-
         //Stats
         Route::resource('stats', 'StatController');
         Route::post('stats/add', 'StatController@add')->name('stats.add');
@@ -113,6 +100,26 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::resource('users', 'UserController');
         Route::post('users/delete', 'UserController@destroy')->name('user.delete');
 
+      Route::prefix('managment')->group(function () {
+
+          //Slideshow
+          Route::resource('slideshow', 'SlideshowController');
+          Route::post('slideshow/delete', 'SlideshowController@destroy')->name('slideshow.delete');
+
+          //Feedback
+          Route::resource('feedback', 'FeedbackController');
+          Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
+
+          //FAQ
+          Route::resource('faq', 'FAQController');
+          Route::post('faq/delete', 'FAQController@destroy')->name('faq.delete');
+
+          //Shop-Setting
+          Route::resource('shop-setting', 'ShopSettingController');
+          Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
+          Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
+          
+        });
 
     });
 });

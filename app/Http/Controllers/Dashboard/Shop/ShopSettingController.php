@@ -8,6 +8,7 @@ use App\Http\Requests\ShopSettingRequest;
 use App\Http\Requests\ShopContactRequest;
 use App\Http\Controllers\Controller;
 use App\Shop;
+use App\Template;
 use App\ShopCategory;
 use App\ShopContact;
 
@@ -20,6 +21,7 @@ class ShopSettingController extends Controller
      */
      public function index()
         {
+          $templates = Template::all();
             if(\Auth::user()->type == 'customer'){
                 return redirect()->back();
             }
@@ -34,6 +36,7 @@ class ShopSettingController extends Controller
               $shop->quick_way = "disable";
               $shop->posting_way = "disable";
               $shop->person_way = "disable";
+              $shop->template_id = 1;
               $shop->description = "توضیحات تست";
               $shop->save();
               $shopContact = new ShopContact;
@@ -47,7 +50,7 @@ class ShopSettingController extends Controller
           $shopInformation = \Auth::user()->shop()->first();
           $shopContactInformation = $shopInformation->shopContact()->first();
           $categories = ShopCategory::all();
-          return view('dashboard.shop.shop-setting', compact('categories','shopInformation','shopContactInformation','shopCategories'));
+          return view('dashboard.shop.shop-setting', compact('categories','shopInformation','shopContactInformation','shopCategories', 'templates'));
         }
 
     /**
@@ -170,9 +173,11 @@ class ShopSettingController extends Controller
     }
 
     public function updateSetting(Request $request){
+
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
         'special_offer' => $request->special_offer,
+        'template_id' => $request->template_id,
         'special_offer_text' => $request->special_offer_text,
         'VAT' => $request->VAT,
       ]);

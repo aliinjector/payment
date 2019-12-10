@@ -71,6 +71,8 @@ class VoucherController extends Controller
         ]);
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
+        if($request->first_purchase == null)
+        $request->first_purchase == 'off';
         $voucher = \Auth::user()->shop()->first()->vouchers()->create([
             'name' => $request->name,
             'shop_id' => $request->shop_id,
@@ -79,6 +81,7 @@ class VoucherController extends Controller
             'uses' => $request->uses,
             'discount_amount' => $request->discount_amount,
             'users' => $request->users,
+            'first_purchase' => $request->first_purchase,
             'starts_at' => date('Y-m-d H:i:s', (int)$realTimestampStart),
             'expires_at' => date('Y-m-d H:i:s', (int)$realTimestampExpire),
           ]);

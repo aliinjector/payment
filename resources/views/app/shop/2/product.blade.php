@@ -14,12 +14,6 @@
                 <div><img src="/{{ $gallery->filename }}" alt=""></div>
                 @endforeach
 
-
-
-
-
-
-
             </div>
         </div>
         <!-- /mobile product slider  -->
@@ -87,7 +81,7 @@
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan btn btn-lg"><i class="icon-f-39"></i>
+                                    <button type="submit" class="btn tt-btn-addtocart btn-cart btn-sm waves-effect waves-light iranyekan btn btn-lg"><i class="icon-f-39"></i>
                                         @if($product->type == 'file') دریافت فایل
                                             @else اضافه به سبد خرید
                                             @endif</button>
@@ -109,7 +103,7 @@
 
                                     <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"><i class="icon-n-08"></i>افزودن به مقایسه</a></li>
 
-                                  </form>
+                                </form>
 
                             </ul>
                         </div>
