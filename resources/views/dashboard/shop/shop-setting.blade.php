@@ -445,7 +445,7 @@
     </div>
 
     <div class="tab-pane fade" id="invoice" role="tabpanel">
-        <form method="post" action="{{ route('shop-setting.setting-update', \Auth::user()->shop()->first()->id) }}">
+        <form method="post" action="{{ route('invoice.update', \Auth::user()->shop()->first()->invoice) }}">
             @csrf
             @method('PUT')
             <div class="row">

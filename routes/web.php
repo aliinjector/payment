@@ -118,7 +118,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
           Route::resource('shop-setting', 'ShopSettingController');
           Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
           Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
-          
+
+          //Invoice
+          Route::resource('invoice', 'InvoiceController');
+
+
         });
 
     });

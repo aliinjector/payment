@@ -71,7 +71,7 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, Invoice $invoice)
     {
-        //
+        dd('hi');
     }
 
     /**
