@@ -116,6 +116,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
 
     });
 });
+
+
 Route::namespace('Shop')->middleware('auth')->group(function () {
     //Purchase (invoice)
     Route::any('/{shop}/purchase-list/{id}/voucher', 'PurchaseController@approved')->name('approved');
