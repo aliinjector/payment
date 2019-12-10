@@ -22,6 +22,12 @@ Auth::routes();
 
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 Route::get('/', 'IndexController@index')->name('index');
+
+Route::get('/shops', 'IndexController@shopsShow')->name('shops.show');
+Route::post('/shops', 'IndexController@shopsSearch')->name('shops.search');
+Route::get('/products', 'IndexController@productsShow')->name('products.show');
+Route::post('/products', 'IndexController@productsSearch')->name('products.search');
+
 Route::get('fast-pay/{id}', 'Dashboard\Payment\FastPayController@show')->name('fast-pay.show');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
@@ -118,7 +124,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
           Route::resource('shop-setting', 'ShopSettingController');
           Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
           Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
-          
+
         });
 
     });
