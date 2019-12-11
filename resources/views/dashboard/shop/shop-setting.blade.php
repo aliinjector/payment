@@ -458,174 +458,174 @@
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش محل امضا</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="menu_show">
-                                    <option value="nestead_menu">فعال</option>
-                                    <option value="nestead_box" @if(\Auth::user()->shop()->first()->menu_show == 'nestead_box') selected @endif>غیرفعال</option>
+                                <select class="form-control" name="sign">
+                                    <option value="enable">فعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->sign == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش لوگو</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="logo">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->logo == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش تاریخ</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="date">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->date == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شماره فاکتور</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="number">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->number == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش اطلاعات خریدار</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="custom_info">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->custom_info == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش اطلاعات فروشنده</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="seller_info">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->seller_info == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش مهر تایید بر روی فاکتور</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="approved">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->approved == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش آدرس فروشنده</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="address">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->address == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شماره فروشنده</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="tel">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->tel == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش ایمیل فروشنده</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="email">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->email == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش کد اقتصادی
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm" data-toggle="collapse" data-target="#demo">ویرایش کد اقتصادی</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش کد اقتصادی</button>
                             </label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="special_offer">
+                                <select class="form-control" name="economic_code">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="special_offer_text" value="{{ \Auth::user()->shop()->first()->special_offer_text }}">
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->economic_code == 'disable') selected @endif>غیرفعال</option>
+                                    <input type="hidden" name="economic_code_number" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
                                 <div id="demo" class="collapse mt-2">
 
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->special_offer_text }}</a>
+                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
                                 </div>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شماره ثبت
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm" data-toggle="collapse" data-target="#demo">ویرایش شماره ثبت</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش شماره ثبت</button>
                             </label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="special_offer">
+                                <select class="form-control" name=" registration_number">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="special_offer_text" value="{{ \Auth::user()->shop()->first()->special_offer_text }}">
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->registration_number == 'disable') selected @endif>غیرفعال</option>
+                                    <input type="hidden" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
                                 <div id="demo" class="collapse mt-2">
 
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->special_offer_text }}</a>
+                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش کد پستی</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="zip_code">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->zip_code == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش مالیات بر ارزش افزوده</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="VAT">
+                                <select class="form-control" name="vat">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->vat == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش توضیحات در فاکتور
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm" data-toggle="collapse" data-target="#demo">ویرایش متن توضیحات</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش متن توضیحات</button>
                             </label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="special_offer">
+                                <select class="form-control" name="description_status">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="special_offer_text" value="{{ \Auth::user()->shop()->first()->special_offer_text }}">
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->description_status == 'disable') selected @endif>غیرفعال</option>
+                                    <input type="hidden" name="description" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
                                 <div id="demo" class="collapse mt-2">
 
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->special_offer_text }}</a>
+                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
                                 </div>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شعار ( پند ) در فاکتور
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm" data-toggle="collapse" data-target="#demo">ویرایش متن شعار ( پند )</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش متن شعار ( پند )</button>
                             </label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="special_offer">
+                                <select class="form-control" name="motto">
                                     <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="special_offer_text" value="{{ \Auth::user()->shop()->first()->special_offer_text }}">
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->motto == 'disable') selected @endif>غیرفعال</option>
+                                    <input type="hidden" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
                                 <div id="demo" class="collapse mt-2">
 
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->special_offer_text }}</a>
+                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
                                 </div>
 
                             </div>

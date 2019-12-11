@@ -37,7 +37,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -71,7 +71,9 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, Invoice $invoice)
     {
-        dd('hi');
+      \Auth::user()->shop()->first()->invoice->update($request->except('_token'));
+      alert()->success(' فاکتور فروشگاه شما با موفقیت ویراش شد.', 'انجام شد');
+      return redirect()->route('shop-setting.index');
     }
 
     /**
