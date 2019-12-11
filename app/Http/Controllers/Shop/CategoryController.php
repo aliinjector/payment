@@ -9,6 +9,7 @@ use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Pagination\LengthAwarePaginator;
 class CategoryController extends Controller
 {
+
   public function index($shop, $categroyId, Request $request) {
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
@@ -58,6 +59,9 @@ class CategoryController extends Controller
 
       return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags'));
   }
+
+
+
       public function getAllCategoriesProducts($cat_id) {
           $allProducts = collect();
           foreach (ProductCategory::find($cat_id)->products()->get() as $product) {
@@ -91,6 +95,9 @@ class CategoryController extends Controller
           }
           return $allProducts;
       }
+
+
+
       public static function getAllSubCategories($cat_id) {
           $allSubCategories = collect();
           if (ProductCategory::find($cat_id)->children()->exists()) {

@@ -1,11 +1,10 @@
-@extends('app.shop.2.layouts.master')
+@extends('app.shop.2.layouts.master-user')
 
 @section('headerScripts')
 
 @endsection
 
 @section('content')
-
     <div id="tt-pageContent">
         <div class="container-indent">
             <div class="container container-fluid-custom-mobile-padding">
