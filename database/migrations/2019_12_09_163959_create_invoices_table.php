@@ -27,15 +27,15 @@ class CreateInvoicesTable extends Migration
           $table->enum('tel',['enable', 'disable'])->nullable();
           $table->enum('email',['enable', 'disable'])->nullable();
           $table->enum('economic_code',['enable', 'disable'])->nullable();
-          $table->text('economic_code_number')->nullable();
+          $table->text('economic_code_number')->default(0);
           $table->enum('registration_number',['enable', 'disable'])->nullable();
-          $table->text('registration_number‌_number')->nullable();
+          $table->text('registration_number‌_number')->default(0);
           $table->enum('zip_code',['enable', 'disable'])->nullable();
           $table->enum('vat',['enable', 'disable'])->nullable();
           $table->enum('description_status',['enable', 'disable'])->nullable();
-          $table->text('description')->nullable();
+          $table->text('description')->default('توضیحات');
           $table->enum('motto',['enable', 'disable'])->nullable();
-          $table->text('motto_text')->nullable();
+          $table->text('motto_text')->default('شعار');
           $table->timestamps();
           $table->softDeletes();
 

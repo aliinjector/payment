@@ -547,34 +547,30 @@
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش کد اقتصادی
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش کد اقتصادی</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#economic_code_number">ویرایش کد اقتصادی</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="economic_code">
                                     <option value="enable">فعال</option>
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->economic_code == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="economic_code_number" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
-                                <div id="demo" class="collapse mt-2">
-
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
+                                <div id="economic_code_number" class="collapse mt-2">
+                                    <input class="form-control border-custom" type="text" name="economic_code_number" value="{{ \Auth::user()->shop()->first()->invoice->economic_code_number }}">
                                 </div>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شماره ثبت
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش شماره ثبت</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#registration_number‌_number">ویرایش شماره ثبت</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name=" registration_number">
                                     <option value="enable">فعال</option>
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->registration_number == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
-                                <div id="demo" class="collapse mt-2">
-
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
+                                <div id="registration_number‌_number" class="collapse mt-2">
+                                  <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->registration_number‌_number }}">
                                 </div>
                             </div>
                         </div>
@@ -598,34 +594,30 @@
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش توضیحات در فاکتور
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش متن توضیحات</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#description">ویرایش متن توضیحات</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="description_status">
                                     <option value="enable">فعال</option>
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->description_status == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="description" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
-                                <div id="demo" class="collapse mt-2">
-
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
+                                <div id="description" class="collapse mt-2">
+                                  <input class="form-control border-custom" type="text" name="description" value="{{ \Auth::user()->shop()->first()->invoice->description }}">
                                 </div>
 
                             </div>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شعار ( پند ) در فاکتور
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#demo">ویرایش متن شعار ( پند )</button>
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#motto_text">ویرایش متن شعار ( پند )</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="motto">
                                     <option value="enable">فعال</option>
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->motto == 'disable') selected @endif>غیرفعال</option>
-                                    <input type="hidden" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}">
                                 </select>
-                                <div id="demo" class="collapse mt-2">
-
-                                    <a href="#" id="inline-username" class="editable editable-click editable-unsaved font-18" style="background-color: rgba(0, 0, 0, 0);">{{ \Auth::user()->shop()->first()->invoice->special_offer_text }}</a>
+                                <div id="motto_text" class="collapse mt-2">
+                                  <input class="form-control border-custom" type="text" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->motto_text }}">
                                 </div>
 
                             </div>
