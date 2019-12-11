@@ -124,7 +124,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
           Route::resource('shop-setting', 'ShopSettingController');
           Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
           Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
-          
+
           //Invoice
           Route::resource('invoice', 'InvoiceController');
 
@@ -141,6 +141,8 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::any('/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list');
     //User-pruchased List
     Route::get('/user-purchased-list', 'UserPurchasesController@userPurchaseList')->name('user.purchased.list');
+    //Address
+    Route::resource('/user-address', 'AddressController');
     //Cart
     Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart');
     Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');

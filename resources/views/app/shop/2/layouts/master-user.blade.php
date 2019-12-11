@@ -58,7 +58,7 @@
         }
 
         .btn {
-            font-family: iranyekan !important;
+            font-family: iranyekan!important;
             border: none !important;
             color: #fff !important;
             font-size: 14px !important;
@@ -81,11 +81,11 @@
         .tt-btn-addtocart {
 
 
-            background-color: #2879fe !important;
-            color: #fff !important;
-            padding: 3px 16px 9px !important;
-            border-radius: 6px !important;
-            transition: .2s linear !important;
+            background-color: #2879fe!important;
+            color: #fff!important;
+            padding: 3px 16px 9px!important;
+            border-radius: 6px!important;
+            transition: .2s linear!important;
         }
     </style>
     @toastr_css
@@ -106,14 +106,11 @@
     </div>
     <header id="tt-header">
         <!-- tt-top-panel -->
-        @includeWhen($shop->special_offer == 'enable','app.shop.2.layouts.partials.special_offer', ['special_text' => $shop->special_offer_text])
             <!-- /tt-top-panel -->
             <!-- tt-mobile menu -->
             <nav class="panel-menu mobile-main-menu">
                 <ul>
-                    <li><a href="/{{ $shop->english_name }}">صفحه اصلی فروشگاه</a>
                         <ul>
-                            <li><a href="/{{ $shop->english_name }}">HOME STYLES</a>
                                 <ul>
                                     <li><a href="index.html">Home — Example 1 <span class="tt-badge tt-fatured">Popular</span></a></li>
                                     <li><a href="index-02.html">Home — Example 2</a></li>
@@ -502,7 +499,6 @@
                     <div class="row">
                         <div class="tt-logo-container">
                             <!-- mobile logo -->
-                            <a class="tt-logo tt-logo-alignment" href="/{{ $shop->english_name }}"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""></a>
                             <!-- /mobile logo -->
                         </div>
                     </div>
@@ -514,7 +510,6 @@
                     <div class="tt-header-holder">
                         <div class="tt-obj-logo obj-aligment-center">
                             <!-- logo -->
-                            <a class="tt-logo tt-logo-alignment" href="/{{ $shop->english_name }}"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""><span style="padding: 10px">{{ $shop->name }}</span></a>
                             <!-- /logo -->
                         </div>
                         <div class="tt-obj-options obj-move-right tt-position-absolute">
@@ -524,7 +519,6 @@
                                     <button class="tt-dropdown-toggle" data-tooltip="جستجو" data-tposition="bottom"><i class="icon-f-85"></i></button>
                                     <div class="tt-dropdown-menu">
                                         <div class="container">
-                                            <form action="{{ route('search', $shop->english_name) }}" method="post">
                                                 <div class="tt-col">
                                                     @csrf
                                                     <input type="text" name="queryy" class="tt-search-input" placeholder="نام محصول یا سازنده ...">
@@ -564,31 +558,10 @@
                                     </a> -->
                                                 <div class="tt-cart-content">
                                                     <div class="tt-cart-list">
-                                                        @foreach ($products as $product)
-                                                        <div class="tt-item border-bottom p-3">
-                                                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">
-                                                                <div class="tt-item-img"><img src="{{ $product->image['80,80'] }}" data-src="{{ $product->image['80,80'] }}" alt=""></div>
-                                                                <div class="tt-item-descriptions">
-                                                                    <h2 class="tt-title">{{ $product->title }}</h2>
-                                                                    <ul class="tt-add-info">
-                                                                        <li>زرد</li>
-                                                                    </ul>
-                                                                    <div class="tt-quantity">{{ $product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }} عدد</div><br />
-                                                                    <div class="tt-price">{{ number_format($product->price) }} تومان</div>
-                                                                </div>
-                                                            </a>
-                                                            {{-- <div class="tt-item-close"> --}}
-                                                            {{-- <a href="#" class="tt-btn-close"></a> --}}
-                                                            {{-- </div> --}}
-                                                        </div>
-                                                        @endforeach
+
 
                                                     </div>
-                                                    <div class="tt-cart-btn">
-                                                        <div class="tt-item bg-primary"><a href="#" class="btn">تسویه حساب</a></div>
-                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn-link-02 tt-hidden-mobile">مشاهده سبد خرید</a> <a
-                                                              href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
-                                                                خرید</a></div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -609,22 +582,7 @@
                                         </div>
                                         <div class="tt-dropdown-inner">
                                             <ul>
-                                                @auth()
-                                                <li><a href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="icon-n-072"><span class="tt-badge-cart">
-                                                                @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->first()->products()->count() }}
-                                                                    @else 0
-                                                                    @endif
-                                                            </span></i>علاقه مندی ها</a></li>
-                                                <li><a href=""><i class="icon-f-94"></i>پنل کاربری</a></li>
-                                                <li><a href="{{ route('user-address.index') }}"><i class="fa fa-address-card ml-2"></i>آدرس ها</a></li>
-                                                <li><a href="{{ route('user.purchased.list') }}"><i class="icon-f-47"></i>لیست سفارشات</a></li>
-                                                <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>خروج</a></li>
-                                                @endauth
 
-                                                @guest()
-                                                <li><a href="{{ route('template.login.show', $shop->english_name) }}"><i class="icon-f-76"></i>ورود</a></li>
-                                                <li><a href="{{ route('template.register.show', $shop->english_name) }}"><i class="icon-f-94"></i>عضویت</a></li>
-                                                @endguest
                                             </ul>
                                         </div>
                                     </div>
@@ -671,60 +629,7 @@
                             <div class="collapse navbar-collapse">
                                 <div class="tt-desctop-menu tt-menu-small">
                                     <nav>
-                                        <ul>
-                                            <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}">صفحه اصلی</a></li>
 
-                                            @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
-                                            <div class="dropdown mx-3" style="top:30px!important">
-                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
-                                                    <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal" style="color:
-                                                #465f73!important;background-color:transparent">
-                                                        {{ $shopCategory->name }}
-                                                    </button>
-                                                </a>
-                                                @if($shop->menu_show == "nestead_menu")
-                                                    @if($shopCategory->children()->exists())
-                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important">
-                                                            @foreach ($shopCategory->children()->get() as $subCategory)
-                                                            @if (!$subCategory->children()->exists())
-                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;">
-                                                                <li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
-                                                                </li>
-                                                            </a>
-                                                            @else
-                                                            <li class="dropdown-submenu">
-                                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;"
-                                                                  tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
-                                                                <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important">
-                                                                    @foreach ($subCategory->children()->get() as $subSubCategory)
-                                                                    @if (!$subSubCategory->children()->exists())
-                                                                    <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}">
-                                                                        <li class="dropdown-item">{{ $subSubCategory->name }}</li>
-                                                                    </a>
-                                                                    @else
-                                                                    <li class="dropdown-submenu">
-                                                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;"
-                                                                          tabindex="-1">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
-                                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important">
-                                                                            @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                                                                            <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}">
-                                                                                <li class="dropdown-item">{{ $subSubSubCategory->name }}</li>
-                                                                            </a>
-                                                                            @endforeach
-                                                                        </ul>
-                                                                        @endif
-                                                                    </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </li>
-                                                            @endif
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                        @endif
-                                            </div>
-                                            @endforeach
-                                        </ul>
                                     </nav>
                                 </div>
                             </div>
@@ -782,7 +687,6 @@
                                     <li><a href="account_order.html">سفارشات</a></li>
                                     <li><a href="page404.html">علاقه مندی ها</a></li>
                                     <li><a href="login.html">ورود</a></li>
-                                    <li><a href="{{ route('template.contact', $shop->english_name) }}">درباره ما و تماس</a></li>
                                     <li><a href="create-account.html">سوالات متداول</a></li>
                                 </ul>
                             </div>
@@ -794,13 +698,7 @@
                                 <h4 class="tt-collapse-title">عضویت در خبرنامه</h4>
                                 <div class="tt-collapse-content">
                                     <p>جهت عضویت در سیستم خبرنامه، آدرس ایمیل خودرا در فرم زیر وارد نموده و برروی گزینه عضویت کلیک نمایید.</p>
-                                    <form class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
-                                        <div class="form-group">
-                                            @csrf
-                                            <input type="email" name="email" class="form-control" placeholder="آدرس ایمیل">
-                                            <button type="submit" class="btn">عضویت</button>
-                                        </div>
-                                    </form>
+
                                 </div>
                             </div>
                         </div>
@@ -831,7 +729,6 @@
                     <div class="tt-col-left">
                         <div class="tt-col-item tt-logo-col">
                             <!-- logo -->
-                            <a class="tt-logo tt-logo-alignment" href="index.html"><img src="{{ $shop->logo['original'] }}" alt=""></a>
                             <!-- /logo -->
                         </div>
                         <div class="tt-col-item">

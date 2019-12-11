@@ -38,6 +38,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Wallet');
     }
+    public function addresses()
+    {
+        return $this->hasMany('App\Address');
+    }
 
     public function cards()
     {
