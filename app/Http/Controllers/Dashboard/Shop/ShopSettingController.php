@@ -9,6 +9,7 @@ use App\Http\Requests\ShopContactRequest;
 use App\Http\Controllers\Controller;
 use App\Shop;
 use App\Template;
+use App\Invoice;
 use App\ShopCategory;
 use App\ShopContact;
 
@@ -39,6 +40,13 @@ class ShopSettingController extends Controller
               $shop->template_id = 1;
               $shop->description = "توضیحات تست";
               $shop->save();
+
+              // new shop Invoice
+              $shopContact = new Invoice;
+              $shopContact->shop_id = \Auth::user()->shop()->first()->id;
+              $shopContact->save();
+
+              // new shop contact
               $shopContact = new ShopContact;
               $shopContact->shop_id = \Auth::user()->shop()->first()->id;
               $shopContact->phone =  \Auth::user()->mobile;
