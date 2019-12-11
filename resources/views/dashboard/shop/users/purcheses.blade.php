@@ -41,8 +41,8 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                          <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
-                                          <p class="mb-0 text-muted">کاربر</p>
+                                          <h4 class="mt-0 mb-1">{{ $purcheses->count() }}</h4></div>
+                                          <p class="mb-0 text-muted">خرید</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -63,8 +63,8 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                          <p class="mb-0 text-muted">کاربر</p>
-                                          <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
+                                          <h4 class="mt-0 mb-1">{{ $purcheses->count() }}</h4></div>
+                                          <p class="mb-0 text-muted">خرید</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -85,8 +85,8 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                          <p class="mb-0 text-muted">کاربر</p>
-                                          <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
+                                          <h4 class="mt-0 mb-1">{{ $purcheses->count() }}</h4></div>
+                                          <p class="mb-0 text-muted">خرید</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -107,8 +107,8 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                            <p class="mb-0 text-muted">کاربر</p>
-                                            <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
+                                          <h4 class="mt-0 mb-1">{{ $purcheses->count() }}</h4></div>
+                                          <p class="mb-0 text-muted">خرید</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -136,8 +136,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">لیست کاربران</h4>
-                        <p class="text-muted mb-4 font-13">لیست تمامی کابران فروشگاه شما</p>
+                        <h4 class="mt-0 header-title">لیست سفارشات</h4>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -150,25 +149,21 @@
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"  aria-describedby="datatable_info">
                                         <thead style="text-align: center">
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" >نام</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام خانوادگی</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ایمیل</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">شماره موبایل</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ عضویت</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ آخرین بازدید</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ویرایش کاربر</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" >تاریخ ثبت</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">وضعیت پرداخت</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">وضعیت سفارش</th>
                                             </tr>
                                         </thead>
                                         <tbody style="text-align: center" class="iranyekan">
-                                          @foreach($users as $user)
+                                          @foreach($purcheses as $purchese)
                                           <tr>
-                                              <td>{{ $user->firstName }}</td>
-                                              <td>{{ $user->lastName }}</td>
-                                              <td>{{ $user->email }}</td>
-                                              <td>{{ $user->mobile }}</td>
-                                              <td>{{ $user->created_at }}</td>
-                                              <td>{{ $user->created_at }}</td>
-                                              <td> ویرایش | حذف | لیست خرید ها </td>
+                                            <td>{{ $purchese->created_at }}</td>
+                                            <td>{{ $purchese->created_at }}</td>
+                                              <td>{{ $purchese->created_at }}</td>
+                                              <td>
+                                                  <a href="{{ route('users.edit', $user) }}"> ویرایش | </a>
+                                                 | حذف | لیست خرید ها
+                                               </td>
                                           </tr>
                                           @endforeach
                                         </tbody>

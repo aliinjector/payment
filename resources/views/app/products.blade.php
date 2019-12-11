@@ -114,7 +114,7 @@
                         @csrf
                         <div class="field-inline field-inline-s2 bg-white shadow-soft">
                           <div class="field-wrap">
-                            <input class="input-solid required" type="text" value="{{ $query }}" name="queryy" placeholder="محصول مورد نظر" aria-required="true">
+                            <input class="input-solid required" type="text" value="@if(isset($queryy)) {{$queryy}}  @endif" name="queryy" placeholder="محصول مورد نظر" aria-required="true">
                           </div><div class="submit-wrap">
                             <button type="submit" class="btn btn-secondary">جستجو</button>
                           </div>

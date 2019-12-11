@@ -45,8 +45,8 @@ class IndexController extends Controller
     public function productsSearch(Request $request)
     {
       $products = Product::search(trim($request->queryy))->get();
-      $query = $request->queryy;
-      return view('app.products', compact('products', 'query'));
+      $queryy = $request->queryy;
+      return view('app.products', compact('products', 'queryy'));
     }
 
 
