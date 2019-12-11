@@ -8,7 +8,6 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="stylesheet" href="/app/shop/2/css/style.css">
-    <link rel="stylesheet" href="/app/shop/2/css/custom.css">
     <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
     <script src="/app/shop/1/assets/js/jquery.min.js"></script>
@@ -758,7 +757,7 @@
 
 
     <footer id="tt-footer">
-        <div class="tt-footer-col tt-color-scheme-01">
+        <div class="tt-footer-col tt-color-scheme-01 d-none-print">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 col-xl-3">
@@ -774,7 +773,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-lg-3 col-xl-3">
+                    <div class="col-md-3 col-lg-3 col-xl-3 d-none-print">
                         <div class="tt-mobile-collapse">
                             <h4 class="tt-collapse-title">سایر صفحات </h4>
                             <div class="tt-collapse-content">
@@ -788,7 +787,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-6 col-xl-6">
+                    <div class="col-md-6 col-lg-6 col-xl-6 d-none-print">
                         <div class="tt-newsletter">
                             <div class="tt-mobile-collapse">
                                 <h4 class="tt-collapse-title">عضویت در خبرنامه</h4>
@@ -804,7 +803,7 @@
                                 </div>
                             </div>
                         </div>
-                        <ul class="tt-social-icon">
+                        <ul class="tt-social-icon d-none-print">
                             <li>
                                 <a class="icon-g-64" target="_blank" href="http://www.facebook.com/"></a>
                             </li>
@@ -826,7 +825,7 @@
             </div>
         </div>
         <div class="tt-footer-custom">
-            <div class="container">
+            <div class="container d-none-print">
                 <div class="tt-row">
                     <div class="tt-col-left">
                         <div class="tt-col-item tt-logo-col">
@@ -868,7 +867,7 @@
 
     <div id="tt-boxedbutton">
 
-        <div class="rtlbutton boxbutton-js">
+        <div class="rtlbutton boxbutton-js d-none-print">
             <div class="box-btn">نوع نمایش</div>
             <div class="box-description">مشاهده بصورت&nbsp;<strong>باکس</strong></div>
             <div class="box-disable">غیرفعال کردن</div>
@@ -1076,9 +1075,11 @@
 
 
 
-    <a href="#" class="tt-back-to-top" id="js-back-to-top">بالا</a>
+    <a href="#" class="tt-back-to-top d-none-print" id="js-back-to-top">بالا</a>
 </body>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
+<link rel="stylesheet" href="/app/shop/2/css/custom.css">
+
 @toastr_js
 @toastr_render
 

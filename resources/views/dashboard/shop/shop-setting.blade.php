@@ -575,15 +575,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش کد پستی</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name="zip_code">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->zip_code == 'disable') selected @endif>غیرفعال</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش مالیات بر ارزش افزوده</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="vat">

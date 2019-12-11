@@ -228,7 +228,7 @@
                         <div class="input-group-append">
                             <button type="submit" class="btn bg-blue-omid text-white mt-4">ثبت فاکتور</button>
                             </form>
-                            <button onclick="myFunction()" class="btn bg-orange-omid text-white mt-4 mr-2">چاپ فاکتور</button>
+                            <button onclick="print_invoice()" class="btn bg-orange-omid text-white mt-4 mr-2">چاپ فاکتور</button>
                         </div>
                     </div>
                 </div>
@@ -243,7 +243,7 @@
 @endsection
 @section('pageScripts')
 <script>
-    function myFunction() {
+    function print_invoice() {
         window.print();
     }
 </script>

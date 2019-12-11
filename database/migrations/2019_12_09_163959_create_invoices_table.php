@@ -30,7 +30,6 @@ class CreateInvoicesTable extends Migration
           $table->text('economic_code_number')->default(0);
           $table->enum('registration_number',['enable', 'disable'])->nullable();
           $table->text('registration_number‌_number')->default(0);
-          $table->enum('zip_code',['enable', 'disable'])->nullable();
           $table->enum('vat',['enable', 'disable'])->nullable();
           $table->enum('description_status',['enable', 'disable'])->nullable();
           $table->text('description')->default('توضیحات');

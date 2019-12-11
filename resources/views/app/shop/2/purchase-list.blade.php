@@ -12,6 +12,52 @@
 
         @include('dashboard.layouts.errors')
         <div class="card-body invoice-head">
+            <div class="row justify-content-around p-2 d-none printable">
+                <img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="35">
+
+                <div class="row">
+                    <b class="mx-1">شماره : </b> 23443
+                </div>
+                <div class="row">
+                    <b class="mx-1">تاریخ : </b> 1399/3/3
+                </div>
+            </div>
+            <div class="row border">
+                <h5 class="col-lg-12 d-flex justify-content-center bg-gray p-2 border">مشخصات فروشنده :</h5>
+                <div>
+                    <div class="row">
+                        <div class="items p-3">
+                            <b class="mr-5">نام فروشگاه :</b> {{ $shop->name }}
+                            <b class="mr-5">تلفن فروشگاه :</b> {{ $shop->shopContact->tel }}
+                            <b class="mr-5">ایمیل فروشگاه :</b> {{ $shop->shopContact->shop_email }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="items p-3">
+                            <b class="mr-5">کد اقتصادی فروشگاه :</b> {{ $shop->invoice->economic_code_number }}
+                            <b class="mr-5">شماره ثبت فروشگاه :</b> {{ $shop->invoice->registration_number‌_number }}
+                            <b class="mr-5">آدرس فروشگاه :</b> {{ $shop->shopContact->address }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row border mb-4 d-none printable">
+                <h5 class="col-lg-12 d-flex justify-content-center bg-gray p-2 border">مشخصات خریدار :</h5>
+                <div>
+                    <div class="row">
+                        <div class="items p-3">
+                            <b class="mx-3">نام و نام خانوادگی :</b> test
+                            <b class="mx-3">شماره خریدار :</b> test
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="items p-3">
+                            <b class="mx-3">آدرس خریدار :</b> test
+                            <b class="mx-3">ایمیل خریدار :</b> test
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-4 align-self-center">
                     <img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="26">
@@ -105,7 +151,11 @@
                                 <!--end tr-->
                                 <!--end tr-->
                                 <tr class="bg-dark text-white">
-                                    <th colspan="3" class="border-0"></th>
+                                    <th colspan="3" class="border-0">
+                                        <div class="">
+                                          <b class="text-dark"> توضیحات : </b>{{ $shop->invoice->description }}
+                                        </div>
+                                    </th>
                                     <td class="border-0 font-14"><b>جمع کل</b></td>
                                     <td>
                                         @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
@@ -238,13 +288,16 @@
                             <div class="input-group-append">
                                 <button type="submit" class="btn tt-btn-addtocart  mt-4">ثبت فاکتور</button>
                                 </form>
-                                <button onclick="myFunction()" class="btn tt-btn-addtocart text-white mt-4 mr-2">چاپ فاکتور</button>
+                                <button onclick="print_invoice()" class="btn tt-btn-addtocart text-white mt-4 mr-2">چاپ فاکتور</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--end col-->
             </div>
+        </div>
+        <div class="border justify-content-around p-2 row d-none printable">
+          {{ $shop->invoice->motto_text }}
         </div>
         <!--end row-->
         <!--end row-->
@@ -257,7 +310,7 @@
 
 @section('footerScripts')
 <script>
-    function myFunction() {
+    function print_invoice() {
         window.print();
     }
 </script>

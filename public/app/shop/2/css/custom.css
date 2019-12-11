@@ -187,10 +187,6 @@ label {
     font-family: wokiee !important;
 }
 
-.btn {
-    background: none !important;
-}
-
 .ty-compact-list {
     padding: 5px 5px 5px 0px;
     float: left;
@@ -204,3 +200,17 @@ label {
     border-bottom: 1px dashed #2879fe;
     width: 25%;
 }
+@media print {
+     .d-none-print{
+       display: none;
+     }
+     .print-big{
+       max-width: 100%!important;
+     }
+     .printable{
+       display: flex!important;
+     }
+  }
+  .bg-gray{
+    background-color: #E8ECEE!important;
+  }
