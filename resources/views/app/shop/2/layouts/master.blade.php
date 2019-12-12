@@ -684,10 +684,11 @@
                                                 </a>
                                                 @if($shop->menu_show == "nestead_menu")
                                                     @if($shopCategory->children()->exists())
-                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important">
+                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;
+    width: 20%!important;">
                                                             @foreach ($shopCategory->children()->get() as $subCategory)
                                                             @if (!$subCategory->children()->exists())
-                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;">
+                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="font-weight-bold iranyekan" style="color: #465f73!important; font-size:16px">
                                                                 <li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
                                                                 </li>
                                                             </a>

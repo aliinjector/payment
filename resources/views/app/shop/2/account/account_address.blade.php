@@ -5,46 +5,33 @@
 @endsection
 
 @section('content')
-    <div id="tt-pageContent">
-        <div class="container-indent">
-            <div class="container container-fluid-custom-mobile-padding">
-                <h1 class="tt-title-subpages noborder">ACCOUNT</h1>
-                <div class="tt-shopping-layout">
-                    <h2 class="tt-title">YOUR ADDRESS</h2>
-                    <div class="tt-wrapper"><a href="#" class="btn">ADD A NEW ADDRESS</a>
-                        <br><a href="account.html" class="tt-link-back"><i class="icon-h-46"></i> RETURN TO ACCOUNT PAGE</a></div>
+<div id="tt-pageContent">
+    <div class="container-indent">
+        <div class="container container-fluid-custom-mobile-padding">
+            <h1 class="tt-title-subpages noborder">آدرس ها</h1>
+            <div class="tt-shopping-layout">
+                <h2 class="tt-title">آدرس های شما</h2>
+                <div class="tt-wrapper"><a href="{{ route('user-address.create') }}" class="btn">اضافه کردن آدرس جدید</a>
                     <div class="tt-wrapper">
-                        <h3 class="tt-title">TITLE</h3>
+                        <h3 class="tt-title">آدرس شماره 1</h3>
                         <div class="tt-table-responsive">
                             <table class="tt-table-shop-02">
                                 <tbody>
                                     <tr>
-                                        <td>NAME:</td>
-                                        <td>Lorem ipsum dolor sit AMET conse ctetur</td>
+                                        <td class="iranyekan font-weight-bold">شهر :</td>
+                                        <td>تهران پاسداران میدان حسین آباد</td>
                                     </tr>
                                     <tr>
-                                        <td>E-MAIL:</td>
-                                        <td>Ut enim ad minim veniam, quis nostrud</td>
+                                        <td class="iranyekan font-weight-bold">استان :</td>
+                                        <td>تهران پاسداران میدان حسین آباد</td>
                                     </tr>
                                     <tr>
-                                        <td>ADDRESS:</td>
-                                        <td>Eexercitation ullamco laboris nisi ut aliquip ex ea</td>
+                                        <td class="iranyekan font-weight-bold">کد پستی :</td>
+                                        <td>تهران پاسداران میدان حسین آباد</td>
                                     </tr>
                                     <tr>
-                                        <td>ADDRESS 2:</td>
-                                        <td>Commodo consequat. Duis aute irure dol</td>
-                                    </tr>
-                                    <tr>
-                                        <td>COUNTRY:</td>
-                                        <td>Lorem ipsum dolor sit amet conse ctetur</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ZIP:</td>
-                                        <td>555</td>
-                                    </tr>
-                                    <tr>
-                                        <td>PHONE:</td>
-                                        <td>888888888</td>
+                                        <td class="iranyekan font-weight-bold">آدرس :</td>
+                                        <td>تهران پاسداران میدان حسین آباد</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -60,53 +47,16 @@
 									l-2.6-2.6L2.9,19.1z M3.7,14.8L5,16.1l9.7-9.7L13.5,5L3.7,14.8z M7.2,18.3L17,8.5l-1.3-1.3L5.9,17L7.2,18.3z M15.5,3l-1.2,1.2
 									l3.5,3.5L19,6.5c0.1-0.1,0.2-0.3,0.2-0.4c0-0.2-0.1-0.3-0.2-0.4L16.4,3c-0.1-0.1-0.3-0.2-0.4-0.2C15.8,2.8,15.6,2.8,15.5,3z" />
                                     </g>
-                                </svg> EDIT </a><a class="btn-link" href="#"><i class="icon-h-02"></i>DELETE</a></div>
+                                </svg> ویرایش </a><a class="btn-link" href="#"><i class="icon-h-02"></i>حذف</a></div>
                     </div>
-                    <div class="tt-wrapper">
-                        <h3 class="tt-title">TITLE</h3>
-                        <div class="tt-table-responsive">
-                            <table class="tt-table-shop-02">
-                                <tbody>
-                                    <tr>
-                                        <td>NAME:</td>
-                                        <td>Lorem ipsum dolor sit AMET conse ctetur</td>
-                                    </tr>
-                                    <tr>
-                                        <td>E-MAIL:</td>
-                                        <td>Ut enim ad minim veniam, quis nostrud</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ADDRESS:</td>
-                                        <td>Eexercitation ullamco laboris nisi ut aliquip ex ea</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ADDRESS 2:</td>
-                                        <td>Commodo consequat. Duis aute irure dol</td>
-                                    </tr>
-                                    <tr>
-                                        <td>COUNTRY:</td>
-                                        <td>Lorem ipsum dolor sit amet conse ctetur</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ZIP:</td>
-                                        <td>555</td>
-                                    </tr>
-                                    <tr>
-                                        <td>PHONE:</td>
-                                        <td>888888888</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="tt-shop-btn"><a class="btn-link" href="#"><i class="icon-g-25"></i>EDIT</a> <a class="btn-link" href="#"><i class="icon-h-02"></i>DELETE</a></div>
-                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
-		@endsection
+    @endsection
 
-		@section('footerScripts')
+    @section('footerScripts')
 
-		@endsection
+    @endsection

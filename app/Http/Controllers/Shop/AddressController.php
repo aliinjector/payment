@@ -26,7 +26,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-        //
+      return view("app.shop.2.account.account_address_fields");
     }
 
     /**
