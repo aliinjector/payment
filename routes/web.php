@@ -23,6 +23,9 @@ Auth::routes();
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 Route::get('/', 'IndexController@index')->name('index');
 
+//Send Email
+Route::post('/sendemail/send', 'SendEmailController@send')->name('sendemail.send');
+
 Route::get('/shops', 'IndexController@shopsShow')->name('shops.show');
 Route::post('/shops', 'IndexController@shopsSearch')->name('shops.search');
 Route::get('/products', 'IndexController@productsShow')->name('products.show');

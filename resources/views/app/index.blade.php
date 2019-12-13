@@ -878,21 +878,21 @@
                                                     <div class="col-lg-6">
                                                       <div class="contact-wrap split split-left split-lg-left bg-white">
                                                         <h5 class="title title-md">تماس باما</h5>
-                                                        <form class="nk-form-submit" action="" method="post">
+                                                        <form method="post" action="{{ route('sendemail.send') }}">
+                                                          @csrf
                                                           <div class="field-item">
-                                                            <input name="contact-name" type="text" class="input-line required">
+                                                            <input name="name" type="text" class="input-line required">
                                                             <label class="field-label field-label-line">نام</label>
                                                           </div>
                                                           <div class="field-item">
-                                                            <input name="contact-email" type="email" class="input-line required email">
+                                                            <input name="email" type="email" class="input-line required email">
                                                             <label class="field-label field-label-line">آدرس ایمیل</label>
                                                           </div>
                                                           <div class="field-item">
-                                                            <textarea name="contact-message"
+                                                            <textarea name="message"
                                                             class="input-line input-textarea required"></textarea>
                                                             <label class="field-label field-label-line">متن پیام</label>
                                                           </div>
-                                                          <input type="text" class="d-none" name="form-anti-honeypot" value="">
                                                           <div class="row">
                                                             <div class="col-sm-4">
                                                               <button type="submit" class="btn btn-lg btn-grad">ارسال</button>
