@@ -142,8 +142,11 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::any('/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list');
     //User-pruchased List
     Route::get('/user-purchased-list', 'UserPurchasesController@userPurchaseList')->name('user.purchased.list');
+
     //Address
     Route::resource('/user-address', 'AddressController');
+    Route::post('/user-address/delete', 'AddressController@destroy')->name('user-address.delete');
+
     //Cart
     Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart');
     Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');
