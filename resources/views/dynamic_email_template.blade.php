@@ -127,7 +127,7 @@
                                     <tr>
                                         <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
                                             <h2 style="direction: rtl; font-family: sans-serif; font-size: 17px; font-weight: normal; margin: 0; Margin-bottom: 15px;">سلام مدیر</h2>
-                                            <h4 style="direction: rtl; font-family: sans-serif; font-size: 16px; font-weight: normal; margin: 0; Margin-bottom: 15px;">پیغام جدیدی از {{ $data['name'] }}</h4>
+                                            <h4 style="direction: rtl; font-family: sans-serif; font-size: 16px; font-weight: normal; margin: 0; Margin-bottom: 15px;">پیغام جدیدی از {{ $data['name'] . ' ' .  $data['email'] }}</h4>
                                             <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                                                 <tbody>
                                                     <tr>

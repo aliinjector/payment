@@ -20,7 +20,8 @@ class SendEmailController extends Controller
 
         $data = array(
             'name'      =>  $request->name,
-            'message'   =>   $request->message
+            'message'   =>   $request->message,
+            'email'   =>   $request->email
         );
      Mail::to('hassankhosrojerdi@yahoo.com')->send(new SendMail($data));
      alert()->success('امتیاز شما با موفقیت ثبت شد', 'انجام شد');
