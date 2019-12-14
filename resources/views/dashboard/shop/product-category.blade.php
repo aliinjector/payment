@@ -277,6 +277,7 @@
                 });
         });
     </script>
+    
     <script>
         $(document).on('click', '#icon-delete', function(e) {
             e.preventDefault();

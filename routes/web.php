@@ -101,6 +101,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         //Brand
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
+        Route::post('brand/icon/delete', 'BrandController@destroyIcon')->name('brand.icon.delete');
+
 
         //Stats
         Route::resource('stats', 'StatController');
