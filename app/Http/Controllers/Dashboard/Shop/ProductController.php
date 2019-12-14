@@ -437,4 +437,12 @@ else{
              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
           }
+
+
+          public function destroyIcon(Request $request){
+            $product = Product::find($request->id);
+            $product->update([
+                'image' => null
+            ]);
+          }
     }
