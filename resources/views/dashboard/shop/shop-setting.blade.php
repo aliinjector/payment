@@ -273,7 +273,7 @@
     </div>
 
     <div class="tab-pane fade" id="theme" role="tabpanel">
-        <form method="post" action="{{ route('shop-setting.setting-update', \Auth::user()->shop()->first()->id) }}">
+        <form method="post" action="{{ route('shop-setting.setting-update', \Auth::user()->shop()->first()->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -290,6 +290,23 @@
                                     <option value="nestead_menu">منوی تو در تو در هدر فروشگاه</option>
                                     <option value="nestead_box" @if(\Auth::user()->shop()->first()->menu_show == 'nestead_box') selected @endif>باکس تو در تو در صفحه نمایش محصولات</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">واترمارک روی تصویر محصولات
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#watermark">ویرایش تصویر</button>
+                            </label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="watermark_status">
+                                    <option value="enable">فعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->watermark_status == 'disable') selected @endif>غیر فعال</option>
+                                </select>
+                            </div>
+                            <div class="card mt-1 col-10 mr-8 collapse" id="watermark">
+                                <div class="card-body">
+                                    <h4 class="header-title"> تصویر واترمارک</h4>
+                                    <input type="file" id="input-file-now" name="watermark" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->watermark }}">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -570,7 +587,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->registration_number == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                                 <div id="registration_number‌_number" class="collapse mt-2">
-                                  <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->registration_number‌_number }}">
+                                    <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->registration_number‌_number }}">
                                 </div>
                             </div>
                         </div>
@@ -593,7 +610,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->description_status == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                                 <div id="description" class="collapse mt-2">
-                                  <input class="form-control border-custom" type="text" name="description" value="{{ \Auth::user()->shop()->first()->invoice->description }}">
+                                    <input class="form-control border-custom" type="text" name="description" value="{{ \Auth::user()->shop()->first()->invoice->description }}">
                                 </div>
 
                             </div>
@@ -608,7 +625,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->motto == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                                 <div id="motto_text" class="collapse mt-2">
-                                  <input class="form-control border-custom" type="text" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->motto_text }}">
+                                    <input class="form-control border-custom" type="text" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->motto_text }}">
                                 </div>
 
                             </div>
