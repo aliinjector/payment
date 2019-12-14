@@ -312,7 +312,10 @@ else{
            else{
                $image = $this->uploadFile($request->file('image'), false, true);
            }
-
+           
+           if($request->brand_id == "null"){
+             $request->merge(['brand_id' => null]);
+           }
 
       if ( $request->enable != "on")
       $request->enable = 0;
