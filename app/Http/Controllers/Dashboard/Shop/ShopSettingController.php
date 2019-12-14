@@ -210,4 +210,18 @@ class ShopSettingController extends Controller
     {
         //
     }
+
+    public function destroyImage(Request $request){
+      $shop = Shop::find($request->id);
+      if($request->type == 'icon'){
+        $shop->update([
+            'icon' => null
+        ]);
+      }
+      else{
+        $shop->update([
+            'logo' => null
+        ]);
+      }
+    }
 }

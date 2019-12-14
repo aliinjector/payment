@@ -217,6 +217,7 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">آیکون فروشگاه</h4>
                             <p class="text-muted mb-3">لطفا آیکون فروشگاه خود را آپلود نمایید.</p>
+                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-type="icon" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
                             <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->icon['original'] }}">
                         </div>
                         <!--end card-body-->
@@ -229,6 +230,7 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">لوگوی فروشگاه</h4>
                             <p class="text-muted mb-3">لطفا لوگوی فروشگاه خود را آپلود نمایید.</p>
+                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-type="logo" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
                             <input type="file" id="input-file-now" name="logo" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->logo['original'] }}">
                         </div>
                         <!--end card-body-->
@@ -663,4 +665,41 @@
 </script>
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+  $( ".dropify-clear" ).remove();
+  });
+</script>
+<script>
+    $(document).on('click', '#icon-delete', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var type = $(this).data('type');
+        swal(` ${'حذف لوگو یا آیکون:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                dangerMode: true,
+                icon: "warning",
+                buttons: ["انصراف", "حذف"],
+            })
+            .then(function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('dashboard/shop/managment/shop-setting/image/delete')}}",
+                        data: {
+                            id: id,
+                            type: type,
+                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                        },
+                        success: function(data) {
+                          var url = document.location.origin + "/dashboard/shop/managment/shop-setting";
+                          location.href = url;
+                        }
+                    });
+                } else {
+                    toastr.warning('لغو شد.', '', []);
+                }
+            });
+    });
+</script>
 @stop
