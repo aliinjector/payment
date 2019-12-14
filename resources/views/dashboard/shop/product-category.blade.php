@@ -124,6 +124,8 @@
                                 <div class="card mt-3">
                                     <div class="card-body">
                                         <h4 class="mt-0 header-title">آیکون دسته بندی</h4>
+                                        <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $category->name }}" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+
                                         <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ $category->icon['original'] }}">
                                     </div>
                                 </div>
@@ -234,6 +236,11 @@
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
     <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
     <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+    <script type="text/javascript">
+    $( document ).ready(function() {
+      $( ".dropify-clear" ).remove();
+      });
+    </script>
     <script>
         oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
         $('#myInputTextField').keyup(function() {
@@ -270,6 +277,36 @@
                 });
         });
     </script>
+    <script>
+        $(document).on('click', '#icon-delete', function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            swal(` ${'حذف عکس دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                    dangerMode: true,
+                    icon: "warning",
+                    buttons: ["انصراف", "حذف"],
+                })
+                .then(function(isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('dashboard/shop/product-category/icon/delete')}}",
+                            data: {
+                                id: id,
+                                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                            },
+                            success: function(data) {
+                            $( ".dropify-preview" ).addClass('d-none');
+                            }
+                        });
+                    } else {
+                        toastr.warning('لغو شد.', '', []);
+                    }
+                });
+        });
+    </script>
+
     @if(session()->has('flashModal'))
         <script>
             $('#AddProductCategoryModal').modal('show');

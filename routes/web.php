@@ -78,6 +78,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         //Product-Category
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy')->name('product-category.delete');
+        Route::post('product-category/icon/delete', 'ProductCategoryController@destroyIcon')->name('product-category.icon.delete');
 
         //Vouchers
         Route::get('vouchers/voucher-report', 'VoucherController@voucherReport')->name('vouchers.voucher-report');
