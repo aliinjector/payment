@@ -143,6 +143,10 @@ class BrandController extends Controller
 
     public function destroyIcon(Request $request){
       $brand = Brand::find($request->id);
+      foreach($brand->icon as $icon){
+        $icon = ltrim($icon, '/');
+        unlink($icon);
+      }
       $brand->update([
           'icon' => null
       ]);

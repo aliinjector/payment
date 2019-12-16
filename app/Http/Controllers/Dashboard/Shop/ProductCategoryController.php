@@ -168,6 +168,10 @@ class ProductCategoryController extends Controller
 
      public function destroyIcon(Request $request){
        $productCategory = ProductCategory::find($request->id);
+       foreach($productCategory->icon as $icon){
+         $icon = ltrim($icon, '/');
+         unlink($icon);
+       }
        $productCategory->update([
            'icon' => null
        ]);

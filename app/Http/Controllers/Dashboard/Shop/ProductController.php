@@ -312,7 +312,7 @@ else{
            else{
                $image = $this->uploadFile($request->file('image'), false, true);
            }
-           
+
            if($request->brand_id == "null"){
              $request->merge(['brand_id' => null]);
            }
@@ -442,8 +442,12 @@ else{
           }
 
 
-          public function destroyIcon(Request $request){
+          public function destroyImage(Request $request){
             $product = Product::find($request->id);
+            foreach($product->image as $image){
+              $image = ltrim($image, '/');
+              unlink($image);
+            }
             $product->update([
                 'image' => null
             ]);

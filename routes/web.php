@@ -74,7 +74,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product-list.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status');
-        Route::post('product-list/icon/delete', 'ProductController@destroyIcon')->name('product-list.icon.delete');
+        Route::post('product-list/image/delete', 'ProductController@destroyImage')->name('product-list.image.delete');
 
 
         //Product-Category
