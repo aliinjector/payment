@@ -396,7 +396,9 @@
 
                                             <select class="selectpicker" multiple data-live-search="true" name="color[]">
                                                 @foreach($colors as $color)
-                                                <option  @if($product->colors->count() != 0) @foreach($product->colors as $selectedColor) {{ $color->id == $selectedColor->id ? 'selected' : ''}}  @endforeach @endif value="{{ $color->id }}">{{ $color->name }}</option>
+                                                <option @if($product->colors->count() != 0) @foreach($product->colors as $selectedColor) {{ $color->id == $selectedColor->id ? 'selected' : ''}}
+                                                        @endforeach
+                                                        @endif value="{{ $color->id }}">{{ $color->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -1392,7 +1394,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="byekan">
-                                          {{-- {{ dd($products[0]->color[0]->code) }} --}}
+                                            {{-- {{ dd($products[0]->color[0]->code) }} --}}
                                             @foreach($products as $product)
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                                 <td class="sorting_1" style="width:5%">{{ $product->id }}</td>
@@ -1405,11 +1407,11 @@
                                                 <td>
                                                     <div class="tt-collapse-content" style="display: block;">
                                                         <ul class="tt-options-swatch options-middle">
-                                                          @foreach($product->colors as $color)
-                                                            <li>
-                                                                <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
-                                                            </li>
-                                                          @endforeach
+                                                            @foreach($product->colors as $color)
+                                                                <li>
+                                                                    <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                                                                </li>
+                                                                @endforeach
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -1506,9 +1508,9 @@
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 <script type="text/javascript">
-$( document ).ready(function() {
-  $( ".dropify-clear" ).remove();
-  });
+    $(document).ready(function() {
+        $(".dropify-clear").remove();
+    });
 </script>
 <script>
     $(".change").click(function() {
@@ -1644,7 +1646,7 @@ $( document ).ready(function() {
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
-                        $( ".dropify-preview" ).addClass('d-none');
+                            $(".dropify-preview").addClass('d-none');
                         }
                     });
                 } else {

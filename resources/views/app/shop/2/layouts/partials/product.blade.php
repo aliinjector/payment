@@ -36,15 +36,11 @@
         <div class="tt-price mt-2">{{ number_format($product->price) }} تومان</div>
         <div class="tt-option-block">
             <ul class="tt-options-swatch">
-                <li>
-                    <a class="options-color tt-color-bg-03" href="#"></a>
-                </li>
-                <li>
-                    <a class="options-color tt-color-bg-04" href="#"></a>
-                </li>
-                <li>
-                    <a class="options-color tt-color-bg-05" href="#"></a>
-                </li>
+              @foreach($product->colors as $color)
+                  <li>
+                      <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                  </li>
+                  @endforeach
             </ul>
         </div>
         <div class="tt-product-inside-hover">
