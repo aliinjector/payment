@@ -168,6 +168,7 @@ class PurchaseController extends Controller
 
 
       public function purchaseSubmit($shop, $cartID, Request $request) {
+        // dd($request->all());
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           $cart = \Auth::user()->cart()->get()->first()->id;
           $productsID = [];
@@ -185,35 +186,27 @@ class PurchaseController extends Controller
           }
           $cart = Cart::where('id', $cartID)->get()->first();
           $shopId = Shop::where('english_name', $shop)->get()->first()->id;
+
+          // address and new addres validation condition
           if (!isset($request->address)) {
               $request->validate(['new_address' => 'required']);
           } else {
               $request->validate(['address' => 'required']);
           }
-          if (isset(\Auth::user()->userInformation()->get()->first()->address)) {
-              $userAddress1 = \Auth::user()->userInformation()->get()->first()->address;
-          }
-          if (isset(\Auth::user()->userInformation()->get()->first()->address_2)) {
-              $userAddress2 = \Auth::user()->userInformation()->get()->first()->address_2;
-          }
-          if (isset(\Auth::user()->userInformation()->get()->first()->address_3)) {
-              $userAddress3 = \Auth::user()->userInformation()->get()->first()->address_3;
-          }
+
           $purchase = new UserPurchase;
           $purchase->cart_id = $cartID;
           $purchase->user_id = \Auth::user()->id;
           $purchase->shop_id = $shopId;
+
+          // check if user send new address or select address from his addresses
           if ($request->new_address == null) {
-              if ($request->address == "address_1") {
-                  $purchase->address = $userAddress1;
-              } elseif ($request->address == "address_2") {
-                  $purchase->address = $userAddress2;
-              } elseif ($request->address == "address_3") {
-                  $purchase->address = $userAddress3;
+            $purchase->address = $request->address;
               }
-          } else {
-              $purchase->address = $request->new_address;
-          }
+              else{
+                $purchase->address = $request->new_address;
+              }
+              
           $purchase->shipping = $request->shipping_way;
           $shop = Shop::where('english_name', $shop)->first();
 
