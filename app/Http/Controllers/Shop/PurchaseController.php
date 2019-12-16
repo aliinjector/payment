@@ -165,6 +165,8 @@ class PurchaseController extends Controller
       }
 
 
+
+
       public function purchaseSubmit($shop, $cartID, Request $request) {
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           $cart = \Auth::user()->cart()->get()->first()->id;
