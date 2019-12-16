@@ -40,6 +40,13 @@
 	.ui-widget-header .ui-state-default {
 		background-color: grey !important;
 	}
+	.bg-transparent{
+		background-color: transparent!important;
+	}
+	.sort-btn{
+		padding: 5px 55px 4px !important;
+		margin: 3px;
+	}
 </style>
 <div id="tt-pageContent">
 	<div class="container-indent">
@@ -82,19 +89,19 @@
 						<h3 class="tt-collapse-title">فیلتر بر اساس نوع کالا</h3>
 						<div class="tt-collapse-content">
 							<div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
-								<label id="available-filter-1" for="available-filter-1" class="rounded btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
-									<input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
+								<label id="available-filter-1" for="available-filter-1" class="sort-btn col-3 rounded btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser bg-transparent" style="cursor:pointer; border: 1px solid!important;">
+									<input class="d-none" type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
 								</label>
-								<label id="available-filter-2" for="available-filter-2" class="rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan"
-								  style="cursor:pointer">
-									<input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
+								<label id="available-filter-2" for="available-filter-2" class="sort-btn col-3  rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan bg-transparent"
+								  style="cursor:pointer;border: 1px solid!important">
+									<input class="d-none" type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
 								</label>
-								<label id="available-filter-3" for="available-filter-3" class="rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan"
-								  style="cursor:pointer">
-									<input type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
+								<label id="available-filter-3" for="available-filter-3" class="sort-btn col-3 rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan bg-transparent"
+								  style="cursor:pointer;border: 1px solid!important">
+									<input class="d-none" type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
 								</label>
-								<label id="available-filter-4" for="available-filter-4" class="rounded btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan" style="cursor:pointer">
-									<input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
+								<label id="available-filter-4" for="available-filter-4" class="sort-btn col-3 rounded btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan bg-transparent" style="cursor:pointer; border: 1px solid!important">
+									<input class="d-none" type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
 								</label>
 							</div>
 						</div>
@@ -212,7 +219,7 @@
 					            @csrf
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>
-										
+
 									</form>
 
 										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img
