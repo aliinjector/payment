@@ -110,13 +110,13 @@
                         <div class="tt-wrapper m-4">
                             <div class="tt-add-info">
 
-                              <ul class="tt-options-swatch options-middle flex-row mb-2">
-                                  @foreach($product->colors as $color)
-                                      <li>
-                                          <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
-                                      </li>
-                                      @endforeach
-                              </ul>
+                                <ul class="tt-options-swatch options-middle flex-row mb-2">
+                                    @foreach($product->colors as $color)
+                                        <li>
+                                            <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                                        </li>
+                                        @endforeach
+                                </ul>
 
                                 <ul>
                                     @if ($product->type == "file")
@@ -146,7 +146,8 @@
                                 <div class="tt-collapse-title">ویژگی ها</div>
                                 <div class="tt-collapse-content">
                                     <ul class="list-unstyled pro-features border-0 iranyekan">
-                                        @for ($i=1; $i <= 10; $i++) <div class="wrapper">
+                                        @for ($i=1; $i <= 10; $i++)
+                                          <div class="wrapper d-inline-block">
                                             @if ($product->{"feature_{$i}"})
                                             <li class="ty-compact-list">{{ $product->{"feature_{$i}"} }} </li>
                                             @endif
