@@ -210,7 +210,11 @@
 											<ul class="tt-add-info">
 												<li><a href="#">{{ $product->productCategory->name }}</a></li>
 											</ul>
-											<div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
+											<div class="tt-rating">
+												@for ($i = 1; $i <= (int)$product->avgRating; $i++)
+				                    <i class="icon-star"></i>
+				                    @endfor
+											</div>
 										</div>
 										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">{{ $product->title }}</a></h2>
 										<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
