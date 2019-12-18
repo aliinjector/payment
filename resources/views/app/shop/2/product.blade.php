@@ -69,25 +69,26 @@
                                     @endfor
                             </div><a class="product-page-gotocomments-js" href="#">{{ $product->comments->count() }} نظر مشتری </a>
                         </div>
+                        <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                          @csrf
 
                         <div class="tt-wrapper m-4">
                             <div class="tt-row-custom-01">
                                 <div class="col-item">
                                     <div class="tt-input-counter style-01"><span class="minus-btn"></span>
-                                        <input type="text" value="1" size="5"> <span class="plus-btn"></span></div>
+                                        <input name="quantity" type="text" value="1" size="5"> <span class="plus-btn"></span></div>
                                 </div>
                                 @auth
-                                <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
-                                    @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="btn tt-btn-addtocart btn-cart btn-sm waves-effect waves-light iranyekan btn btn-lg"><i class="icon-f-39"></i>
+                                    <button type="submit" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
                                         @if($product->type == 'file') دریافت فایل
                                             @else اضافه به سبد خرید
                                             @endif</button>
-                                </form>
                                 @endauth
                             </div>
                         </div>
+                      </form>
+
                         <div class="tt-wrapper m-4">
                             <ul class="tt-list-btn">
                                 <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
