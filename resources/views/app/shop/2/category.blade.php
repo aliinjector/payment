@@ -40,10 +40,12 @@
 	.ui-widget-header .ui-state-default {
 		background-color: grey !important;
 	}
-	.bg-transparent{
-		background-color: transparent!important;
+
+	.bg-transparent {
+		background-color: transparent !important;
 	}
-	.sort-btn{
+
+	.sort-btn {
 		padding: 5px 55px 4px !important;
 		margin: 3px;
 	}
@@ -89,18 +91,23 @@
 						<h3 class="tt-collapse-title">فیلتر بر اساس نوع کالا</h3>
 						<div class="tt-collapse-content">
 							<div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
-								<label id="available-filter-1" for="available-filter-1" class="sort-btn col-3 rounded btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser bg-transparent" style="cursor:pointer; border: 1px solid!important;">
+								<label id="available-filter-1" for="available-filter-1" class="sort-btn col-3 rounded btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser bg-transparent"
+								  style="cursor:pointer; border: 1px solid!important;">
 									<input class="d-none" type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
 								</label>
-								<label id="available-filter-2" for="available-filter-2" class="sort-btn col-3  rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan bg-transparent"
+								<label id="available-filter-2" for="available-filter-2"
+								  class="sort-btn col-3  rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan bg-transparent"
 								  style="cursor:pointer;border: 1px solid!important">
 									<input class="d-none" type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
 								</label>
-								<label id="available-filter-3" for="available-filter-3" class="sort-btn col-3 rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan bg-transparent"
+								<label id="available-filter-3" for="available-filter-3"
+								  class="sort-btn col-3 rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan bg-transparent"
 								  style="cursor:pointer;border: 1px solid!important">
 									<input class="d-none" type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
 								</label>
-								<label id="available-filter-4" for="available-filter-4" class="sort-btn col-3 rounded btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan bg-transparent" style="cursor:pointer; border: 1px solid!important">
+								<label id="available-filter-4" for="available-filter-4"
+								  class="sort-btn col-3 rounded btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan bg-transparent"
+								  style="cursor:pointer; border: 1px solid!important">
 									<input class="d-none" type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
 								</label>
 							</div>
@@ -110,40 +117,15 @@
 						<h3 class="tt-collapse-title">براساس رنگ</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-options-swatch options-middle">
+								@foreach ($colors as $color)
 								<li>
-									<a class="options-color tt-border tt-color-bg-08" href="#"></a>
+									<a class="options-color" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}">
+									</a>
 								</li>
-								<li>
-									<a class="options-color tt-color-bg-09" href="#"></a>
-								</li>
-								<li class="active">
-									<a class="options-color tt-color-bg-10" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-11" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-12" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-13" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-14" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-15" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-16" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-17" href="#"></a>
-								</li>
-								<li>
-									<a class="options-color tt-color-bg-18" href="#"></a>
-								</li>
-								<li><a class="options-color" href="#"><span class="swatch-img"><img src="images/custom/texture-img-01.jpg" alt=""> </span><span class="swatch-label color-black"></span></a></li>
+								{{-- href="javascript:{}" onclick="document.getElementById('submit').submit();" --}}
+								@endforeach
+								<input id="color-input" type="hidden" name="color" value="">
+
 							</ul>
 						</div>
 					</div>
@@ -211,20 +193,18 @@
 									<div class="tt-image-box">
 										<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
 										<form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
-												@csrf
-												<a href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-									</form>
+											@csrf
+											<a href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
+										</form>
 
-									<form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
-					            @csrf
+										<form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
+											@csrf
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>
-
-									</form>
-
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img
-												  src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg"
-												  alt=""></span></a></div>
+										</form>
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span><span
+											  class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
+									</div>
 									<div class="tt-description">
 										<div class="tt-row">
 											<ul class="tt-add-info">
@@ -235,6 +215,7 @@
 										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">{{ $product->title }}</a></h2>
 										<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
 										<div class="tt-product-inside-hover">
+											@auth
 											<form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
 												@csrf
 												<input type="hidden" name="product_id" value="{{$product->id}}">
@@ -243,7 +224,7 @@
 														@else اضافه به سبد خرید
 														@endif</button>
 											</form>
-											{{-- <div class="tt-row-btn"><a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">افزودن به سبد خرید</a></div> --}}
+											@endauth
 											<div class="tt-row-btn">
 												<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
 												<a href="#" class="tt-btn-wishlist"></a>
@@ -335,4 +316,17 @@
 		$(this).text() !== 'بستن' ? $(this).text('بستن') : $(this).text(' بیشتر');
 	});
 </script>
+
+<script>
+	$(document).ready(function() {
+		$(".options-color").click(function(e) {
+	  e.preventDefault();
+
+	  var color = $(this).data('color');
+	  $("#color-input").val(color);
+	  $('#submit').trigger('submit');
+	});
+	});
+</script>
+
 @endsection
