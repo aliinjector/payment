@@ -64,22 +64,23 @@
               <nav class="header-menu mr-5" id="header-menu">
                 <ul class="menu">
                   <li class="menu-item">
-                    <a class="menu-link nav-link" href="/app/#">صفحه اصلی</a>
+                    <a class="menu-link nav-link" href="#">صفحه اصلی</a>
                   </li>
 
+                  <li class="menu-item">  <a  href="#about" class="menu-link nav-link">  درباره سیستم </a>  </li>
                   <li class="menu-item">
-                    <a  href="#about" class="menu-link nav-link">
-                    درباره سیستم امید</a>
-                  </li>
-
-                  <li class="menu-item">
-                    <a class="menu-link nav-link" href="#services"> خدمات فروشگاه ساز</a>
+                    <a class="menu-link nav-link" href="#services"> خدمات</a>
                   </li>
 
 
                   <li class="menu-item">
-                    <a class="menu-link nav-link" target="_blank" href="/docs">آموزش</a>
+                    <a class="menu-link nav-link" target="_blank" href="/shops">فروشگاه ها</a>
                   </li>
+
+                  <li class="menu-item">
+                    <a class="menu-link nav-link" target="_blank" href="/products">محصولات</a>
+                  </li>
+
 
                   <li class="menu-item">
                     <a class="menu-link nav-link" href="#faq">سوالات متداول</a>
@@ -120,13 +121,13 @@
                     <div class="col-lg-7 col-sm-10 text-center text-lg-left">
                       <div class="banner-caption cpn tc-light">
                         <div class="cpn-head">
-                          <h1 class="title animated" data-animate="fadeInUp" data-delay="1">سیستم فروشگاه ساز امید</h1><br class="d-none d-md-block"><h4>  ارایه دهنده راهکار های فروش<br>
-                            و پشتیبانی محصولات و کسب و کارها</h4>
+                          <h1 class="title animated" data-animate="fadeInUp" data-delay=".1">سیستم فروشگاه ساز امید</h1><br class="d-none d-md-block">
+                          <h4 class="title animated" data-animate="fadeInUp" data-delay=".2">  ارایه راهکار یکپارچه فروش آنلاین </h4>
                           </div>
                           <div class="cpn-text">
                             <p class="animated" data-animate="fadeInUp" data-delay="2">
                               <ul class="list list-check animated" data-animate="fadeInUp"
-                              data-delay=".4">
+                              data-delay=".3">
                               <li>مدیریت ظاهر و شخصی سازی قالب فروشگاه</li>
                               <li> کاهش هزینه راه اندازی فروشگاه آنلاین
                               </li>
@@ -139,10 +140,10 @@
 
                             <div class="cpn-btns animated" data-animate="fadeInUp" data-delay="1.2">  <a class="btn btn-grad" href="{{ route('shops.show') }}">مشاهده لیست فروشگاهها</a>   <a class="btn btn-grad" href="{{ route('products.show') }}">جستجوی محصول</a> </div>
                               <ul class="cpn-links animated" data-animate="fadeInUp" data-delay="1.3">
-                                <li><a class="link" href="/app/#steps"><em
+                                <li><a class="link" href="#steps"><em
                                   class="link-icon far fa-file-alt"></em>مراحل احراز هویت
                                   پرداخت یاری</a></li>
-                                  <li><a class="link" href="/app/#services"><em
+                                  <li><a class="link" href="#services"><em
                                     class="link-icon fas fa-lightbulb"></em> راهکار های آنلاین
                                     امید</a></li>
                                   </ul>
@@ -172,17 +173,16 @@
                       <span style="color: white" class="rank-count">نمایش آمار بازدید </span>
                     </li>
                     <li class="rank-item rank-item3 animated" data-animate="fadeInUp" data-delay="1.1">
-                      <span style="color: white" class="rank-count">مدیریت فروشگاه</span>
+                      <span style="color: white" class="rank-count">یکپارچه سازی</span>
                     </li>
                     <li class="rank-item rank-item4 animated" data-animate="fadeInUp" data-delay="1.2">
-                      <span style="color: white" class="rank-count">گزارشات فروشگاه</span>
+                      <span style="color: white" class="rank-count">گزارشات لحظه ای</span>
                     </li>
                     <li class="rank-item rank-item5 animated" data-animate="fadeInUp" data-delay="1.3">
-                      <span style="color: white" class="rank-count">افزایش محصولات</span>
+                      <span style="color: white" class="rank-count"> جستجو پیشرفته </span>
                     </li>
                     <li class="rank-item rank-item6 animated" data-animate="fadeInUp" data-delay="1.4">
-                      <span style="color: white" class="rank-count">وضعیت سفارشات
-</span>
+                      <span style="color: white" class="rank-count">پیگیری سفارشات</span>
                     </li>
                     <li class="rank-item rank-item7 animated" data-animate="fadeInUp" data-delay="1.5">
                       <div style="color: white" class="rank-count pt-1">آموزش و پشتیبانی</div>
@@ -200,11 +200,7 @@
                           <div class="nk-block-text">
                             <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">درباره فروشگاه ساز امید</h2>
                             <p class="animated" data-animate="fadeInUp" data-delay=".2">
-                              سیستم فروشگاه ساز امید با خط مشی حرکت بر لبه فناوری در راستای ارائه سیستم پرداخت
-                              همواره به دنبال خلق سامانه خدمات پرداختی و جلب رضایت کاربران میباشد. این شرکت با در
-                              اختیار داشتن منابع انسانی متخصص، پویایی در حوزه نرم افزاری و همچنین پشتیبانی پیوسته
-                              به صورت 24/7 تلاش در تحقق اهداف و رسالت شرکت در ارائه بهینه خدمات و نرم افزارهای
-                              پرداختی می باشد.
+                              با توجه به افزایش روزافزون استفاده از پلتفرم آنلاین بعنوان فضایی انعطاف پذیر و کارآمد جهت ارائه، فروش و پشتیبانی از محصولات و خدمات کسب و کارها و بنگاه های اقتصادی کوچک، تیم طراحی و توسعه شرکت فناور ستاره نوران با هدف ایجاد پلتفرم یکپارچه و کاهش هزینه و سیکل زمانی ایجاد فروشگاه اینترنتی،  سیستم یکپارچه فروشگاه سازامید  را ایجاد نموده است.
                             </p>
                           </div>
                         </div>
@@ -278,18 +274,18 @@
                             <div class="nk-block nk-block-features-s2">
                               <div class="row align-items-center flex-row-reverse">
                                 <div class="col-lg-5">
-                                  <div class="gfx py-4 animated" data-animate="fadeInUp" data-delay=".1">
+                                  <div class="gfx py-4 animated" data-animate="fadeInUp" data-delay=".4">
                                     <img src="/app/images/gfx/gfx-a.png" alt="gfx">
                                   </div>
                                 </div><!-- .col -->
                                 <div class="col-lg-7">
                                   <!-- Section Head @s -->
                                   <div class="section-head">
-                                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".2">مراحل عضویت و استفاده
+                                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">مراحل عضویت و استفاده
                                       از سیستم </h2>
-                                      <p class="animated" data-animate="fadeInUp" data-delay=".3">
+                                      <p class="animated" data-animate="fadeInUp" data-delay=".2">
                                         باتوجه به تعهد شرکت فناور ستاره نوران به ایجاد ساختاری امن و قابل اطمینان برای تمامی
-                                        ذینفعان خدمات، استفاده از پلتفرم پایان پی ملزم به احراز هویت کاربران میباشد که در
+                                        ذینفعان خدمات، استفاده از پلتفرم امید شاپ ملزم به احراز هویت کاربران میباشد که در
                                         ادامه با فرآیند مربوطه آشنا خواهید شد.
                                       </p>
                                     </div><!-- .section-head @e -->
@@ -312,7 +308,7 @@
                                           <div class="feature-text">
                                             <h5 class="title title-sm">مرحله ۲) احراز هویت</h5>
                                             <p>با ورود به منو تکمیل اطلاعات و احراز هویت و وارد نمودن اطلاعات در سامانه
-                                              پایان پی، فرآیند احراز هویت شما آغاز شده و تیم مدیریت پایان پی به سرعت
+                                              امید شاپ، فرآیند احراز هویت شما آغاز شده و تیم مدیریت امید شاپ به سرعت
                                               اطلاعات هویتی شمارا بررسی خواهند کرد.</p>
                                             </div>
                                           </div>
@@ -323,7 +319,7 @@
                                             <div class="feature-text">
                                               <h5 class="title title-sm">مرحله ۳) فعالسازی خدمات</h5>
                                               <p> پس از احراز هویت شما میتوانید بدون محدودیت از تمامی ماژول ها و خدمات سامانه
-                                                پایان پی استفاده نمایید.</p>
+                                                امید شاپ استفاده نمایید.</p>
                                               </div>
                                             </div>
                                           </div>
@@ -339,7 +335,7 @@
                                   <div class="container">
                                     <!-- Section Head @s -->
                                     <div class="section-head text-center wide-auto-sm">
-                                      <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">راهکار های کلیدی سیستم فروشگاه ساز امید
+                                      <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">راهکار های کلیدی فروشگاه ساز امید
                                       </h2>
                                       <p class="animated" data-animate="fadeInUp" data-delay=".2">در این قسمت لیست خدمات اصلی سیستم فروشگاه ساز امید
                                         را مشاهده می مایید</p>
@@ -352,19 +348,17 @@
                                             data-animate="fadeInUp" data-delay=".3">
                                             <h4 class="title title-md">کاهش هزینه راه اندازی فروشگاه آنلاین</h4>
                                             <p>
-                                              اینترنت به عنوان یکی از ابزارهای جدید پرداخت این امکان را برای افراد فراهم آورده تا
-                                              فروشندگان کالا و خدمات بتوانند با اتصال فروشگاه مجازی خود به سامانه پرداخت اینترنتی
-                                              به سادگی و سرعت بالا کالای خود را بفروشند و خدمات ارائه دهند. شرکت فناور
-                                              ستاره نوران به عنوان شرکت ارائه دهنده خدمات پرداخت اینترنتی(پرداخت یار) در نظام
-                                              بانکی کشور است که در بسترهای مختلف اعم از اینترنت، موبایل،دسترسی به درگاه پرداخت
-                                              اینترنتی را امکان‌پذیر نموده و خرید و فروش اینترنتی را در محیطی امن با سرعتی بالا
-                                              مهیا کرده است.
+                                              اینترنت به عنوان یکی از ابزارهای جدید پرداخت این امکان را برای افراد فراهم آورده تا فروشندگان کالا و خدمات بتوانند با اتصال فروشگاه مجازی خود به سامانه پرداخت اینترنتی به سادگی و سرعت بالا کالای خود را بفروشند و خدمات ارائه دهند. باتوجه به فراهم نمودن زیرساخت های مورد نیاز جهت ایجاد سیستم فروشگاهی توسط سیستم امید شاپ، با صرف کمترین هزینه میتوانید وبسایت فروشگاهی خودرا بصورت مستقل برروی بستر سخت افزاری و نرم افزاری ما، پیاده سازی نمایید.
                                             </p>
                                             <ul class="list list-dot">
-                                              <li>ارایه خدمات پرداخت و دریافت وجه به صورت آنلاین</li>
-                                              <li>دریافت و واریز پول از سرتاسر دنیا</li>
-                                              <li>واریز بصورت آنی و امن</li>
-                                              <li>پشتیبانی ۲۴ ساعته</li>
+                                              <li>گزارشات کلی</li>
+                                              <li>ارایه اپلیکیشن موبایل</li>
+                                              <li>ارایه گزارشات هوشمند و آنی</li>
+                                              <li>قابلیت استفاده در پلتفرم های مختلف</li>
+                                              <li>امکان شخصی سازی توسط بازدیدکننده</li>
+                                              <li>امکان ارسال خبرنامه به کاربران فروشگاه ساز</li>
+                                              <li>ارسال آلارم ها و اعلان از طریق ایمیل و پیامک</li>
+                                              <li>گزارش ساز (امکان ایجاد گزارشات در قالب نمودار و جداول)</li>
                                             </ul>
                                           </div>
                                         </div><!-- .col -->
@@ -375,19 +369,14 @@
                                             <div class="feature-text">
                                               <h4 class="title title-md">کاهش سیکل زمانی</h4>
                                               <p>
-                                                باتوجه به نیاز کسب و کار های کوچک به ارایه خدمات و محصولات در محیط اینترنت و
-                                                ارتباط با سیستم بانکی، سیستم فروشگاه ساز سامانه پایان پی میتواند در کمترین
-                                                زمان ممکن فروشگاه شخصی سازی شده را ساخته و در اختیار فعالین در این عرصه قرار
-                                                دهد.
-                                              </p>
+تیم تحقیق و توسعه امیدشاپ، باتوجه به نیازسنجی صورت گرفته تمامی خواسته های صاحبان کسب و کار جهت بهره مندی از مزایای حوزه وب و بارگذاری و ارایه خدمات و محصولات بر آن بستر، این سیستم را طراحی و توسعه داده است و نیازی به استفاده از سیستم های مربوط به تولید محتوی درکنار پلاگین های متفرقه نیست.                                               </p>
                                             </div>
                                           </div>
                                           <div class="feature boxed bg-white-2">
                                             <div class="feature-text">
                                               <h4 class="title title-md">یکپارچگی سیستم پرداخت</h4>
-                                              <p> با استفاده از سرویس مدیریت شارژ پایان پی، مدیران ساختمان می توانند هر ماه شارژ
-                                                واحدهای ساختمان خود را به سادگی محاسبه نموده و در همان لحظه به تمامی ساکنین
-                                                اطلاع رسانی نمایند </p>
+                                              <p>
+بااستفاده از درگاه پرداخت یکپارچه سیستم امید شاپ، میتوانید بدون نگرانی فروش خودرا آغاز کرده و درخواست تسویه ثبت نمایید.                                              </p>
 
                                               </div>
                                             </div>
@@ -397,10 +386,7 @@
                                                   مدیریت ظاهر و شخصی سازی قالب فروشگاه
                                                 </h4>
                                                 <p>
-                                                  با سامانه پرداخت تلفنی می توانید بسیاری از عملیات بانکی مبتنی بر کارت خود را تنها
-                                                  از طریق یک خط تلفن انجام دهید. کلیه دارندگان کارت های بانکی عضو شبکه شتاب، می
-                                                  توانند از خدمات سامانه پرداخت تلفنی بانک پاسارگاد بهره مند شوند.
-                                                </p>
+قابلیت انتخاب قالب از پیش طراحی شده و همچنین شخصی سازی آن توسط مدیر فروشگاه و بازدیدکنندگان فراهم میباشد و به راحتی میتوان از فرایند را از پنل مدیریت فروشگاه و تنظیمات قالب انجام داد.                                                </p>
                                               </div>
                                             </div>
                                           </div>
@@ -425,7 +411,7 @@
                                         <div class="row justify-content-center">
                                           <div class="col-lg-6 col-md-10">
                                             <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp"
-                                            data-delay=".5">
+                                            data-delay=".3">
                                             <div class="feature-icon">
                                               <i class="fa fa-cart-arrow-down
                                               "></i>
@@ -434,22 +420,8 @@
                                               <h4 class="title title-md title-dark">فروش کالا های مختلف (فیزیکی - دانلودی - خدماتی)
                                               </h4>
                                               <p>
-                                                امکان امتیازدهی در ازای هر تراکنش به کاربران و دعوت از طریق کاربر برای جذب
-                                                کاربران جدید که با افزایش امتیاز سطح کاربری افزایش پیدا میکند. </p>
-                                              </div>
-                                            </div>
-                                          </div><!-- .col -->
-                                          <div class="col-lg-6 col-md-10">
-                                            <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp"
-                                            data-delay=".3">
-                                            <div class="feature-icon">
-                                              <i class="fa fa-money"></i>
-                                            </div>
-                                            <div class="feature-text">
-                                              <h4 class="title title-md title-dark">سیستم تخفیف پیشرفته
-                                              </h4>
-                                              <p> امکان افزودن قبوض به سیستم پایان پی جهت یادآوری و پرداخت گروهی قبوض فراهم
-                                                میباشد. </p>
+امید شاپ محدود به فروش کالای فیزیکی نیست و میتوان محصولات دانلودی و خدماتی نیز در سیستم به فروش رساند.
+                                               </p>
                                               </div>
                                             </div>
                                           </div><!-- .col -->
@@ -457,12 +429,27 @@
                                             <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp"
                                             data-delay=".4">
                                             <div class="feature-icon">
+                                              <i class="fa fa-money"></i>
+                                            </div>
+                                            <div class="feature-text">
+                                              <h4 class="title title-md title-dark">سیستم تخفیف پیشرفته
+                                              </h4>
+                                              <p>
+در سیستم تخفیف میتوان باتوجه به بازه زمانی مشخص، برای کاربران خاص، بصورت ریالی ویا درصدی با سقف معین و تعداد استفاده مورد نظر، کد تخفیف درنظر بگیرید.                                              </p>
+                                              </div>
+                                            </div>
+                                          </div><!-- .col -->
+                                          <div class="col-lg-6 col-md-10">
+                                            <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp"
+                                            data-delay=".5">
+                                            <div class="feature-icon">
                                               <i class="fa fa-file-text mt-4"></i>
                                             </div>
                                             <div class="feature-text">
                                               <h4 class="title title-md title-dark">عدم نیاز به اخذ مجوز (درگاه - اینماد - پیامک )</h4>
-                                              <p> با استفاده از سرویس پرداخت عوارض قادر خواهید بود عوارض خودرا بصورت آنلاین با
-                                                استفاده از کیف پول پایان پی پرداخت نمایید. </p>
+                                              <p>
+باتوجه به فراهم نمودن سیستم پرداخت، نیازی به طی کردن مراحل مربوط به اخذ درگاه بانکی و سایر موارد نمیباشد.
+                                              </p>
                                               </div>
                                             </div>
                                           </div><!-- .col -->
@@ -475,13 +462,15 @@
                                             </div>
                                             <div class="feature-text">
                                               <h4 class="title title-md title-dark">سیستم خبرنامه هوشمند</h4>
-                                              <p> قابلیت ارتباط با سیستم کیف پول و امکان دریافت و پرداخت وجه از طریق کیف پول </p>
+                                              <p>
+قابلیت ارسال ایمیل های زمانبندی شده و رویداد محور به تمامی ویا برخی از کاربران خاص عضو فروشگاه
+                                              </p>
                                             </div>
                                           </div>
                                         </div><!-- .col -->
                                         <div class="col-lg-6 col-md-10">
                                           <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp"
-                                          data-delay=".6">
+                                          data-delay=".7">
                                           <div class="feature-icon">
                                             <i class="fa fa-line-chart mt-4"></i>
                                           </div>
@@ -492,22 +481,22 @@
                                               (موقعیت جغرافیایی - بازه های زمانی و … )
 
                                             </h4>
-                                            <p> با وارد نمودن شناسه استعلام 16 رقمی  چک های
-                                              صیادی در سامانه، میتوان از وضعیت اعتباری صادرکننده چک مطلع
-                                              شد.</p>
+                                            <p>
+ثبت و مشاهده آمار بازدید مشتریان فروشگاه، بصورت ریز (شهر بازدید کنندگان)
+                                            </p>
                                             </div>
                                           </div>
                                         </div><!-- .col -->
                                         <div class="col-lg-6 col-md-10">
                                           <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp"
-                                          data-delay=".6">
+                                          data-delay=".8">
                                           <div class="feature-icon">
                                             <i class="fa fa-instagram mt-4"></i>
                                           </div>
                                           <div class="feature-text">
                                             <h4 class="title title-md title-dark">ارتباط با شبکه های اجتماعی اینستاگرام و ...</h4>
                                             <p>
-                                              امکان ایجاد بی نهایت فروشگاه شارژ اپراتورها توسط کاربران(ریسلری شارژ)، فروش شارژ بصورت مستقیم و ارسال آن به خط مورد نظر
+                                                      قابلیت ارتباط سیستم با API شبکه های اجتماعی جهت درج محصولات
                                             </p>
                                           </div>
                                         </div>
@@ -526,61 +515,216 @@
                                   <div class="container">
                                     <!-- Section Head @s -->
                                     <div class="section-head text-center wide-auto">
-                                      <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">سیستم تسهیم و باشگاه
-                                        مشتریان</h2>
-                                        <p class="animated" data-animate="fadeInUp" data-delay=".2">جزییات سیستم تسهیم و باشگاه مشتریان
-                                  فروشگاه ساز امید</p>
+                                      <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">لیست خدمات و امکانات</h2>
+                                        <p class="animated" data-animate="fadeInUp" data-delay=".2">
+                                          ماژول های فروشگاه ساز امید</p>
                                         </div><!-- .section-head @e -->
                                         <!-- Block @s -->
                                         <div class="nk-block nk-block-token mgb-m30">
                                           <div class="row">
+
                                             <div class="col-lg-6">
-                                              <div class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".3">
-                                                <h4 class="title title-md mb-2 text-sm-center"> سیستم تسهیم</h4>
-                                                <table class="table table-token">
-                                                  <tbody>
-                                                    <tr style="text-align: center">
-                                                      <td class="table-head">عدم درگیری صاحبان مشاغل با سیستم پیچیده حسابداری</td>
-                                                    </tr>
-                                                    <tr style="text-align: center">
-                                                      <td class="table-head">امکان واریز پول به مقاصد مختلف طبق سیاست های مالی</td>
-                                                    </tr>
-
-                                                    <tr style="text-align: center">
-                                                      <td class="table-head">افزایش دقت و سرعت در مدیریت تراکنش ها</td>
-                                                    </tr>
-                                                    <tr style="text-align: center">
-                                                      <td class="table-head">کاهش خطای انسانی در تسهیم سود</td>
-                                                    </tr>
-
-                                                    <tr style="text-align: center">
-                                                      <td class="table-head">ساده سازی فرآیند حسابداری آنلاین</td>
-                                                    </tr>
-
-
-                                                  </tbody>
-                                                </table>
+                                              <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".1">
+                                                <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> امکان اضافه کردن محصولات متنوع ( فیزیکی، فایل و خدمت) </h6>
                                               </div>
                                             </div><!-- .col -->
+
                                             <div class="col-lg-6">
-                                              <div class="animated" data-animate="fadeInUp" data-delay=".4">
-                                                <div class="token-status bg-theme">
-                                                  <h4 class="title title-md"> باشگاه مشتریان</h4>
-                                                  <div class="progress-wrap progress-wrap-point">
-                                                    <span class="progress-info">با تراکنش بالای <span> صد هزار تومان</span> به باشگاه  مشتریان بپیوندید </span>
-                                                    <img src="https://img.icons8.com/cotton/128/000000/christmas-gift--v1.png">
-                                                    <div class="progress-bar">
-                                                      <div class="progress-percent bg-grad" data-percent="90"></div>
-                                                      <div class="progress-point progress-point-1">حداقل تراکنش
-                                                        <span class="byekan">100000 تومان</span></div>
-                                                        <div class="progress-point progress-point-2">حداقل تعداد تراکنش
-                                                          <span class="byekan">100 تراکنش</span></div>
-                                                        </div>
-                                                      </div>
+                                              <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".2">
+                                                <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> امکان نمایش گزارشات فروشگاه بر روی نمودار ها</h6>
+                                              </div>
+                                            </div><!-- .col -->
+
+
+
+
+
+
+
+                                              </div><!-- .row -->
+
+                                                <div class="row">
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".3">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> لیست کالا ها و خدمات </h6>
                                                     </div>
+                                                  </div><!-- .col -->
+
+
+
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".4">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> سیستم تخفیف </h6>
+                                                    </div>
+                                                  </div><!-- .col -->
+
+
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".5">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> بازخورد مشتریان </h6>
+                                                    </div>
+                                                  </div><!-- .col -->
+
+
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".6">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> شخصی سازی قالب فروشگاه </h6>
+                                                    </div>
+                                                  </div><!-- .col -->
+
+                                                </div>
+
+
+
+                                                <div class="row">
+
+
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".7">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> روش های ارسال </h6>
+                                                    </div>
+                                                  </div><!-- .col -->
+
+
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".8">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">هزینه های افزوده</h6>
+                                                    </div>
+                                                  </div><!-- .col -->
+
+
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".9">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> فیلترینگ </h6>
+                                                    </div>
+                                                  </div><!-- .col -->
+
+
+
+                                                  <div class="col-lg-3">
+                                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".10">
+                                                      <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> جستجو </h6>
+                                                    </div>
+                                                  </div><!-- .col -->
+
+
+
+
+                                                    </div><!-- .row -->
+
+
+
+                                              <div class="row">
+
+                                                <div class="col-lg-2">
+                                                  <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".11">
+                                                    <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">دسته بندی ها</h6>
                                                   </div>
                                                 </div><!-- .col -->
-                                              </div><!-- .row -->
+
+
+                                                <div class="col-lg-2">
+                                                  <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".12">
+                                                    <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> برند ها </h6>
+                                                  </div>
+                                                </div><!-- .col -->
+
+
+                                                <div class="col-lg-2">
+                                                  <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".13">
+                                                    <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> سفارشات</h6>
+                                                  </div>
+                                                </div><!-- .col -->
+
+
+                                                <div class="col-lg-2">
+                                                  <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".14">
+                                                    <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">آمار بازدید</h6>
+                                                  </div>
+                                                </div><!-- .col -->
+
+
+                                                <div class="col-lg-2">
+                                                  <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".15">
+                                                    <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> پشتیبانی </h6>
+                                                  </div>
+                                                </div><!-- .col -->
+
+
+                                                <div class="col-lg-2">
+                                                  <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".16">
+                                                    <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> آموزش  </h6>
+                                                  </div>
+                                                </div><!-- .col -->
+
+
+
+
+
+
+
+
+                                                  </div><!-- .row -->
+
+
+
+                                                  <div class="row">
+
+
+                                                    <div class="col-lg-2">
+                                                      <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".17">
+                                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">  خبرنامه </h6>
+                                                      </div>
+                                                    </div><!-- .col -->
+
+
+                                                    <div class="col-lg-2">
+                                                      <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".18">
+                                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">گالری </h6>
+                                                      </div>
+                                                    </div><!-- .col -->
+
+
+                                                    <div class="col-lg-2">
+                                                      <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".19">
+                                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> سیستم نظرات </h6>
+                                                      </div>
+                                                    </div><!-- .col -->
+
+
+                                                    <div class="col-lg-2">
+                                                      <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".20">
+                                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> امتیاز دهی </h6>
+                                                      </div>
+                                                    </div><!-- .col -->
+
+
+                                                    <div class="col-lg-2">
+                                                      <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".21">
+                                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> کالای مشابه </h6>
+                                                      </div>
+                                                    </div><!-- .col -->
+
+
+                                                    <div class="col-lg-2">
+                                                      <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".22">
+                                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> سبد خرید </h6>
+                                                      </div>
+                                                    </div><!-- .col -->
+
+
+
+
+
+                                                      </div><!-- .row -->
+
+
+
+
+
+
+
+
                                             </div><!-- .block @e -->
                                           </div>
 
@@ -623,50 +767,8 @@
                                       </section>
                                       <!-- // -->
 
-                                      <!-- // -->
-                                      <section class="section section-l tc-light bg-theme-grad" id="admin-intro">
 
-                                        <div class="container">
-                                          <!-- Block @s -->
-                                          <div class="nk-block nk-block-text-wrap">
-                                            <div class="row align-items-center">
-                                              <div class="col-lg-7 order-lg-last">
-                                                <div class="nk-block-img edge-r1 pb-4 pb-lg-0 animated" data-animate="fadeInUp"
-                                                data-delay=".1">
-                                                <img src="/app/images/app-screens/laptop-a.png" alt="app">
-                                              </div>
-                                            </div>
-                                            <div class="col-lg-5">
-                                              <div class="nk-block-text">
-                                                <h6 class="title title-xs tc-primary animated" data-animate="fadeInUp"
-                                                data-delay=".1"></h6>
-                                                <h2 class="title animated" data-animate="fadeInUp" data-delay=".2"> مزایای فروشگاه ساز امید</h2>
-                                                <p class="animated" data-animate="fadeInUp" data-delay=".3">سیستم فروشگاه ساز امید با بهره
-                                                  گیری از بروز ترین تکنولوژی روز دنیا در ارایه گزارشات لحظه ای گامی نو برداشته است. در
-                                                  ادامه، برخی از مزایای فروشگاه ساز امید ذکر شده است: </p><br>
-                                                  <ul class="list list-check animated" data-animate="fadeInUp" data-delay=".4">
-                                                    <li>گزارشات کلی </li>
-                                                    <li>ارایه اپلیکیشن موبایل
-                                                    </li>
-                                                    <li>ارایه گزارشات هوشمند و آنی
-                                                    </li>
-                                                    <li>قابلیت استفاده در پلتفرم های مختلف</li>
-                                                    <li> امکان شخصی سازی توسط بازدیدکننده</li>
-                                                    <li> امکان ارسال خبرنامه به کاربران فروشگاه ساز</li>
-                                                    <li>ارسال آلارم ها و اعلان از طریق ایمیل و پیامک</li>
-                                                    <li> گزارش ساز (امکان ایجاد گزارشات در قالب نمودار و جداول)</li>
-                                                  </ul>
-                                                </div>
-                                              </div>
-                                            </div><!-- .row -->
-                                          </div><!-- .block @e -->
-                                        </div>
-
-                                      </section>
-                                      <!-- // -->
-
-
-                                      <section id="faq" class="section section-l section-faq bg-white" id="faq">
+                                      <section style="display:none" id="faq" class="section section-l section-faq bg-white" id="faq">
 
                                         <div class="container">
                                           <!-- Section Head @s -->
@@ -681,13 +783,13 @@
                                                 <div class="col-md-4 col-lg-3 mb-4 mb-lg-0">
                                                   <ul class="nav tab-nav tab-nav-vr tab-nav-bdr mr-lg-3 animated" data-animate="fadeInUp"
                                                   data-delay=".3">
-                                                  <li><a class="active" data-toggle="tab" href="/app/#general-questions"><em
+                                                  <li><a class="active" data-toggle="tab" href="#general-questions"><em
                                                     class="fas fa-caret-right"></em>سوالات کلی</a></li>
-                                                    <li><a data-toggle="tab" href="/app/#ico-questions"><em class="fas fa-caret-right"></em>پرداخت
+                                                    <li><a data-toggle="tab" href="#ico-questions"><em class="fas fa-caret-right"></em>پرداخت
                                                       یاری</a></li>
-                                                      <li><a data-toggle="tab" href="/app/#tokens-sales"><em class="fas fa-caret-right"></em>فروشگاه
+                                                      <li><a data-toggle="tab" href="#tokens-sales"><em class="fas fa-caret-right"></em>فروشگاه
                                                         ساز</a></li>
-                                                        <li><a data-toggle="tab" href="/app/#clients-releted"><em class="fas fa-caret-right"></em>سیستم
+                                                        <li><a data-toggle="tab" href="#clients-releted"><em class="fas fa-caret-right"></em>سیستم
                                                           فروش شارژ</a></li>
                                                         </ul>
                                                       </div><!-- .col -->
@@ -697,7 +799,8 @@
                                                             <div class="accordion accordion-faq" id="faq-1">
                                                               <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".1">
                                                                 <h5 class="accordion-title accordion-title-sm" data-toggle="collapse"
-                                                                data-target="#faq-1-1">                                                                 آیا عضویت در سیستم فروشگاه ساز امید رایگان است؟  <span class="accordion-icon"></span>
+                                                                data-target="#faq-1-1">
+                                                                   آیا عضویت در سیستم فروشگاه ساز امید رایگان است؟  <span class="accordion-icon"></span>
                                                               </h5>
                                                               <div id="faq-1-1" class="collapse show" data-parent="#faq-1">
                                                                 <div class="accordion-content">
@@ -888,7 +991,7 @@
                                                             <label class="field-label field-label-line">آدرس ایمیل</label>
                                                           </div>
                                                           <div class="field-item">
-                                                            <textarea name="contact-message"
+                                                            <textarea rows="5" name="contact-message"
                                                             class="input-line input-textarea required"></textarea>
                                                             <label class="field-label field-label-line">متن پیام</label>
                                                           </div>
@@ -926,26 +1029,12 @@
                                                               <li>
                                                                 <em class="contact-icon fas fa-envelope"></em>
                                                                 <div class="contact-text">
-                                                                  <span>info@omid.ir</span>
+                                                                  <span>info@omidshop.net</span>
                                                                 </div>
                                                               </li>
-                                                              <li>
-                                                                <em class="contact-icon fas fa-paper-plane"></em>
-                                                                <div class="contact-text">
-                                                                  <span> عضویت در کانال تلگرام فروشگاه ساز امید</span>
-                                                                </div>
-                                                              </li>
+
                                                             </ul>
-                                                            <div class="contact-social">
-                                                              <h6>مارا در شبکه های اجتماعی دنبال کنید</h6>
-                                                              <ul class="social-links">
-                                                                <li><a href="#"><em class="fab fa-twitter"></em></a></li>
-                                                                <li><a href="#"><em class="fab fa-telegram"></em></a></li>
-                                                                <li><a href="#"><em class="fab fa-facebook-f"></em></a></li>
-                                                                <li><a href="#"><em class="fab fa-youtube"></em></a></li>
-                                                                <li><a href="#"><em class="fab fa-instagram"></em></a></li>
-                                                              </ul>
-                                                            </div>
+
                                                           </div>
                                                         </div>
                                                       </div><!-- .col -->
@@ -969,44 +1058,18 @@
                                                             <ul class="wgs-links">
                                                               <li><a href="#about">درباره ما</a></li>
                                                               <li><a href="#services">خدمات امید</a></li>
-                                                              <li><a target="_blank" href="/app//docs">طراحی سایت فروشگاهی</a></li>
-                                                              <li><a target="_blank" href="/app//docs">طراحی وب سایت</a></li>
+                                                              <li><a href="#services">قوانین و شرایط استفاده</a></li>
                                                             </ul>
                                                           </div>
                                                         </div>
                                                       </div><!-- .col -->
 
-                                                      <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
-                                                        <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".3">
-                                                          <h6 class="wgs-title">لینک های کاربردی</h6>
-                                                          <div class="wgs-body">
-                                                            <ul class="wgs-links">
-                                                              <li><a target="_blank" href="/app//docs">مستندات</a></li>
-                                                              <li><a target="_blank" href="/app//docs">آموزش</a></li>
-                                                              <li><a target="_blank" href="/app//docs">سورس کدها</a></li>
-                                                              <li><a href="/app/#faq">سوالات متداول</a></li>
-                                                            </ul>
-                                                          </div>
-                                                        </div>
-                                                      </div><!-- .col -->
-                                                      <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
-                                                        <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".4">
-                                                          <h6 class="wgs-title">حقوقی</h6>
-                                                          <div class="wgs-body">
-                                                            <ul class="wgs-links">
-                                                              <li><a target="_blank" href="/app//docs">قوانین</a></li>
-                                                              <li><a target="_blank" href="/app//docs">حریم خصوصی</a></li>
-                                                              <li><a target="_blank" href="/app//docs">شرایط استفاده</a></li>
-                                                              <li><a href="#steps">مراحل احراز هویت</a></li>
-                                                            </ul>
-                                                          </div>
-                                                        </div>
-                                                      </div><!-- .col -->
+
                                                       <div class="col-lg-6 mb-4 mb-lg-0 order-lg-first">
                                                         <div class="wgs wgs-text animated" data-animate="fadeInUp" data-delay=".1">
                                                           <div class="wgs-body">
                                                             <a href="/" class="wgs-logo">
-                                                              <img src="/app/images/logo.png" srcset="images/logo.png 2x" alt="logo">
+                                                              <img style="width: 150px" src="/app/images/logo.png" srcset="images/logo.png 2x" alt="logo">
                                                             </a>
                                                             <p style="font-family: BYekan!important;">© کلیه حقوق محفوظ است. 1398 </p>
                                                             <p class="copyright-text">طراحی و توسعه در دپارتمان فناوری اطلاعات سیستم فروشگاه ساز امید</p>
