@@ -106,7 +106,7 @@ class BrandController extends Controller
     {
       //check if icon is null or not
       if($request->file('icon') == null){
-        $icon = null;
+        $icon = \Auth::user()->shop()->first()->brands()->where('id',$id)->get()->first()->icon;
       }
       else{
         $icon = $this->uploadFile($request->file('icon'), false, true);
@@ -138,6 +138,18 @@ class BrandController extends Controller
                 $brand->delete();
                 alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                 return redirect()->back();
+    }
+
+
+    public function destroyIcon(Request $request){
+      $brand = Brand::find($request->id);
+      foreach($brand->icon as $icon){
+        $icon = ltrim($icon, '/');
+        unlink($icon);
+      }
+      $brand->update([
+          'icon' => null
+      ]);
     }
 
 }

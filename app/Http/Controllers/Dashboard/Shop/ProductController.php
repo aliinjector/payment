@@ -58,6 +58,7 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+
          //check if product category is null
          if($request->productCat_id == "null"){
            $request->merge(['productCat_id' => null]);
@@ -74,7 +75,7 @@ class ProductController extends Controller
            else{
             $file_size = null;
            }
-      $image = $this->uploadFile($request->file('image'), false, true);
+      $image = $this->uploadFile($request->file('image'), true, true);
       //check if product is file to save attachment file
       if($request->type == 'file')
       $attachment = $this->uploadFile($request->file('attachment'), false, false);
@@ -312,6 +313,9 @@ else{
                $image = $this->uploadFile($request->file('image'), false, true);
            }
 
+           if($request->brand_id == "null"){
+             $request->merge(['brand_id' => null]);
+           }
 
       if ( $request->enable != "on")
       $request->enable = 0;
@@ -435,5 +439,17 @@ else{
              $ProductCategory = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
+          }
+
+
+          public function destroyImage(Request $request){
+            $product = Product::find($request->id);
+            foreach($product->image as $image){
+              $image = ltrim($image, '/');
+              unlink($image);
+            }
+            $product->update([
+                'image' => null
+            ]);
           }
     }

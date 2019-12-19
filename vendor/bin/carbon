@@ -12,4 +12,3 @@ if [ -d /proc/cygdrive ]; then
 fi
 
 "${dir}/carbon" "$@"
-

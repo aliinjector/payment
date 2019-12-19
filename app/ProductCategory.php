@@ -31,4 +31,9 @@ class ProductCategory extends Model
       return $this->belongsTo('App\Shop');
   }
 
+  public function features()
+  {
+      return $this->hasMany('App\Feature');
+  }
+
 }

@@ -47,6 +47,7 @@ class ProductCategoryController extends Controller
      */
     public function store(Request $request)
     {
+
       //check if icon is null or not
       if($request->file('icon') == null){
         $image = null;
@@ -126,7 +127,7 @@ class ProductCategoryController extends Controller
     {
       //check if icon is null or not
       if($request->file('icon') == null){
-        $image = null;
+        $image = \Auth::user()->shop()->first()->ProductCategories()->where('id',$id)->get()->first()->icon;
       }
       else{
         $image = $this->uploadFile($request->file('icon'), false, true);
@@ -164,4 +165,15 @@ class ProductCategoryController extends Controller
                alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                return redirect()->back();
            }
+
+     public function destroyIcon(Request $request){
+       $productCategory = ProductCategory::find($request->id);
+       foreach($productCategory->icon as $icon){
+         $icon = ltrim($icon, '/');
+         unlink($icon);
+       }
+       $productCategory->update([
+           'icon' => null
+       ]);
+     }
 }

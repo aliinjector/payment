@@ -41,7 +41,7 @@
                     <div class="col-lg-6"><img src="{{ $product->image['400,400'] }}" alt="" class="col-8 d-block img-thumbnail" height="400">
                         <div class="gallery mt-4 mr-4">
                             @foreach ($galleries as $gallery)
-                                <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
+                            <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
                             @endforeach
                         </div>
                     </div>
@@ -64,99 +64,98 @@
                                 @endif
                                 <h6 class="text-muted font-13">ویژگی ها :</h6>
                                 <ul class="list-unstyled pro-features border-0 iranyekan">
-                                  @for ($i=1; $i <= 10; $i++)
-                                      <div class="wrapper">
-                                          @if ($product->{"feature_{$i}"})
-                                         <li class="ty-compact-list">{{ $product->{"feature_{$i}"} }} </li>
-                                          @endif
-                                  @endfor
-                                  <div class="show-more mr-1 mt-4" style="line-height: 2;"><i class="fas fa-plus"></i>
-                                      <span class="toggle-show">موارد بیشتر</span>
-                                  </div>
-                              </div>
-                                </ul>
-                                @if ($product->type == "file")
-                                <h6 class="text-muted font-13">حجم فایل :</h6>
-                                <ul class="list-unstyled pro-features border-0 iranyekan">
-                                    <li>{{ round($product->file_size / 1048576,2)}} مگابایت</li>
-                                </ul>
-                                @endif
-                                @if ($product->type == "product")
-                                <h6 class="text-muted font-13">وزن محصول :</h6>
-                                <ul class="list-unstyled pro-features border-0 iranyekan">
-                                    <li>{{ $product->weight }} گرم</li>
-                                </ul>
-                                @endif
-                                @if ($product->color_1 || $product->color_2 || $product->color_3 || $product->color_4 || $product->color_5)
-                                <h5 class="text-muted d-inline-block align-middle mr-2">رنگ :</h5>
-                                @endif
-                                @if ($product->color_1)
-                                <div class="form-check-inline ml-2 color-picker p-1" style="background-color:{{ $product->color_1 }} ; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
-                                    <label for="inlineRadio1"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_2)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_2 }} ; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
-                                    <label for="inlineRadio2"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_3)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_3 }}; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio3" value="option3" name="radioInline">
-                                    <label for="inlineRadio3"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_4)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_4 }}; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
-                                    <label for="inlineRadio4"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_5)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_5 }}; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
-                                    <label for="inlineRadio4"></label>
-                                </div>
-                                @endif
-                                <div class="quantity mt-3">
-                                    @auth
-                                    @if($product->type == 'file')
-                                        <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{$product->id}}">
-                                            <button type="submit" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
-                                        </form>
-                                        @else
-                                        <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
-                                            @csrf
-                                            <input type="hidden" name="product_id" value="{{$product->id}}">
-                                            <button type="submit" class="text-white btn bg-blue-omid iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
-                                            @endif
+                                    @for ($i=1; $i <= 10; $i++) <div class="wrapper">
+                                        @if ($product->{"feature_{$i}"})
+                                        <li class="ty-compact-list">{{ $product->{"feature_{$i}"} }} </li>
+                                        @endif
+                                        @endfor
+                                        <div class="show-more mr-1 mt-4" style="line-height: 2;"><i class="fas fa-plus"></i>
+                                            <span class="toggle-show">موارد بیشتر</span>
+                                        </div>
+                        </div>
+                        </ul>
+                        @if ($product->type == "file")
+                        <h6 class="text-muted font-13">حجم فایل :</h6>
+                        <ul class="list-unstyled pro-features border-0 iranyekan">
+                            <li>{{ round($product->file_size / 1048576,2)}} مگابایت</li>
+                        </ul>
+                        @endif
+                        @if ($product->type == "product")
+                        <h6 class="text-muted font-13">وزن محصول :</h6>
+                        <ul class="list-unstyled pro-features border-0 iranyekan">
+                            <li>{{ $product->weight }} گرم</li>
+                        </ul>
+                        @endif
+                        @if ($product->color_1 || $product->color_2 || $product->color_3 || $product->color_4 || $product->color_5)
+                        <h5 class="text-muted d-inline-block align-middle mr-2">رنگ :</h5>
+                        @endif
+                        @if ($product->color_1)
+                        <div class="form-check-inline ml-2 color-picker p-1" style="background-color:{{ $product->color_1 }} ; border: 1px solid black;">
+                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
+                            <label for="inlineRadio1"></label>
+                        </div>
+                        @endif
+                        @if ($product->color_2)
+                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_2 }} ; border: 1px solid black;">
+                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
+                            <label for="inlineRadio2"></label>
+                        </div>
+                        @endif
+                        @if ($product->color_3)
+                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_3 }}; border: 1px solid black;">
+                            <input type="radio" id="inlineRadio3" value="option3" name="radioInline">
+                            <label for="inlineRadio3"></label>
+                        </div>
+                        @endif
+                        @if ($product->color_4)
+                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_4 }}; border: 1px solid black;">
+                            <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
+                            <label for="inlineRadio4"></label>
+                        </div>
+                        @endif
+                        @if ($product->color_5)
+                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_5 }}; border: 1px solid black;">
+                            <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
+                            <label for="inlineRadio4"></label>
+                        </div>
+                        @endif
+                        <div class="quantity mt-3">
+                            @auth
+                            @if($product->type == 'file')
+                                <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    <button type="submit" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
+                                </form>
+                                @else
+                                <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    <button type="submit" class="text-white btn bg-blue-omid iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
+                                    @endif
 
-                                        </form>
-                                        @endauth
-                                        @guest
-                                        <a href="{{ route('register') }}">
-                                            <button type="button" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> ثبت نام و خرید </button>
-                                        </a>
-                                        @endguest
-                                </div>
+                                </form>
+                                @endauth
+                                @guest
+                                <a href="{{ route('register') }}">
+                                    <button type="button" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> ثبت نام و خرید </button>
+                                </a>
+                                @endguest
                         </div>
                     </div>
-
-
-
-                    <!--end col-->
                 </div>
-                <!--end row-->
+
+
+
+                <!--end col-->
             </div>
-            <!--end card-body-->
+            <!--end row-->
         </div>
-        <!--end card-->
+        <!--end card-body-->
     </div>
-    <!--end col-->
+    <!--end card-->
+</div>
+<!--end col-->
 </div>
 <!-- end row -->
 </div>
@@ -247,11 +246,11 @@
                         <h5 class="mt-3">توضیحات :</h5>
                         <p class="text-muted mb-4">{{ $product->description }}</p>
                         <ul class="list-unstyled mb-4">
-                          @for ($i=1; $i <= 10; $i++)
-                            @if ($product->{"feature_{$i}"})
+                            @for ($i=1; $i
+                            <= 10; $i++) @if ($product->{"feature_{$i}"})
                             <li class="mb-2 font-13 text-muted"><i class="mdi mdi-checkbox-marked-circle-outline text-success mr-2"></i>{{ $product->{"feature_{$i}"} }}.</li>
                             @endif
-                          @endfor
+                            @endfor
                         </ul>
 
                         <!--end row-->
@@ -307,7 +306,7 @@
                             <ul class="list-inline mb-0 product-review">
 
                                 @for ($i = 1; $i
-                                <=( int)$product->avgRating; $i++)
+                                <= (int)$product->avgRating; $i++)
                                     <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
                                     @endfor
                             </ul>

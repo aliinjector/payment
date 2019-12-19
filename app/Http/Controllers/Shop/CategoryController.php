@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Shop;
+use App\Color;
+use App\Product;
 use App\ProductCategory;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -11,6 +13,8 @@ class CategoryController extends Controller
 {
 
   public function index($shop, $categroyId, Request $request) {
+
+      $colors = Color::all();
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
       $shopCategories = $shop->ProductCategories()->get();
@@ -18,11 +22,30 @@ class CategoryController extends Controller
       $category = ProductCategory::where('id', $categroyId)->get()->first();
       $subCategories = $this->getAllSubCategories($categroyId)->where('parent_id',$categroyId);
       $brands = $shop->brands;
-      if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
+
+      //color product and category product merging
+      if($request->color == null){
+        $colorAndCategoryProducts = $this->getAllCategoriesProducts((int)$categroyId);
+      }
+      else{
+        $colorProducts = Color::where('code', $request->color)->get()->first()->products;
+        $categoryProducts = $this->getAllCategoriesProducts((int)$categroyId);
+        $colorAndCategoryProducts = collect();
+        foreach($colorProducts->toBase()->merge($categoryProducts)->groupBy('id') as $allProducts){
+        if($allProducts->count() > 1){
+          $colorAndCategoryProducts[] = $allProducts;
+              }
+        }
+      $colorAndCategoryProducts = $colorAndCategoryProducts->first();
+      }
+
+      if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
+        if($colorAndCategoryProducts != null){
           $minPrice = $request->minprice;
           $maxPrice = $request->maxprice;
           $filterBy = $request->type;
           $sortBy = $request->sortBy['field'];
+          $perPage = 8;
           if($shop->template->folderName == 2){
             $sortBy_array = explode('|', $request->sortBy['field']);
             $sortBy = $sortBy_array[0];
@@ -31,22 +54,27 @@ class CategoryController extends Controller
           else{
             $orderBy = $request->sortBy['orderBy'];
           }
-          $perPage = 8;
           if ($request->type == 'all') {
               if ($orderBy == 'desc') {
-                  $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
+                  $products = $colorAndCategoryProducts->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy)->unique('id');
               } else {
-                  $products = $this->getAllCategoriesProducts((int)$categroyId)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
+                  $products = $colorAndCategoryProducts->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy)->unique('id');
               }
           } else {
               if ($orderBy == 'desc') {
-                  $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy);
+                  $products = $colorAndCategoryProducts->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy)->unique('id');
               } else {
-                  $products = $this->getAllCategoriesProducts((int)$categroyId)->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy);
+                  $products = $colorAndCategoryProducts->where('type', $filterBy)->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy)->unique('id');
               }
           }
-      } else {
-          $products = $this->getAllCategoriesProducts((int)$categroyId);
+      }
+      else{
+        $products = collect();
+      }
+    }
+    else {
+          $products = $colorAndCategoryProducts;
+
       }
       $total = $products->count();
       $perPage = 16; // How many items do you want to display.
@@ -57,7 +85,7 @@ class CategoryController extends Controller
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags'));
+      return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags','colors'));
   }
 
 

@@ -31,6 +31,8 @@ class CreateShopsTable extends Migration
             $table->unsignedInteger('VAT_amount')->default(9);
             $table->text('icon')->nullable();
             $table->text('logo')->nullable();
+            $table->text('watermark')->nullable();
+            $table->enum('watermark_status',['enable', 'disable'])->default('disable');
             $table->string('description');
             $table->unsignedInteger('template_id')->default(1);
             $table->timestamps();

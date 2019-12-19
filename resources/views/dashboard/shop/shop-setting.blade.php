@@ -217,6 +217,8 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">آیکون فروشگاه</h4>
                             <p class="text-muted mb-3">لطفا آیکون فروشگاه خود را آپلود نمایید.</p>
+                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-type="icon" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
+                                  class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
                             <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->icon['original'] }}">
                         </div>
                         <!--end card-body-->
@@ -229,6 +231,8 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">لوگوی فروشگاه</h4>
                             <p class="text-muted mb-3">لطفا لوگوی فروشگاه خود را آپلود نمایید.</p>
+                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-type="logo" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
+                                  class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
                             <input type="file" id="input-file-now" name="logo" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->logo['original'] }}">
                         </div>
                         <!--end card-body-->
@@ -273,7 +277,7 @@
     </div>
 
     <div class="tab-pane fade" id="theme" role="tabpanel">
-        <form method="post" action="{{ route('shop-setting.setting-update', \Auth::user()->shop()->first()->id) }}">
+        <form method="post" action="{{ route('shop-setting.setting-update', \Auth::user()->shop()->first()->id) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -290,6 +294,23 @@
                                     <option value="nestead_menu">منوی تو در تو در هدر فروشگاه</option>
                                     <option value="nestead_box" @if(\Auth::user()->shop()->first()->menu_show == 'nestead_box') selected @endif>باکس تو در تو در صفحه نمایش محصولات</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">واترمارک روی تصویر محصولات
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#watermark">ویرایش تصویر</button>
+                            </label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="watermark_status">
+                                    <option value="enable">فعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->watermark_status == 'disable') selected @endif>غیر فعال</option>
+                                </select>
+                            </div>
+                            <div class="card mt-1 col-10 mr-8 collapse" id="watermark">
+                                <div class="card-body">
+                                    <h4 class="header-title"> تصویر واترمارک</h4>
+                                    <input type="file" id="input-file-now" name="watermark" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->watermark }}">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -570,7 +591,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->registration_number == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                                 <div id="registration_number‌_number" class="collapse mt-2">
-                                  <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->registration_number‌_number }}">
+                                    <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->registration_number‌_number }}">
                                 </div>
                             </div>
                         </div>
@@ -593,7 +614,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->description_status == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                                 <div id="description" class="collapse mt-2">
-                                  <input class="form-control border-custom" type="text" name="description" value="{{ \Auth::user()->shop()->first()->invoice->description }}">
+                                    <input class="form-control border-custom" type="text" name="description" value="{{ \Auth::user()->shop()->first()->invoice->description }}">
                                 </div>
 
                             </div>
@@ -608,7 +629,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->motto == 'disable') selected @endif>غیرفعال</option>
                                 </select>
                                 <div id="motto_text" class="collapse mt-2">
-                                  <input class="form-control border-custom" type="text" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->motto_text }}">
+                                    <input class="form-control border-custom" type="text" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->motto_text }}">
                                 </div>
 
                             </div>
@@ -646,4 +667,41 @@
 </script>
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".dropify-clear").remove();
+    });
+</script>
+<script>
+    $(document).on('click', '#icon-delete', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        var type = $(this).data('type');
+        swal(` ${'حذف لوگو یا آیکون:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                dangerMode: true,
+                icon: "warning",
+                buttons: ["انصراف", "حذف"],
+            })
+            .then(function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('dashboard/shop/managment/shop-setting/image/delete')}}",
+                        data: {
+                            id: id,
+                            type: type,
+                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                        },
+                        success: function(data) {
+                            var url = document.location.origin + "/dashboard/shop/managment/shop-setting";
+                            location.href = url;
+                        }
+                    });
+                } else {
+                    toastr.warning('لغو شد.', '', []);
+                }
+            });
+    });
+</script>
 @stop

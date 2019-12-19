@@ -11,6 +11,23 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    protected function watermark($file)
+       {
+            $imageSource = \Auth::user()->shop->watermark;
+            $imageSource = ltrim($imageSource, '/');
+            $watermark = \Image::make($imageSource);
+            $img = \Image::make(ltrim($file, "/"));
+            $watermarkSize = $img->width() - 20; //size of the image minus 20 margins
+            $watermarkSize = $img->width() / 2; //half of the image size
+            $resizePercentage = 70;//70% less then an actual image (play with this value)
+            $watermarkSize = round($img->width() * ((100 - $resizePercentage) / 100), 2); //watermark will be $resizePercentage less then the actual width of the image
+            $watermark->resize($watermarkSize, null, function ($constraint) {
+               $constraint->aspectRatio();
+           });
+            $img->insert($watermark, 'bottom-right', 10, 10);
+            $img->save(ltrim($file, "/"));
+
+       }
 
     protected function uploadFile($file, $watermark = true, $resize = true)
     {
@@ -42,6 +59,7 @@ class Controller extends BaseController
             return $file;
         }
     }
+
     private function resize($path, $sizes, $filePath, $fileName)
     {
         if (\App::environment('local')) {
@@ -61,6 +79,9 @@ class Controller extends BaseController
         }
         return $images;
     }
+
+
+
     protected function fa_num_to_en($string)
     {
         $persian1 = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
@@ -69,7 +90,6 @@ class Controller extends BaseController
         $string = str_replace($persian1, $num, $string);
         return str_replace($persian2, $num, $string);
     }
-
 
 
 

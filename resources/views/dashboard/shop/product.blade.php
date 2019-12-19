@@ -396,7 +396,9 @@
 
                                             <select class="selectpicker" multiple data-live-search="true" name="color[]">
                                                 @foreach($colors as $color)
-                                                <option  @if($product->colors->count() != 0) @foreach($product->colors as $selectedColor) {{ $color->id == $selectedColor->id ? 'selected' : ''}}  @endforeach @endif value="{{ $color->id }}">{{ $color->name }}</option>
+                                                <option @if($product->colors->count() != 0) @foreach($product->colors as $selectedColor) {{ $color->id == $selectedColor->id ? 'selected' : ''}}
+                                                        @endforeach
+                                                        @endif value="{{ $color->id }}">{{ $color->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -504,6 +506,8 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title">تصویر محصول</h4>
+                                                <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $product->name }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+
                                                 <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $product->image['original'] }}">
                                             </div>
 
@@ -698,7 +702,9 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title">تصویر محصول</h4>
-                                                <input type="file" id="input-file-now" name="attachment" class="dropify">
+                                                <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $product->name }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+
+                                                <input type="file" id="input-file-now" name="attachment" class="dropify" data-default-file="{{ $product->image['original'] }}">
                                             </div>
 
                                         </div>
@@ -901,7 +907,9 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title">تصویر خدمت</h4>
-                                                <input type="file" id="input-file-now" name="image" class="dropify">
+                                                <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $product->name }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+
+                                                <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $product->image['original'] }}">
                                             </div>
                                         </div>
                                     </div>
@@ -1386,7 +1394,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="byekan">
-                                          {{-- {{ dd($products[0]->color[0]->code) }} --}}
+                                            {{-- {{ dd($products[0]->color[0]->code) }} --}}
                                             @foreach($products as $product)
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                                 <td class="sorting_1" style="width:5%">{{ $product->id }}</td>
@@ -1399,11 +1407,11 @@
                                                 <td>
                                                     <div class="tt-collapse-content" style="display: block;">
                                                         <ul class="tt-options-swatch options-middle">
-                                                          @foreach($product->colors as $color)
-                                                            <li>
-                                                                <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
-                                                            </li>
-                                                          @endforeach
+                                                            @foreach($product->colors as $color)
+                                                                <li>
+                                                                    <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                                                                </li>
+                                                                @endforeach
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -1499,6 +1507,11 @@
 <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".dropify-clear").remove();
+    });
+</script>
 <script>
     $(".change").click(function() {
         var id = $(this).data("id");
@@ -1605,6 +1618,35 @@
                         success: function(data) {
                             var url = document.location.origin + "/dashboard/shop/product-list";
                             location.href = url;
+                        }
+                    });
+                } else {
+                    toastr.warning('لغو شد.', '', []);
+                }
+            });
+    });
+</script>
+<script>
+    $(document).on('click', '#icon-delete', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        swal(` ${'حذف عکس محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                dangerMode: true,
+                icon: "warning",
+                buttons: ["انصراف", "حذف"],
+            })
+            .then(function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('dashboard/shop/product-list/image/delete')}}",
+                        data: {
+                            id: id,
+                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                        },
+                        success: function(data) {
+                            $(".dropify-preview").addClass('d-none');
                         }
                     });
                 } else {

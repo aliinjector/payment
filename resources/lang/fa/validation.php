@@ -180,5 +180,6 @@ return array(
         'new-password' => 'رمز عبور جدید',
         'productCat_id' => 'دسته بندی محصول',
         'feedback' => 'بازخورد',
+        'zip_code' => 'کد پستی',
     ),
 );

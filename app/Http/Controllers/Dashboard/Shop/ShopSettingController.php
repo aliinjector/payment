@@ -181,9 +181,16 @@ class ShopSettingController extends Controller
     }
 
     public function updateSetting(Request $request){
-
+      if($request->file('watermark') == null){
+        $watermark = \Auth::user()->shop()->first()->watermark;
+      }
+      else{
+        $watermark = $this->uploadFile($request->file('watermark'), false, false);
+      }
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
+        'watermark_status' => $request->watermark_status,
+        'watermark' => $watermark,
         'special_offer' => $request->special_offer,
         'template_id' => $request->template_id,
         'special_offer_text' => $request->special_offer_text,
@@ -202,5 +209,19 @@ class ShopSettingController extends Controller
     public function destroy(ShopSetting $shopSetting)
     {
         //
+    }
+
+    public function destroyImage(Request $request){
+      $shop = Shop::find($request->id);
+      if($request->type == 'icon'){
+        $shop->update([
+            'icon' => null
+        ]);
+      }
+      else{
+        $shop->update([
+            'logo' => null
+        ]);
+      }
     }
 }

@@ -44,11 +44,6 @@
                                 </li>
                                 @endforeach
 
-
-
-
-
-
                             </ul>
                         </div>
                     </div>
@@ -67,28 +62,33 @@
                         <h3 class="tt-title m-4">{{ $product->title }}</h3>
                         <div class="tt-price m-4"><span class="new-price">{{ number_format($product->price) }} تومان</span></div>
                         <div class="tt-review m-4">
-                            <div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-half"></i> <i class="icon-star-empty"></i></div><a class="product-page-gotocomments-js"
-                              href="#">{{ $product->comments->count() }} نظر مشتری </a>
+                            <div class="tt-rating">
+                                @for ($i = 1; $i
+                                <= (int)$product->avgRating; $i++)
+                                    <i class="icon-star"></i>
+                                    @endfor
+                            </div><a class="product-page-gotocomments-js" href="#">{{ $product->comments->count() }} نظر مشتری </a>
                         </div>
+                        <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                          @csrf
 
                         <div class="tt-wrapper m-4">
                             <div class="tt-row-custom-01">
                                 <div class="col-item">
                                     <div class="tt-input-counter style-01"><span class="minus-btn"></span>
-                                        <input type="text" value="1" size="5"> <span class="plus-btn"></span></div>
+                                        <input name="quantity" type="text" value="1" size="5"> <span class="plus-btn"></span></div>
                                 </div>
                                 @auth
-                                <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
-                                    @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="btn tt-btn-addtocart btn-cart btn-sm waves-effect waves-light iranyekan btn btn-lg"><i class="icon-f-39"></i>
+                                    <button type="submit" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
                                         @if($product->type == 'file') دریافت فایل
                                             @else اضافه به سبد خرید
                                             @endif</button>
-                                </form>
                                 @endauth
                             </div>
                         </div>
+                      </form>
+
                         <div class="tt-wrapper m-4">
                             <ul class="tt-list-btn">
                                 <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
@@ -110,40 +110,13 @@
                         <div class="tt-wrapper m-4">
                             <div class="tt-add-info">
 
-                                @if ($product->color_1 || $product->color_2 || $product->color_3 || $product->color_4 || $product->color_5)
-                                <h5 class="text-muted d-inline-block align-middle mr-2">رنگ :</h5>
-                                @endif
-                                @if ($product->color_1)
-                                <div class="form-check-inline ml-2 color-picker p-1" style="background-color:{{ $product->color_1 }} ; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
-                                    <label for="inlineRadio1"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_2)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_2 }} ; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
-                                    <label for="inlineRadio2"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_3)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_3 }}; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio3" value="option3" name="radioInline">
-                                    <label for="inlineRadio3"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_4)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_4 }}; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
-                                    <label for="inlineRadio4"></label>
-                                </div>
-                                @endif
-                                @if ($product->color_5)
-                                <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_5 }}; border: 1px solid black;">
-                                    <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
-                                    <label for="inlineRadio4"></label>
-                                </div>
-                                @endif
-
+                                <ul class="tt-options-swatch options-middle flex-row mb-2">
+                                    @foreach($product->colors as $color)
+                                        <li>
+                                            <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                                        </li>
+                                        @endforeach
+                                </ul>
 
                                 <ul>
                                     @if ($product->type == "file")
@@ -173,7 +146,7 @@
                                 <div class="tt-collapse-title">ویژگی ها</div>
                                 <div class="tt-collapse-content">
                                     <ul class="list-unstyled pro-features border-0 iranyekan">
-                                        @for ($i=1; $i <= 10; $i++) <div class="wrapper">
+                                        @for ($i=1; $i <= 10; $i++) <div class="wrapper d-inline-block">
                                             @if ($product->{"feature_{$i}"})
                                             <li class="ty-compact-list">{{ $product->{"feature_{$i}"} }} </li>
                                             @endif
@@ -185,6 +158,62 @@
                                 </ul>
                             </div>
                         </div>
+
+
+                        <div class="tt-item">
+                            <div class="tt-collapse-title">امتیازات</div>
+                            <div class="tt-collapse-content">
+                                <ul class="list-unstyled pro-features border-0 iranyekan">
+                                    <div class="review-box text-center align-item-center border col-12 m-3" style="direction:ltr">
+                                        @auth
+                                        @if(collect($userProducts)->where('id' ,$product->id)->count() > 0)
+                                            <h5 style="color: #f1646c;" class="p-3">امتیاز خود را به این کالا ثبت کنید</h5>
+                                            <form class="" action="{{route('rate' , ['shop'=>$shop->english_name, 'id'=>$product->id])}}" method="post">
+                                                @csrf {{ method_field('PATCH') }}
+                                                @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
+                                                    @else
+                                                    <select id="combostar">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    </select>
+                                                    @endif
+                                                    <input id="starcount" type="hidden" name="rate" value="">
+                                                    <input type="hidden" name="id" value="{{ $product->id }}">
+                                                    <input type="hidden" name="shop" value="{{ $shop->english_name }}">
+                                                    <br>
+                                                    @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
+                                                        <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded" disabled>شما قبلا امتیاز ثبت کرده اید </button>
+                                                        @else
+                                                        <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded">ثبت امتیاز</button>
+                                                        @endif
+                                            </form>
+                                            @endif
+                                            @endauth
+                                            <br>
+                                            <h4 class="header-title pt-4">مجموع فروش</h4>
+                                            <div class="review-box text-center align-item-center p-3">
+                                                <h1 class="byekan">{{ $product->buyCount }}</h1>
+                                                <ul class="p-2" style="list-style: none;font-size: 25px;">
+                                                    <li class="list-inline-item pb-3"><small class="text-muted font-14">مجموع آرا ({{ $productRates->count() }})</small></li>
+                                                    <li class="list-inline-item"><small class="text-muted font-14">متوسط آرا ({{ (int)$product->avgRating }})</small></li>
+                                                </ul>
+                                                <ul class="d-flex justify-content-center p-3">
+                                                    @for ($i = 1; $i <= (int)$product->avgRating; $i++)
+                                                        <div class="tt-rating" style="font-size: 30px;!important">
+                                                            <i class="icon-star"></i>
+                                                        </div>
+                                                        @endfor
+                                                </ul>
+                                            </div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+
+
                         <div class="tt-item">
                             <div class="tt-collapse-title tt-poin-comments">نظرات ({{ $product->comments->where('approved', '1')->count() }})</div>
                             <div class="tt-collapse-content">
@@ -296,6 +325,8 @@
         </ul>
     </div>
 </div>
+
+
 <div class="container-indent">
     <div class="container container-fluid-custom-mobile-padding">
         <div class="tt-block-title text-left">
@@ -317,5 +348,22 @@
 @endsection
 
 @section('footerScripts')
+<script src="/app/shop/1/assets/js/jquery.combostars.js"></script>
+<script>
+    $(function() {
+        $('#combostar').on('change', function() {
+            $('#starcount').val($(this).val());
+        });
+        $('#combostar').combostars();
+    });
+</script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
+<script>
+    $(function() {
+        var $gallery = $('.gallery a').simpleLightbox();
+    });
+</script>
 @endsection

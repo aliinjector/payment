@@ -70,8 +70,11 @@ class CartController extends \App\Http\Controllers\Controller {
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shop)->get()->first()->id;
+        if($request->quantity == null){
+          $request->merge(['quantity' => 1]);
+        }
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
-            DB::table('cart_product')->insert([['product_id' => $request->product_id, 'cart_id' => \Auth::user()->cart()->get()->first()->id], ]);
+            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id], ]);
             toastr()->success('افزوده شد.', '');
 
             return redirect()->back();

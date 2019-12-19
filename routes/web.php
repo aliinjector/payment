@@ -23,6 +23,9 @@ Auth::routes();
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
 Route::get('/', 'IndexController@index')->name('index');
 
+//Send Email
+Route::post('/sendemail/send', 'SendEmailController@send')->name('sendemail.send');
+
 Route::get('/shops', 'IndexController@shopsShow')->name('shops.show');
 Route::post('/shops', 'IndexController@shopsSearch')->name('shops.search');
 Route::get('/products', 'IndexController@productsShow')->name('products.show');
@@ -71,10 +74,13 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product-list.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status');
+        Route::post('product-list/image/delete', 'ProductController@destroyImage')->name('product-list.image.delete');
+
 
         //Product-Category
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy')->name('product-category.delete');
+        Route::post('product-category/icon/delete', 'ProductCategoryController@destroyIcon')->name('product-category.icon.delete');
 
         //Vouchers
         Route::get('vouchers/voucher-report', 'VoucherController@voucherReport')->name('vouchers.voucher-report');
@@ -97,6 +103,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         //Brand
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
+        Route::post('brand/icon/delete', 'BrandController@destroyIcon')->name('brand.icon.delete');
+
 
         //Stats
         Route::resource('stats', 'StatController');
@@ -125,6 +133,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
           Route::resource('shop-setting', 'ShopSettingController');
           Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
           Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
+          Route::post('shop-setting/image/delete', 'ShopSettingController@destroyImage')->name('shop-setting.image.delete');
+
 
           //Invoice
           Route::resource('invoice', 'InvoiceController');
@@ -142,8 +152,11 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::any('/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list');
     //User-pruchased List
     Route::get('/user-purchased-list', 'UserPurchasesController@userPurchaseList')->name('user.purchased.list');
+
     //Address
     Route::resource('/user-address', 'AddressController');
+    Route::post('/user-address/delete', 'AddressController@destroy')->name('user-address.delete');
+
     //Cart
     Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart');
     Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');

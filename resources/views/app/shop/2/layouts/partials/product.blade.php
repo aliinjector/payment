@@ -5,14 +5,14 @@
             @csrf
 
             <a href="javascript:{}" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-          </form>
+        </form>
 
         <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
             @csrf
 
-        <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>
+            <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>
 
-      </form>
+        </form>
 
         <a style="margin: auto;" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
             <span class="tt-img">
@@ -30,21 +30,22 @@
             <ul class="tt-add-info m-2">
                 <li><a href="#">{{ $product->productCategory->name }}</a></li>
             </ul>
-            <div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star-half"></i> <i class="icon-star-empty"></i></div>
+            <div class="tt-rating">
+                @for ($i = 1; $i <= (int)$product->avgRating; $i++)
+                    <i class="icon-star"></i>
+                    @endfor
+            </div>
+
         </div>
         <h2 class="tt-title"><a href="">{{ $product->title }}</a></h2>
         <div class="tt-price mt-2">{{ number_format($product->price) }} تومان</div>
         <div class="tt-option-block">
             <ul class="tt-options-swatch">
-                <li>
-                    <a class="options-color tt-color-bg-03" href="#"></a>
-                </li>
-                <li>
-                    <a class="options-color tt-color-bg-04" href="#"></a>
-                </li>
-                <li>
-                    <a class="options-color tt-color-bg-05" href="#"></a>
-                </li>
+                @foreach($product->colors as $color)
+                    <li>
+                        <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                    </li>
+                    @endforeach
             </ul>
         </div>
         <div class="tt-product-inside-hover">
