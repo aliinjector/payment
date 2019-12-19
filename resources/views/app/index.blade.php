@@ -972,128 +972,164 @@
                                           </main>
 
                                           <footer id="contact" class="nk-footer bg-theme-grad">
-                                            <section class="section no-pdy section-contact bg-transparent">
+                                             <section class="section no-pdy section-contact bg-transparent">
 
-                                              <div class="container">
-                                                <!-- Block @s -->
-                                                <div class="nk-block block-contact animated" data-animate="fadeInUp" data-delay=".9" id="contact">
-                                                  <div class="row justify-content-center no-gutters">
-                                                    <div class="col-lg-6">
-                                                      <div class="contact-wrap split split-left split-lg-left bg-white">
-                                                        <h5 class="title title-md">تماس باما</h5>
-                                                        <form method="post" action="{{ route('sendemail.send') }}">
-                                                          @csrf
-                                                          <div class="field-item">
-                                                            <input name="name" type="text" class="input-line required">
-                                                            <label class="field-label field-label-line">نام</label>
-                                                          </div>
-                                                          <div class="field-item">
-                                                            <input name="email" type="email" class="input-line required email">
-                                                            <label class="field-label field-label-line">آدرس ایمیل</label>
-                                                          </div>
-                                                          <div class="field-item">
-<<<<<<< HEAD
-                                                            <textarea rows="5" name="contact-message"
-=======
-                                                            <textarea name="message"
->>>>>>> a67c84a4a602199532a1e2ea21c075f8edd16787
-                                                            class="input-line input-textarea required"></textarea>
-                                                            <label class="field-label field-label-line">متن پیام</label>
-                                                          </div>
-                                                          <div class="row">
-                                                            <div class="col-sm-4">
-                                                              <button type="submit" class="btn btn-lg btn-grad">ارسال</button>
-                                                            </div>
-                                                            <div class="col-sm-8">
-                                                              <div class="form-results"></div>
-                                                            </div>
-                                                          </div>
-                                                        </form>
-                                                      </div>
-                                                    </div><!-- .col -->
-                                                    <div class="col-lg-4">
-                                                      <div class="contact-wrap split split-right split-lg-right bg-genitian bg-theme tc-light">
-                                                        <div class="d-flex flex-column justify-content-between h-100">
-                                                          <ul class="contact-list">
-                                                            <li>
-                                                              <em class="contact-icon fas fa-building"></em>
-                                                              <div class="contact-text">
-                                                                <h6>منطقه آزاد انزلی - مجتمع تجاری اداری ستاره شمال - طبقه اول - واحد
-                                                                  2136
-                                                                  شرکت فناور ستاره نوران</h6>
-                                                                  <span></span>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <em class="contact-icon fas fa-phone"></em>
-                                                                <div class="contact-text">
-                                                                  <span class="byekan">91008658</span>
-                                                                </div>
-                                                              </li>
-                                                              <li>
-                                                                <em class="contact-icon fas fa-envelope"></em>
-                                                                <div class="contact-text">
-                                                                  <span>info@omidshop.net</span>
-                                                                </div>
-                                                              </li>
+                                               <div class="container">
+                                                 <!-- Block @s -->
+                                                 <div class="nk-block block-contact animated" data-animate="fadeInUp" data-delay=".9" id="contact">
+                                                   <div class="row justify-content-center no-gutters">
+                                                     <div class="col-lg-6">
+                                                       <div class="contact-wrap split split-left split-lg-left bg-white">
+                                                         <h5 class="title title-md">تماس باما</h5>
+                                                         <form method="post" action="{{ route('sendemail.send') }}">
+                                                           @csrf
+                                                           <div class="field-item">
+                                                             <input name="name" type="text" class="input-line required">
+                                                             <label class="field-label field-label-line">نام</label>
+                                                           </div>
+                                                           <div class="field-item">
+                                                             <input name="email" type="email" class="input-line required email">
+                                                             <label class="field-label field-label-line">آدرس ایمیل</label>
+                                                           </div>
+                                                           <div class="field-item">
+                                                             <textarea name="message"
+                                                             class="input-line input-textarea required"></textarea>
+                                                             <label class="field-label field-label-line">متن پیام</label>
+                                                           </div>
+                                                           <div class="row">
+                                                             <div class="col-sm-4">
+                                                               <button type="submit" class="btn btn-lg btn-grad">ارسال</button>
+                                                             </div>
+                                                             <div class="col-sm-8">
+                                                               <div class="form-results"></div>
+                                                             </div>
+                                                           </div>
+                                                         </form>
+                                                       </div>
+                                                     </div><!-- .col -->
+                                                     <div class="col-lg-4">
+                                                       <div class="contact-wrap split split-right split-lg-right bg-genitian bg-theme tc-light">
+                                                         <div class="d-flex flex-column justify-content-between h-100">
+                                                           <ul class="contact-list">
+                                                             <li>
+                                                               <em class="contact-icon fas fa-building"></em>
+                                                               <div class="contact-text">
+                                                                 <h6>منطقه آزاد انزلی - مجتمع تجاری اداری ستاره شمال - طبقه اول - واحد
+                                                                   2136
+                                                                   شرکت فناور ستاره نوران</h6>
+                                                                   <span></span>
+                                                                 </div>
+                                                               </li>
+                                                               <li>
+                                                                 <em class="contact-icon fas fa-phone"></em>
+                                                                 <div class="contact-text">
+                                                                   <span class="byekan">91008658</span>
+                                                                 </div>
+                                                               </li>
+                                                               <li>
+                                                                 <em class="contact-icon fas fa-envelope"></em>
+                                                                 <div class="contact-text">
+                                                                   <span>info@omid.ir</span>
+                                                                 </div>
+                                                               </li>
+                                                               <li>
+                                                                 <em class="contact-icon fas fa-paper-plane"></em>
+                                                                 <div class="contact-text">
+                                                                   <span> عضویت در کانال تلگرام فروشگاه ساز امید</span>
+                                                                 </div>
+                                                               </li>
+                                                             </ul>
+                                                             <div class="contact-social">
+                                                               <h6>مارا در شبکه های اجتماعی دنبال کنید</h6>
+                                                               <ul class="social-links">
+                                                                 <li><a href="#"><em class="fab fa-twitter"></em></a></li>
+                                                                 <li><a href="#"><em class="fab fa-telegram"></em></a></li>
+                                                                 <li><a href="#"><em class="fab fa-facebook-f"></em></a></li>
+                                                                 <li><a href="#"><em class="fab fa-youtube"></em></a></li>
+                                                                 <li><a href="#"><em class="fab fa-instagram"></em></a></li>
+                                                               </ul>
+                                                             </div>
+                                                           </div>
+                                                         </div>
+                                                       </div><!-- .col -->
+                                                     </div><!-- .row -->
+                                                   </div><!-- .block @e -->
+                                                 </div>
 
-                                                            </ul>
+                                                 <div class="nk-ovm ovm-top ovm-h-60 bg-light"></div><!-- .nk-ovm -->
+                                               </section>
+                                               <!-- // -->
+                                               <section class="section section-footer section-l tc-light bg-transparent">
 
-                                                          </div>
-                                                        </div>
-                                                      </div><!-- .col -->
-                                                    </div><!-- .row -->
-                                                  </div><!-- .block @e -->
-                                                </div>
+                                                 <div class="container">
+                                                   <!-- Block @s -->
+                                                   <div class="nk-block block-footer">
+                                                     <div class="row">
+                                                       <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
+                                                         <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".2">
+                                                           <h6 class="wgs-title">فروشگاه ساز امید</h6>
+                                                           <div class="wgs-body">
+                                                             <ul class="wgs-links">
+                                                               <li><a href="#about">درباره ما</a></li>
+                                                               <li><a href="#services">خدمات امید</a></li>
+                                                               <li><a target="_blank" href="/app//docs">طراحی سایت فروشگاهی</a></li>
+                                                               <li><a target="_blank" href="/app//docs">طراحی وب سایت</a></li>
+                                                             </ul>
+                                                           </div>
+                                                         </div>
+                                                       </div><!-- .col -->
 
-                                                <div class="nk-ovm ovm-top ovm-h-60 bg-light"></div><!-- .nk-ovm -->
-                                              </section>
-                                              <!-- // -->
-                                              <section class="section section-footer section-l tc-light bg-transparent">
+                                                       <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
+                                                         <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".3">
+                                                           <h6 class="wgs-title">لینک های کاربردی</h6>
+                                                           <div class="wgs-body">
+                                                             <ul class="wgs-links">
+                                                               <li><a target="_blank" href="/app//docs">مستندات</a></li>
+                                                               <li><a target="_blank" href="/app//docs">آموزش</a></li>
+                                                               <li><a target="_blank" href="/app//docs">سورس کدها</a></li>
+                                                               <li><a href="/app/#faq">سوالات متداول</a></li>
+                                                             </ul>
+                                                           </div>
+                                                         </div>
+                                                       </div><!-- .col -->
+                                                       <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
+                                                         <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".4">
+                                                           <h6 class="wgs-title">حقوقی</h6>
+                                                           <div class="wgs-body">
+                                                             <ul class="wgs-links">
+                                                               <li><a target="_blank" href="/app//docs">قوانین</a></li>
+                                                               <li><a target="_blank" href="/app//docs">حریم خصوصی</a></li>
+                                                               <li><a target="_blank" href="/app//docs">شرایط استفاده</a></li>
+                                                               <li><a href="#steps">مراحل احراز هویت</a></li>
+                                                             </ul>
+                                                           </div>
+                                                         </div>
+                                                       </div><!-- .col -->
+                                                       <div class="col-lg-6 mb-4 mb-lg-0 order-lg-first">
+                                                         <div class="wgs wgs-text animated" data-animate="fadeInUp" data-delay=".1">
+                                                           <div class="wgs-body">
+                                                             <a href="/" class="wgs-logo">
+                                                               <img src="/app/images/logo.png" srcset="images/logo.png 2x" alt="logo">
+                                                             </a>
+                                                             <p style="font-family: BYekan!important;">© کلیه حقوق محفوظ است. 1398 </p>
+                                                             <p class="copyright-text">طراحی و توسعه در دپارتمان فناوری اطلاعات سیستم فروشگاه ساز امید</p>
+                                                             </div>
+                                                           </div>
+                                                         </div><!-- .col -->
+                                                       </div><!-- .row -->
+                                                     </div><!-- .block @e -->
+                                                   </div>
 
-                                                <div class="container">
-                                                  <!-- Block @s -->
-                                                  <div class="nk-block block-footer">
-                                                    <div class="row">
-                                                      <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
-                                                        <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".2">
-                                                          <h6 class="wgs-title">فروشگاه ساز امید</h6>
-                                                          <div class="wgs-body">
-                                                            <ul class="wgs-links">
-                                                              <li><a href="#about">درباره ما</a></li>
-                                                              <li><a href="#services">خدمات امید</a></li>
-                                                              <li><a href="#services">قوانین و شرایط استفاده</a></li>
-                                                            </ul>
-                                                          </div>
-                                                        </div>
-                                                      </div><!-- .col -->
+                                                 </section>
+                                                 <div class="nk-ovm shape-b"></div>
+                                               </footer>
+                                             </div>
 
 
-                                                      <div class="col-lg-6 mb-4 mb-lg-0 order-lg-first">
-                                                        <div class="wgs wgs-text animated" data-animate="fadeInUp" data-delay=".1">
-                                                          <div class="wgs-body">
-                                                            <a href="/" class="wgs-logo">
-                                                              <img style="width: 150px" src="/app/images/logo.png" srcset="images/logo.png 2x" alt="logo">
-                                                            </a>
-                                                            <p style="font-family: BYekan!important;">© کلیه حقوق محفوظ است. 1398 </p>
-                                                            <p class="copyright-text">طراحی و توسعه در دپارتمان فناوری اطلاعات سیستم فروشگاه ساز امید</p>
-                                                            </div>
-                                                          </div>
-                                                        </div><!-- .col -->
-                                                      </div><!-- .row -->
-                                                    </div><!-- .block @e -->
-                                                  </div>
+                                             <!-- JavaScript -->
+                                             <script src="/app/js/jquery.bundlee332.js?ver=161"></script>
+                                             <script src="/app/js/scriptse332.js?ver=161"></script>
+                                             <script src="/app/js/charts.js"></script>
+                                           </body>
 
-                                                </section>
-                                                <div class="nk-ovm shape-b"></div>
-                                              </footer>
-                                            </div>
-
-
-                                            <!-- JavaScript -->
-                                            <script src="/app/js/jquery.bundlee332.js?ver=161"></script>
-                                            <script src="/app/js/scriptse332.js?ver=161"></script>
-                                            <script src="/app/js/charts.js"></script>
-                                          </body>
-
-                                          </html>
+                                           </html>

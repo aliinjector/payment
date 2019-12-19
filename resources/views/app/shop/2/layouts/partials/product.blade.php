@@ -1,5 +1,5 @@
-<div class="tt-product thumbprod-center">
-    <div style="height: 400px;display:flex;" class="tt-image-box">
+<div class="tt-product thumbprod-center border p-2 image-box-card">
+    <div class="tt-image-box" style="height: 30vh!important;">
         <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
         <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="wishlistForm{{ $product->id }}">
             @csrf
@@ -16,7 +16,7 @@
 
         <a style="margin: auto;" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
             <span class="tt-img">
-                <img src="/app/shop/2/images/loader.svg" data-src="{{ $product->image['original'] }}" alt="">
+                <img src="/app/shop/2/images/loader.svg" data-src="{{ $product->image['250,250'] }}" alt="">
             </span>
             @if(0)
             <span class="tt-img-roll-over">
