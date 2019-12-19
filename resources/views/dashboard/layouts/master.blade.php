@@ -245,7 +245,11 @@ Author: Ali Rahmani
                             <li class="nav-item"><a class="nav-link" href="{{ route('dashboard-shop.index') }}"><i class="dripicons-view-thumb"></i>گزارشات فروشگاه شما</a></li>
                             <li class="nav-item"><a class="nav-link {{ request()->is('*galleries*') == 1 ? 'active' : '' }}" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>لیست کالاها / خدمات</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('product-comments.index') }}"><i class="fa fa-comments"></i>مدیریت نظرات</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('product-category.index') }}"><i class="dripicons-trophy"></i> دسته بندی</a></li>
+                            <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"><i class="far fa-edit"></i>مدیریت دسته بندی ها</a></li>
+                            <div class="collapse mr-4 {{ request()->is('*managment*') == 1 ? 'show' : '' }}" id="collapseCategory">
+                            <li class="nav-item"><a class="nav-link" href="{{ route('product-category.index') }}"><i class="fa fa-copy"></i>اضافه کردن دسته بندی</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('feature.index') }}"><i class="dripicons-trophy"></i> ویژگی دسته بندی ها</a></li>
+                            </div>
                             <li class="nav-item"><a class="nav-link" href="{{ route('brand.index') }}"><i class="fa fa-calendar"></i>برند ها</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.index') }}"><i class="mdi mdi-gift"></i> کدهای تخفیف</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.voucher-report') }}"><i class="fa fa-check-square"></i>گزارشات کدهای تخفیف</a></li>

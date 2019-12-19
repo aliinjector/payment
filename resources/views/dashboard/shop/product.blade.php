@@ -1122,7 +1122,7 @@
                                                 <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> اپلود فایل</h4>
                                                 <p class="text-muted mb-3">فایل شما میتواند از نوع pdf یا docs باشد
                                                 </p>
-                                                <input type="file" id="input-file-now" name="image" class="dropify">
+                                                <input type="file" id="input-file-now" name="attachment" class="dropify">
                                             </div>
                                             <!--end card-body-->
                                         </div>

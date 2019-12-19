@@ -33,7 +33,7 @@ class ProductCategory extends Model
 
   public function features()
   {
-      return $this->hasMany('App\Feature');
+      return $this->hasMany('App\Feature','productCat_id');
   }
 
 }

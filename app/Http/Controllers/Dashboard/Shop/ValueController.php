@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard\Shop;
 
-use App\Feature;
+use App\Value;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class FeatureController extends Controller
+
+class ValueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +43,10 @@ class FeatureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Feature  $feature
+     * @param  \App\Value  $value
      * @return \Illuminate\Http\Response
      */
-    public function show(Feature $feature)
+    public function show(Value $value)
     {
         //
     }
@@ -52,10 +54,10 @@ class FeatureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Feature  $feature
+     * @param  \App\Value  $value
      * @return \Illuminate\Http\Response
      */
-    public function edit(Feature $feature)
+    public function edit(Value $value)
     {
         //
     }
@@ -64,10 +66,10 @@ class FeatureController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Feature  $feature
+     * @param  \App\Value  $value
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Feature $feature)
+    public function update(Request $request, Value $value)
     {
         //
     }
@@ -75,10 +77,10 @@ class FeatureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Feature  $feature
+     * @param  \App\Value  $value
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Feature $feature)
+    public function destroy(Value $value)
     {
         //
     }
