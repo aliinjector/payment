@@ -1,6 +1,5 @@
 <div class="tt-product thumbprod-center border p-2 image-box-card">
     <div class="tt-image-box" style="height: 30vh!important;">
-        <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
         <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="wishlistForm{{ $product->id }}">
             @csrf
 
@@ -60,7 +59,6 @@
             </form>
             @endif
             <div class="tt-row-btn">
-                <a href="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
                 <a href="#" class="tt-btn-wishlist"></a>
                 <a href="#" class="tt-btn-compare"></a>
             </div>

@@ -98,6 +98,8 @@
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">محصول</th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">کاربر </th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">وضعیت تایید </th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">تاریخ درج </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 400px;">متن نظر</th>
                                             </tr>
                                         </thead>
@@ -106,6 +108,8 @@
                                             <tr role="row" class="odd icon-hover hover-color">
                                                 <td style="width:5%"><a target="_blank" href="{{ route('product', ['shop' => $comment->shop->english_name, 'product' => $comment->commentable->id]) }}">{{ $comment->commentable->title }}</a></td>
                                                 <td>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</td>
+                                                <td>{{ $comment->approved == 1 ? 'تایید شده' : 'تایید نشده' }}</td>
+                                                <td>{{ jdate($comment->created_at) }}</td>
                                                 <td class="d-flex justify-content-between">{{ $comment->comment }}
                                                     <div class="d-none icon-show">
                                                         @if($comment->approved == 0)

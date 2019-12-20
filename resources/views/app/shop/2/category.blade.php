@@ -196,7 +196,6 @@
     border: 1px solid #e4e4e4;">
 								<div class="tt-product thumbprod-center">
 									<div class="tt-image-box" style="height: 30vh!important;">
-										<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
 										<form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
 											@csrf
 											<a href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
@@ -235,7 +234,6 @@
 											</form>
 											@endauth
 											<div class="tt-row-btn">
-												<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
 												<a href="#" class="tt-btn-wishlist"></a>
 												<a href="#" class="tt-btn-compare"></a>
 											</div>

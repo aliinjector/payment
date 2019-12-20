@@ -91,7 +91,6 @@
 
                         <div class="tt-wrapper m-4">
                             <ul class="tt-list-btn">
-                                <a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
                                 <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
                                     @csrf
 
