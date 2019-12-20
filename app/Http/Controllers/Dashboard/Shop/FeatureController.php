@@ -24,7 +24,7 @@ class FeatureController extends Controller
       else{
               $shop = \Auth::user()->shop()->first();
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
-              return view('dashboard.shop.feature', compact('categoires' , 'shop', 'productCategories'));
+              return view('dashboard.shop.feature.index', compact('categoires' , 'shop', 'productCategories'));
 
             }
 
@@ -103,9 +103,10 @@ class FeatureController extends Controller
      * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function edit(Feature $feature)
+    public function edit(Request $request, $productCategoryid)
     {
-        //
+      $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id', $productCategoryid)->get()->first();
+      return view('dashboard.shop.feature.edit', compact('productCategory'));
     }
 
     /**
@@ -115,9 +116,30 @@ class FeatureController extends Controller
      * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Feature $feature)
+    public function update(Request $request, $productCategoryid)
     {
-        //
+            for ($i=0; $i < $request->featureCount; $i++) {
+              if(isset($request->file('icon')[$i])){
+                if($request->file('icon')[$i] == null){
+                  $icon = null;
+                }
+                else{
+                  $icon = $this->uploadFile($request->file('icon')[$i], false, true);
+                }
+              }
+              else{
+                $icon = \Auth::user()->shop()->first()->ProductCategories()->where('id',$productCategoryid)->get()->first()->features->where('id', $request->featureId[$i])->first()->icon;
+              }
+              $request->validate(['name' => 'required']);
+              $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id',$productCategoryid)->get()->first()->features->where('id', $request->featureId[$i])->first()->update([
+                'name' => $request->name[$i],
+                'icon' => $icon
+            ]);
+
+          };
+
+    alert()->success('ویرایش ویژگی ها با موفقیت انجام شد.', 'ثبت شد');
+    return redirect()->route('feature.index');
     }
 
     /**

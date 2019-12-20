@@ -139,7 +139,7 @@
                                                 <td class="d-flex justify-content-end">
                                                     <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
                                                       data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>مشاهده ویژگی ها</a>
-                                                    <a class="btn btn-outline-pink btn-sm font-14 iranyekan m-1" href="http://pishraft-center.ir/panel/product/history/1"><i class="fas fa-edit ml-1"></i>ویرایش ویژگی ها</a>
+                                                    <a class="btn btn-outline-pink btn-sm font-14 iranyekan m-1" href="{{ route('feature.edit', $productCategory->id) }}"><i class="fas fa-edit ml-1"></i>ویرایش ویژگی ها</a>
                                                     <div class="d-none icon-show">
                                                         {{-- <a href="{{ $productCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $productCategory->id }}"><i
                                                           class="far fa-edit text-info mr-1 button font-15"></i>
@@ -177,7 +177,7 @@
         });
     </script>
     <script>
-        oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+        oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object,
         $('#myInputTextField').keyup(function() {
             oTable.search($(this).val()).draw();
         })
