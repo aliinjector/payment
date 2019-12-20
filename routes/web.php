@@ -30,6 +30,7 @@ Route::get('/shops', 'IndexController@shopsShow')->name('shops.show');
 Route::post('/shops', 'IndexController@shopsSearch')->name('shops.search');
 Route::get('/products', 'IndexController@productsShow')->name('products.show');
 Route::post('/products', 'IndexController@productsSearch')->name('products.search');
+Route::get('/terms', 'IndexController@terms')->name('terms');
 
 Route::get('fast-pay/{id}', 'Dashboard\Payment\FastPayController@show')->name('fast-pay.show');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

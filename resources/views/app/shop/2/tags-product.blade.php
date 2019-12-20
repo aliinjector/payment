@@ -164,7 +164,6 @@
 							<div class="col-6 col-md-4 tt-col-item">
 								<div class="tt-product thumbprod-center">
 									<div class="tt-image-box">
-										<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView" data-tooltip="مشاهده اجمالی" data-tposition="left"></a>
 										<a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
 										<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}"
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a></div>
@@ -189,7 +188,6 @@
 											</form>
 											@endif
 											<div class="tt-row-btn">
-												<a href="#" class="tt-btn-quickview" data-toggle="modal" data-target="#ModalquickView"></a>
 												<a href="#" class="tt-btn-wishlist"></a>
 												<a href="#" class="tt-btn-compare"></a>
 											</div>

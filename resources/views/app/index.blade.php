@@ -1065,46 +1065,22 @@
                                                    <!-- Block @s -->
                                                    <div class="nk-block block-footer">
                                                      <div class="row">
-                                                       <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
-                                                         <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".2">
-                                                           <h6 class="wgs-title">فروشگاه ساز امید</h6>
-                                                           <div class="wgs-body">
-                                                             <ul class="wgs-links">
-                                                               <li><a href="#about">درباره ما</a></li>
-                                                               <li><a href="#services">خدمات امید</a></li>
-                                                               <li><a target="_blank" href="/app//docs">طراحی سایت فروشگاهی</a></li>
-                                                               <li><a target="_blank" href="/app//docs">طراحی وب سایت</a></li>
-                                                             </ul>
-                                                           </div>
-                                                         </div>
-                                                       </div><!-- .col -->
+
 
                                                        <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
                                                          <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".3">
                                                            <h6 class="wgs-title">لینک های کاربردی</h6>
                                                            <div class="wgs-body">
                                                              <ul class="wgs-links">
+                                                               <li><a target="_blank" href="{{ route('terms') }}">قوانین و شرایط استفاده</a></li>
                                                                <li><a target="_blank" href="/app//docs">مستندات</a></li>
                                                                <li><a target="_blank" href="/app//docs">آموزش</a></li>
-                                                               <li><a target="_blank" href="/app//docs">سورس کدها</a></li>
                                                                <li><a href="/app/#faq">سوالات متداول</a></li>
                                                              </ul>
                                                            </div>
                                                          </div>
                                                        </div><!-- .col -->
-                                                       <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
-                                                         <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".4">
-                                                           <h6 class="wgs-title">حقوقی</h6>
-                                                           <div class="wgs-body">
-                                                             <ul class="wgs-links">
-                                                               <li><a target="_blank" href="/app//docs">قوانین</a></li>
-                                                               <li><a target="_blank" href="/app//docs">حریم خصوصی</a></li>
-                                                               <li><a target="_blank" href="/app//docs">شرایط استفاده</a></li>
-                                                               <li><a href="#steps">مراحل احراز هویت</a></li>
-                                                             </ul>
-                                                           </div>
-                                                         </div>
-                                                       </div><!-- .col -->
+
                                                        <div class="col-lg-6 mb-4 mb-lg-0 order-lg-first">
                                                          <div class="wgs wgs-text animated" data-animate="fadeInUp" data-delay=".1">
                                                            <div class="wgs-body">
