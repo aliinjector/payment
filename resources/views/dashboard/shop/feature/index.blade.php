@@ -80,7 +80,7 @@
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ویرایش دسته بندی</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">نمایش ویژگی ها</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -89,7 +89,6 @@
                         <div class="form-group mb-0">
                             @foreach ($productCategory->features as $feature)
                             <div class="input-group mt-3 mb-4">
-                              {{ $feature->count() == 0 ? "ویژگی وجود ندارد" : ""}}
                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام ویژگی :</span></div>
                                 <input type="text" class="form-control inputfield" name="name" readonly value="{{ $feature->name }}">
                             </div>
@@ -137,8 +136,14 @@
                                                 <td style="width:5%">{{ $productCategory->id }}</td>
                                                 <td>{{ $productCategory->name }}</td>
                                                 <td class="d-flex justify-content-end">
+                                                  @if($productCategory->features->count() == 0)
+                                                    <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
+                                                      data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i></a>
+                                                    @else
                                                     <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
                                                       data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>مشاهده ویژگی ها</a>
+                                                    @endif
+
                                                     <a class="btn btn-outline-pink btn-sm font-14 iranyekan m-1" href="{{ route('feature.edit', $productCategory->id) }}"><i class="fas fa-edit ml-1"></i>ویرایش ویژگی ها</a>
                                                     <div class="d-none icon-show">
                                                         {{-- <a href="{{ $productCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $productCategory->id }}"><i
