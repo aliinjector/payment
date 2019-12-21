@@ -132,9 +132,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($faqs as $faq)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td>{{ $faq->id }}</td>
+                                                <td>{{ $id }}</td>
                                                 <td>{{ $faq->title }}</td>
                                                 <td>{{ $faq->question }}</td>
                                                 <td>{{ $faq->answer }}
@@ -145,6 +148,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
                                         </tbody>
                                     </table>

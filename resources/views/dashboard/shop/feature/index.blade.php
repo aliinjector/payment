@@ -136,9 +136,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($productCategories as $productCategory)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td style="width:5%">{{ $productCategory->id }}</td>
+                                                <td style="width:5%">{{ $id }}</td>
                                                 <td>{{ $productCategory->name }}</td>
                                                 <td class="d-flex justify-content-end">
                                                     @if($productCategory->features->count() == 0)
@@ -154,6 +157,9 @@
                                                         </div>
                                                 </td>
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
                                         </tbody>
                                     </table>

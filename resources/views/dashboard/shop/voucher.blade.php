@@ -216,9 +216,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="byekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($vouchers as $voucher)
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $voucher->id }}">
-                                                <td>{{ $voucher->id }}</td>
+                                                <td>{{ $id }}</td>
                                                 <td>{{ $voucher->name }}</td>
                                                 <td class="font-18">
                                                     {{-- <form class="form-inline" action="" method="post"> --}}
@@ -266,6 +269,9 @@
                                                 </td>
 
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
 
                                         </tbody>

@@ -128,9 +128,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($brands as $brand)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td>{{ $brand->id }}</td>
+                                                <td>{{ $id }}</td>
                                                 <td>
                                                     @if($brand->icon == null) <img src="{{ asset('/dashboard/assets/images/img-na.png') }}" class="rounded w-27" alt="">
                                                     @endif <img src="{{ $brand->icon['250,250'] }}" class="rounded" alt="">
@@ -145,6 +148,9 @@
                                                   </div>
                                                 </td>
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
                                         </tbody>
                                     </table>

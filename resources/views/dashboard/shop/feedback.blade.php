@@ -127,9 +127,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($feedbacks as $feedback)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td style="width:5%">{{ $feedback->id }}</td>
+                                                <td style="width:5%">{{ $id }}</td>
                                                 <td>{{ $feedback->title }}</td>
                                                 <td class="d-flex justify-content-between">
                                                     {{ $feedback->feedback}}
@@ -140,6 +143,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
                                         </tbody>
                                     </table>
