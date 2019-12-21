@@ -35,7 +35,7 @@ class ProductController extends Controller
               $brands = \Auth::user()->shop()->first()->brands()->get();
               $colors = Color::all();
               $products = \Auth::user()->shop()->first()->products()->get();
-              return view('dashboard.shop.product', compact('productCategories','products', 'brands', 'colors'));
+              return view('dashboard.shop.product.index', compact('productCategories','products', 'brands', 'colors'));
               }
             }
     }
@@ -279,7 +279,34 @@ else{
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Product $product)
+   {
+             //
+    }
+
+
+
+    public function editPhysical($id)
+    {
+      $product = Product::find($id);
+      $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+      $brands = \Auth::user()->shop()->first()->brands()->get();
+      $colors = Color::all();
+      return view('dashboard.shop.product.edit-physical', compact('product','productCategories','brands','colors'));
+    }
+
+
+
+    public function editFile($id)
+    {
+        //
+    }
+
+
+
+
+    public function editService($id)
     {
         //
     }
