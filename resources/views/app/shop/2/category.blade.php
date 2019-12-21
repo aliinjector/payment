@@ -247,6 +247,14 @@
 @endsection
 
 @section('footerScripts')
+	<script type="text/javascript">
+	$(window).ready(function(){
+  setInterval(function(){
+    $('#tt-product-listing').addClass("tt-col-three")
+  }, 10);
+
+});
+	</script>
 <script>
 	$(document).ready(function() {
 		$('#available-filter-1').click(function() {

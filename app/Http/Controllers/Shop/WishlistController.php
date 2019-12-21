@@ -25,7 +25,7 @@ class WishlistController extends Controller
       $wishlistProducts = [];
       $template_folderName = $shop->template->folderName;
 
-      return view("app.shop.$template_folderName.account.wishlist", compact('shop', 'shopCategories', 'wishlistProducts'));
+      return view("app.shop.account.wishlist", compact('shop', 'shopCategories', 'wishlistProducts'));
     }
 
     /**
