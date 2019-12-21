@@ -137,8 +137,8 @@
                                                 <td>{{ $productCategory->name }}</td>
                                                 <td class="d-flex justify-content-end">
                                                   @if($productCategory->features->count() == 0)
-                                                    <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
-                                                      data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i></a>
+                                                    <a href="{{ $productCategory->id }}" data-toggle="modal" class="comming-soon btn btn-light btn-sm font-14 font-weight-bolder iranyekan m-1"
+                                                      data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>ویژگی وجود ندارد</a>
                                                     @else
                                                     <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
                                                       data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>مشاهده ویژگی ها</a>
