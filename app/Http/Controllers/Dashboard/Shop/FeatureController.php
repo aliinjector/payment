@@ -148,8 +148,15 @@ class FeatureController extends Controller
      * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Feature $feature)
+    public function destroy(Feature $feature, Request $request)
     {
-        //
+      $feature = Feature::find($request->id);
+      if ($feature->productCategory->shop->user_id !== \Auth::user()->id) {
+              alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+              return redirect()->back();
+            }
+               $feature->delete();
+               alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+               return redirect()->back();
     }
 }

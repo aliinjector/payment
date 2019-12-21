@@ -122,7 +122,6 @@
 									<a class="options-color" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}">
 									</a>
 								</li>
-								{{-- href="javascript:{}" onclick="document.getElementById('submit').submit();" --}}
 								@endforeach
 								<input id="color-input" type="hidden" name="color" value="">
 
@@ -186,14 +185,9 @@
 								<a href="#" class="tt-col-six" data-value="tt-col-six"></a>
 							</div>
 						</div>
-						<div class="tt-product-listing row">
+						<div class="tt-product-listing row tt-col-three" id="tt-product-listing">
 							@foreach($products as $product)
-							<div class="col-5 col-md-2 tt-col-item border p-2" style="
-		background-color: #fff;
-    border-radius: 5px;
-    -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-    border: 1px solid #e4e4e4;">
+							<div class="col-5 col-md-2 tt-col-item p-2">
 								<div class="tt-product thumbprod-center">
 									<div class="tt-image-box" style="height: 30vh!important;">
 										<form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
@@ -206,8 +200,8 @@
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>
 										</form>
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img  class="col-12" src="images/loader.svg" data-src="{{ $product->image['250,250'] }}" alt=""></span><span
-											  class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img class="col-12" src="images/loader.svg" data-src="{{ $product->image['250,250'] }}"
+												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
 									<div class="tt-description">
 										<div class="tt-row">

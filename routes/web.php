@@ -85,6 +85,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
 
         //Feature
         Route::resource('feature', 'FeatureController');
+        Route::post('feature/delete', 'FeatureController@destroy')->name('feature.delete');
+
 
 
         //Vouchers
