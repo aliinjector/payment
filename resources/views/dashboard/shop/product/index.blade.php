@@ -96,6 +96,7 @@
                                 </button>
                             </div>
                             <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
+
                                 <form action="{{ route('Product-list.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group mb-0">
@@ -123,19 +124,23 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <select class="form-control inputfield" name="productCat_id" id="">
+                                            <select class="form-control inputfield" name="productCat_id" id="select">
                                                 <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
-                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">
+                                                <option style="font-family: BYekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
                                                     @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} >
                                                         @endif {{ $productCategory->name }}
                                                 </option>
                                                 @endforeach
                                             </select>
                                             @endif
+                                        </div>
+
+                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none" id="demo">
 
                                         </div>
+
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
@@ -896,6 +901,8 @@
 <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+<script src="{{ asset('/dashboard/assets/js/feature.js') }}"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
         $(".dropify-clear").remove();
@@ -959,30 +966,6 @@
         $(".test9").click(function() {
             $(".feature_10").removeClass("d-none");
             $(".test9").addClass("d-none");
-        });
-    });
-    $(document).ready(function() {
-        $(".color1").click(function() {
-            $(".color_1").removeClass("d-none");
-            $(".color1").addClass("d-none");
-        });
-    });
-    $(document).ready(function() {
-        $(".color2").click(function() {
-            $(".color_2").removeClass("d-none");
-            $(".color2").addClass("d-none");
-        });
-    });
-    $(document).ready(function() {
-        $(".color3").click(function() {
-            $(".color_3").removeClass("d-none");
-            $(".color3").addClass("d-none");
-        });
-    });
-    $(document).ready(function() {
-        $(".color4").click(function() {
-            $(".color_4").removeClass("d-none");
-            $(".color4").addClass("d-none");
         });
     });
     $(document).on('click', '#removerProduct', function(e) {
