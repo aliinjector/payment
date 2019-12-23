@@ -75,7 +75,7 @@ class ProductController extends Controller
            else{
             $file_size = null;
            }
-      $image = $this->uploadFile($request->file('image'), true, true);
+      $image = $this->uploadFile($request->file('image'), false, true);
       //check if product is file to save attachment file
       if($request->type == 'file')
       $attachment = $this->uploadFile($request->file('attachment'), false, false);
