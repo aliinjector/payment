@@ -308,7 +308,11 @@ else{
 
     public function editService($id)
     {
-        //
+      $product = Product::find($id);
+      $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+      $brands = \Auth::user()->shop()->first()->brands()->get();
+      $colors = Color::all();
+      return view('dashboard.shop.product.edit-service', compact('product','productCategories','brands','colors'));
     }
 
     /**
