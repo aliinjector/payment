@@ -836,7 +836,15 @@
                      </div>
                      <div class="tt-col-item">
                         <!-- copyright -->
-                        <div class="tt-box-copyright"> تمامی حقوق محفوظ است. &copy; فروشگاه امید</div>
+
+                          <div class="tt-box-copyright">
+
+                            &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
+                            <a target="_blank" href="https://omidshop.net">
+                              <span class="text-muted d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
+                            </a>
+
+                           </div>
                         <!-- /copyright -->
                      </div>
                   </div>

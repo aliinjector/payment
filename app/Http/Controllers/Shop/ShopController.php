@@ -42,12 +42,12 @@
       $template_folderName = $shop->template->folderName;
       $brands = $shop->brands;
       $feedbacks = $shop->feedbacks;
-
+      $slideshows = $shop->slideshows;
       SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling', 'brands', 'feedbacks'));
+      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling', 'brands', 'feedbacks', 'slideshows'));
 
     }
 

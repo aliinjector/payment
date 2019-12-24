@@ -21,7 +21,67 @@
 
 
 
-        <h2 class="line-throw"><span>آخرین محصولات </span></h2>
+
+
+
+
+
+
+        <!--Carousel Wrapper-->
+        <div style="width: 90%; margin: auto" id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+          <!--Indicators-->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-2" data-slide-to="1"></li>
+            <li data-target="#carousel-example-2" data-slide-to="2"></li>
+          </ol>
+          <!--/.Indicators-->
+          <!--Slides-->
+          <div class="carousel-inner" role="listbox">
+
+
+            @foreach($slideshows as $slideshow)
+            <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
+              <div class="view">
+                <a href="{{ $slideshow->url }}">
+                <img class="d-block w-100" src="{{ $slideshow->image['original'] }}" alt="{{ $slideshow->title }}">
+                <div class="mask rgba-black-light"></div>
+              </div>
+              <div class="carousel-caption">
+                <h3 class="h3-responsive">{{ $slideshow->title }}</h3>
+                <p>{{ $slideshow->description }}</p>
+              </div>
+            </div>
+            </a>
+            @endforeach
+
+
+
+
+
+          </div>
+          <!--/.Slides-->
+          <!--Controls-->
+          <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+          <!--/.Controls-->
+        </div>
+        <!--/.Carousel Wrapper-->
+
+
+
+
+
+
+
+
+        <h2 class="line-throw mt-5"><span>آخرین محصولات </span></h2>
 
 
          <div class="row p-5">
