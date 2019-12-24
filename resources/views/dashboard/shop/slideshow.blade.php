@@ -146,9 +146,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($slideshows as $slideshow)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td>{{ $slideshow->id }}</td>
+                                                <td>{{ $id }}</td>
                                                 <td>
                                                   <img src="{{ $slideshow->image['80,80'] }}" class="rounded" alt="">
                                                 </td>
@@ -163,6 +166,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
                                         </tbody>
                                     </table>

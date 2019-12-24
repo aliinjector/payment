@@ -16,6 +16,12 @@ use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
+
+  public function test(Request $request){
+    $features = ProductCategory::find($request->id)->features;
+    return response()->json($features);
+
+  }
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +41,7 @@ class ProductController extends Controller
               $brands = \Auth::user()->shop()->first()->brands()->get();
               $colors = Color::all();
               $products = \Auth::user()->shop()->first()->products()->get();
-              return view('dashboard.shop.product', compact('productCategories','products', 'brands', 'colors'));
+              return view('dashboard.shop.product.index', compact('productCategories','products', 'brands', 'colors'));
               }
             }
     }
@@ -75,7 +81,7 @@ class ProductController extends Controller
            else{
             $file_size = null;
            }
-      $image = $this->uploadFile($request->file('image'), true, true);
+      $image = $this->uploadFile($request->file('image'), false, true);
       //check if product is file to save attachment file
       if($request->type == 'file')
       $attachment = $this->uploadFile($request->file('attachment'), false, false);
@@ -279,9 +285,44 @@ else{
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Product $product)
+   {
+             //
+    }
+
+
+
+    public function editPhysical($id)
     {
-        //
+      $product = Product::find($id);
+      $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+      $brands = \Auth::user()->shop()->first()->brands()->get();
+      $colors = Color::all();
+      return view('dashboard.shop.product.edit-physical', compact('product','productCategories','brands','colors'));
+    }
+
+
+
+    public function editFile($id)
+    {
+      $product = Product::find($id);
+      $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+      $brands = \Auth::user()->shop()->first()->brands()->get();
+      $colors = Color::all();
+      return view('dashboard.shop.product.edit-file', compact('product','productCategories','brands','colors'));
+    }
+
+
+
+
+    public function editService($id)
+    {
+      $product = Product::find($id);
+      $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+      $brands = \Auth::user()->shop()->first()->brands()->get();
+      $colors = Color::all();
+      return view('dashboard.shop.product.edit-service', compact('product','productCategories','brands','colors'));
     }
 
     /**

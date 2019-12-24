@@ -75,12 +75,14 @@
                 </div>
             </div>
         </div>
+
+
         @foreach($productCategories as $productCategory)
         <div class="modal fade bd-example-modal-xl" id="ShowFeatureModal{{ $productCategory->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ویرایش دسته بندی</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">نمایش ویژگی ها</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -89,9 +91,9 @@
                         <div class="form-group mb-0">
                             @foreach ($productCategory->features as $feature)
                             <div class="input-group mt-3 mb-4">
-                              {{ $feature->count() == 0 ? "ویژگی وجود ندارد" : ""}}
                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام ویژگی :</span></div>
                                 <input type="text" class="form-control inputfield" name="name" readonly value="{{ $feature->name }}">
+                                <a href="" id="removeFeature" data-name="{{ $feature->name }}" data-id="{{ $feature->id }}"><i class="fa-trash-alt far border-bottom font-18 p-3 text-danger"></i></a>
                             </div>
                             @endforeach
 
@@ -104,6 +106,8 @@
             </div>
         </div>
         @endforeach
+
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -132,22 +136,30 @@
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($productCategories as $productCategory)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td style="width:5%">{{ $productCategory->id }}</td>
+                                                <td style="width:5%">{{ $id }}</td>
                                                 <td>{{ $productCategory->name }}</td>
                                                 <td class="d-flex justify-content-end">
-                                                    <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
-                                                      data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>مشاهده ویژگی ها</a>
-                                                    <a class="btn btn-outline-pink btn-sm font-14 iranyekan m-1" href="http://pishraft-center.ir/panel/product/history/1"><i class="fas fa-edit ml-1"></i>ویرایش ویژگی ها</a>
-                                                    <div class="d-none icon-show">
-                                                        {{-- <a href="{{ $productCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $productCategory->id }}"><i
-                                                          class="far fa-edit text-info mr-1 button font-15"></i>
-                                                        </a> --}}
-                                                        {{-- <a href="" id="removeCat" data-name="{{ $productCategory->name }}" data-id="{{ $productCategory->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a> --}}
-                                                    </div>
+                                                    @if($productCategory->features->count() == 0)
+                                                        <a href="{{ $productCategory->id }}" data-toggle="modal" class="comming-soon btn btn-light btn-sm font-14 font-weight-bolder iranyekan m-1"
+                                                          data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>ویژگی وجود ندارد</a>
+                                                        @else
+                                                        <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
+                                                          data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>مشاهده ویژگی ها</a>
+                                                        @endif
+
+                                                        <a class="btn btn-outline-pink btn-sm font-14 iranyekan m-1" href="{{ route('feature.edit', $productCategory->id) }}"><i class="fas fa-edit ml-1"></i>ویرایش ویژگی ها</a>
+                                                        <div class="d-none icon-show">
+                                                        </div>
                                                 </td>
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -177,17 +189,17 @@
         });
     </script>
     <script>
-        oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+        oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object,
         $('#myInputTextField').keyup(function() {
             oTable.search($(this).val()).draw();
         })
     </script>
     <script>
-        $(document).on('click', '#removeCat', function(e) {
+        $(document).on('click', '#removeFeature', function(e) {
             e.preventDefault();
             var id = $(this).data('id');
             var name = $(this).data('name');
-            swal(` ${'حذف دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+            swal(` ${'حذف ویژگی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
                     dangerMode: true,
                     icon: "warning",
                     buttons: ["انصراف", "حذف"],
@@ -196,13 +208,13 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "post",
-                            url: "{{url('dashboard/shop/product-category/delete')}}",
+                            url: "{{url('dashboard/shop/feature/delete')}}",
                             data: {
                                 id: id,
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                             },
                             success: function(data) {
-                                var url = document.location.origin + "/dashboard/shop/product-category";
+                                var url = document.location.origin + "/dashboard/shop/feature";
                                 location.href = url;
                             }
                         });
@@ -212,37 +224,6 @@
                 });
         });
     </script>
-
-    <script>
-        $(document).on('click', '#icon-delete', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var name = $(this).data('name');
-            swal(` ${'حذف عکس دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
-                    dangerMode: true,
-                    icon: "warning",
-                    buttons: ["انصراف", "حذف"],
-                })
-                .then(function(isConfirm) {
-                    if (isConfirm) {
-                        $.ajax({
-                            type: "post",
-                            url: "{{url('dashboard/shop/product-category/icon/delete')}}",
-                            data: {
-                                id: id,
-                                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                            },
-                            success: function(data) {
-                                $(".dropify-preview").addClass('d-none');
-                            }
-                        });
-                    } else {
-                        toastr.warning('لغو شد.', '', []);
-                    }
-                });
-        });
-    </script>
-
     @if(session()->has('flashModal'))
         <script>
             $('#AddProductCategoryModal').modal('show');

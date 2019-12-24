@@ -172,9 +172,12 @@
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
+                                          @php
+                                            $id = 1;
+                                          @endphp
                                             @foreach($categoires as $category)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td style="width:5%">{{ $category->id }}</td>
+                                                <td style="width:5%">{{ $id }}</td>
                                                 <td style="width:5%">
                                                     @if($category->icon == null) <img src="{{ asset('/dashboard/assets/images/img-na.png') }}" class="rounded w-100" alt="">
                                                         @endif <img src="{{ $category->icon['80,80'] }}" class="rounded" alt="">
@@ -213,6 +216,9 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            @php
+                                              $id ++
+                                            @endphp
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -277,7 +283,7 @@
                 });
         });
     </script>
-    
+
     <script>
         $(document).on('click', '#icon-delete', function(e) {
             e.preventDefault();
