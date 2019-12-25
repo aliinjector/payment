@@ -20,6 +20,15 @@ class Feature extends Model
         return $this->belongsTo('App\ProductCategory','productCat_id');
     }
 
+    public function products()
+    {
+        return $this->belongsToMany('App\Product');
+    }
+
+    public function values()
+    {
+        return $this->belongsTo('App\Value');
+    }
 
 
 }

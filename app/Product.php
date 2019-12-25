@@ -53,6 +53,10 @@ class Product extends Model
  {
      return $this->belongsToMany('App\Color');
  }
+ public function features()
+ {
+     return $this->belongsToMany('App\Feature');
+ }
  public function carts()
  {
      return $this->belongsToMany('App\Cart');

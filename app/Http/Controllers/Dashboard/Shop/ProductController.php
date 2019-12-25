@@ -6,9 +6,12 @@ use App\Shop;
 use App\Product;
 use App\Brand;
 use App\Color;
+use App\Value;
 use App\Dashboard;
 use App\ProductCategory;
+use App\Feature;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
@@ -17,12 +20,6 @@ use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
 
-  public function getFeatures(Request $request){
-    
-    $features = ProductCategory::find($request->id)->features;
-    return response()->json($features);
-
-  }
     /**
      * Display a listing of the resource.
      *
@@ -65,6 +62,7 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+        dd(Product::find(80)->features);
 
          //check if product category is null
          if($request->productCat_id == "null"){
@@ -128,7 +126,7 @@ class ProductController extends Controller
       switch ($request->input('action')) {
         //save new product and close model
         case 'justSave':
-      $shop = \Auth::user()->shop()->first()->products()->create([
+      $product = \Auth::user()->shop()->first()->products()->create([
         'title' => $request->title,
         'type' => $request->type,
         'productCat_id' => $request->productCat_id,
@@ -158,10 +156,13 @@ class ProductController extends Controller
         'file_size' => $file_size,
       ]);
   //add tags and colors to the product
-    if($shop)
+    if($product)
     {
         $tagIds = [];
         $colorIds = [];
+        $featureIds = [];
+        $valueIds = [];
+
         //get all tags of product
         $tagNames = explode(',',$request->get('tags'));
         foreach($tagNames as $tagName)
@@ -172,7 +173,9 @@ class ProductController extends Controller
               $tagIds[] = $tag->id;
             }
         }
-        // get all color of product
+        $product->tags()->sync($tagIds);
+
+        // get all colors of product
         if($request->get('color')){
           foreach($request->get('color') as $colorName)
           {
@@ -182,10 +185,46 @@ class ProductController extends Controller
                 $colorIds[] = $color->id;
               }
           }
-          $shop->colors()->sync($colorIds);
+          $product->colors()->sync($colorIds);
         }
-        $shop->tags()->sync($tagIds);
+
+
+        //get all values of feature
+        if($request->get('value')){
+          foreach($request->get('value') as $valueName)
+          {
+            $value = Value::firstOrCreate(['name'=>$valueName, 'productCat_id' => $request->productCat_id]);
+              if($value)
+              {
+                $valueIds[] = $value->id;
+              }
+          }
+        }
+
+
+
+
+        //get all features of product
+        if($request->get('feature')){
+          foreach($request->get('feature') as $featureName)
+          {
+              $feature = Feature::find($featureName);
+              if($feature)
+              {
+                $featureIds[] = $feature->id;
+              }
+          }
+
+          $product->features()->sync($featureIds);
+          $feature->values()->sync($valueIds);
+
+        }
+
+
+
+
     }
+
 
       alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
@@ -461,6 +500,14 @@ else{
             $product->status = 0;
         $product->save();
         return back();
+    }
+
+
+    public function getFeatures(Request $request){
+
+      $features = ProductCategory::find($request->id)->features;
+      return response()->json($features);
+
     }
 
 

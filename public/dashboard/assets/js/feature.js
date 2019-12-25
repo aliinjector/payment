@@ -20,7 +20,8 @@ $(document).on('change', '.selectPhysical', function(e) {
                 var a = '<div class="form-group mb-0 col-12">' +
                     '<div class="input-group mt-3">' +
                     '<div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">'+item.name+':</span></div>' +
-                    '<input type="text" class="form-control inputfield" name="name">' +
+                    '<input type="text" class="form-control inputfield" name="value['+item.id+']">' +
+                    '<input type="hidden" class="form-control inputfield" name="feature[]" value="'+item.id+'">' +
                     '</div>' +
                     '</div>';
 
@@ -56,7 +57,7 @@ $(document).on('change', '.selectService', function(e) {
                 var a = '<div class="form-group mb-0 col-12">' +
                     '<div class="input-group mt-3">' +
                     '<div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">'+item.name+':</span></div>' +
-                    '<input type="text" class="form-control inputfield" name="name">' +
+                    '<input type="text" class="form-control inputfield" name="'+item.id+'">' +
                     '</div>' +
                     '</div>';
 
@@ -93,7 +94,7 @@ $(document).on('change', '.selectFile', function(e) {
                 var a = '<div class="form-group mb-0 col-12">' +
                     '<div class="input-group mt-3">' +
                     '<div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">'+item.name+':</span></div>' +
-                    '<input type="text" class="form-control inputfield" name="name">' +
+                    '<input type="text" class="form-control inputfield" name="'+item.id+'">' +
                     '</div>' +
                     '</div>';
 

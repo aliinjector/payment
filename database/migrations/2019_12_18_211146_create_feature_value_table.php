@@ -14,15 +14,13 @@ class CreateFeatureValueTable extends Migration
     public function up()
     {
         Schema::create('feature_value', function (Blueprint $table) {
-          $table->bigInteger('feature_id')->unsigned()->index();
+          $table->bigInteger('featureProduct_id')->unsigned()->index();
           $table->bigInteger('value_id')->unsigned()->index();
-          $table->bigInteger('product_id')->unsigned()->index();
           $table->timestamps();
 
 
-          $table->foreign('feature_id')->references('id')->on('features')->onDelete('cascade')->onUpdate('cascade');
+          $table->foreign('featureProduct_id')->references('id')->on('feature_product')->onDelete('cascade')->onUpdate('cascade');
           $table->foreign('value_id')->references('id')->on('values')->onDelete('cascade')->onUpdate('cascade');
-          $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
