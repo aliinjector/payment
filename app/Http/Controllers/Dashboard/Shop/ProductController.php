@@ -17,7 +17,8 @@ use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
 
-  public function test(Request $request){
+  public function getFeatures(Request $request){
+    
     $features = ProductCategory::find($request->id)->features;
     return response()->json($features);
 

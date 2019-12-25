@@ -105,7 +105,6 @@
                                             <input type="text" class="form-control inputfield rounded" name="title" placeholder="مثال: جاروبرقی">
                                             <input name="type" type="hidden" value="product">
                                         </div>
-
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات محصول :</span></div>
                                             <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول">
@@ -124,7 +123,7 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <select class="form-control inputfield" name="productCat_id" id="select">
+                                            <select class="form-control inputfield selectPhysical" name="productCat_id">
                                                 <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
@@ -137,7 +136,7 @@
                                             @endif
                                         </div>
 
-                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none" id="demo">
+                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none physicalFeatures">
 
                                         </div>
 
@@ -356,17 +355,20 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <select class="form-control inputfield" name="productCat_id" id="">
+                                            <select class="form-control inputfield selectFile" name="productCat_id">
                                                 <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
-                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">
+                                                <option style="font-family: BYekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
                                                     @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} >
                                                         @endif {{ $productCategory->name }}
                                                 </option>
                                                 @endforeach
                                             </select>
                                             @endif
+                                        </div>
+
+                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none fileFeatures">
 
                                         </div>
 
@@ -574,17 +576,20 @@
                                                 </div>
                                             </a>
                                             @else
-                                            <select class="form-control inputfield" name="productCat_id" id="">
+                                            <select class="form-control inputfield selectService" name="productCat_id">
                                                 <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
-                                                <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">
+                                                <option style="font-family: BYekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
                                                     @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} >
                                                         @endif {{ $productCategory->name }}
                                                 </option>
                                                 @endforeach
                                             </select>
                                             @endif
+                                        </div>
+
+                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none serviceFeatures">
 
                                         </div>
 

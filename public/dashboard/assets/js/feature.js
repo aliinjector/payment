@@ -1,10 +1,10 @@
-$(document).on('change', '#select', function(e) {
+$(document).on('change', '.selectPhysical', function(e) {
     e.preventDefault();
     var id = $(this).find(':selected').data('id')
     var name = $(this).data('name');
     $.ajax({
         type: "post",
-        url: window.location.href + '/test',
+        url: window.location.href + '/getFeatures',
         data: {
             id: id,
             name: name,
@@ -13,9 +13,9 @@ $(document).on('change', '#select', function(e) {
         success: function(data) {
 
             var features = data;
-            $("#demo").html("");
+            $(".physicalFeatures").html("");
             features.forEach(myFunction);
-              $("#demo").removeClass('d-none');
+              $(".physicalFeatures").removeClass('d-none');
             function myFunction(item, index) {
                 var a = '<div class="form-group mb-0 col-12">' +
                     '<div class="input-group mt-3">' +
@@ -24,7 +24,80 @@ $(document).on('change', '#select', function(e) {
                     '</div>' +
                     '</div>';
 
-                $("#demo").append(a);
+                $(".physicalFeatures").append(a);
+            }
+
+        }
+    });
+});
+
+
+
+
+$(document).on('change', '.selectService', function(e) {
+    e.preventDefault();
+    var id = $(this).find(':selected').data('id')
+    var name = $(this).data('name');
+    $.ajax({
+        type: "post",
+        url: window.location.href + '/getFeatures',
+        data: {
+            id: id,
+            name: name,
+            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+        },
+        success: function(data) {
+
+            var features = data;
+            $(".serviceFeatures").html("");
+            features.forEach(myFunction);
+              $(".serviceFeatures").removeClass('d-none');
+            function myFunction(item, index) {
+                var a = '<div class="form-group mb-0 col-12">' +
+                    '<div class="input-group mt-3">' +
+                    '<div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">'+item.name+':</span></div>' +
+                    '<input type="text" class="form-control inputfield" name="name">' +
+                    '</div>' +
+                    '</div>';
+
+                $(".serviceFeatures").append(a);
+            }
+
+        }
+    });
+});
+
+
+
+
+
+$(document).on('change', '.selectFile', function(e) {
+    e.preventDefault();
+    var id = $(this).find(':selected').data('id')
+    var name = $(this).data('name');
+    $.ajax({
+        type: "post",
+        url: window.location.href + '/getFeatures',
+        data: {
+            id: id,
+            name: name,
+            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+        },
+        success: function(data) {
+
+            var features = data;
+            $(".fileFeatures").html("");
+            features.forEach(myFunction);
+              $(".fileFeatures").removeClass('d-none');
+            function myFunction(item, index) {
+                var a = '<div class="form-group mb-0 col-12">' +
+                    '<div class="input-group mt-3">' +
+                    '<div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">'+item.name+':</span></div>' +
+                    '<input type="text" class="form-control inputfield" name="name">' +
+                    '</div>' +
+                    '</div>';
+
+                $(".fileFeatures").append(a);
             }
 
         }

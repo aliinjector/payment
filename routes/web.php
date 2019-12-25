@@ -79,7 +79,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
         Route::get('product-list/{id}/edit-physical', 'ProductController@editPhysical')->name('product-list.edit-physical');
         Route::get('product-list/{id}/edit-file', 'ProductController@editFile')->name('product-list.edit-file');
         Route::get('product-list/{id}/edit-service', 'ProductController@editService')->name('product-list.edit-service');
-        Route::post('product-list/test', 'ProductController@test')->name('product-list.test');
+        Route::post('product-list/getFeatures', 'ProductController@getFeatures')->name('product-list.getFeatures');
 
 
         //Product-Category
