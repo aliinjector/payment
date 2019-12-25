@@ -196,7 +196,7 @@
                     <!-- Block @s -->
                     <div class="nk-block nk-block-about">
                       <div class="row align-items-center gutter-vr-30px pdb-l">
-                        <div class="col-lg-6">
+                        <div class="col-lg-12 mb-3">
                           <div class="nk-block-text">
                             <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">درباره فروشگاه ساز امید</h2>
                             <p class="animated" data-animate="fadeInUp" data-delay=".2">
@@ -204,13 +204,7 @@
                             </p>
                           </div>
                         </div>
-                        <div class="col-lg-6">
-                          <div class="nk-block-video animated" data-animate="fadeInUp" data-delay=".5">
-                            <img src="/app/images/video/a.png" alt="video">
-                            <a href="" class="nk-block-video-play video-popup btn-play btn-play-light"><em
-                              class="fas fa-play"></em></a>
-                            </div>
-                          </div>
+
                         </div>
                       </div><!-- .block @e -->
                       <!-- Section Head @s -->

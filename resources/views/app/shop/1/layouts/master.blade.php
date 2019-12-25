@@ -201,7 +201,13 @@
                 <!--end row-->
             </div>
             <!-- container -->
-            <footer class="footer text-center text-sm-left text-muted">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
+            <footer style="    margin: 25px; font-family: iranyekan" class="footer text-center text-sm-left text-muted">
+              &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
+              <a target="_blank" href="https://omidshop.net">
+                <span class="text-muted d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
+              </a>
+            </footer>
+
             <!--end footer-->
         </div>
         <!-- end page content -->

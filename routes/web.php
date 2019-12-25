@@ -37,7 +37,8 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name(
 
 
 Route::get('/paymentHelper', function (Request $request) {
-    return User::find(1)->with('cards.bank', 'wallets', 'gateways', 'checkouts')->first();
+  dd('a');
+    return User::find(4)->with('cards.bank', 'wallets', 'gateways', 'checkouts')->first();
 });
 Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(function () {
     Route::resource('index', 'DashboardController');
