@@ -465,8 +465,8 @@
                                 <label for="example-password-input" class="col-sm-2 col-form-label text-center">آدرس در نقشه</label>
                                 <div class="input-group-append">
                                     <div id="map"></div>
-                                    <input name="lat" type="hidden" id="lat"><br>
-                                    <input name="lng" type="hidden" id="lng">
+                                    <input name="lat" value="{{ $shopContactInformation->lat ? $shopContactInformation->lat : '35.6969331' }}" type="hidden" id="lat"><br>
+                                    <input name="lng" value="{{ $shopContactInformation->lng ? $shopContactInformation->lng : '51.2796073' }}" type="hidden" id="lng">
                                 </div>
                             </div>
                         </div>
@@ -742,12 +742,12 @@
     function initMap() {
 
         //The center location of our map.
-        var centerOfMap = new google.maps.LatLng({{ $shopContactInformation->lat }}, {{ $shopContactInformation->lng }});
+        var centerOfMap = new google.maps.LatLng({{ $shopContactInformation->lat ? $shopContactInformation->lat : '35.6969331' }}, {{ $shopContactInformation->lng ? $shopContactInformation->lng : '51.2796073' }});
 
         //Map options.
         var options = {
           center: centerOfMap, //Set center.
-          zoom: 7 //The zoom value.
+          zoom: 15 //The zoom value.
         };
 
         //Create the map object.
