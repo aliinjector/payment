@@ -62,7 +62,6 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
-        dd(Product::find(80)->features);
 
          //check if product category is null
          if($request->productCat_id == "null"){
@@ -155,13 +154,13 @@ class ProductController extends Controller
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
-  //add tags and colors to the product
+
+  //add tags and colors and features to the product
     if($product)
     {
         $tagIds = [];
         $colorIds = [];
         $featureIds = [];
-        $valueIds = [];
 
         //get all tags of product
         $tagNames = explode(',',$request->get('tags'));
@@ -189,37 +188,19 @@ class ProductController extends Controller
         }
 
 
-        //get all values of feature
-        if($request->get('value')){
-          foreach($request->get('value') as $valueName)
-          {
-            $value = Value::firstOrCreate(['name'=>$valueName, 'productCat_id' => $request->productCat_id]);
-              if($value)
-              {
-                $valueIds[] = $value->id;
-              }
-          }
-        }
-
-
-
-
         //get all features of product
-        if($request->get('feature')){
-          foreach($request->get('feature') as $featureName)
-          {
-              $feature = Feature::find($featureName);
-              if($feature)
-              {
-                $featureIds[] = $feature->id;
+        if($request->get('value')){
+            foreach($request->get('value') as $featureId=>$featureValue)
+            {
+              
+              $feature = Feature::find($featureId);
+              if($feature){
+                $featureIds[$feature->id] = ['value'=>$featureValue];
               }
-          }
+            }
 
-          $product->features()->sync($featureIds);
-          $feature->values()->sync($valueIds);
-
+            $product->features()->sync($featureIds);
         }
-
 
 
 
