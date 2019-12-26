@@ -20,10 +20,10 @@ class CreateProductsTable extends Migration
             $table->bigInteger('productCat_id')->unsigned()->index();
             $table->bigInteger('brand_id')->unsigned()->index()->nullable();
             $table->unsignedInteger('status')->default(1);
-            $table->unsignedInteger('fast_sending')->default(0);
-            $table->unsignedInteger('money_back')->default(0);
-            $table->unsignedInteger('support')->default(0);
-            $table->unsignedInteger('secure_payment')->default(0);
+            $table->enum('fast_sending',['on', 'off'])->default('off');
+            $table->enum('money_back',['on', 'off'])->default('off');
+            $table->enum('support',['on', 'off'])->default('off');
+            $table->enum('secure_payment',['on', 'off'])->default('off');
             $table->string('type');
             $table->text('description');
             $table->text('image')->nullable();

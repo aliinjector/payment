@@ -69,8 +69,6 @@ $(document).on('change', '.selectService', function(e) {
 
 
 
-
-
 $(document).on('change', '.selectFile', function(e) {
     e.preventDefault();
     var id = $(this).find(':selected').data('id')

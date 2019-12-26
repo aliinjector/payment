@@ -25,7 +25,7 @@ class DashboardShopController extends Controller
         foreach($shopPurchases as $shopPurchase){
             $sumPurchasesPrice += $shopPurchase->total_price;
             }
-        return view('dashboard.shop.dashboard-shop', compact('purchases','shop','bestSelling' , 'sumPurchasesPrice'));
+        return view('dashboard.shop.dashboard-shop', compact('shop','bestSelling' , 'sumPurchasesPrice'));
             }
       }
 
