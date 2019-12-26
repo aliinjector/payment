@@ -1,6 +1,9 @@
 @extends('dashboard.layouts.master')
 @section('content')
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #map{ width:500px; height: 300px; }
+</style>
 <style media="screen">
     .nav-tabs .nav-item.show .nav-link,
     .nav-tabs .nav-link.active {
@@ -30,6 +33,8 @@
         top: -300px;
     }
 </style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -383,6 +388,7 @@
                             <p class="text-muted mb-3">در این بخش میتوانید اطلاعات ارتباط فروشگاه خود را وارد کنید.<p>
                         </div>
 
+
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
                                 <label for="example-password-input" class="col-sm-2 col-form-label text-center">ایمیل فروشگاه</label>
@@ -390,6 +396,8 @@
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-envelope text-dark font-18"></i></span></div>
                             </div>
                         </div>
+
+
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
                                 <label for="example-password-input" class="col-sm-2 col-form-label text-center">تلفن ثابت فروشگاه</label>
@@ -448,6 +456,18 @@
                                 <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">فیسبوک</label>
                                 <input type="text" class="form-control" name="facebook_url" placeholder="مثال: https://www.facebook.com/ZambianWatchdog" value="{{ old('facebook_url', $shopContactInformation->facebook_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-facebook-f text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-password-input" class="col-sm-2 col-form-label text-center">آدرس در نقشه</label>
+                                <div class="input-group-append">
+                                    <div id="map"></div>
+                                    <input name="lat" type="hidden" id="lat"><br>
+                                    <input name="lng" type="hidden" id="lng">
+                                </div>
                             </div>
                         </div>
 
@@ -703,5 +723,74 @@
                 }
             });
     });
+
+
+
+
+
+
+
+
+
+
+    //map//Set up some of our variables.
+    var map; //Will contain map object.
+    var marker = false; ////Has the user plotted their location marker?
+
+    //Function called to initialize / create the map.
+    //This is called when the page has loaded.
+    function initMap() {
+
+        //The center location of our map.
+        var centerOfMap = new google.maps.LatLng({{ $shopContactInformation->lat }}, {{ $shopContactInformation->lng }});
+
+        //Map options.
+        var options = {
+          center: centerOfMap, //Set center.
+          zoom: 7 //The zoom value.
+        };
+
+        //Create the map object.
+        map = new google.maps.Map(document.getElementById('map'), options);
+
+        //Listen for any clicks on the map.
+        google.maps.event.addListener(map, 'click', function(event) {
+            //Get the location that the user clicked.
+            var clickedLocation = event.latLng;
+            //If the marker hasn't been added.
+            if(marker === false){
+                //Create the marker.
+                marker = new google.maps.Marker({
+                    position: clickedLocation,
+                    map: map,
+                    draggable: true //make it draggable
+                });
+                //Listen for drag events!
+                google.maps.event.addListener(marker, 'dragend', function(event){
+                    markerLocation();
+                });
+            } else{
+                //Marker has already been added, so just change its location.
+                marker.setPosition(clickedLocation);
+            }
+            //Get the marker's location.
+            markerLocation();
+        });
+    }
+
+    //This function will get the marker's current location and then add the lat/long
+    //values to our textfields so that we can save the location.
+    function markerLocation(){
+        //Get location.
+        var currentLocation = marker.getPosition();
+        //Add lat and lng values to a field that we can save.
+        document.getElementById('lat').value = currentLocation.lat(); //latitude
+        document.getElementById('lng').value = currentLocation.lng(); //longitude
+    }
+
+
+    //Load the map when the page has finished loading.
+    google.maps.event.addDomListener(window, 'load', initMap);
+
 </script>
 @stop

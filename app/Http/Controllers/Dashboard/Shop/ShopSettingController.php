@@ -174,6 +174,8 @@ class ShopSettingController extends Controller
         'telegram_url' => $request->telegram_url,
         'instagram_url' => $request->instagram_url,
         'facebook_url' => $request->facebook_url,
+        'lat' => $request->lat,
+        'lng' => $request->lng,
       ]);
 
       alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
