@@ -80,4 +80,67 @@ return array(
     "khedmat6Title"         => "ارتباط با شبکه های اجتماعی اینستاگرام و ...",
     "khedmat6Desc"         => "قابلیت ارتباط سیستم با API شبکه های اجتماعی جهت درج محصولات",
 
+
+
+    "listKhadamatVaEmkanatTitle"         => "لیست خدمات و امکانات",
+    "listKhadamatVaEmkanatDesc"         => "ماژول های فروشگاه ساز امید",
+
+    "KhadamatVaEmkanat1"         => "امکان اضافه کردن محصولات متنوع ( فیزیکی، فایل و خدمت)",
+    "KhadamatVaEmkanat2"         => "امکان نمایش گزارشات فروشگاه بر روی نمودار ها",
+    "KhadamatVaEmkanat3"         => "لیست کالا ها و خدمات",
+    "KhadamatVaEmkanat4"         => "سیستم تخفیف",
+    "KhadamatVaEmkanat5"         => "بازخورد مشتریان",
+    "KhadamatVaEmkanat6"         => "شخصی سازی قالب فروشگاه",
+    "KhadamatVaEmkanat7"         => "روش های ارسال",
+    "KhadamatVaEmkanat8"         => "هزینه های افزوده",
+    "KhadamatVaEmkanat9"         => "فیلترینگ",
+    "KhadamatVaEmkanat10"         => "جستجو",
+    "KhadamatVaEmkanat11"         => "دسته بندی ها",
+    "KhadamatVaEmkanat12"         => "برند ها",
+    "KhadamatVaEmkanat13"         => "سفارشات",
+    "KhadamatVaEmkanat14"         => "آمار بازدید",
+    "KhadamatVaEmkanat15"         => "پشتیبانی",
+    "KhadamatVaEmkanat16"         => "آموزش",
+    "KhadamatVaEmkanat17"         => "خبرنامه",
+    "KhadamatVaEmkanat18"         => "گالری",
+    "KhadamatVaEmkanat19"         => "سیستم نظرات",
+    "KhadamatVaEmkanat20"         => "امتیاز دهی",
+    "KhadamatVaEmkanat21"         => "کالای مشابه",
+    "KhadamatVaEmkanat22"         => "سبد خرید",
+
+
+
+    "narmAfzareMobileTitle"         => "نرم افزار موبایل",
+    "narmAfzareMobileDesc"         => "باتوجه به افزایش روز افزودن استفاده از تلفن همراه بعنوان دریچه ارتباط با دنیای مجازی، تیم طراحی و توسعه با هدف ایجاد پلتفرم یکپارچه و سهولت در استفاده از سیستم فروشگاه ساز امید، اقدام به طراحی اپلیکیشن موبایل کرده است که به زودی قابل دسترس عموم قرار خواهد گرفت.
+",
+    "narmAfzareMobileBtn"         => "دریافت اپلیکیشن موبایل (به زودی)",
+
+
+
+
+    "tamasBaMaTitle"         => "تماس باما",
+
+    "tamasBaMaFormName"         => "نام",
+    "tamasBaMaFormEmail"         => "ایمیل",
+    "tamasBaMaFormText"         => "متن پیام",
+    "tamasBaMaFormBtn"         => "ارسال",
+
+    "tamasBaMaLeftBoxItem1"         => "منطقه آزاد انزلی - مجتمع تجاری اداری ستاره شمال - طبقه اول - واحد 2136",
+    "tamasBaMaLeftBoxItem2"         => "91008658",
+    "tamasBaMaLeftBoxItem3"         => "info@omid.ir",
+    "tamasBaMaLeftBoxItem4"         => "عضویت در کانال تلگرام فروشگاه ساز امید",
+    "tamasBaMaLeftBoxItem5"         => "مارا در شبکه های اجتماعی دنبال کنید",
+
+
+    "linkHayePorKarbordTitle"         => "تماس لینک های کاربردی",
+    "linkHayePorKarbordItem1"         => "قوانین و شرایط استفاده",
+    "linkHayePorKarbordItem2"         => "مستندات",
+    "linkHayePorKarbordItem3"         => "آموزش",
+    "linkHayePorKarbordItem4"         => "سوالات متداول",
+
+
+    "FooterTitle"         => "© کلیه حقوق محفوظ است. 1398",
+    "FooterDesc"         => "طراحی و توسعه در دپارتمان فناوری اطلاعات سیستم فروشگاه ساز امید",
+
+
 );

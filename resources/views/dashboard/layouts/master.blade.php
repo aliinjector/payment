@@ -233,7 +233,7 @@ Author: Ali Rahmani
                     <div id="PayanPayShopMaker" class="main-icon-menu-pane {{ request()->is('*shop*') == 1 ? 'active' : '' }}">
                         <div class="title-box">
 
-                            <h6 class="menu-title">فروشگاه ساز</h6>
+                            <h6 class="menu-title">{{ __('index.title') }}</h6>
                         </div>
                         @if (\Auth::user()->shop()->count() != 0)
                         <li class="nav-item bg-light p-2 pr-4 mb-2 mt-2"><a class="nav-link" target="_blank" href="{{ route('shop', \Auth::user()->shop()->first()->english_name) }}"><i class="fa fa-eye"></i> مشاهده فروشگاه </a></li>
