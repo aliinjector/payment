@@ -21,7 +21,7 @@ use function foo\func;
 Auth::routes();
 
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
-Route::get('/', 'IndexController@index')->name('index');
+Route::get('/{locale}', 'IndexController@index')->name('index');
 
 //Send Email
 Route::post('/sendemail/send', 'SendEmailController@send')->name('sendemail.send');

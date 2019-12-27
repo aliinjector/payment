@@ -10,5 +10,6 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    ""         => "",
+    "title"         => "سیستم فروشگاه ساز امید
+",
 );

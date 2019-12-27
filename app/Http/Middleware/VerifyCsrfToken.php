@@ -21,8 +21,11 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'api/*',
         'http://127.0.0.1:8000/*',
+        'http://localhost:8000/*',
         'https://amargir.net/*',
-        'http://amargir.net/*',
+        'http://omidshop.net/*',
+        'https://omidshop.net/*',
+        'https://modirproje.net/*',
 
     ];
 }
