@@ -3,13 +3,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Iatstuti\Database\Support\CascadeSoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Ghanem\Rating\Traits\Ratingable as Rating;
 use Illuminate\Database\Eloquent\Model;
 // use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-  use SoftDeletes, Rating, CascadeSoftDeletes;
+  use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable;
   // use Searchable, SoftDeletes, Rating, CascadeSoftDeletes;
     protected $cascadeDeletes = ['galleries'];
     protected $dates = ['deleted_at'];
@@ -17,6 +18,15 @@ class Product extends Model
     protected $casts = [
     'image' => 'array','color' => 'array'
 ];
+
+public function sluggable()
+   {
+       return [
+           'slug' => [
+               'source' => 'title'
+           ]
+       ];
+   }
 
 // public function searchableAs()
 // {

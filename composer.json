@@ -12,6 +12,7 @@
         "algolia/algoliasearch-client-php": "2.2",
         "artesaos/seotools": "^0.16.0",
         "barryvdh/laravel-cors": "^0.11.4",
+        "cviebrock/eloquent-sluggable": "4.8",
         "fideloper/proxy": "^4.0",
         "ghanem/rating": "^1.4",
         "guzzlehttp/guzzle": "^6.3",
