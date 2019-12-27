@@ -113,18 +113,29 @@ class ShopSettingController extends Controller
      */
     public function update(Request $request)
     {
+
+      if(!isset($request->icon)){
+      $icon = \Auth::user()->shop()->first()->icon;
+      }
+      else{
+       $icon = $this->uploadFile($request->file('icon'), false, true);
+      }
+      if(!isset($request->logo)){
+      $logo = \Auth::user()->shop()->first()->logo;
+      }
+      else{
+      $logo = $this->uploadFile($request->file('logo'), false, true);
+      }
+      
+
         if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
           //check for unique name for shop
             $request->validate([
-            'icon' => 'required',
-              'logo' => 'required',
               'english_name' => 'required|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/'
         ]);
         }
         else{
             $request->validate([
-                'icon' => 'required',
-                  'logo' => 'required',
                   'english_name' => 'required|unique:shops|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/'
             ]);
         }
@@ -143,8 +154,7 @@ class ShopSettingController extends Controller
      else
      $request->person_way = 'enable';
 
-     $icon = $this->uploadFile($request->file('icon'), false, true);
-      $logo = $this->uploadFile($request->file('logo'), false, true);
+
       $shop = \Auth::user()->shop()->first()->update([
         'name' => $request->name,
         'english_name' => $request->english_name,
