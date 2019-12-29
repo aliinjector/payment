@@ -102,7 +102,7 @@
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان محصول :</span></div>
-                                            <input type="text" class="form-control inputfield rounded" name="title" placeholder="مثال: جاروبرقی">
+                                            <input type="text" class="form-control inputfield rounded" name="title" value="{{ old('title') }}" placeholder="مثال: جاروبرقی">
                                             <input name="type" type="hidden" value="product">
                                         </div>
                                         <div class="input-group mt-3">
@@ -332,7 +332,7 @@
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان فایل :</span></div>
-                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
+                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title"  placeholder="مثال: کتاب آموزش زبان">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
@@ -849,22 +849,22 @@
                                                         <div class="d-none icon-show">
 
                                                             @if($product->type == 'product')
-                                                                <a href="{{ route('product-list.edit-physical', $product->id ) }}" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                                <a href="{{ route('product-list.edit-physical', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                                 </a>
                                                                 @elseif($product->type == 'file')
-                                                                    <a href="{{ route('product-list.edit-file', $product->id ) }}" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                                    <a href="{{ route('product-list.edit-file', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                                     </a>
                                                                     @else
-                                                                    <a href="{{ route('product-list.edit-service', $product->id ) }}" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                                    <a href="{{ route('product-list.edit-service', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                                     </a>
                                                                     @endif
 
                                                                     </a>
 
-                                                                    <a href="" id="removerProduct" data-id="{{ $product->id }}" data-name="{{ $product->title }}">
+                                                                    <a href="" title="حذف" id="removerProduct" data-id="{{ $product->id }}" data-name="{{ $product->title }}">
                                                                         <i class="far fa-trash-alt text-danger font-15"></i></a>
 
-                                                                    <a href="{{ route('galleries.index', $product->id ) }}"><i class="fa fa-image text-info mr-1 button font-15"></i></a>
+                                                                    <a href="{{ route('galleries.index', $product->id ) }}" title="گالری"><i class="fa fa-image text-info mr-1 button font-15"></i></a>
 
                                                         </div>
 

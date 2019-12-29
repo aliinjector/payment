@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\wishlist;
-use App\shop;
+use App\Wishlist;
+use App\Shop;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

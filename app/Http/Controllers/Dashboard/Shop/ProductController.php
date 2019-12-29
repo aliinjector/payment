@@ -377,25 +377,22 @@ else{
       $request->enable = 0;
      else
      $request->enable = 1;
-       if ( $request->fast_sending != "on")
-         $request->fast_sending = 0;
-      else
-      $request->fast_sending = 1;
 
-       if ( $request->money_back != "on")
-         $request->money_back = 0;
-      else
-      $request->money_back = 1;
+     
+     //check options of products
+     if (!isset($request->fast_sending))
+     $request->fast_sending = 'off';
 
-       if ( $request->support != "on")
-         $request->support = 0;
-      else
-      $request->support = 1;
+     if (!isset($request->money_back))
+     $request->money_back = 'off';
 
-       if ( $request->secure_payment != "on")
-         $request->secure_payment = 0;
-      else
-      $request->secure_payment = 1;
+     if (!isset($request->support))
+     $request->support = 'off';
+
+     if (!isset($request->secure_payment))
+     $request->secure_payment = 'off';
+
+
       if($request->amount != null){
         $request->amount = $this->fa_num_to_en($request->amount);
       }

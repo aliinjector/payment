@@ -41,12 +41,12 @@ class SlideshowController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(['title' => 'required', 'image' => 'required']);
         $image = $this->uploadFile($request->file('image'), false, true);
 
         switch ($request->input('action')) {
           //save and close modal
             case 'justSave':
-                    $request->validate(['title' => 'required']);
                     $slideshow = new Slideshow;
                     $slideshow->title = $request->title;
                     $slideshow->url = $request->url;
@@ -59,7 +59,6 @@ class SlideshowController extends Controller
                 break;
             //save and open new modal
             case 'saveAndContinue':
-                    $request->validate(['title' => 'required', 'image' => 'required']);
                     $slideshow = new Slideshow;
                     $slideshow->title = $request->title;
                     $slideshow->description = $request->description;

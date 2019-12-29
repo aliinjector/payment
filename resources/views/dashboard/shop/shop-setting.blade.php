@@ -458,6 +458,48 @@
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-facebook-f text-dark font-18"></i></span></div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">سروش</label>
+                                <input type="text" class="form-control" name="soroush_url" value="{{ old('soroush_url', $shopContactInformation->soroush_url) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-bullseye text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">بیسفون</label>
+                                <input type="text" class="form-control" name="bisphone_url"  value="{{ old('bisphone_url', $shopContactInformation->bisphone_url) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-certificate	 text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">آی گپ</label>
+                                <input type="text" class="form-control" name="Igap_url" value="{{ old('Igap_url', $shopContactInformation->Igap_url) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-check-circle text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">گپ</label>
+                                <input type="text" class="form-control" name="gap_url" value="{{ old('gap_url', $shopContactInformation->gap_url) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-comment	 text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">ویسپی</label>
+                                <input type="text" class="form-control" name="wispi_url" value="{{ old('wispi_url', $shopContactInformation->wispi_url) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-hashtag	 text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">بله</label>
+                                <input type="text" class="form-control" name="bale_url" value="{{ old('bale_url', $shopContactInformation->bale_url) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-envelope-open	 text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
 
 
                         <div class="form-group">

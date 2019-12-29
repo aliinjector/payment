@@ -126,7 +126,7 @@ class ShopSettingController extends Controller
       else{
       $logo = $this->uploadFile($request->file('logo'), false, true);
       }
-      
+
 
         if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
           //check for unique name for shop
@@ -174,6 +174,7 @@ class ShopSettingController extends Controller
 
 
 
+
     public function updateContact(ShopContactRequest $request){
       $shop = \Auth::user()->shop()->first()->shopContact()->get()->first()->update([
         'tel' => $request->tel,
@@ -184,6 +185,12 @@ class ShopSettingController extends Controller
         'telegram_url' => $request->telegram_url,
         'instagram_url' => $request->instagram_url,
         'facebook_url' => $request->facebook_url,
+        'soroush_url' => $request->soroush_url,
+        'bisphone_url' => $request->bisphone_url,
+        'Igap_url' => $request->Igap_url,
+        'gap_url' => $request->gap_url,
+        'wispi_url' => $request->wispi_url,
+        'bale_url' => $request->bale_url,
         'lat' => $request->lat,
         'lng' => $request->lng,
       ]);

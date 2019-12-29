@@ -25,6 +25,12 @@ class CreateShopContactsTable extends Migration
             $table->string('telegram_url')->nullable();
             $table->string('instagram_url')->nullable();
             $table->string('facebook_url')->nullable();
+            $table->string('soroush_url')->nullable();
+            $table->string('bisphone_url')->nullable();
+            $table->string('Igap_url')->nullable();
+            $table->string('gap_url')->nullable();
+            $table->string('wispi_url')->nullable();
+            $table->string('bale_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
