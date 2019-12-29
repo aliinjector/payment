@@ -14,8 +14,16 @@ return [
     | Supported: "algolia", "null"
     |
     */
+    'driver' => 'elasticsearch',
 
-    'driver' => env('SCOUT_DRIVER', 'algolia'),
+    'elasticsearch' => [
+           'index' => 'product',
+           'config' => [
+               'hosts' => [
+                   'http://46.4.219.148:9200',
+               ],
+           ],
+       ],
 
     /*
     |--------------------------------------------------------------------------
@@ -82,6 +90,8 @@ return [
     | in your application ID and admin API key to get started searching.
     |
     */
+
+
 
     'algolia' => [
         'id' => env('ALGOLIA_APP_ID', 'OFPH2X0KG4'),

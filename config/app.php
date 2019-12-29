@@ -163,7 +163,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Ghanem\Rating\RatingServiceProvider::class,
-        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -180,7 +179,7 @@ return [
 
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-
+        ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
     ],
 
     /*

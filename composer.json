@@ -13,6 +13,7 @@
         "artesaos/seotools": "^0.16.0",
         "barryvdh/laravel-cors": "^0.11.4",
         "cviebrock/eloquent-sluggable": "4.8",
+        "elasticsearch/elasticsearch": "^5.0",
         "fideloper/proxy": "^4.0",
         "ghanem/rating": "^1.4",
         "guzzlehttp/guzzle": "^6.3",
@@ -25,6 +26,7 @@
         "laravel/tinker": "^1.0",
         "morilog/jalali": "3.*",
         "pulkitjalan/geoip": "^4.0",
+        "tamayo/laravel-scout-elastic": "^5.0",
         "uxweb/sweet-alert": "^2.0",
         "yoeunes/toastr": "^1.2"
     },

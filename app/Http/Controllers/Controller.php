@@ -34,7 +34,7 @@ class Controller extends BaseController
 
 
         if (\App::environment('local')) {
-            $folder = public_path();
+          $folder = public_path() . '_html';
         }
         if (\App::environment('production')) {
             $folder = public_path() . '_html';
@@ -63,7 +63,7 @@ class Controller extends BaseController
     private function resize($path, $sizes, $filePath, $fileName)
     {
         if (\App::environment('local')) {
-            $folder = public_path();
+          $folder = public_path() . '_html';
         }
         if (\App::environment('production')) {
             $folder = public_path() . '_html';
