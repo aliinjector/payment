@@ -233,7 +233,7 @@ Author: Ali Rahmani
                     <div id="PayanPayShopMaker" class="main-icon-menu-pane {{ request()->is('*shop*') == 1 ? 'active' : '' }}">
                         <div class="title-box">
 
-                            <h6 class="menu-title">{{ __('index.title') }}</h6>
+                            <h6 class="menu-title">سامانه فروشگاه ساز</h6>
                         </div>
                         @if (\Auth::user()->shop()->count() != 0)
                         <li class="nav-item bg-light p-2 pr-4 mb-2 mt-2"><a class="nav-link" target="_blank" href="{{ route('shop', \Auth::user()->shop()->first()->english_name) }}"><i class="fa fa-eye"></i> مشاهده فروشگاه </a></li>
@@ -242,7 +242,7 @@ Author: Ali Rahmani
                             @if (\Auth::user()->shop()->count() == 0)
                             <li class="nav-item"><a class="nav-link " href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>ایجاد فروشگاه</a></li>
                             @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('dashboard-shop.index') }}"><i class="dripicons-view-thumb"></i>گزارشات فروشگاه شما</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.index') }}"><i class="dripicons-view-thumb"></i>داشبورد</a></li>
                             <li class="nav-item"><a class="nav-link {{ request()->is('*galleries*') == 1 ? 'active' : '' }}" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>لیست کالاها / خدمات</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('product-comments.index') }}"><i class="fa fa-comments"></i>مدیریت نظرات</a></li>
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"><i class="far fa-edit"></i>مدیریت دسته بندی ها</a></li>

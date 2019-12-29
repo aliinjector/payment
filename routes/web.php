@@ -40,7 +40,7 @@ Route::get('/paymentHelper', function (Request $request) {
   dd('a');
     return User::find(4)->with('cards.bank', 'wallets', 'gateways', 'checkouts')->first();
 });
-Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(function () {
+Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(function () {
     Route::resource('index', 'DashboardController');
       Route::namespace('Payment')->prefix('payment')->middleware('auth')->group(function () {
         Route::resource('UserInformation', 'UserInformationController');
@@ -66,7 +66,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(fu
     Route::namespace('Shop')->prefix('shop')->middleware('auth')->group(function () {
 
         //Shop Dashboard
-        Route::resource('dashboard-shop', 'DashboardShopController');
+        Route::resource('dashboard', 'DashboardShopController');
 
         //Purchase Status
         Route::get('purchase-status', 'DashboardShopController@purchaseStatus')->name('purchase.status');

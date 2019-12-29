@@ -10,7 +10,7 @@
                <li class="breadcrumb-item active">فروشگاه</li>
             </ol>
          </div>
-         <h4 class="page-title">داشبورد اصلی</h4>
+         <h4 class="page-title">گزارشات فروشگاه</h4>
       </div>
       <!--end page-title-box-->
    </div>
