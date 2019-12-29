@@ -73,6 +73,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">نظر ها</h4><div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                          <p class="text-muted mb-4 font-13">در این بخش میتوانید نظرات محصولات خود را مشاهده نمایید . همچنین میتوانید به نظرات پاسخ داده و یا آن ها را تایید و یا رد کنید . توجه داشته باشید نظرات تا زمانی که شما آن ها را تایید نکرده باشید روی سایت قرار نخواهند گرفت.</p>
 
                             <div class="row">
                                 <div class="col-sm-12">

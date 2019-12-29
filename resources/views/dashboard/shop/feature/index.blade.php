@@ -113,7 +113,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست ویژگی دسته بندی ها</h4>
-                        <p class="text-muted mb-4 font-13">لیست تمامی دسته بندی ها همراه با ویژگی های آن ها در فروشگاه شما</p>
+                        <p class="text-muted mb-4 font-13">در این بخش میتوانید ویژگی های هر دسته بندی را مشاهده کنید . همچنین میتوانید  برای دسته بندی های خود ویژگی های متعدد تعریف کنید و یا آن ها را ویرایش و یا حذف کنید. لازم بذکر میباشد که این ویژگی ها در هنگام مقایسه محصولات شما به نمایش در می آیند.</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">

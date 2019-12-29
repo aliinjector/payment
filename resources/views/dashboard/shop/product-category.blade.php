@@ -146,7 +146,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست دسته بندی ها</h4>
-                        <p class="text-muted mb-4 font-13">لیست تمامی دسته بندی های شما</p>
+                        <p class="text-muted mb-4 font-13">در این بخش میتوانید لیست تمامی دسته بندی های فروشگاه را مشاهده کنید. همچنین میتوانید زیر دسته ها و شاخه های اصلی که هر دسته بندی دارا میباشد را به تفکیک مشاهده نمایید.همچنین میتوانید دسته بندی مورنظر خود را حذف , ویرایش و یا محصولات این دسته بندی را ملاحظه کنید.</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">

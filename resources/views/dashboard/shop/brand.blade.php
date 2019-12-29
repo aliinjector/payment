@@ -105,7 +105,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست برند ها</h4>
-                        <p class="text-muted mb-4 font-13">لیست تمامی برند های شما</p>
+                        <p class="text-muted mb-4 font-13">در این بخش میتوانید لیست تمامی برند های فروشگاه را مشاهده نمایید . همچنین در این بخش قادر خواهید بود که برند جدید به فروشگاه خود اضافه کنید یا آن ها را ویرایش کنید و یا حذف نمایید . لازم بذکر میباشد که در هنگام ساخت محصول جدید میتوانید برند مورد نظر خود را به محصول اختصاص دهید.</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">

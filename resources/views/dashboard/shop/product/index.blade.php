@@ -332,7 +332,7 @@
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان فایل :</span></div>
-                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title"  placeholder="مثال: کتاب آموزش زبان">
+                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
@@ -757,7 +757,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست محصولات</h4>
-                        <p class="text-muted mb-4 font-13">لیست تمامی محصولات شما</p>
+                        <p class="text-muted mb-4 font-13">در این بخش میتوانید کالای خود را در سه بخش فیزیکی , فایلی و خدماتی به فروشگاه اضافه کنید و با تکمیل بخش های مربوط به هر نوع محصول , شروع به فروش محصول خود نمایید . توجه داشته باشید که قبل از وارد کردن محصول جدید , اقدام به ساخت دسته بندی های لازم فروشگاه کنید و پس از آن محصول  مورد نظر خود را به دسته بندی از پیش ساخته شده اختصاص دهید</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
 

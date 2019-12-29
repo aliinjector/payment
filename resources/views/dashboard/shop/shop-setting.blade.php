@@ -40,8 +40,8 @@
         <div class="page-title-box">
             <div class="float-right">
                 <ol style="direction: ltr" class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="">احراز هویت</a></li>
-                    <li class="breadcrumb-item active">داشبورد پین پی</li>
+                    <li class="breadcrumb-item"><a href="">فروشگاه</a></li>
+                    <li class="breadcrumb-item active">تنظیمات فروشگاه</li>
                 </ol>
             </div>
             <h4 class="page-title">تنظیمات فروشگاه</h4>
@@ -83,7 +83,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="mt-0 header-title">اطلاعات فروشگاه</h3>
-                            <p class="text-muted mb-3">در این قسمت اطلاعات فروشگاه خود وارد نموده و موارد درخواستی را آپلود نمایید سپس منتظر تایید اطلاعات توسط تیم پایان پی باشید.</p><br>
+                            <p class="text-muted mb-3">در این بخش میتوانید اطلاعات اصلی فروشگاه خود را مشاهده و در صورت نیاز آن ها را ویرایش نمایید. توجه داشته باشید که نام فروشگاه شما به عنوان نام اصلی فروشگاه و نام لاتین به عنوان آدرس فروشگاه در نظر گرفته خواهد شد . همچنین دسته بندی فروشگاه شما از اهمیت بالایی برخوردار میباشید زیرا قالب های پیشنهادی بر اساس دسته بندی فروشگاه شما ارائه خواهد شد.</p><br>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group row">
@@ -290,7 +290,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title">تنظیمات صفحه فروشگاه</h4>
-                            <p class="text-muted mb-3">در این بخش میتوانید تنظیمات کلی صفحه اختصاصی فروشگاه خود را مدیریت کنید<p>
+                            <p class="text-muted mb-3">در این بخش میتوانید تنظیمات قالب فعلی فروشگاه خود را مشاهده نمایید و در صورت نیاز آن را ویرایش نمایید. همچنین میتوانید قبل از انتخاب قالب جدید آن را در بخش پیش نمایش مشاهده کرده و سپس به انتخاب آن بپردازید.<p>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش دسته بندی های سایت</label>
@@ -385,7 +385,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title"> اطلاعات ارتباطی فروشگاه</h4>
-                            <p class="text-muted mb-3">در این بخش میتوانید اطلاعات ارتباط فروشگاه خود را وارد کنید.<p>
+                            <p class="text-muted mb-3">در این بخش میتوانید اطلاعات ارتباطی فروشگاه را مشاهده و یا آن ها را ویرایش نمایید . لازم بذکر میباشد که این اطلاعات در صفحه ی تماس با ما برای خریداران به نمایش در خواهد آمد.<p>
                         </div>
 
 
@@ -536,7 +536,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title">تنظیمات فاکتور فروشگاه</h4>
-                            <p class="text-muted mb-3">در این بخش میتوانید تنظیمات کلی فاکتور فروشگاه خود را مدیریت کنید<p>
+                            <p class="text-muted mb-3">در این بخش میتوانید فاکتور فروشگاه را شخصی سازی نمایید . توجه داشته باشید که هر بخشی که فعال باشد در فاکتور کاربر درج خواهد شد . همچنین شما میتوانید مواردی که قابلیت ویرایش در این بخش را دارند ویرایش نمایید.<p>
                         </div>
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش محل امضا</label>
