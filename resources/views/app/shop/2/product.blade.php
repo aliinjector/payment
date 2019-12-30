@@ -60,6 +60,7 @@
                      </div>
                      <a class="product-page-gotocomments-js" href="#">{{ $product->comments->count() }} نظر مشتری </a>
                   </div>
+                  @auth
                   <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                      @csrf
                      <div class="tt-wrapper m-4">
@@ -69,16 +70,22 @@
                                  <input name="quantity" type="text" value="1" size="5"> <span class="plus-btn"></span>
                               </div>
                            </div>
-                           @auth
                            <input type="hidden" name="product_id" value="{{$product->id}}">
                            <button type="submit" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
                            @if($product->type == 'file') دریافت فایل
                            @else اضافه به سبد خرید
                            @endif</button>
-                           @endauth
                         </div>
                      </div>
                   </form>
+                @endauth
+                @guest
+                    <a href="{{ route('login') }}">
+                  <button type="button" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
+               برای خرید ابتدا ثبت نام کنید
+                  </button>
+                  </a>
+                @endguest
                   <div class="tt-wrapper m-4">
                      <ul class="tt-list-btn">
                         <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">

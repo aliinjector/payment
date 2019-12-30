@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->unsignedInteger('shop_id');
             $table->string('title');
+            $table->string('slug');
             $table->bigInteger('productCat_id')->unsigned()->index();
             $table->bigInteger('brand_id')->unsigned()->index()->nullable();
             $table->unsignedInteger('status')->default(1);
