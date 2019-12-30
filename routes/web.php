@@ -82,6 +82,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('product-list/{id}/edit-service', 'ProductController@editService')->name('product-list.edit-service');
         Route::post('product-list/getFeatures', 'ProductController@getFeatures')->name('product-list.getFeatures');
 
+        Route::prefix('categrory-managment')->group(function () {
 
         //Product-Category
         Route::resource('product-category', 'ProductCategoryController');
@@ -91,7 +92,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Feature
         Route::resource('feature', 'FeatureController');
         Route::post('feature/delete', 'FeatureController@destroy')->name('feature.delete');
-
+      });
 
 
         //Vouchers
