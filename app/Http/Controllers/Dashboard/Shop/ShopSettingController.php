@@ -199,6 +199,7 @@ class ShopSettingController extends Controller
       return redirect()->route('shop-setting.index');
     }
 
+
     public function updateSetting(Request $request){
       if($request->file('watermark') == null){
         $watermark = \Auth::user()->shop()->first()->watermark;
@@ -209,6 +210,7 @@ class ShopSettingController extends Controller
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
         'watermark_status' => $request->watermark_status,
+        'buyCount_show' => $request->buyCount_show,
         'watermark' => $watermark,
         'special_offer' => $request->special_offer,
         'template_id' => $request->template_id,
