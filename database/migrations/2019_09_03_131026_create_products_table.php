@@ -40,6 +40,7 @@ class CreateProductsTable extends Migration
             $table->text('feature_10')->nullable();
             $table->integer('viewCount')->default(0);
             $table->integer('amount')->default(0)->nullable();
+            $table->integer('min_amount')->default(0)->nullable();
             $table->integer('refund')->default(0);
             $table->integer('weight')->nullable();
             $table->integer('file_size')->nullable();

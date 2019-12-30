@@ -181,6 +181,12 @@ a.color-pick:before {
 
                                         </div>
                                         <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> حداقل موجودی انبار:</span></div>
+                                            <input value="{{ old('min_amount') }}" type="text" class="form-control inputfield" name="min_amount" placeholder="مثال: 3">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
+
+                                        </div>
+                                        <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
                                             <input value="{{ old('weight') }}" type="text" class="form-control inputfield" name="weight" placeholder="مثال: 30">
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>

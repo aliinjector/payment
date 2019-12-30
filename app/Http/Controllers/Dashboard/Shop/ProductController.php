@@ -62,7 +62,6 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
-
          //check if product category is null
          if($request->productCat_id == "null"){
            $request->merge(['productCat_id' => null]);
@@ -79,6 +78,7 @@ class ProductController extends Controller
            else{
             $file_size = null;
            }
+
       $image = $this->uploadFile($request->file('image'), false, true);
       //check if product is file to save attachment file
       if($request->type == 'file')
@@ -108,6 +108,9 @@ class ProductController extends Controller
       if($request->amount != null){
         $request->amount = $this->fa_num_to_en($request->amount);
       }
+      if($request->min_amount != null){
+        $request->min_amount = $this->fa_num_to_en($request->min_amount);
+      }
       //check weight of product and change fa number to en
       if($request->weight != null){
         $request->weight = $this->fa_num_to_en($request->weight);
@@ -125,6 +128,7 @@ class ProductController extends Controller
         'productCat_id' => $request->productCat_id,
         'brand_id' => $request->brand_id,
         'amount' => $request->amount,
+        'min_amount' => $request->min_amount,
         'weight' => $request->weight,
         'price' => $this->fa_num_to_en($request->price),
         'off_price' => $request->off_price,
@@ -215,6 +219,7 @@ class ProductController extends Controller
     'productCat_id' => $request->productCat_id,
     'brand_id' => $request->brand_id,
     'amount' => $request->amount,
+    'min_amount' => $request->min_amount,
     'weight' => $request->weight,
     'price' => $this->fa_num_to_en($request->price),
     'off_price' => $request->off_price,
@@ -378,7 +383,7 @@ else{
      else
      $request->enable = 1;
 
-     
+
      //check options of products
      if (!isset($request->fast_sending))
      $request->fast_sending = 'off';
@@ -396,6 +401,9 @@ else{
       if($request->amount != null){
         $request->amount = $this->fa_num_to_en($request->amount);
       }
+      if($request->min_amount != null){
+        $request->min_amount = $this->fa_num_to_en($request->min_amount);
+      }
       if($request->weight != null){
         $request->weight = $this->fa_num_to_en($request->weight);
       }
@@ -408,6 +416,7 @@ else{
         'productCat_id' => $request->productCat_id,
         'brand_id' => $request->brand_id,
         'amount' => $request->amount,
+        'min_amount' => $request->min_amount,
         'weight' => $request->weight,
         'price' => $this->fa_num_to_en($request->price),
         'off_price' => $request->off_price,

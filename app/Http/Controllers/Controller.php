@@ -29,41 +29,39 @@ class Controller extends BaseController
 
        }
 
-    protected function uploadFile($file, $watermark = true, $resize = true)
-    {
+       protected function uploadFile($file, $watermark = true, $resize = true)
+        {
+            if (\App::environment('local')) {
+                $folder = public_path();
+            }
+            if (\App::environment('production')) {
+                $folder = public_path() . '_html';
+            }
+            $year = Carbon::now()->year;
+            $month = Carbon::now()->month;
+            $day = Carbon::now()->day;
+            $filePath = "/storage/upload/{$year}/{$month}/{$day}/";
+            $fileName = time() . "_" . $file->getClientOriginalName();
+            $file->move($folder . $filePath, $fileName);
+            $file = "$filePath" . "$fileName";
+            $imageMimeTypes = ['image/jpeg', 'image/gif', 'image/png', 'image/bmp', 'image/svg+xml'];
+            $contentType = mime_content_type(ltrim($file, "/"));
+            if ($watermark == true && in_array($contentType, $imageMimeTypes)) {
+                $this->watermark($file);
+            }
+            if ($resize == true && in_array($contentType, $imageMimeTypes)) {
+                $sizes = ["80" => "80", "400" => "400", "250" => "250", "200" => "175", "200" => "100", "410" => "270", "120" => "50", "16" => "16"];
+                return $url['images'] = $this->resize($file, $sizes, $filePath, $fileName);
+            } else {
+                return $file;
+            }
+        }
 
-
-        if (\App::environment('local')) {
-          $folder = public_path() . '_html';
-        }
-        if (\App::environment('production')) {
-            $folder = public_path() . '_html';
-        }
-
-        $year = Carbon::now()->year;
-        $month = Carbon::now()->month;
-        $day = Carbon::now()->day;
-        $filePath = "/storage/upload/{$year}/{$month}/{$day}/";
-        $fileName = time() . "_" . $file->getClientOriginalName();
-        $file->move($folder . $filePath, $fileName);
-        $file = "$filePath" . "$fileName";
-        $imageMimeTypes = ['image/jpeg', 'image/gif', 'image/png', 'image/bmp', 'image/svg+xml'];
-        $contentType = mime_content_type(ltrim($file, "/"));
-        if ($watermark == true && in_array($contentType, $imageMimeTypes)) {
-            $this->watermark($file);
-        }
-        if ($resize == true && in_array($contentType, $imageMimeTypes)) {
-            $sizes = ["80" => "80", "400" => "400", "250" => "250", "200" => "175", "200" => "100", "410" => "270", "120" => "50", "16" => "16"];
-            return $url['images'] = $this->resize($file, $sizes, $filePath, $fileName);
-        } else {
-            return $file;
-        }
-    }
 
     private function resize($path, $sizes, $filePath, $fileName)
     {
         if (\App::environment('local')) {
-          $folder = public_path() . '_html';
+          $folder = public_path();
         }
         if (\App::environment('production')) {
             $folder = public_path() . '_html';
