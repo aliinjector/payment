@@ -205,6 +205,17 @@
             }
         }).resize();
     </script>
+    <script type="text/javascript">
+    $(window).resize(function() {
+        if ($(window).width() < 1070) {
+          $(".icon-show").removeClass('d-none');
+
+        } else {
+            $(".icon-show").addClass('d-none');
+
+        }
+    }).resize();
+    </script>
     <script>
         oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
         $('#myInputTextField').keyup(function() {

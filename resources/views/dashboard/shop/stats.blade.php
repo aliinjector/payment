@@ -208,6 +208,17 @@
             }
         }).resize();
     </script>
+    <script type="text/javascript">
+    $(window).resize(function() {
+        if ($(window).width() < 1070) {
+          $(".icon-show").removeClass('d-none');
+
+        } else {
+            $(".icon-show").addClass('d-none');
+
+        }
+    }).resize();
+    </script>
 
 
         @stop
