@@ -757,127 +757,125 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست محصولات</h4>
-                        <p class="text-muted mb-4 font-13">در این بخش میتوانید کالای خود را در سه بخش فیزیکی , فایلی و خدماتی به فروشگاه اضافه کنید و با تکمیل بخش های مربوط به هر نوع محصول , شروع به فروش محصول خود نمایید . توجه داشته باشید که قبل از وارد کردن محصول جدید , اقدام به ساخت دسته بندی های لازم فروشگاه کنید و پس از آن محصول  مورد نظر خود را به دسته بندی از پیش ساخته شده اختصاص دهید</p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <p class="text-muted mb-4 font-13">در این بخش میتوانید کالای خود را در سه بخش فیزیکی , فایلی و خدماتی به فروشگاه اضافه کنید و با تکمیل بخش های مربوط به هر نوع محصول , شروع به فروش محصول خود نمایید . توجه داشته باشید که قبل از
+                            وارد کردن محصول جدید , اقدام به ساخت دسته بندی های لازم فروشگاه کنید و پس از آن محصول مورد نظر خود را به دسته بندی از پیش ساخته شده اختصاص دهید</p>
                             <div class="row">
+                              <div class="table-responsive">
+                                <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
 
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer rounded font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
-                                      aria-describedby="datatable_info">
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
-                                                </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 405px;">نام محصول
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending" style="width: 148px;">دسته بندی
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">رنگ ها
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 104px;">قیمت بعد از تخفیف
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">وضعیت
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">نوع محصول
-                                                </th>
+                                          <thead>
+                                              <tr role="row">
+                                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                                  </th>
+                                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 705px;">نام محصول
+                                                  </th>
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending">دسته بندی
+                                                  </th>
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">رنگ ها
+                                                  </th>
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">قیمت
+                                                  </th>
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width:150px;">قیمت بعد از تخفیف
+                                                  </th>
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">وضعیت
+                                                  </th>
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">نوع محصول
+                                                  </th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody class="byekan">
-                                            @php
-                                            $id = 1;
-                                            @endphp
-                                            @foreach($products as $product)
-                                            <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
-                                                <td class="sorting_1" style="width:5%">{{ $id }}</td>
-                                                <td class="sorting_1 w-25 "><img src="{{ $product->image['80,80'] }}" class="rounded" alt="">
-                                                    <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product', ['shop'=>\Auth::user()->shop()->first()->english_name, 'id'=>$product->id]) }}" target="_blank"
-                                                          class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
-                                                </td>
-                                                <td>{{ $product->productCategory()->first()->name }}</td>
-                                                <td>{{ number_format($product->price) }}</td>
-                                                <td>
-                                                    <div class="tt-collapse-content" style="display: block;">
-                                                        <ul class="tt-options-swatch options-middle">
-                                                            @foreach($product->colors as $color)
-                                                                <li>
-                                                                    <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
-                                                                </li>
-                                                                @endforeach
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                                <td>{{ $product->off_price }}</td>
+                                              </tr>
+                                          </thead>
+                                          <tbody class="byekan">
+                                              @php
+                                              $id = 1;
+                                              @endphp
+                                              @foreach($products as $product)
+                                              <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
+                                                  <td class="sorting_1" style="width:5%">{{ $id }}</td>
+                                                  <td class="sorting_1 w-25 "><img src="{{ $product->image['80,80'] }}" class="rounded" alt="">
+                                                      <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product', ['shop'=>\Auth::user()->shop()->first()->english_name, 'id'=>$product->id]) }}" target="_blank"
+                                                            class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
+                                                  </td>
+                                                  <td>{{ $product->productCategory()->first()->name }}</td>
+                                                  <td>
+                                                      <div class="tt-collapse-content" style="display: block;">
+                                                          <ul class="tt-options-swatch options-middle">
+                                                              @foreach($product->colors as $color)
+                                                                  <li>
+                                                                      <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                                                                  </li>
+                                                                  @endforeach
+                                                          </ul>
+                                                      </div>
+                                                  </td>
+                                                  <td>{{ number_format($product->price) }}</td>
+                                                  <td>{{ $product->off_price }}</td>
 
-                                                <td>
-                                                    @csrf {{ method_field('put') }}
-                                                    <button class="btn btn-link change" type="submit" data-id="{{ $product->id }}">
-                                                        @if($product->status == 1)
-                                                            <i class="fa fa-toggle-on text-success show{{ $product->id }}"></i>
-                                                            <i class="fa fa-toggle-off text-muted d-none {{ $product->id }}"></i>
-                                                            @else
-                                                            <i class="fa fa-toggle-on text-success d-none {{ $product->id }}"></i>
-                                                            <i class="fa fa-toggle-off text-muted show{{ $product->id }}"></i>
-                                                            @endif
-                                                    </button>
-                                                    @if ($product->status == 1)
-                                                    <span class="badge badge-soft-success show{{ $product->id }}">
-                                                        فعال
-                                                    </span>
-                                                    <span class="badge badge-soft-pink d-none {{ $product->id }}">
-                                                        غیرفعال
-                                                    </span>
-                                                    @else
-                                                    <span class="badge badge-soft-success d-none {{ $product->id }}">
-                                                        فعال
-                                                    </span>
-                                                    <span class="badge badge-soft-pink show{{ $product->id }}">
-                                                        غیرفعال
-                                                    </span>
-                                                    @endif
+                                                  <td>
+                                                      @csrf {{ method_field('put') }}
+                                                      <button class="btn btn-link change" type="submit" data-id="{{ $product->id }}">
+                                                          @if($product->status == 1)
+                                                              <i class="fa fa-toggle-on text-success show{{ $product->id }}"></i>
+                                                              <i class="fa fa-toggle-off text-muted d-none {{ $product->id }}"></i>
+                                                              @else
+                                                              <i class="fa fa-toggle-on text-success d-none {{ $product->id }}"></i>
+                                                              <i class="fa fa-toggle-off text-muted show{{ $product->id }}"></i>
+                                                              @endif
+                                                      </button>
+                                                      @if ($product->status == 1)
+                                                      <span class="badge badge-soft-success show{{ $product->id }}">
+                                                          فعال
+                                                      </span>
+                                                      <span class="badge badge-soft-pink d-none {{ $product->id }}">
+                                                          غیرفعال
+                                                      </span>
+                                                      @else
+                                                      <span class="badge badge-soft-success d-none {{ $product->id }}">
+                                                          فعال
+                                                      </span>
+                                                      <span class="badge badge-soft-pink show{{ $product->id }}">
+                                                          غیرفعال
+                                                      </span>
+                                                      @endif
 
-                                                </td>
+                                                  </td>
 
-                                                <td class="d-flex justify-content-between">
-                                                    @if ($product->type == 'service') خدمت @elseif($product->type == 'file') فایل
-                                                        @else فیزیکی
-                                                        @endif
-                                                        <div class="d-none icon-show">
+                                                  <td>
+                                                      @if ($product->type == 'service') خدمت @elseif($product->type == 'file') فایل
+                                                          @else فیزیکی
+                                                          @endif
+                                                          <div class="d-none icon-show">
 
-                                                            @if($product->type == 'product')
-                                                                <a href="{{ route('product-list.edit-physical', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
-                                                                </a>
-                                                                @elseif($product->type == 'file')
-                                                                    <a href="{{ route('product-list.edit-file', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
-                                                                    </a>
-                                                                    @else
-                                                                    <a href="{{ route('product-list.edit-service', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
-                                                                    </a>
-                                                                    @endif
+                                                              @if($product->type == 'product')
+                                                                  <a href="{{ route('product-list.edit-physical', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                                  </a>
+                                                                  @elseif($product->type == 'file')
+                                                                      <a href="{{ route('product-list.edit-file', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                                      </a>
+                                                                      @else
+                                                                      <a href="{{ route('product-list.edit-service', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                                      </a>
+                                                                      @endif
 
-                                                                    </a>
+                                                                      </a>
 
-                                                                    <a href="" title="حذف" id="removerProduct" data-id="{{ $product->id }}" data-name="{{ $product->title }}">
-                                                                        <i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                                      <a href="" title="حذف" id="removerProduct" data-id="{{ $product->id }}" data-name="{{ $product->title }}">
+                                                                          <i class="far fa-trash-alt text-danger font-15"></i></a>
 
-                                                                    <a href="{{ route('galleries.index', $product->id ) }}" title="گالری"><i class="fa fa-image text-info mr-1 button font-15"></i></a>
+                                                                      <a href="{{ route('galleries.index', $product->id ) }}" title="گالری"><i class="fa fa-image text-info mr-1 button font-15"></i></a>
 
-                                                        </div>
+                                                          </div>
 
-                                                </td>
-                                            </tr>
-                                            @php
-                                            $id ++
-                                            @endphp
-                                            @endforeach
+                                                  </td>
+                                              </tr>
+                                              @php
+                                              $id ++
+                                              @endphp
+                                              @endforeach
 
-                                        </tbody>
-                                    </table>
-                                </div>
+                                          </tbody>
+                                      </table>
+                              </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-5">
@@ -885,7 +883,6 @@
                                 </div>
 
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -907,7 +904,17 @@
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 <script src="{{ asset('/dashboard/assets/js/feature.js') }}"></script>
+<script type="text/javascript">
+$(window).resize(function() {
+    if ($(window).width() < 1300) {
+      $("body").addClass('enlarge-menu');
 
+    } else {
+        $("body").removeClass('enlarge-menu');
+
+    }
+}).resize();
+</script>
 <script type="text/javascript">
     $(document).ready(function() {
         $(".dropify-clear").remove();

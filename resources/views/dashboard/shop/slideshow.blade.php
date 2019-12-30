@@ -130,8 +130,9 @@
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </div>
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
-                                      aria-describedby="datatable_info">
+                                    <div class="table-responsive">
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+
                                         <thead>
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
@@ -172,6 +173,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -192,6 +194,17 @@
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
     <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
     <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function() {
+            if ($(window).width() < 1300) {
+                $("body").addClass('enlarge-menu');
+
+            } else {
+                $("body").removeClass('enlarge-menu');
+
+            }
+        }).resize();
+    </script>
     <script>
         oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
         $('#myInputTextField').keyup(function() {

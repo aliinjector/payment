@@ -41,8 +41,9 @@
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                          <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
-                                          <p class="mb-0 text-muted">کاربر</p>
+                                            <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
+                                        </div>
+                                        <p class="mb-0 text-muted">کاربر</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -59,12 +60,13 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4 align-self-center">
-                                      <div class="icon-info"><span>تعداد کل</span></i></div>
+                                        <div class="icon-info"><span>تعداد کل</span></i></div>
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                          <p class="mb-0 text-muted">کاربر</p>
-                                          <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
+                                            <p class="mb-0 text-muted">کاربر</p>
+                                            <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -81,12 +83,13 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4 align-self-center">
-                                      <div class="icon-info"><span>تعداد کل</span></i></div>
+                                        <div class="icon-info"><span>تعداد کل</span></i></div>
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                          <p class="mb-0 text-muted">کاربر</p>
-                                          <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
+                                            <p class="mb-0 text-muted">کاربر</p>
+                                            <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -103,12 +106,13 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4 align-self-center">
-                                      <div class="icon-info"><span>تعداد کل</span></i></div>
+                                        <div class="icon-info"><span>تعداد کل</span></i></div>
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
                                             <p class="mb-0 text-muted">کاربر</p>
-                                            <h4 class="mt-0 mb-1">{{ $users->count() }}</h4></div>
+                                            <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -147,34 +151,37 @@
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </div>
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"  aria-describedby="datatable_info">
-                                        <thead style="text-align: center">
-                                            <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" >نام</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام خانوادگی</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ایمیل</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">شماره موبایل</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ عضویت</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ آخرین بازدید</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ویرایش کاربر</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody style="text-align: center" class="iranyekan">
-                                          @foreach($users as $user)
-                                          <tr>
-                                              <td>{{ $user->firstName }}</td>
-                                              <td>{{ $user->lastName }}</td>
-                                              <td>{{ $user->email }}</td>
-                                              <td>{{ $user->mobile }}</td>
-                                              <td>{{ $user->created_at }}</td>
-                                              <td>{{ $user->created_at }}</td>
-                                              <td>
-                                                  <a href="{{ route('users.purcheses', $user) }}"> لیست سفارشات </a>
-                                               </td>
-                                          </tr>
-                                          @endforeach
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+                                            <thead style="text-align: center">
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام خانوادگی</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ایمیل</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">شماره موبایل</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ عضویت</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ آخرین بازدید</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ویرایش کاربر</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody style="text-align: center" class="iranyekan">
+                                                @foreach($users as $user)
+                                                <tr>
+                                                    <td>{{ $user->firstName }}</td>
+                                                    <td>{{ $user->lastName }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->mobile }}</td>
+                                                    <td>{{ $user->created_at }}</td>
+                                                    <td>{{ $user->created_at }}</td>
+                                                    <td>
+                                                        <a href="{{ route('users.purcheses', $user) }}"> لیست سفارشات </a>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -195,6 +202,16 @@
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
     <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
     <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function() {
+            if ($(window).width() < 1300) {
+                $("body").addClass('enlarge-menu');
 
+            } else {
+                $("body").removeClass('enlarge-menu');
 
-        @stop
+            }
+        }).resize();
+    </script>
+
+    @stop

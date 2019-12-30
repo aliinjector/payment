@@ -72,8 +72,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">نظر ها</h4><div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                          <p class="text-muted mb-4 font-13">در این بخش میتوانید نظرات محصولات خود را مشاهده نمایید . همچنین میتوانید به نظرات پاسخ داده و یا آن ها را تایید و یا رد کنید . توجه داشته باشید نظرات تا زمانی که شما آن ها را تایید نکرده باشید روی سایت قرار نخواهند گرفت.</p>
+                        <h4 class="mt-0 header-title">نظر ها</h4>
+                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                            <p class="text-muted mb-4 font-13">در این بخش میتوانید نظرات محصولات خود را مشاهده نمایید . همچنین میتوانید به نظرات پاسخ داده و یا آن ها را تایید و یا رد کنید . توجه داشته باشید نظرات تا زمانی که شما آن ها را تایید نکرده
+                                باشید روی سایت قرار نخواهند گرفت.</p>
 
                             <div class="row">
                                 <div class="col-sm-12">
@@ -82,172 +84,176 @@
 
 
 
-                                  <div class="searchBox">
-                                    <input type="text" id="myInputTextField" class="searchInput">
-                                      <button class="searchButton" href="#">
-                                          <i class="fa fa-search"></i>
-                                      </button>
-                                  </div>
+                                    <div class="searchBox">
+                                        <input type="text" id="myInputTextField" class="searchInput">
+                                        <button class="searchButton" href="#">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
 
+                                    <div class="table-responsive">
 
+                                        <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">محصول</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">کاربر
+                                                    </th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">وضعیت
+                                                        تایید </th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">تاریخ
+                                                        درج </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 400px;">متن نظر</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="byekan">
+                                                @foreach($comments as $comment)
+                                                <tr role="row" class="odd icon-hover hover-color">
+                                                    <td style="width:5%"><a target="_blank" href="{{ route('product', ['shop' => $comment->shop->english_name, 'product' => $comment->commentable->id]) }}">{{ $comment->commentable->title }}</a></td>
+                                                    <td>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</td>
+                                                    <td>{{ $comment->approved == 1 ? 'تایید شده' : 'تایید نشده' }}</td>
+                                                    <td>{{ jdate($comment->created_at) }}</td>
+                                                    <td class="d-flex justify-content-between">{{ $comment->comment }}
+                                                        <div class="d-none icon-show">
+                                                            @if($comment->approved == 0)
+                                                                <a href="{{ route('comment.approve', [ $comment->id,  $comment->commentable]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
+                                                                  title="تایید"><i style="color: #03c9a9;" class="fa fa-check"></i>
+                                                                </a>
+                                                                @endif
+                                                                <a data-toggle="modal" data-target="#m_modal_{{ $comment->id }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="پاسخ">
+                                                                    <i style="color: #19b5fe" class="fa fa-reply">
 
-
-
-
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer text-center" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid" aria-describedby="datatable_info">
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">محصول</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">کاربر </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">وضعیت تایید </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 100px;">تاریخ درج </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 400px;">متن نظر</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="byekan">
-                                            @foreach($comments as $comment)
-                                            <tr role="row" class="odd icon-hover hover-color">
-                                                <td style="width:5%"><a target="_blank" href="{{ route('product', ['shop' => $comment->shop->english_name, 'product' => $comment->commentable->id]) }}">{{ $comment->commentable->title }}</a></td>
-                                                <td>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</td>
-                                                <td>{{ $comment->approved == 1 ? 'تایید شده' : 'تایید نشده' }}</td>
-                                                <td>{{ jdate($comment->created_at) }}</td>
-                                                <td class="d-flex justify-content-between">{{ $comment->comment }}
-                                                    <div class="d-none icon-show">
-                                                        @if($comment->approved == 0)
-                                                            <a href="{{ route('comment.approve', [ $comment->id,  $comment->commentable]) }}"
-                                                               class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                               title="تایید"><i style="color: #03c9a9;" class="fa fa-check"></i>
-                                                            </a>
-                                                        @endif
-                                                            <a data-toggle="modal" data-target="#m_modal_{{ $comment->id }}"
-                                                               class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill"
-                                                               title="پاسخ">
-                                                                <i style="color: #19b5fe" class="fa fa-reply">
-
-                                                                </i>
-                                                            </a>
-                                                        <a href="" data-id="{{$comment->id}}" data-commentable="{{ $comment->commentable->id }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف "> <i style="color: #db0a5b" class="fa fa-times"></i> </a>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-
-
-                                            <!--begin::Modal-->
-                                            <div style="" class="modal fade" id="m_modal_{{ $comment->id }}" tabindex="-1" role="dialog"
-                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">پاسخ به نظر</h5>
-                                                            <button style="font-family:LineAwesome!important" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
+                                                                    </i>
+                                                                </a>
+                                                                <a href="" data-id="{{$comment->id}}" data-commentable="{{ $comment->commentable->id }}"
+                                                                  class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف "> <i style="color: #db0a5b" class="fa fa-times"></i> </a>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            <form action="/comment/answer" method="post">
+                                                    </td>
+                                                </tr>
+
+
+
+                                                <!--begin::Modal-->
+                                                <div style="" class="modal fade" id="m_modal_{{ $comment->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">پاسخ به نظر</h5>
+                                                                <button style="font-family:LineAwesome!important" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/comment/answer" method="post">
                                                                     @csrf
                                                                     <div class="form-group">
                                                                         <label for="message-text" class="form-control-label iranyekan">متن
                                                                             پاسخ:</label>
-                                                                        <textarea class="form-control iranyekan" name="comment"
-                                                                                  id="comment"></textarea>
+                                                                        <textarea class="form-control iranyekan" name="comment" id="comment"></textarea>
                                                                         <input type="hidden" name="parent_id" value="{{ $comment->id }}">
                                                                         <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                                                                        <input type="hidden" name="commentable_id"
-                                                                               value="{{ $comment->commentable->id }}">
-                                                                        <input type="hidden" name="approved"
-                                                                               value="1">
-                                                                        <input type="hidden" name="commentable_type"
-                                                                               value="{{ get_class($comment->commentable) }}">
+                                                                        <input type="hidden" name="commentable_id" value="{{ $comment->commentable->id }}">
+                                                                        <input type="hidden" name="approved" value="1">
+                                                                        <input type="hidden" name="commentable_type" value="{{ get_class($comment->commentable) }}">
                                                                     </div>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="submit" class="btn btn-primary">ثبت</button>
                                                             </div>
-                                                        </form>
+                                                            </form>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <!--end::Modal-->
+                                                <!--end::Modal-->
 
 
-                                            @endforeach
+                                                @endforeach
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
 
+                                      </div>
 
-
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- end col -->
             </div>
-            <!-- end col -->
         </div>
-    </div>
 
 
 
 
-    <!-- Attachment Modal -->
+        <!-- Attachment Modal -->
 
-    @endsection
+        @endsection
 
 
-    @section('pageScripts')
+        @section('pageScripts')
 
-    <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-    <script>
-    oTable = $('#datatable').DataTable();   //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
-    $('#myInputTextField').keyup(function(){
-        oTable.search($(this).val()).draw() ;
-    })
-    </script>
+        <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+        <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+        <script type="text/javascript">
+            $(window).resize(function() {
+                if ($(window).width() < 1300) {
+                    $("body").addClass('enlarge-menu');
 
-    <script>
-        $(document).on('click', '.button', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            swal("آیا اطمینان دارید؟", {
-                    dangerMode: true,
-                    icon: "warning",
-                    buttons: ["انصراف", "حذف"],
+                } else {
+                    $("body").removeClass('enlarge-menu');
 
-                })
-                .then(function(isConfirm) {
-                    if (isConfirm) {
-                        $.ajax({
-                            type: "post",
-                            url: "{{url('dashboard/shop/comment/delete')}}",
-                            data: {
-                                id: id,
-                                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                            },
-                            success: function(data) {
-                                var url = document.location.origin + "/dashboard/shop/product-comments";
-                                location.href = url;
-                            }
-                        });
-                    } else {
-                        toastr.warning('لغو شد.', '', []);
-                    }
-                });
-        });
-    </script>
-    @if(session()->has('flashModal'))
+                }
+            }).resize();
+        </script>
         <script>
-            $('#AddProductCategoryModal').modal('show');
+            oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+            $('#myInputTextField').keyup(function() {
+                oTable.search($(this).val()).draw();
+            })
         </script>
 
+        <script>
+            $(document).on('click', '.button', function(e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                swal("آیا اطمینان دارید؟", {
+                        dangerMode: true,
+                        icon: "warning",
+                        buttons: ["انصراف", "حذف"],
 
-        @endif
-        @stop
+                    })
+                    .then(function(isConfirm) {
+                        if (isConfirm) {
+                            $.ajax({
+                                type: "post",
+                                url: "{{url('dashboard/shop/comment/delete')}}",
+                                data: {
+                                    id: id,
+                                    "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                                },
+                                success: function(data) {
+                                    var url = document.location.origin + "/dashboard/shop/product-comments";
+                                    location.href = url;
+                                }
+                            });
+                        } else {
+                            toastr.warning('لغو شد.', '', []);
+                        }
+                    });
+            });
+        </script>
+        @if(session()->has('flashModal'))
+            <script>
+                $('#AddProductCategoryModal').modal('show');
+            </script>
+
+
+            @endif
+            @stop
