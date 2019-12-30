@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
      public function boot()
    {
+       $this->app->setLocale(\Cookie::get('lang'));
        view()->composer('app.shop.2.layouts.master', function($view) {
            if (\Auth::check()){
           if(\Auth::user()->cart()->get()->first() != null){
