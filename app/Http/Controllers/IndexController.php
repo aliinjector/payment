@@ -11,9 +11,8 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
 
-    public function index($locale = 'fa')
+    public function index()
     {
-        \App::setLocale($locale);
         return view('app.index');
     }
 

@@ -20,8 +20,14 @@ use function foo\func;
 
 Auth::routes();
 
+Route::get('/lang/{locale}', function ($locale, Request $request) {
+    \Cookie::queue('lang', $locale, 999999);
+    return redirect()->back();
+});
+
+
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
-// Route::get('/{locale?}', 'IndexController@index')->name('index');
+Route::get('/', 'IndexController@index')->name('index');
 
 //Send Email
 Route::post('/sendemail/send', 'SendEmailController@send')->name('sendemail.send');
