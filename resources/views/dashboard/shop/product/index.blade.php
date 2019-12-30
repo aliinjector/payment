@@ -7,6 +7,15 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+{{-- <style>
+a.color-pick:before {
+  content: '•••';
+  position: absolute;
+  right: 100px;
+  top: 0px;
+  color: aqua;
+}
+</style> --}}
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -177,12 +186,13 @@
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
 
                                         </div>
-                                        <div class="input-group mt-3">
+                                        <div class="input-group color-dot mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
 
                                             <select class="selectpicker" multiple data-live-search="true" name="color[]" title="موردی انتخاب نشده">
+
                                                 @foreach($colors as $color)
-                                                <option value="{{ $color->id }}">{{ $color->name }}</option>
+                                                <option class="" style="background:linear-gradient(#{{ $color->code }} , #{{ $color->code }})bottom right/ 15% 2px;background-repeat:no-repeat;" value="{{ $color->id }}">{{ $color->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
