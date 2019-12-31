@@ -11,13 +11,13 @@ return array(
     |
     */
     "leftCurrentPage"         => "فروشگاه",
-    "pageTitle"         => "گزارشات فروشگاه",
+    "pageTitle"         => "لوحة التحكم",
     "box1"         => "تعداد  کالاهای فروشگاه",
-    "box1Taghiraat"         => "افزایش نسبت به دیروز",
-    "box2"         => "تعداد فروش های فروشگاه",
-    "box2Taghiraat"         => "افزایش نسبت به دیروز",
-    "box3"         => " مجموع فروش",
-    "box3Taghiraat"         => "افزایش نسبت به دیروز",
+    "box1Taghiraat"         => "زيادة بنسبة مقارنة بالأمس",
+    "box2"         => "المبيعات",
+    "box2Taghiraat"         => "زيادة بنسبة مقارنة بالأمس",
+    "box3"         => " تقرير المبيعات",
+    "box3Taghiraat"         => "زيادة بنسبة مقارنة بالأمس",
     "nemoodarItem1"         => "نرخ سود",
     "nemoodarItem2"         => "تعداد سفارشات",
     "nemoodarItem3"         => "فاکتور های ساخته شده",
@@ -42,7 +42,7 @@ return array(
     "nemoodarDaraamadCurrency"         => "میلیون",
     "nemoodarDaraamadRate"         => "افزایش نسبت به ماه گذشته",
     "nemoodarMogheyatJoghrafiaeeItem1"         => "موقعیت جغرافیایی خریداران شما",
-    "nemoodarNewCustomer"         => "مشتریان جدید",
+    "nemoodarNewCustomer"         => "المستخدمين",
     "nemoodarNewCustomerItem1"         => "اقا",
     "nemoodarNewCustomerItem2"         => "خانم",
 
