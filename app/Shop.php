@@ -4,9 +4,11 @@ namespace App;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+
 class Shop extends Model
 {
-    use SoftDeletes, CascadeSoftDeletes;
+    use SoftDeletes, CascadeSoftDeletes, Searchable;
     protected $cascadeDeletes = ['ProductCategories' , 'products'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
