@@ -11,18 +11,19 @@
   <!--end col-->
 
   <div class="col-sm-3 mt-3">
-    <form class="card card-sm">
+      <form class="card card-sm" action="{{ route('search', $shop->english_name) }}" method="post">
+        @csrf
       <div class="card-body row no-gutters align-items-center">
         <div class="col-auto">
-          <i class="fas fa-search h4 text-body"></i>
+          <i style="color: #F68712!important;" class="fas fa-search h4 text-body"></i>
         </div>
         <!--end of col-->
         <div class="col">
-          <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="نام محصول ویا سازنده ...">
+          <input class="form-control form-control-lg form-control-borderless" name="queryy" type="search" placeholder="نام محصول ویا سازنده ...">
         </div>
         <!--end of col-->
         <div class="col-auto">
-          <button class="btn btn-lg btn-success" type="submit">جستجو</button>
+          <button class="btn bg-blue-omid text-white rounded" type="submit">جستجو</button>
         </div>
         <!--end of col-->
       </div>
