@@ -7,10 +7,10 @@
       <div class="page-title-box">
          <div class="float-right">
             <ol style="direction: ltr" class="breadcrumb">
-               <li class="breadcrumb-item active">فروشگاه</li>
+               <li class="breadcrumb-item active">{{ __('dashboard-shop-dashboard-shop.leftCurrentPage') }}</li>
             </ol>
          </div>
-         <h4 class="page-title">گزارشات فروشگاه</h4>
+         <h4 class="page-title">{{ __('dashboard-shop-dashboard-shop.pageTitle') }}</h4>
       </div>
       <!--end page-title-box-->
    </div>
@@ -22,12 +22,12 @@
    <div class="col-lg-4">
       <div class="card card-eco">
          <div class="card-body">
-            <h4 class="title-text mt-0">تعداد  کالاهای شما</h4>
+            <h4 class="title-text mt-0">{{ __('dashboard-shop-dashboard-shop.box1') }}</h4>
             <div class="d-flex justify-content-between">
                <h3 class="font-weight-bold byekan">{{ number_format($shop->products()->get()->count()) }}</h3>
                <i class="fa fa-cubes card-eco-icon text-pink align-self-center"></i>
             </div>
-            <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> افزایش نسبت به دیروز</p>
+            <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> {{ __('dashboard-shop-dashboard-shop.box1Taghiraat') }}</p>
          </div>
          <!--end card-body-->
       </div>
@@ -37,12 +37,12 @@
    <div class="col-lg-4">
       <div class="card card-eco">
          <div class="card-body">
-            <h4 class="title-text mt-0">تعداد فروش های فروشگاه</h4>
+            <h4 class="title-text mt-0">{{ __('dashboard-shop-dashboard-shop.box2') }}</h4>
             <div class="d-flex justify-content-between">
                <h3 class="font-weight-bold byekan">{{ number_format($shop->purchases()->get()->count()) }}</h3>
                <i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i>
             </div>
-            <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱.۵٪</span> افزایش نسبت به دیروز</p>
+            <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱.۵٪</span> {{ __('dashboard-shop-dashboard-shop.box2Taghiraat') }}</p>
          </div>
          <!--end card-body-->
       </div>
@@ -54,12 +54,12 @@
       <div class="card card-eco">
          <div class="card-body">
             <h4 class="title-text mt-0"></h4>
-            مجموع فروش شما</h4>
+            {{ __('dashboard-shop-dashboard-shop.box3') }} </h4>
             <div class="d-flex justify-content-between">
                <h3 class="font-weight-bold byekan">{{ number_format($sumPurchasesPrice) }}</h3>
                <i class="dripicons-wallet card-eco-icon text-success align-self-center"></i>
             </div>
-            <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> افزایش نسبت به دیروز</p>
+            <p class="mb-0 text-muted text-truncate"><span class="text-success"><i class="mdi mdi-trending-up"></i>۱۰.۵٪</span> {{ __('dashboard-shop-dashboard-shop.box3Taghiraat') }}</p>
          </div>
          <!--end card-body-->
       </div>
@@ -77,9 +77,9 @@
                   <svg id="SvgjsSvg1342" width="986" height="365" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" class="apexcharts-svg hovering-zoom" xmlns:data="ApexChartsNS" transform="translate(0, 0)" style="background: transparent;">
                      <foreignObject x="0" y="0" width="986" height="365">
                         <div class="apexcharts-legend center position-bottom" xmlns="http://www.w3.org/1999/xhtml" style="right: 0px; position: absolute; left: 20px; top: auto; bottom: 0px;">
-                           <div class="apexcharts-legend-series" rel="1" data:collapsed="false" style="margin: 0px 5px;"><span class="apexcharts-legend-marker" rel="1" data:collapsed="false" style="background: rgb(77, 121, 246); color: rgb(77, 121, 246); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="1" data:collapsed="false" style="color: rgb(77, 121, 246); font-size: 12px; font-family: Helvetica, Arial, sans-serif;">نرخ سود</span></div>
-                           <div class="apexcharts-legend-series" rel="2" data:collapsed="false" style="margin: 0px 5px;"><span class="apexcharts-legend-marker" rel="2" data:collapsed="false" style="background: rgb(238, 241, 245); color: rgb(238, 241, 245); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="2" data:collapsed="false" style="color: rgb(238, 241, 245); font-size: 12px; font-family: Helvetica, Arial, sans-serif;">تعداد سفارشات</span></div>
-                           <div class="apexcharts-legend-series" rel="3" data:collapsed="false" style="margin: 0px 5px;"><span class="apexcharts-legend-marker" rel="3" data:collapsed="false" style="background: rgb(74, 199, 236); color: rgb(74, 199, 236); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="3" data:collapsed="false" style="color: rgb(74, 199, 236); font-size: 12px; font-family: Helvetica, Arial, sans-serif;">فاکتور های ساخته شده</span></div>
+                           <div class="apexcharts-legend-series" rel="1" data:collapsed="false" style="margin: 0px 5px;"><span class="apexcharts-legend-marker" rel="1" data:collapsed="false" style="background: rgb(77, 121, 246); color: rgb(77, 121, 246); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="1" data:collapsed="false" style="color: rgb(77, 121, 246); font-size: 12px; font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarItem1') }}</span></div>
+                           <div class="apexcharts-legend-series" rel="2" data:collapsed="false" style="margin: 0px 5px;"><span class="apexcharts-legend-marker" rel="2" data:collapsed="false" style="background: rgb(238, 241, 245); color: rgb(238, 241, 245); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="2" data:collapsed="false" style="color: rgb(238, 241, 245); font-size: 12px; font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarItem2') }}</span></div>
+                           <div class="apexcharts-legend-series" rel="3" data:collapsed="false" style="margin: 0px 5px;"><span class="apexcharts-legend-marker" rel="3" data:collapsed="false" style="background: rgb(74, 199, 236); color: rgb(74, 199, 236); height: 12px; width: 12px; left: 0px; top: 0px; border-width: 0px; border-color: rgb(255, 255, 255); border-radius: 12px;"></span><span class="apexcharts-legend-text" rel="3" data:collapsed="false" style="color: rgb(74, 199, 236); font-size: 12px; font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarItem3') }}</span></div>
                         </div>
                         <style type="text/css">
                            .apexcharts-legend {
@@ -240,47 +240,47 @@
                         <g id="SvgjsG1455" class="apexcharts-xaxis" transform="translate(0, 0)">
                            <g id="SvgjsG1456" class="apexcharts-xaxis-texts-g" transform="translate(0, -4)">
                               <text id="SvgjsText1457" font-family="Helvetica, Arial, sans-serif" x="39.048714058302664" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1458" style="font-family: Helvetica, Arial, sans-serif;">1398</tspan>
+                                 <tspan id="SvgjsTspan1458" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow1') }}</tspan>
                                  <title>1398</title>
                               </text>
                               <text id="SvgjsText1459" font-family="Helvetica, Arial, sans-serif" x="125.51372375882998" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1460" style="font-family: Helvetica, Arial, sans-serif;">آذر</tspan>
+                                 <tspan id="SvgjsTspan1460" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow2') }}</tspan>
                                  <title>Feb '03</title>
                               </text>
                               <text id="SvgjsText1461" font-family="Helvetica, Arial, sans-serif" x="203.61115187543533" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1462" style="font-family: Helvetica, Arial, sans-serif;">دی</tspan>
+                                 <tspan id="SvgjsTspan1462" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow3') }}</tspan>
                                  <title>Mar '03</title>
                               </text>
                               <text id="SvgjsText1463" font-family="Helvetica, Arial, sans-serif" x="290.07616157596266" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1464" style="font-family: Helvetica, Arial, sans-serif;">بهمن</tspan>
+                                 <tspan id="SvgjsTspan1464" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow4') }}</tspan>
                                  <title>Apr '03</title>
                               </text>
                               <text id="SvgjsText1465" font-family="Helvetica, Arial, sans-serif" x="373.75197741518264" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1466" style="font-family: Helvetica, Arial, sans-serif;">اسفند</tspan>
+                                 <tspan id="SvgjsTspan1466" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow5') }}</tspan>
                                  <title>May '03</title>
                               </text>
                               <text id="SvgjsText1467" font-family="Helvetica, Arial, sans-serif" x="460.21698711570997" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1468" style="font-family: Helvetica, Arial, sans-serif;">فروردین</tspan>
+                                 <tspan id="SvgjsTspan1468" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow6') }}</tspan>
                                  <title>Jun '03</title>
                               </text>
                               <text id="SvgjsText1469" font-family="Helvetica, Arial, sans-serif" x="543.89280295493" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1470" style="font-family: Helvetica, Arial, sans-serif;">اردیبهشت</tspan>
+                                 <tspan id="SvgjsTspan1470" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow7') }}</tspan>
                                  <title>Jul '03</title>
                               </text>
                               <text id="SvgjsText1471" font-family="Helvetica, Arial, sans-serif" x="630.3578126554572" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1472" style="font-family: Helvetica, Arial, sans-serif;">خرداد</tspan>
+                                 <tspan id="SvgjsTspan1472" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow8') }}</tspan>
                                  <title>Aug '03</title>
                               </text>
                               <text id="SvgjsText1473" font-family="Helvetica, Arial, sans-serif" x="716.8228223559845" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1474" style="font-family: Helvetica, Arial, sans-serif;">تیر</tspan>
+                                 <tspan id="SvgjsTspan1474" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow9') }}</tspan>
                                  <title>Sep '03</title>
                               </text>
                               <text id="SvgjsText1475" font-family="Helvetica, Arial, sans-serif" x="800.4986381952045" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1476" style="font-family: Helvetica, Arial, sans-serif;">مرداد</tspan>
+                                 <tspan id="SvgjsTspan1476" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow10') }}</tspan>
                                  <title>Oct '03</title>
                               </text>
                               <text id="SvgjsText1477" font-family="Helvetica, Arial, sans-serif" x="886.9636478957318" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
-                                 <tspan id="SvgjsTspan1478" style="font-family: Helvetica, Arial, sans-serif;">شهریور</tspan>
+                                 <tspan id="SvgjsTspan1478" style="font-family: Helvetica, Arial, sans-serif;">{{ __('dashboard-shop-dashboard-shop.nemoodarRow11') }}</tspan>
                                  <title>Nov '03</title>
                               </text>
                               <text id="SvgjsText1479" font-family="Helvetica, Arial, sans-serif" x="970.6394637349518" y="293.348" text-anchor="middle" dominant-baseline="auto" font-size="12px" fill="#373d3f" class="apexcharts-xaxis-label " style="font-family: Helvetica, Arial, sans-serif;">
@@ -427,18 +427,18 @@
    <div class="col-lg-4">
       <div class="card">
          <div class="card-body">
-            <h4 class="header-title mt-0">موقعیت جغرافیایی خریداران شما</h4>
+            <h4 class="header-title mt-0">{{ __('dashboard-shop-dashboard-shop.nemoodarMogheyatJoghrafiaee') }}</h4>
             <div id="world-map-markers" class="dashboard-map"></div>
             <div class="row">
                <div class="col-md-5">
                   <div class="mt-3">
-                     <span class="text-info">آمریکا</span> <small class="float-right text-muted ml-3 font-14">۸۱٪</small>
+                     <span class="text-info">{{ __('dashboard-shop-dashboard-shop.nemoodarMogheyatJoghrafiaeeItem1') }}</span> <small class="float-right text-muted ml-3 font-14">۸۱٪</small>
                      <div class="progress mt-2" style="height:3px;">
                         <div class="progress-bar bg-pink" role="progressbar" style="width: 81%; border-radius:5px;" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
                   </div>
                   <div class="mt-3">
-                     <span class="text-info">ایران</span> <small class="float-right text-muted ml-3 font-14">۶۸٪</small>
+                     <span class="text-info">{{ __('dashboard-shop-dashboard-shop.nemoodarMogheyatJoghrafiaeeItem2') }}</span> <small class="float-right text-muted ml-3 font-14">۶۸٪</small>
                      <div class="progress mt-2" style="height:3px;">
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 68%; border-radius:5px;" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
@@ -447,13 +447,13 @@
                <!--end col-->
                <div class="col-md-5 ml-auto">
                   <div class="mt-3">
-                     <span class="text-info">استرالیا</span> <small class="float-right text-muted ml-3 font-14">۴۸٪</small>
+                     <span class="text-info">{{ __('dashboard-shop-dashboard-shop.nemoodarMogheyatJoghrafiaeeItem3') }}</span> <small class="float-right text-muted ml-3 font-14">۴۸٪</small>
                      <div class="progress mt-2" style="height:3px;">
                         <div class="progress-bar bg-purple" role="progressbar" style="width: 48%; border-radius:5px;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
                   </div>
                   <div class="mt-3">
-                     <span class="text-info">برزیل</span> <small class="float-right text-muted ml-3 font-14">۳۲٪</small>
+                     <span class="text-info">{{ __('dashboard-shop-dashboard-shop.nemoodarMogheyatJoghrafiaeeItem4') }}</span> <small class="float-right text-muted ml-3 font-14">۳۲٪</small>
                      <div class="progress mt-2" style="height:3px;">
                         <div class="progress-bar bg-warning" role="progressbar" style="width: 32%; border-radius:5px;" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100"></div>
                      </div>
@@ -477,7 +477,7 @@
             <div class="row">
                <div class="col-8 align-self-center">
                   <div>
-                     <h4 class="mt-0 header-title">درآمد این ماه</h4>
+                     <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.nemoodarDaraamad') }}</h4>
                      <h2 class="mt-0 font-weight-bold">$57k</h2>
                      <p class="mb-0 text-muted"><span class="text-success"><i class="mdi mdi-arrow-up"></i>14.5%</span> Up From Last Month</p>
                   </div>
@@ -637,9 +637,9 @@
             <div class="row">
                <div class="col-8 align-self-center">
                   <div class="">
-                     <h4 class="mt-0 header-title">درآمد این ماه</h4>
-                     <h2 class="mt-0 font-weight-bold">1 میلیون </h2>
-                     <p class="mb-0 text-muted"><span class="text-success"><i class="mdi mdi-arrow-up"></i>14.5%</span> افزایش نسبت به ماه گذشته</p>
+                     <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.nemoodarDaraamad') }}</h4>
+                     <h2 class="mt-0 font-weight-bold">1 {{ __('dashboard-shop-dashboard-shop.nemoodarDaraamadCurrency') }} </h2>
+                     <p class="mb-0 text-muted"><span class="text-success"><i class="mdi mdi-arrow-up"></i>14.5%</span> {{ __('dashboard-shop-dashboard-shop.nemoodarDaraamadRate') }}</p>
                   </div>
                </div>
                <!--end col-->
@@ -751,7 +751,7 @@
    <div class="col-lg-4">
       <div class="card">
          <div class="card-body">
-            <h4 class="mt-0 header-title mb-3">مشتریان جدید</h4>
+            <h4 class="mt-0 header-title mb-3">{{ __('dashboard-shop-dashboard-shop.nemoodarNewCustomer') }}</h4>
             <div class="row">
                <div class="col-8">
                   <div class="align-self-center" style="position: relative;">
@@ -815,11 +815,11 @@
                <div class="col-4 align-self-center">
                   <div class="re-customers-detail">
                      <h3 class="mb-0">21,546</h3>
-                     <p class="text-muted"><i class="mdi mdi-circle text-info mr-1"></i>اقا</p>
+                     <p class="text-muted"><i class="mdi mdi-circle text-info mr-1"></i>{{ __('dashboard-shop-dashboard-shop.nemoodarNewCustomerItem1') }}</p>
                   </div>
                   <div class="re-customers-detail">
                      <h3 class="mb-0">1535</h3>
-                     <p class="text-muted"><i class="mdi mdi-circle text-light mr-1"></i>خانم</p>
+                     <p class="text-muted"><i class="mdi mdi-circle text-light mr-1"></i>{{ __('dashboard-shop-dashboard-shop.nemoodarNewCustomerItem2') }}</p>
                   </div>
                </div>
                <!--end col-->
@@ -834,7 +834,7 @@
    <div class="col-lg-4">
       <div class="card carousel-bg-img">
          <div class="card-body dash-info-carousel">
-            <h4 class="mt-0 header-title">محصولات محبوب</h4>
+            <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.mahsoolateMahboob') }}</h4>
             <div id="carousel_2" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
                   @if(isset($bestSelling[0]))
@@ -842,9 +842,9 @@
                      <div class="media">
                         <img src="{{ $bestSelling[0]->image['400,400'] }}" height="200" width="175" class="mr-2" alt="...">
                         <div class="media-body align-self-center">
-                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[0]->buyCount }} فروش</span>
+                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[0]->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
                            <h4 class="mt-0">{{ $bestSelling[0]->title }}</h4>
-                           <p class="text-muted mb-0">{{ number_format($bestSelling[0]->price) }} تومان</p>
+                           <p class="text-muted mb-0">{{ number_format($bestSelling[0]->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
                         </div>
                      </div>
                   </div>
@@ -854,9 +854,9 @@
                      <div class="media">
                         <img src="{{ $bestSelling[1]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                         <div class="media-body align-self-center">
-                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[1]->buyCount }} فروش</span>
+                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[1]->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
                            <h4 class="mt-0">{{ $bestSelling[1]->title }}</h4>
-                           <p class="text-muted mb-0">{{ number_format($bestSelling[1]->price)  }} تومان</p>
+                           <p class="text-muted mb-0">{{ number_format($bestSelling[1]->price)  }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
                         </div>
                      </div>
                   </div>
@@ -866,9 +866,9 @@
                      <div class="media">
                         <img src="{{ $bestSelling[2]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
                         <div class="media-body align-self-center">
-                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[2]->buyCount }} فروش</span>
+                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[2]->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
                            <h4 class="mt-0">{{ $bestSelling[2]->title }}</h4>
-                           <p class="text-muted mb-0">{{ number_format($bestSelling[2]->price) }} تومان</p>
+                           <p class="text-muted mb-0">{{ number_format($bestSelling[2]->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
                         </div>
                      </div>
                   </div>
@@ -887,17 +887,17 @@
    <div class="col-12">
       <div class="card">
          <div class="card-body order-list">
-            <h4 class="header-title mt-0 mb-3">لیست سفارشات</h4>
+            <h4 class="header-title mt-0 mb-3">{{ __('dashboard-shop-dashboard-shop.listSefareshaat') }}</h4>
             <div class="table-responsive">
                <table class="table table-hover mb-0">
                   <thead class="thead-light">
                      <tr class="byekan">
-                        <th class="border-top-0">شناسه</th>
-                        <th class="border-top-0">محصول</th>
-                        <th class="border-top-0">نام</th>
-                        <th class="border-top-0">زمان سفارش</th>
-                        <th class="border-top-0">مبلغ (تومان)</th>
-                        <th class="border-top-0">وضعیت</th>
+                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem1') }}</th>
+                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem2') }}</th>
+                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem3') }}</th>
+                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem4') }}</th>
+                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem5') }}</th>
+                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem6') }}</th>
                      </tr>
                      <!--end tr-->
                   </thead>

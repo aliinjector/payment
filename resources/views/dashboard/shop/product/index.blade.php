@@ -24,24 +24,23 @@ a.color-pick:before {
                 <div class="page-title-box">
                     <div class="float-right">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item ">لیست محصولات</li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
+                            <li class="breadcrumb-item ">{{ __('dashboard-shop-product-index.leftCurrentPage1') }}</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ __('dashboard-shop-product-index.leftCurrentPage2') }}</a></li>
                         </ol>
                     </div>
-                    <h4 class="page-title">لیست محصولات</h4>
+                    <h4 class="page-title">{{ __('dashboard-shop-product-index.pageTitle') }}</h4>
                 </div>
                 @include('dashboard.layouts.errors')
 
                 <div class="text-right">
-                    <a href="#" data-toggle="modal" data-target="#AddSelectModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>اضافه کردن محصول</a>
+                    <a href="#" data-toggle="modal" data-target="#AddSelectModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-index.addBtn') }}</a>
                 </div>
 
                 <div class="modal fade bd-example-modal-xl" id="AddSelectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title font-18" id="exampleModalLabel">لطفا نوع محصول خود را انتخاب
-                                    کنید</h5>
+                                <h5 class="modal-title font-18" id="exampleModalLabel">{{ __('dashboard-shop-product-index.addTitle') }}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -56,7 +55,7 @@ a.color-pick:before {
                                                     <span class="sett-card-icon set-icon-purple"><i class="fa fa-boxes f-em5"></i></span>
                                                 </div>
                                                 <div class="">
-                                                    <p class="f-em1-5 m-5 mr-4 iranyekan">کالایی که حجم فیزیکی دارد و باید برای خریدار ارسال شود</p>
+                                                    <p class="f-em1-5 m-5 mr-4 iranyekan">{{ __('dashboard-shop-product-index.addItem1') }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -67,7 +66,7 @@ a.color-pick:before {
                                                     <span class="sett-card-icon set-icon-purple"><i class="fa fa-download f-em5"></i></span>
                                                 </div>
                                                 <div class="">
-                                                    <p class="f-em1-5 m-5 mr-4 iranyekan"> محصولی که به صورت لینک دانلود برای خریدار ارسال می‌شود </p>
+                                                    <p class="f-em1-5 m-5 mr-4 iranyekan">{{ __('dashboard-shop-product-index.addItem2') }} </p>
                                                 </div>
                                             </div>
                                         </a>
@@ -78,7 +77,7 @@ a.color-pick:before {
                                                     <span class="sett-card-icon set-icon-purple"><i class="fa fa-user-friends f-em5"></i></span>
                                                 </div>
                                                 <div class="">
-                                                    <p class="f-em1-5 m-5 mr-4 iranyekan">یک خدمت باید به خریدار ارائه شود و هزینه ارسال ندارد</p>
+                                                    <p class="f-em1-5 m-5 mr-4 iranyekan">{{ __('dashboard-shop-product-index.addItem3') }}</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -86,7 +85,7 @@ a.color-pick:before {
                                     </div>
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">{{ __('dashboard-shop-product-index.addEnseraf') }}
                                 </button>
                             </div>
                             </form>
@@ -99,7 +98,7 @@ a.color-pick:before {
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">افزودن کالای فیزیکی </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">{{ __('dashboard-shop-product-index.addMahsoolFizikiTitle') }} </h5>
                                 <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -110,17 +109,17 @@ a.color-pick:before {
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان محصول :</span></div>
-                                            <input type="text" class="form-control inputfield rounded" name="title" value="{{ old('title') }}" placeholder="مثال: جاروبرقی">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-index.addMahsoolFizikiItem1') }} :</span></div>
+                                            <input type="text" class="form-control inputfield rounded" name="title" value="{{ old('title') }}" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem1ex') }}">
                                             <input name="type" type="hidden" value="product">
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات محصول :</span></div>
-                                            <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد محصول">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem2') }} :</span></div>
+                                            <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem2ex') }}">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem3') }} :</span>
                                             </div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
@@ -133,7 +132,7 @@ a.color-pick:before {
                                             </a>
                                             @else
                                             <select class="form-control inputfield selectPhysical" name="productCat_id">
-                                                <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
+                                                <option style="font-family: BYekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem3Select') }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
@@ -151,9 +150,9 @@ a.color-pick:before {
 
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem4') }} :</span></div>
                                             <select class="form-control inputfield" name="brand_id" id="">
-                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                <option style="font-family: BYekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem4No') }}
                                                 </option>
                                                 @foreach($brands as $brand)
                                                 <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
@@ -163,39 +162,39 @@ a.color-pick:before {
                                             </select>
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت محصول :</span></div>
-                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-index.addMahsoolFizikiItem5') }}:</span></div>
+                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem5ex') }}" Lang="en">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem5Left') }}</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت بعد از تخفیف :</span></div>
-                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem6') }} :</span></div>
+                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem6ex') }}" Lang="en">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem6Left') }}</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> موجودی در انبار :</span></div>
-                                            <input value="{{ old('amount') }}" type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem7') }} :</span></div>
+                                            <input value="{{ old('amount') }}" type="text" class="form-control inputfield" name="amount" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem7ex') }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem7Left') }}</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> حداقل موجودی انبار:</span></div>
-                                            <input value="{{ old('min_amount') }}" type="text" class="form-control inputfield" name="min_amount" placeholder="مثال: 3">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem8') }}:</span></div>
+                                            <input value="{{ old('min_amount') }}" type="text" class="form-control inputfield" name="min_amount" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem8ex') }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem8Left') }}</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
-                                            <input value="{{ old('weight') }}" type="text" class="form-control inputfield" name="weight" placeholder="مثال: 30">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem9') }} :</span></div>
+                                            <input value="{{ old('weight') }}" type="text" class="form-control inputfield" name="weight" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem9ex') }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem9Left') }}</span></div>
 
                                         </div>
                                         <div class="input-group color-dot mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10') }} :</span></div>
 
-                                            <select class="selectpicker" multiple data-live-search="true" name="color[]" title="موردی انتخاب نشده">
+                                            <select class="selectpicker" multiple data-live-search="true" name="color[]" title="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10ex') }}">
 
                                                 @foreach($colors as $color)
                                                 <option class="" style="background:linear-gradient(#{{ $color->code }} , #{{ $color->code }})bottom right/ 15% 2px;background-repeat:no-repeat;" value="{{ $color->id }}">{{ $color->name }}</option>
@@ -204,110 +203,107 @@ a.color-pick:before {
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
                                                     </span></a></div>
 
                                         </div>
 
                                         <div class="input-group mt-3 d-none feature_4">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                             <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_5">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }}">
                                             <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_6">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }}ل :</span></div>
+                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                             <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_7">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                             <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_8">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                             <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_9">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                             <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
                                                         امکانات
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_10">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem12') }} :</span></div>
                                             <input value="{{ old('tags') }}" type="text" name="tags" class="form-control" />
                                         </div>
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13') }} :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportProduct" name="support">
-                                                <label class="custom-control-label iranyekan font-15" for="supportProduct">پشتیبانی</label>
+                                                <label class="custom-control-label iranyekan font-15" for="supportProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item1') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backProduct" name="money_back">
-                                                <label class="custom-control-label iranyekan font-15" for="money_backProduct">بازگشت وجه</label>
+                                                <label class="custom-control-label iranyekan font-15" for="money_backProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item2') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingProduct" name="fast_sending">
-                                                <label class="custom-control-label iranyekan font-15" for="fast_sendingProduct">ارسال سریع</label>
+                                                <label class="custom-control-label iranyekan font-15" for="fast_sendingProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item3') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentProduct" name="secure_payment">
-                                                <label class="custom-control-label iranyekan font-15" for="secure_paymentProduct">پرداخت امن</label>
+                                                <label class="custom-control-label iranyekan font-15" for="secure_paymentProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item4') }}</label>
                                             </div>
 
                                         </div>
 
                                         <div class="card mt-3">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> تصویر اصلی محصول</h4>
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-index.addMahsoolFizikiItem14') }}</h4>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
                                         </div>
@@ -316,12 +312,12 @@ a.color-pick:before {
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem15') }}
                                 </button>
                                 <div class="group">
-                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem16') }}
                                     </button>
-                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem17') }}
                                     </button>
                                 </div>
                             </div>
@@ -337,7 +333,7 @@ a.color-pick:before {
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">افزودن فایل </h5>
+                                <h5 class="modal-title" id="exampleModalLabel">{{ __('dashboard-shop-product-index.addMahsoolFileTitle') }} </h5>
                                 <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -347,19 +343,19 @@ a.color-pick:before {
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان فایل :</span></div>
-                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem1') }} :</span></div>
+                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFileItem1ex') }}">
                                             <input name="type" type="hidden" value="file">
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات فایل :</span></div>
-                                            <input value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem2') }} :</span></div>
+                                            <input value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFileItem2ex') }}">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem3') }}ل :</span>
                                             </div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
@@ -372,7 +368,7 @@ a.color-pick:before {
                                             </a>
                                             @else
                                             <select class="form-control inputfield selectFile" name="productCat_id">
-                                                <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
+                                                <option style="font-family: BYekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolFileItem3Select') }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
@@ -389,9 +385,9 @@ a.color-pick:before {
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFileItem4') }} :</span></div>
                                             <select class="form-control inputfield" name="brand_id" id="">
-                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                <option style="font-family: BYekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolFileItem4No') }}
                                                 </option>
                                                 @foreach($brands as $brand)
                                                 <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
@@ -402,123 +398,114 @@ a.color-pick:before {
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت فایل :</span></div>
-                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-index.addMahsoolFileItem5') }} :</span></div>
+                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFileItem5ex') }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-product-index.addMahsoolFileItem5Left') }}</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت بعد از تخفیف :</span></div>
-                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFileItem6') }} :</span></div>
+                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFileItem6ex') }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-product-index.addMahsoolFileItem6Left') }}</span></div>
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_4">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_5">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_6">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_7">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }}">
+                                            <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_8">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_9">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: کیفیت بالا ">
-                                            <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }}">
+                                            <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_10">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: کیفیت بالا ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem7') }} :</span></div>
+                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolFileItem7ex') }} ">
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem77') }} :</span></div>
                                             <input value="{{ old('tags') }}" type="text" name="tags" class="form-control" />
                                         </div>
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFileItem8') }} :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportFile" name="support">
-                                                <label class="custom-control-label iranyekan font-15" for="supportFile">پشتیبانی</label>
+                                                <label class="custom-control-label iranyekan font-15" for="supportFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item1') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backFile" name="money_back">
-                                                <label class="custom-control-label iranyekan font-15" for="money_backFile">بازگشت وجه</label>
+                                                <label class="custom-control-label iranyekan font-15" for="money_backFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item2') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingFile" name="fast_sending">
-                                                <label class="custom-control-label iranyekan font-15" for="fast_sendingFile">ارسال سریع</label>
+                                                <label class="custom-control-label iranyekan font-15" for="fast_sendingFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item3') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentFile" name="secure_payment">
-                                                <label class="custom-control-label iranyekan font-15" for="secure_paymentFile">پرداخت امن</label>
+                                                <label class="custom-control-label iranyekan font-15" for="secure_paymentFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item4') }}</label>
                                             </div>
 
                                         </div>
 
                                         <div class="card mt-3">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> تصویر محصول</h4>
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem10') }}</h4>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
 
@@ -526,8 +513,8 @@ a.color-pick:before {
 
                                         <div class="card">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> اپلود فایل</h4>
-                                                <p class="text-muted mb-3">فایل شما میتواند از نوع pdf یا docs باشد
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i>  {{ __('dashboard-shop-product-index.addMahsoolFileItem11') }}</h4>
+                                                <p class="text-muted mb-3"> {{ __('dashboard-shop-product-index.addMahsoolFileItem11Desc') }}
                                                 </p>
                                                 <input type="file" id="input-file-now" name="attachment" class="dropify">
                                             </div>
@@ -538,12 +525,12 @@ a.color-pick:before {
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف
+                                <button type="button" class="btn btn-danger rounded" data-dismiss="modal"> {{ __('dashboard-shop-product-index.addMahsoolFileItem12') }}
                                 </button>
                                 <div class="group">
-                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded"> {{ __('dashboard-shop-product-index.addMahsoolFileItem13') }}
                                     </button>
-                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded"> {{ __('dashboard-shop-product-index.addMahsoolFileItem14') }}
                                     </button>
                                 </div>
                             </div>
@@ -558,7 +545,7 @@ a.color-pick:before {
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">افزودن خدمت </h5>
+                                <h5 class="modal-title" id="exampleModalLabel"> {{ __('dashboard-shop-product-index.addMahsoolServiceTitle') }} </h5>
                                 <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -568,19 +555,19 @@ a.color-pick:before {
                                     @csrf
                                     <div class="form-group mb-0">
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> عنوان خدمت :</span></div>
-                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="مثال: تدریس خصوصی">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-index.addMahsoolServiceItem1') }} :</span></div>
+                                            <input value="{{ old('title') }}" type="text" class="form-control inputfield" name="title" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem1ex') }}">
                                             <input name="type" type="hidden" value="service">
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> توضیحات خدمت :</span></div>
-                                            <input value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد خدمت">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem2') }}:</span></div>
+                                            <input value="{{ old('description') }}" type="text" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem2ex') }}">
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> دسته بندی محصول :</span>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem3') }}ل :</span>
                                             </div>
                                             @if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0)
                                             <select class="form-control inputfield" name="productCat_id" id="" disabled>
@@ -593,7 +580,8 @@ a.color-pick:before {
                                             </a>
                                             @else
                                             <select class="form-control inputfield selectService" name="productCat_id">
-                                                <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
+                                                <option style="font-family: BYekan!important;" value="null">
+                                                  {{ __('dashboard-shop-product-index.addMahsoolServiceItem3Select') }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: BYekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
@@ -610,9 +598,9 @@ a.color-pick:before {
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolServiceItem4') }} :</span></div>
                                             <select class="form-control inputfield" name="brand_id" id="">
-                                                <option style="font-family: BYekan!important;" value="null">فاقد برند
+                                                <option style="font-family: BYekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolServiceItem4No') }}
                                                 </option>
                                                 @foreach($brands as $brand)
                                                 <option style="font-family: BYekan!important;" value="{{ $brand->id }}">
@@ -623,123 +611,114 @@ a.color-pick:before {
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> قیمت خدمت :</span></div>
-                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem5') }} :</span></div>
+                                            <input value="{{ old('price') }}" type="text" class="form-control inputfield" name="price" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem5ex') }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem5Left') }}</span></div>
 
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت بعد از تخفیف :</span></div>
-                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000">
-                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> ریال</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolServiceItem6') }} :</span></div>
+                                            <input value="{{ old('off_price') }}" type="text" class="form-control inputfield" name="off_price" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem6ex') }}">
+                                            <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem6Left') }}</span></div>
 
                                         </div>
 
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_1') }}" type="text" class="form-control inputfield" name="feature_1" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_2">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_2') }}" type="text" class="form-control inputfield" name="feature_2" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }}">
+                                            <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">  {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_3') }}" type="text" class="form-control inputfield" name="feature_3" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_4">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">  {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }}:</span></div>
+                                            <input value="{{ old('feature_4') }}" type="text" class="form-control inputfield" name="feature_4" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }}">
+                                            <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_5">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">  {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_5') }}" type="text" class="form-control inputfield" name="feature_5" placeholder=" {{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_6">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">  {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_6') }}" type="text" class="form-control inputfield" name="feature_6" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }}">
+                                            <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_7">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_7') }}" type="text" class="form-control inputfield" name="feature_7" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }}">
+                                            <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_8">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_8') }}" type="text" class="form-control inputfield" name="feature_8" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }} ">
+                                            <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_9">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: ضد آب ">
-                                            <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                        امکانات
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_9') }}" type="text" class="form-control inputfield" name="feature_9" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }}ب ">
+                                            <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7Left') }}
                                                     </span></a></div>
 
                                         </div>
                                         <div class="input-group mt-3 d-none feature_10">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات خدمت :</span></div>
-                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: ضد آب ">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem7') }} :</span></div>
+                                            <input value="{{ old('feature_10') }}" type="text" class="form-control inputfield" name="feature_10" placeholder="{{ __('dashboard-shop-product-index.addMahsoolServiceItem7ex') }} ">
                                         </div>
                                         <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> برچسب های محصول :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem8') }}:</span></div>
                                             <input value="{{ old('tags') }}" type="text" name="tags" class="form-control" />
                                         </div>
 
                                         <div class="input-group mt-3 bg-white">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9') }} :</span></div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
                                                 <input type="checkbox" class="custom-control-input" id="supportService" name="support">
-                                                <label class="custom-control-label iranyekan font-15" for="supportService">پشتیبانی</label>
+                                                <label class="custom-control-label iranyekan font-15" for="supportService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item1') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="money_backService" name="money_back">
-                                                <label class="custom-control-label iranyekan font-15" for="money_backService">بازگشت وجه</label>
+                                                <label class="custom-control-label iranyekan font-15" for="money_backService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item2') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="fast_sendingService" name="fast_sending">
-                                                <label class="custom-control-label iranyekan font-15" for="fast_sendingService">ارسال سریع</label>
+                                                <label class="custom-control-label iranyekan font-15" for="fast_sendingService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item3') }}</label>
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
                                                 <input type="checkbox" class="custom-control-input" id="secure_paymentService" name="secure_payment">
-                                                <label class="custom-control-label iranyekan font-15" for="secure_paymentService">پرداخت امن</label>
+                                                <label class="custom-control-label iranyekan font-15" for="secure_paymentService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item4') }}</label>
                                             </div>
 
                                         </div>
 
                                         <div class="card mt-3">
                                             <div class="card-body">
-                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> تصویر خدمت</h4>
+                                                <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem10') }}</h4>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
                                         </div>
@@ -747,11 +726,11 @@ a.color-pick:before {
                                     <!--end form-group-->
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem11') }}</button>
                                 <div class="group">
-                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست
+                                    <button type="submit" name="action" value="justSave" class="btn btn-primary rounded"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem12') }}
                                     </button>
-                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه
+                                    <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem13') }}
                                     </button>
                                 </div>
                             </div>
@@ -772,9 +751,8 @@ a.color-pick:before {
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">لیست محصولات</h4>
-                        <p class="text-muted mb-4 font-13">در این بخش میتوانید کالای خود را در سه بخش فیزیکی , فایلی و خدماتی به فروشگاه اضافه کنید و با تکمیل بخش های مربوط به هر نوع محصول , شروع به فروش محصول خود نمایید . توجه داشته باشید که قبل از
-                            وارد کردن محصول جدید , اقدام به ساخت دسته بندی های لازم فروشگاه کنید و پس از آن محصول مورد نظر خود را به دسته بندی از پیش ساخته شده اختصاص دهید</p>
+                        <h4 class="mt-0 header-title">{{ __('dashboard-shop-product-index.ListMahsoolatTitle') }}</h4>
+                        <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-product-index.ListMahsoolatDesc') }}</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                               <div class="table-responsive">
@@ -782,21 +760,21 @@ a.color-pick:before {
 
                                           <thead>
                                               <tr role="row">
-                                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem1') }}
                                                   </th>
-                                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 705px;">نام محصول
+                                                  <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 705px;">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem2') }}
                                                   </th>
-                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending">دسته بندی
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem3') }}
                                                   </th>
-                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">رنگ ها
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem4') }}
                                                   </th>
-                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">قیمت
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem5') }}
                                                   </th>
-                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width:150px;">قیمت بعد از تخفیف
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width:150px;">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem6') }}
                                                   </th>
-                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">وضعیت
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem7') }}
                                                   </th>
-                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">نوع محصول
+                                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem8') }}
                                                   </th>
 
                                               </tr>
@@ -840,25 +818,25 @@ a.color-pick:before {
                                                       </button>
                                                       @if ($product->status == 1)
                                                       <span class="badge badge-soft-success show{{ $product->id }}">
-                                                          فعال
+                                                          {{ __('dashboard-shop-product-index.ListMahsoolatTableStatusEnable') }}
                                                       </span>
                                                       <span class="badge badge-soft-pink d-none {{ $product->id }}">
-                                                          غیرفعال
+                                                        {{ __('dashboard-shop-product-index.ListMahsoolatTableStatusDisable') }}
                                                       </span>
                                                       @else
                                                       <span class="badge badge-soft-success d-none {{ $product->id }}">
-                                                          فعال
+                                                          {{ __('dashboard-shop-product-index.ListMahsoolatTableStatusEnable') }}
                                                       </span>
                                                       <span class="badge badge-soft-pink show{{ $product->id }}">
-                                                          غیرفعال
+                                                          {{ __('dashboard-shop-product-index.ListMahsoolatTableStatusDisable') }}
                                                       </span>
                                                       @endif
 
                                                   </td>
 
                                                   <td>
-                                                      @if ($product->type == 'service') خدمت @elseif($product->type == 'file') فایل
-                                                          @else فیزیکی
+                                                      @if ($product->type == 'service') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem2') }} @elseif($product->type == 'file') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem3') }}
+                                                          @else {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem1') }}
                                                           @endif
                                                           <div class="d-none icon-show">
 

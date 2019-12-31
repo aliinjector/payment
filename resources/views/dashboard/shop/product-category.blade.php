@@ -12,8 +12,8 @@
                 <div class="page-title-box">
                     <div class="float-right">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item "> دسته بندی </li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
+                            <li class="breadcrumb-item "> {{ __('dashboard-shop-product-category.leftCurrentPage1') }} </li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ __('dashboard-shop-product-category.leftCurrentPage2') }}</a></li>
                         </ol>
                     </div>
                 </div>
@@ -22,14 +22,14 @@
             <!--end col-->
         </div>
         <div class="text-right">
-            <a href="#" data-toggle="modal" data-target="#AddProductCategoryModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>اضافه کردن دسته بندی</a>
+            <a href="#" data-toggle="modal" data-target="#AddProductCategoryModal" class="btn btn-primary text-white d-inline-block text-right mb-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-product-category.addBtn') }}</a>
         </div>
         @include('dashboard.layouts.errors')
         <div class="modal fade bd-example-modal-xl" id="AddProductCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">افزودن دسته بندی جدید</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('dashboard-shop-product-category.addCategoryTitle') }}</h5>
                         <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -39,13 +39,13 @@
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" placeholder="مثال: ورزشی">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.addCategoryItem1') }} :</span></div>
+                                    <input type="text" class="form-control inputfield" name="name" placeholder="{{ __('dashboard-shop-product-category.addCategoryItem1ex') }}">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">شاخه دسته بندی:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.addCategoryItem2') }}:</span></div>
                                     <select class="form-control inputfield" name="parent_id">
-                                        <option selected value="null">دسته بندی اصلی</option>
+                                        <option selected value="null">{{ __('dashboard-shop-product-category.addCategoryItem2Main') }}</option>
                                         @foreach($categoires as $category)
                                         @unless($category->parent()->get()->first() != null and $category->parent()->get()->first()->parent()->get()->first() != null and
                                             $category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first() != null and
@@ -57,12 +57,12 @@
                                     </select>
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد دسته بندی">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.addCategoryItem3') }} :</span></div>
+                                    <input type="text" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-product-category.addCategoryItem3ex') }}">
                                 </div>
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">آیکون دسته بندی</h4>
+                                        <h4 class="mt-0 header-title">{{ __('dashboard-shop-product-category.addCategoryItem4') }}</h4>
                                         <input type="file" id="input-file-now" name="icon" class="dropify">
                                     </div>
                                 </div>
@@ -70,10 +70,10 @@
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
+                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">{{ __('dashboard-shop-product-category.addCategoryItem5') }}</button>
                         <div class="group">
-                            <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">ثبت درخواست</button>
-                            <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">ثبت درخواست و ادامه </button>
+                            <button type="submit" name="action" value="justSave" class="btn btn-primary rounded">{{ __('dashboard-shop-product-category.addCategoryItem6') }}</button>
+                            <button type="submit" name="action" value="saveAndContinue" class="btn btn-primary rounded">{{ __('dashboard-shop-product-category.addCategoryItem7') }} </button>
                         </div>
                     </div>
                     </form>
@@ -85,7 +85,7 @@
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ویرایش دسته بندی</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('dashboard-shop-product-category.editCategoryTitle') }}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -96,14 +96,14 @@
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان دسته بندی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.editCategoryItem1') }} :</span></div>
                                     <input type="text" class="form-control inputfield" name="name" value="{{ $category->name }}">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">شاخه دسته بندی:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.editCategoryItem2') }}:</span></div>
                                     <select class="form-control inputfield" name="parent_id">
                                         @if($category->parent == null)
-                                            <option value="null">دسته بندی اصلی</option>
+                                            <option value="null">{{ __('dashboard-shop-product-category.editCategoryItem2Main') }}</option>
                                             @endif
                                             @foreach($categoires as $singleCategory)
                                             @unless($singleCategory->parent()->get()->first() != null and $singleCategory->parent()->get()->first()->parent()->get()->first() != null and
@@ -123,8 +123,8 @@
                                 </div>
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">آیکون دسته بندی</h4>
-                                        <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $category->name }}" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+                                        <h4 class="mt-0 header-title">{{ __('dashboard-shop-product-category.addCategoryItem4') }}</h4>
+                                        <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $category->name }}" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>{{ __('dashboard-shop-product-category.editCategoryItemDelete') }}</a>
 
                                         <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ $category->icon['original'] }}">
                                     </div>
@@ -133,8 +133,8 @@
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
-                        <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
+                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">{{ __('dashboard-shop-product-category.editCategoryItem5') }}</button>
+                        <button type="submit" class="btn btn-primary rounded"> {{ __('dashboard-shop-product-category.editCategoryItem6') }}</button>
                     </div>
                     </form>
                 </div>
@@ -145,8 +145,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">لیست دسته بندی ها</h4>
-                        <p class="text-muted mb-4 font-13">در این بخش میتوانید لیست تمامی دسته بندی های فروشگاه را مشاهده کنید. همچنین میتوانید زیر دسته ها و شاخه های اصلی که هر دسته بندی دارا میباشد را به تفکیک مشاهده نمایید.همچنین میتوانید دسته بندی مورنظر خود را حذف , ویرایش و یا محصولات این دسته بندی را ملاحظه کنید.</p>
+                        <h4 class="mt-0 header-title">{{ __('dashboard-shop-product-category.listCategoryTitle') }}</h4>
+                        <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-product-category.listCategoryDesc') }}.</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -162,15 +162,15 @@
 
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">{{ __('dashboard-shop-product-category.listCategoryItem1') }}
                                                 </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">آیکون
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">{{ __('dashboard-shop-product-category.listCategoryItem2') }}
                                                 </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">نام
-                                                    دسته بندی
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">
+                                                    {{ __('dashboard-shop-product-category.listCategoryItem3') }}
                                                 </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">شاخه دسته بندی</th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">توضیحات</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">{{ __('dashboard-shop-product-category.listCategoryItem4') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">{{ __('dashboard-shop-product-category.listCategoryItem5') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
@@ -204,7 +204,7 @@
                                                                     {{ $category->parent()->get()->first()->parent()->get()->first()->parent()->get()->first()->name}} > {{ $category->parent()->get()->first()->parent()->get()->first()->name}} >
                                                                     {{ $category->parent()->get()->first()->name}}
                                                                     @else
-                                                                    دسته بندی اصلی
+                                                                  {{ __('dashboard-shop-product-category.editCategoryItem2Main') }}
                                                                     @endif
                                                 </td>
                                                 <td class="d-flex justify-content-between">
