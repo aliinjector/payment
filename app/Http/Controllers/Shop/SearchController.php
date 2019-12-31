@@ -14,7 +14,7 @@ class SearchController extends Controller
 {
     public function index(Request $request, $shop){
 
-      $products = Product::search(trim($request->queryy))->get();
+      $products = Product::where('english_name', $shop)->search($request->queryy)->get();
 
 
       $shop = Shop::where('english_name', $shop)->first();
