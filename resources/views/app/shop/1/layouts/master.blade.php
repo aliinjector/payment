@@ -22,6 +22,15 @@
     <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/css/custom.css" rel="stylesheet" type="text/css">
     <style>
+    .form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
         .dropdown-submenu {
             position: relative;
         }

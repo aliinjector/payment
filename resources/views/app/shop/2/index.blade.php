@@ -430,7 +430,7 @@
 
     <br><br><br>
     <div class="container-indent mt-5 mb-5">
-        <div class="container">
+        <div class="container text-center">
             <div class="tt-slider-fullwidth arrow-location-center-02 slick-animated-show-js">
               @foreach($feedbacks as $feedback)
               <div class="item">
