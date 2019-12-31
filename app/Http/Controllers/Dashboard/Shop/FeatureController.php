@@ -24,7 +24,7 @@ class FeatureController extends Controller
       else{
               $shop = \Auth::user()->shop()->first();
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
-              return view('dashboard.shop.feature.index', compact('categoires' , 'shop', 'productCategories'));
+              return view('dashboard.shop.feature.index', compact('shop', 'productCategories'));
 
             }
 

@@ -162,7 +162,7 @@
                     @auth
                     @if(\Auth::user()->id == $shop->user_id)
                         <div class="search-icon d-flex align-items-center ml-5 ">
-                            <a href="{{ route('dashboard-shop.index') }}" style="font-size:13px;">
+                            <a href="{{ route('dashboard.index') }}" style="font-size:13px;">
                                 <button type="button" class="btn bg-blue-omid text-white rounded">ورود به پنل مدیریت</button>
                             </a>
                         </div>

@@ -97,6 +97,8 @@
                                 <ul class="menu-btns">
                                     <li><a href="{{ route('login') }}" class="btn btn-md btn-auto btn-grad"><span>ورود</span></a></li>
                                     <li><a href="{{ route('register') }}" class="btn btn-md btn-auto btn-grad"><span>عضویت</span></a></li>
+
+
                                 </ul>
                             </nav>
                         </div><!-- .header-navbar @e -->
@@ -1011,6 +1013,8 @@
                                             <li><a target="_blank" href="/app//docs">{{ __('index.linkHayePorKarbordItem2') }}</a></li>
                                             <li><a target="_blank" href="/app//docs">{{ __('index.linkHayePorKarbordItem3') }}</a></li>
                                             <li><a href="/app/#faq">{{ __('index.linkHayePorKarbordItem4') }}</a></li>
+                                            <li><a href="/lang/fa">فارسی</a></li>
+                                            <li><a href="/lang/ar">عربی</a></li>
                                         </ul>
                                     </div>
                                 </div>

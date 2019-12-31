@@ -790,7 +790,8 @@ small {
 
 .main-menu-inner .menu-body .nav-item .nav-link.active,
 .main-menu-inner .menu-body .nav-item .nav-link.active i {
-    color: #122272
+    color: black;
+    font-weight: 800;
 }
 
 .main-menu-inner .menu-body .nav-item ul li {

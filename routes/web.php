@@ -20,8 +20,14 @@ use function foo\func;
 
 Auth::routes();
 
+Route::get('/lang/{locale}', function ($locale, Request $request) {
+    \Cookie::queue('lang', $locale, 999999);
+    return redirect()->back();
+});
+
+
 Route::get('/docs', 'DocumentationController@index')->name('documentation');
-Route::get('/{locale?}', 'IndexController@index')->name('index');
+Route::get('/', 'IndexController@index')->name('index');
 
 //Send Email
 Route::post('/sendemail/send', 'SendEmailController@send')->name('sendemail.send');
@@ -82,6 +88,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('product-list/{id}/edit-service', 'ProductController@editService')->name('product-list.edit-service');
         Route::post('product-list/getFeatures', 'ProductController@getFeatures')->name('product-list.getFeatures');
 
+        Route::prefix('categrory-managment')->group(function () {
 
         //Product-Category
         Route::resource('product-category', 'ProductCategoryController');
@@ -91,7 +98,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Feature
         Route::resource('feature', 'FeatureController');
         Route::post('feature/delete', 'FeatureController@destroy')->name('feature.delete');
-
+      });
 
 
         //Vouchers

@@ -27,8 +27,9 @@
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12 table-responsive">
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer rounded font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
-                                      aria-describedby="datatable_info">
+                                  <div class="table-responsive">
+
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
                                         <thead>
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 20px;">نام استفاده کننده
@@ -53,6 +54,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -70,4 +72,26 @@
     <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+    <script type="text/javascript">
+        $(window).resize(function() {
+            if ($(window).width() < 1300) {
+                $("body").addClass('enlarge-menu');
+
+            } else {
+                $("body").removeClass('enlarge-menu');
+
+            }
+        }).resize();
+    </script>
+    <script type="text/javascript">
+    $(window).resize(function() {
+        if ($(window).width() < 1070) {
+          $(".icon-show").removeClass('d-none');
+
+        } else {
+            $(".icon-show").addClass('d-none');
+
+        }
+    }).resize();
+    </script>
     @stop
