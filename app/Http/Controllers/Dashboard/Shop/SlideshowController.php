@@ -105,8 +105,12 @@ class SlideshowController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+      if($request->file('image') == null){
+        $image = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->image;
+      }
+      else{
         $image = $this->uploadFile($request->file('image'), false, true);
+      }
 
         $request->validate(['title' => 'required']);
         $slideshow = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->update([

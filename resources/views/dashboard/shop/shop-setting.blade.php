@@ -40,11 +40,11 @@
         <div class="page-title-box">
             <div class="float-right">
                 <ol style="direction: ltr" class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="">فروشگاه</a></li>
-                    <li class="breadcrumb-item active">تنظیمات فروشگاه</li>
+                    <li class="breadcrumb-item"><a href="">{{ __('dashboard-shop-shop-setting.leftCurrentPage1') }}</a></li>
+                    <li class="breadcrumb-item active">{{ __('dashboard-shop-shop-setting.leftCurrentPage2') }}</li>
                 </ol>
             </div>
-            <h4 class="page-title">تنظیمات فروشگاه</h4>
+            <h4 class="page-title">{{ __('dashboard-shop-shop-setting.pageTitle') }}</h4>
         </div>
         <!--end page-title-box-->
     </div>
@@ -55,19 +55,19 @@
 <ul class="nav nav-tabs md-tabs nav-justified primary-color" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#info" role="tab">
-            <i class="fas fa-info-circle m-1"></i>اطلاعات فروشگاه</a>
+            <i class="fas fa-info-circle m-1"></i>{{ __('dashboard-shop-shop-setting.boxTitle1') }}</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#theme" role="tab">
-            <i class="fa fa-cog pr-2 m-1"></i>تنظیمات قالب فروشگاه</a>
+            <i class="fa fa-cog pr-2 m-1"></i>{{ __('dashboard-shop-shop-setting.boxTitle2') }}</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#contact" role="tab">
-            <i class="fas fa-address-book m-1"></i>اطلاعات تماس فروشگاه</a>
+            <i class="fas fa-address-book m-1"></i>{{ __('dashboard-shop-shop-setting.boxTitle3') }}</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#invoice" role="tab">
-            <i class="fa fa-receipt m-1"></i>فاکتور فروشگاه</a>
+            <i class="fa fa-receipt m-1"></i>{{ __('dashboard-shop-shop-setting.boxTitle4') }}</a>
     </li>
 </ul>
 
@@ -82,43 +82,43 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="mt-0 header-title">اطلاعات فروشگاه</h3>
-                            <p class="text-muted mb-3">در این بخش میتوانید اطلاعات اصلی فروشگاه خود را مشاهده و در صورت نیاز آن ها را ویرایش نمایید. توجه داشته باشید که نام فروشگاه شما به عنوان نام اصلی فروشگاه و نام لاتین به عنوان آدرس فروشگاه در نظر گرفته خواهد شد . همچنین دسته بندی فروشگاه شما از اهمیت بالایی برخوردار میباشید زیرا قالب های پیشنهادی بر اساس دسته بندی فروشگاه شما ارائه خواهد شد.</p><br>
+                            <h3 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.etelaatForooshgahTitle') }}</h3>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaatForooshgahDesc') }}.</p><br>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group row">
-                                        <label for="example-text-input" class="col-sm-2 col-form-label text-center">نام</label>
+                                        <label for="example-text-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem1') }}</label>
                                         <div class="col-sm-10">
                                             <input class="form-control" type="text" name="firstName" disabled value="{{ \Auth::user()->firstName }}" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام خانوادگی</label>
+                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem2') }}</label>
                                         <div class="col-sm-10">
                                             <input class="form-control" type="text" name="lastName" disabled value="{{ \Auth::user()->lastName }}">
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام فروشگاه</label>
+                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem3') }}</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="name" placeholder="مثال: پایان پی" value="{{ old('title', $shopInformation->name) }}">
+                                            <input class="form-control" type="text" name="name" placeholder="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem3ex') }}" value="{{ old('title', $shopInformation->name) }}">
                                         </div>
                                     </div>
                                     <div class="form-group row  mb-0">
-                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام فروشگاه(لاتین)
-                                            <p class="text-muted mt-1" style="font-size: 11px;">این نام به عنوان آدرس اینترنتی شما انتخاب خواهد شد </p>
+                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem4') }}
+                                            <p class="text-muted mt-1" style="font-size: 11px;">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem4Desc') }}</p>
                                         </label>
                                         <div class="col-sm-10">
                                             <input class="form-control" type="text" name="english_name" value="{{ old('english_name', $shopInformation->english_name) }}">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی فروشگاه </label>
+                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem5') }}</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" name="category_id">
                                                 @if($shopInformation->category_id != null)
-                                                    <option value="">یک مورد را انتخاب نمایید</option>
+                                                    <option value="">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem5Select') }}</option>
                                                     @endif
                                                     @foreach ($shopCategories as $shopCategory)
                                                     <option {{ $shopCategory->id == $shopInformation->category_id ? 'selected' : ''}} value="{{ $shopCategory->id }}">{{ $shopCategory->name }}</option>
@@ -128,9 +128,9 @@
 
                                     </div>
                                     <div class="form-group row">
-                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">توضیحات فروشگاه </label>
+                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem6') }} </label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="description" placeholder="مثال: فروش و توضیع محصولات با کیفیت" value="{{ old('description', $shopInformation->description) }}">
+                                            <input class="form-control" type="text" name="description" placeholder="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem6ex') }}" value="{{ old('description', $shopInformation->description) }}">
                                         </div>
                                     </div>
 
@@ -142,14 +142,14 @@
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-purple"><i class="fa fa-shipping-fast"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
-                                                <h3 class="mb-0 mt-0 iranyekan">ارسال سریع</h3>
+                                                <h3 class="mb-0 mt-0 iranyekan">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem7') }}</h3>
                                                 <p class="text-muted mb-0">
-                                                    حداقل مبلغ سبد خرید فقط برای تهران ۰ تومان.</p>
+                                                    {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem7Desc') }}.</p>
                                             </div>
                                             <div class="mt-3 row">
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way" @if($shopInformation->quick_way == 'enable') checked @endif>
-                                                        <label class="custom-control-label iranyekan font-15" for="quick_way_on">فعال</label>
+                                                        <label class="custom-control-label iranyekan font-15" for="quick_way_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem7Enable') }}</label>
                                                 </div>
 
                                             </div>
@@ -165,15 +165,15 @@
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-success"><i class="fa fa-truck"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
-                                                <h3 class="mb-0 mt-0 iranyekan"> ارسال پستی</h3>
+                                                <h3 class="mb-0 mt-0 iranyekan"> {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem8') }}</h3>
                                                 <p class="text-muted mb-0">
 
-                                                    هزینه ارسال برای تهران ۵٫۰۰۰ تومان.</p>
+                                                {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem8Desc') }}.</p>
                                             </div>
                                             <div class="mt-3 row">
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="posting_way_on" name="posting_way" @if($shopInformation->posting_way == 'enable') checked @endif>
-                                                        <label class="custom-control-label iranyekan font-15" for="posting_way_on">فعال</label>
+                                                        <label class="custom-control-label iranyekan font-15" for="posting_way_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem8Enable') }}</label>
                                                 </div>
 
                                             </div>
@@ -189,15 +189,15 @@
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fas fa-people-carry"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
-                                                <h3 class="mb-0 mt-0 iranyekan">دریافت حضوری</h3>
+                                                <h3 class="mb-0 mt-0 iranyekan">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9') }}</h3>
                                                 <p class="text-muted mb-0">
 
-                                                    امکان دریافت حضوری محصولات فروشگاه.</p>
+                                                    {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9Desc') }}.</p>
                                             </div>
                                             <div class="mt-3 row">
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way" @if($shopInformation->person_way == 'enable') checked @endif>
-                                                        <label class="custom-control-label iranyekan font-15" for="person_way_on">فعال</label>
+                                                        <label class="custom-control-label iranyekan font-15" for="person_way_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9Enable') }}</label>
                                                 </div>
 
                                             </div>
@@ -220,10 +220,10 @@
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">آیکون فروشگاه</h4>
-                            <p class="text-muted mb-3">لطفا آیکون فروشگاه خود را آپلود نمایید.</p>
-                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-type="icon" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
-                                  class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+                            <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem10') }}</h4>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem10Desc') }}.</p>
+                            <a class="mr-2 font-15" href="" id="icon-delete" title="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem10Delete') }}" data-type="icon" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
+                                  class="far fa-trash-alt text-danger font-18 pl-2"></i>{{ __('dashboard-shop-shop-setting.etelaatForooshgahDelete') }}</a>
                             <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->icon['original'] }}">
                         </div>
                         <!--end card-body-->
@@ -234,10 +234,10 @@
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">لوگوی فروشگاه</h4>
-                            <p class="text-muted mb-3">لطفا لوگوی فروشگاه خود را آپلود نمایید.</p>
-                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف لوگو" data-type="logo" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
-                                  class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+                            <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem11') }}</h4>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem11Desc') }}.</p>
+                            <a class="mr-2 font-15" href="" id="icon-delete" title="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem11Delete') }}" data-type="logo" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
+                                  class="far fa-trash-alt text-danger font-18 pl-2"></i>{{ __('dashboard-shop-shop-setting.etelaatForooshgahDelete') }}</a>
                             <input type="file" id="input-file-now" name="logo" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->logo['original'] }}">
                         </div>
                         <!--end card-body-->
@@ -250,18 +250,14 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">اطلاعات حساب جهت تسویه</h4>
-                            <p class="text-muted mb-3">لطفا شماره شبای حسابی که تمایل دارید درآمد شما از فروشگاه به آن واریز شود را وارد کنید. در صورتی که شماره شبای حساب خود را ندارید، می‌توانید از سایت بانکی که در آن حساب باز کرده‌اید اقدام به
-                                دریافت شماره
-                                شبا نمایید.
-
-                                توجه کنید که شماره شبای وارد شده باید به نام صاحب فروشگاه باشد. در صورت وجود هرگونه مغایرت تسویه انجام نخواهد شد.<p>
+                            <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.tasvieHesabTitle') }}</h4>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.tasvieHesabDesc') }}<p>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">شماره شبا</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tasvieHesabShomareSheba') }}</label>
 
-                                <input type="text" class="form-control" placeholder="مثال: 49489415618941894125649653">
+                                <input type="text" class="form-control" placeholder="{{ __('dashboard-shop-shop-setting.tasvieHesabShomareShebaex') }}">
                                 <div class="input-group-append"><span class="input-group-text bg-secondary text-white font-weight-bold" id="basic-addon8"> IR</span></div>
                             </div>
                         </div>
@@ -276,7 +272,7 @@
             </div>
 
             <div class="text-right mb-3">
-                <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">ثبت تغییرات</button><br>
+                <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">{{ __('dashboard-shop-shop-setting.sabt') }}</button><br>
             </div>
         </form>
     </div>
@@ -289,61 +285,61 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">تنظیمات صفحه فروشگاه</h4>
-                            <p class="text-muted mb-3">در این بخش میتوانید تنظیمات قالب فعلی فروشگاه خود را مشاهده نمایید و در صورت نیاز آن را ویرایش نمایید. همچنین میتوانید قبل از انتخاب قالب جدید آن را در بخش پیش نمایش مشاهده کرده و سپس به انتخاب آن بپردازید.<p>
+                            <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahTitle') }}</h4>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahDesc') }}.<p>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش دسته بندی های سایت</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem1') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="menu_show">
-                                    <option value="nestead_menu">منوی تو در تو در هدر فروشگاه</option>
-                                    <option value="nestead_box" @if(\Auth::user()->shop()->first()->menu_show == 'nestead_box') selected @endif>باکس تو در تو در صفحه نمایش محصولات</option>
+                                    <option value="nestead_menu">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem1Item1') }}</option>
+                                    <option value="nestead_box" @if(\Auth::user()->shop()->first()->menu_show == 'nestead_box') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem1Item2') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">واترمارک روی تصویر محصولات
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#watermark">ویرایش تصویر</button>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem2') }}
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#watermark">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem2Edit') }}</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="watermark_status">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->watermark_status == 'disable') selected @endif>غیر فعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem2Enable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->watermark_status == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem2Disable') }}</option>
                                 </select>
                             </div>
                             <div class="card mt-1 col-10 mr-8 collapse" id="watermark">
                                 <div class="card-body">
-                                    <h4 class="header-title"> تصویر واترمارک</h4>
+                                    <h4 class="header-title"> {{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem3') }}</h4>
                                     <input type="file" id="input-file-now" name="watermark" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->watermark }}">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">محاسبه درصد مالیات بر ارزش افزوده</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center"> {{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem4') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="VAT">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem4Enable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->VAT == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem4Disable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش تعداد فروش های هر محصول به کاربران</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem5') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="buyCount_show">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->buyCount_show == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem5Enable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->buyCount_show == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem5Disable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش پیغام پیشنهاد ویژه در بالای تمامی صفحات
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm" data-toggle="collapse" data-target="#demo">ویرایش پیغام</button>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem6') }}
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm" data-toggle="collapse" data-target="#demo">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem6Edit') }}</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="special_offer">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem6Enable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem6Disable') }}</option>
                                     <input type="hidden" name="special_offer_text" value="{{ \Auth::user()->shop()->first()->special_offer_text }}">
                                 </select>
                                 <div id="demo" class="collapse mt-2">
@@ -355,7 +351,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">تم وبسایت</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem7') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="template_id" id="AgencyDetails">
                                     <option {{ $templates[0]->id == \Auth::user()->shop()->first()->template->id ? 'selected' : ''}} value="{{ $templates[0]->id }}" data-type='<div class="img-wrapper m-5">
@@ -379,7 +375,7 @@
                 <!--end col-->
             </div>
             <div class="text-right mb-3">
-                <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">ثبت تغییرات</button><br>
+                <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">{{ __('dashboard-shop-shop-setting.sabt') }}</button><br>
             </div>
         </form>
     </div>
@@ -393,14 +389,14 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title"> اطلاعات ارتباطی فروشگاه</h4>
-                            <p class="text-muted mb-3">در این بخش میتوانید اطلاعات ارتباطی فروشگاه را مشاهده و یا آن ها را ویرایش نمایید . لازم بذکر میباشد که این اطلاعات در صفحه ی تماس با ما برای خریداران به نمایش در خواهد آمد.<p>
+                            <h4 class="mt-0 header-title"> {{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahTitle') }}</h4>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahDesc') }}.<p>
                         </div>
 
 
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-password-input" class="col-sm-2 col-form-label text-center">ایمیل فروشگاه</label>
+                                <label for="example-password-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem1') }}</label>
                                 <input class="form-control" type="email" name="shop_email" style="direction: ltr" id="example-password-input" value="{{ old('shop_email', $shopContactInformation->shop_email) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-envelope text-dark font-18"></i></span></div>
                             </div>
@@ -409,14 +405,14 @@
 
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-password-input" class="col-sm-2 col-form-label text-center">تلفن ثابت فروشگاه</label>
-                                <input class="form-control" type="text" name="tel" placeholder="مثال: 22657485-021" id="example-password-input" value="{{ old('tel', $shopContactInformation->tel) }}">
+                                <label for="example-password-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem2') }}</label>
+                                <input class="form-control" type="text" name="tel" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem2ex') }}" id="example-password-input" value="{{ old('tel', $shopContactInformation->tel) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-phone text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-tel-input" class="col-sm-2 col-form-label text-center">تلفن همراه</label>
+                                <label for="example-tel-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem3') }}</label>
                                 <input class="form-control" type="text" name="phone" disabled value="{{ \Auth::user()->mobile }}" id="example-tel-input">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
                             </div>
@@ -424,87 +420,87 @@
 
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">استان فروشگاه</label>
-                                <input class="form-control" type="text" name="province" placeholder=" مثال: تهران" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
+                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4') }}</label>
+                                <input class="form-control" type="text" name="province" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4ex') }}" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">شهر فروشگاه</label>
-                                <input class="form-control" type="text" name="city" placeholder=" مثال: تهران" id="example-week-input" value="{{ old('city', $shopContactInformation->city) }}">
+                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem5') }}</label>
+                                <input class="form-control" type="text" name="city" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem5ex') }}" id="example-week-input" value="{{ old('city', $shopContactInformation->city) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-city text-dark font-18"></i></span></div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">آدرس فروشگاه</label>
-                                <input class="form-control" type="text" name="address" placeholder="مثال: خیابان پاسداران - گلستان چهارم - پلاک ۲۱ - واحد ۱۱" id="example-datetime-local-input"
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem6') }}</label>
+                                <input class="form-control" type="text" name="address" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem6ex') }}" id="example-datetime-local-input"
                                   value="{{ old('address', $shopContactInformation->address) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-address-card text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">تلگرام</label>
-                                <input type="text" class="form-control" name="telegram_url" placeholder="مثال: tg://msg?text = www.example.com?t=12" value="{{ old('telegram_url', $shopContactInformation->telegram_url) }}">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem7') }}</label>
+                                <input type="text" class="form-control" name="telegram_url" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem6ex') }}" value="{{ old('telegram_url', $shopContactInformation->telegram_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-telegram text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">اینستاگرام</label>
-                                <input type="text" class="form-control" name="instagram_url" placeholder="مثال: https://www.instagram.com/john_doe" value="{{ old('instagram_url', $shopContactInformation->instagram_url) }}">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem8') }}</label>
+                                <input type="text" class="form-control" name="instagram_url" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem8ex') }}" value="{{ old('instagram_url', $shopContactInformation->instagram_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-instagram text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">فیسبوک</label>
-                                <input type="text" class="form-control" name="facebook_url" placeholder="مثال: https://www.facebook.com/ZambianWatchdog" value="{{ old('facebook_url', $shopContactInformation->facebook_url) }}">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem9') }}</label>
+                                <input type="text" class="form-control" name="facebook_url" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem9ex') }}" value="{{ old('facebook_url', $shopContactInformation->facebook_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fab fa-facebook-f text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">سروش</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem10') }}</label>
                                 <input type="text" class="form-control" name="soroush_url" value="{{ old('soroush_url', $shopContactInformation->soroush_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-bullseye text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">بیسفون</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem11') }}</label>
                                 <input type="text" class="form-control" name="bisphone_url"  value="{{ old('bisphone_url', $shopContactInformation->bisphone_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-certificate	 text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">آی گپ</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem12') }}</label>
                                 <input type="text" class="form-control" name="Igap_url" value="{{ old('Igap_url', $shopContactInformation->Igap_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-check-circle text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">گپ</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem13') }}</label>
                                 <input type="text" class="form-control" name="gap_url" value="{{ old('gap_url', $shopContactInformation->gap_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-comment	 text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">ویسپی</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem14') }}</label>
                                 <input type="text" class="form-control" name="wispi_url" value="{{ old('wispi_url', $shopContactInformation->wispi_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-hashtag	 text-dark font-18"></i></span></div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">بله</label>
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem15') }}</label>
                                 <input type="text" class="form-control" name="bale_url" value="{{ old('bale_url', $shopContactInformation->bale_url) }}">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-envelope-open	 text-dark font-18"></i></span></div>
                             </div>
@@ -513,7 +509,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
-                                <label for="example-password-input" class="col-sm-2 col-form-label text-center">آدرس در نقشه</label>
+                                <label for="example-password-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem16') }}</label>
                                 <div class="input-group-append">
                                     <div id="map"></div>
                                     <input name="lat" value="{{ $shopContactInformation->lat ? $shopContactInformation->lat : '35.6969331' }}" type="hidden" id="lat"><br>
@@ -544,107 +540,107 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">تنظیمات فاکتور فروشگاه</h4>
-                            <p class="text-muted mb-3">در این بخش میتوانید فاکتور فروشگاه را شخصی سازی نمایید . توجه داشته باشید که هر بخشی که فعال باشد در فاکتور کاربر درج خواهد شد . همچنین شما میتوانید مواردی که قابلیت ویرایش در این بخش را دارند ویرایش نمایید.<p>
+                            <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahTitle') }}</h4>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahDesc') }}.<p>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش محل امضا</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem1') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="sign">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->sign == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->sign == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش لوگو</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem2') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="logo">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->logo == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->logo == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش تاریخ</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem3') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="date">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->date == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->date == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شماره فاکتور</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem4') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="number">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->number == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->number == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش اطلاعات خریدار</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem5') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="custom_info">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->custom_info == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->custom_info == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش اطلاعات فروشنده</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem6') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="seller_info">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->seller_info == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->seller_info == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش مهر تایید بر روی فاکتور</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem7') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="approved">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->approved == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->approved == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش آدرس فروشنده</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem8') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="address">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->address == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->address == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شماره فروشنده</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem9') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="tel">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->tel == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->tel == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش ایمیل فروشنده</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem10') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="email">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->email == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->email == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش کد اقتصادی
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#economic_code_number">ویرایش کد اقتصادی</button>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem11') }}
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#economic_code_number">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem11Edit') }}</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="economic_code">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->economic_code == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->economic_code == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="economic_code_number" class="collapse mt-2">
                                     <input class="form-control border-custom" type="text" name="economic_code_number" value="{{ \Auth::user()->shop()->first()->invoice->economic_code_number }}">
@@ -653,13 +649,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شماره ثبت
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#registration_number‌_number">ویرایش شماره ثبت</button>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem12') }}
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#registration_number‌_number">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem12Edit') }}</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name=" registration_number">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->registration_number == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->registration_number == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="registration_number‌_number" class="collapse mt-2">
                                     <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->registration_number‌_number }}">
@@ -667,22 +663,22 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش مالیات بر ارزش افزوده</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem13') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="vat">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->vat == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->vat == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش توضیحات در فاکتور
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#description">ویرایش متن توضیحات</button>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem14') }}
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#description">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem14Edit') }}</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="description_status">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->description_status == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->description_status == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="description" class="collapse mt-2">
                                     <input class="form-control border-custom" type="text" name="description" value="{{ \Auth::user()->shop()->first()->invoice->description }}">
@@ -691,13 +687,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش شعار ( پند ) در فاکتور
-                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#motto_text">ویرایش متن شعار ( پند )</button>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem15') }}
+                                <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#motto_text">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem15Edit') }}</button>
                             </label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="motto">
-                                    <option value="enable">فعال</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->motto == 'disable') selected @endif>غیرفعال</option>
+                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->motto == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="motto_text" class="collapse mt-2">
                                     <input class="form-control border-custom" type="text" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->motto_text }}">
