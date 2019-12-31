@@ -31,12 +31,21 @@ class Controller extends BaseController
 
        protected function uploadFile($file, $watermark = true, $resize = true)
         {
-            if (\App::environment('local')) {
+
+            $local = array(
+                '127.0.0.1:8000',
+                'localhost:8000',
+                '::1'
+            );
+
+            if(!in_array($_SERVER['REMOTE_ADDR'], $local)){
                 $folder = public_path();
-            }
-            if (\App::environment('production')) {
+            }else{
                 $folder = public_path() . '_html';
             }
+
+
+
             $year = Carbon::now()->year;
             $month = Carbon::now()->month;
             $day = Carbon::now()->day;
@@ -60,10 +69,15 @@ class Controller extends BaseController
 
     private function resize($path, $sizes, $filePath, $fileName)
     {
-        if (\App::environment('local')) {
-          $folder = public_path();
-        }
-        if (\App::environment('production')) {
+        $local = array(
+            '127.0.0.1:8000',
+            'localhost:8000',
+            '::1'
+        );
+
+        if(!in_array($_SERVER['REMOTE_ADDR'], $local)){
+            $folder = public_path();
+        }else{
             $folder = public_path() . '_html';
         }
 
