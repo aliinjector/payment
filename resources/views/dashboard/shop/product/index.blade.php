@@ -144,7 +144,7 @@ a.color-pick:before {
                                             @endif
                                         </div>
 
-                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none physicalFeatures">
+                                        <div class="border border-info input-group mt-3 pb-3 rounded d-none physicalFeatures">
 
                                         </div>
 
@@ -380,7 +380,7 @@ a.color-pick:before {
                                             @endif
                                         </div>
 
-                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none fileFeatures">
+                                        <div class=" border border-info input-group mt-3 pb-3 rounded d-none fileFeatures">
 
                                         </div>
 
@@ -593,7 +593,7 @@ a.color-pick:before {
                                             @endif
                                         </div>
 
-                                        <div class="bg-info border border-info input-group mt-3 pb-3 rounded d-none serviceFeatures">
+                                        <div class=" border border-info input-group mt-3 pb-3 rounded d-none serviceFeatures">
 
                                         </div>
 
