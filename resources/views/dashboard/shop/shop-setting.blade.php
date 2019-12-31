@@ -149,7 +149,7 @@
                                             <div class="mt-3 row">
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way" @if($shopInformation->quick_way == 'enable') checked @endif>
-                                                        <label class="custom-control-label iranyekan font-15" for="quick_way_on">رفعال</label>
+                                                        <label class="custom-control-label iranyekan font-15" for="quick_way_on">فعال</label>
                                                 </div>
 
                                             </div>
@@ -236,7 +236,7 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">لوگوی فروشگاه</h4>
                             <p class="text-muted mb-3">لطفا لوگوی فروشگاه خود را آپلود نمایید.</p>
-                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-type="logo" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
+                            <a class="mr-2 font-15" href="" id="icon-delete" title="حذف لوگو" data-type="logo" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
                                   class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
                             <input type="file" id="input-file-now" name="logo" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->logo['original'] }}">
                         </div>
