@@ -270,7 +270,7 @@
                 <div class="review-box text-center align-item-center" style="direction:ltr">
                     @auth
                     @if(collect($userProducts)->where('id' ,$product->id)->count() > 0)
-                        <h5 style="color: #f1646c;" class="p-3">امتیاز خود را به این کالا ثبت کنید</h5>
+                        <h5 style="color: #f1646c;" class="p-3">{{ $productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0 ? "شما مجاز به ثبت امتیاز نمیباشید"  : "امتیاز خود را به این کالا ثبت کنید " }}</h5>
                         <form class="" action="{{route('rate' , ['shop'=>$shop->english_name, 'id'=>$product->id])}}" method="post">
                             @csrf {{ method_field('PATCH') }}
                             @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
@@ -296,9 +296,11 @@
                         @endif
                         @endauth
                         <br>
+                        @if($shop->buyCount_show == 'enable')
                         <h4 class="header-title pt-4">مجموع فروش</h4>
                         <div class="review-box text-center align-item-center p-3">
-                            <h1 class="byekan p-2">{{ $product->buyCount }}</h1>
+                           <h1 class="byekan">{{ $product->buyCount }}</h1>
+                           @endif
                             <ul class="list-inline mb-0 product-review">
                                 <li class="list-inline-item"><small class="text-muted font-14">مجموع آرا ({{ $productRates->count() }})</small></li>
                                 <li class="list-inline-item"><small class="text-muted font-14">متوسط آرا ({{ (int)$product->avgRating }})</small></li>

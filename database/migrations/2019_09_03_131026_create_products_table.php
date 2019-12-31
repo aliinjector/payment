@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->unsignedInteger('shop_id');
             $table->string('title');
+            $table->string('slug');
             $table->bigInteger('productCat_id')->unsigned()->index();
             $table->bigInteger('brand_id')->unsigned()->index()->nullable();
             $table->unsignedInteger('status')->default(1);
@@ -40,6 +41,7 @@ class CreateProductsTable extends Migration
             $table->text('feature_10')->nullable();
             $table->integer('viewCount')->default(0);
             $table->integer('amount')->default(0)->nullable();
+            $table->integer('min_amount')->default(0)->nullable();
             $table->integer('refund')->default(0);
             $table->integer('weight')->nullable();
             $table->integer('file_size')->nullable();

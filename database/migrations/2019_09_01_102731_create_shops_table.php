@@ -33,6 +33,7 @@ class CreateShopsTable extends Migration
             $table->text('logo')->nullable();
             $table->text('watermark')->nullable();
             $table->enum('watermark_status',['enable', 'disable'])->default('disable');
+            $table->enum('buyCount_show',['enable', 'disable'])->default('disable');
             $table->string('description');
             $table->unsignedInteger('template_id')->default(1);
             $table->timestamps();
