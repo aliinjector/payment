@@ -4,11 +4,10 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
+	config.language = 'fa';
 	config.height = '200px';
 	config.width = '83%';
 	config.contentsLangDirection = 'rtl';
-
-
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html

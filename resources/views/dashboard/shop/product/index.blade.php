@@ -9,18 +9,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <style media="screen">
-  #input-tags_tagsinput{
-    width: 83%!important;
-    height: 50px!important;
-    min-height: 50px!important;
-    font-size: 13px;
-    border: 1px solid #e8ebf3;
-    height: calc(2.3rem + 2px);
-    color: #2f5275;
-  }
-  #input-tags_addTag{
-    float: right!important;
-  }
+    #input-tags_tagsinput {
+        width: 83% !important;
+        height: 50px !important;
+        min-height: 50px !important;
+        font-size: 13px;
+        border: 1px solid #e8ebf3;
+        height: calc(2.3rem + 2px);
+        color: #2f5275;
+    }
+
+    #input-tags_addTag {
+        float: right !important;
+    }
 </style>
 <div class="page-content">
     <div class="container-fluid">
@@ -220,21 +221,21 @@
                                         </div>
 
 
-                                    <div class="facility">
-                                        <div class="input-group mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
-                                            <input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
-                                            <div class="input-group-append">
-                                              <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
-                                                        {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
-                                                    </span></a></div>
+                                        <div class="facility">
+                                            <div class="input-group mt-3">
+                                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
+                                                <input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
+                                                <div class="input-group-append">
+                                                    <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
+                                                            {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
+                                                        </span></a></div>
 
+                                            </div>
                                         </div>
-                                      </div>
 
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem12') }} :</span></div>
-                                            <input value="{{ old('tags') }}" type="text"  id="input-tags" name="tags" class="form-control" />
+                                            <input value="{{ old('tags') }}" type="text" id="input-tags" name="tags" class="form-control" />
                                         </div>
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13') }} :</span></div>
@@ -375,12 +376,12 @@
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
                                                 <input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                                 <div class="input-group-append">
-                                                  <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
+                                                    <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
                                                             {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
                                                         </span></a></div>
 
                                             </div>
-                                          </div>
+                                        </div>
 
 
                                         <div class="input-group mt-3">
@@ -541,12 +542,12 @@
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
                                                 <input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                                 <div class="input-group-append">
-                                                  <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
+                                                    <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
                                                             {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
                                                         </span></a></div>
 
                                             </div>
-                                          </div>
+                                        </div>
 
 
                                         <div class="input-group mt-3">
@@ -762,12 +763,13 @@
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
     <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
     <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
-    <script src="{{ asset('/dashboard/assets/js/feature.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+    <script src="{{ asset('/dashboard/assets/js/feature.js') }}"></script>
 
-<script type="text/javascript">
-	$('#input-tags').tagsInput();
-</script>
+
+    <script type="text/javascript">
+        $('#input-tags').tagsInput();
+    </script>
 
     <script type="text/javascript">
         $(window).resize(function() {
@@ -793,7 +795,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function() {
-          $('#input-tags_tag').val("");
+            $('#input-tags_tag').val("");
             $(".dropify-clear").remove();
         });
     </script>
@@ -871,37 +873,41 @@
                 </script>
                 <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
                 <script>
-                    CKEDITOR.replace('description');
+                    CKEDITOR.replace('description', {
+                        language: 'fa',
+                        uiColor: '#F3F6F7'
+                    });
                 </script>
                 <script>
-                $(document).ready(function() {
-                    $(".addFacility").click(function() {
-                        $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div><input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} "></div>');
-                    });
+                    $(document).ready(function() {
+                        $(".addFacility").click(function() {
+                            $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('
+                                dashboard - shop - product - index.addMahsoolFizikiItem11 ') }} :</span></div><input value="{{ old('
+                                feature[]
+                                ') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('
+                                dashboard - shop - product - index.addMahsoolFizikiItem11ex ') }} "></div>');
+                        });
                     });
                 </script>
                 <script type="text/javascript">
-                $("#tagsinput").tagsInput();
+                    $("#tagsinput").tagsInput();
 
-$("#tagsinput_tag").on('paste',function(e){
-  var element=this;
-  setTimeout(function () {
-      var text = $(element).val();
-      var target=$("#tagsinput");
-      var tags = (text).split(/[ ,]+/);
-      for (var i = 0, z = tags.length; i<z; i++) {
-            var tag = $.trim(tags[i]);
-            if (!target.tagExist(tag)) {
-                  target.addTag(tag);
-            }
-            else
-            {
-                $("#tagsinput_tag").val('');
-            }
+                    $("#tagsinput_tag").on('paste', function(e) {
+                        var element = this;
+                        setTimeout(function() {
+                            var text = $(element).val();
+                            var target = $("#tagsinput");
+                            var tags = (text).split(/[ ,]+/);
+                            for (var i = 0, z = tags.length; i < z; i++) {
+                                var tag = $.trim(tags[i]);
+                                if (!target.tagExist(tag)) {
+                                    target.addTag(tag);
+                                } else {
+                                    $("#tagsinput_tag").val('');
+                                }
 
-       }
-  }, 0);
-});
-
+                            }
+                        }, 0);
+                    });
                 </script>
                 @stop

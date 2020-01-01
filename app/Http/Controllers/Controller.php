@@ -59,6 +59,8 @@ class Controller extends BaseController
         }
         if ($resize == true && in_array($contentType, $imageMimeTypes)) {
             $sizes = ["80" => "80", "400" => "400", "250" => "250", "200" => "175", "200" => "100", "410" => "270", "120" => "50", "16" => "16"];
+            dd($folder);
+
             return $url['images'] = $this->resize($file, $sizes, $filePath, $fileName);
         } else {
             return $file;
