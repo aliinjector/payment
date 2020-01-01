@@ -62,6 +62,7 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+         dd($request->all());
          //check if product category is null
          if($request->productCat_id == "null"){
            $request->merge(['productCat_id' => null]);

@@ -85,5 +85,10 @@ public function sluggable()
         return $this->hasMany('App\Gallery');
     }
 
+    public function Facilities()
+    {
+        return $this->hasMany('App\Facility');
+    }
+
 
 }
