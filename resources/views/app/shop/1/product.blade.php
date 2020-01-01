@@ -244,7 +244,7 @@
                     <div class="col-lg-3 align-self-center"><img src="{{ $product->image['250,250'] }}" alt="" height="250" class="d-block mx-auto col-12"></div>
                     <div class="col-lg-9">
                         <h5 class="mt-3">توضیحات :</h5>
-                        <p class="text-muted mb-4">{{ $product->description }}</p>
+                        <p class="text-muted mb-4"> {!! $product->description  !!}</p>
                         <ul class="list-unstyled mb-4">
                             @for ($i=1; $i
                             <= 10; $i++) @if ($product->{"feature_{$i}"})

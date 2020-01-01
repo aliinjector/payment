@@ -44,7 +44,6 @@ class Controller extends BaseController
             $folder = public_path();
         }
 
-        dd($folder);
 
         $year = Carbon::now()->year;
         $month = Carbon::now()->month;

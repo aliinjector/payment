@@ -30,7 +30,7 @@ return array(
 
     "replyNazaraatTitle"         => "پاسخ به نظر",
     "replyNazaraatItem1"         => "متن پاسخ",
-    "replyNazaraatItem2"         => "تسجيل الطلب",
+    "replyNazaraatItem2"         => "تسجيل الطلب∑",
 
 
 

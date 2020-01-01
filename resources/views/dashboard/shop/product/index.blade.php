@@ -115,7 +115,9 @@ a.color-pick:before {
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem2') }} :</span></div>
-                                            <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem2ex') }}">
+                                            {{-- <input type="text" value="{{ old('description') }}" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem2ex') }}"> --}}
+                                            <textarea  class="form-control" id="description" name="description"></textarea>
+
                                         </div>
 
                                         <div class="input-group mt-3">
@@ -1067,4 +1069,8 @@ $(window).resize(function() {
                     $('.show-tick').addClass("border");
                 });
             </script>
+            <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+          <script>
+              CKEDITOR.replace( 'description' );
+          </script>
             @stop

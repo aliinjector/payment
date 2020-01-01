@@ -127,7 +127,7 @@
                      <div class="tt-item">
                         <div class="tt-collapse-title">توضیحات</div>
                         <div style="text-align: justify" class="tt-collapse-content">
-                           {{ $product->description }}
+                          {!! $product->description  !!}
                         </div>
                      </div>
                      <div class="tt-item">
