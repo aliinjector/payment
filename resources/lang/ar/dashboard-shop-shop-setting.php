@@ -10,7 +10,7 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    "leftCurrentPage1"         => "فروشگاه",
+    "leftCurrentPage1"         => "متجر",
     "leftCurrentPage2"         => "تنظیمات فروشگاه",
     "pageTitle"         => "تنظیمات فروشگاه",
     "boxTitle1"         => "اطلاعات فروشگاه",
@@ -144,6 +144,6 @@ return array(
         "tanzimaateFactoreForooshgahItem14Edit"         =>  "ویرایش متن توضیحات",
         "tanzimaateFactoreForooshgahItem15"         =>  "نمایش شعار ( پند ) در فاکتور",
         "tanzimaateFactoreForooshgahItem15Edit"         =>  "ویرایش متن شعار ( پند )",
-        
+
 
 );

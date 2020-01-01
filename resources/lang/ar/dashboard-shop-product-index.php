@@ -11,7 +11,7 @@ return array(
     |
     */
     "leftCurrentPage1"         => "قائمة المنتجات",
-    "leftCurrentPage2"         => "فروشگاه",
+    "leftCurrentPage2"         => "متجر",
     "pageTitle"         => "قائمة المنتجات",
     "addBtn"         => "اضافه کردن محصول",
     "addTitle"         => "يرجى اختيار نوع المنتج الخاص بك",

@@ -10,7 +10,7 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    "leftCurrentPage"         => "فروشگاه",
+    "leftCurrentPage"         => "متجر",
     "pageTitle"         => "لوحة التحكم",
     "box1"         => "تعداد  کالاهای فروشگاه",
     "box1Taghiraat"         => "زيادة بنسبة مقارنة بالأمس",

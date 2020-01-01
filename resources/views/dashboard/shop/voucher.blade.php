@@ -23,11 +23,10 @@
                 <div class="page-title-box">
                     <div class="float-right">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item "> کدهای تخفیف </li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
+                            <li class="breadcrumb-item ">{{ __('dashboard-shop-voucher.leftCurrentPage1') }}</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ __('dashboard-shop-voucher.leftCurrentPage2') }}</a></li>
                         </ol>
                     </div>
-                    {{-- <h4 class="page-title">لیست محصولات دسته بندی شماره یک</h4> --}}
                 </div>
                 <!--end page-title-box-->
             </div>
@@ -35,7 +34,7 @@
         </div>
 
         <div class="text-right">
-            <a href="#" data-toggle="modal" data-target="#AddVoucherModal" class="btn btn-primary text-white d-inline-block text-right mb-4 font-weight-bold mt-3 rounded"><i class="fa fa-plus mr-2"></i>افزودن کد تخفیف</a>
+            <a href="#" data-toggle="modal" data-target="#AddVoucherModal" class="btn btn-primary text-white d-inline-block text-right mb-4 font-weight-bold mt-3 rounded"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-voucher.addBtn') }}</a>
         </div>
 
 
@@ -45,7 +44,7 @@
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">افزودن کد تخفیف جدید</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('dashboard-shop-voucher.addModalTitle') }}</h5>
                         <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -55,29 +54,29 @@
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" placeholder="مثال: کد تخفیف 10000 تومانی">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem1') }}:</span></div>
+                                    <input type="text" class="form-control inputfield" name="name" placeholder="{{ __('dashboard-shop-voucher.addModalItem1ex') }}">
                                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد :</span></div>
-                                    <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد کد تخفیف مانند مناسبت آن">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem2') }} :</span></div>
+                                    <input type="text" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-voucher.addModalItem2ex') }}">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
-                                    <input type="number" class="form-control inputfield" name="uses" placeholder="مثال: 10">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem3') }} :</span></div>
+                                    <input type="number" class="form-control inputfield" name="uses" placeholder="{{ __('dashboard-shop-voucher.addModalItem3ex') }}">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
-                                    <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000">
-                                    <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem4') }}:</span></div>
+                                    <input type="text" class="form-control inputfield" name="discount_amount" placeholder="{{ __('dashboard-shop-voucher.addModalItem4ex') }}">
+                                    <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-voucher.addModalItem4Left') }}</span></div>
 
                                 </div>
 
                                 <div class="input-group mt-3 d-none users-voucher">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تخفیف به کاربران خاص:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem5') }}:</span></div>
                                     <select multiple="multiple" class="form-control" id="exampleFormControlSelect2" name="users[]">
                                         @foreach($usersFullName as $userFullName)
                                         <option>{{ $userFullName }}</option>
@@ -86,30 +85,30 @@
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem6') }}:</span></div>
                                     <input type="hidden" class="start-alt-field col h-50px border-0" name="starts_at" />
                                     <input class="start-field-example col h-50px border-0" name="" />
 
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem7') }}:</span></div>
                                     <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
                                     <input class="expire-field-example col h-50px border-0" name="" />
                                 </div>
 
-                                <div class="input-group-append mt-3"><a href="#" class="voucher"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>تخفیف به کاربران خاص
+                                <div class="input-group-append mt-3"><a href="#" class="voucher"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-voucher.addModalItem5') }}
                                         </span></a>
                                 </div>
                             </div>
                             <div class="custom-control custom-switch switch-blue input-group-append mt-3 m-3">
                                 <input type="checkbox" class="custom-control-input" id="customSwitchBlue" name="first_purchase">
-                                <label class="custom-control-label font-15 text-dark"  for="customSwitchBlue">فقط برای سفارش اول کاربران فعال باشد</label>
+                                <label class="custom-control-label font-15 text-dark"  for="customSwitchBlue">{{ __('dashboard-shop-voucher.addModalItem8') }}</label>
                             </div>
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
-                        <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
+                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">{{ __('dashboard-shop-voucher.addModalItem9') }}</button>
+                        <button type="submit" class="btn btn-primary rounded">{{ __('dashboard-shop-voucher.addModalItem10') }}</button>
                     </div>
 
                     </form>
@@ -123,7 +122,7 @@
             <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ویرایش کد تخفیف</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('dashboard-shop-voucher.editModalTitle') }}</h5>
                         <button type="button" class="close rounded" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -134,35 +133,35 @@
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام کد تخفیف:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem1') }}:</span></div>
                                     <input type="text" class="form-control inputfield" name="name" value="{{ $voucher->name }}">
                                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات کد :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem2') }}:</span></div>
                                     <input type="text" class="form-control inputfield" name="description" value="{{ $voucher->description }}">
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تعداد استفاده :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem3') }} :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" value="{{ $voucher->uses }}">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">میزان تخفیف:</span></div>
-                                    <input type="text" class="form-control inputfield" name="discount_amount" placeholder="مثال: 30000" value="{{ $voucher->discount_amount }}">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem4') }}:</span></div>
+                                    <input type="text" class="form-control inputfield" name="discount_amount"  value="{{ $voucher->discount_amount }}">
                                     <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ شروع:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem5') }}:</span></div>
                                     <input type="hidden" class="start-alt-field col h-50px border-0" name="starts_at" />
                                     <input class="start-field-example col h-50px border-0" name="" value="{{ $voucher->starts_at }}" />
 
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">تاریخ انقضا:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem6') }}:</span></div>
                                     <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
                                     <input class="expire-field-example col h-50px border-0" name="" value="{{ $voucher->expires_at }}" />
                                 </div>
@@ -170,8 +169,8 @@
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">انصراف</button>
-                        <button type="submit" class="btn btn-primary rounded">ثبت درخواست</button>
+                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">{{ __('dashboard-shop-voucher.addModalItem9') }}</button>
+                        <button type="submit" class="btn btn-primary rounded">{{ __('dashboard-shop-voucher.addModalItem10') }}</button>
                     </div>
 
                     </form>
@@ -187,10 +186,10 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">لیست کدهای تخفیف</h4>
+                        <h4 class="mt-0 header-title">{{ __('dashboard-shop-voucher.listCodeTakhfifTitle') }}</h4>
 
 
-                        <p class="text-muted mb-4 font-13">در این بخش میتوانید لیست تمامی کد های تخفیف فروشگاه را مشاهده کنید . همچنین میتوانید کد تخفیف جدید ایجاد کنید یا آن ها را ویرایش کنید و یا حذف نمایید. علاوه بر این موارد شما قادر هستید برای کد های تخفیف بازه زمانی در نظر بگیرید و یا به کاربران خاص اختصاص دهید و یا برای اولین خرید کاربران فعال نمایید. شایان ذکر میباشد که تخفیف بر روی مجموع خرید های سبد خرید هر کاربر اعمال میشود و برای تخفیف اختصاصی هر کالا میتوانید از صفحه ساخت محصول استفاده نمایید.</p>
+                        <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-voucher.listCodeTakhfifDesc') }}.</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
                             <div class="row">
@@ -201,17 +200,17 @@
 
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 20px;">شناسه
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 20px;">{{ __('dashboard-shop-voucher.listCodeTakhfifItem1') }}
                                                 </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 115px;">نام
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 115px;">{{ __('dashboard-shop-voucher.listCodeTakhfifItem2') }}
                                                 </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 55px;">وضعیت </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 55px;">{{ __('dashboard-shop-voucher.listCodeTakhfifItem3') }} </th>
                                                 {{-- <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات </th> --}}
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">کد تخفیف</th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">تعداد استفاده</th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;"> میزان تخفیف</th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;"> تاریخ شروع</th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">تاریخ انقضا</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">{{ __('dashboard-shop-voucher.listCodeTakhfifItem4') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">{{ __('dashboard-shop-voucher.listCodeTakhfifItem5') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;"> {{ __('dashboard-shop-voucher.listCodeTakhfifItem6') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">{{ __('dashboard-shop-voucher.listCodeTakhfifItem7') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">{{ __('dashboard-shop-voucher.listCodeTakhfifItem8') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody class="byekan">
@@ -237,17 +236,17 @@
                                                     </button>
                                                     @if ($voucher->status == 1)
                                                     <span class="badge badge-soft-success show{{ $voucher->id }}">
-                                                        فعال
+                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifEnable') }}
                                                     </span>
                                                     <span class="badge badge-soft-pink d-none {{ $voucher->id }}">
-                                                        غیرفعال
+                                                      {{ __('dashboard-shop-voucher.listCodeTakhfifDisable') }}
                                                     </span>
                                                     @else
                                                     <span class="badge badge-soft-success d-none {{ $voucher->id }}">
-                                                        فعال
+                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifEnable') }}
                                                     </span>
                                                     <span class="badge badge-soft-pink show{{ $voucher->id }}">
-                                                        غیرفعال
+                                                      {{ __('dashboard-shop-voucher.listCodeTakhfifDisable') }}
                                                     </span>
                                                     @endif
                                                     {{-- </form> --}}

@@ -11,7 +11,7 @@ return array(
     |
     */
     "leftCurrentPage1"         => "الأصناف",
-    "leftCurrentPage2"         => "فروشگاه",
+    "leftCurrentPage2"         => "متجر",
     "pageTitle"         => "قائمة الأصناف",
     "addBtn"         => "اضافه کردن دسته بندی",
 

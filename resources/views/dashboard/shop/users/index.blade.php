@@ -12,8 +12,8 @@
                 <div class="page-title-box">
                     <div class="float-right">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item "> لیست کاربران فروشگاه</li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
+                            <li class="breadcrumb-item "> {{ __('dashboard-shop-users-index.leftCurrentPage1') }}</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">{{ __('dashboard-shop-users-index.leftCurrentPage2') }}</a></li>
                         </ol>
                     </div>
                 </div>
@@ -21,9 +21,7 @@
             </div>
             <!--end col-->
         </div>
-        <div class="text-right">
-            <a href="#" data-toggle="modal" data-target="#AddProductCategoryModal" class="btn btn-primary text-white d-inline-block text-right mb-3 mt-3 font-weight-bold rounded"><i class="fa fa-plus mr-2"></i>اضافه کردن بازخورد</a>
-        </div>
+
         @include('dashboard.layouts.errors')
 
 
@@ -37,13 +35,13 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4 align-self-center">
-                                        <div class="icon-info"><span>تعداد کل</span></i></div>
+                                        <div class="icon-info"><span>{{ __('dashboard-shop-users-index.box1') }}</span></i></div>
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
                                             <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
                                         </div>
-                                        <p class="mb-0 text-muted">کاربر</p>
+                                        <p class="mb-0 text-muted">{{ __('dashboard-shop-users-index.box1Desc') }}</p>
                                     </div>
                                 </div>
                                 <div class="progress mt-2" style="height:3px;">
@@ -60,11 +58,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4 align-self-center">
-                                        <div class="icon-info"><span>تعداد کل</span></i></div>
+                                        <div class="icon-info"><span>{{ __('dashboard-shop-users-index.box1') }}</span></i></div>
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                            <p class="mb-0 text-muted">کاربر</p>
+                                            <p class="mb-0 text-muted">{{ __('dashboard-shop-users-index.box1Desc') }}</p>
                                             <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
                                         </div>
                                     </div>
@@ -83,11 +81,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4 align-self-center">
-                                        <div class="icon-info"><span>تعداد کل</span></i></div>
+                                        <div class="icon-info"><span>{{ __('dashboard-shop-users-index.box1') }}</span></i></div>
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                            <p class="mb-0 text-muted">کاربر</p>
+                                            <p class="mb-0 text-muted">{{ __('dashboard-shop-users-index.box1Desc') }}</p>
                                             <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
                                         </div>
                                     </div>
@@ -106,11 +104,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-4 align-self-center">
-                                        <div class="icon-info"><span>تعداد کل</span></i></div>
+                                        <div class="icon-info"><span>{{ __('dashboard-shop-users-index.box1') }}</span></i></div>
                                     </div>
                                     <div class="col-8 align-self-center text-right">
                                         <div class="ml-2">
-                                            <p class="mb-0 text-muted">کاربر</p>
+                                            <p class="mb-0 text-muted">{{ __('dashboard-shop-users-index.box1Desc') }}</p>
                                             <h4 class="mt-0 mb-1">{{ $users->count() }}</h4>
                                         </div>
                                     </div>
@@ -140,8 +138,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">لیست کاربران</h4>
-                        <p class="text-muted mb-4 font-13">لیست تمامی کابران فروشگاه شما</p>
+                        <h4 class="mt-0 header-title">{{ __('dashboard-shop-users-index.ListKarbaranTitle') }}</h4>
+                        <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-users-index.ListKarbaranDesc') }}</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -156,13 +154,13 @@
                                         <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
                                             <thead style="text-align: center">
                                                 <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام خانوادگی</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ایمیل</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">شماره موبایل</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ عضویت</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ آخرین بازدید</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ویرایش کاربر</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem1') }}</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem2') }}</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem3') }}</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem4') }}</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem5') }}</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem6') }}</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem7') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody style="text-align: center" class="iranyekan">
@@ -175,7 +173,7 @@
                                                     <td>{{ $user->created_at }}</td>
                                                     <td>{{ $user->created_at }}</td>
                                                     <td>
-                                                        <a href="{{ route('users.purcheses', $user) }}"> لیست سفارشات </a>
+                                                        <a href="{{ route('users.purcheses', $user) }}">{{ __('dashboard-shop-users-index.ListKarbaranItem8') }}</a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
