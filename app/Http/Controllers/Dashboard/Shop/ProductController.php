@@ -136,22 +136,19 @@ class ProductController extends Controller
         'money_back' => $request->money_back,
         'support' => $request->support,
         'secure_payment' => $request->secure_payment,
-        'feature_1' => $request->feature_1,
-        'feature_2' => $request->feature_2,
-        'feature_3' => $request->feature_3,
-        'feature_4' => $request->feature_4,
-        'feature_5' => $request->feature_5,
-        'feature_6' => $request->feature_6,
-        'feature_7' => $request->feature_7,
-        'feature_8' => $request->feature_8,
-        'feature_9' => $request->feature_9,
-        'feature_10' => $request->feature_10,
         'description' => $request->description,
         'image' => $image,
         'attachment' => $attachment,
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
+
+  //add facilities
+  if($request->facility[0] != null){
+    foreach($request->facility as $facility){
+      DB::table('facilities')->insert(['name' => $facility, 'product_id' => $product->id]);
+    }
+  }
 
   //add tags and colors and features to the product
     if($product)

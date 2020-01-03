@@ -224,7 +224,7 @@
                                         <div class="facility">
                                             <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
-                                                <input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
+                                                <input value="{{ old('facility[]') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                                 <div class="input-group-append">
                                                     <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
                                                             {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
@@ -374,7 +374,7 @@
                                         <div class="facility">
                                             <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
-                                                <input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
+                                                <input value="{{ old('facility[]') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                                 <div class="input-group-append">
                                                     <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
                                                             {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
@@ -540,7 +540,7 @@
                                         <div class="facility">
                                             <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
-                                                <input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
+                                                <input value="{{ old('facility[]') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} ">
                                                 <div class="input-group-append">
                                                     <a href="#" class="addFacility"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i>
                                                             {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11Left') }}
@@ -902,7 +902,7 @@
                 <script>
    $(document).ready(function() {
        $(".addFacility").click(function() {
-           $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div><input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} "></div>');
+           $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div><input value="{{ old('facility[]') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} "></div>');
        });
        });
    </script>
