@@ -4,7 +4,7 @@
 <html lang="en">
    <head>
       <meta charset="utf-8">
-      <title>فروشگاه امید الکترونیک</title>
+      <title>{{ __('app-shop-2-layouts-master.pageTitle') }}</title>
       <link rel="shortcut icon" href="favicon.ico">
       <meta name="format-detection" content="telephone=no">
       <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
@@ -96,7 +96,7 @@
          <nav class="panel-menu mobile-main-menu">
             <ul>
                <li>
-                  <a href="/{{ $shop->english_name }}">صفحه اصلی فروشگاه</a>
+                  <a href="/{{ $shop->english_name }}">{{ __('app-shop-2-layouts-master.safheAsliForooshgah') }}</a>
                   <ul>
                      <li>
                         <a href="/{{ $shop->english_name }}">HOME STYLES</a>
@@ -545,19 +545,19 @@
                      <!-- tt-search -->
                      <div class="tt-desctop-parent-search tt-parent-box">
                         <div class="tt-search tt-dropdown-obj">
-                           <button class="tt-dropdown-toggle" data-tooltip="جستجو" data-tposition="bottom"><i class="icon-f-85"></i></button>
+                           <button class="tt-dropdown-toggle" data-tooltip="{{ __('app-shop-2-layouts-master.jostojoo') }}" data-tposition="bottom"><i class="icon-f-85"></i></button>
                            <div class="tt-dropdown-menu">
                               <div class="container">
                                  <form action="{{ route('search', $shop->english_name) }}" method="post">
                                     <div class="tt-col">
                                        @csrf
-                                       <input type="text" name="queryy" class="tt-search-input" placeholder="نام محصول یا سازنده ...">
+                                       <input type="text" name="queryy" class="tt-search-input" placeholder="{{ __('app-shop-2-layouts-master.namMahsoolYaSazande') }} ...">
                                        <button class="tt-btn-search" type="submit"></button>
                                     </div>
                                     <div class="tt-col">
                                        <button class="tt-btn-close icon-g-80"></button>
                                     </div>
-                                    <div class="tt-info-text">دنبال چه میگردید</div>
+                                    <div class="tt-info-text">{{ __('app-shop-2-layouts-master.donbaleCheMigardid') }}</div>
                                  </form>
                               </div>
                            </div>
@@ -567,7 +567,7 @@
                      <!-- tt-cart -->
                      @auth
                      <div class="tt-desctop-parent-cart tt-parent-box">
-                        <div class="tt-cart tt-dropdown-obj" data-tooltip="سبد خرید" data-tposition="bottom">
+                        <div class="tt-cart tt-dropdown-obj" data-tooltip="{{ __('app-shop-2-layouts-master.cart') }}" data-tposition="bottom">
                            <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart ml-1">
                            @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
                            @else 0
@@ -576,8 +576,8 @@
                            </button>
                            <div class="tt-dropdown-menu">
                               <div class="tt-mobile-add">
-                                 <h6 class="tt-title">سبد خرید</h6>
-                                 <button class="tt-close">بستن</button>
+                                 <h6 class="tt-title">{{ __('app-shop-2-layouts-master.cart') }}</h6>
+                                 <button class="tt-close">{{ __('app-shop-2-layouts-master.bastan') }}</button>
                               </div>
                               <div class="tt-dropdown-inner">
                                  <div class="tt-cart-layout">
@@ -599,9 +599,9 @@
                                                       <ul class="tt-add-info">
                                                          <li>زرد</li>
                                                       </ul>
-                                                      <div class="tt-quantity"> <input class="border-0" name="{{ $product->id }}" type="text" value="{{ $product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}"> عدد</div>
+                                                      <div class="tt-quantity"> <input class="border-0" name="{{ $product->id }}" type="text" value="{{ $product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}"> {{ __('app-shop-2-layouts-master.adad') }}</div>
                                                       <br />
-                                                      <div class="tt-price">{{ number_format($product->price) }} تومان</div>
+                                                      <div class="tt-price">{{ number_format($product->price) }} {{ __('app-shop-2-layouts-master.tooman') }}</div>
                                                    </div>
                                                 </a>
                                                 <div class="tt-item-close">
@@ -611,10 +611,9 @@
                                              @endforeach
                                        </div>
                                        <div class="tt-cart-btn">
-                                       <div class="tt-item bg-primary"><button type="submit" class="btn">تسویه حساب</button></div>
+                                       <div class="tt-item bg-primary"><button type="submit" class="btn">{{ __('app-shop-2-layouts-master.tasviyeHesab') }}</button></div>
                                        <div class="tt-item" style="background-color: currentColor;"><a
-                                          href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">مشاهده سبد
-                                       خرید</a></div>
+                                          href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" class="btn btn-border tt-hidden-desctope">{{ __('app-shop-2-layouts-master.seeCart') }}</a></div>
                                        </div>
                                     </div>
                                  </div>
@@ -628,10 +627,10 @@
                      <!-- tt-account -->
                      <div class="tt-desctop-parent-account tt-parent-box">
                         <div class="tt-account tt-dropdown-obj">
-                           <button class="tt-dropdown-toggle" data-tooltip="حساب کاربری" data-tposition="bottom"><i class="icon-f-94"></i></button>
+                           <button class="tt-dropdown-toggle" data-tooltip="{{ __('app-shop-2-layouts-master.hesabKarbari') }}" data-tposition="bottom"><i class="icon-f-94"></i></button>
                            <div class="tt-dropdown-menu">
                               <div class="tt-mobile-add">
-                                 <button class="tt-close">بستن</button>
+                                 <button class="tt-close">{{ __('app-shop-2-layouts-master.bastan') }}</button>
                               </div>
                               <div class="tt-dropdown-inner">
                                  <ul>
@@ -640,16 +639,16 @@
                                        @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->first()->products()->count() }}
                                        @else 0
                                        @endif
-                                       </span></i>علاقه مندی ها</a>
+                                       </span></i>{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a>
                                     </li>
-                                    <li><a href=""><i class="icon-f-94"></i>پنل کاربری</a></li>
-                                    <li><a href="{{ route('user-address.index') }}"><i class="fa fa-address-card ml-2"></i>آدرس ها</a></li>
-                                    <li><a href="{{ route('user.purchased.list') }}"><i class="icon-f-47"></i>لیست سفارشات</a></li>
-                                    <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>خروج</a></li>
+                                    <li><a href=""><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.panelKarbari') }}</a></li>
+                                    <li><a href="{{ route('user-address.index') }}"><i class="fa fa-address-card ml-2"></i>{{ __('app-shop-2-layouts-master.addressHa') }}</a></li>
+                                    <li><a href="{{ route('user.purchased.list') }}"><i class="icon-f-47"></i>{{ __('app-shop-2-layouts-master.listSefaareshaat') }}</a></li>
+                                    <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>{{ __('app-shop-2-layouts-master.khorooj') }}</a></li>
                                     @endauth
                                     @guest()
-                                    <li><a href="{{ route('template.login.show', $shop->english_name) }}"><i class="icon-f-76"></i>ورود</a></li>
-                                    <li><a href="{{ route('template.register.show', $shop->english_name) }}"><i class="icon-f-94"></i>عضویت</a></li>
+                                    <li><a href="{{ route('template.login.show', $shop->english_name) }}"><i class="icon-f-76"></i>{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
+                                    <li><a href="{{ route('template.register.show', $shop->english_name) }}"><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.ozviat') }}</a></li>
                                     @endguest
                                  </ul>
                               </div>
@@ -657,7 +656,7 @@
                         </div>
                      </div>
                      @auth()
-                     <p>{{ Auth::user()->firstName}} عزیز، خوش آمدی</p>
+                     <p>{{ Auth::user()->firstName}} {{ __('app-shop-2-layouts-master.welcome') }}</p>
                      @endauth
                      <!-- /tt-account -->
                      <!-- tt-langue and tt-currency -->
@@ -666,7 +665,7 @@
                            <button class="tt-dropdown-toggle" data-tooltip="Settings" data-tposition="bottom"><i class="icon-f-79"></i></button>
                            <div class="tt-dropdown-menu">
                               <div class="tt-mobile-add">
-                                 <button class="tt-close">بستن</button>
+                                 <button class="tt-close">{{ __('app-shop-2-layouts-master.bastan') }}</button>
                               </div>
                               <div class="tt-dropdown-inner">
                                  <ul>
@@ -676,7 +675,7 @@
                                     <li><a href="#">انگلیسی</a></li>
                                  </ul>
                                  <ul>
-                                    <li class="active"><a href="#"><i class="icon-h-59"></i>تومان</a></li>
+                                    <li class="active"><a href="#"><i class="icon-h-59"></i>{{ __('app-shop-2-layouts-master.tooman') }}</a></li>
                                     <li class="active"><a href="#"><i class="icon-h-59"></i>USD - US Dollar</a></li>
                                     <li><a href="#"><i class="icon-h-60"></i>EUR - Euro</a></li>
                                     <li><a href="#"><i class="icon-h-61"></i>GBP - British Pound Sterling</a></li>
@@ -697,7 +696,7 @@
                         <div class="tt-desctop-menu tt-menu-small">
                            <nav>
                               <ul class="pb-4 font-wight-bold">
-                                 <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">صفحه اصلی</a></li>
+                                 <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
                                  @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
                                  <div class="dropdown mx-3" style="top:30px!important">
                                     <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
@@ -779,7 +778,7 @@
                <div class="row">
                   <div class="col-md-3 col-lg-3 col-xl-3">
                      <div class="tt-mobile-collapse">
-                        <h4 class="tt-collapse-title">آخرین دسته ها</h4>
+                        <h4 class="tt-collapse-title">{{ __('app-shop-2-layouts-master.akharinDasteha') }}</h4>
                         <div class="tt-collapse-content">
                            <ul class="tt-list">
                              @foreach($shop->ProductCategories as $catetory)
@@ -794,12 +793,12 @@
                   </div>
                   <div class="col-md-3 col-lg-3 col-xl-3 d-none-print">
                      <div class="tt-mobile-collapse">
-                        <h4 class="tt-collapse-title">سایر صفحات </h4>
+                        <h4 class="tt-collapse-title">{{ __('app-shop-2-layouts-master.saayerSafahaat') }} </h4>
                         <div class="tt-collapse-content">
                            <ul class="tt-list">
-                              <li><a href="{{ route('wishlist', $shop->english_name) }}">علاقه مندی ها</a></li>
-                              <li><a href="{{ route('login', $shop->english_name) }}">ورود</a></li>
-                               <li><a href="{{ route('template.contact', $shop->english_name) }}">درباره ما و تماس</a></li>
+                              <li><a href="{{ route('wishlist', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a></li>
+                              <li><a href="{{ route('login', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
+                               <li><a href="{{ route('template.contact', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.darbareMaVaTamas') }}</a></li>
                            </ul>
                         </div>
                      </div>
@@ -807,14 +806,14 @@
                   <div class="col-md-6 col-lg-6 col-xl-6 d-none-print">
                      <div class="tt-newsletter">
                         <div class="tt-mobile-collapse">
-                           <h4 class="tt-collapse-title">عضویت در خبرنامه</h4>
+                           <h4 class="tt-collapse-title">{{ __('app-shop-2-layouts-master.ozviatDarKhabarName') }}</h4>
                            <div class="tt-collapse-content">
-                              <p>جهت عضویت در سیستم خبرنامه، آدرس ایمیل خودرا در فرم زیر وارد نموده و برروی گزینه عضویت کلیک نمایید.</p>
+                              <p>{{ __('app-shop-2-layouts-master.ozviatDarKhabarNameDesc') }}.</p>
                               <form class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
                                  <div class="form-group">
                                     @csrf
-                                    <input type="email" name="email" class="form-control" placeholder="آدرس ایمیل">
-                                    <button type="submit" class="btn">عضویت</button>
+                                    <input type="email" name="email" class="form-control" placeholder="{{ __('app-shop-2-layouts-master.email') }}">
+                                    <button type="submit" class="btn">{{ __('app-shop-2-layouts-master.ozviat') }}</button>
                                  </div>
                               </form>
                            </div>
@@ -839,9 +838,9 @@
 
                           <div class="tt-box-copyright">
 
-                            &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
+                            &copy; {{ __('app-shop-2-layouts-master.copyRight') }}.
                             <a target="_blank" href="https://omidshop.net">
-                              <span class="text-muted d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
+                              <span class="text-muted d-none d-sm-inline-block float-right">{{ __('app-shop-2-layouts-master.developer') }}</span>
                             </a>
 
                            </div>
@@ -918,7 +917,7 @@
                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
                </div>
                <div class="modal-body">
-                  <div class="tt-modal-subsribe-good"><i class="icon-f-68"></i> باموفقیت وارد شدید</div>
+                  <div class="tt-modal-subsribe-good"><i class="icon-f-68"></i> {{ __('app-shop-2-layouts-master.baMovafaghiatVaredShodid') }}</div>
                </div>
             </div>
          </div>
@@ -932,7 +931,7 @@
 
          });
       </script>
-      <a href="#" class="tt-back-to-top d-none-print" id="js-back-to-top">بالا</a>
+      <a href="#" class="tt-back-to-top d-none-print" id="js-back-to-top">{{ __('app-shop-2-layouts-master.up') }}</a>
    </body>
    <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
    <link rel="stylesheet" href="/app/shop/2/css/custom.css">

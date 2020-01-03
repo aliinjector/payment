@@ -5,17 +5,17 @@
 <div id="tt-pageContent">
    <div class="container-indent">
       <div class="container">
-         <h3 class="noborder text-center iranyekan">سبد خرید</h3>
+         <h3 class="noborder text-center iranyekan">{{ __('app-shop-2-cart.cart') }}</h3>
          @isset($products)
          <div class="tt-shopcart-table-02">
             <table>
                <tbody>
                   <tr>
-                     <th>محصول</th>
-                     <th>قیمت واحد کالا</th>
-                     <th>میزان تخفیف</th>
-                     <th>تعداد</th>
-                     <th>عملیات</th>
+                     <th>{{ __('app-shop-2-cart.cartTableItem1') }}</th>
+                     <th>{{ __('app-shop-2-cart.cartTableItem2') }}</th>
+                     <th>{{ __('app-shop-2-cart.cartTableItem3') }}</th>
+                     <th>{{ __('app-shop-2-cart.cartTableItem4') }}</th>
+                     <th>{{ __('app-shop-2-cart.cartTableItem5') }}</th>
                   </tr>
                   <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                      @csrf
@@ -28,13 +28,13 @@
                            </ul>
                            <ul class="tt-list-parameters">
                               <li>
-                                 <div class="tt-price">320 تومان</div>
+                                 <div class="tt-price">320 {{ __('app-shop-2-cart.tooman') }}</div>
                               </li>
                               <li>
                                  <div class="detach-quantity-mobile"></div>
                               </li>
                               <li>
-                                 <div class="tt-price subtotal">320 تومان</div>
+                                 <div class="tt-price subtotal">320 {{ __('app-shop-2-cart.tooman') }}</div>
                               </li>
                            </ul>
                         </td>
@@ -71,7 +71,7 @@
                </tbody>
             </table>
             <div class="tt-shopcart-btn d-flex input-group-append justify-content-end iranyekan">
-            <button type="submit" style="background-color:#2879FE!important;" class="btn">ثبت و ادامه</button>
+            <button type="submit" style="background-color:#2879FE!important;" class="btn">{{ __('app-shop-2-cart.sabtVaEdame') }}</button>
             </form>
             </div>
          </div>

@@ -45,12 +45,12 @@
                <div class="tt-product-single-info">
                   <div class="tt-add-info">
                      <ul>
-                        <li><span>کد کالا:</span> {{ $product->id }}</li>
-                        <li style="display:none"><span>موجودی:</span> 40 عدد</li>
+                        <li><span>{{ __('app-shop-2-product.code') }}:</span> {{ $product->id }}</li>
+                        <li style="display:none"><span>{{ __('app-shop-2-product.mojoodi') }}:</span> 40 {{ __('app-shop-2-product.adad') }}</li>
                      </ul>
                   </div>
                   <h3 class="tt-title m-4">{{ $product->title }}</h3>
-                  <div class="tt-price m-4"><span class="new-price">{{ number_format($product->price) }} تومان</span></div>
+                  <div class="tt-price m-4"><span class="new-price">{{ number_format($product->price) }} {{ __('app-shop-2-product.tooman') }}</span></div>
                   <div class="tt-review m-4">
                      <div class="tt-rating">
                         @for ($i = 1; $i
@@ -58,7 +58,7 @@
                         <i class="icon-star"></i>
                         @endfor
                      </div>
-                     <a class="product-page-gotocomments-js" href="#">{{ $product->comments->count() }} نظر مشتری </a>
+                     <a class="product-page-gotocomments-js" href="#">{{ $product->comments->count() }}{{ __('app-shop-2-product.nazareMoshtari') }}</a>
                   </div>
                   @auth
                   <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
@@ -72,8 +72,8 @@
                            </div>
                            <input type="hidden" name="product_id" value="{{$product->id}}">
                            <button type="submit" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
-                           @if($product->type == 'file') دریافت فایل
-                           @else اضافه به سبد خرید
+                           @if($product->type == 'file'){{ __('app-shop-2-product.daryaafteFile') }}
+                           @else {{ __('app-shop-2-product.ezaafeBeSabadeKharid') }}
                            @endif</button>
                         </div>
                      </div>
@@ -82,7 +82,7 @@
                 @guest
                     <a href="{{ route('login') }}">
                   <button type="button" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
-               برای خرید ابتدا ثبت نام کنید
+               {{ __('app-shop-2-product.registerForAddToCart') }}
                   </button>
                   </a>
                 @endguest
@@ -90,11 +90,11 @@
                      <ul class="tt-list-btn">
                         <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
                            @csrf
-                           <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();"><i class="icon-n-072"></i>افزودن به علاقه مندی</a></li>
+                           <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();"><i class="icon-n-072"></i>{{ __('app-shop-2-product.addToAlaaghemandiHa') }}</a></li>
                         </form>
                         <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
                            @csrf
-                           <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"><i class="icon-n-08"></i>افزودن به مقایسه</a></li>
+                           <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"><i class="icon-n-08"></i>{{ __('app-shop-2-product.addToAfzoodanBeMoghayese') }}</a></li>
                         </form>
                      </ul>
                   </div>
@@ -109,15 +109,15 @@
                         </ul>
                         <ul>
                            @if ($product->type == "file")
-                           <h6 class="text-muted font-13">حجم فایل :</h6>
+                           <h6 class="text-muted font-13">{{ __('app-shop-2-product.hajmeFile') }} :</h6>
                            <ul class="list-unstyled pro-features border-0 iranyekan">
-                              <li>{{ round($product->file_size / 1048576,2)}} مگابایت</li>
+                              <li>{{ round($product->file_size / 1048576,2)}} {{ __('app-shop-2-product.megaByte') }}</li>
                            </ul>
                            @endif
                            @if ($product->type == "product")
-                           <h6 class="text-muted font-13">وزن محصول :</h6>
+                           <h6 class="text-muted font-13">{{ __('app-shop-2-product.vazneMahsool') }} :</h6>
                            <ul class="list-unstyled pro-features border-0 iranyekan">
-                              <li>{{ $product->weight }} گرم</li>
+                              <li>{{ $product->weight }} {{ __('app-shop-2-product.geraam') }}</li>
                            </ul>
                            @endif
                         </ul>
@@ -125,13 +125,13 @@
                   </div>
                   <div class="tt-collapse-block m-4">
                      <div class="tt-item">
-                        <div class="tt-collapse-title">توضیحات</div>
+                        <div class="tt-collapse-title">{{ __('app-shop-2-product.tozihaat') }}</div>
                         <div style="text-align: justify" class="tt-collapse-content">
                           {!! $product->description  !!}
                         </div>
                      </div>
                      <div class="tt-item">
-                        <div class="tt-collapse-title">ویژگی ها</div>
+                        <div class="tt-collapse-title">{{ __('app-shop-2-product.vizhegiha') }}</div>
                         <div class="tt-collapse-content">
                            <ul class="list-unstyled pro-features border-0 iranyekan">
                               @for ($i=1; $i <= 10; $i++)
@@ -141,20 +141,20 @@
                                  @endif
                                  @endfor
                                  <div class="show-more mr-1 mt-4" style="line-height: 2;"><i class="fas fa-plus"></i>
-                                    <span class="toggle-show">موارد بیشتر</span>
+                                    <span class="toggle-show">{{ __('app-shop-2-product.mavaaredeBishtar') }}</span>
                                  </div>
                               </div>
                            </ul>
                         </div>
                      </div>
                      <div class="tt-item">
-                        <div class="tt-collapse-title">امتیازات</div>
+                        <div class="tt-collapse-title">{{ __('app-shop-2-product.emtiazaat') }}</div>
                         <div class="tt-collapse-content">
                            <ul class="list-unstyled pro-features border-0 iranyekan">
                               <div class="review-box text-center align-item-center border col-12 m-3" style="direction:ltr">
                                  @auth
                                  @if(collect($userProducts)->where('id' ,$product->id)->count() > 0)
-                                 <h5 style="color: #f1646c;" class="p-3">امتیاز خود را به این کالا ثبت کنید</h5>
+                                 <h5 style="color: #f1646c;" class="p-3">{{ __('app-shop-2-product.sabteEmtiazKonid') }}</h5>
                                  <form class="" action="{{route('rate' , ['shop'=>$shop->english_name, 'id'=>$product->id])}}" method="post">
                                     @csrf {{ method_field('PATCH') }}
                                     @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
@@ -172,22 +172,22 @@
                                     <input type="hidden" name="shop" value="{{ $shop->english_name }}">
                                     <br>
                                     @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
-                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded" disabled>شما قبلا امتیاز ثبت کرده اید </button>
+                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded" disabled>{{ __('app-shop-2-product.shomaGhablanEmtiazSabtKardeid') }} </button>
                                     @else
-                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded">ثبت امتیاز</button>
+                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded">{{ __('app-shop-2-product.sabteEmtiaz') }}</button>
                                     @endif
                                  </form>
                                  @endif
                                  @endauth
                                  <br>
                                  @if($shop->buyCount_show == 'enable')
-                                 <h4 class="header-title pt-4">مجموع فروش</h4>
+                                 <h4 class="header-title pt-4">{{ __('app-shop-2-product.majmooeForoosh') }}</h4>
                                  <div class="review-box text-center align-item-center p-3">
                                     <h1 class="byekan">{{ $product->buyCount }}</h1>
                                     @endif
                                     <ul class="p-2" style="list-style: none;font-size: 25px;">
-                                       <li class="list-inline-item pb-3"><small class="text-muted font-14">مجموع آرا ({{ $productRates->count() }})</small></li>
-                                       <li class="list-inline-item"><small class="text-muted font-14">متوسط آرا ({{ (int)$product->avgRating }})</small></li>
+                                       <li class="list-inline-item pb-3"><small class="text-muted font-14">{{ __('app-shop-2-product.majoomeAraa') }} ({{ $productRates->count() }})</small></li>
+                                       <li class="list-inline-item"><small class="text-muted font-14">{{ __('app-shop-2-product.motevaseteAra') }} ({{ (int)$product->avgRating }})</small></li>
                                     </ul>
                                     <ul class="d-flex justify-content-center p-3">
                                        @for ($i = 1; $i <= (int)$product->avgRating; $i++)
@@ -202,7 +202,7 @@
                         </div>
                      </div>
                      <div class="tt-item">
-                        <div class="tt-collapse-title tt-poin-comments">نظرات ({{ $product->comments->where('approved', '1')->count() }})</div>
+                        <div class="tt-collapse-title tt-poin-comments">{{ __('app-shop-2-product.nazaraat') }} ({{ $product->comments->where('approved', '1')->count() }})</div>
                         <div class="tt-collapse-content">
                            <div class="tt-review-block">
                               <div class="tt-row-custom-02">
@@ -214,7 +214,7 @@
                                        <a href="#"></a>
                                     </div>
                                     <div class="tt-content">
-                                       <div class="tt-comments-info"><span class="username">توسط: <span>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</span></span> <span class="time"> -
+                                       <div class="tt-comments-info"><span class="username">{{ __('app-shop-2-product.by') }}: <span>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</span></span> <span class="time"> -
                                           {{ jdate($comment->created_at)->ago() }}</span>
                                        </div>
                                        <p style="padding: 10px 10px 10px 10px;  margin: 10px 10px 10px 10px;  background-color: #f7f8fa;  border-radius: 5px;">{{ $comment->comment }}</p>
@@ -226,7 +226,7 @@
                                        <i style="margin: 40px;" class="fa fa-reply"></i>
                                     </div>
                                     <div class="tt-content">
-                                       <div class="tt-comments-info"><span class="username">توسط: <span>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</span></span> <span class="time"> -
+                                       <div class="tt-comments-info"><span class="username">{{ __('app-shop-2-product.by') }}: <span>{{ $comment->user->firstName . ' ' . $comment->user->lastName }}</span></span> <span class="time"> -
                                           {{ jdate($comment->created_at)->ago() }}</span>
                                        </div>
                                        <p style="padding: 10px 10px 10px 10px;  margin: 10px 10px 10px 10px;  background-color: #f7f8fa;  border-radius: 5px;">{{ $comment->comment }}</p>
@@ -239,7 +239,7 @@
                                  @auth
                                  @if($errors->any())
                                  <div class="alert alert-danger">
-                                    <p><strong>متاسفانه مشکلی در ارسال نظر رخ داده است:</strong></p>
+                                    <p><strong>{{ __('app-shop-2-product.error') }}:</strong></p>
                                     <ul>
                                        @foreach ($errors->all() as $error)
                                        <li>{{ $error }}</li>
@@ -250,22 +250,21 @@
                                  <form class="form-default" method="post" action="/comment">
                                     @csrf
                                     <div class="form-group">
-                                       <label class="" for="">ثبت نظر شما:</label>
-                                       <textarea style="font-family: iranyekan" placeholder="متن نظر را وارد نمایید" class="form-control" name="comment" id="" cols="30" rows="5"></textarea>
+                                       <label class="" for="">{{ __('app-shop-2-product.sabteNazareShoma') }}:</label>
+                                       <textarea style="font-family: iranyekan" placeholder="{{ __('app-shop-2-product.matneNazar') }}" class="form-control" name="comment" id="" cols="30" rows="5"></textarea>
                                        <input type="hidden" name="parent_id" value="0">
                                        <input type="hidden" name="commentable_id" value="{{ $product->id }}">
                                        <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                        <input type="hidden" name="commentable_type" value="{{ get_class($product) }}">
                                     </div>
                                     <div class="form-group">
-                                       <center><button style="color: white" class="btn bg-blue-omid mt-4">ارسال نظر</button></center>
+                                       <center><button style="color: white" class="btn bg-blue-omid mt-4">{{ __('app-shop-2-product.ersaaleNazar') }}</button></center>
                                     </div>
                                  </form>
                                  @endauth
                                  @guest()
                                  <a href="{{ route('login')  }}">
-                                    <div class="alert alert-danger">جهت ثبت نظر درسایت باید وارد شوید‌. برای ورود یا عضویت اینجا
-                                       کلیک کنید.
+                                    <div class="alert alert-danger">{{ __('app-shop-2-product.loginToComment') }}.
                                     </div>
                                  </a>
                                  @endguest
@@ -297,7 +296,7 @@
    <div class="container-indent">
       <div class="container container-fluid-custom-mobile-padding">
          <div class="tt-block-title text-left">
-            <h3 class="tt-title-small">محصولات مشابه</h3>
+            <h3 class="tt-title-small">{{ __('app-shop-2-product.moshabeh') }}</h3>
          </div>
          <div class="tt-carousel-products row arrow-location-right-top tt-alignment-img tt-layout-product-item slick-animated-show-js">
             @foreach($offeredProducts as $product)

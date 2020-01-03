@@ -55,7 +55,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 col-lg-3 col-xl-3 leftColumn aside" id="js-leftColumn-aside">
-					<div class="tt-btn-col-close"><a href="#">بستن</a></div>
+					<div class="tt-btn-col-close"><a href="#">{{ __('app-shop-2-category.bastan') }}</a></div>
 					<div class="tt-collapse open tt-filter-detach-option">
 						<div class="tt-collapse-content">
 							<div class="filters-mobile">
@@ -64,7 +64,7 @@
 						</div>
 					</div>
 					<div class="tt-collapse">
-						<h3 class="tt-collapse-title">زیر دسته بندی ها</h3>
+						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.zirDasteha') }}</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
 								<li class="active"><a href="#">{{ $category->name }}</a></li>
@@ -75,7 +75,7 @@
 						</div>
 					</div>
 					<div class="tt-collapse">
-						<h3 class="tt-collapse-title">فیلتر براساس قیمت</h3>
+						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterGheymat') }}</h3>
 						<div class="tt-collapse-content">
 							<form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
 
@@ -88,33 +88,33 @@
 						</div>
 					</div>
 					<div class="tt-collapse">
-						<h3 class="tt-collapse-title">فیلتر بر اساس نوع کالا</h3>
+						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterType') }}</h3>
 						<div class="tt-collapse-content">
 							<div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
 								<label id="available-filter-1" for="available-filter-1" class="sort-btn col-3 rounded btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser bg-transparent"
 								  style="cursor:pointer; border: 1px solid!important;">
-									<input class="d-none" type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
+									<input class="d-none" type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> {{ __('app-shop-2-category.filterTypeItem1') }}
 								</label>
 								<label id="available-filter-2" for="available-filter-2"
 								  class="sort-btn col-3  rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan bg-transparent"
 								  style="cursor:pointer;border: 1px solid!important">
-									<input class="d-none" type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
+									<input class="d-none" type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> {{ __('app-shop-2-category.filterTypeItem2') }}
 								</label>
 								<label id="available-filter-3" for="available-filter-3"
 								  class="sort-btn col-3 rounded btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan bg-transparent"
 								  style="cursor:pointer;border: 1px solid!important">
-									<input class="d-none" type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
+									<input class="d-none" type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> {{ __('app-shop-2-category.filterTypeItem3') }}
 								</label>
 								<label id="available-filter-4" for="available-filter-4"
 								  class="sort-btn col-3 rounded btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan bg-transparent"
 								  style="cursor:pointer; border: 1px solid!important">
-									<input class="d-none" type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
+									<input class="d-none" type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> {{ __('app-shop-2-category.filterTypeItem4') }}
 								</label>
 							</div>
 						</div>
 					</div>
 					<div class="tt-collapse">
-						<h3 class="tt-collapse-title">براساس رنگ</h3>
+						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterColor') }}</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-options-swatch options-middle">
 								@foreach ($colors as $color)
@@ -129,7 +129,7 @@
 						</div>
 					</div>
 					<div class="tt-collapse">
-						<h3 class="tt-collapse-title">برند</h3>
+						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterBrand') }}</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
 								@foreach($brands as $brand)
@@ -137,13 +137,13 @@
 								@endforeach
 							</ul>
 							<div class="show-more">
-								<span class="toggle-show">+ بیشتر</span>
+								<span class="toggle-show">+ {{ __('app-shop-2-category.bishtar') }}</span>
 							</div>
 						</div>
 					</div>
 
 					<div class="tt-collapse">
-						<h3 class="tt-collapse-title">تگ ها</h3>
+						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterTag') }}</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-inline">
 								@foreach($shopTags as $shopTag)
@@ -160,18 +160,18 @@
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 						<div class="tt-filters-options" id="js-tt-filters-options">
 							<h1 class="tt-title">{{ $category->name }} <span class="tt-title-total byekan">({{ $products->count() }})</span></h1>
-							<div class="tt-btn-toggle"><a href="#">فیلتر</a></div>
+							<div class="tt-btn-toggle"><a href="#">{{ __('app-shop-2-category.filter') }}</a></div>
 							<div class="tt-sort d-flex">
 								<select class="available-filter-1" name="sortBy[field]">
-									<option value="created_at|desc" @if(request()->sortBy['field'] == 'created_at|desc') selected @endif>جدیدترین ها</option>
-									<option value="buyCount|desc" @if(request()->sortBy['field'] == 'buyCount|desc') selected @endif>پرفروش ترین ها</option>
-									<option value="price|asc" @if(request()->sortBy['field'] == 'price|asc') selected @endif>ارزان ترین ها</option>
-									<option value="price|desc" @if(request()->sortBy['field'] == 'price|desc') selected @endif>گران ترین ها
+									<option value="created_at|desc" @if(request()->sortBy['field'] == 'created_at|desc') selected @endif>{{ __('app-shop-2-category.jadidtarinHa') }}</option>
+									<option value="buyCount|desc" @if(request()->sortBy['field'] == 'buyCount|desc') selected @endif>{{ __('app-shop-2-category.porfrooshTarinHa') }}</option>
+									<option value="price|asc" @if(request()->sortBy['field'] == 'price|asc') selected @endif>{{ __('app-shop-2-category.arzanTarinHa') }}</option>
+									<option value="price|desc" @if(request()->sortBy['field'] == 'price|desc') selected @endif>{{ __('app-shop-2-category.geraanTarinHa') }}
 									</option>
 								</select>
 								</form>
 								<select>
-									<option value="Show">تعداد</option>
+									<option value="Show">{{ __('app-shop-2-category.tedaad') }}</option>
 									<option value="9">9</option>
 									<option value="16">16</option>
 									<option value="32">32</option>
@@ -192,13 +192,13 @@
 									<div class="tt-image-box" style="height: 30vh!important;">
 										<form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
 											@csrf
-											<a href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
+											<a href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="{{ __('app-shop-2-category.afzoodanBeAlaghemandiHa') }}" data-tposition="left"></a>
 										</form>
 
 										<form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
 											@csrf
 
-											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="افزودن به مقایسه" data-tposition="left"></a>
+											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"></a>
 										</form>
 										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img class="col-12" src="images/loader.svg" data-src="{{ $product->image['250,250'] }}"
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
@@ -222,8 +222,8 @@
 												@csrf
 												<input type="hidden" name="product_id" value="{{$product->id}}">
 												<button type="submit" class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
-													@if($product->type == 'file') دریافت فایل
-														@else اضافه به سبد خرید
+													@if($product->type == 'file'){{ __('app-shop-2-category.daryafteFile') }}
+														@else {{ __('app-shop-2-category.addToCart') }}
 														@endif</button>
 											</form>
 											@endauth

@@ -878,17 +878,6 @@
                         uiColor: '#F3F6F7'
                     });
                 </script>
-                <script>
-                    $(document).ready(function() {
-                        $(".addFacility").click(function() {
-                            $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('
-                                dashboard - shop - product - index.addMahsoolFizikiItem11 ') }} :</span></div><input value="{{ old('
-                                feature[]
-                                ') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('
-                                dashboard - shop - product - index.addMahsoolFizikiItem11ex ') }} "></div>');
-                        });
-                    });
-                </script>
                 <script type="text/javascript">
                     $("#tagsinput").tagsInput();
 
@@ -910,4 +899,11 @@
                         }, 0);
                     });
                 </script>
+                <script>
+   $(document).ready(function() {
+       $(".addFacility").click(function() {
+           $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div><input value="{{ old('feature[]') }}" type="text" class="form-control inputfield" name="feature[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} "></div>');
+       });
+       });
+   </script>
                 @stop
