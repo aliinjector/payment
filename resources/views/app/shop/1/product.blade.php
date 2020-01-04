@@ -214,20 +214,21 @@
 <div class="row">
     <div class="col-md-9">
         <div class="card bg-newsletters">
-            <div class="card-body comming-soon">
+            <div class="card-body bg-green-rock rounded">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="newsletters-text">
                             <h4>ثبت نام در خبرنامه</h4>
-                            <p class="text-muted mb-0">برای دریافت آخرین اخبار سامانه میتوانید در خبرنامه ثبت نام کنید.</p>
+                            <p class="text-white mb-0">برای دریافت آخرین اخبار سامانه میتوانید در خبرنامه ثبت نام کنید.</p>
                         </div>
                     </div>
                     <!--end col-->
                     <div class="col-md-6 align-self-center">
                         <div class="newsletters-input">
-                            <form class="position-relative">
-                                <input type="email" placeholder="ایمیل خود را وارد کنید" required="" style="direction: ltr">
-                                <button type="submit" class="btn btn-success rounded">دنبال کردن</button>
+                          <form class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
+                            @csrf
+                                <input type="email" name="email" placeholder="ایمیل خود را وارد کنید" required="" style="direction: ltr">
+                                <button type="submit" class="btn btn-blue rounded">دنبال کردن</button>
                             </form>
                         </div>
                     </div>
