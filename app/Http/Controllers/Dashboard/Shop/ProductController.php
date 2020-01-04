@@ -224,16 +224,6 @@ class ProductController extends Controller
     'money_back' => $request->money_back,
     'support' => $request->support,
     'secure_payment' => $request->secure_payment,
-    'feature_1' => $request->feature_1,
-    'feature_2' => $request->feature_2,
-    'feature_3' => $request->feature_3,
-    'feature_4' => $request->feature_4,
-    'feature_5' => $request->feature_5,
-    'feature_6' => $request->feature_6,
-    'feature_7' => $request->feature_7,
-    'feature_8' => $request->feature_8,
-    'feature_9' => $request->feature_9,
-    'feature_10' => $request->feature_10,
     'description' => $request->description,
     'image' => $image,
     'attachment' => $attachment,
@@ -241,6 +231,12 @@ class ProductController extends Controller
     'file_size' => $file_size,
   ]);
 
+  //add facilities
+  if($request->facility[0] != null){
+    foreach($request->facility as $facility){
+      DB::table('facilities')->insert(['name' => $facility, 'product_id' => $product->id]);
+    }
+  }
   //add tags to the product
   if($shop)
   {
@@ -313,10 +309,15 @@ else{
     public function editPhysical($id)
     {
       $product = Product::find($id);
+      $tags = [];
+      foreach($product->tags as $tag){
+        $tags[] = $tag->name;
+      }
+      $tags = implode(',', $tags);
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
-      return view('dashboard.shop.product.edit-physical', compact('product','productCategories','brands','colors'));
+      return view('dashboard.shop.product.edit-physical', compact('product','productCategories','brands','colors','tags'));
     }
 
 
@@ -324,10 +325,15 @@ else{
     public function editFile($id)
     {
       $product = Product::find($id);
+      $tags = [];
+      foreach($product->tags as $tag){
+        $tags[] = $tag->name;
+      }
+      $tags = implode(',', $tags);
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
-      return view('dashboard.shop.product.edit-file', compact('product','productCategories','brands','colors'));
+      return view('dashboard.shop.product.edit-file', compact('product','productCategories','brands','colors','tags'));
     }
 
 
@@ -336,10 +342,15 @@ else{
     public function editService($id)
     {
       $product = Product::find($id);
+      $tags = [];
+      foreach($product->tags as $tag){
+        $tags[] = $tag->name;
+      }
+      $tags = implode(',', $tags);
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
-      return view('dashboard.shop.product.edit-service', compact('product','productCategories','brands','colors'));
+      return view('dashboard.shop.product.edit-service', compact('product','productCategories','brands','colors','tags'));
     }
 
     /**
@@ -364,12 +375,12 @@ else{
             $attachment = null;
             $file_size = null;
         }
-           if($request->file('image') == null){
-               $image = $product->image;
-           }
-           else{
-               $image = $this->uploadFile($request->file('image'), false, true);
-           }
+           // if($request->file('image') == null){
+           //     $image = $product->image;
+           // }
+           // else{
+           //     $image = $this->uploadFile($request->file('image'), false, true);
+           // }
 
            if($request->brand_id == "null"){
              $request->merge(['brand_id' => null]);
@@ -421,22 +432,20 @@ else{
         'money_back' => $request->money_back,
         'support' => $request->support,
         'secure_payment' => $request->secure_payment,
-        'feature_1' => $request->feature_1,
-        'feature_2' => $request->feature_2,
-        'feature_3' => $request->feature_3,
-        'feature_4' => $request->feature_4,
-        'feature_5' => $request->feature_5,
-        'feature_6' => $request->feature_6,
-        'feature_7' => $request->feature_7,
-        'feature_8' => $request->feature_8,
-        'feature_9' => $request->feature_9,
-        'feature_10' => $request->feature_10,
         'description' => $request->description,
-        'image' => $image,
+        'image' => null,
         'attachment' => $attachment,
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
+
+      //add facilities
+      if($request->facility[0] != null){
+        foreach($request->facility as $facility){
+          DB::table('facilities')->insert(['name' => $facility, 'product_id' => $product->id]);
+        }
+      }
+
       if($shop)
       {
           $tagIds = [];
@@ -465,7 +474,7 @@ else{
           }
           \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->tags()->sync($tagIds);
       }
-      alert()->success('محصول جدید شما باموفقیت ویرایش شد.', 'ثبت شد');
+      alert()->success('محصول شما باموفقیت ویرایش شد.', 'ثبت شد');
       return redirect()->route('product-list.index');
     }
 

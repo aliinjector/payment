@@ -1,7 +1,28 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
-<div class="row">
+  <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+  <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+  <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+  <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+  <style media="screen">
+      #input-tags_tagsinput {
+          width: 88% !important;
+          height: 50px !important;
+          min-height: 50px !important;
+          font-size: 13px;
+          border: 1px solid #e8ebf3;
+          height: calc(2.3rem + 2px);
+          color: #2f5275;
+      }
+
+      #input-tags_addTag {
+          float: right !important;
+      }
+  </style><div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
             <div class="float-right">
@@ -45,7 +66,7 @@
 
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد فایل" value="{{ $product->description }}">
+                                      <textarea class="form-control" id="description" name="description">{{ $product->description }}</textarea>
                                   </div>
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
@@ -89,82 +110,27 @@
                                   </div>
 
                                   <div class="input-group mt-3">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_1" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_1 }}">
-                                      <div class="input-group-append"><a href="#" class="test1"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
+                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>
+                                      <input value="{{ $tags }}" type="text" id="input-tags" name="tags" class="form-control" />
 
                                   </div>
-                                  <div class="input-group mt-3 @if($product->feature_2 == null) d-none @endif feature_2">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_2" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_2 }}">
-                                      <div class="input-group-append"><a href="#" class="test2"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
+                                  @forelse( $product->facilities as $facility)
+                                    <div class="input-group mt-3">
+                                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                        <input type="text" class="form-control inputfield" name="facility[]" value="{{ $facility->name }}">
+                                    </div>
+                                  @empty
+                                  @endforelse
+                                  <div class="facility">
+                                <div class="input-group mt-3">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
+                                    <input type="text" class="form-control inputfield" name="facility[]" value="">
+                                    <div class="input-group-append"><a class="addFacility icon-hover"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
+                                                امکانات
+                                            </span></a></div>
+                                </div>
+                              </div>
 
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_3 == null) d-none @endif feature_3">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_3" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_3 }}">
-                                      <div class="input-group-append"><a href="#" class="test3"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
-
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_4 == null) d-none @endif feature_4">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_4" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_4 }}">
-                                      <div class="input-group-append"><a href="#" class="test4"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
-
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_5 == null) d-none @endif feature_5">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_5" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_5 }}">
-                                      <div class="input-group-append"><a href="#" class="test5"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
-
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_6 == null) d-none @endif feature_6">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_6" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_6 }}">
-                                      <div class="input-group-append"><a href="#" class="test6"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
-
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_7 == null) d-none @endif feature_7">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_7" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_7 }}">
-                                      <div class="input-group-append"><a href="#" class="test7"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
-
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_8 == null) d-none @endif feature_8">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_8" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_8 }}">
-                                      <div class="input-group-append"><a href="#" class="test8"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
-
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_9 == null) d-none @endif feature_9">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_9" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_9 }}">
-                                      <div class="input-group-append"><a href="#" class="test9"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i class="fa fa-plus mr-2"></i> افزودن
-                                                  امکانات
-                                              </span></a></div>
-
-                                  </div>
-                                  <div class="input-group mt-3 @if($product->feature_10 == null) d-none @endif feature_10">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="feature_10" placeholder=" مثال: کیفیت بالا " value="{{ $product->feature_10 }}">
-
-                                  </div>
 
                                   <div class="input-group mt-3 bg-white">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
@@ -237,6 +203,162 @@
 
 
 @section('pageScripts')
-<script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-<script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+  <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+  <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+  <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+  <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+  <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+  <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+  <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+  <script src="{{ asset('/dashboard/assets/js/feature.js') }}"></script>
+
+
+  <script type="text/javascript">
+      $('#input-tags').tagsInput();
+  </script>
+
+  <script type="text/javascript">
+      $(window).resize(function() {
+          if ($(window).width() < 1300) {
+              $("body").addClass('enlarge-menu');
+
+          } else {
+              $("body").removeClass('enlarge-menu');
+
+          }
+      }).resize();
+  </script>
+  <script type="text/javascript">
+      $(window).resize(function() {
+          if ($(window).width() < 1070) {
+              $(".icon-show").removeClass('d-none');
+
+          } else {
+              $(".icon-show").addClass('d-none');
+
+          }
+      }).resize();
+  </script>
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $('#input-tags_tag').val("");
+          $(".dropify-clear").remove();
+      });
+  </script>
+  <script>
+      $(".change").click(function() {
+          var id = $(this).data("id");
+          $.ajax({
+              url: "product-list/change-status/" + id,
+              type: 'put',
+              dataType: "JSON",
+              data: {
+                  "id": id,
+                  "_method": 'put',
+                  "_token": "{{ csrf_token() }}",
+              }
+
+          });
+          $("i." + id).toggleClass("d-none");
+          $("span." + id).toggleClass("d-none");
+          $("i.show" + id).toggleClass("d-none");
+          $("span.show" + id).toggleClass("d-none");
+          toastr.success('انجام شد.', '', [])
+      });
+  </script>
+  <script>
+      $(document).on('click', '#icon-delete', function(e) {
+          e.preventDefault();
+          var id = $(this).data('id');
+          var name = $(this).data('name');
+          swal(` ${'حذف عکس محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                  dangerMode: true,
+                  icon: "warning",
+                  buttons: ["انصراف", "حذف"],
+              })
+              .then(function(isConfirm) {
+                  if (isConfirm) {
+                      $.ajax({
+                          type: "post",
+                          url: "{{url('dashboard/shop/product-list/image/delete')}}",
+                          data: {
+                              id: id,
+                              "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                          },
+                          success: function(data) {
+                              $(".dropify-preview").addClass('d-none');
+                          }
+                      });
+                  } else {
+                      toastr.warning('لغو شد.', '', []);
+                  }
+              });
+      });
+  </script>
+  @if(session()->has('flashModalProduct'))
+      <script>
+          $('#AddProductModal').modal('show');
+      </script>
+      @elseif(session()->has('flashModalFile'))
+          <script>
+              $('#AddFileModal').modal('show');
+          </script>
+          @elseif(session()->has('flashModalService'))
+              <script>
+                  $('#AddServiceModal').modal('show');
+              </script>
+              @endif
+              <script>
+                  $(window).on("load", function() {
+                      $('.show-tick').addClass("col-lg");
+                      $('.filter-option-inner-inner').addClass("d-flex");
+                      $('.bs-placeholder').removeClass("btn-light");
+                      $('.show-tick').addClass("p-1");
+                      $('.show-tick').addClass("border");
+                  });
+              </script>
+              <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+              <script>
+                  CKEDITOR.replace('description', {
+                      language: 'fa',
+                      uiColor: '#F3F6F7'
+                  });
+              </script>
+              <script type="text/javascript">
+                  $("#tagsinput").tagsInput();
+
+                  $("#tagsinput_tag").on('paste', function(e) {
+                      var element = this;
+                      setTimeout(function() {
+                          var text = $(element).val();
+                          var target = $("#tagsinput");
+                          var tags = (text).split(/[ ,]+/);
+                          for (var i = 0, z = tags.length; i < z; i++) {
+                              var tag = $.trim(tags[i]);
+                              if (!target.tagExist(tag)) {
+                                  target.addTag(tag);
+                              } else {
+                                  $("#tagsinput_tag").val('');
+                              }
+
+                          }
+                      }, 0);
+                  });
+              </script>
+              <script>
+ $(document).ready(function() {
+     $(".addFacility").click(function() {
+         $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div><input value="{{ old('facility[]') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} "></div>');
+     });
+     });
+ </script>
+ <script>
+$(window).ready(function(){
+  setInterval(function(){
+    $('#cke_description').addClass("col-lg")
+  }, 100);
+});
+ </script>
 @stop
