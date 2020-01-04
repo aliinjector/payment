@@ -257,13 +257,13 @@
                if (isConfirm) {
                    $.ajax({
                        type: "post",
-                       url: "{{url('dashboard/shop/comment/delete')}}",
+                       url: "{{url('admin-panel/shop/comment/delete')}}",
                        data: {
                            id: id,
                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                        },
                        success: function(data) {
-                           var url = document.location.origin + "/dashboard/shop/product-comments";
+                           var url = document.location.origin + "/admin-panel/shop/product-comments";
                            location.href = url;
                        }
                    });

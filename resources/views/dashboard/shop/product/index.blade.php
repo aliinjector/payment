@@ -834,7 +834,7 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "post",
-                            url: "{{url('dashboard/shop/product-list/image/delete')}}",
+                            url: "{{url('admin-panel/shop/product-list/image/delete')}}",
                             data: {
                                 id: id,
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()

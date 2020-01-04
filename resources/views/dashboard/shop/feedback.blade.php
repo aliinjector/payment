@@ -214,13 +214,13 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "post",
-                            url: "{{url('dashboard/shop/product-category/delete')}}",
+                            url: "{{url('admin-panel/shop/product-category/delete')}}",
                             data: {
                                 id: id,
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                             },
                             success: function(data) {
-                                var url = document.location.origin + "/dashboard/shop/product-category";
+                                var url = document.location.origin + "/admin-panel/shop/product-category";
                                 location.href = url;
                             }
                         });

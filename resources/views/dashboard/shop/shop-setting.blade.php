@@ -754,14 +754,14 @@
                 if (isConfirm) {
                     $.ajax({
                         type: "post",
-                        url: "{{url('dashboard/shop/managment/shop-setting/image/delete')}}",
+                        url: "{{url('admin-panel/shop/managment/shop-setting/image/delete')}}",
                         data: {
                             id: id,
                             type: type,
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
-                            var url = document.location.origin + "/dashboard/shop/managment/shop-setting";
+                            var url = document.location.origin + "/admin-panel/shop/managment/shop-setting";
                             location.href = url;
                         }
                     });

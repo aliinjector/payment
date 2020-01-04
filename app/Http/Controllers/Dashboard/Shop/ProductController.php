@@ -393,12 +393,12 @@ else{
             $attachment = null;
             $file_size = null;
         }
-           // if($request->file('image') == null){
-           //     $image = $product->image;
-           // }
-           // else{
-           //     $image = $this->uploadFile($request->file('image'), false, true);
-           // }
+           if($request->file('image') == null){
+               $image = $product->image;
+           }
+           else{
+               $image = $this->uploadFile($request->file('image'), false, true);
+           }
 
            if($request->brand_id == "null"){
              $request->merge(['brand_id' => null]);
@@ -451,7 +451,7 @@ else{
         'support' => $request->support,
         'secure_payment' => $request->secure_payment,
         'description' => $request->description,
-        'image' => null,
+        'image' => $image,
         'attachment' => $attachment,
         'description' => $request->description,
         'file_size' => $file_size,

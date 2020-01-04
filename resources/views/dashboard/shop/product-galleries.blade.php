@@ -150,7 +150,7 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             type: 'POST',
-                            url: '{{ url("/dashboard/shop/image/delete") }}',
+                            url: '{{ url("/admin-panel/shop/image/delete") }}',
                             data: {filename: name},
                             success: function (data){
                                 console.log("File has been successfully removed!!");

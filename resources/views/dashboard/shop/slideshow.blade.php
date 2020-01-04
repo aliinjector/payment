@@ -236,13 +236,13 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "post",
-                            url: "{{url('dashboard/shop/managment/slideshow/delete')}}",
+                            url: "{{url('admin-panel/shop/managment/slideshow/delete')}}",
                             data: {
                                 id: id,
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                             },
                             success: function(data) {
-                                var url = document.location.origin + "/dashboard/shop/managment/slideshow";
+                                var url = document.location.origin + "/admin-panel/shop/managment/slideshow";
                                 location.href = url;
                             }
                         });
