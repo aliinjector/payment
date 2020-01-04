@@ -7,6 +7,7 @@ use App\Product;
 use App\Brand;
 use App\Color;
 use App\Value;
+use App\Facility;
 use App\Dashboard;
 use App\ProductCategory;
 use App\Feature;
@@ -264,6 +265,23 @@ class ProductController extends Controller
         }
         $shop->colors()->sync($colorIds);
       }
+
+
+              //get all features of product
+              if($request->get('value')){
+                  foreach($request->get('value') as $featureId=>$featureValue)
+                  {
+
+                    $feature = Feature::find($featureId);
+                    if($feature){
+                      $featureIds[$feature->id] = ['value'=>$featureValue];
+                    }
+                  }
+
+                  $product->features()->sync($featureIds);
+              }
+
+
       $shop->tags()->sync($tagIds);
   }
 if ($request->type == 'file') {
@@ -441,8 +459,22 @@ else{
 
       //add facilities
       if($request->facility[0] != null){
+        Facility::where('product_id',$product->id)->delete();
         foreach($request->facility as $facility){
-          DB::table('facilities')->insert(['name' => $facility, 'product_id' => $product->id]);
+          if($facility != null){
+            if($product->facilities->count() != 0){
+              $productFacilities = collect();
+              foreach($product->facilities as $productFacility){
+                $productFacilities[] = $productFacility;
+              }
+              if($productFacilities->where('name', $facility)->count() == 0){
+                  Facility::create(['name' => $facility, 'product_id' => $product->id]);
+              }
+            }
+            else{
+                Facility::create(['name' => $facility, 'product_id' => $product->id]);
+            }
+          }
         }
       }
 
@@ -472,6 +504,23 @@ else{
             }
             \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->colors()->sync($colorIds);
           }
+
+
+                  //get all features of product
+                  if($request->get('value')){
+                      foreach($request->get('value') as $featureId=>$featureValue)
+                      {
+
+                        $feature = Feature::find($featureId);
+                        if($feature){
+                          $featureIds[$feature->id] = ['value'=>$featureValue];
+                        }
+                      }
+
+                      $product->features()->sync($featureIds);
+                  }
+
+
           \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->tags()->sync($tagIds);
       }
       alert()->success('محصول شما باموفقیت ویرایش شد.', 'ثبت شد');

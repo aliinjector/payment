@@ -4,7 +4,7 @@ $(document).on('change', '.selectPhysical', function(e) {
     var name = $(this).data('name');
     $.ajax({
         type: "post",
-        url: window.location.href + '/getFeatures',
+        url: window.location.origin +'/admin-panel/shop/product-list/getFeatures',
         data: {
             id: id,
             name: name,
@@ -40,7 +40,7 @@ $(document).on('change', '.selectService', function(e) {
     var name = $(this).data('name');
     $.ajax({
         type: "post",
-        url: window.location.href + '/getFeatures',
+        url: window.location.origin +'/admin-panel/shop/product-list/getFeatures',
         data: {
             id: id,
             name: name,
@@ -75,7 +75,7 @@ $(document).on('change', '.selectFile', function(e) {
     var name = $(this).data('name');
     $.ajax({
         type: "post",
-        url: window.location.href + '/getFeatures',
+        url: window.location.origin +'/admin-panel/shop/product-list/getFeatures',
         data: {
             id: id,
             name: name,

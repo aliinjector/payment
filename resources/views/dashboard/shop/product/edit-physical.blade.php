@@ -72,11 +72,11 @@
 
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                        <select class="form-control inputfield" name="productCat_id" id="">
+                                        <select class="form-control inputfield selectPhysical" name="productCat_id" id="">
                                             <option style="font-family: BYekan!important;" value="{{ $product->productCategory->id }}">{{ $product->productCategory->name }}
                                             </option>
                                             @foreach($productCategories as $productCategory)
-                                            <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">
+                                            <option style="font-family: BYekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
                                                 @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} >
                                                     @endif {{ $productCategory->name }}
                                             </option>
@@ -84,6 +84,10 @@
                                         </select>
 
                                     </div>
+                                    <div class="border border-info input-group mt-3 pb-3 rounded d-none physicalFeatures">
+
+                                    </div>
+
 
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>
