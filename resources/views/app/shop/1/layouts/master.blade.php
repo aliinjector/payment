@@ -110,12 +110,12 @@
                     <li class="nav-item">
                         <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
                     </li>
-                    @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
+                    @foreach ($shopCategories->where('parent_id' , null)->take(5) as $shopCategory)
                     <div class="dropdown mx-3">
                         <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
                             <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" style="color:
                             #465f73!important">
-                            {{ $shopCategory->name }} 
+                            {{ $shopCategory->name }}
                             </button>
                         </a>
                         @if($shop->menu_show == "nestead_menu")

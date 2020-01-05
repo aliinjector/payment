@@ -36,7 +36,7 @@ class CategoryController extends Controller
         }
       $colorAndCategoryProducts = $colorAndCategoryProducts->first();
       }
-      if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
+      if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') || $request->has('color')) {
         if($colorAndCategoryProducts != null){
           $minPrice = $request->minprice;
           $maxPrice = $request->maxprice;
@@ -73,7 +73,7 @@ class CategoryController extends Controller
           $products = $colorAndCategoryProducts;
       }
       $total = $products->count();
-      $perPage = 16; // How many items do you want to display.
+      $perPage = 500; // How many items do you want to display.
       $currentPage = request()->page; // The index page.
       $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
       SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);
