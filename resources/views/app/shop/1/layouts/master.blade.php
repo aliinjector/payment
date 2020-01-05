@@ -6,7 +6,7 @@
     {!! SEO::generate() !!}
     <meta charset="utf-8">
     @if (\Request::route()->getName() == 'user.purchased.list')
-    <title>لیست سفارشات شما</title>
+    <title>{{ __('app-shop-1-layouts-master.pageTitle') }}</title>
     @else
     <meta name="viewport" content="width=device-width,initial-scale=1">
     @endif
@@ -93,13 +93,13 @@
                             <li class="breadcrumb-item active mb-3 ml-lg-4">
                                 <a href="{{ route('logout') }}">
                                     <button class="btn-sm small btn-primary rounded">
-                                        خروج از حساب کاربری
+                                        {{ __('app-shop-1-layouts-master.khorooj') }}
                                     </button>
                                 </a>
                             </li>
                         </ol>
                     </div>
-                    <h4 class="page-title mr-4">لیست سفارشات شما</h4>
+                    <h4 class="page-title mr-4">{{ __('app-shop-1-layouts-master.pageTitle') }}</h4>
                 </div>
                 <!--end page-title-box-->
             </div>
@@ -113,7 +113,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mr-2">
                     <li class="nav-item">
-                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
+                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">{{ __('app-shop-1-layouts-master.safheAsli') }}</a>
                     </li>
                     @foreach ($shopCategories->where('parent_id' , null)->take(5) as $shopCategory)
                     <div class="dropdown mx-3">
@@ -170,12 +170,12 @@
                     @guest
                     <div class="search-icon d-flex align-items-center mx-3 ">
                         <a href="{{ route('register', ['shop' => $shop->english_name]) }}" style="font-size:13px;">
-                            <button type="button" class="btn bg-blue-omid text-white rounded">عضویت</button>
+                            <button type="button" class="btn bg-blue-omid text-white rounded">{{ __('app-shop-1-layouts-master.ozviat') }}</button>
                         </a>
                     </div>
                     <div class="search-icon d-flex align-items-center ml-5 mt-2 ">
                         <a href="{{ route('login') }}" style="font-size:13px;">
-                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 mt-lg-n2 px-sm-4 mr-sm-3 rounded text-white">ورود</button>
+                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 mt-lg-n2 px-sm-4 mr-sm-3 rounded text-white">{{ __('app-shop-1-layouts-master.vorood') }}</button>
                         </a>
                     </div>
                     @endguest
@@ -186,24 +186,24 @@
                             حساب کاربری
                           </button>
                           <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>علاقه مندی ها <span class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->count() != 0 ?  \Auth::user()->wishlist()->get()->first()->products()->count() : 0 }} </span></a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-user p-2"></i>پنل کاربری</a>
-                              <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>آدرس ها</a>
-                              <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>لیست سفارشات</a>
-                              <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>مقایسه <span class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->count() != 0 ?  \Auth::user()->compare()->get()->first()->products()->count() : 0 }}</span></a>
-                              <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>خروج</a>
+                              <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>{{ __('app-shop-1-layouts-master.alagheMandiHa') }} <span class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->count() != 0 ?  \Auth::user()->wishlist()->get()->first()->products()->count() : 0 }} </span></a>
+                              <a class="dropdown-item" href="#"><i class="fas fa-user p-2"></i>{{ __('app-shop-1-layouts-master.panelKarbari') }}</a>
+                              <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>{{ __('app-shop-1-layouts-master.addressHa') }}</a>
+                              <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>{{ __('app-shop-1-layouts-master.listSefaareshaat') }}</a>
+                              <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>{{ __('app-shop-1-layouts-master.moghayese') }} <span class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->count() != 0 ?  \Auth::user()->compare()->get()->first()->products()->count() : 0 }}</span></a>
+                              <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>{{ __('app-shop-1-layouts-master.khorooj') }}</a>
                           </div>
                       </div>
                         @else
                         <div class="search-icon d-flex align-items-center mx-3 ">
                             <a href="{{ route('user.purchased.list') }}" style="font-size:13px;">
-                                <button type="button" class="btn bg-blue-omid text-white rounded"> مدیریت سفارشات</button>
+                                <button type="button" class="btn bg-blue-omid text-white rounded"> {{ __('app-shop-1-layouts-master.listSefaareshaat') }}</button>
                             </a>
                         </div>
                         @endif
                         <div class="search-icon d-flex align-items-center ml-5">
                             <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
-                                <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">سبد خرید <i class="mr-2 fas fa-shopping-cart"></i>
+                                <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">{{ __('app-shop-1-layouts-master.cart') }} <i class="mr-2 fas fa-shopping-cart"></i>
                                     @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
                                         @else 0
                                         @endif</button>

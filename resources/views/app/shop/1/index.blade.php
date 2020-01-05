@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-9">
         <div class="page-title-box">
-            <h4 class="page-title iranyekan">فروشگاه {{ $shop->name }}</h4>
+            <h4 class="page-title iranyekan">{{ __('app-shop-1-index.frooshgah') }} {{ $shop->name }}</h4>
             <p class="text-muted mb-3 mt-1">{{ $shop->description }}</p>
         </div>
         <!--end page-title-box-->
@@ -19,11 +19,11 @@
                 </div>
                 <!--end of col-->
                 <div class="col">
-                    <input class="form-control form-control-lg form-control-borderless" name="queryy" type="search" placeholder="نام محصول ویا سازنده ...">
+                    <input class="form-control form-control-lg form-control-borderless" name="queryy" type="search" placeholder="{{ __('app-shop-1-index.searchPlaceholder') }}...">
                 </div>
                 <!--end of col-->
                 <div class="col-auto">
-                    <button class="btn bg-blue-omid text-white rounded" type="submit">جستجو</button>
+                    <button class="btn bg-blue-omid text-white rounded" type="submit">{{ __('app-shop-1-index.jostojoo') }}</button>
                 </div>
                 <!--end of col-->
             </div>
@@ -36,7 +36,7 @@
 @if($lastProducts->count() == 0)
     <div class="d-flex justify-content-center align-items-center" style="height:80vh">
         <h4>
-            هیچ محصولی در این فروشگاه وجود ندارد
+          {{ __('app-shop-1-index.noProduct') }}
         </h4>
     </div>
     @else
@@ -104,7 +104,7 @@
 
 
 
-    <h2 class="line-throw mt-5"><span>آخرین محصولات </span></h2>
+    <h2 class="line-throw mt-5"><span>{{ __('app-shop-1-index.akharinMahsoolat') }} </span></h2>
 
 
     <div class="row p-5">
@@ -115,10 +115,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}" class="product-title">{{ $lastProducts[0]->title }}</a>
                     <div class="d-flex justify-content-between my-2 byekan">
                         @if($lastProducts[0]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($lastProducts[0]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[0]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[0]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[0]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($lastProducts[0]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[0]->price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span>
                                 @endif
                     </div>
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[0]->id]) }}" method="post" id="compareForm{{ $lastProducts[0]->id }}">
@@ -130,8 +130,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[0]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($lastProducts[0]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($lastProducts[0]->type == 'file'){{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
                     </form>
 
@@ -153,10 +153,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}" class="product-title">{{ $lastProducts[1]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($lastProducts[1]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($lastProducts[1]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[1]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[1]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[1]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($lastProducts[1]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[1]->price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span>
                                 @endif
 
                     </div>
@@ -170,8 +170,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[1]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($lastProducts[1]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($lastProducts[1]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
 
                     </form>
@@ -195,10 +195,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}" class="product-title">{{ $lastProducts[2]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($lastProducts[2]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($lastProducts[2]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[2]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[2]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[2]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($lastProducts[2]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[2]->price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span>
                                 @endif
 
                     </div>
@@ -214,8 +214,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[2]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($lastProducts[2]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($lastProducts[2]->type == 'file'){{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
                     </form>
 
@@ -240,10 +240,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}" class="product-title"></a>{{ $lastProducts[3]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($lastProducts[3]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($lastProducts[3]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[3]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[3]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[3]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($lastProducts[3]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($lastProducts[3]->price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span>
                                 @endif
 
                     </div>
@@ -259,8 +259,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[3]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($lastProducts[3]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($lastProducts[3]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
                     </form>
 
@@ -287,10 +287,10 @@
                     <div class="row">
                         <div class="col-md-4 mx-auto">
                             <div class="offer-content text-center justify-content-center">
-                                <p class="text-white">پیشنهاد ویژه</p>
-                                <h3 class="mb-3 text-white">50% صرفه جویی در هزینه ها</h3>
+                                <p class="text-white">{{ __('app-shop-1-index.pishnahadVizhe') }}</p>
+                                <h3 class="mb-3 text-white">50%{{ __('app-shop-1-index.sarfejooeeDarHazineha') }}</h3>
                                 <hr class="thick">
-                                <h5 class="text-white iranyekan">با خرید از سامانه آنلاین</h5>
+                                <h5 class="text-white iranyekan">{{ __('app-shop-1-index.baKharideOnline') }}</h5>
                             </div>
                         </div>
                     </div>
@@ -303,7 +303,7 @@
     </div>
 
 
-    <h2 class="mt-5 line-throw"><span>پرفروش ترین محصولات</span></h2>
+    <h2 class="mt-5 line-throw"><span>{{ __('app-shop-1-index.porFrooshTarinHa') }}</span></h2>
 
     <div class="row p-5">
         @if(isset($bestSelling[0]))
@@ -314,10 +314,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}" class="product-title"></a> {{ $bestSelling[0]->title }} </a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[0]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($bestSelling[0]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[0]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[0]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[0]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($bestSelling[0]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[0]->price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span>
                                 @endif
 
                     </div>
@@ -330,8 +330,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[0]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($bestSelling[0]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($bestSelling[0]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
                     </form>
                     @endif
@@ -353,10 +353,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}" class="product-title"></a>{{ $bestSelling[1]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[1]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($bestSelling[1]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[1]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[1]->off_price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[1]->price) }} {{ __('app-shop-1-index.tooman') }} </del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($bestSelling[1]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[1]->price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span>
                                 @endif
 
                     </div>
@@ -372,8 +372,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[1]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($bestSelling[1]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($bestSelling[1]->type == 'file'){{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
                     </form>
 
@@ -397,10 +397,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}" class="product-title">{{ $bestSelling[2]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[2]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($bestSelling[2]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[2]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[2]->off_price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[2]->price) }} {{ __('app-shop-1-index.tooman') }} </del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($bestSelling[2]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[2]->price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span>
                                 @endif
                     </div>
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[2]->id]) }}" method="post" id="compareForm{{ $bestSelling[2]->id }}">
@@ -415,8 +415,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[2]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($bestSelling[2]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($bestSelling[2]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
                     </form>
 
@@ -438,10 +438,10 @@
                 <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}" class="product-title">{{ $bestSelling[3]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[3]->off_price != null)
-                            <p class="product-price byekan">{{ number_format($bestSelling[3]->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[3]->price) }} تومان</del></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[3]->off_price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[3]->price) }} {{ __('app-shop-1-index.tooman') }} </del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($bestSelling[3]->price) }} تومان <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($bestSelling[3]->price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span>
                                 @endif
                     </div>
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[3]->id]) }}" method="post" id="compareForm{{ $bestSelling[3]->id }}">
@@ -455,8 +455,8 @@
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[3]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            @if($bestSelling[3]->type == 'file') دریافت فایل
-                                @else اضافه به سبد خرید
+                            @if($bestSelling[3]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
+                                @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
                     </form>
 
@@ -471,7 +471,7 @@
         <!--end col-->
     </div>
 
-    <h2 class="mt-5 line-throw"><span>بازخورد مشتریان </span></h2>
+    <h2 class="mt-5 line-throw"><span>{{ __('app-shop-1-index.feedback') }} </span></h2>
 
 
     <div class="row mt-5 mb-4">

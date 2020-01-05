@@ -1,32 +1,32 @@
 <div class="@if($products->count() != null) col-lg-3 @endif">
-    <div class="card e-co-product" style="max-width: 18rem;">
-        <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">فیلتر بر اساس نوع کالا</h5>
+    <div class="card e-co-product" style="max-width: 25rem;">
+        <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">{{ __('app-shop-1-layouts-partials-filter.filterType') }}</h5>
         <div class="card-body d-flex justify-content-center text-primary">
             <form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
                 <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
                     <label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
-                        <input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> همه
+                        <input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == '' or request()->type == 'all') checked="" @endif> {{ __('app-shop-1-layouts-partials-filter.filterTypeItem1') }}
                     </label>
                     <label id="available-filter-2" for="available-filter-2" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'product') active @endif border-left-0 iranyekan"
                       style="cursor:pointer">
-                        <input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> فیزیکی
+                        <input type="radio" name="type" value="product" id="available-filter-2" @if(request()->type == 'product') checked="" @endif> {{ __('app-shop-1-layouts-partials-filter.filterTypeItem2') }}
                     </label>
                     <label id="available-filter-3" for="available-filter-3" class="border-top-down-radius-0 btn btn-outline-secondary border-right-0  @if(request()->type == 'file') active @endif border-left-0 iranyekan"
                       style="cursor:pointer">
-                        <input type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> فایل
+                        <input type="radio" name="type" value="file" id="available-filter-3" @if(request()->type == 'file') checked="" @endif> {{ __('app-shop-1-layouts-partials-filter.filterTypeItem3') }}
                     </label>
                     <label id="available-filter-4" for="available-filter-4" class="border-top-down-radius-0 btn btn-outline-secondary  border-right-0  @if(request()->type == 'service') active @endif iranyekan"
                       style="cursor:pointer">
-                        <input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> خدماتی
+                        <input type="radio" name="type" value="service" id="available-filter-4" @if(request()->type == 'service') checked="" @endif> {{ __('app-shop-1-layouts-partials-filter.filterTypeItem4') }}
                     </label>
                 </div>
-                <h5 class="text-dark pr-1 border-btm font-weight-500 m-2">فیلتر بر اساس قیمت کالا</h5>
+                <h5 class="text-dark pr-1 border-btm font-weight-500 m-2">{{ __('app-shop-1-layouts-partials-filter.filterPrice') }}</h5>
                 <input type="text" id="available-price-1" class="w-100 p-2 iranyekan font-14" style="border:0; color:#F68712 !important; font-weight:bold;">
                 <input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
                 <input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
                 <div id="mySlider"></div>
 
-                <h5 class="text-dark pr-1 border-btm font-weight-500 m-2  mt-4">فیلتر بر اساس رنگ کالا</h5>
+                <h5 class="text-dark pr-1 border-btm font-weight-500 m-2  mt-4">{{ __('app-shop-1-layouts-partials-filter.filterColor') }}</h5>
                 <ul class="tt-options-swatch options-middle">
   								@foreach ($colors as $color)
   								<li>
@@ -39,8 +39,8 @@
   							</ul>
         </div>
     </div>
-    <div class="card p-3 align-items-start iranyekan font-15" style="max-width: 18rem;">
-        <h5 class="text-dark pr-1 border-btm font-weight-500 m-2" style="width: 90%;">دسته بندی نتایج</h5>
+    <div class="card p-3 align-items-start iranyekan font-15" style="max-width: 25rem;">
+        <h5 class="text-dark pr-1 border-btm font-weight-500 m-2" style="width: 90%;">{{ __('app-shop-1-layouts-partials-filter.dasteBandiHa') }}</h5>
         <div class="border-0">
             <div class="list-group list-group-root well border-0">
                 @foreach($categories as $category)

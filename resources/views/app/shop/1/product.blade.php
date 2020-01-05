@@ -52,17 +52,17 @@
                                 <div class="custom-border mt-3"></div>
                             </h3>
                             @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
-                            <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجود</span>
+                            <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.mojoodi') }}</span>
                             @else
-                            <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
+                            <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.naaMojood') }}</span>
                             @endif
                             @if($product->off_price != null)
-                                <h2 class="pro-price">{{ number_format($product->off_price) }} تومان</h2>
-                                <span><del>{{ number_format($product->price) }} تومان</del></span>
+                                <h2 class="pro-price">{{ number_format($product->off_price) }} {{ __('app-shop-1-product.tooman') }}</h2>
+                                <span><del>{{ number_format($product->price) }} {{ __('app-shop-1-product.tooman') }}</del></span>
                                 @else
-                                <h2 class="pro-price">{{ number_format($product->price) }} تومان</h2>
+                                <h2 class="pro-price">{{ number_format($product->price) }}{{ __('app-shop-1-product.tooman') }} </h2>
                                 @endif
-                                <h6 class="text-muted font-13">ویژگی ها :</h6>
+                                <h6 class="text-muted font-13">{{ __('app-shop-1-product.vizhegiha') }} :</h6>
                                 <ul class="list-unstyled pro-features border-0 iranyekan">
                                     @for ($i=1; $i <= 10; $i++) <div class="wrapper">
                                         @if ($product->{"feature_{$i}"})
@@ -70,18 +70,18 @@
                                         @endif
                                         @endfor
                                         <div class="show-more mr-1 mt-4" style="line-height: 2;"><i class="fas fa-plus"></i>
-                                            <span class="toggle-show">موارد بیشتر</span>
+                                            <span class="toggle-show"> {{ __('app-shop-1-product.more') }}</span>
                                         </div>
                         </div>
                         </ul>
                         @if ($product->type == "file")
-                        <h6 class="text-muted font-13">حجم فایل :</h6>
+                        <h6 class="text-muted font-13">{{ __('app-shop-1-product.hajmeFile') }} :</h6>
                         <ul class="list-unstyled pro-features border-0 iranyekan">
-                            <li>{{ round($product->file_size / 1048576,2)}} مگابایت</li>
+                            <li>{{ round($product->file_size / 1048576,2)}} {{ __('app-shop-1-product.megaByte') }}</li>
                         </ul>
                         @endif
                         @if ($product->type == "product")
-                        <h6 class="text-muted font-13">وزن محصول :</h6>
+                        <h6 class="text-muted font-13">{{ __('app-shop-1-product.vazneMahsool') }} :</h6>
                         <ul class="list-unstyled pro-features border-0 iranyekan">
                             <li>{{ $product->weight }} گرم</li>
                         </ul>
@@ -96,20 +96,20 @@
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
+                                    <button type="submit" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.daryaafteFile') }} </button>
                                 </form>
                                 @else
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="text-white btn bg-blue-omid iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
+                                    <button type="submit" class="text-white btn bg-blue-omid iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.ezaafeBeSabadeKharid') }} </button>
                                     @endif
 
                                 </form>
                                 @endauth
                                 @guest
                                 <a href="{{ route('register') }}">
-                                    <button type="button" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> ثبت نام و خرید </button>
+                                    <button type="button" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.registerForAddToCart') }} </button>
                                 </a>
                                 @endguest
 
@@ -139,8 +139,8 @@
                     @if ($product->fast_sending == 1)
                     <div class="col-lg-3">
                         <div class="pro-order-box min-height-160 border bg-orange-rock"><i class="mdi mdi-truck-fast text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">ارسال سریع</h4>
-                            <p class="text-white mb-0">امکان ارسال در سریع ترین زمان ممکن پس از ثبت سفارش در سامانه.</p>
+                            <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.ersaaleSari') }}</h4>
+                            <p class="text-white mb-0">{{ __('app-shop-1-product.ersaaleSariDesc') }}.</p>
                         </div>
                     </div>
                     @endif
@@ -148,8 +148,8 @@
                     @if ($product->money_back == 1)
                     <div class="col-lg-3">
                         <div class="pro-order-box min-height-160 border bg-red-rock"><i class="mdi mdi-refresh text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">تضمین بازگشت وجه</h4>
-                            <p class="text-white mb-0">درصورت عدم رضایت از محصول وجه دریافتی بازگشت داده میشود.</p>
+                            <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.baazgasteVajh') }}</h4>
+                            <p class="text-white mb-0">{{ __('app-shop-1-product.baazgasteVajhDesc') }}.</p>
                         </div>
                     </div>
                     @endif
@@ -158,8 +158,8 @@
                     @if ($product->support == 1)
                     <div class="col-lg-3">
                         <div class="pro-order-box min-height-160 border bg-green-rock"><i class="mdi mdi-headset text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">پشتیبانی 24 ساعته</h4>
-                            <p class="mb-0 text-white">تیم پشتیبانی مجموعه به صورت 24 ساعته آماده پاسخگویی به سوالات شما میباشند.</p>
+                            <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.poshtibaani') }}</h4>
+                            <p class="mb-0 text-white">{{ __('app-shop-1-product.poshtibaaniDesc') }}.</p>
                         </div>
                     </div>
                     @endif
@@ -168,8 +168,8 @@
                     @if ($product->secure_payment == 1)
                     <div class="col-lg-3">
                         <div class="pro-order-box mb-0 min-height-160 border bg-blue-rock"><i class="mdi mdi-wallet text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">پرداخت امن</h4>
-                            <p class="text-white mb-0">امکان پرداخت امن در سامانه و تجربه پرداخت امن.</p>
+                            <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.pardaakhteAmn') }}</h4>
+                            <p class="text-white mb-0">{{ __('app-shop-1-product.pardaakhteAmnDesc') }}.</p>
                         </div>
                     </div>
                     @endif
@@ -190,8 +190,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="newsletters-text">
-                            <h4>ثبت نام در خبرنامه</h4>
-                            <p class="text-white mb-0">برای دریافت آخرین اخبار سامانه میتوانید در خبرنامه ثبت نام کنید.</p>
+                            <h4>{{ __('app-shop-1-product.khabarNaame') }}</h4>
+                            <p class="text-white mb-0">{{ __('app-shop-1-product.khabarNaameDesc') }}.</p>
                         </div>
                     </div>
                     <!--end col-->
@@ -199,8 +199,8 @@
                         <div class="newsletters-input">
                           <form class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
                             @csrf
-                                <input type="email" name="email" placeholder="ایمیل خود را وارد کنید" required="" style="direction: ltr">
-                                <button type="submit" class="btn btn-blue rounded">دنبال کردن</button>
+                                <input type="email" name="email" placeholder="{{ __('app-shop-1-product.khabarNaamePlaceholder') }}" required="" style="direction: ltr">
+                                <button type="submit" class="btn btn-blue rounded">{{ __('app-shop-1-product.khabarNaameBtn') }}</button>
                             </form>
                         </div>
                     </div>
@@ -216,7 +216,7 @@
                 <div class="row">
                     <div class="col-lg-3 align-self-center"><img src="{{ $product->image['250,250'] }}" alt="" height="250" class="d-block mx-auto col-12"></div>
                     <div class="col-lg-9">
-                        <h5 class="mt-3">توضیحات :</h5>
+                        <h5 class="mt-3">{{ __('app-shop-1-product.tozihaat') }} :</h5>
                         <p class="text-muted mb-4"> {!! $product->description  !!}</p>
                         <ul class="list-unstyled mb-4">
                             @for ($i=1; $i
@@ -261,22 +261,22 @@
                                 <input type="hidden" name="shop" value="{{ $shop->english_name }}">
                                 <br>
                                 @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
-                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded comming-soon">شما قبلا امتیاز ثبت کرده اید </button>
+                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded comming-soon">{{ __('app-shop-1-product.shomaGhablanEmtiazSabtKardeid') }} </button>
                                     @else
-                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded">ثبت امتیاز</button>
+                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded">{{ __('app-shop-1-product.sabteEmtiaz') }}</button>
                                     @endif
                         </form>
                         @endif
                         @endauth
                         <br>
                         @if($shop->buyCount_show == 'enable')
-                        <h4 class="header-title pt-4">مجموع فروش</h4>
+                        <h4 class="header-title pt-4">{{ __('app-shop-1-product.majmooeForoosh') }}</h4>
                         <div class="review-box text-center align-item-center p-3">
                            <h1 class="byekan">{{ $product->buyCount }}</h1>
                            @endif
                             <ul class="list-inline mb-0 product-review">
-                                <li class="list-inline-item"><small class="text-muted font-14">مجموع آرا ({{ $productRates->count() }})</small></li>
-                                <li class="list-inline-item"><small class="text-muted font-14">متوسط آرا ({{ (int)$product->avgRating }})</small></li>
+                                <li class="list-inline-item"><small class="text-muted font-14">{{ __('app-shop-1-product.majoomeAraa') }} ({{ $productRates->count() }})</small></li>
+                                <li class="list-inline-item"><small class="text-muted font-14">{{ __('app-shop-1-product.motevaseteAra') }} ({{ (int)$product->avgRating }})</small></li>
                             </ul>
                             <ul class="list-inline mb-0 product-review">
 
@@ -289,31 +289,31 @@
                 </div>
                 @if ($productRates->count() > 0)
                 <ul class="list-unstyled mt-3 font-15 p-1">
-                    <li class="mb-2"><span class="text-info">5 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 5)->count() }}</small>
+                    <li class="mb-2"><span class="text-info">5 {{ __('app-shop-1-product.setaareh') }} </span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 5)->count() }}</small>
                         <div class="progress mt-2" style="height:5px;">
                             <div class="progress-bar bg-secondary" role="progressbar" style="width:{{$productRates->where('rating' , 5)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="80" aria-valuemin="0"
                               aria-valuemax="100"></div>
                         </div>
                     </li>
-                    <li class="mb-2"><span class="text-info">4 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 4)->count() }}</small>
+                    <li class="mb-2"><span class="text-info">4 {{ __('app-shop-1-product.setaareh') }}</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 4)->count() }}</small>
                         <div class="progress mt-2" style="height:5px;">
                             <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 4)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="18" aria-valuemin="0"
                               aria-valuemax="100"></div>
                         </div>
                     </li>
-                    <li class="mb-2"><span class="text-info">3 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 3)->count() }}</small>
+                    <li class="mb-2"><span class="text-info">3 {{ __('app-shop-1-product.setaareh') }}</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 3)->count() }}</small>
                         <div class="progress mt-2" style="height:5px;">
                             <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 3)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="10" aria-valuemin="0"
                               aria-valuemax="100"></div>
                         </div>
                     </li>
-                    <li class="mb-2"><span class="text-info">2 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 2)->count() }}</small>
+                    <li class="mb-2"><span class="text-info">2 {{ __('app-shop-1-product.setaareh') }}</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 2)->count() }}</small>
                         <div class="progress mt-2" style="height:5px;">
                             <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 2)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="1" aria-valuemin="0"
                               aria-valuemax="100"></div>
                         </div>
                     </li>
-                    <li><span class="text-info">1 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 1)->count() }}</small>
+                    <li><span class="text-info">1 {{ __('app-shop-1-product.setaareh') }}</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 1)->count() }}</small>
                         <div class="progress mt-2" style="height:5px;">
                             <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 1)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="0" aria-valuemin="0"
                               aria-valuemax="100"></div>
@@ -322,7 +322,7 @@
                 </ul>
                 @endif
 
-                <h4 class="mt-3 mb-3">برچسب ها :</h4>
+                <h4 class="mt-3 mb-3">{{ __('app-shop-1-product.tags') }} :</h4>
                 <ul class="tags iranyekan">
                     @foreach ($product->tags()->get() as $tag)
                     <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$tag->name]) }}" class="tag iranyekan">{{ $tag->name }}</a></li>

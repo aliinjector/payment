@@ -6,17 +6,17 @@
             @if(isset($products))
 
             <div class="card-body font-18">
-                <h4 class="header-title mt-0">سبد خرید </h4>
-                <p class="mb-4 text-muted">لیست محصولات سبد خرید.</p>
+                <h4 class="header-title mt-0">{{ __('app-shop-1-cart.cart') }}</h4>
+                <p class="mb-4 text-muted">{{ __('app-shop-1-cart.cartDesc') }}.</p>
                 <div class="table-responsive shopping-cart">
                     <table class="table mb-0">
                         <thead>
                             <tr>
-                                <th>محصول</th>
-                                <th>قیمت واحد کالا</th>
-                                <th>میزان تخفیف</th>
-                                <th>تعداد</th>
-                                <th>عملیات</th>
+                                <th>{{ __('app-shop-1-cart.cartTableItem1') }}</th>
+                                <th>{{ __('app-shop-1-cart.cartTableItem2') }}</th>
+                                <th>{{ __('app-shop-1-cart.cartTableItem3') }}</th>
+                                <th>{{ __('app-shop-1-cart.cartTableItem4') }}</th>
+                                <th>{{ __('app-shop-1-cart.cartTableItem5') }}</th>
                             </tr>
                         </thead>
                         <tbody class="">
@@ -30,7 +30,7 @@
                                               class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                             <br><span class="text-muted font-13">رنگ قرمز</span></p>
                                     </td>
-                                    <td>{{ number_format($product->price) }} تومان </td>
+                                    <td>{{ number_format($product->price) }} {{ __('app-shop-1-cart.tooman') }} </td>
                                     <td>
                                         @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0
                                             @else {{ number_format($product->price-$product->off_price)}}
@@ -62,7 +62,7 @@
                     </table>
                 </div>
                 <div class="d-flex input-group-append justify-content-end">
-                    <button type="submit" class="btn bg-blue-omid mt-4 text-white rounded">ثبت و ادامه</button>
+                    <button type="submit" class="btn bg-blue-omid mt-4 text-white rounded">{{ __('app-shop-1-cart.sabtVaEdame') }}</button>
                     </form>
 
                 </div>
@@ -71,7 +71,7 @@
             </div>
             @else
 
-            <h4 class="d-flex justify-content-center p-4">محصولی در سبد خرید شما وجود ندارد</h4>
+            <h4 class="d-flex justify-content-center p-4">{{ __('app-shop-1-cart.noProduct') }}</h4>
 
             @endif
 
