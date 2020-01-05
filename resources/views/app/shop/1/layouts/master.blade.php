@@ -23,15 +23,18 @@
     <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/css/custom.css" rel="stylesheet" type="text/css">
     <style>
-    .form-control-borderless {
-    border: none;
-}
+        .form-control-borderless {
+            border: none;
+        }
 
-.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-    border: none;
-    outline: none;
-    box-shadow: none;
-}
+        .form-control-borderless:hover,
+        .form-control-borderless:active,
+        .form-control-borderless:focus {
+            border: none;
+            outline: none;
+            box-shadow: none;
+        }
+
         .dropdown-submenu {
             position: relative;
         }
@@ -124,23 +127,29 @@
                                 <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="right:.2em!important">
                                     @foreach ($shopCategory->children()->get() as $subCategory)
                                     @if (!$subCategory->children()->exists())
-                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;"><li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
-                                    </li>
+                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;">
+                                        <li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
+                                        </li>
                                     </a>
                                     @else
                                     <li class="dropdown-submenu">
-                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;" tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
+                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;" tabindex="-1">{{ $subCategory->name }}<i
+                                              class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                         <ul class="dropdown-menu font-16">
                                             @foreach ($subCategory->children()->get() as $subSubCategory)
                                             @if (!$subSubCategory->children()->exists())
-                                            <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"><li class="dropdown-item">{{ $subSubCategory->name }}</li></a>
+                                            <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}">
+                                                <li class="dropdown-item">{{ $subSubCategory->name }}</li>
+                                            </a>
                                             @else
                                             <li class="dropdown-submenu">
-                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
+                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="color: #465f73!important;">{{ $subSubCategory->name }}<i
+                                                      class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                                 <ul class="dropdown-menu font-16">
                                                     @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                                                      <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
-                                                            style="color: #465f73!important;"><li class="dropdown-item">{{ $subSubSubCategory->name }}</li></a>
+                                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}" style="color: #465f73!important;">
+                                                        <li class="dropdown-item">{{ $subSubSubCategory->name }}</li>
+                                                    </a>
                                                     @endforeach
                                                 </ul>
                                                 @endif
@@ -171,11 +180,19 @@
                     @endguest
                     @auth
                     @if(\Auth::user()->id == $shop->user_id)
-                        <div class="search-icon d-flex align-items-center ml-5 ">
-                            <a href="{{ route('dashboard.index') }}" style="font-size:13px;">
-                                <button type="button" class="btn bg-blue-omid text-white rounded">ورود به پنل مدیریت</button>
-                            </a>
-                        </div>
+                      <div class="dropdown search-icon d-flex align-items-center mx-3 my-4">
+                          <button class="btn bg-blue-omid text-white rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            حساب کاربری
+                          </button>
+                          <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>علاقه مندی ها <span class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->count() != 0 ?  \Auth::user()->wishlist()->get()->first()->products()->count() : 0 }} </span></a>
+                              <a class="dropdown-item" href="#"><i class="fas fa-user p-2"></i>پنل کاربری</a>
+                              <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>آدرس ها</a>
+                              <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>لیست سفارشات</a>
+                              <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>مقایسه <span class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->count() != 0 ?  \Auth::user()->compare()->get()->first()->products()->count() : 0 }}</span></a>
+                              <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>خروج</a>
+                          </div>
+                      </div>
                         @else
                         <div class="search-icon d-flex align-items-center mx-3 ">
                             <a href="{{ route('user.purchased.list') }}" style="font-size:13px;">
@@ -192,11 +209,8 @@
                             </a>
                         </div>
                         @endauth
-                        <div class="search-icon d-flex align-items-center mx-3 ">
-                            <a href="{{ route('user.purchased.list') }}" style="font-size:13px;">
-                                <button type="button" class="btn bg-blue-omid text-white rounded"></button>
-                            </a>
-                        </div>
+
+
 
                         <li class="nav-item">
                             <a href="{{ route('shop', $shop->english_name) }}">
@@ -217,10 +231,10 @@
             </div>
             <!-- container -->
             <footer style="    margin: 25px; font-family: iranyekan" class="footer text-center text-sm-left text-muted">
-              &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
-              <a target="_blank" href="https://omidshop.net">
-                <span class="text-muted d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
-              </a>
+                &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
+                <a target="_blank" href="https://omidshop.net">
+                    <span class="text-muted d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
+                </a>
             </footer>
 
             <!--end footer-->
@@ -250,7 +264,7 @@
 
         @include('sweet::alert')
         @yield('pageScripts')
-    <script src="{{url('stats/script.js')}}"></script>
+        <script src="{{url('stats/script.js')}}"></script>
 </body>
 
 </html>

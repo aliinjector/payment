@@ -373,3 +373,8 @@ h2 span {
 .pointer-crouser{
   cursor: pointer;
 }
+.circle-bg{
+      background: rgba(255, 0, 0, 0.2);
+      padding: 4px 10px;
+      border-radius: 50%;
+}

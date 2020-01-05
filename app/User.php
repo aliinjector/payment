@@ -57,6 +57,10 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Wishlist');
     }
+    public function compare()
+    {
+        return $this->hasOne('App\Compare');
+    }
 
     public function tickets()
     {
