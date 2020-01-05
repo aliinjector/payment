@@ -203,7 +203,7 @@
                                        <li>
                                           @if($shop->quick_way == 'enable')
                                           <div class="radio radio-info">
-                                             <input type="radio" name="shipping_way" id="quick_way" value="quick_way" checked="checked">
+                                             <input type="radio" name="shipping_way" id="quick_way" value="quick_way" checked="checked" style="height:13px!important;width:13px!important">
                                              <label for="quick_way">ارسال سریع</label>
                                           </div>
                                           @endif
@@ -211,13 +211,13 @@
                                        <li>
                                           @if($shop->posting_way == 'enable')
                                           <div class="radio radio-info mt-2">
-                                             <input type="radio" name="shipping_way" id="posting_way" value="posting_way">
+                                             <input type="radio" name="shipping_way" id="posting_way" value="posting_way" style="height:13px!important;width:13px!important">
                                              <label for="posting_way">ارسال پستی</label>
                                           </div>
                                           @endif
                                           @if($shop->person_way == 'enable')
                                           <div class="radio radio-info mt-2">
-                                             <input type="radio" name="shipping_way" id="person_way" value="person_way">
+                                             <input type="radio" name="shipping_way" id="person_way" value="person_way" style="height:13px!important;width:13px!important">
                                              <label for="person_way">دریافت حضوری</label>
                                           </div>
                                           @endif
@@ -240,6 +240,27 @@
                                        </li>
                                     </ul>
                                  </td>
+                              </tr>
+                              <tr>
+                                  <td class="payment-title"> روش  پرداخت :</td>
+                                  <td>
+                                      <ul class="list-unstyled mb-0">
+                                          <li>
+                                              @if($shop->cash_payment == 'enable')
+                                                  <div class="radio radio-info">
+                                                      <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked" style="height:13px!important;width:13px!important">
+                                                      <label for="cash_payment">پرداخت نقدی</label>
+                                                  </div>
+                                                  @endif
+                                              @if($shop->online_payment == 'enable')
+                                                  <div class="radio radio-info">
+                                                      <input type="radio" name="payment_method" id="online_payment" value="online_payment" checked="checked" style="height:13px!important;width:13px!important">
+                                                      <label for="online_payment">پرداخت آنلاین</label>
+                                                  </div>
+                                                  @endif
+                                          </li>
+                                      </ul>
+                                  </td>
                               </tr>
                               <tr>
                                  <td class="payment-title font-weight-bolder">مبلغ قابل پرداخت :</td>
