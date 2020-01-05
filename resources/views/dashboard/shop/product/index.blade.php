@@ -800,6 +800,37 @@
         });
     </script>
     <script>
+    $(document).on('click', '#removerProduct', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+        console.log(name)
+        swal(` ${'حذف محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                dangerMode: true,
+                icon: "warning",
+                buttons: ["انصراف", "حذف"],
+            })
+            .then(function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{url('/admin-panel /shop/product-list/delete')}}",
+                        data: {
+                            id: id,
+                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                        },
+                        success: function(data) {
+                            var url = document.location.origin + "/admin-panel/shop/product-list";
+                            location.href = url;
+                        }
+                    });
+                } else {
+                    toastr.warning('لغو شد.', '', []);
+                }
+            });
+    });
+</script>
+    <script>
         $(".change").click(function() {
             var id = $(this).data("id");
             $.ajax({
