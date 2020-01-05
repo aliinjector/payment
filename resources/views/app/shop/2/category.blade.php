@@ -67,9 +67,9 @@
 						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.zirDasteha') }}</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
-								<li class="active"><a href="#">{{ $category->name }}</a></li>
+								<li class="active"><a href="#">{{ $category->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
 								@foreach($subCategories as $subCategory)
-								<li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}">{{ $subCategory->name }}</a></li>
+								<li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}">{{ $subCategory->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
 								@endforeach
 							</ul>
 						</div>

@@ -297,6 +297,19 @@
                                 </select>
                             </div>
                         </div>
+
+
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نمایش آیکون دسته بندی ها</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="cat_image_status">
+                                    <option value="enable">فعال</option>
+                                    <option value="disable" @if(\Auth::user()->shop()->first()->cat_image_status == 'disable') selected @endif>غیرفعال</option>
+                                </select>
+                            </div>
+                        </div>
+
+
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem2') }}
                                 <br /><button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#watermark">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem2Edit') }}</button>

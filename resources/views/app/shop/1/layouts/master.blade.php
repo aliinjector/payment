@@ -115,7 +115,7 @@
                         <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
                             <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" style="color:
                             #465f73!important">
-                            {{ $shopCategory->name }}
+                            {{ $shopCategory->name }} 
                             </button>
                         </a>
                         @if($shop->menu_show == "nestead_menu")

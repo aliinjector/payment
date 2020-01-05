@@ -34,7 +34,7 @@
             <div class="list-group list-group-root well border-0">
                 @foreach($categories as $category)
                 <a href="#item-{{$category->id}}" class="border-0 iranyekan p-0 py-1 @if( Request::is('*/category/'.$category->id)) font-weight-bolder text-dark @endif" data-toggle="collapse">
-                <i class="fa fa-angle-left light-dark-text-color font-12 mr-2"></i>{{ $category->name }}
+                <i class="fa fa-angle-left light-dark-text-color font-12 mr-2"></i>{{ $category->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif
                 </a>
                 <div
                   class="list-group collapse border-0  @if( Request::is('*/category/'.$category->id)) show @elseif($category->children()->exists() and App\Http\Controllers\Shop\CategoryController::getAllSubCategories($category->id)->where('id' , (int)Request::segment(3))->count() != 0) show @endif"
@@ -44,7 +44,7 @@
                     @else href="#item-{{$category->id}}-{{$subCategory->id}}"
                     @endif class="border-0 iranyekan dark-text-color p-2" @if($shop->menu_show != 'nestead_box') data-toggle="collapse"
                         @endif>
-                            <i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i> {{ $subCategory->name}} </br>
+                            <i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i> {{ $subCategory->name}} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif </br>
                 </a>
                 <div
                   class="list-group collapse border-0 @if(App\Http\Controllers\Shop\CategoryController::getAllSubCategories($subCategory->id)->where('id' , (int)Request::segment(3))->count() != 0) show @elseif($shop->menu_show == 'nestead_box') show @endif"
@@ -53,18 +53,18 @@
                 <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"
                     @else href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}"
                     @endif class="border-0 iranyekan dark-text-color p-2 mr-5" @if($shop->menu_show != 'nestead_box') data-toggle="collapse"
-                        @endif ><i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i>{{ $subSubCategory->name}}</a>
+                        @endif ><i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i>{{ $subSubCategory->name}}  @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a>
                 <div
                   class="list-group collapse border-0 @if(App\Http\Controllers\Shop\CategoryController::getAllSubCategories($subSubCategory->id)->where('id' , (int)Request::segment(3))->count() != 0) show @elseif($shop->menu_show == 'nestead_box') show @endif"
                 id="item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}">
                 @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
                 <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
                     @else href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}-{{$subSubSubCategory->id}}"
-                    @endif class="border-0 iranyekan dark-text-color p-2 mr-5 pr-4" @if($shop->menu_show != 'nestead_box') data-toggle="collapse" @endif>{{ $subSubSubCategory->name}}
+                    @endif class="border-0 iranyekan dark-text-color p-2 mr-5 pr-4" @if($shop->menu_show != 'nestead_box') data-toggle="collapse" @endif>{{ $subSubSubCategory->name}} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif
                 </a>
                 <div class="list-group collapse border-0" id="item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}-{{$subSubSubCategory->id}}">
                     @foreach ($subSubSubCategory->children()->get() as $subSubSubSubCategory)
-                    <a href="#" class="border-0 iranyekan dark-text-color p-2 mr-5  pr-5">{{ $subSubSubSubCategory->name}}
+                    <a href="#" class="border-0 iranyekan dark-text-color p-2 mr-5  pr-5">{{ $subSubSubSubCategory->name}} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif
                     </a>
                     @endforeach
                 </div>
