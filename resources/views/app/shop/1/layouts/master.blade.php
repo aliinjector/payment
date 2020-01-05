@@ -192,6 +192,11 @@
                             </a>
                         </div>
                         @endauth
+                        <div class="search-icon d-flex align-items-center mx-3 ">
+                            <a href="{{ route('user.purchased.list') }}" style="font-size:13px;">
+                                <button type="button" class="btn bg-blue-omid text-white rounded"></button>
+                            </a>
+                        </div>
 
                         <li class="nav-item">
                             <a href="{{ route('shop', $shop->english_name) }}">

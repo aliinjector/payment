@@ -22,13 +22,15 @@ class CompareController extends Controller
           }
           $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
           $shop = Shop::where('english_name', $shop)->first();
+          $template_folderName = $shop->template->folderName;
           toastr()->info('محصولات اضافه شدند.');
 
           SEOTools::setTitle($shop->name . ' | ' . 'مقایسه محصولات');
           SEOTools::setDescription($shop->description);
           SEOTools::opengraph()->addProperty('type', 'website');
 
-          return view('app.shop.compare', compact('shop', 'shopCategories'));
+          return view("app.shop.$template_folderName.compare", compact('shop', 'shopCategories'));
+
 
       }
 

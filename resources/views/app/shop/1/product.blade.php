@@ -86,39 +86,10 @@
                             <li>{{ $product->weight }} گرم</li>
                         </ul>
                         @endif
-                        @if ($product->color_1 || $product->color_2 || $product->color_3 || $product->color_4 || $product->color_5)
-                        <h5 class="text-muted d-inline-block align-middle mr-2">رنگ :</h5>
-                        @endif
-                        @if ($product->color_1)
-                        <div class="form-check-inline ml-2 color-picker p-1" style="background-color:{{ $product->color_1 }} ; border: 1px solid black;">
-                            <input type="radio" id="inlineRadio1" value="option1" name="radioInline" checked="">
-                            <label for="inlineRadio1"></label>
-                        </div>
-                        @endif
-                        @if ($product->color_2)
-                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_2 }} ; border: 1px solid black;">
-                            <input type="radio" id="inlineRadio2" value="option2" name="radioInline">
-                            <label for="inlineRadio2"></label>
-                        </div>
-                        @endif
-                        @if ($product->color_3)
-                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_3 }}; border: 1px solid black;">
-                            <input type="radio" id="inlineRadio3" value="option3" name="radioInline">
-                            <label for="inlineRadio3"></label>
-                        </div>
-                        @endif
-                        @if ($product->color_4)
-                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_4 }}; border: 1px solid black;">
-                            <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
-                            <label for="inlineRadio4"></label>
-                        </div>
-                        @endif
-                        @if ($product->color_5)
-                        <div class="form-check-inline color-picker p-1" style="background-color:{{ $product->color_5 }}; border: 1px solid black;">
-                            <input type="radio" id="inlineRadio4" value="option4" name="radioInline">
-                            <label for="inlineRadio4"></label>
-                        </div>
-                        @endif
+                        <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
+                            @csrf
+                            <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                        </form>
                         <div class="quantity mt-3">
                             @auth
                             @if($product->type == 'file')
@@ -141,6 +112,7 @@
                                     <button type="button" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> ثبت نام و خرید </button>
                                 </a>
                                 @endguest
+
                         </div>
                     </div>
                 </div>
