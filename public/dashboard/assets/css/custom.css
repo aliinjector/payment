@@ -242,3 +242,11 @@ h2 span {
 .mr-8{
       margin-right: 8%!important;
 }
+.set-icon-blue{
+  background-color: rgba(39, 121, 255, .1);
+  color: #00b3ff;
+}
+.set-icon-lightpurple{
+  background-color: rgba(213, 34, 176, .1);
+  color: #ff00bb;
+}

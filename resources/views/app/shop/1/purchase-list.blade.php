@@ -200,6 +200,27 @@
                                                 </td>
                                             </tr>
                                             <tr>
+                                                <td class="payment-title"> روش  پرداخت :</td>
+                                                <td>
+                                                    <ul class="list-unstyled mb-0">
+                                                        <li>
+                                                            @if($shop->cash_payment == 'enable')
+                                                                <div class="radio radio-info">
+                                                                    <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked">
+                                                                    <label for="cash_payment">پرداخت نقدی</label>
+                                                                </div>
+                                                                @endif
+                                                            @if($shop->online_payment == 'enable')
+                                                                <div class="radio radio-info">
+                                                                    <input type="radio" name="payment_method" id="online_payment" value="online_payment" checked="checked">
+                                                                    <label for="online_payment">پرداخت آنلاین</label>
+                                                                </div>
+                                                                @endif
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                            <tr>
                                                 <td class="payment-title font-weight-bolder">مبلغ قابل پرداخت :</td>
                                                 <td>
                                                     @if(isset($discountedPrice))

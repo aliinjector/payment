@@ -137,8 +137,8 @@
                                 </div>
 
                             </div>
-                            <div class="row mt-4">
-                                <div class="col-lg-4 border-left p-3">
+                            <div class="row col-12 mt-4">
+                                <div class="col-lg-2 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-purple"><i class="fa fa-shipping-fast"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
@@ -161,7 +161,7 @@
 
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-4 border-left p-3">
+                                <div class="col-lg-2 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-success"><i class="fa fa-truck"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
@@ -185,7 +185,7 @@
 
                                 </div>
                                 <!--end col-->
-                                <div class="col-lg-4  p-3">
+                                <div class="col-lg-2 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fas fa-people-carry"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
@@ -198,6 +198,50 @@
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way" @if($shopInformation->person_way == 'enable') checked @endif>
                                                         <label class="custom-control-label iranyekan font-15" for="person_way_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9Enable') }}</label>
+                                                </div>
+
+                                            </div>
+                                            <!--end /div-->
+                                        </div>
+                                        <!--end media body-->
+                                    </div>
+                                    <!--end media-->
+                                </div>
+                                <div class="col-lg-2 border-left p-3 m-4">
+                                    <div class="media setting-card"><span class="sett-card-icon set-icon-blue"><i class="far fa-credit-card"></i></i></span>
+                                        <div class="media-body align-self-center">
+                                            <div class="setting-detail">
+                                                <h3 class="mb-0 mt-0 iranyekan">پرداخت آنلاین</h3>
+                                                <p class="text-muted mb-0">
+
+                                                  میتوانید با دریافت درگاه مستقیم اقدام به دریافت وجه بصورت آنلاین کنید.</p>
+                                            </div>
+                                            <div class="mt-3 row">
+                                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                                    <input type="checkbox" class="custom-control-input" id="online_payment_on" name="online_payment" @if($shopInformation->online_payment == 'enable') checked @endif>
+                                                        <label class="custom-control-label iranyekan font-15" for="online_payment_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9Enable') }}</label>
+                                                </div>
+
+                                            </div>
+                                            <!--end /div-->
+                                        </div>
+                                        <!--end media body-->
+                                    </div>
+                                    <!--end media-->
+                                </div>
+                                <div class="col-lg-2 m-4 p-3">
+                                    <div class="media setting-card"><span class="sett-card-icon set-icon-lightpurple"><i class="fas fa-money-bill-alt"></i></span>
+                                        <div class="media-body align-self-center">
+                                            <div class="setting-detail">
+                                                <h3 class="mb-0 mt-0 iranyekan">پرداخت نقدی</h3>
+                                                <p class="text-muted mb-0">
+
+                                                    کاربر شما میتواند پس از دریافت کالا وجه را پرداخت کند.</p>
+                                            </div>
+                                            <div class="mt-3 row">
+                                                <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
+                                                    <input type="checkbox" class="custom-control-input" id="cash_payment_on" name="cash_payment" @if($shopInformation->cash_payment == 'enable') checked @endif>
+                                                        <label class="custom-control-label iranyekan font-15" for="cash_payment_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9Enable') }}</label>
                                                 </div>
 
                                             </div>

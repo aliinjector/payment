@@ -37,6 +37,8 @@ class ShopSettingController extends Controller
               $shop->quick_way = "disable";
               $shop->posting_way = "disable";
               $shop->person_way = "disable";
+              $shop->cash_payment = "enable";
+              $shop->online_payment = "enable";
               $shop->template_id = 1;
               $shop->description = "توضیحات تست";
               $shop->save();
@@ -154,6 +156,17 @@ class ShopSettingController extends Controller
      else
      $request->person_way = 'enable';
 
+        if ( $request->online_payment != "on")
+        $request->online_payment = 'disable';
+     else
+     $request->online_payment = 'enable';
+
+
+        if ( $request->cash_payment != "on")
+        $request->cash_payment = 'disable';
+     else
+     $request->cash_payment = 'enable';
+
 
       $shop = \Auth::user()->shop()->first()->update([
         'name' => $request->name,
@@ -163,6 +176,8 @@ class ShopSettingController extends Controller
         'quick_way' => $request->quick_way,
         'posting_way' => $request->posting_way,
         'person_way' => $request->person_way,
+        'cash_payment' => $request->cash_payment,
+        'online_payment' => $request->online_payment,
         'description' => $request->description,
         'category_id' => $request->category_id,
         'icon' => $icon,

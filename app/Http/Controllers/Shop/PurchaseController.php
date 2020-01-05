@@ -127,6 +127,7 @@ class PurchaseController extends Controller
           } else {
               $cart = \Auth::user()->cart()->get()->first()->id;
               foreach ($productsID as $productID) {
+
                 if (Product::where('id', $productID)->get()->first()->off_price == null) {
                   $singleProductPrice = Product::where('id', $productID)->get()->first()->price;
                 }
@@ -168,7 +169,6 @@ class PurchaseController extends Controller
 
 
       public function purchaseSubmit($shop, $cartID, Request $request) {
-        // dd($request->all());
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           $cart = \Auth::user()->cart()->get()->first()->id;
           $productsID = [];
@@ -206,8 +206,9 @@ class PurchaseController extends Controller
               else{
                 $purchase->address = $request->new_address;
               }
-              
+
           $purchase->shipping = $request->shipping_way;
+          $purchase->payment_method = $request->payment_method;
           $shop = Shop::where('english_name', $shop)->first();
 
           if (Session::get(\Auth::user()->id .'-'. $shop->english_name) == null) {
