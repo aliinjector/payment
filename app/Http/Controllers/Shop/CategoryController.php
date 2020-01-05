@@ -13,7 +13,6 @@ class CategoryController extends Controller
 {
 
   public function index($shop, $categroyId, Request $request) {
-
       $colors = Color::all();
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
@@ -22,7 +21,6 @@ class CategoryController extends Controller
       $category = ProductCategory::where('id', $categroyId)->get()->first();
       $subCategories = $this->getAllSubCategories($categroyId)->where('parent_id',$categroyId);
       $brands = $shop->brands;
-
       //color product and category product merging
       if($request->color == null){
         $colorAndCategoryProducts = $this->getAllCategoriesProducts((int)$categroyId);
@@ -38,7 +36,6 @@ class CategoryController extends Controller
         }
       $colorAndCategoryProducts = $colorAndCategoryProducts->first();
       }
-
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
         if($colorAndCategoryProducts != null){
           $minPrice = $request->minprice;
@@ -74,7 +71,6 @@ class CategoryController extends Controller
     }
     else {
           $products = $colorAndCategoryProducts;
-
       }
       $total = $products->count();
       $perPage = 16; // How many items do you want to display.
@@ -87,6 +83,7 @@ class CategoryController extends Controller
 
       return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags','colors'));
   }
+
 
 
 

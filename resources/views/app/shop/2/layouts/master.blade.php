@@ -656,7 +656,7 @@
                         </div>
                      </div>
                      @auth()
-                     <p>{{ Auth::user()->firstName}} {{ __('app-shop-2-layouts-master.welcome') }}</p>
+                     <p class="mt-0">{{ Auth::user()->firstName}} {{ __('app-shop-2-layouts-master.welcome') }}</p>
                      @endauth
                      <!-- /tt-account -->
                      <!-- tt-langue and tt-currency -->
@@ -697,7 +697,7 @@
                            <nav>
                               <ul class="pb-4 font-wight-bold">
                                  <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
-                                 @foreach ($shopCategories->where('parent_id' , null) as $shopCategory)
+                                 @foreach ($shopCategories->where('parent_id' , null)->take(5) as $shopCategory)
                                  <div class="dropdown mx-3" style="top:30px!important">
                                     <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
                                     <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal" style="color:
