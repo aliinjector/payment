@@ -17,6 +17,7 @@
     <link href="/app/shop/1/assets/css/jquery.steps.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/1/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/1/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/app/shop/1/assets/css/compare.css">
     <link href="/app/shop/1/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/1/assets/css/style.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/color-option.css" rel="stylesheet" type="text/css">

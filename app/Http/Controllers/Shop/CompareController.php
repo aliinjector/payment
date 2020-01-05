@@ -20,6 +20,7 @@ class CompareController extends Controller
           if (Shop::where('english_name', $shop)->first() == null) {
               return abort(404);
           }
+          $compareProducts = \Auth::user()->compare()->get()->first()->products;
           $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
           $shop = Shop::where('english_name', $shop)->first();
           $template_folderName = $shop->template->folderName;
@@ -29,7 +30,7 @@ class CompareController extends Controller
           SEOTools::setDescription($shop->description);
           SEOTools::opengraph()->addProperty('type', 'website');
 
-          return view("app.shop.$template_folderName.compare", compact('shop', 'shopCategories'));
+          return view("app.shop.$template_folderName.compare", compact('shop', 'shopCategories','compareProducts'));
 
 
       }
