@@ -19,6 +19,7 @@
     <link href="/app/shop/1/assets/css/icons.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/1/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/1/assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/css/color-option.css" rel="stylesheet" type="text/css">
     <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/app/css/custom.css" rel="stylesheet" type="text/css">
     <style>

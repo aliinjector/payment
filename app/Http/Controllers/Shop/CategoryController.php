@@ -36,7 +36,7 @@ class CategoryController extends Controller
         }
       $colorAndCategoryProducts = $colorAndCategoryProducts->first();
       }
-      if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') || $request->has('color')) {
+      if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
         if($colorAndCategoryProducts != null){
           $minPrice = $request->minprice;
           $maxPrice = $request->maxprice;

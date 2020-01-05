@@ -1,4 +1,4 @@
-<div class="@if($products->count() == null) col-lg-12 @else col-lg-3 @endif">
+<div class="@if($products->count() != null) col-lg-3 @endif">
     <div class="card e-co-product" style="max-width: 18rem;">
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">فیلتر بر اساس نوع کالا</h5>
         <div class="card-body d-flex justify-content-center text-primary">
@@ -24,8 +24,19 @@
                 <input type="text" id="available-price-1" class="w-100 p-2 iranyekan font-14" style="border:0; color:#F68712 !important; font-weight:bold;">
                 <input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
                 <input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
-                </h5>
                 <div id="mySlider"></div>
+
+                <h5 class="text-dark pr-1 border-btm font-weight-500 m-2  mt-4">فیلتر بر اساس رنگ کالا</h5>
+                <ul class="tt-options-swatch options-middle">
+  								@foreach ($colors as $color)
+  								<li>
+  									<a class="options-color" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}">
+  									</a>
+  								</li>
+  								@endforeach
+  								<input id="color-input" type="hidden" name="color" value="">
+
+  							</ul>
         </div>
     </div>
     <div class="card p-3 align-items-start iranyekan font-15" style="max-width: 18rem;">

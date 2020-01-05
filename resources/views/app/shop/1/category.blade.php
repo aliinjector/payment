@@ -46,20 +46,7 @@
     <!--end col-->
 </div>
 </div>
-@if($products->count() == null)
-<div class="d-flex justify-content-center align-items-center" style="height:80vh">
-    <div class="col-12 row">
-      <div class="col-6">
-        @include('app.shop.1.layouts.partials.filtering')
-      </div>
-      <div class="col-6">
-        <h4>
-            هیچ محصولی در این دسته بندی وجود ندارد
-        </h4>
-      </div>
-    </div>
-</div>
-@else
+
 <h2 class="line-throw line-height-none"><span> محصولات دسته بندی</span></h2>
 <div class="row p-5">
 @include('app.shop.1.layouts.partials.filtering')
@@ -96,7 +83,8 @@
         </div>
     </div>
     </form>
-    <div class="row col-lg-12">
+    <div class="row col-lg-12 {{ $products->count() == null ? 'd-flex justify-content-center mt-4' : '' }}">
+      @if($products->count() != null)
         @foreach ($productsPaginate as $product)
         <div class="col-lg-3 row">
             <div class="card e-co-product min-height-60 col-lg-12">
@@ -127,13 +115,15 @@
             <!--end card-->
         </div>
         @endforeach
+      @else
+        <h5 class="byekan text-danger" style="font-size: 30px!important">متاسفانه محصولی در این بخش وجود ندارد!!</h5>
+         @endif
         <div class="col-lg-12 d-flex justify-content-center">
             {!! $productsPaginate->render() !!}
         </div>
     </div>
 </div>
 </div>
-@endif
 
 @endsection
 @section('pageScripts')
@@ -238,5 +228,16 @@
      });
 
    });
+</script>
+<script>
+	$(document).ready(function() {
+		$(".options-color").click(function(e) {
+			e.preventDefault();
+
+			var color = $(this).data('color');
+			$("#color-input").val(color);
+			$('#submit').trigger('submit');
+		});
+	});
 </script>
 @endsection
