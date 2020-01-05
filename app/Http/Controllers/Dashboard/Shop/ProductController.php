@@ -458,25 +458,18 @@ else{
       ]);
 
       //add facilities
-      if($request->facility[0] != null){
-        Facility::where('product_id',$product->id)->delete();
-        foreach($request->facility as $facility){
+        foreach($request->facility as $facility_id => $facility){
           if($facility != null){
+
             if($product->facilities->count() != 0){
-              $productFacilities = collect();
-              foreach($product->facilities as $productFacility){
-                $productFacilities[] = $productFacility;
-              }
-              if($productFacilities->where('name', $facility)->count() == 0){
-                  Facility::create(['name' => $facility, 'product_id' => $product->id]);
-              }
+              Facility::updateOrCreate(['id' => $facility_id],['name' => $facility, 'product_id' => $product->id]);
             }
             else{
                 Facility::create(['name' => $facility, 'product_id' => $product->id]);
             }
-          }
         }
       }
+
 
       if($shop)
       {

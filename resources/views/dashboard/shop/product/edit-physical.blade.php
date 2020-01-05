@@ -153,7 +153,7 @@
                                       @forelse( $product->facilities as $facility)
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                            <input type="text" class="form-control inputfield" name="facility[]" value="{{ $facility->name }}">
+                                            <input type="text" class="form-control inputfield" name="facility[{{ $facility->id }}]" value="{{ $facility->name }}">
                                         </div>
                                       @empty
                                       @endforelse
