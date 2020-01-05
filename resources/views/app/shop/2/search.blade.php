@@ -132,21 +132,21 @@
 											<h3 class="tt-collapse-title">SALE PRODUCTS</h3>
 											<div class="tt-collapse-content">
 													<div class="tt-aside">
-															<a class="tt-item" href="product.html">
+															<a class="tt-item" href="#">
 																	<div class="tt-img"><span class="tt-img-default"><img src="images/loader.svg" data-src="images/product/product-01.jpg" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-01-02.jpg" alt=""></span></div>
 																	<div class="tt-content">
 																			<h6 class="tt-title">Flared Shift Dress</h6>
 																			<div class="tt-price"><span class="sale-price">$14</span> <span class="old-price">$24</span></div>
 																	</div>
 															</a>
-															<a class="tt-item" href="product.html">
+															<a class="tt-item" href="#">
 																	<div class="tt-img"><span class="tt-img-default"><img src="images/loader.svg" data-src="images/product/product-02.jpg" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-02-02.jpg" alt=""></span></div>
 																	<div class="tt-content">
 																			<h6 class="tt-title">Flared Shift Dress</h6>
 																			<div class="tt-price"><span class="sale-price">$14</span> <span class="old-price">$24</span></div>
 																	</div>
 															</a>
-															<a class="tt-item" href="product.html">
+															<a class="tt-item" href="#">
 																	<div class="tt-img"><span class="tt-img-default"><img src="images/loader.svg" data-src="images/product/product-03.jpg" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-03-02.jpg" alt=""></span></div>
 																	<div class="tt-content">
 																			<h6 class="tt-title">Flared Shift Dress</h6>
@@ -214,15 +214,15 @@
 															<div class="tt-product thumbprod-center">
 																	<div class="tt-image-box">
 																			<a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-																			<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="product.html"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a></div>
+																			<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a></div>
 																	<div class="tt-description">
 																			<div class="tt-row">
 																					<ul class="tt-add-info">
-																							<li><a href="#">{{ $product->productCategory->name }}</a></li>
+																							<li><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">{{ $product->productCategory->name }}</a></li>
 																					</ul>
 																					<div class="tt-rating"><i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i> <i class="icon-star"></i></div>
 																			</div>
-																			<h2 class="tt-title"><a href="product.html">{{ $product->title }}</a></h2>
+																			<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">{{ $product->title }}</a></h2>
 																			<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
 																			<div class="tt-product-inside-hover">
 																					<div class="tt-row-btn"><a href="#" class="tt-btn-addtocart thumbprod-button-bg" data-toggle="modal" data-target="#modalAddToCartProduct">افزودن به سبد خرید</a></div>
