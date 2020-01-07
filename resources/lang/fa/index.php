@@ -10,6 +10,19 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+
+    "menu1"         => "صفحه اصلی",
+    "menu2"         => "درباره سیستم",
+    "menu3"         => "خدمات",
+    "menu4"         => "فروشگاه ها",
+    "menu5"         => "محصولات",
+    "menu6"         => "سوالات متداول",
+    "menu7"         => "تماس باما",
+
+    "loginBtn"         => "ورود",
+    "registerBtn"         => "عضویت",
+
+
     "title"         => "سیستم فروشگاه ساز امید",
     "shoar"         => "ارایه راهکار یکپارچه فروش آنلاین",
     "ghabeliat1"         => "مدیریت ظاهر و شخصی سازی قالب فروشگاه",

@@ -10,6 +10,21 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+
+
+
+    "menu1"         => "الصفحة الرئيسية",
+    "menu2"         => "عن النظام",
+    "menu3"         => "الخدمات",
+    "menu4"         => "محلات",
+    "menu5"         => "المنتجات",
+    "menu6"         => "أسئلة مكررة",
+    "menu7"         => "اتصل بنا",
+
+    "loginBtn"         => "دخول",
+    "registerBtn"         => "عضوية",
+
+
     "title"         => "Omid System",
     "shoar"         => "المقدمة لأساليب التقنية المالية الحديثة [fintech] ",
     "ghabeliat1"         => "تجربة متعة الدفع",

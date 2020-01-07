@@ -11,7 +11,7 @@
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="/app/images/favicon.png">
     <!-- Site Title  -->
-    <title>سیستم فروشگاه ساز امید</title>
+    <title>{{ __('index.title') }}</title>
     <!-- Bundle and Base CSS -->
     <link rel="stylesheet" href="/app/css/vendor.bundlee332.css?ver=161">
     <link rel="stylesheet" href="/app/css/stylee332.css?ver=161">
@@ -65,38 +65,38 @@
                             <nav class="header-menu mr-5" id="header-menu">
                                 <ul class="menu">
                                     <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#">صفحه اصلی</a>
+                                        <a class="menu-link nav-link" href="#">{{ __('index.menu1') }}</a>
                                     </li>
 
-                                    <li class="menu-item"> <a href="#about" class="menu-link nav-link"> درباره سیستم </a> </li>
+                                    <li class="menu-item"> <a href="#about" class="menu-link nav-link">{{ __('index.menu2') }}م </a> </li>
                                     <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#services"> خدمات</a>
-                                    </li>
-
-
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" target="_blank" href="/shops">فروشگاه ها</a>
-                                    </li>
-
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" target="_blank" href="/products">محصولات</a>
+                                        <a class="menu-link nav-link" href="#services"> {{ __('index.menu3') }}</a>
                                     </li>
 
 
                                     <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#faq">سوالات متداول</a>
+                                        <a class="menu-link nav-link" target="_blank" href="/shops">{{ __('index.menu4') }}</a>
+                                    </li>
+
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link" target="_blank" href="/products">{{ __('index.menu5') }}</a>
                                     </li>
 
 
                                     <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#contact">تماس باما</a>
+                                        <a class="menu-link nav-link" href="#faq">{{ __('index.menu6') }}</a>
+                                    </li>
+
+
+                                    <li class="menu-item">
+                                        <a class="menu-link nav-link" href="#contact">{{ __('index.menu7') }}</a>
                                     </li>
 
 
                                 </ul>
                                 <ul class="menu-btns">
-                                    <li><a href="{{ route('login') }}" class="btn btn-md btn-auto btn-grad"><span>ورود</span></a></li>
-                                    <li><a href="{{ route('register') }}" class="btn btn-md btn-auto btn-grad"><span>عضویت</span></a></li>
+                                    <li><a href="{{ route('login') }}" class="btn btn-md btn-auto btn-grad"><span>{{ __('index.loginBtn') }}</span></a></li>
+                                    <li><a href="{{ route('register') }}" class="btn btn-md btn-auto btn-grad"><span>{{ __('index.registerBtn') }}</span></a></li>
 
 
                                 </ul>
