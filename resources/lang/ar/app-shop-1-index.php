@@ -10,24 +10,24 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    "frooshgah"         => "فروشگاه",
+    "frooshgah"         => "متجر",
 
-    "searchPlaceholder"         => "نام محصول ویا سازنده",
-    "jostojoo"         => "جستجو",
-    "noProduct"         => "هیچ محصولی در این فروشگاه وجود ندارد",
-    "akharinMahsoolat"         => "آخرین محصولات",
-
-
-    "tooman"         => "تومان",
-    "daryafteFile"         => " دریافت فایل",
-    "addToCart"         => "افزودن به سبد خرید",
+    "searchPlaceholder"         => "اسم المنتج أو الشركة المصنعة",
+    "jostojoo"         => "بحث",
+    "noProduct"         => "لا توجد منتجات في هذا المتجر",
+    "akharinMahsoolat"         => "أحدث المنتجات",
 
 
-    "pishnahadVizhe"         => "پیشنهاد ویژه",
-    "sarfejooeeDarHazineha"         => " صرفه جویی در هزینه ها",
-    "baKharideOnline"         => "با خرید از سامانه آنلاین",
-    "porFrooshTarinHa"         => "پرفروش ترین محصولات",
-    "feedback"         => "بازخورد مشتریان",
+    "tooman"         => "دلار",
+    "daryafteFile"         => "تحميل الملف",
+    "addToCart"         => "أضف إلى السلة",
+
+
+    "pishnahadVizhe"         => "عرض خاص",
+    "sarfejooeeDarHazineha"         => " توفير المال",
+    "baKharideOnline"         => "عن طريق الشراء من النظام عبر الإنترنت",
+    "porFrooshTarinHa"         => "أفضل المنتجات مبيعا",
+    "feedback"         => "ملاحظات العملاء",
 
 
 );

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - ورود به داشبورد</title>
+    <title>{{ __('login.title') }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Ali Rahmani">
     <meta name="description" content="راهکار های نوین پرداخت پین پی">
@@ -30,14 +30,14 @@
                         </div>
                         <!--end auth-logo-box-->
                         <div class="text-center auth-logo-text">
-                            <h4 class="mt-0 mb-3 mt-5">ورود به پایان پی</h4>
-                            <p class="text-muted mb-0">اطلاعات حساب کاربری خودرا جهت ورود به سیستم وارد نمایید:</p>
+                            <h4 class="mt-0 mb-3 mt-5">{{ __('login.h4') }}</h4>
+                            <p class="text-muted mb-0">{{ __('login.p') }}</p>
                         </div>
                         <!--end auth-logo-text-->
                             <form class="form-horizontal auth-form my-4" method="POST" action="{{ route('login') }}">
                                 @csrf
                                 <div class="form-group">
-                                <label for="username">آدرس ایمیل</label>
+                                <label for="username">{{ __('login.email') }}</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
                                     <input type="text" class="form-control @error('email') is-invalid @enderror"  value="{{old('email')}}"  name="email" id="email" style="direction: ltr">
                                     @error('email')
@@ -49,9 +49,9 @@
                             </div>
                             <!--end form-group-->
                             <div class="form-group">
-                                <label for="userpassword">رمز عبور</label>
+                                <label for="userpassword">{{ __('login.password') }}</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-lock"></i> </span>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="رمز عبور">
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="{{ __('login.password') }}">
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -68,13 +68,13 @@
                                     </div>
                                 </div>
                                 <!--end col-->
-                                <div class="col-sm-6 text-right"><a href="" class="text-muted font-12"><i class="dripicons-lock"></i> رمز عبور خودرا فراموش کرده اید؟</a></div>
+                                <div class="col-sm-6 text-right"><a href="" class="text-muted font-12"><i class="dripicons-lock"></i> {{ __('login.forget') }}</a></div>
                                 <!--end col-->
                             </div>
                             <!--end form-group-->
                             <div class="form-group mb-0 row">
                                 <div class="col-12 mt-2">
-                                    <button class="btn btn-primary btn-round btn-block waves-effect waves-light iranyekan" type="submit">ورود به داشبورد <i class="fas fa-sign-in-alt ml-1"></i></button>
+                                    <button class="btn btn-primary btn-round btn-block waves-effect waves-light iranyekan" type="submit">{{ __('login.lgoinBtn') }} <i class="fas fa-sign-in-alt ml-1"></i></button>
                                 </div>
                                 <!--end col-->
                             </div>
@@ -84,14 +84,14 @@
                     </div>
                     <!--end /div-->
                     <div class="m-3 text-center text-muted">
-                        <p class="">حساب کاربری ندارید؟ <a href="/register" class="text-primary ml-2">جهت عضویت کلیک نمایید</a></p>
+                        <p class="">{{ __('login.nadarid') }}<a href="/register" class="text-primary ml-2">{{ __('login.signup') }}</a></p>
                     </div>
                 </div>
                 <!--end card-body-->
             </div>
             <!--end card-->
             <div class="account-social text-center mt-4">
-                <h6 class="my-4"> ورود با</h6>
+                <h6 class="my-4"> {{ __('login.with') }}</h6>
                 <ul class="list-inline mb-4">
                     <li class="list-inline-item"><a href="" class=""><i class="fab fa-facebook-f facebook"></i></a></li>
                     <li class="list-inline-item"><a href="" class=""><i class="fab fa-twitter twitter"></i></a></li>

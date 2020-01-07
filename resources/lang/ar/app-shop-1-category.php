@@ -10,17 +10,17 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    "forooshgah"         => "فروشگاه",
-    "mahsoolatDasteBandi"         => "محصولات دسته بندی",
-    "moratabSaziBaraasaase"         => "مرتب سازی بر اساس",
-    "jadidTarinha"         => "  جدید  ترین ها",
-    "arzaanTarinha"         => "  ارزان  ترین ها",
-    "geraanTarinha"         => "گران  ترین ها",
-    "porFrooshTarinha"         => "پرفروش ترین ها",
-    "tooman"         => "تومان",
-    "daryafteFile"         => " دریافت فایل",
-    "addToCart"         => "اضافه به سبد خرید",
-    "noProduct"         => "متاسفانه محصولی در این بخش وجود ندارد",
+    "forooshgah"         => "متجر",
+    "mahsoolatDasteBandi"         => "فئات المنتجات",
+    "moratabSaziBaraasaase"         => "الترتيب حسب",
+    "jadidTarinha"         => "الأحدث",
+    "arzaanTarinha"         => " أرخص",
+    "geraanTarinha"         => "أغلى",
+    "porFrooshTarinha"         => "الأكثر مبيعا",
+    "tooman"         => "دلار",
+    "daryafteFile"         => "مقرها في الغالب",
+    "addToCart"         => "أضف إلى السلة",
+    "noProduct"         => "للأسف لا يوجد منتج في هذا القسم",
 
 
 );
