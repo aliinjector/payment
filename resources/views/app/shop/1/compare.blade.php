@@ -1,61 +1,106 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
 
-    <div class="row">
-            <div class="col-sm-12">
-                <div class="page-title-box">
-                </div>
-                <!--end page-title-box-->
-            </div>
-            <!--end col-->
+<div class="row">
+    {{-- {{ dd($compareProducts) }} --}}
+    <div class="col-sm-12">
+        <div class="page-title-box">
         </div>
-        <!-- end page title end breadcrumb -->
+    </div>
+</div>
 
-        <h2 class="line-throw"><span>مقایسه محصولات </span></h2>
+<h2 class="line-throw"><span>مقایسه محصولات </span></h2>
+@if($compareProducts->count() != null)
 
+<section style="direction: rtl" class="cd-products-comparison-table ">
+    <header>
+        <div class="actions">
+        </div>
+    </header>
 
-
-    <section style="direction: rtl" class="cd-products-comparison-table ">
-        <header>
-            <div class="actions">
-            </div>
-        </header>
-
-        <div class="cd-products-table">
-            <div class="features">
-                <div class="top-info iranyekan">محصولات انتخاب شده</div>
-                <ul class="cd-features-list">
+    <div class="cd-products-table" style="overflow:initial!important;">
+        <div class="features">
+            <div class="top-info iranyekan">محصولات انتخاب شده</div>
+            <ul class="cd-features-list">
+                @foreach($compareProducts[0]->features as $compareProductFeature)
+                    <li>{{ $compareProductFeature->name }}</li>
+                    @endforeach
                     <li>قیمت</li>
-                </ul>
-            </div> <!-- .features -->
+            </ul>
+        </div>
 
-            <div class="cd-products-wrapper">
-                <ul class="cd-products-columns">
-                  @foreach($compareProducts as $compareProduct)
-                    <li class="product">
-                        <div class="top-info">
-                            <img src="/app/shop/1/assets/images/labtop.jpg" alt="product image">
-                            <h3>{{ $compareProduct->title }}</h3>
-                        </div> <!-- .top-info -->
+        <div class="cd-products-wrapper">
+            <ul class="cd-products-columns">
+                @foreach($compareProducts as $compareProduct)
+                <li class="product">
+                    <div class="top-info">
+                        <a href="#" class="btn-link mt-3" id="removeProduct" data-shop="{{ $shop->english_name }}" data-compare="{{ \Auth::user()->compare->id }}" data-id="{{ $compareProduct->id }}"><i
+                              class="fa fa-trash font-18 p-1 text-danger"></i>
+                        </a>
+                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->id]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image">
+                          </a>
+                        <h3><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->id]) }}">{{ $compareProduct->title }}</a></h3>
+                    </div>
+                    <ul class="cd-features-list">
+                      @foreach($compareProduct->features as $compareProductFeature)
+                        <li>{{ $compareProductFeature->pivot->value }} </li>
+                      @endforeach
 
-                        <ul class="cd-features-list">
-                            <li>$600</li>
-                        </ul>
-                    </li>
-                  @endforeach
+                        <li>{{ number_format($compareProduct->price) }} تومان</li>
+                    </ul>
+                </li>
+                @endforeach
 
-                </ul> <!-- .cd-products-columns -->
-            </div> <!-- .cd-products-wrapper -->
+            </ul>
+        </div>
 
-        </div> <!-- .cd-products-table -->
-    </section> <!-- .cd-products-comparison-table -->
+    </div>
+</section>
+@else
+  <h5 class="byekan d-flex justify-content-center p-5 text-danger" style="font-size: 30px!important">{{ __('app-shop-1-category.noProduct') }} !!</h5>
+
+@endif
 
 
 
-    <!-- container -->
+
+
 
 @endsection
 @section('pageScripts')
-    <script src="/app/shop/1/assets/js//modernizr.js"></script> <!-- Modernizr -->
-    <script src="/app/shop/1/assets/js//compare.js"></script>
+<script src="/app/shop/1/assets/js//modernizr.js"></script>
+<script src="/app/shop/1/assets/js//compare.js"></script>
+<script>
+    $(document).on('click', '#removeProduct', function(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var compare = $(this).data('compare');
+        var shop = $(this).data('shop');
+        swal("آیا اطمینان دارید؟", {
+                dangerMode: true,
+                buttons: ["انصراف", "حذف"],
+
+            })
+            .then(function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "{{url($shop->english_name.'/compare/remove')}}",
+                        data: {
+                            id: id,
+                            compare: compare,
+                            shop: shop,
+                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                        },
+                        success: function(data) {
+                            location.reload();
+
+                        }
+                    });
+                } else {
+                    swal("متوقف شد", "عملیات شما متوقف شد :)", "error");
+                }
+            });
+    });
+</script>
 @stop

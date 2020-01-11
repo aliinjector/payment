@@ -19,7 +19,7 @@ class Compare extends Model {
     public function shop() {
         return $this->belongsTo('App\Shop');
     }
-    
+
     public function user() {
         return $this->belongsTo('App\User');
     }

@@ -61,7 +61,7 @@ public function sluggable()
  }
  public function features()
  {
-     return $this->belongsToMany('App\Feature');
+     return $this->belongsToMany('App\Feature')->withPivot('value');;
  }
  public function carts()
  {

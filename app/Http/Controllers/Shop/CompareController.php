@@ -24,7 +24,7 @@ class CompareController extends Controller
           $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
           $shop = Shop::where('english_name', $shop)->first();
           $template_folderName = $shop->template->folderName;
-          toastr()->info('محصولات اضافه شدند.');
+          // toastr()->info('محصولات اضافه شدند.');
 
           SEOTools::setTitle($shop->name . ' | ' . 'مقایسه محصولات');
           SEOTools::setDescription($shop->description);
@@ -56,11 +56,24 @@ class CompareController extends Controller
       $product = Product::find($request->productID);
       $shop =  Shop::where('english_name', $shopName)->first();
       $compare = Compare::firstOrCreate(['user_id'=>\Auth::user()->id, 'shop_id' =>$shop->id]);
-      $product->compare()->sync($compare->id);
-
-
-          toastr()->success('افزوده شد.', '');
-          return redirect()->back();
+      if ($compare and $compare->products->count() != 0) {
+        foreach ($compare->products as $compareProduct) {
+          if ($compareProduct->productCategory == $product->productCategory) {
+            $product->compare()->sync($compare->id);
+            toastr()->success('افزوده شد.', '');
+            return redirect()->back();
+          }
+          else{
+            toastr()->error('برای مقایسه , محصولات باید در دسته بندی یکسان باشند.', '');
+            return redirect()->back();
+          }
+        }
+      }
+      else{
+        $product->compare()->sync($compare->id);
+        toastr()->success('افزوده شد.', '');
+        return redirect()->back();
+      }
     }
 
     /**
@@ -96,6 +109,15 @@ class CompareController extends Controller
     {
         //
     }
+
+
+
+    public function deleteFromCompare(Request $request){
+      $shop = Shop::where('english_name', $request->shop)->get()->first();
+      Compare::find($request->compare)->products()->detach($request->id);
+      toastr()->success('حذف شد.', '');
+    }
+
 
     /**
      * Remove the specified resource from storage.

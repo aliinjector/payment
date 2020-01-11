@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -40,9 +40,9 @@ h1 {
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main Components 
+Main Components
 
 -------------------------------- */
 .cd-products-comparison-table {
@@ -260,7 +260,7 @@ Main Components
   .features .cd-features-list li,
   .cd-products-table .features .top-info {
     text-transform: uppercase;
-    line-height: 16px;
+    line-height: 24px;
     padding: 25px 20px;
     letter-spacing: 1px;
   }
@@ -557,7 +557,7 @@ Main Components
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 No JS
 
