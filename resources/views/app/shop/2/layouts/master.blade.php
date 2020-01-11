@@ -641,6 +641,12 @@
                                        @endif
                                        </span></i>{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a>
                                     </li>
+                                    <li><a href="{{ route('compare' , ['shop' => $shop->english_name]) }}"><i class="fa fa-adjust ml-1" style="font-size: 17px;"><span class="tt-badge-cart">
+                                       @if(\Auth::user()->compare()->get()->count() != 0) {{ \Auth::user()->compare()->get()->first()->products()->count() }}
+                                       @else 0
+                                       @endif
+                                     </span></i>مقایسه ها</a>
+                                    </li>
                                     <li><a href=""><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.panelKarbari') }}</a></li>
                                     <li><a href="{{ route('user-address.index') }}"><i class="fa fa-address-card ml-2"></i>{{ __('app-shop-2-layouts-master.addressHa') }}</a></li>
                                     <li><a href="{{ route('user.purchased.list') }}"><i class="icon-f-47"></i>{{ __('app-shop-2-layouts-master.listSefaareshaat') }}</a></li>
