@@ -188,7 +188,6 @@ class ProductController extends Controller
         if($request->get('value')){
             foreach($request->get('value') as $featureId=>$featureValue)
             {
-
               $feature = Feature::find($featureId);
               if($feature){
                 $featureIds[$feature->id] = ['value'=>$featureValue];

@@ -23,16 +23,16 @@
             <div class="top-info iranyekan">محصولات انتخاب شده</div>
             <ul class="cd-features-list">
                 @foreach($compareProducts[0]->features as $compareProductFeature)
-                    <li>{{ $compareProductFeature->name }}</li>
+                    <li style="list-style: none;">{{ $compareProductFeature->name }}</li>
                     @endforeach
-                    <li>قیمت</li>
+                    <li style="list-style: none;">قیمت</li>
             </ul>
         </div>
 
         <div class="cd-products-wrapper">
             <ul class="cd-products-columns">
                 @foreach($compareProducts as $compareProduct)
-                <li class="product">
+                <li class="product" style="list-style: none;">
                     <div class="top-info">
                         <a href="#" class="btn-link mt-3" id="removeProduct" data-shop="{{ $shop->english_name }}" data-compare="{{ \Auth::user()->compare->id }}" data-id="{{ $compareProduct->id }}"><i
                               class="fa fa-trash font-18 p-1 text-danger"></i>
@@ -43,10 +43,10 @@
                     </div>
                     <ul class="cd-features-list">
                       @foreach($compareProduct->features as $compareProductFeature)
-                        <li>{{ $compareProductFeature->pivot->value }} </li>
+                        <li style="list-style: none;">{{ $compareProductFeature->pivot->value == null ? 'تعیین نشده' : $compareProductFeature->pivot->value }} </li>
                       @endforeach
 
-                        <li>{{ number_format($compareProduct->price) }} تومان</li>
+                        <li style="list-style: none;">{{ number_format($compareProduct->price) }} تومان</li>
                     </ul>
                 </li>
                 @endforeach
