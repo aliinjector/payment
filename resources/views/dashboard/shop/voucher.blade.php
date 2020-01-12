@@ -1,9 +1,13 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+  <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+  <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+  <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+  <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -77,12 +81,13 @@
 
                                 <div class="input-group mt-3 d-none users-voucher">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem5') }}:</span></div>
-                                    <select multiple="multiple" class="form-control" id="exampleFormControlSelect2" name="users[]">
+                                    <select multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="users[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
                                         @foreach($usersFullName as $userFullName)
-                                        <option>{{ $userFullName }}</option>
+                                        <option >{{ $userFullName }}</option>
                                         @endforeach
                                     </select>
                                 </div>
+
 
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem6') }}:</span></div>
@@ -404,5 +409,14 @@
           }
     });
     });
+    </script>
+    <script>
+        $(window).on("load", function() {
+            $('.show-tick').addClass("col-lg-10");
+            $('.filter-option-inner-inner').addClass("d-flex");
+            $('.bs-placeholder').removeClass("btn-light");
+            $('.show-tick').addClass("p-1");
+            $('.show-tick').addClass("border");
+        });
     </script>
     @stop
