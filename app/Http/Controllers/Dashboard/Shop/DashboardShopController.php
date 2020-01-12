@@ -19,13 +19,13 @@ class DashboardShopController extends Controller
             return redirect()->back();
         }else{
         $shop = \Auth::user()->shop()->first();
-        $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(3)->get();
+        $bestSellings = $shop->products()->orderBy('buyCount', 'DESC')->take(3)->get();
         $shopPurchases = $shop->purchases()->get();
         $sumPurchasesPrice = 0;
         foreach($shopPurchases as $shopPurchase){
             $sumPurchasesPrice += $shopPurchase->total_price;
             }
-        return view('dashboard.shop.dashboard-shop', compact('shop','bestSelling' , 'sumPurchasesPrice'));
+        return view('dashboard.shop.dashboard-shop', compact('shop','bestSellings' , 'sumPurchasesPrice'));
             }
       }
 

@@ -532,47 +532,25 @@
    </div>
    <!--end col-->
    <div class="col-lg-4">
-      <div class="card carousel-bg-img">
+      <div class="card carousel-bg-img" style="height: 28vh">
          <div class="card-body dash-info-carousel">
             <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.mahsoolateMahboob') }}</h4>
             <div id="carousel_2" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
-                  @if(isset($bestSelling[0]))
-                  <div class="carousel-item active">
+                 @php $i=0 @endphp
+                 @foreach($bestSellings as $bestSelling)
+                  <div class="carousel-item {{ $i==0 ? 'active' : '' }}">
                      <div class="media">
-                        <img src="{{ $bestSelling[0]->image['400,400'] }}" height="200" width="175" class="mr-2" alt="...">
+                        <img src="{{ $bestSelling->image['400,400'] }}"  height="auto" width="190" class="mr-2" alt="...">
                         <div class="media-body align-self-center">
-                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[0]->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
-                           <h4 class="mt-0">{{ $bestSelling[0]->title }}</h4>
-                           <p class="text-muted mb-0">{{ number_format($bestSelling[0]->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
+                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
+                           <h4 class="mt-0">{{ $bestSelling->title }}</h4>
+                           <p class="text-muted mb-0">{{ number_format($bestSelling->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
                         </div>
                      </div>
                   </div>
-                  @endif
-                  @if(isset($bestSelling[1]))
-                  <div class="carousel-item">
-                     <div class="media">
-                        <img src="{{ $bestSelling[1]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
-                        <div class="media-body align-self-center">
-                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[1]->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
-                           <h4 class="mt-0">{{ $bestSelling[1]->title }}</h4>
-                           <p class="text-muted mb-0">{{ number_format($bestSelling[1]->price)  }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
-                        </div>
-                     </div>
-                  </div>
-                  @endif
-                  @if(isset($bestSelling[2]))
-                  <div class="carousel-item">
-                     <div class="media">
-                        <img src="{{ $bestSelling[2]->image['400,400'] }}"  height="200" width="175" class="mr-2" alt="...">
-                        <div class="media-body align-self-center">
-                           <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling[2]->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
-                           <h4 class="mt-0">{{ $bestSelling[2]->title }}</h4>
-                           <p class="text-muted mb-0">{{ number_format($bestSelling[2]->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
-                        </div>
-                     </div>
-                  </div>
-                  @endif
+                  @php $i++ @endphp
+                @endforeach
                </div>
                <a class="carousel-control-prev" href="#carousel_2" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a><a class="carousel-control-next" href="#carousel_2" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a>
             </div>
