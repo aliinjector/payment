@@ -168,11 +168,15 @@ h2 span {
 
 .searchBox {
     position: absolute;
-    bottom: 100%;
-    left: 50%;
+    bottom: 96%;
+    left: 10%;
     transform: translate(-50%, 50%);
     background: #2f3640;
     border-radius: 40px;
+}
+.searchActive{
+    width: 240px!important;
+    padding: 0 6px!important;
 }
 
 .searchBox:hover>.searchInput {
@@ -182,7 +186,7 @@ h2 span {
 
 .searchBox:hover>.searchButton {
     background: white;
-    color: #2f3640;
+    color: #122272;
 }
 
 .searchButton {
@@ -191,7 +195,7 @@ h2 span {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #2f3640;
+    background: #122272;
     display: flex;
     justify-content: center;
     align-items: center;

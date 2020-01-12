@@ -615,6 +615,12 @@
                         <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-product-index.ListMahsoolatDesc') }}</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
+                              <div class="searchBox bg-dark" style="bottom: 89%;">
+                                  <input type="text" id="myInputTextField" class="searchInput iranyekan">
+                                  <button class="searchButton border" href="#">
+                                      <i class="fa fa-search"></i>
+                                  </button>
+                              </div>
                                 <div class="table-responsive">
                                     <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
 
@@ -936,5 +942,23 @@
            $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div><input value="{{ old('facility[]') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} "></div>');
        });
        });
+   </script>
+
+   <script type="text/javascript">
+   $(document).ready(function(){
+     $('#datatable_filter').parent().remove();
+   });
+   </script>
+   <script type="text/javascript">
+   $(document).ready(function(){
+     $('input#myInputTextField').on("focus", function(){
+       if ($(this).hasClass("searchActive")){
+              $(this).removeClass("searchActive");
+          }
+          else{
+         $('input#myInputTextField').addClass('searchActive');
+         }
+   });
+   });
    </script>
                 @stop

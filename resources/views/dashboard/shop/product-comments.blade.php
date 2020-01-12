@@ -45,12 +45,12 @@
                            </ul>
                            <div class="tab-content">
                               <div class="tab-pane active" id="kt_tabs_3_1" role="tabpanel">
-                                 <div class="searchBox">
-                                    <input type="text" id="myInputTextField" class="searchInput">
-                                    <button class="searchButton" href="#">
-                                    <i class="fa fa-search"></i>
+                                <div class="searchBox bg-dark" style="bottom: 59%;left: 11%;">
+                                    <input type="text" id="myInputTextField" class="searchInput iranyekan">
+                                    <button class="searchButton border" href="#">
+                                        <i class="fa fa-search"></i>
                                     </button>
-                                 </div>
+                                </div>
                                  <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer text-center" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
                                     aria-describedby="datatable_info">
                                     <thead>
@@ -278,4 +278,21 @@
    $('#AddProductCategoryModal').modal('show');
 </script>
 @endif
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#datatable_filter').parent().remove();
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('input#myInputTextField').on("focus", function(){
+    if ($(this).hasClass("searchActive")){
+           $(this).removeClass("searchActive");
+       }
+       else{
+      $('input#myInputTextField').addClass('searchActive');
+      }
+});
+});
+</script>
 @stop

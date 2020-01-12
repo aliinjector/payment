@@ -150,9 +150,9 @@
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="searchBox">
-                                        <input type="text" id="myInputTextField" class="searchInput">
-                                        <button class="searchButton" href="#">
+                                    <div class="searchBox bg-dark ">
+                                        <input type="text" id="myInputTextField" class="searchInput iranyekan">
+                                        <button class="searchButton border" href="#">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </div>
@@ -344,4 +344,22 @@
             $('#AddProductCategoryModal').modal('show');
         </script>
         @endif
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+          $('#datatable_filter').parent().remove();
+        });
+        </script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+          $('input#myInputTextField').on("focus", function(){
+            if ($(this).hasClass("searchActive")){
+                   $(this).removeClass("searchActive");
+               }
+               else{
+              $('input#myInputTextField').addClass('searchActive');
+              }
+        });
+        });
+        </script>
         @stop

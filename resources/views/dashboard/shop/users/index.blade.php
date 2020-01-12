@@ -143,7 +143,7 @@
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="searchBox">
+                                    <div class="searchBox bg-dark" style="bottom:88%">
                                         <input type="text" id="myInputTextField" class="searchInput">
                                         <button class="searchButton" href="#">
                                             <i class="fa fa-search"></i>
@@ -222,5 +222,21 @@
         }
     }).resize();
     </script>
-
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('#datatable_filter').parent().remove();
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $('input#myInputTextField').on("focus", function(){
+        if ($(this).hasClass("searchActive")){
+               $(this).removeClass("searchActive");
+           }
+           else{
+          $('input#myInputTextField').addClass('searchActive');
+          }
+    });
+    });
+    </script>
     @stop
