@@ -192,44 +192,33 @@
 </script>
 <script src="/app/shop/1/assets/js/jquery-ui.js"></script>
 <script>
-    $(document).ready(function() {
-                $("#mySlider").slider({
-                        range: true,
-                        min: 1000,
-                        max: 100000000,
-                        values: [ < blade
-                            if (request() - > minprice / > != null) {
-                                {
-                                    request() - > minprice
-                                }
-                            } < blade
-                            else /> 1000 <blade endif, / > < blade
-                            if (request() - > maxprice / > != null) {
-                                {
-                                    request() - > maxprice
-                                }
-                            } < blade
-                            else /> 100000000 <blade endif], / >
-                                slide: function(event, ui) {
-                                    if (isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true) {
-                                        $("#available-price-1").val(" از " + 1000 + " تومان " + " - " + " تا " + 100000000 + " تومان ");
-                                        $("#available-price-min").val(1000);
-                                        $("#available-price-max").val(100000000);
-                                    } else {
-                                        $("#available-price-1").val(" از " + ui.values[0] + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
-                                        $("#available-price-min").val(ui.values[0]);
-                                        $("#available-price-max").val(ui.values[1]);
-                                    }
-                                }
-                        });
-                    if (isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true) {
-                        $("#available-price-1").val(" از " + 1000 + " تومان " + " - " + " تا " + 100000000 + " تومان ");
-                    } else {
-                        $("#available-price-1").val(" از " + $("#mySlider").slider("values", 0) + " تومان " +
-                            " - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
-                    }
-
-                });
+   $(document).ready(function() {
+       $("#mySlider").slider({
+           range: true,
+           min: 1000,
+           max: 100000000,
+           values: [@if(request()->minprice != null){{request()->minprice}} @else 1000 @endif, @if(request()->maxprice != null){{request()->maxprice}} @else 100000000 @endif],
+           slide: function(event, ui) {
+             if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
+               $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
+               $("#available-price-min").val(1000);
+               $("#available-price-max").val(100000000);
+             }
+             else{
+               $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+               $("#available-price-min").val(ui.values[0]);
+               $("#available-price-max").val(ui.values[1]);
+             }
+           }
+       });
+       if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
+         $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
+       }
+       else{
+         $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0) + " تومان " +
+             " - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
+       }
+   });
 </script>
 <script>
     $(function() {

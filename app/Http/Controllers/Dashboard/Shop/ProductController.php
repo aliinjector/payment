@@ -210,7 +210,7 @@ class ProductController extends Controller
 
     //save new product and open new model
     case 'saveAndContinue':
-    $shop = \Auth::user()->shop()->first()->products()->create([
+    $product = \Auth::user()->shop()->first()->products()->create([
     'title' => $request->title,
     'type' => $request->type,
     'productCat_id' => $request->productCat_id,
@@ -238,7 +238,7 @@ class ProductController extends Controller
     }
   }
   //add tags to the product
-  if($shop)
+  if($product)
   {
       $tagIds = [];
       $colorIds = [];
@@ -262,7 +262,7 @@ class ProductController extends Controller
               $colorIds[] = $color->id;
             }
         }
-        $shop->colors()->sync($colorIds);
+        $product->colors()->sync($colorIds);
       }
 
 
@@ -281,7 +281,7 @@ class ProductController extends Controller
               }
 
 
-      $shop->tags()->sync($tagIds);
+      $product->tags()->sync($tagIds);
   }
 if ($request->type == 'file') {
     session()->flash('flashModalFile');
@@ -435,7 +435,7 @@ else{
       if($request->off_price != null){
         $request->off_price = $this->fa_num_to_en($request->off_price);
       }
-      $shop = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
+      $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
         'title' => $request->title,
         'type' => $request->type,
         'productCat_id' => $request->productCat_id,
@@ -470,7 +470,7 @@ else{
       }
 
 
-      if($shop)
+      if($product)
       {
           $tagIds = [];
           $colorIds = [];

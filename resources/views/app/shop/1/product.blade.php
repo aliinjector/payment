@@ -326,7 +326,7 @@
                 <h4 class="mt-3 mb-3">{{ __('app-shop-1-product.tags') }} :</h4>
                 <ul class="tags iranyekan">
                     @foreach ($product->tags()->get() as $tag)
-                    <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$tag->name]) }}" class="tag iranyekan">{{ $tag->name }}</a></li>
+                    <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$tag->name]) }}" class="tag iranyekan ">{{ $tag->name }}</a></li>
                     @endforeach
                 </ul>
 
