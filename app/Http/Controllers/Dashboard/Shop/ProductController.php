@@ -382,151 +382,150 @@ else{
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
-        if($request->type == 'file' and $request->file('attachment') == null){
-            $attachment = $product->attachment;
-            $file_size = $product->file_size;
-        }
-        elseif($request->type == 'file'){
-            $attachment = $this->uploadFile($request->file('attachment'), false, false);
-            $file_size = $request->file('attachment')->getSize();
-        }
-            else{
-            $attachment = null;
-            $file_size = null;
-        }
-           if($request->file('image') == null){
-               $image = $product->image;
-           }
-           else{
-               $image = $this->uploadFile($request->file('image'), false, true);
-           }
-
-           if($request->brand_id == "null"){
-             $request->merge(['brand_id' => null]);
-           }
-
-      if ( $request->enable != "on")
-      $request->enable = 0;
-     else
-     $request->enable = 1;
-
-
-     //check options of products
-     if (!isset($request->fast_sending))
-     $request->fast_sending = 'off';
-
-     if (!isset($request->money_back))
-     $request->money_back = 'off';
-
-     if (!isset($request->support))
-     $request->support = 'off';
-
-     if (!isset($request->secure_payment))
-     $request->secure_payment = 'off';
-
-
-      if($request->amount != null){
-        $request->amount = $this->fa_num_to_en($request->amount);
-      }
-      if($request->min_amount != null){
-        $request->min_amount = $this->fa_num_to_en($request->min_amount);
-      }
-      if($request->measure != null){
-        $request->measure = $this->fa_num_to_en($request->measure);
-      }
-      if($request->weight != null){
-        $request->weight = $this->fa_num_to_en($request->weight);
-      }
-      if($request->off_price != null){
-        $request->off_price = $this->fa_num_to_en($request->off_price);
-      }
-      $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
-        'title' => $request->title,
-        'type' => $request->type,
-        'productCat_id' => $request->productCat_id,
-        'brand_id' => $request->brand_id,
-        'amount' => $request->amount,
-        'min_amount' => $request->min_amount,
-        'measure' => $request->measure,
-        'weight' => $request->weight,
-        'price' => $this->fa_num_to_en($request->price),
-        'off_price' => $request->off_price,
-        'fast_sending' => $request->fast_sending,
-        'money_back' => $request->money_back,
-        'support' => $request->support,
-        'secure_payment' => $request->secure_payment,
-        'description' => $request->description,
-        'image' => $image,
-        'attachment' => $attachment,
-        'description' => $request->description,
-        'file_size' => $file_size,
-      ]);
-
-      //add facilities
-        foreach($request->facility as $facility_id => $facility){
-          if($facility != null){
-
-            if($product->facilities->count() != 0){
-              Facility::updateOrCreate(['id' => $facility_id],['name' => $facility, 'product_id' => $product->id]);
-            }
-            else{
-                Facility::create(['name' => $facility, 'product_id' => $product->id]);
-            }
-        }
-      }
-
-
-      if($product)
+     public function update(Request $request, $id)
       {
-          $tagIds = [];
-          $colorIds = [];
-          //get all tags of product
-          $tagNames = explode(',',$request->get('tags'));
-          foreach($tagNames as $tagName)
-          {
-              $tag = Tag::firstOrCreate(['name'=>$tagName, 'shop_id' =>Auth::user()->shop()->first()->id]);
-              if($tag)
-              {
-                $tagIds[] = $tag->id;
+          $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
+          if($request->type == 'file' and $request->file('attachment') == null){
+              $attachment = $product->attachment;
+              $file_size = $product->file_size;
+          }
+          elseif($request->type == 'file'){
+              $attachment = $this->uploadFile($request->file('attachment'), false, false);
+              $file_size = $request->file('attachment')->getSize();
+          }
+              else{
+              $attachment = null;
+              $file_size = null;
+          }
+             if($request->file('image') == null){
+                 $image = $product->image;
+             }
+             else{
+                 $image = $this->uploadFile($request->file('image'), false, true);
+             }
+
+             if($request->brand_id == "null"){
+               $request->merge(['brand_id' => null]);
+             }
+
+        if ( $request->enable != "on")
+        $request->enable = 0;
+       else
+       $request->enable = 1;
+
+
+       //check options of products
+       if (!isset($request->fast_sending))
+       $request->fast_sending = 'off';
+
+       if (!isset($request->money_back))
+       $request->money_back = 'off';
+
+       if (!isset($request->support))
+       $request->support = 'off';
+
+       if (!isset($request->secure_payment))
+       $request->secure_payment = 'off';
+
+
+        if($request->amount != null){
+          $request->amount = $this->fa_num_to_en($request->amount);
+        }
+        if($request->min_amount != null){
+          $request->min_amount = $this->fa_num_to_en($request->min_amount);
+        }
+        if($request->weight != null){
+          $request->weight = $this->fa_num_to_en($request->weight);
+        }
+        if($request->off_price != null){
+          $request->off_price = $this->fa_num_to_en($request->off_price);
+        }
+        $shop = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
+          'title' => $request->title,
+          'type' => $request->type,
+          'productCat_id' => $request->productCat_id,
+          'brand_id' => $request->brand_id,
+          'amount' => $request->amount,
+          'min_amount' => $request->min_amount,
+          'measure' => $request->measure,
+          'weight' => $request->weight,
+          'price' => $this->fa_num_to_en($request->price),
+          'off_price' => $request->off_price,
+          'fast_sending' => $request->fast_sending,
+          'money_back' => $request->money_back,
+          'support' => $request->support,
+          'secure_payment' => $request->secure_payment,
+          'description' => $request->description,
+          'image' => $image,
+          'attachment' => $attachment,
+          'description' => $request->description,
+          'file_size' => $file_size,
+        ]);
+
+        //add facilities
+          foreach($request->facility as $facility_id => $facility){
+            if($facility != null){
+
+              if($product->facilities->count() != 0){
+                Facility::updateOrCreate(['id' => $facility_id],['name' => $facility, 'product_id' => $product->id]);
+              }
+              else{
+                  Facility::create(['name' => $facility, 'product_id' => $product->id]);
               }
           }
-          // get all color of product
-          if($request->get('color')){
-            foreach($request->get('color') as $colorName)
+        }
+
+
+        if($shop)
+        {
+            $tagIds = [];
+            $colorIds = [];
+            //get all tags of product
+            $tagNames = explode(',',$request->get('tags'));
+            foreach($tagNames as $tagName)
             {
-                $color = Color::firstOrCreate(['id'=>$colorName]);
-                if($color)
+                $tag = Tag::firstOrCreate(['name'=>$tagName, 'shop_id' =>Auth::user()->shop()->first()->id]);
+                if($tag)
                 {
-                  $colorIds[] = $color->id;
+                  $tagIds[] = $tag->id;
                 }
             }
-            \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->colors()->sync($colorIds);
-          }
-
-
-                  //get all features of product
-                  if($request->get('value')){
-                      foreach($request->get('value') as $featureId=>$featureValue)
-                      {
-
-                        $feature = Feature::find($featureId);
-                        if($feature){
-                          $featureIds[$feature->id] = ['value'=>$featureValue];
-                        }
-                      }
-
-                      $product->features()->sync($featureIds);
+            // get all color of product
+            if($request->get('color')){
+              foreach($request->get('color') as $colorName)
+              {
+                  $color = Color::firstOrCreate(['id'=>$colorName]);
+                  if($color)
+                  {
+                    $colorIds[] = $color->id;
                   }
+              }
+              \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->colors()->sync($colorIds);
+            }
 
 
-          \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->tags()->sync($tagIds);
+                    //get all features of product
+                    if($request->get('value')){
+                        foreach($request->get('value') as $featureId=>$featureValue)
+                        {
+
+                          $feature = Feature::find($featureId);
+                          if($feature){
+                            $featureIds[$feature->id] = ['value'=>$featureValue];
+                          }
+                        }
+
+                        $product->features()->sync($featureIds);
+                    }
+
+
+            \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->tags()->sync($tagIds);
+        }
+        alert()->success('محصول شما باموفقیت ویرایش شد.', 'ثبت شد');
+        return redirect()->route('product-list.index');
       }
-      alert()->success('محصول شما باموفقیت ویرایش شد.', 'ثبت شد');
-      return redirect()->route('product-list.index');
-    }
+
+
 
     public function changeStatus(Request $request){
 
