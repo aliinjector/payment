@@ -112,6 +112,9 @@ class ProductController extends Controller
       if($request->min_amount != null){
         $request->min_amount = $this->fa_num_to_en($request->min_amount);
       }
+      if($request->measure != null){
+        $request->measure = $this->fa_num_to_en($request->measure);
+      }
       //check weight of product and change fa number to en
       if($request->weight != null){
         $request->weight = $this->fa_num_to_en($request->weight);
@@ -130,6 +133,7 @@ class ProductController extends Controller
         'brand_id' => $request->brand_id,
         'amount' => $request->amount,
         'min_amount' => $request->min_amount,
+        'measure' => $request->measure,
         'weight' => $request->weight,
         'price' => $this->fa_num_to_en($request->price),
         'off_price' => $request->off_price,
@@ -217,6 +221,7 @@ class ProductController extends Controller
     'brand_id' => $request->brand_id,
     'amount' => $request->amount,
     'min_amount' => $request->min_amount,
+    'measure' => $request->measure,
     'weight' => $request->weight,
     'price' => $this->fa_num_to_en($request->price),
     'off_price' => $request->off_price,
@@ -429,6 +434,9 @@ else{
       if($request->min_amount != null){
         $request->min_amount = $this->fa_num_to_en($request->min_amount);
       }
+      if($request->measure != null){
+        $request->measure = $this->fa_num_to_en($request->measure);
+      }
       if($request->weight != null){
         $request->weight = $this->fa_num_to_en($request->weight);
       }
@@ -442,6 +450,7 @@ else{
         'brand_id' => $request->brand_id,
         'amount' => $request->amount,
         'min_amount' => $request->min_amount,
+        'measure' => $request->measure,
         'weight' => $request->weight,
         'price' => $this->fa_num_to_en($request->price),
         'off_price' => $request->off_price,

@@ -127,6 +127,12 @@
 
                                     </div>
                                     <div class="input-group mt-3">
+                                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">واحد اندازه گیری محصول:</span></div>
+                                        <input type="text" class="form-control inputfield" name="measure" placeholder="مثال: لیتر" value="{{ $product->measure }}">
+                                        <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
+
+                                    </div>
+                                    <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
                                         <input type="text" class="form-control inputfield" name="weight" placeholder="مثال: 30" value="{{ $product->weight }}">
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>

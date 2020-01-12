@@ -203,6 +203,13 @@
                                             <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem8Left') }}</span></div>
 
                                         </div>
+
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>
+                                                    واحد شمارش کالا:</span></div>
+                                            <input value="{{ old('measure') }}" type="text" class="form-control inputfield" name="measure" placeholder="مثال : لیتر">
+                                        </div>
+
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem9') }} :</span></div>
                                             <input value="{{ old('weight') }}" type="text" class="form-control inputfield" name="weight" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem9ex') }}">
