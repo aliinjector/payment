@@ -109,6 +109,11 @@
                                 <input type="checkbox" class="custom-control-input" id="customSwitchBlue" name="first_purchase">
                                 <label class="custom-control-label font-15 text-dark"  for="customSwitchBlue">{{ __('dashboard-shop-voucher.addModalItem8') }}</label>
                             </div>
+                            <div class="custom-control custom-switch switch-blue input-group-append mt-3 m-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitchDisposable" name="disposable">
+                                <label class="custom-control-label font-15 text-dark"  for="customSwitchDisposable">کد یکبار مصرف باشد</label>
+                                <p class="text-muted mt-1" style="font-size: 13px;">اگر این گزینه فعال باشد کاربر فقط یکبار میتواند از این کد تخفیف استفاده کند.</p>
+                            </div>
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">

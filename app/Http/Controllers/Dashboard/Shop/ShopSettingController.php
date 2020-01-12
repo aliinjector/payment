@@ -161,7 +161,6 @@ class ShopSettingController extends Controller
      else
      $request->online_payment = 'enable';
 
-
         if ( $request->cash_payment != "on")
         $request->cash_payment = 'disable';
      else

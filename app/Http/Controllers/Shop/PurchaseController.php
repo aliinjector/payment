@@ -48,7 +48,7 @@ class PurchaseController extends Controller
           return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'products', 'quantity', 'productTotal_price', 'total_price'));
       }
       if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
-        if(Voucher::where('code', $request->code)->get()->first()->first_purchase == 'on' and \Auth::user()->purchases()->where('shop_id', $shop->id)->get()->count() != 0){
+        if(Voucher::where('code', $request->code)->get()->first()->first_purchase == 'enable' and \Auth::user()->purchases()->where('shop_id', $shop->id)->get()->count() != 0){
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
           return redirect()->back();
         }
