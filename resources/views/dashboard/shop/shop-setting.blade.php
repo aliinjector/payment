@@ -82,8 +82,8 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.etelaatForooshgahTitle') }}</h3>
-                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaatForooshgahDesc') }}.</p><br>
+                            <h3 class="mt-0 header-title">مشخصات صاحب فروشگاه</h3>
+                            <p class="text-muted mb-3">در این بخش مشخصات صاحب فروشگاه قابل مشاهده میباشد.</p><br>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group row">
@@ -98,6 +98,25 @@
                                             <input class="form-control" type="text" name="lastName" disabled value="{{ \Auth::user()->lastName }}">
                                         </div>
                                     </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.etelaatForooshgahTitle') }}</h3>
+                            <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaatForooshgahDesc') }}.</p><br>
+                            <div class="row">
+                                <div class="col-lg-12">
+
+
 
                                     <div class="form-group row">
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem3') }}</label>
@@ -137,6 +156,19 @@
                                 </div>
 
                             </div>
+
+
+                        </div>
+
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="mt-0 header-title">تنظیمات ثبت سفارش</h3>
+                            <p class="text-muted mb-3">در این بخش میتوانید روش های ارسال کالا توسط فروشگاه خود را انتخاب کنید همچنین میتوانید روش های پرداختی را میتوانید فعال و یا غیر فعال کنید . توجه داشته باشید که با فعال کردن هر آیتم هنگام سفارش کاربر میتواند یکی از روش ها را انتخاب کند.</p><br>
                             <div class="row col-12 mt-4">
                                 <div class="col-lg-2 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-purple"><i class="fa fa-shipping-fast"></i></span>
@@ -474,31 +506,20 @@
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
                             </div>
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-12 input-group">
-                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4') }}</label>
-                                <input class="form-control" type="text" name="province" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4ex') }}" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
-                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
-                            </div>
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">شبکه های اجتماعی</h4>
+                            <p class="text-muted mb-3">در این بخش میتوانید شبکه های اجتماعی فروشگاه خود را ویرایش کنید . این شبکه های اجتماعی در صورت فعال بودن در صفحه ی اول فروشگاه برای کابران به نمایش در خواهد آمد.<p>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-12 input-group">
-                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem5') }}</label>
-                                <input class="form-control" type="text" name="city" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem5ex') }}" id="example-week-input" value="{{ old('city', $shopContactInformation->city) }}">
-                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-city text-dark font-18"></i></span></div>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-12 input-group">
-                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem6') }}</label>
-                                <input class="form-control" type="text" name="address" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem6ex') }}" id="example-datetime-local-input"
-                                  value="{{ old('address', $shopContactInformation->address) }}">
-                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-address-card text-dark font-18"></i></span></div>
-                            </div>
-                        </div>
+
+
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
                                 <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem7') }}</label>
@@ -562,8 +583,41 @@
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fa fa-envelope-open	 text-dark font-18"></i></span></div>
                             </div>
                         </div>
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">موقعیت فروشگاه</h4>
+                            <p class="text-muted mb-3">در این بخش میتوانید موقعیت مکانی فروشگاه خود را به صورت دقیق مشخص نمایید.<p>
+                        </div>
 
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4') }}</label>
+                                <input class="form-control" type="text" name="province" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4ex') }}" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
 
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-week-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem5') }}</label>
+                                <input class="form-control" type="text" name="city" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem5ex') }}" id="example-week-input" value="{{ old('city', $shopContactInformation->city) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-city text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-12 input-group">
+                                <label for="example-datetime-local-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem6') }}</label>
+                                <input class="form-control" type="text" name="address" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem6ex') }}" id="example-datetime-local-input"
+                                  value="{{ old('address', $shopContactInformation->address) }}">
+                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-address-card text-dark font-18"></i></span></div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
                                 <label for="example-password-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem16') }}</label>
