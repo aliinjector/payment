@@ -64,11 +64,12 @@
                                 @endif
                                 <h6 class="text-muted font-13">{{ __('app-shop-1-product.vizhegiha') }} :</h6>
                                 <ul class="list-unstyled pro-features border-0 iranyekan">
-                                    @for ($i=1; $i <= 10; $i++) <div class="wrapper">
-                                        @if ($product->{"feature_{$i}"})
-                                        <li class="ty-compact-list">{{ $product->{"feature_{$i}"} }} </li>
-                                        @endif
-                                        @endfor
+                                       <div class="wrapper">
+                                         @foreach ($product->facilities as $facility)
+
+                                        <li class="ty-compact-list">{{ $facility->name }} </li>
+                                      @endforeach
+
                                         <div class="show-more mr-1 mt-4" style="line-height: 2;"><i class="fas fa-plus"></i>
                                             <span class="toggle-show"> {{ __('app-shop-1-product.more') }}</span>
                                         </div>

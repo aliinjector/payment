@@ -70,8 +70,8 @@ class Controller extends BaseController
     private function resize($path, $sizes, $filePath, $fileName)
     {
         $local = array(
-            '127.0.0.1:8000',
-            'localhost:8000',
+            '127.0.0.1',
+            'localhost',
             '::1'
         );
 
