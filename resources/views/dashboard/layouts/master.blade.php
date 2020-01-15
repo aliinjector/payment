@@ -243,7 +243,6 @@ Author: Ali Rahmani
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"><i class="far fa-edit"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatDasteBandiha') }}</a></li>
                             <div class="collapse mr-4 {{ request()->is('*categrory-managment*') == 1 ? 'show' : '' }}" id="collapseCategory">
                             <li class="nav-item"><a class="nav-link" href="{{ route('product-category.index') }}"><i class="fa fa-copy"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarEzafeKardaneDasteBandi') }}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('feature.index') }}"><i class="dripicons-trophy"></i> {{ __('dashboard-layouts-master.forooshgahSazSideBarFeature') }}</a></li>
                             </div>
                             <li class="nav-item"><a class="nav-link" href="{{ route('brand.index') }}"><i class="fa fa-calendar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarBrand') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.index') }}"><i class="mdi mdi-gift"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarCodeTakhfif') }}</a></li>

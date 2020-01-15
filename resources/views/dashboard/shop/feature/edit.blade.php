@@ -24,7 +24,7 @@
 <div class="tab-content">
 
     <div class="tab-pane fade in show active" id="info" role="tabpanel">
-        <form method="post" action="{{ route('feature.update', $productCategory->id) }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('feature.update', ['productCategoryFeatureid'=>$productCategoryFeature->id , 'cat_id' => $category->id]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -35,21 +35,17 @@
                             <p class="text-muted mb-3">در این بخش میتوانید ویژگی های دسته بندی مورد نظر خود را ویرایش نمایید.</p><br>
                             <div class="row">
                                 <div class="col-lg-12">
-                                  <input type="hidden" name="featureCount" value="{{ $productCategory->features->count() }}">
-                                    @foreach ($productCategory->features as $feature)
                                     <div class="form-group row py-4">
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام ویژگی</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control inputfield" name="name[]" value="{{ $feature->name }}">
-                                            <input type="hidden" class="form-control inputfield" name="featureId[]" value="{{ $feature->id }}">
+                                            <input type="text" class="form-control inputfield" name="name" value="{{ $productCategoryFeature->name }}">
                                         </div>
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">آیکون ویژگی</label>
                                         <div class="col-sm-10 mt-2">
-                                            <input type="file" id="input-file-now" name="icon[]" class="dropify" data-default-file="{{ $feature->icon['original'] }}">
+                                            <input type="file" id="input-file-now" name="icon[]" class="dropify" data-default-file="{{ $productCategoryFeature->icon['original'] }}">
                                         </div>
 
                                     </div>
-                                    @endforeach
 
                                 </div>
 

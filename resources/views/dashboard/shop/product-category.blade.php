@@ -160,8 +160,8 @@
                            <a href="{{ $parentCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $parentCategory->id }}"><i class="far fa-edit text-info mr-1 button font-18"></i>
                            </a>
                            <a href="" id="removeCat" data-name="{{ $parentCategory->name }}" data-id="{{ $parentCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
-                           <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$parentCategory->id]) }}"><i class="fa fa-eye text-success mr-1 button font-18"></i>
-                           </a>
+                           <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$parentCategory->id]) }}"><i class="fa fa-eye text-success mr-1 button font-18"></i></a>
+                           <a href="{{ route('feature.index', ['cat_id'=>$parentCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                         </div>
                      </div>
                      <div id="collapse{{ $parentCategory->id }}" class="collapse" aria-labelledby="heading{{ $parentCategory->id }}">
@@ -182,6 +182,7 @@
                                     <a href="" id="removeCat" data-name="{{ $subCategory->name }}" data-id="{{ $subCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
                                     <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}"><i class="fa fa-eye text-success mr-1 button font-18"></i>
                                     </a>
+                                     <a href="{{ route('feature.index', ['cat_id'=>$subCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                                  </div>
                               </div>
                               <div id="collapse{{ $subCategory->id }}" class="collapse" aria-labelledby="heading{{ $subCategory->id }}">
@@ -203,6 +204,7 @@
                                              <a href="" id="removeCat" data-name="{{ $subSubCategory->name }}" data-id="{{ $subSubCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
                                              <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"><i class="fa fa-eye text-success mr-1 button font-18"></i>
                                              </a>
+                                              <a href="{{ route('feature.index', ['cat_id'=>$subSubCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                                           </div>
                                        </div>
                                        <div id="collapse{{ $subSubCategory->id }}" class="collapse" aria-labelledby="heading{{ $subSubCategory->id }}">
@@ -228,6 +230,7 @@
                                                             <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"><i
                                                                class="fa fa-eye text-success mr-1 button font-18"></i>
                                                             </a>
+                                                             <a href="{{ route('feature.index', ['cat_id'=>$subSubSubCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                                                          </div>
                                                       </div>
                                                       <div id="collapse{{ $subSubSubCategory->id }}" class="collapse" aria-labelledby="heading{{ $subSubSubCategory->id }}">
@@ -254,6 +257,7 @@
                                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubSubCategory->id]) }}"><i
                                                                               class="fa fa-eye text-success mr-1 button font-18"></i>
                                                                            </a>
+                                                                            <a href="{{ route('feature.index', ['cat_id'=>$subSubSubSubCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                                                                         </div>
                                                                      </div>
                                                                      <div id="collapse{{ $subSubSubSubCategory->id }}" class="collapse" aria-labelledby="heading{{ $subSubSubSubCategory->id }}">

@@ -16,15 +16,17 @@ class FeatureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
       if(\Auth::user()->type == 'customer'){
           return redirect()->back();
       }
       else{
+              $category = ProductCategory::find($request->cat_id);
               $shop = \Auth::user()->shop()->first();
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
-              return view('dashboard.shop.feature.index', compact('shop', 'productCategories'));
+              $categoryFeatures = $category->features;
+              return view('dashboard.shop.feature.index', compact('shop', 'productCategories','category','categoryFeatures'));
 
             }
 
@@ -65,7 +67,7 @@ class FeatureController extends Controller
                   $feature->icon = $icon;
                   $feature->save();
                   alert()->success('ویژگی جدید برای دسته بندی شما با موفقیت اضافه شد.', 'ثبت شد');
-                  return redirect()->route('feature.index');
+                  return redirect()->back();
               break;
           //save and open new modal
           case 'saveAndContinue':
@@ -77,7 +79,7 @@ class FeatureController extends Controller
                   $feature->save();
                   session()->flash('flashModal');
                   alert()->success('ویژگی جدید برای دسته بندی شما با موفقیت اضافه شد.', 'ثبت شد');
-                  return redirect()->route('feature.index');
+                  return redirect()->back();
               break;
 
       }
@@ -103,10 +105,11 @@ class FeatureController extends Controller
      * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $productCategoryid)
+    public function edit(Request $request, $productCategoryFeatureid)
     {
-      $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id', $productCategoryid)->get()->first();
-      return view('dashboard.shop.feature.edit', compact('productCategory'));
+      $category = ProductCategory::find($request->cat_id);
+      $productCategoryFeature = \Auth::user()->shop()->first()->ProductCategories()->where('id', $request->cat_id)->get()->first()->features->find($productCategoryFeatureid);
+      return view('dashboard.shop.feature.edit', compact('productCategoryFeature','category'));
     }
 
     /**
@@ -116,30 +119,22 @@ class FeatureController extends Controller
      * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $productCategoryid)
+    public function update(Request $request, $productCategoryFeatureid)
     {
-            for ($i=0; $i < $request->featureCount; $i++) {
-              if(isset($request->file('icon')[$i])){
-                if($request->file('icon')[$i] == null){
-                  $icon = null;
-                }
-                else{
-                  $icon = $this->uploadFile($request->file('icon')[$i], false, true);
-                }
-              }
-              else{
-                $icon = \Auth::user()->shop()->first()->ProductCategories()->where('id',$productCategoryid)->get()->first()->features->where('id', $request->featureId[$i])->first()->icon;
-              }
-              $request->validate(['name' => 'required']);
-              $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id',$productCategoryid)->get()->first()->features->where('id', $request->featureId[$i])->first()->update([
-                'name' => $request->name[$i],
+      if($request->file('icon') == null){
+        $icon = null;
+      }
+      else{
+        $icon = $this->uploadFile($request->file('icon'), false, true);
+      }
+        $request->validate(['name' => 'required']);
+        $productCategoryFeature = \Auth::user()->shop()->first()->ProductCategories()->where('id', $request->cat_id)->get()->first()->features->find($productCategoryFeatureid)->update([
+                'name' => $request->name,
                 'icon' => $icon
             ]);
 
-          };
-
     alert()->success('ویرایش ویژگی ها با موفقیت انجام شد.', 'ثبت شد');
-    return redirect()->route('feature.index');
+    return redirect()->route('feature.index', ['cat_id' => $request->cat_id]);
     }
 
     /**

@@ -12,7 +12,7 @@
                 <div class="page-title-box">
                     <div class="float-right">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item ">ویژگی دسته بندی ها</li>
+                            <li class="breadcrumb-item ">ویژگی های دسته بندی {{ $category->name }}</li>
                             <li class="breadcrumb-item"><a href="javascript:void(0);">فروشگاه</a></li>
                         </ol>
                     </div>
@@ -35,7 +35,7 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('feature.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('feature.store',['continue'=>1, 'cat_id' => $category->id]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
@@ -45,14 +45,8 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">دسته بندی ویژگی:</span></div>
                                     <select class="form-control inputfield" name="productCat_id" id="">
-                                        <option style="font-family: BYekan!important;" value="null">انتخاب دسته بندی
+                                        <option style="font-family: BYekan!important;" selected value="{{ $category->id }}">{{ $category->name }}
                                         </option>
-                                        @foreach($productCategories as $productCategory)
-                                        <option style="font-family: BYekan!important;" value="{{ $productCategory->id }}">
-                                            @if($productCategory->parent()->exists()) {{ $productCategory->parent()->get()->first()->name }} >
-                                                @endif {{ $productCategory->name }}
-                                        </option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="card mt-3">
@@ -76,43 +70,11 @@
             </div>
         </div>
 
-
-        @foreach($productCategories as $productCategory)
-        <div class="modal fade bd-example-modal-xl" id="ShowFeatureModal{{ $productCategory->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">نمایش ویژگی ها</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <div class="form-group mb-0">
-                            @foreach ($productCategory->features as $feature)
-                            <div class="input-group mt-3 mb-4">
-                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام ویژگی :</span></div>
-                                <input type="text" class="form-control inputfield" name="name" readonly value="{{ $feature->name }}">
-                                <a href="" id="removeFeature" data-name="{{ $feature->name }}" data-id="{{ $feature->id }}"><i class="fa-trash-alt far border-bottom font-18 p-3 text-danger"></i></a>
-                            </div>
-                            @endforeach
-
-                        </div>
-                        <!--end form-group-->
-                        <button type="button" class="btn btn-danger rounded" data-dismiss="modal">بستن</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        @endforeach
-
-
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">لیست ویژگی دسته بندی ها</h4>
+                        <h4 class="mt-0 header-title">ویژگی های دسته بندی {{ $category->name }}</h4>
                         <p class="text-muted mb-4 font-13">در این بخش میتوانید ویژگی های هر دسته بندی را مشاهده کنید . همچنین میتوانید  برای دسته بندی های خود ویژگی های متعدد تعریف کنید و یا آن ها را ویرایش و یا حذف کنید. لازم بذکر میباشد که این ویژگی ها در هنگام مقایسه محصولات شما به نمایش در می آیند.</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
@@ -130,31 +92,24 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
                                                 </th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">نام
-                                                    دسته بندی
+                                                    ویژگی
                                                 </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;"> ویژگی های دسته بندی</th>
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
                                           @php
                                             $id = 1;
                                           @endphp
-                                            @foreach($productCategories as $productCategory)
+                                            @foreach($categoryFeatures as $categoryFeature)
                                             <tr role="row" class="odd icon-hover hover-color">
                                                 <td style="width:5%">{{ $id }}</td>
-                                                <td>{{ $productCategory->name }}</td>
-                                                <td class="d-flex justify-content-end">
-                                                    @if($productCategory->features->count() == 0)
-                                                        <a href="{{ $productCategory->id }}" data-toggle="modal" class="comming-soon btn btn-light btn-sm font-14 font-weight-bolder iranyekan m-1"
-                                                          data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>ویژگی وجود ندارد</a>
-                                                        @else
-                                                        <a href="{{ $productCategory->id }}" data-toggle="modal" class="btn btn-outline-secondary btn-sm font-14 font-weight-bolder iranyekan m-1"
-                                                          data-target="#ShowFeatureModal{{ $productCategory->id }}"><i class="fas fa-eye ml-1"></i>مشاهده ویژگی ها</a>
-                                                        @endif
-
-                                                        <a class="btn btn-outline-pink btn-sm font-14 iranyekan m-1" href="{{ route('feature.edit', $productCategory->id) }}"><i class="fas fa-edit ml-1"></i>ویرایش ویژگی ها</a>
-                                                        <div class="d-none icon-show">
-                                                        </div>
+                                                <td class="d-flex justify-content-between">{{ $categoryFeature->name }}
+                                                  <div class="d-none icon-show">
+                                                  <a href="{{ route('feature.edit', ['productCategoryFeatureid'=>$categoryFeature->id , 'cat_id' => $category->id]) }}"><i
+                                                     class="far fa-edit text-info mr-1 button font-18"></i>
+                                                  </a>
+                                                  <a href="" id="removeFeature" data-name="{{ $categoryFeature->name }}" data-id="{{ $categoryFeature->id }}"><i class="fa-trash-alt far text-danger"></i></a>
+                                                  </div>
                                                 </td>
                                             </tr>
                                             @php
@@ -214,7 +169,7 @@
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                             },
                             success: function(data) {
-                                var url = document.location.origin + "/admin-panel/shop/categrory-managment/feature";
+                                var url = document.location.origin + "/admin-panel/shop/categrory-managment/feature/?cat_id={{ $category->id }}";
                                 location.href = url;
                             }
                         });
