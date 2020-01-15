@@ -133,7 +133,7 @@
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
 								@foreach($brands as $brand)
-								<li class="ty-compact-list"><a href="#">{{ $brand->name }}</a></li>
+								<li><a href="{{ route('brand', ['shop'=>$shop->english_name, 'name'=>$brand->name]) }}">{{ $brand->name }}</a></li>
 								@endforeach
 							</ul>
 							<div class="show-more">

@@ -42,7 +42,6 @@
 						<h3 class="tt-collapse-title">زیر دسته بندی ها</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
-								{{-- <li class="active"><a href="#">{{ $category->name }}</a></li> --}}
 
 							</ul>
 						</div>
@@ -50,7 +49,7 @@
 					<div class="tt-collapse">
 						<h3 class="tt-collapse-title">فیلتر براساس قیمت</h3>
 						<div class="tt-collapse-content">
-							<form action="{{ route('tag', ['shop' => $shop->english_name,'name' => $tagName]) }}" id="submit" method="get">
+							<form action="{{ route('tag', ['shop' => $shop->english_name,'name' => $brandName]) }}" id="submit" method="get">
 
 								<ul class="tt-list-row">
 									<input type="hidden" class="available-order-1" name="type" value="all">
@@ -133,7 +132,7 @@
 				<div class="col-md-12 col-lg-9 col-xl-9">
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 						<div class="tt-filters-options" id="js-tt-filters-options">
-							<h1 class="tt-title">محصولات تگ {{ Request::segment(3) }} <span class="tt-title-total byekan">({{ $products->count() }})</span></h1>
+							<h1 class="tt-title">محصولات برند {{ Request::segment(3) }} <span class="tt-title-total byekan">({{ $products->count() }})</span></h1>
 							<div class="tt-btn-toggle"><a href="#">فیلتر</a></div>
 							<div class="tt-sort d-flex">
 								<select class="available-filter-1" name="sortBy[field]">
@@ -174,8 +173,8 @@
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"></a>
 										</form>
-										<a href="product.html"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}"
-												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a></div>
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}"
+												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span></a></div>
 									<div class="tt-description">
 										<div class="tt-row">
 											<ul class="tt-add-info">

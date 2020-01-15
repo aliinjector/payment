@@ -203,6 +203,7 @@ Route::namespace('Shop')->group(function () {
     Route::get('/{shop}/product/{id}', 'ProductContoller@show')->name('product');
     Route::get('/{shop}/category/{categroyId}', 'CategoryController@index')->name('category');
     Route::get('/{shop}/tag/{name}', 'TagController@tagProduct')->name('tag');
+    Route::get('/{shop}/brand/{name}', 'BrandController@brandProduct')->name('brand');
     Route::post('/{shop}/search/', 'SearchController@index')->name('search');
     //Comment
     Route::post('comment', 'CommentController@comment')->middleware('auth');
