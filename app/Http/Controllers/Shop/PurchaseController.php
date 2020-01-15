@@ -85,6 +85,13 @@ class PurchaseController extends Controller
           return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
         }
         else{
+          if($voucher->disposable == 'enable'){
+            $userVoucherUse = UserVoucher::where([['user_id', $userID], ['voucher_id', $voucher->id], ['shop_id', $shop->id]])->first();
+            if($userVoucherUse){
+              alert()->error('شما قبلا از این کد تخفیف استفاده کردید.', 'خطا');
+              return redirect()->back();
+            }
+          }
           $voucherId = Voucher::where('code', $request->code)->get()->first()->id;
           if(collect($this->getVochersUsers($voucherId))->contains($userVoucherName)){
             $productsID = [];
