@@ -6,6 +6,7 @@ use App\Shop;
 use App\Product;
 use App\Voucher;
 use App\UserPurchase;
+use App\UserVoucher;
 use App\Cart;
 use Illuminate\Http\Request;
 use Request as RequestFacade;
@@ -53,6 +54,13 @@ class PurchaseController extends Controller
           return redirect()->back();
         }
         if(Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->users == null){
+          if($voucher->disposable == 'enable'){
+            $userVoucherUse = UserVoucher::where([['user_id', $userID], ['voucher_id', $voucher->id], ['shop_id', $shop->id]])->first();
+            if($userVoucherUse){
+              alert()->error('شما قبلا از این کد تخفیف استفاده کردید.', 'خطا');
+              return redirect()->back();
+            }
+          }
           $productsID = [];
           $quantity = [];
           $productTotal_price = [];
