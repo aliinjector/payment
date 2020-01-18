@@ -8942,8 +8942,8 @@ dd {
 }
 
 .dropdown-menu {
-    right: auto!important;
-    left: 0;
+    right: 0!important;
+    left: auto;
     float: none
 }
 
