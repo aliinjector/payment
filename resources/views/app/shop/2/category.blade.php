@@ -170,12 +170,6 @@
 									</option>
 								</select>
 								</form>
-								<select>
-									<option value="Show">{{ __('app-shop-2-category.tedaad') }}</option>
-									<option value="9">9</option>
-									<option value="16">16</option>
-									<option value="32">32</option>
-								</select>
 							</div>
 							<div class="tt-quantity">
 								<a href="#" class="tt-col-one" data-value="tt-col-one"></a>
@@ -186,7 +180,7 @@
 							</div>
 						</div>
 						<div class="tt-product-listing row tt-col-three" id="tt-product-listing">
-							@foreach($products as $product)
+							@foreach($productsPaginate as $product)
 							<div class="col-5 col-md-2 tt-col-item p-2">
 								<div class="tt-product thumbprod-center">
 									<div class="tt-image-box" style="height: 30vh!important;">
@@ -231,6 +225,8 @@
 												<a href="#" class="tt-btn-wishlist"></a>
 												<a href="#" class="tt-btn-compare"></a>
 											</div>
+											<div class="col-lg-12 d-flex justify-content-center">
+											</div>
 										</div>
 									</div>
 								</div>
@@ -242,6 +238,9 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="col-lg-12 d-flex justify-content-center mr-3 pr-5 py-5">
+		{!! $productsPaginate->render() !!}
 </div>
 
 @endsection
