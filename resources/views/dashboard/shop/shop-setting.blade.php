@@ -370,6 +370,7 @@
                                 <select class="form-control" name="menu_show">
                                     <option value="nestead_menu">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem1Item1') }}</option>
                                     <option value="nestead_box" @if(\Auth::user()->shop()->first()->menu_show == 'nestead_box') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem1Item2') }}</option>
+                                    <option value="mega_menu" @if(\Auth::user()->shop()->first()->menu_show == 'mega_menu') selected @endif>مگا منو (MegaMenu)</option>
                                 </select>
                             </div>
                         </div>
