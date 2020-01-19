@@ -2893,7 +2893,8 @@ button.bg-white:hover {
     -webkit-box-shadow: 0 3px 12px rgba(182, 194, 228, .05);
     box-shadow: 0 3px 12px rgba(182, 194, 228, .05);
     border-color: #eff2f9;
-    margin: 0
+    margin: 0;
+    background-color: #F3F3F3;
 }
 
 .dropdown-menu .dropdown-item {
@@ -2903,9 +2904,9 @@ button.bg-white:hover {
 .dropdown-menu .dropdown-item.active,
 .dropdown-menu .dropdown-item:active,
 .dropdown-menu .dropdown-item:hover {
-    color: #2f4686;
+    color: #15939D;
     text-decoration: none;
-    background-color: #f7f7f7
+    background-color: #FFFFFF;
 }
 
 .progress {
@@ -8941,8 +8942,8 @@ dd {
 }
 
 .dropdown-menu {
-    right: auto!important;
-    left: 0;
+    right: 0!important;
+    left: auto;
     float: none
 }
 
