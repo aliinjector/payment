@@ -1,6 +1,13 @@
 @extends('dashboard.layouts.master')
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+$("#category_ids").select2({ maximumSelectionLength: 3 });
+</script>
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
 <style type="text/css">
   #map{ width:500px; height: 300px; }
 </style>
@@ -379,6 +386,18 @@
                             <div class="col-sm-10">
                               <input class="form-control" type="number" name="menu_show_count" id="example-password-input" value="{{ \Auth::user()->shop()->first()->menu_show_count }}">
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی های قابل نمایش در اسلاید</label>
+                            <div class="col-sm-10">
+                                <select multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="users[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
+                                    @foreach(\Auth::user()->shop()->first()->productCategories as $category)
+                                    <option>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <p class="text-muted mt-1" style="font-size: 11px;margin-right: 2.2rem;">میتوایند سه دسته بندی را انتخاب کنید</p>
                         </div>
 
 
@@ -962,4 +981,14 @@
     google.maps.event.addDomListener(window, 'load', initMap);
 
 </script>
+    <script>
+        $(window).on("load", function() {
+            $('.show-tick').addClass("col-lg-10");
+            $('.filter-option-inner-inner').addClass("d-flex");
+            $('.bs-placeholder').removeClass("btn-light");
+            $('.show-tick').addClass("p-1");
+            $('.show-tick').addClass("border");
+        });
+    </script>
+
 @stop

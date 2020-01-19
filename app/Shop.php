@@ -13,6 +13,7 @@ class Shop extends Model
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [
+        'slide_category' => 'array',
         'logo' => 'array',
         'icon' => 'array'
     ];
