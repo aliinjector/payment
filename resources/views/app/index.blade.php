@@ -69,6 +69,7 @@
                                     </li>
 
                                     <li class="menu-item"> <a href="#about" class="menu-link nav-link">{{ __('index.menu2') }}م </a> </li>
+
                                     <li class="menu-item">
                                         <a class="menu-link nav-link" href="#services"> {{ __('index.menu3') }}</a>
                                     </li>
