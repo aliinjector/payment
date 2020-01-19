@@ -34,7 +34,7 @@ return array(
     "welcome"         => "عزیز، خوش آمدی",
     "safheAsli"         => "صفحه اصلی",
     "akharinDasteha"         => "آخرین دسته ها",
-    "darbareMaVaTamas"         => "درباره ما و تماس",
+    "darbareMaVaTamas"         => "تماس باما",
     "ozviatDarKhabarName"         => "عضویت در خبرنامه",
     "ozviatDarKhabarNameDesc"         => "جهت عضویت در سیستم خبرنامه، آدرس ایمیل خودرا در فرم زیر وارد نموده و برروی گزینه عضویت کلیک نمایی",
     "saayerSafahaat"         => "سایر صفحات",

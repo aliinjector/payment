@@ -628,6 +628,10 @@
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
                                 <label for="example-password-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem16') }}</label>
+                                @if($shopContactInformation->lat >= 5)
+                                <label style="color: red" for="example-password-input" class="col-sm-2 col-form-label text-center">لوکیشن در نقشه ثبت شده است. درصورت نیاز آنرا تغییر دهید:</label>
+                                @endif
+
                                 <div class="input-group-append">
                                     <div id="map"></div>
                                     <input name="lat" value="{{ $shopContactInformation->lat ? $shopContactInformation->lat : '35.6969331' }}" type="hidden" id="lat"><br>

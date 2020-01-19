@@ -24,7 +24,6 @@ class ShopContactRequest extends FormRequest
     public function rules()
     {
         return [
-            'city' => 'required|min:1|max:20',
               'city' => 'required|min:1|max:20',
               'tel' => 'max:20',
               'address' => 'max:220',
