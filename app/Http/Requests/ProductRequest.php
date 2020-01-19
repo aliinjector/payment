@@ -30,6 +30,7 @@ class ProductRequest extends FormRequest
             'amount' => 'required',
             'price' => 'required',
             'image' => 'required',
+            'measure' => 'required',
         ];
       }
 else if($request->type == 'file'){

@@ -2894,7 +2894,7 @@ button.bg-white:hover {
     box-shadow: 0 3px 12px rgba(182, 194, 228, .05);
     border-color: #eff2f9;
     margin: 0;
-    background-color: #F3F3F3;
+    background-color: #dededef2;
 }
 
 .dropdown-menu .dropdown-item {
@@ -2904,9 +2904,11 @@ button.bg-white:hover {
 .dropdown-menu .dropdown-item.active,
 .dropdown-menu .dropdown-item:active,
 .dropdown-menu .dropdown-item:hover {
-    color: #15939D;
+    color: #F68712!important;
     text-decoration: none;
     background-color: #FFFFFF;
+    border: 1px solid white;
+    border-radius: 7px;
 }
 
 .progress {
