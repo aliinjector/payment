@@ -20,17 +20,18 @@
         }
 
         .dropdown-menu {
+            width: 160px !important;
             display: none !important;
         }
 
         .dropdown-submenu {
             position: relative;
-            width: 180px !important;
+            width: 160px !important;
         }
 
         .dropdown-submenu>.dropdown-menu {
             top: -33px !important;
-            width: 180px !important;
+            width: 160px !important;
             right: 72% !important;
             -webkit-border-radius: 0 6px 6px 6px;
             -moz-border-radius: 0 6px 6px;
@@ -735,27 +736,27 @@
                                                             @foreach ($shopCategory->children()->get() as $subCategory)
                                                             @if (!$subCategory->children()->exists())
                                                             <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="font-weight-bold iranyekan" style="color: #465f73!important; font-size:16px">
-                                                                <li class="dropdown-item dropdown-submenu">{{ $subCategory->name }}
+                                                                <li class="dropdown-item dropdown-submenu mx-2">{{ $subCategory->name }}
                                                                 </li>
                                                             </a>
                                                             @else
-                                                            <li class="dropdown-submenu">
+                                                            <li class="dropdown-submenu mx-2">
                                                                 <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser font-weight-bold iranyekan" style="color: #465f73!important; font-size:16px"
                                                                   tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                                                 <ul class="dropdown-menu multi-level font-16 mr-4" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;width: 140%!important;">
                                                                     @foreach ($subCategory->children()->get() as $subSubCategory)
                                                                     @if (!$subSubCategory->children()->exists())
                                                                     <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" style="color: #465f73!important; font-size:16px" class="font-weight-bold iranyekan">
-                                                                        <li class="dropdown-item">{{ $subSubCategory->name }}</li>
+                                                                        <li class="dropdown-item dropdown-submenu mx-2">{{ $subSubCategory->name }}</li>
                                                                     </a>
                                                                     @else
-                                                                    <li class="dropdown-submenu">
+                                                                    <li class="dropdown-submenu mx-3">
                                                                         <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser font-weight-bold iranyekan" style="color: #465f73!important;font-size:16px"
                                                                           tabindex="-1">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
-                                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;width: 140%!important;right: 210px!important;">
+                                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;width: 140%!important;right: 160px!important;">
                                                                             @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
                                                                             <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}" style="color: #465f73!important;font-size:16px" class="font-weight-bold iranyekan">
-                                                                                <li class="dropdown-item">{{ $subSubSubCategory->name }}</li>
+                                                                                <li class="dropdown-item mx-3">{{ $subSubSubCategory->name }}</li>
                                                                             </a>
                                                                             @endforeach
                                                                         </ul>
