@@ -223,6 +223,7 @@ class ShopSettingController extends Controller
       }
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
+        'menu_show_count' => $request->menu_show_count,
         'cat_image_status' => $request->cat_image_status,
         'watermark_status' => $request->watermark_status,
         'buyCount_show' => $request->buyCount_show,

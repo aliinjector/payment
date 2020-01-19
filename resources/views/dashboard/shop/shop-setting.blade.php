@@ -374,6 +374,12 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">تعداد دسته بندی های منو</label>
+                            <div class="col-sm-10">
+                              <input class="form-control" type="number" name="menu_show_count" id="example-password-input" value="{{ \Auth::user()->shop()->first()->menu_show_count }}">
+                            </div>
+                        </div>
 
 
                         <div class="form-group row">

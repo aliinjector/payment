@@ -719,7 +719,7 @@
                                     <nav>
                                         <ul class="pb-4 font-wight-bold">
                                             <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
-                                            @foreach ($shopCategories->where('parent_id' , null)->take(5) as $shopCategory)
+                                            @foreach ($shopCategories->where('parent_id' , null)->take(\Auth::user()->shop()->first()->menu_show_count) as $shopCategory)
                                             <div class="dropdown mx-3" style="top:30px!important">
                                                 <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}" class="font-weight-bold iranyekan">
                                                     <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal" style="color:
