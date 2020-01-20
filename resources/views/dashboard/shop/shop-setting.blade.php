@@ -1,38 +1,7 @@
 @extends('dashboard.layouts.master')
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-<style type="text/css">
-  #map{ width:500px; height: 300px; }
-</style>
-<style media="screen">
-    .nav-tabs .nav-item.show .nav-link,
-    .nav-tabs .nav-link.active {
-        background-color: #122272 !important;
-        color: white;
-    }
-
-    .img-wrapper {
-        overflow: hidden;
-        position: relative;
-        float: left;
-        height: 250px;
-        width: 400px;
-        border: 2px solid #122272;
-        border-radius: 5px 5px 5px 5px;
-    }
-
-    .extrem-height-image {
-        position: absolute;
-        top: 0;
-        width: 400px;
-        height: auto;
-        transition: top 2s ease-out 0s;
-    }
-
-    .extrem-height-image:hover {
-        top: -300px;
-    }
-</style>
+<link href="{{ asset('/dashboard/assets/css/admin-shop-setting.css') }}" rel="stylesheet">
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
 <div class="row">

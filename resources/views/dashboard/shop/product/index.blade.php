@@ -4,21 +4,8 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-<style media="screen">
-    #input-tags_tagsinput {
-        width: 83% !important;
-        height: 50px !important;
-        min-height: 50px !important;
-        font-size: 13px;
-        border: 1px solid #e8ebf3;
-        height: calc(2.3rem + 2px);
-        color: #2f5275;
-    }
+<link href="{{ asset('/dashboard/assets/css/admin-product-index.css') }}" rel="stylesheet">
 
-    #input-tags_addTag {
-        float: right !important;
-    }
-</style>
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->

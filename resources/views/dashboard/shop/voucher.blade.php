@@ -307,8 +307,9 @@
 
 
     @section('pageScripts')
-
+      <script src="/dashboard/assets/js/persian-date.js"></script>
+      <script src="/dashboard/assets/js/persian-datepicker.js"></script>
       <script src="{{ asset('/dashboard/assets/js/admin-voucher.js') }}"></script>
 
-    
+
     @stop

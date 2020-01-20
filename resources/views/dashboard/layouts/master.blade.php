@@ -12,8 +12,6 @@ Author: Ali Rahmani
     <script src="/dashboard/assets/js/jquery.min.js"></script>
     <script src="/dashboard/assets/js/jquery.form-xeditable.init.js"></script>
     <script src="/dashboard/assets/js/bootstrap-editable.min.js"></script>
-    <script src="/dashboard/assets/js/persian-date.js"></script>
-    <script src="/dashboard/assets/js/persian-datepicker.js"></script>
     <meta charset="utf-8">
     <title>{{ __('dashboard-layouts-master.pageTitle') }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">

@@ -1,0 +1,13 @@
+#input-tags_tagsinput {
+    width: 88% !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    font-size: 13px;
+    border: 1px solid #e8ebf3;
+    height: calc(2.3rem + 2px);
+    color: #2f5275;
+}
+
+#input-tags_addTag {
+    float: right !important;
+}
