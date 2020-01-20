@@ -1,6 +1,5 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -74,6 +73,4 @@
 
 
 @section('pageScripts')
-<script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-<script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
 @stop

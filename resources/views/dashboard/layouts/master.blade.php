@@ -32,6 +32,10 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/persian-datepicker.css" rel="stylesheet" type="text/css">
     <link href="/app/css/toastr.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
     @toastr_css
     {{--ا--}}
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
@@ -377,14 +381,18 @@ Author: Ali Rahmani
     <!-- App js -->
     <script src="/dashboard/assets/js/app.js"></script>
     <script src="/dashboard/assets/js/sweetalert.min.js"></script>
-
+    <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+    <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+    <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
     @toastr_js
     @toastr_render
-
     @include('sweet::alert')
     @yield('pageScripts')
-
-
 </body>
 
 </html>
