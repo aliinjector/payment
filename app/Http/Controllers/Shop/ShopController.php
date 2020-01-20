@@ -36,6 +36,12 @@
       }
 
       $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
+      $slideCategoryNames = array_slice(Shop::where('english_name', $shop)->first()->slide_category, 0, 3);
+      $slideCategories = [];
+      foreach($slideCategoryNames as $slideCategoryName){
+        $category = Shop::where('english_name', $shop)->first()->ProductCategories()->where('name', $slideCategoryName)->get()->first();
+         $slideCategories[] =  $category;
+      }
       $shop = Shop::where('english_name', $shop)->first();
       $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
       $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
@@ -47,7 +53,7 @@
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling', 'brands', 'feedbacks', 'slideshows'));
+      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling', 'brands', 'feedbacks', 'slideshows','slideCategories'));
 
     }
 

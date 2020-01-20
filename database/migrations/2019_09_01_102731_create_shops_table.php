@@ -32,7 +32,7 @@ class CreateShopsTable extends Migration
             $table->enum('cat_image_status',['enable', 'disable'])->default('disable');
             $table->enum('VAT',['enable', 'disable'])->default('disable');
             $table->enum('special_offer',['enable', 'disable'])->default('disable');
-            $table->string('special_offer_text')->default('خوش آمدید')->nullable();
+            $table->text('special_offer_text')->default('خوش آمدید')->nullable();
             $table->unsignedInteger('VAT_amount')->default(9);
             $table->text('icon')->nullable();
             $table->text('logo')->nullable();

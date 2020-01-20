@@ -386,7 +386,7 @@
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی های قابل نمایش در اسلاید</label>
                             <div class="col-sm-10">
-                                <select data-maximum-selection-length="3" multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="categories[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
+                                <select data-maximum-selection-length="3" multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="slide_category[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
                                     @foreach(\Auth::user()->shop()->first()->productCategories as $category)
                                     <option>{{ $category->name }}</option>
                                     @endforeach
@@ -998,16 +998,5 @@
             }
           });
         });
-
-
-        var lastOpt;
-$('#exampleFormControlSelect2 option').click(function () {
-    lastOpt = $(this).index();
-});
-$('#exampleFormControlSelect2').change(function () {
-    if ($('option:selected', this).length > 3) {
-        $(' option:eq(' + lastOpt + ')', this).removeAttr('selected');
-    }
-});
         </script>
 @stop
