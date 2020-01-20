@@ -3,7 +3,6 @@
 
 
 
-      @if()
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">{{ __('app-shop-1-layouts-partials-filter.filterType') }}</h5>
         <div class="card-body d-flex justify-content-center text-primary">
             <form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">

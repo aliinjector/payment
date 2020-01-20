@@ -102,56 +102,6 @@
 
 @endsection
 @section('pageScripts')
-  <script type="text/javascript">
-  $(document).ready(function() {
-      $('#available-filter-1').click(function() {
-        setInterval("$('#submit').submit()",700);
-      });
-      $('#available-filter-2').click(function() {
-          setInterval("$('#submit').submit()",700);
-      });
-      $('#available-filter-3').click(function() {
-        setInterval("$('#submit').submit()",700);
-      });
-      $('#available-filter-4').click(function() {
-        setInterval("$('#submit').submit()",700);
-      });
-      $('#available-order-1').click(function() {
-        $('.available-order-1').attr('checked', true);
-        setInterval("$('#submit').submit()",700);
-      });
-      $('#available-order-2').click(function() {
-        $('.available-order-2').attr('checked', true);
-        setInterval("$('#submit').submit()",700);
-      });
-      $('#available-order-3').click(function() {
-        $('.available-order-3').attr('checked', true);
-        setInterval("$('#submit').submit()",700);
-      });
-      $('#available-order-4').click(function() {
-        $('.available-order-4').attr('checked', true);
-        setInterval("$('#submit').submit()",700);
-      });
-  });
-  </script>
-<script>
-    $(document).on('click', '#ttttt', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var test = $(this).data('test');
-        $.ajax({
-            type: "post",
-            url: "{{url('dashboard/product-category/delete')}}",
-            data: {
-                id: id,
-                test: test,
-                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-            },
-            success: function(data) {
-                var url = document.location.origin + "/dashboard/product-category";
-                location.href = url;
-            }
-        });
-    });
-</script>
+  <script src="{{ asset('/app/shop/1/assets/js/tags-product.js') }}"></script>
+
 @stop

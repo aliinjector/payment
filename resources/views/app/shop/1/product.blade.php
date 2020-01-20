@@ -354,39 +354,9 @@
 
 @endsection
 @section('pageScripts')
-<script src="/app/shop/1/assets/js/jquery.combostars.js"></script>
-<script>
-    $(function() {
-        $('#combostar').on('change', function() {
-            $('#starcount').val($(this).val());
-        });
-        $('#combostar').combostars();
-    });
-</script>
-<script type="text/javascript">
-    //this will execute on page load(to be more specific when document ready event occurs)
-    if ($('.ty-compact-list').length > 3) {
-        $('.ty-compact-list:gt(2)').hide();
-        $('.show-more').show();
-    }
-
-    $('.show-more').on('click', function() {
-        //toggle elements with class .ty-compact-list that their index is bigger than 2
-        $('.ty-compact-list:gt(2)').toggle();
-        //change text of show more element just for demonstration purposes to this demo
-        $(this).text() !== 'بستن' ? $(this).text('بستن') : $(this).text('موارد بیشتر');
-    });
-</script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
-<script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
-<script>
-    $(function() {
-        var $gallery = $('.gallery a').simpleLightbox();
-    });
-</script>
-
-
+  <script src="{{ asset('/app/shop/1/assets/js/product.js') }}"></script>
+  <script src="/app/shop/1/assets/js/jquery.combostars.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
 @include('sweet::alert')
 @stop

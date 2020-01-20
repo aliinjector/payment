@@ -552,24 +552,4 @@
 
     @endsection
     @section('pageScripts')
-    <script>
-        $(document).on('click', '#ttttt', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var test = $(this).data('test');
-            $.ajax({
-                type: "post",
-                url: "{{url('dashboard/product-category/delete')}}",
-                data: {
-                    id: id,
-                    test: test,
-                    "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                },
-                success: function(data) {
-                    var url = document.location.origin + "/dashboard/product-category";
-                    location.href = url;
-                }
-            });
-        });
-    </script>
     @stop

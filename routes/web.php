@@ -179,7 +179,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     //Cart
     Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart');
     Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');
-    Route::post('/user-cart/remove', 'CartController@removeFromCart')->name('user-cart.remove');
+    Route::post('/{shop}/user-cart/remove', 'CartController@removeFromCart')->name('user-cart.remove');
     //File-Download
     Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('file-download');
     Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');

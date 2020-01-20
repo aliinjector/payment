@@ -130,116 +130,36 @@
 
 @endsection
 @section('pageScripts')
-<script>
-    $(document).on('click', '#ttttt', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var test = $(this).data('test');
-        $.ajax({
-            type: "post",
-            url: "{{url('dashboard/product-category/delete')}}",
-            data: {
-                id: id,
-                test: test,
-                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-            },
-            success: function(data) {
-                var url = document.location.origin + "/dashboard/product-category";
-                location.href = url;
+  <script src="{{ asset('/app/shop/1/assets/js/category.js') }}"></script>
+  <script src="/app/shop/1/assets/js/jquery-ui.js"></script>
+  <script>
+  $(document).ready(function() {
+      $("#mySlider").slider({
+          range: true,
+          min: 1000,
+          max: 100000000,
+          values: [@if(request()->minprice != null){{request()->minprice}} @else 1000 @endif, @if(request()->maxprice != null){{request()->maxprice}} @else 100000000 @endif],
+          slide: function(event, ui) {
+            if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
+              $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
+              $("#available-price-min").val(1000);
+              $("#available-price-max").val(100000000);
             }
-        });
-    });
-</script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#available-filter-1').click(function() {
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-filter-2').click(function() {
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-filter-3').click(function() {
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-filter-4').click(function() {
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-order-1').click(function() {
-            $('.available-order-1').attr('checked', true);
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-order-2').click(function() {
-            $('.available-order-2').attr('checked', true);
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-order-3').click(function() {
-            $('.available-order-3').attr('checked', true);
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-order-4').click(function() {
-            $('.available-order-4').attr('checked', true);
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#available-price-min').click(function() {
-            $('.available-price-min').attr('checked', true);
-            setInterval("$('#submit').submit()", 700);
-        });
-        $('#mySlider').click(function() {
-            $('.available-price-max').attr('checked', true);
-            setInterval("$('#submit').submit()", 700);
-        });
-    });
-</script>
-<script src="/app/shop/1/assets/js/jquery-ui.js"></script>
-<script>
-   $(document).ready(function() {
-       $("#mySlider").slider({
-           range: true,
-           min: 1000,
-           max: 100000000,
-           values: [@if(request()->minprice != null){{request()->minprice}} @else 1000 @endif, @if(request()->maxprice != null){{request()->maxprice}} @else 100000000 @endif],
-           slide: function(event, ui) {
-             if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
-               $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
-               $("#available-price-min").val(1000);
-               $("#available-price-max").val(100000000);
-             }
-             else{
-               $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
-               $("#available-price-min").val(ui.values[0]);
-               $("#available-price-max").val(ui.values[1]);
-             }
-           }
-       });
-       if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
-         $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
-       }
-       else{
-         $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0) + " تومان " +
-             " - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
-       }
-   });
-</script>
-<script>
-    $(function() {
+            else{
+              $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+              $("#available-price-min").val(ui.values[0]);
+              $("#available-price-max").val(ui.values[1]);
+            }
+          }
+      });
+      if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
+        $("#available-price-1").val(" از " +  1000  + " تومان " + " - " + " تا " + 100000000 + " تومان ");
+      }
+      else{
+        $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0) + " تومان " +
+            " - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
+      }
+  });
+  </script>
 
-        $('.list-group-item').on('click', function() {
-            $('.glyphicon', this)
-                .toggleClass('glyphicon-chevron-right')
-                .toggleClass('glyphicon-chevron-down');
-        });
-
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $(".options-color").click(function(e) {
-            e.preventDefault();
-
-            var color = $(this).data('color');
-            $("#color-input").val(color);
-            $('#submit').trigger('submit');
-        });
-    });
-</script>
 @endsection
