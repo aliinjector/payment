@@ -1,10 +1,5 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
-
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <style>
     .dz-image > img {
         width: 100%!important;
@@ -119,6 +114,8 @@
 
 
     @section('pageScripts')
+
+
         <script type="text/javascript">
             Dropzone.options.dropzone =
                 {
