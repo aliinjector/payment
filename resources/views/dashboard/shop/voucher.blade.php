@@ -1,14 +1,9 @@
 @extends('dashboard.layouts.master')
 @section('content')
-  <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-  <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-  <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-  <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('.start-field-example').persianDatepicker({
@@ -313,115 +308,7 @@
 
     @section('pageScripts')
 
-    <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-    <script type="text/javascript">
-        $(window).resize(function() {
-            if ($(window).width() < 1300) {
-                $("body").addClass('enlarge-menu');
+      <script src="{{ asset('/dashboard/assets/js/admin-voucher.js') }}"></script>
 
-            } else {
-                $("body").removeClass('enlarge-menu');
-
-            }
-        }).resize();
-    </script>
-    <script type="text/javascript">
-    $(window).resize(function() {
-        if ($(window).width() < 1070) {
-          $(".icon-show").removeClass('d-none');
-
-        } else {
-            $(".icon-show").addClass('d-none');
-
-        }
-    }).resize();
-    </script>
-    <script>
-        $(document).on('click', '#removeVoucher', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var name = $(this).data('name');
-            swal(` ${'حذف کد:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
-                    dangerMode: true,
-                    icon: "warning",
-                    buttons: ["انصراف", "حذف"],
-
-                })
-                .then(function(isConfirm) {
-                    if (isConfirm) {
-                        $.ajax({
-                            type: "post",
-                            url: "{{url('admin-panel/shop/vouchers/delete')}}",
-                            data: {
-                                id: id,
-                                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                            },
-                            success: function(data) {
-                                var url = document.location.origin + "/admin-panel/shop/vouchers";
-                                location.href = url;
-                            }
-                        });
-                    } else {
-                        toastr.warning('لغو شد.', '', []);
-                    }
-                });
-        });
-    </script>
-
-    <script>
-        $(".change").click(function() {
-            var id = $(this).data("id");
-            $.ajax({
-                url: "vouchers/change-status/" + id,
-                type: 'POST',
-                contentType: 'application/json',
-                dataType: "JSON",
-                data: {
-                    "id": id,
-                    "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                }
-            });
-            $("i." + id).toggleClass("d-none");
-            $("span." + id).toggleClass("d-none");
-            $("i.show" + id).toggleClass("d-none");
-            $("span.show" + id).toggleClass("d-none");
-            toastr.success('وضعیت تغییر کرد.', '', []);
-        });
-        $(".voucher").click(function() {
-            $(".users-voucher").removeClass("d-none");
-            $(".voucher").addClass("d-none");
-        });
-    </script>
-
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('#datatable_filter').parent().remove();
-    });
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('input#myInputTextField').on("focus", function(){
-        if ($(this).hasClass("searchActive")){
-               $(this).removeClass("searchActive");
-           }
-           else{
-          $('input#myInputTextField').addClass('searchActive');
-          }
-    });
-    });
-    </script>
-    <script>
-        $(window).on("load", function() {
-            $('.show-tick').addClass("col-lg-10");
-            $('.filter-option-inner-inner').addClass("d-flex");
-            $('.bs-placeholder').removeClass("btn-light");
-            $('.show-tick').addClass("p-1");
-            $('.show-tick').addClass("border");
-        });
-    </script>
+    
     @stop
