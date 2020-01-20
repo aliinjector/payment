@@ -192,51 +192,6 @@
     <!-- Attachment Modal -->
     @endsection
     @section('pageScripts')
-    <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-    <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-    <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
-    <script type="text/javascript">
-        $(window).resize(function() {
-            if ($(window).width() < 1300) {
-                $("body").addClass('enlarge-menu');
+      <script src="{{ asset('/dashboard/assets/js/admin-users-index.js') }}"></script>
 
-            } else {
-                $("body").removeClass('enlarge-menu');
-
-            }
-        }).resize();
-    </script>
-    <script type="text/javascript">
-    $(window).resize(function() {
-        if ($(window).width() < 1070) {
-          $(".icon-show").removeClass('d-none');
-
-        } else {
-            $(".icon-show").addClass('d-none');
-
-        }
-    }).resize();
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('#datatable_filter').parent().remove();
-    });
-    </script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-      $('input#myInputTextField').on("focus", function(){
-        if ($(this).hasClass("searchActive")){
-               $(this).removeClass("searchActive");
-           }
-           else{
-          $('input#myInputTextField').addClass('searchActive');
-          }
-    });
-    });
-    </script>
     @stop
