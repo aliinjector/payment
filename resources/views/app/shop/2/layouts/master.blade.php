@@ -1037,7 +1037,7 @@
                 if (isConfirm) {
                     $.ajax({
                         type: "post",
-                        url: "{{url('user-cart/remove')}}",
+                        url: "{{url( $shop->english_name .'/user-cart/remove')}}",
                         data: {
                             id: id,
                             cart: cart,
