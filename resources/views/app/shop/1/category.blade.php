@@ -1,41 +1,8 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
 <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
-<style>
-    .just-padding {
-        padding: 15px;
-    }
+<link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
 
-    .list-group.list-group-root {
-        padding: 0;
-        overflow: hidden;
-    }
-
-    .list-group.list-group-root .list-group {
-        margin-bottom: 0;
-    }
-
-    .list-group.list-group-root .list-group-item {
-        border-radius: 0;
-        border-width: 1px 0 0 0;
-    }
-
-    .list-group.list-group-root>.list-group-item:first-child {
-        border-top-width: 0;
-    }
-
-    .list-group.list-group-root>.list-group>.list-group-item {
-        padding-left: 30px;
-    }
-
-    .list-group.list-group-root>.list-group>.list-group>.list-group-item {
-        padding-left: 45px;
-    }
-
-    .list-group-item .glyphicon {
-        margin-right: 5px;
-    }
-</style>
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">

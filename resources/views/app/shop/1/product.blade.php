@@ -2,25 +2,8 @@
 @section('content')
 
 <link href='/app/shop/1/assets/css//simplelightbox.min.css' rel='stylesheet' type='text/css'>
-<style>
-    .sl-navigation {
-        direction: ltr !important;
-    }
+<link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
 
-    .ty-compact-list {
-        padding: 5px 5px 5px 0px;
-        float: left;
-        width: 100%;
-    }
-
-    .show-more {
-        display: none;
-        cursor: pointer;
-        color: #1ca2bd;
-        border-bottom: 1px dashed #1ca2bd;
-        width: 84px;
-    }
-</style>
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">

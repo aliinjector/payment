@@ -1,0 +1,17 @@
+.sl-navigation {
+    direction: ltr !important;
+}
+
+.ty-compact-list {
+    padding: 5px 5px 5px 0px;
+    float: left;
+    width: 100%;
+}
+
+.show-more {
+    display: none;
+    cursor: pointer;
+    color: #1ca2bd;
+    border-bottom: 1px dashed #1ca2bd;
+    width: 84px;
+}
