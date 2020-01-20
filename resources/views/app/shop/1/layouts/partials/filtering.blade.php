@@ -1,5 +1,9 @@
 <div class="@if($products->count() != null) col-lg-3 @endif">
     <div class="card e-co-product" style="max-width: 25rem;">
+
+
+
+      @if()
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">{{ __('app-shop-1-layouts-partials-filter.filterType') }}</h5>
         <div class="card-body d-flex justify-content-center text-primary">
             <form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
@@ -47,6 +51,13 @@
                 </ul>
 
         </div>
+
+
+
+
+
+
+
     </div>
     <div class="card p-3 align-items-start iranyekan font-15" style="max-width: 25rem;">
         <h5 class="text-dark pr-1 border-btm font-weight-500 m-2" style="width: 90%;">{{ __('app-shop-1-layouts-partials-filter.dasteBandiHa') }}</h5>
