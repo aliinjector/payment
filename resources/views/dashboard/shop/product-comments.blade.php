@@ -1,9 +1,5 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <div class="page-content">
    <div class="container-fluid">
       <!-- Page-Title -->
@@ -219,80 +215,11 @@
 <!-- Attachment Modal -->
 @endsection
 @section('pageScripts')
-<script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-<script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-<script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-<script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-<script>
-   oTable = $('#datatable').DataTable({
-       "order": [
-           [2, "desc"]
-       ]
-   }); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
-   oTable = $('#datatable1').DataTable({
-       "order": [
-           [2, "desc"]
-       ]
-   }); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
-   $('#myInputTextField').keyup(function() {
-       oTable.search($(this).val()).draw();
-   })
-   $('#myInputTextField1').keyup(function() {
-       oTable.search($(this).val()).draw();
-   })
-</script>
-<script>
-   $(document).on('click', '.button', function(e) {
-       e.preventDefault();
-       var id = $(this).data('id');
-       swal("آیا اطمینان دارید؟", {
-               dangerMode: true,
-               icon: "warning",
-               buttons: ["انصراف", "حذف"],
+  <script src="{{ asset('/dashboard/assets/js/admin-product-comment.js') }}"></script>
 
-           })
-           .then(function(isConfirm) {
-               if (isConfirm) {
-                   $.ajax({
-                       type: "post",
-                       url: "{{url('admin-panel/shop/comment/delete')}}",
-                       data: {
-                           id: id,
-                           "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                       },
-                       success: function(data) {
-                           var url = document.location.origin + "/admin-panel/shop/product-comments";
-                           location.href = url;
-                       }
-                   });
-               } else {
-                   toastr.warning('لغو شد.', '', []);
-               }
-           });
-   });
-</script>
-@if(session()->has('flashModal'))
-<script>
-   $('#AddProductCategoryModal').modal('show');
-</script>
-@endif
-<script type="text/javascript">
-$(document).ready(function(){
-  $('#datatable_filter').parent().remove();
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
-  $('input#myInputTextField').on("focus", function(){
-    if ($(this).hasClass("searchActive")){
-           $(this).removeClass("searchActive");
-       }
-       else{
-      $('input#myInputTextField').addClass('searchActive');
-      }
-});
-});
-</script>
+  @if(session()->has('flashModal'))
+  <script>
+     $('#AddProductCategoryModal').modal('show');
+  </script>
+  @endif
 @stop
