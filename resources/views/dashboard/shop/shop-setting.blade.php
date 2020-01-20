@@ -384,7 +384,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی های قابل نمایش در اسلاید</label>
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی های قابل نمایش در اسلاید <i class="fa fa-question-circle" aria-hidden="true" title="در این بخش میتوانید سه دسته بندی را انتخاب نمایید تا در صفحه ی اول فروشگاه شما به نمایش در بیاید. توجه داشته باشید که تعداد انتخابی دسته بندی ها باید سه دسته بندی باشد در غیر این صورت موردی به نمایش در نخواهد آمد . لازم به ذکر میباشد که عکس اسلاید این دسته بندی همان عکس هایی میباشد که در هنگام ساخت دسته بندی به عنوان آیکون میتوانید برای دسته بندی های خود در نظر بگیرید"></i>
+                            </label>
                             <div class="col-sm-10">
                                 <select data-maximum-selection-length="3" multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="slide_category[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
                                     @foreach(\Auth::user()->shop()->first()->productCategories as $category)
@@ -974,7 +975,7 @@
 </script>
     <script>
         $(window).on("load", function() {
-            $('.show-tick').addClass("col-lg-10");
+            $('.show-tick').addClass("col-lg-12");
             $('.filter-option-inner-inner').addClass("d-flex");
             $('.bs-placeholder').removeClass("btn-light");
             $('.show-tick').addClass("p-1");

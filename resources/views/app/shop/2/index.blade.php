@@ -15,6 +15,7 @@
 
 @section('content')
 <div id="tt-pageContent">
+  @if($slideCategories != null and count($slideCategories) == 3)
     <div class="container-indent nomargin">
         <div class="container-fluid-custom">
             <div class="row tt-layout-promo-box">
@@ -49,6 +50,7 @@
             </div>
         </div>
     </div>
+  @endif
     <div class="container-indent">
         <div class="container">
             <div class="tt-block-title">
