@@ -1,30 +1,6 @@
 @extends('app.shop.2.layouts.master')
 @section('content')
-<style media="screen">
-	.ty-compact-list {
-		padding: 5px 5px 5px 0px;
-		float: left;
-		width: 100%;
-	}
-
-	.show-more {
-		display: none;
-		cursor: pointer;
-		color: #2879fe;
-		border-bottom: 1px dashed #2879fe;
-		width: 25%;
-	}
-
-	.ui-slider-range {
-		background-color: #2979fe !important;
-	}
-
-	.ui-state-default,
-	.ui-widget-content .ui-state-default,
-	.ui-widget-header .ui-state-default {
-		background-color: grey !important;
-	}
-</style>
+	<link rel="stylesheet" href="{{ asset('/app/shop/2/css/brands-product.css') }}" />
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">

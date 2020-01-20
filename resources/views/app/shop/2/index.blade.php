@@ -1,16 +1,7 @@
 @extends('app.shop.2.layouts.master')
 
 @section('headerScripts')
-<style>
-.image-box-card{
-  background-color: #fff;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
-  border: 1px solid #e4e4e4;
-  height: 48vh;
-}
-</style>
+  <link rel="stylesheet" href="{{ asset('/app/shop/2/css/app-index.css') }}" />
 @endsection
 
 @section('content')
