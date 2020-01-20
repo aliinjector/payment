@@ -1,13 +1,9 @@
 @extends('dashboard.layouts.master')
 @section('content')
-  <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-  <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-  <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-  <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
   <style media="screen">
       #input-tags_tagsinput {
           width: 88% !important;
@@ -193,100 +189,9 @@
 
 
 @section('pageScripts')
-  <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-  <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-  <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-  <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-  <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-  <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-  <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.js"></script>
+  <script src="{{ asset('/dashboard/assets/js/admin-product-edit-service.js') }}"></script>
   <script src="{{ asset('/dashboard/assets/js/feature.js') }}"></script>
-
-
-  <script type="text/javascript">
-      $('#input-tags').tagsInput();
-  </script>
-
-  <script type="text/javascript">
-      $(window).resize(function() {
-          if ($(window).width() < 1300) {
-              $("body").addClass('enlarge-menu');
-
-          } else {
-              $("body").removeClass('enlarge-menu');
-
-          }
-      }).resize();
-  </script>
-  <script type="text/javascript">
-      $(window).resize(function() {
-          if ($(window).width() < 1070) {
-              $(".icon-show").removeClass('d-none');
-
-          } else {
-              $(".icon-show").addClass('d-none');
-
-          }
-      }).resize();
-  </script>
-  <script type="text/javascript">
-      $(document).ready(function() {
-          $('#input-tags_tag').val("");
-          $(".dropify-clear").remove();
-      });
-  </script>
-  <script>
-      $(".change").click(function() {
-          var id = $(this).data("id");
-          $.ajax({
-              url: "product-list/change-status/" + id,
-              type: 'put',
-              dataType: "JSON",
-              data: {
-                  "id": id,
-                  "_method": 'put',
-                  "_token": "{{ csrf_token() }}",
-              }
-
-          });
-          $("i." + id).toggleClass("d-none");
-          $("span." + id).toggleClass("d-none");
-          $("i.show" + id).toggleClass("d-none");
-          $("span.show" + id).toggleClass("d-none");
-          toastr.success('انجام شد.', '', [])
-      });
-  </script>
-  <script>
-      $(document).on('click', '#icon-delete', function(e) {
-          e.preventDefault();
-          var id = $(this).data('id');
-          var name = $(this).data('name');
-          swal(` ${'حذف عکس محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
-                  dangerMode: true,
-                  icon: "warning",
-                  buttons: ["انصراف", "حذف"],
-              })
-              .then(function(isConfirm) {
-                  if (isConfirm) {
-                      $.ajax({
-                          type: "post",
-                          url: "{{url('dashboard/shop/product-list/image/delete')}}",
-                          data: {
-                              id: id,
-                              "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                          },
-                          success: function(data) {
-                              $(".dropify-preview").addClass('d-none');
-                          }
-                      });
-                  } else {
-                      toastr.warning('لغو شد.', '', []);
-                  }
-              });
-      });
-  </script>
   @if(session()->has('flashModalProduct'))
       <script>
           $('#AddProductModal').modal('show');
@@ -300,15 +205,7 @@
                   $('#AddServiceModal').modal('show');
               </script>
               @endif
-              <script>
-                  $(window).on("load", function() {
-                      $('.show-tick').addClass("col-lg");
-                      $('.filter-option-inner-inner').addClass("d-flex");
-                      $('.bs-placeholder').removeClass("btn-light");
-                      $('.show-tick').addClass("p-1");
-                      $('.show-tick').addClass("border");
-                  });
-              </script>
+
               <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
               <script>
                   CKEDITOR.replace('description', {
@@ -316,39 +213,12 @@
                       uiColor: '#F3F6F7'
                   });
               </script>
-              <script type="text/javascript">
-                  $("#tagsinput").tagsInput();
 
-                  $("#tagsinput_tag").on('paste', function(e) {
-                      var element = this;
-                      setTimeout(function() {
-                          var text = $(element).val();
-                          var target = $("#tagsinput");
-                          var tags = (text).split(/[ ,]+/);
-                          for (var i = 0, z = tags.length; i < z; i++) {
-                              var tag = $.trim(tags[i]);
-                              if (!target.tagExist(tag)) {
-                                  target.addTag(tag);
-                              } else {
-                                  $("#tagsinput_tag").val('');
-                              }
-
-                          }
-                      }, 0);
-                  });
-              </script>
-              <script>
+  <script>
  $(document).ready(function() {
      $(".addFacility").click(function() {
          $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div><input value="{{ old('facility[]') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem11ex') }} "></div>');
      });
      });
- </script>
- <script>
-$(window).ready(function(){
-  setInterval(function(){
-    $('#cke_description').addClass("col-lg")
-  }, 100);
-});
  </script>
 @stop
