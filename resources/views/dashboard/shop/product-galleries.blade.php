@@ -119,15 +119,6 @@
 
 
     @section('pageScripts')
-
-    <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-
-
         <script type="text/javascript">
             Dropzone.options.dropzone =
                 {
