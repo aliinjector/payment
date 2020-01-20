@@ -338,8 +338,8 @@
 @endsection
 @section('pageScripts')
   <script src="{{ asset('/app/shop/1/assets/js/product.js') }}"></script>
-  <script src="/app/shop/1/assets/js/jquery.combostars.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  
   <script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
 @include('sweet::alert')
 @stop
