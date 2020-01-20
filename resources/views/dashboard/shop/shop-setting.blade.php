@@ -1,11 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-<script type="text/javascript">
-$("#category_ids").select2({ maximumSelectionLength: 3 });
-</script>
 <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 
 <style type="text/css">
@@ -391,7 +386,7 @@ $("#category_ids").select2({ maximumSelectionLength: 3 });
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دسته بندی های قابل نمایش در اسلاید</label>
                             <div class="col-sm-10">
-                                <select multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="users[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
+                                <select data-maximum-selection-length="3" multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="categories[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
                                     @foreach(\Auth::user()->shop()->first()->productCategories as $category)
                                     <option>{{ $category->name }}</option>
                                     @endforeach
@@ -873,8 +868,11 @@ $("#category_ids").select2({ maximumSelectionLength: 3 });
         $('#result').html($(this).find('option:selected').data('type'));
     });
 </script>
+
 <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
 <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $(".dropify-clear").remove();
@@ -911,13 +909,6 @@ $("#category_ids").select2({ maximumSelectionLength: 3 });
                 }
             });
     });
-
-
-
-
-
-
-
 
 
 
@@ -991,4 +982,32 @@ $("#category_ids").select2({ maximumSelectionLength: 3 });
         });
     </script>
 
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+          var last_valid_selection = null;
+
+          $('#exampleFormControlSelect2').change(function(event) {
+
+            if ($(this).val().length > 3) {
+
+              $(this).options.length == 0;
+            } else {
+              last_valid_selection = $(this).val();
+            }
+          });
+        });
+
+
+        var lastOpt;
+$('#exampleFormControlSelect2 option').click(function () {
+    lastOpt = $(this).index();
+});
+$('#exampleFormControlSelect2').change(function () {
+    if ($('option:selected', this).length > 3) {
+        $(' option:eq(' + lastOpt + ')', this).removeAttr('selected');
+    }
+});
+        </script>
 @stop
