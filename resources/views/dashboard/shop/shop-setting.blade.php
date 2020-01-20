@@ -1,8 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
-
 <style type="text/css">
   #map{ width:500px; height: 300px; }
 </style>
@@ -864,140 +862,102 @@
 
 
 @section('pageScripts')
-<script type="text/javascript">
-    $('#AgencyDetails').on('change', function() {
-        $('#result').html($(this).find('option:selected').data('type'));
-    });
-</script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+  <script src="{{ asset('/dashboard/assets/js/admin-shop-setting.js') }}"></script>
 
-<script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-<script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $(".dropify-clear").remove();
-    });
-</script>
-<script>
-    $(document).on('click', '#icon-delete', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        var name = $(this).data('name');
-        var type = $(this).data('type');
-        swal(` ${'حذف لوگو یا آیکون:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
-                dangerMode: true,
-                icon: "warning",
-                buttons: ["انصراف", "حذف"],
-            })
-            .then(function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        type: "post",
-                        url: "{{url('admin-panel/shop/managment/shop-setting/image/delete')}}",
-                        data: {
-                            id: id,
-                            type: type,
-                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                        },
-                        success: function(data) {
-                            var url = document.location.origin + "/admin-panel/shop/managment/shop-setting";
-                            location.href = url;
-                        }
-                    });
-                } else {
-                    toastr.warning('لغو شد.', '', []);
-                }
-            });
-    });
+  <script>
+      $(document).on('click', '#icon-delete', function(e) {
+          e.preventDefault();
+          var id = $(this).data('id');
+          var name = $(this).data('name');
+          var type = $(this).data('type');
+          swal(` ${'حذف لوگو یا آیکون:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                  dangerMode: true,
+                  icon: "warning",
+                  buttons: ["انصراف", "حذف"],
+              })
+              .then(function(isConfirm) {
+                  if (isConfirm) {
+                      $.ajax({
+                          type: "post",
+                          url: "{{url('admin-panel/shop/managment/shop-setting/image/delete')}}",
+                          data: {
+                              id: id,
+                              type: type,
+                              "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                          },
+                          success: function(data) {
+                              var url = document.location.origin + "/admin-panel/shop/managment/shop-setting";
+                              location.href = url;
+                          }
+                      });
+                  } else {
+                      toastr.warning('لغو شد.', '', []);
+                  }
+              });
+      });
 
 
 
-    //map//Set up some of our variables.
-    var map; //Will contain map object.
-    var marker = false; ////Has the user plotted their location marker?
+      //map//Set up some of our variables.
+      var map; //Will contain map object.
+      var marker = false; ////Has the user plotted their location marker?
 
-    //Function called to initialize / create the map.
-    //This is called when the page has loaded.
-    function initMap() {
+      //Function called to initialize / create the map.
+      //This is called when the page has loaded.
+      function initMap() {
 
-        //The center location of our map.
-        var centerOfMap = new google.maps.LatLng({{ $shopContactInformation->lat ? $shopContactInformation->lat : '35.6969331' }}, {{ $shopContactInformation->lng ? $shopContactInformation->lng : '51.2796073' }});
+          //The center location of our map.
+          var centerOfMap = new google.maps.LatLng({{ $shopContactInformation->lat ? $shopContactInformation->lat : '35.6969331' }}, {{ $shopContactInformation->lng ? $shopContactInformation->lng : '51.2796073' }});
 
-        //Map options.
-        var options = {
-          center: centerOfMap, //Set center.
-          zoom: 15 //The zoom value.
-        };
+          //Map options.
+          var options = {
+            center: centerOfMap, //Set center.
+            zoom: 15 //The zoom value.
+          };
 
-        //Create the map object.
-        map = new google.maps.Map(document.getElementById('map'), options);
+          //Create the map object.
+          map = new google.maps.Map(document.getElementById('map'), options);
 
-        //Listen for any clicks on the map.
-        google.maps.event.addListener(map, 'click', function(event) {
-            //Get the location that the user clicked.
-            var clickedLocation = event.latLng;
-            //If the marker hasn't been added.
-            if(marker === false){
-                //Create the marker.
-                marker = new google.maps.Marker({
-                    position: clickedLocation,
-                    map: map,
-                    draggable: true //make it draggable
-                });
-                //Listen for drag events!
-                google.maps.event.addListener(marker, 'dragend', function(event){
-                    markerLocation();
-                });
-            } else{
-                //Marker has already been added, so just change its location.
-                marker.setPosition(clickedLocation);
-            }
-            //Get the marker's location.
-            markerLocation();
-        });
-    }
-
-    //This function will get the marker's current location and then add the lat/long
-    //values to our textfields so that we can save the location.
-    function markerLocation(){
-        //Get location.
-        var currentLocation = marker.getPosition();
-        //Add lat and lng values to a field that we can save.
-        document.getElementById('lat').value = currentLocation.lat(); //latitude
-        document.getElementById('lng').value = currentLocation.lng(); //longitude
-    }
-
-
-    //Load the map when the page has finished loading.
-    google.maps.event.addDomListener(window, 'load', initMap);
-
-</script>
-    <script>
-        $(window).on("load", function() {
-            $('.show-tick').addClass("col-lg-12");
-            $('.filter-option-inner-inner').addClass("d-flex");
-            $('.bs-placeholder').removeClass("btn-light");
-            $('.show-tick').addClass("p-1");
-            $('.show-tick').addClass("border");
-        });
-    </script>
-
-    <script type="text/javascript">
-
-        $(document).ready(function() {
-
-          var last_valid_selection = null;
-
-          $('#exampleFormControlSelect2').change(function(event) {
-
-            if ($(this).val().length > 3) {
-
-              $(this).options.length == 0;
-            } else {
-              last_valid_selection = $(this).val();
-            }
+          //Listen for any clicks on the map.
+          google.maps.event.addListener(map, 'click', function(event) {
+              //Get the location that the user clicked.
+              var clickedLocation = event.latLng;
+              //If the marker hasn't been added.
+              if(marker === false){
+                  //Create the marker.
+                  marker = new google.maps.Marker({
+                      position: clickedLocation,
+                      map: map,
+                      draggable: true //make it draggable
+                  });
+                  //Listen for drag events!
+                  google.maps.event.addListener(marker, 'dragend', function(event){
+                      markerLocation();
+                  });
+              } else{
+                  //Marker has already been added, so just change its location.
+                  marker.setPosition(clickedLocation);
+              }
+              //Get the marker's location.
+              markerLocation();
           });
-        });
-        </script>
+      }
+
+      //This function will get the marker's current location and then add the lat/long
+      //values to our textfields so that we can save the location.
+      function markerLocation(){
+          //Get location.
+          var currentLocation = marker.getPosition();
+          //Add lat and lng values to a field that we can save.
+          document.getElementById('lat').value = currentLocation.lat(); //latitude
+          document.getElementById('lng').value = currentLocation.lng(); //longitude
+      }
+
+
+      //Load the map when the page has finished loading.
+      google.maps.event.addDomListener(window, 'load', initMap);
+
+  </script>
 @stop
