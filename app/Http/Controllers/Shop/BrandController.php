@@ -11,11 +11,11 @@ use App\Http\Controllers\Controller;
 
 class BrandController extends Controller
 {
-  public function brandProduct($shop, $name, Request $request) {
+  public function brandProduct($shop, $id, Request $request) {
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
       $shopCategories = $shop->ProductCategories()->get();
-      $brandName = Brand::where('name', $name)->get()->first()->name;
+      $brandName = Brand::where('id', $id)->get()->first()->name;
       $brands = $shop->brands;
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
         $minPrice = $request->minprice;
@@ -32,12 +32,12 @@ class BrandController extends Controller
         }
           $perPage = 8;
           if ($request->type == 'all') {
-              $products = Brand::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->orderBy($sortBy, $orderBy)->paginate($perPage);
+              $products = Brand::where('id', $id)->get()->first()->products()->where('shop_id', $shop->id)->orderBy($sortBy, $orderBy)->paginate($perPage);
           } else {
-              $products = Brand::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->where('type', $request->type)->orderBy($sortBy, $orderBy)->paginate($perPage);
+              $products = Brand::where('id', $id)->get()->first()->products()->where('shop_id', $shop->id)->where('type', $request->type)->orderBy($sortBy, $orderBy)->paginate($perPage);
           }
       } else {
-          $products = Brand::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->paginate(8);
+          $products = Brand::where('id', $id)->get()->first()->products()->where('shop_id', $shop->id)->paginate(8);
       }
       $template_folderName = $shop->template->folderName;
 

@@ -15,7 +15,7 @@
         @else
 <div class="d-flex justify-content-center align-items-center" style="height:80vh">
 <h4>
-هیچ محصولی در این برند وجود ندارد.
+محصولی یافت نشد
 </h4>
 </div>
         @endif
@@ -24,7 +24,7 @@
            <div class="card e-co-product" style="max-width: 18rem;">
              <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">فیلتر بر اساس نوع کالا</h5>
                <div class="card-body d-flex justify-content-center text-primary">
-                <form action="{{ route('tag', ['shop' => $shop->english_name,'brand' => $brandName]) }}" id="submit" method="get">
+                <form action="{{ route('tag', ['shop' => $shop->english_name,'name' => $tagName]) }}" id="submit" method="get">
                  <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
                  <label id="available-filter-1" for="available-filter-1" class="border-top-down-radius-0 btn btn-outline-secondary @if(request()->type == '') active @endif border-left-0 iranyekan crouser" style="cursor:pointer">
                      <input type="radio" name="type" value="all" id="available-filter-1" @if(request()->type == 'all') checked="" @endif> همه

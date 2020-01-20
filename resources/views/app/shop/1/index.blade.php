@@ -470,7 +470,7 @@
 
         <!--end col-->
     </div>
-
+@if($feedbacks->count() >= 1)
     <h2 class="mt-5 line-throw"><span>{{ __('app-shop-1-index.feedback') }} </span></h2>
 
 
@@ -489,17 +489,64 @@
                 </div>
                 <a class="carousel-control-prev bg-orange-omid" href="#carouselContent" role="button" data-slide="prev" style="width: 3%;opacity: 1;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">قبلی</span>
                 </a>
                 <a class="carousel-control-next bg-orange-omid" href="#carouselContent" role="button" data-slide="next" style="width: 3%;opacity: 1;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">بعدی</span>
                 </a>
             </div>
             <!--end card-->
         </div>
         <!--end col-->
     </div>
+    @endif
+
+
+
+
+
+
+
+
+
+    @if($brands->count() >= 1)
+        <h2 class="mt-5 line-throw"><span>برند ها</span></h2>
+
+
+        <div class="row mt-5 mb-4">
+            <div class="col-12">
+                <div id="carouselContent" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                      @foreach($brands as $brand)
+
+                      <a href="/{{ $shop->english_name }}/brand/{{ $brand->id }}">
+                        <div class="carousel-item {{$loop->first ? 'active' : ''}} text-center p-4 ml-lg-n2">
+                          <img style="width: 250px" src="{{ $brand->icon['original'] }}" alt="">
+                            <h5>{{ $brand->name }}</h5>
+                        </div>
+                      @endforeach
+                    </a>
+                    </div>
+                    <a class="carousel-control-prev bg-orange-omid" href="#carouselContent" role="button" data-slide="prev" style="width: 3%;opacity: 1;">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">قبلی</span>
+                    </a>
+                    <a class="carousel-control-next bg-orange-omid" href="#carouselContent" role="button" data-slide="next" style="width: 3%;opacity: 1;">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">بعدی</span>
+                    </a>
+                </div>
+                <!--end card-->
+            </div>
+            <!--end col-->
+        </div>
+        @endif
+
+
+
+
+
     @endif
     <!-- container -->
 
