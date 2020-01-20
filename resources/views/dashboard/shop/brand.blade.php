@@ -1,9 +1,5 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
-<link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -169,120 +165,11 @@
     <!-- Attachment Modal -->
     @endsection
     @section('pageScripts')
-    <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-    <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-    <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-    <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
-    <script type="text/javascript">
-    $(window).resize(function() {
-        if ($(window).width() < 1300) {
-          $("body").addClass('enlarge-menu');
+      <script src="{{ asset('/dashboard/assets/js/admin-brand.js') }}"></script>
 
-        } else {
-            $("body").removeClass('enlarge-menu');
-
-        }
-    }).resize();
-    </script>
-    <script type="text/javascript">
-    $(window).resize(function() {
-        if ($(window).width() < 1070) {
-          $(".icon-show").removeClass('d-none');
-
-        } else {
-            $(".icon-show").addClass('d-none');
-
-        }
-    }).resize();
-    </script>
-    <script type="text/javascript">
-    $( document ).ready(function() {
-      $( ".dropify-clear" ).remove();
-      });
-    </script>
-    <script>
-       $(document).on('click', '#removeBrand', function(e) {
-           e.preventDefault();
-           var id = $(this).data('id');
-           var name = $(this).data('name');
-           swal(` ${'حذف دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
-                   dangerMode: true,
-                   icon: "warning",
-                   buttons: ["انصراف", "حذف"],
-               })
-               .then(function(isConfirm) {
-                   if (isConfirm) {
-                       $.ajax({
-                           type: "post",
-                           url: "{{url('admin-panel/shop/brand/delete')}}",
-                           data: {
-                               id: id,
-                               "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                           },
-                           success: function(data) {
-                               var url = document.location.origin + "/admin-panel/shop/brand";
-                               location.href = url;
-                           }
-                       });
-                   } else {
-                       toastr.warning('لغو شد.', '', []);
-                   }
-               });
-       });
-    </script>
-    <script>
-        $(document).on('click', '#icon-delete', function(e) {
-            e.preventDefault();
-            var id = $(this).data('id');
-            var name = $(this).data('name');
-            swal(` ${'حذف عکس  برند:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
-                    dangerMode: true,
-                    icon: "warning",
-                    buttons: ["انصراف", "حذف"],
-                })
-                .then(function(isConfirm) {
-                    if (isConfirm) {
-                        $.ajax({
-                            type: "post",
-                            url: "{{url('admin-panel/shop/brand/icon/delete')}}",
-                            data: {
-                                id: id,
-                                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
-                            },
-                            success: function(data) {
-                            $( ".dropify-preview" ).addClass('d-none');
-                            }
-                        });
-                    } else {
-                        toastr.warning('لغو شد.', '', []);
-                    }
-                });
-        });
-    </script>
-    @if(session()->has('flashModal'))
-        <script>
-            $('#AddProductCategoryModal').modal('show');
-        </script>
-        @endif
-        <script type="text/javascript">
-        $(document).ready(function(){
-          $('#datatable_filter').parent().remove();
-        });
-        </script>
-        <script type="text/javascript">
-        $(document).ready(function(){
-          $('input#myInputTextField').on("focus", function(){
-            if ($(this).hasClass("searchActive")){
-                   $(this).removeClass("searchActive");
-               }
-               else{
-              $('input#myInputTextField').addClass('searchActive');
-              }
-        });
-        });
-        </script>
+      @if(session()->has('flashModal'))
+          <script>
+              $('#AddProductCategoryModal').modal('show');
+          </script>
+          @endif
         @stop
