@@ -26,7 +26,7 @@
 
         .dropdown-submenu {
             position: relative;
-            width: 160px !important;
+            width: 111% !important;
         }
 
         .dropdown-submenu>.dropdown-menu {
@@ -86,6 +86,9 @@
         .justify-content-md-center .tt-desctop-menu nav>ul,
         .tt-obj-menu.obj-aligment-center .tt-desctop-menu nav>ul {
             justify-content: flex-start;
+        }
+        .opacity-lost {
+            opacity: 0.4 !important;
         }
     </style>
     @toastr_css
@@ -719,8 +722,63 @@
                             <div class="collapse navbar-collapse">
                                 <div class="tt-desctop-menu tt-menu-small">
                                     <nav>
-                                        <ul class="pb-4 font-wight-bold">
-                                            <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
+                                      <ul class="pb-4 font-wight-bold">
+                                          <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
+                                      @if($shop->menu_show == "mega_menu")
+                                          <div class="dropdown mx-3 hover-opacity">
+                                              <a href="">
+                                                  <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal text-white">
+                                                  دسته بندی کالا ها
+                                                  </button>
+                                              </a>
+                                              <ul class="dropdown-menu multi-level font-16 p-4" role="menu" aria-labelledby="dropdownMenu" style="right:8.5em!important;width: 265px!important;min-height: 50vh!important;">
+                                                  @foreach ($shopCategories->where('parent_id' , null) as $subCategory)
+                                                  @if (!$subCategory->children()->exists())
+                                                  <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" style="color: #465f73!important;font-size: 17px;font-weight: 500;">
+                                                      <li class="dropdown-item dropdown-submenu font-15 py-3">{{ $subCategory->name }}
+                                                      </li>
+                                                  </a>
+                                                  @else
+                                                  <li class="dropdown-submenu py-3" style="position: static;">
+                                                      <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="dropdown-item pointer-crouser" style="width: 113%;font-size: 17px;font-weight: 500;" tabindex="-1"
+                                                        class="li-color">{{ $subCategory->name }}</a>
+                                                      <ul class="dropdown-menu font-16" style="width: 992px!important;min-height: 50vh!important;background-color: #FFFFFF;border-radius: 8px;margin-top: 12%;right:100%!important">
+                                                          <div class="row">
+                                                              @foreach ($subCategory->children()->get() as $subSubCategory)
+                                                              <div class="col-lg-3">
+                                                                  @if (!$subSubCategory->children()->exists())
+                                                                  <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" style="font-size: 17px;font-weight: 500;">
+                                                                      <li class="dropdown-item">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></li>
+                                                                  </a>
+                                                                  @else
+                                                                  <li class="dropdown-submenu" style="background-color:#FFFFFF;">
+                                                                      <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" class="dropdown-item pointer-crouser" style="font-weight: 500!important;font-size: 17px;"
+                                                                        class="li-color">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
+                                                                  </li>
+                                                                  @foreach($subSubCategory->children()->get() as $subSubSubCategory)
+                                                                      <li class="dropdown-submenu p-2 text-left">
+                                                                          <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}" class="iranyekan" style="color: #4a5f73;font-size: 14px!important;">
+                                                                              {{ $subSubSubCategory->name }}
+                                                                          </a>
+                                                                      </li>
+                                                                      @endforeach
+                                                                      @endif
+
+                                                              </div>
+                                                              @endforeach
+
+                                                          </div>
+
+                                                      </ul>
+                                                  </li>
+                                                  @endif
+                                                  @endforeach
+                                              </ul>
+                                            </div>
+
+                                          @else
+
+
                                             @foreach ($shopCategories->where('parent_id' , null)->take($shop->menu_show_count) as $shopCategory)
                                             <div class="dropdown mx-3" style="top:30px!important">
                                                 <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}" class="font-weight-bold iranyekan">
@@ -773,6 +831,7 @@
                                             </div>
                                             @endforeach
                                         </ul>
+                                      @endif
                                     </nav>
                                 </div>
                             </div>
@@ -994,6 +1053,18 @@
                 }
             });
     });
+</script>
+
+<script type="text/javascript">
+
+    $('.hover-opacity').hover(
+        function() {
+            $('#tt-pageContent').addClass('opacity-lost')
+        },
+        function() {
+            $('#tt-pageContent').removeClass('opacity-lost')
+        }
+    )
 </script>
 
 </html>
