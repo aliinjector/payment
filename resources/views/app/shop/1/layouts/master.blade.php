@@ -179,7 +179,7 @@
                         @else
 
 
-                        @foreach ($shopCategories->where('parent_id' , null)->take(5) as $shopCategory)
+                        @foreach ($shopCategories->where('parent_id' , null)->take($shop->menu_show_count) as $shopCategory)
                     <div class="dropdown mx-3">
                         <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">
                         <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal @if( Request::is('*/category/'.$shopCategory->id)) border-bottom border-omid-orange @endif" style="color:

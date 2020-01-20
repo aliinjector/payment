@@ -1,6 +1,17 @@
 @extends('app.shop.2.layouts.master')
 
 @section('headerScripts')
+    <script  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoByqe6LqHZ8GVyM9FemOp5kJegBGaOgM&callback=initMap" type="text/javascript"></script>
+    <script src="/app/js/gmaps.js"></script>
+
+    <style type="text/css">
+        #map {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+
+
 
 @endsection
 

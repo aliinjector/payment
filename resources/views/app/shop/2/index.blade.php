@@ -15,33 +15,34 @@
 
 @section('content')
 <div id="tt-pageContent">
+  @if($slideCategories != null and count($slideCategories) == 3)
     <div class="container-indent nomargin">
         <div class="container-fluid-custom">
             <div class="row tt-layout-promo-box">
                 <div class="col-sm-12 col-md-6">
-                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/promo/index09-promo-img-01.jpg" alt="">
+                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$slideCategories[0]->id]) }}" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="{{ $slideCategories[0]->icon['931,800'] }}" alt="">
                         <div class="tt-description">
                             <div class="tt-description-wrapper">
                                 <div class="tt-background"></div>
-                                <div class="tt-title-small">لپتاپ</div>
+                                <div class="tt-title-small">{{ $slideCategories[0]->name }}</div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-12 col-md-6">
-                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/promo/index09-promo-img-02.jpg" alt="">
+                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$slideCategories[1]->id]) }}" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="{{ $slideCategories[1]->icon['930,390']  }}" alt="" style="max-height: 60vh;">
                         <div class="tt-description">
                             <div class="tt-description-wrapper">
                                 <div class="tt-background"></div>
-                                <div class="tt-title-small">موبایل</div>
+                                <div class="tt-title-small">{{ $slideCategories[1]->name }}</div>
                             </div>
                         </div>
                     </a>
-                    <a href="listing-left-column.html" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="/app/shop/2/images/promo/index09-promo-img-03.jpg" alt="">
+                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$slideCategories[2]->id]) }}" class="tt-promo-box tt-one-child"><img src="/app/shop/2/images/loader.svg" data-src="{{ $slideCategories[2]->icon['930,390'] }}" alt="" style="max-height: 60vh;">
                         <div class="tt-description">
                             <div class="tt-description-wrapper">
                                 <div class="tt-background"></div>
-                                <div class="tt-title-small">تبلت</div>
+                                <div class="tt-title-small">{{ $slideCategories[2]->name }}</div>
                             </div>
                         </div>
                     </a>
@@ -49,6 +50,7 @@
             </div>
         </div>
     </div>
+  @endif
     <div class="container-indent">
         <div class="container">
             <div class="tt-block-title">

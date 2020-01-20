@@ -221,8 +221,14 @@ class ShopSettingController extends Controller
       else{
         $watermark = $this->uploadFile($request->file('watermark'), false, false);
       }
+
+      if(isset($request->slide_category))
+      $slide_category = $request->slide_category;
+
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
+        'menu_show_count' => $request->menu_show_count,
+        'slide_category' => $slide_category,
         'cat_image_status' => $request->cat_image_status,
         'watermark_status' => $request->watermark_status,
         'buyCount_show' => $request->buyCount_show,

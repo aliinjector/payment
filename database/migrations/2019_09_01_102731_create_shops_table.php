@@ -27,10 +27,12 @@ class CreateShopsTable extends Migration
             $table->enum('online_payment',['enable', 'disable'])->default('enable');
             $table->enum('cash_payment',['enable', 'disable'])->default('enable');
             $table->enum('menu_show',['nestead_menu', 'nestead_box', 'mega_menu'])->default('nestead_menu');
+            $table->int('menu_show_count')->default(5);
+            $table->text('slide_category')->nullable();
             $table->enum('cat_image_status',['enable', 'disable'])->default('disable');
             $table->enum('VAT',['enable', 'disable'])->default('disable');
             $table->enum('special_offer',['enable', 'disable'])->default('disable');
-            $table->string('special_offer_text')->default('خوش آمدید')->nullable();
+            $table->text('special_offer_text')->default('خوش آمدید')->nullable();
             $table->unsignedInteger('VAT_amount')->default(9);
             $table->text('icon')->nullable();
             $table->text('logo')->nullable();

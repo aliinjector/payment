@@ -6,6 +6,7 @@ use App\Dashboard;
 use App\Shop;
 use Illuminate\Http\Request;
 
+
 class DashboardController extends \App\Http\Controllers\Controller
 {
     /**
