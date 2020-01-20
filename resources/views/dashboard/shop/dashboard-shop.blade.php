@@ -1,5 +1,3 @@
-
-
 @extends('dashboard.layouts.master')
 <style>
    .highcharts-figure, .highcharts-data-table table {
