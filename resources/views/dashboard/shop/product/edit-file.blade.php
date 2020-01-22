@@ -155,7 +155,17 @@
                                           <h4 class="mt-0 header-title">اپلود فایل</h4>
                                           <p class="text-muted mb-3">فایل شما میتواند از نوع pdf یا docs باشد
                                           </p>
-                                          <input type="file" id="input-file-now" name="image" class="dropify">
+                                          @php
+                                          if($product->attachment != null){
+                                            $fileName = explode("_", $product->attachment, 3);
+                                          }else {
+                                            $fileName = null;
+                                          }
+                                          @endphp
+                                          @if($product->attachment != null)
+                                          <a class="mr-2 font-15" href="" id="file-delete" title="حذف فایل" data-name="{{ $fileName[2] }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
+                                        @endif
+                                          <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $product->attachment }}">
                                       </div>
                                       <!--end card-body-->
                                   </div>

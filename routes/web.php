@@ -83,6 +83,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status');
         Route::post('product-list/image/delete', 'ProductController@destroyImage')->name('product-list.image.delete');
+        Route::post('product-list/file/delete', 'ProductController@destroyFile')->name('product-list.file.delete');
         Route::get('product-list/{id}/edit-physical', 'ProductController@editPhysical')->name('product-list.edit-physical');
         Route::get('product-list/{id}/edit-file', 'ProductController@editFile')->name('product-list.edit-file');
         Route::get('product-list/{id}/edit-service', 'ProductController@editService')->name('product-list.edit-service');

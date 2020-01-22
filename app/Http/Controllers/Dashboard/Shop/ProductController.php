@@ -571,14 +571,30 @@ else{
           }
 
 
-          public function destroyImage(Request $request){
-            $product = Product::find($request->id);
-            foreach($product->image as $image){
-              $image = ltrim($image, '/');
-              unlink($image);
-            }
-            $product->update([
+      public function destroyImage(Request $request){
+        $product = Product::find($request->id);
+        foreach($product->image as $image){
+            $image = ltrim($image, '/');
+            unlink($image);
+                        }
+          $product->update([
                 'image' => null
             ]);
           }
+
+
+
+      public function destroyFile(Request $request){
+        $product = Product::find($request->id);
+        if($product->type == 'file'){
+          Storage::delete($product->attachment);
+          $product->update([
+                'attachment' => null
+            ]);
+          }
+        }
+
+
+
+
     }
