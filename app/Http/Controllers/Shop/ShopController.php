@@ -20,6 +20,8 @@
   use Illuminate\Support\Facades\Auth;
   use Illuminate\Support\Facades\Session;
   use Artesaos\SEOTools\Facades\SEOTools;
+  use Illuminate\Support\Facades\Storage;
+  use Illuminate\Http\File;
 
   class ShopController extends \App\Http\Controllers\Controller {
     /**
@@ -64,16 +66,17 @@
     }
 
 
-    public function downlaodFile($shop, $id) {
+    public function downlaodFile($shop, $id, $purchaseId) {
         $product = Product::find($id);
-        $purchase = $product->purchases()->get();
+        $purchase = UserPurchase::where('id', $purchaseId)->get();
         if (\auth::user()) {
             $userPurchase = $purchase->where('user_id', \auth::user()->id);
+
         } else {
             $userPurchase = null;
         }
         if ($userPurchase->count() > 0) {
-            return redirect(URL::temporarySignedRoute('download.link', now()->addMinutes(30), ['shop' => $shop, 'id' => $id]));
+            return redirect(URL::temporarySignedRoute('download.link', now()->addMinutes(1), ['shop' => $shop, 'id' => $id]));
         } else {
             return redirect()->route('login');
         }
@@ -81,35 +84,24 @@
 
 
     public function downlaodLink(Request $request, $shop, $id) {
-        $this->approved($shop, $id, $request);
         if (!$request->hasValidSignature()) {
             abort(401);
         }
         $uri = Shop::where('english_name', $shop)->get()->first()->products()->where('id', $id)->get()->first()->attachment;
-        $uri = ltrim($uri, '/');
         $shopId = Shop::where('english_name', $shop)->get()->first()->id;
         $product = Product::where('id', $id)->get()->first();
-        $purchase = new UserPurchase;
-        $purchase->product_id = $id;
-        $purchase->shop_id = $shopId;
-        if ($product->off_price == null) {
-            if (Session::get(\Auth::user()->id .'-'. $shop->english_name) == null) {
-                $purchase->total_price = $product->price;
-            } else {
-                $purchase->total_price = Session::get(\Auth::user()->id .'-'. $shop->english_name);
-            }
-        } else {
-            $purchase->total_price = $product->off_price;
-        }
-        Session::pull(\Auth::user()->id .'-'. $shop->english_name);
+        $fileName = explode("_", $uri, 3);
         if (\Auth::guest()) {
-            $purchase->user_id = null;
-        } else {
-            $purchase->user_id = \Auth::user()->id;
+          abort(401);
+        }else{
+          return Storage::download($uri,$fileName[2]);
         }
-        $purchase->save();
-        return response()->file($uri);
     }
+
+
+
+
+
 
       public function registerShow($shop)
       {

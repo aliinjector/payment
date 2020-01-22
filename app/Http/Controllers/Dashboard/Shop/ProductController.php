@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+
 
 
 class ProductController extends Controller
@@ -28,6 +31,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+
         if(\Auth::user()->type == 'customer'){
             return redirect()->back();
         }else{
@@ -83,7 +87,7 @@ class ProductController extends Controller
       $image = $this->uploadFile($request->file('image'), false, true);
       //check if product is file to save attachment file
       if($request->type == 'file')
-      $attachment = $this->uploadFile($request->file('attachment'), false, false);
+      $attachment = Storage::putFileAs('attachment', $request->file('attachment'), \Auth::user()->id."_".time()."_".$request->file('attachment')->getClientOriginalName());
       else
       $attachment = null;
       //check if enable if off to change enable to 0

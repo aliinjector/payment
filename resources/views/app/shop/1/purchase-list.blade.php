@@ -122,7 +122,6 @@
                 </div>
                 <form action="{{ route('purchase-list.store', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
                     @csrf
-                    @if($product->type != 'file')
                         <div class="col-lg-6 mt-5 d-none-print">
                             <div class="total-payment">
                                 <h4 class="header-title">مجموع پرداختی</h4>
@@ -168,10 +167,13 @@
                                                                     </div>
                                                                     @endif
                                                         </li>
+                                                        @if($product->type != 'file')
+
                                                         <li class="mt-2 "><span class=" showAddresses btn btn-soft-primary font-weight-bolder">انتخاب آدرس
                                                             </span>
                                                         </li>
                                                         <li>
+
                                                             @if(isset(\auth::user()->userInformation()->get()->first()->address))
                                                                 <div class="radio radio-info mt-3 d-none address_1">
                                                                     <input type="radio" name="address" id="address_1" value="address_1" checked>
@@ -190,7 +192,10 @@
                                                                             <label class="min-width-100-fix" for="address_3">{{ \auth::user()->userInformation()->get()->first()->address_3 }}</label>
                                                                         </div>
                                                                         @endif
+
                                                         </li>
+                                                      @endif
+
                                                         <span class="btn btn-soft-primary font-weight-bolder d-none newAddress mt-3"><i class="fa fa-plus mr-2"></i> اضافه کردن آدرس
                                                         </span>
                                                         <li class="col-lg-12 address_input d-none">
@@ -232,7 +237,6 @@
                                 </table>
                             </div>
                         </div>
-                        @endif
                         <!--end /div-->
             </div>
             <div class="col-12 justify-content-between mt-5 d-none printable">

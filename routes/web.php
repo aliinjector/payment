@@ -181,7 +181,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');
     Route::post('/{shop}/user-cart/remove', 'CartController@removeFromCart')->name('user-cart.remove');
     //File-Download
-    Route::get('/{shop}/{id}/file-download', 'ShopController@downlaodFile')->name('file-download');
+    Route::get('/{shop}/{id}/{purchaseId}/file-download', 'ShopController@downlaodFile')->name('file-download');
     Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
     //Rating
     Route::patch('/{shop}/{id}/rate', 'RatingController@updateRate')->name('rate');

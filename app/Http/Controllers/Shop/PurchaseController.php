@@ -201,14 +201,16 @@ class PurchaseController extends Controller
           }
           $cart = Cart::where('id', $cartID)->get()->first();
           $shopId = Shop::where('english_name', $shop)->get()->first()->id;
-
+          $product = collect($products[0]);
           // address and new addres validation condition
+          if(!$product->contains('file')){
+
           if (!isset($request->address)) {
               $request->validate(['new_address' => 'required']);
           } else {
               $request->validate(['address' => 'required']);
           }
-
+        }
           $purchase = new UserPurchase;
           $purchase->cart_id = $cartID;
           $purchase->user_id = \Auth::user()->id;

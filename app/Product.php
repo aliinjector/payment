@@ -66,10 +66,10 @@ public function sluggable()
  {
      return $this->belongsToMany('App\Cart');
  }
- public function purchases()
- {
-     return $this->hasMany('App\UserPurchase');
- }
+ // public function purchases()
+ // {
+ //     return $this->hasMany('App\UserPurchase');
+ // }
  public function rates()
  {
      return $this->hasMany('App\Rating','ratingable_id');

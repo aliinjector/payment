@@ -34,7 +34,7 @@
                                                       <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
                                                       <td class="d-flex justify-content-between align-items-center h-25vh">{{ jdate($purchase->created_at) }} @if($product->type == 'file')
                                                           <div class="icon-show">
-                                                              <a href="{{ route('file-download', ['shop'=>$purchase->product()->first()->shop()->first()->english_name, 'id'=>$purchase->product()->first()->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-15"></i>
+                                                              <a href="{{ route('file-download', ['shop'=>$product->shop()->first()->english_name, 'id'=>$product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-15"></i>
                                                               </a>
                                                           </div>
                                                           @endif
