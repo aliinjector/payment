@@ -176,7 +176,6 @@
                </div>
                <form action="{{ route('purchase-list.store', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
                   @csrf
-                  @if($product->type != 'file')
                   <div class="col-lg-6 mt-5 d-none-print">
                      <div class="total-payment">
                         <h4 class="header-title">مجموع پرداختی</h4>
@@ -222,6 +221,8 @@
                                           </div>
                                           @endif
                                        </li>
+                                       @if($product->type != 'file')
+
                                        <li class="mt-2 "><span class=" showAddresses btn tt-btn-addtocart font-weight-bolder">انتخاب آدرس
                                           </span>
                                        </li>
@@ -238,6 +239,8 @@
                                        <li class="col-lg-12 address_input d-none">
                                           <textarea class="form-control mt-3" name="new_address" id="" cols="90" rows="5" placeholder="در صورت تمایل به ارسال به آدرس جدید لطفا آدرس مورد نظر را در کادر زیر وارد کنید"></textarea>
                                        </li>
+                                     @endif
+
                                     </ul>
                                  </td>
                               </tr>
@@ -280,7 +283,6 @@
                         </table>
                      </div>
                   </div>
-                  @endif
                   <!--end /div-->
             </div>
             <div class="col-12 justify-content-between mt-5 d-none printable">
