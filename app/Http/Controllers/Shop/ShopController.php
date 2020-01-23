@@ -11,6 +11,7 @@
   use App\UserPurchase;
   use App\Cart;
   use App\Rating;
+  use App\CartProduct;
   use App\ProductCategory;
   use Illuminate\Http\Request;
   use Request as RequestFacade;
@@ -69,6 +70,9 @@
     public function downlaodFile($shop, $id, $purchaseId) {
         $product = Product::find($id);
         $purchase = UserPurchase::where('id', $purchaseId)->get();
+
+        // dd($purchase->first()->cart()->withTrashed()->get()->first()->products()->where('id', $id)->first());
+
         if (\auth::user()) {
             $userPurchase = $purchase->where('user_id', \auth::user()->id);
 
@@ -76,7 +80,14 @@
             $userPurchase = null;
         }
         if ($userPurchase->count() > 0) {
+          if(CartProduct::where([['cart_id', $purchase->first()->cart()->withTrashed()->get()->first()->id],['product_id', $id]])->get()->first()->download_status == 0){
+            CartProduct::where([['cart_id', $purchase->first()->cart()->withTrashed()->get()->first()->id],['product_id', $id]])->get()->first()->update(['download_status' => '1']);
             return redirect(URL::temporarySignedRoute('download.link', now()->addMinutes(1), ['shop' => $shop, 'id' => $id]));
+          }
+          else{
+            toastr()->error(' شما قبلا این فایل را دانلود کرده اید.', 'خطا');
+            return redirect()->back();
+          }
         } else {
             return redirect()->route('login');
         }

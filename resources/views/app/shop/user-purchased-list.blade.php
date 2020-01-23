@@ -33,9 +33,15 @@
                                                       <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></a></td>
                                                       <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
                                                       <td class="d-flex justify-content-between align-items-center h-25vh">{{ jdate($purchase->created_at) }} @if($product->type == 'file')
-                                                          <div class="icon-show">
-                                                              <a href="{{ route('file-download', ['shop'=>$product->shop()->first()->english_name, 'id'=>$product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-15"></i>
+                                                          <div class="icon-show row">
+                                                              <a href="{{ route('file-download', ['shop'=>$product->shop()->first()->english_name, 'id'=>$product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-18 ml-5 p-3 "></i>
                                                               </a>
+                                                              <form action="{{ route('downloadLinkRequest',['product_id'=>$product->id, 'user_purchase_id' => $purchase->id]) }}" method="post">
+                                                                  @csrf
+                                                              <button class="btn btn-primary">
+                                                                درخواست لینک دانلود جدید
+                                                              </button>
+                                                                </form>
                                                           </div>
                                                           @endif
                                                       </td>
