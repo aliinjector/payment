@@ -140,17 +140,27 @@
                             <p class="text-muted mb-3">در این بخش میتوانید روش های ارسال کالا توسط فروشگاه خود را انتخاب کنید همچنین میتوانید روش های پرداختی را میتوانید فعال و یا غیر فعال کنید . توجه داشته باشید که با فعال کردن هر آیتم هنگام سفارش کاربر میتواند یکی از روش ها را انتخاب کند.</p><br>
                             <div class="row col-12 mt-4">
                                 <div class="col-lg-2 border-left p-3 m-4">
-                                    <div class="media setting-card"><span class="sett-card-icon set-icon-purple"><i class="fa fa-shipping-fast"></i></span>
+                                    <div class="media setting-card"><span class="sett-card-icon set-icon-purple" style="align-self: start;"><i class="fa fa-shipping-fast"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
                                                 <h3 class="mb-0 mt-0 iranyekan">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem7') }}</h3>
                                                 <p class="text-muted mb-0">
                                                     {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem7Desc') }}.</p>
                                             </div>
-                                            <div class="mt-3 row">
+                                            <div class="mt-3">
+                                              <div class="row">
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="quick_way_on" name="quick_way" @if($shopInformation->quick_way == 'enable') checked @endif>
                                                         <label class="custom-control-label iranyekan font-15" for="quick_way_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem7Enable') }}</label>
+                                                </div>
+                                              </div>
+                                              <div class="row">
+                                                <button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#quick_way_price">تعیین مبلغ (تومان)</button>
+                                              </div>
+                                              <div class="row">
+                                                  <div id="quick_way_price" class="collapse mt-2 ml-2">
+                                                      <input class="form-control border-custom" type="number" name="quick_way_price" value="{{ $shopInformation->quick_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
+                                                  </div>
                                                 </div>
 
                                             </div>
@@ -163,7 +173,7 @@
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-2 border-left p-3 m-4">
-                                    <div class="media setting-card"><span class="sett-card-icon set-icon-success"><i class="fa fa-truck"></i></span>
+                                    <div class="media setting-card"><span class="sett-card-icon set-icon-success" style="align-self: start;"><i class="fa fa-truck"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
                                                 <h3 class="mb-0 mt-0 iranyekan"> {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem8') }}</h3>
@@ -171,11 +181,21 @@
 
                                                 {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem8Desc') }}.</p>
                                             </div>
-                                            <div class="mt-3 row">
+                                            <div class="mt-3">
+                                              <div class="row">
+
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="posting_way_on" name="posting_way" @if($shopInformation->posting_way == 'enable') checked @endif>
                                                         <label class="custom-control-label iranyekan font-15" for="posting_way_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem8Enable') }}</label>
                                                 </div>
+                                              </div>
+                                              <div class="row">
+
+                                                <button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#posting_way_price">تعیین مبلغ (تومان) </button>
+                                              </div>
+                                                  <div id="posting_way_price" class="collapse mt-2">
+                                                      <input class="form-control border-custom" type="number" name="posting_way_price" value="{{ $shopInformation->posting_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
+                                                  </div>
 
                                             </div>
                                             <!--end /div-->
@@ -187,7 +207,7 @@
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-2 border-left p-3 m-4">
-                                    <div class="media setting-card"><span class="sett-card-icon set-icon-danger"><i class="fas fa-people-carry"></i></span>
+                                    <div class="media setting-card"><span class="sett-card-icon set-icon-danger" style="align-self: start;"><i class="fas fa-people-carry"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
                                                 <h3 class="mb-0 mt-0 iranyekan">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9') }}</h3>
@@ -195,11 +215,21 @@
 
                                                     {{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9Desc') }}.</p>
                                             </div>
-                                            <div class="mt-3 row">
+                                            <div class="mt-3">
+                                              <div class="row">
+
                                                 <div class="custom-control custom-switch switch-blue mr-5 p-3 col-2">
                                                     <input type="checkbox" class="custom-control-input" id="person_way_on" name="person_way" @if($shopInformation->person_way == 'enable') checked @endif>
                                                         <label class="custom-control-label iranyekan font-15" for="person_way_on">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem9Enable') }}</label>
                                                 </div>
+                                              </div>
+                                              <div class="row">
+
+                                                <button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#person_way_price">تعیین مبلغ (تومان) </button>
+                                              </div>
+                                                  <div id="person_way_price" class="collapse mt-2">
+                                                      <input class="form-control border-custom" type="number" name="person_way_price" value="{{ $shopInformation->person_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
+                                                  </div>
 
                                             </div>
                                             <!--end /div-->
@@ -209,7 +239,7 @@
                                     <!--end media-->
                                 </div>
                                 <div class="col-lg-2 border-left p-3 m-4">
-                                    <div class="media setting-card"><span class="sett-card-icon set-icon-blue"><i class="far fa-credit-card"></i></i></span>
+                                    <div class="media setting-card"><span class="sett-card-icon set-icon-blue" style="align-self: start;"><i class="far fa-credit-card"></i></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
                                                 <h3 class="mb-0 mt-0 iranyekan">پرداخت آنلاین</h3>
@@ -231,7 +261,7 @@
                                     <!--end media-->
                                 </div>
                                 <div class="col-lg-2 m-4 p-3">
-                                    <div class="media setting-card"><span class="sett-card-icon set-icon-lightpurple"><i class="fas fa-money-bill-alt"></i></span>
+                                    <div class="media setting-card"><span class="sett-card-icon set-icon-lightpurple" style="align-self: start;"><i class="fas fa-money-bill-alt"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
                                                 <h3 class="mb-0 mt-0 iranyekan">پرداخت نقدی</h3>

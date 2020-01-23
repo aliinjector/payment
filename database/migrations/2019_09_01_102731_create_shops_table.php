@@ -22,8 +22,11 @@ class CreateShopsTable extends Migration
             $table->unsignedInteger('contact_id')->nullable();
             $table->unsignedInteger('status')->default(0);
             $table->enum('quick_way',['enable', 'disable'])->default('disable');
+            $table->bigInteger('quick_way_price')->default(0);
             $table->enum('posting_way',['enable', 'disable'])->default('disable');
+            $table->bigInteger('posting_way_price')->default(0);
             $table->enum('person_way',['enable', 'disable'])->default('disable');
+            $table->bigInteger('person_way_price')->default(0);
             $table->enum('online_payment',['enable', 'disable'])->default('enable');
             $table->enum('cash_payment',['enable', 'disable'])->default('enable');
             $table->enum('menu_show',['nestead_menu', 'nestead_box', 'mega_menu'])->default('nestead_menu');

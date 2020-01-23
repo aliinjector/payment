@@ -184,6 +184,7 @@ class PurchaseController extends Controller
 
 
       public function purchaseSubmit($shop, $cartID, Request $request) {
+
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           $cart = \Auth::user()->cart()->get()->first()->id;
           $productsID = [];
@@ -201,16 +202,22 @@ class PurchaseController extends Controller
           }
           $cart = Cart::where('id', $cartID)->get()->first();
           $shopId = Shop::where('english_name', $shop)->get()->first()->id;
-          $product = collect($products[0]);
+          $product = $products[0];
+
           // address and new addres validation condition
-          if(!$product->contains('file')){
+          if($product->type != 'file'){
 
           if (!isset($request->address)) {
-              $request->validate(['new_address' => 'required']);
+
+              $request->validate(['new_address' => 'required', 'shipping_way' => 'required']);
           } else {
-              $request->validate(['address' => 'required']);
+
+              $request->validate(['address' => 'required', 'shipping_way' => 'required']);
           }
         }
+        $shipping = $request->shipping_way;
+        $shipping_price = $shipping.'_price';
+        $shopShippingWayPrice = Shop::where('english_name', $shop)->get()->first()->$shipping_price;
           $purchase = new UserPurchase;
           $purchase->cart_id = $cartID;
           $purchase->user_id = \Auth::user()->id;
@@ -231,19 +238,19 @@ class PurchaseController extends Controller
           if (Session::get(\Auth::user()->id .'-'. $shop->english_name) == null) {
 
             if($shop->VAT == 'enable') {
-              $purchase->total_price = (\Auth::user()->cart()->get()->first()->total_price) + (\Auth::user()->cart()->get()->first()->total_price * $shop->VAT_amount / 100);
+              $purchase->total_price = (\Auth::user()->cart()->get()->first()->total_price) + (\Auth::user()->cart()->get()->first()->total_price * $shop->VAT_amount / 100) + $shopShippingWayPrice;
             }
             else{
-              $purchase->total_price = \Auth::user()->cart()->get()->first()->total_price;
+              $purchase->total_price = \Auth::user()->cart()->get()->first()->total_price + $shopShippingWayPrice;
             }
           }
           else {
             $voucher = Voucher::where('code' , Session::get('voucher_code'))->get()->first();
             if($shop->VAT == 'enable') {
-              $purchase->total_price = (Session::get(\Auth::user()->id .'-'. $shop->english_name)) + (Session::get(\Auth::user()->id .'-'. $shop->english_name) * $shop->VAT_amount / 100);
+              $purchase->total_price = (Session::get(\Auth::user()->id .'-'. $shop->english_name)) + (Session::get(\Auth::user()->id .'-'. $shop->english_name) * $shop->VAT_amount / 100) + $shopShippingWayPrice;
             }
             else{
-              $purchase->total_price = Session::get(\Auth::user()->id .'-'. $shop->english_name);
+              $purchase->total_price = Session::get(\Auth::user()->id .'-'. $shop->english_name) + $shopShippingWayPrice;
             }
           }
           $purchase->save();
@@ -267,5 +274,14 @@ class PurchaseController extends Controller
           $shop = Shop::where('english_name', RequestFacade::segment(1))->get()->first();
           $users = $shop->vouchers()->where('id' , $id)->get()->first()->users;
           return $users;
+          }
+
+
+
+          public function getShippingPrice(Request $request){
+            $typePrice = $request->type;
+            $shippingPrice = Shop::where('english_name', $request->shop)->get()->first()->$typePrice;
+            return response()->json($shippingPrice);
+
           }
 }

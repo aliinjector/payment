@@ -170,6 +170,8 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::any('/{shop}/purchase-list/{id}/voucher', 'PurchaseController@approved')->name('approved');
     Route::post('/{shop}/purchase-list/{cartID}/store', 'PurchaseController@purchaseSubmit')->name('purchase-list.store');
     Route::any('/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list');
+    Route::post('/{shop}/purchase-list/getShippingPrice/calculate', 'PurchaseController@getShippingPrice')->name('purchase-list.getShippingPrice');
+
     //User-pruchased List
     Route::get('/user-purchased-list', 'UserPurchasesController@userPurchaseList')->name('user.purchased.list');
 

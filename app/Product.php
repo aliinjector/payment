@@ -6,12 +6,12 @@ use Iatstuti\Database\Support\CascadeSoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Ghanem\Rating\Traits\Ratingable as Rating;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Scout\Searchable;
+// use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-  use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable, Searchable;
-  // use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable;
+  // use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable, Searchable;
+  use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable;
     protected $cascadeDeletes = ['galleries'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];

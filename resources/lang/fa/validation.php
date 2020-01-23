@@ -181,5 +181,6 @@ return array(
         'productCat_id' => 'دسته بندی محصول',
         'feedback' => 'بازخورد',
         'zip_code' => 'کد پستی',
+        'shipping_way' => 'روش ارسال',
     ),
 );
