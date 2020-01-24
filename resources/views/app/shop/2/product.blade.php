@@ -2,6 +2,11 @@
 @section('headerScripts')
 @endsection
 @section('content')
+  <style media="screen">
+    .h-50-vh{
+      height: 50vh!important;
+    }
+  </style>
 <div id="tt-pageContent">
    <div class="container-indent">
       <!-- mobile product slider  -->
@@ -322,5 +327,12 @@
    $(function() {
        var $gallery = $('.gallery a').simpleLightbox();
    });
+</script>
+<script type="text/javascript">
+$(window).load(function() {
+  setTimeout(function() {
+      $('.image-box-card').addClass('h-50-vh');
+    }, 100)
+})
 </script>
 @endsection
