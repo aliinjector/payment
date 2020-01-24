@@ -1,8 +1,8 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
-
 <link href='/app/shop/1/assets/css//simplelightbox.min.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
+
 
 <div class="row">
     <div class="col-sm-12">
@@ -68,6 +68,14 @@
                         <h6 class="text-muted font-13">{{ __('app-shop-1-product.vazneMahsool') }} :</h6>
                         <ul class="list-unstyled pro-features border-0 iranyekan">
                             <li>{{ $product->weight }} گرم</li>
+
+                        </ul>
+                        <ul class="tt-options-swatch options-middle">
+                           @foreach($product->colors as $color)
+                           <li>
+                              <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                           </li>
+                           @endforeach
                         </ul>
                         @endif
                         <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
@@ -339,7 +347,7 @@
 @section('pageScripts')
   <script src="{{ asset('/app/shop/1/assets/js/product.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  
+
   <script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
 @include('sweet::alert')
 @stop

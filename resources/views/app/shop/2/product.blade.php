@@ -132,20 +132,17 @@
                      </div>
                      <div class="tt-item">
                         <div class="tt-collapse-title">{{ __('app-shop-2-product.vizhegiha') }}</div>
-                        <div class="tt-collapse-content">
-                           <ul class="list-unstyled pro-features border-0 iranyekan">
-                              @for ($i=1; $i <= 10; $i++)
-                              <div class="wrapper d-inline-block">
-                                 @if ($product->{"feature_{$i}"})
-                                 <li class="ty-compact-list">{{ $product->{"feature_{$i}"} }} </li>
-                                 @endif
-                                 @endfor
-                                 <div class="show-more mr-1 mt-4" style="line-height: 2;"><i class="fas fa-plus"></i>
-                                    <span class="toggle-show">{{ __('app-shop-2-product.mavaaredeBishtar') }}</span>
-                                 </div>
-                              </div>
-                           </ul>
-                        </div>
+                             <div style="text-align: justify" class="tt-collapse-content">
+                               <ul>
+                               @foreach ($product->facilities as $facility)
+                                   <li>{{ $facility->name }}</li>
+                            @endforeach
+                          </ul>
+
+
+                             </div>
+
+
                      </div>
                      <div class="tt-item">
                         <div class="tt-collapse-title">{{ __('app-shop-2-product.emtiazaat') }}</div>
