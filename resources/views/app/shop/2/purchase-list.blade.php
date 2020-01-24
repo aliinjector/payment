@@ -4,6 +4,21 @@
 .radio input{
   opacity: 1
 }
+
+.price{
+  animation: bubble 2s forwards;
+
+}
+@keyframes bubble  {
+  from {
+    font-size: 24px;
+  }
+  to {
+    font-size: 16px;
+
+  }
+}
+
   </style>
 @endsection
 @section('content')
@@ -202,22 +217,31 @@
                                        <li>
                                           @if($shop->quick_way == 'enable')
                                           <div class="radio radio-info">
-                                             <input type="radio" name="shipping_way" id="quick_way" value="quick_way" checked="checked" style="height:13px!important;width:13px!important">
+                                             <input type="radio"  data-shipping="quick_way_price" class="shipping" data-shop="{{ $shop->english_name }}" name="shipping_way" id="quick_way" value="quick_way" style="height:13px!important;width:13px!important">
                                              <label for="quick_way">ارسال سریع</label>
+                                             <span class="font-13 mr-2 position-relative text-custom" style="top: 3px;">
+                                                 +  {{ $shop->quick_way_price }} تومان
+                                               </span>
                                           </div>
                                           @endif
                                        </li>
                                        <li>
                                           @if($shop->posting_way == 'enable')
                                           <div class="radio radio-info mt-2">
-                                             <input type="radio" name="shipping_way" id="posting_way" value="posting_way" style="height:13px!important;width:13px!important">
+                                             <input type="radio" name="shipping_way" data-shipping="posting_way_price" class="shipping" data-shop="{{ $shop->english_name }}" id="posting_way" value="posting_way" style="height:13px!important;width:13px!important">
                                              <label for="posting_way">ارسال پستی</label>
+                                             <span class="font-13 mr-2 position-relative text-custom" style="top: 3px;">
+                                                 +  {{ $shop->posting_way_price }} تومان
+                                               </span>
                                           </div>
                                           @endif
                                           @if($shop->person_way == 'enable')
                                           <div class="radio radio-info mt-2">
-                                             <input type="radio" name="shipping_way" id="person_way" value="person_way" style="height:13px!important;width:13px!important">
+                                             <input type="radio" name="shipping_way" data-shipping="person_way_price" class="shipping" data-shop="{{ $shop->english_name }}" id="person_way" value="person_way" style="height:13px!important;width:13px!important">
                                              <label for="person_way">دریافت حضوری</label>
+                                             <span class="font-13 mr-2 position-relative text-custom" style="top: 3px;">
+                                                 +  {{ $shop->person_way_price }} تومان
+                                               </span>
                                           </div>
                                           @endif
                                        </li>
@@ -267,7 +291,8 @@
                               </tr>
                               <tr>
                                  <td class="payment-title font-weight-bolder">مبلغ قابل پرداخت :</td>
-                                 <td>
+                                 <td class="total-payable-price">
+                                   <span class="price font-16" id="price-span">
                                     @if(isset($discountedPrice))
                                     @if($shop->VAT == 'enable') {{ number_format(($discountedPrice) + ($discountedPrice * $shop->VAT_amount / 100)) }}
                                     @else {{ number_format($discountedPrice) }}
@@ -277,6 +302,7 @@
                                     @else {{ number_format($total_price) }}
                                     @endif
                                     @endif
+                                  </span>
                                  </td>
                               </tr>
                            </tbody>
@@ -318,5 +344,39 @@
 @endsection
 @section('footerScripts')
   <script src="{{ asset('/app/shop/2/js/purchase-list.js') }}"></script>
+  <script>
+  var oldPrice = $("td.total-payable-price").text().replace(/,/g, '');
+  $('.shipping').on('change', function(e) {
+      e.preventDefault();
+      var shop = $(this).data('shop');
+      var type = $(this).data('shipping');
+      $.ajax({
+          type: "post",
+          url: '/{{$shop->english_name}}/purchase-list/getShippingPrice/calculate',
+          data: {
+              shop: shop,
+              type: type,
+              "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+          },
+          success: function(data) {
+            var newAdditionalPrice = data;
+             var sum = parseFloat(oldPrice) + parseFloat(newAdditionalPrice)
+             var finalPrice = sum.toLocaleString()
+             if ($("#price-span").hasClass("price")) {
+               $('#price-span').removeClass('price');
+               setTimeout(function(){
+                 $('#price-span').addClass('price');
+               }, 100);
+             }
+             else{
+               $('#price-span').addClass('price');
+             }
 
+             $("span#price-span").text(finalPrice);
+
+          }
+      });
+  });
+
+  </script>
 @endsection
