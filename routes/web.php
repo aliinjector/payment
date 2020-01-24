@@ -74,8 +74,16 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Shop Dashboard
         Route::resource('dashboard', 'DashboardShopController');
 
-        //Purchase Status
+        Route::prefix('purchases-managment')->group(function () {
+
+        //Purchase managment
         Route::get('purchase-status', 'DashboardShopController@purchaseStatus')->name('purchase.status');
+        Route::resource('download-link-request-status', 'DownloadLinkRequestController');
+        Route::post('download-link-request-status/approved', 'DownloadLinkRequestController@acceptRequest');
+        Route::post('download-link-request-status/delete', 'DownloadLinkRequestController@destroy')->name('product-list.file.delete');
+
+
+      });
 
         //Products
         Route::resource('product-list', 'ProductController');

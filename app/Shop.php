@@ -102,6 +102,10 @@ class Shop extends Model
     {
         return $this->hasMany('App\Stat');
     }
+    public function donwloadLinkRequests()
+    {
+        return $this->hasMany('App\ProductDownloadStatus');
+    }
 
     public function invoice()
     {

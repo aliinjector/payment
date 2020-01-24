@@ -19,6 +19,7 @@ class CreateProductDownloadStatusesTable extends Migration
           $table->bigInteger('shop_id')->unsigned()->index();
           $table->bigInteger('user_purchase_id')->unsigned()->index();
           $table->timestamps();
+          $table->softDeletes();
 
 
           $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');

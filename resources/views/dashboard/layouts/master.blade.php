@@ -258,7 +258,12 @@ Author: Ali Rahmani
                             </div>
 
                             @endif
+                            <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapsepurchases" aria-expanded="false" aria-controls="collapsepurchases"><i class="fa fa-clone"></i>مدیریت سفارشات</a></li>
+                            <div class="collapse mr-4 {{ request()->is('*purchases-managment*') == 1 ? 'show' : '' }}" id="collapsepurchases">
                             <li class="nav-item"><a class="nav-link" href="{{ route('purchase.status') }}"><i class="fa fa-clipboard"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarVaziaatSefaareshaat') }} </a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('download-link-request-status.index') }}" style="font-size:12px;"><i class="far fa-arrow-alt-circle-down"></i>درخواست های لینک دانلود</a></li>
+                            </div>
+
                             <li class="nav-item"><a class="nav-link" href="{{ route('stats.index') }}"><i class="fas fa-chart-bar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarAmaarBazdid') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatKarbaraan') }}</a></li>
 

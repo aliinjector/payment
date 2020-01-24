@@ -38,7 +38,7 @@
                                                               </a>
                                                               <form action="{{ route('downloadLinkRequest',['product_id'=>$product->id, 'user_purchase_id' => $purchase->id]) }}" method="post">
                                                                   @csrf
-                                                              <button class="btn btn-primary">
+                                                              <button class="btn btn-primary p-2 m-2">
                                                                 درخواست لینک دانلود جدید
                                                               </button>
                                                                 </form>
