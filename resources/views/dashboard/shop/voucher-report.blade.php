@@ -24,7 +24,7 @@
                             <div class="row">
 
                                 <div class="col-sm-12 table-responsive">
-                                  <div class="searchBox bg-dark" style="bottom: 87%;left: 11%;">
+                                  <div class="searchBox bg-dark"  style="margin-top: -15px;">
                                       <input type="text" id="myInputTextField" class="searchInput iranyekan">
                                       <button class="searchButton border" href="#">
                                           <i class="fa fa-search"></i>

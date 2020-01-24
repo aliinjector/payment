@@ -135,7 +135,7 @@
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="searchBox bg-dark">
+                                    <div class="searchBox bg-dark"  style="margin-top: -15px;">
                                         <input type="text" id="myInputTextField" class="searchInput">
                                         <button class="searchButton" href="#">
                                             <i class="fa fa-search"></i>
@@ -187,6 +187,6 @@
     @section('pageScripts')
       <script src="{{ asset('/dashboard/assets/js/admin-sats.js') }}"></script>
 
-    
+
 
         @stop

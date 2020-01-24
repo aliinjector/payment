@@ -506,14 +506,15 @@
             <div class="card-body">
                <h4 class="mt-0 header-title">{{ __('dashboard-shop-product-index.ListMahsoolatTitle') }}</h4>
                <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-product-index.ListMahsoolatDesc') }}</p>
+               <div class="searchBox bg-dark"  style="margin-top: -15px;">
+                  <input type="text" id="myInputTextField" class="searchInput iranyekan">
+                  <button class="searchButton border" href="#">
+                  <i class="fa fa-search"></i>
+                  </button>
+               </div>
                <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                   <div class="row">
-                     <div class="searchBox bg-dark" style="bottom: 89%;">
-                        <input type="text" id="myInputTextField" class="searchInput iranyekan">
-                        <button class="searchButton border" href="#">
-                        <i class="fa fa-search"></i>
-                        </button>
-                     </div>
+
                      <div class="table-responsive">
                         <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
                            <thead>

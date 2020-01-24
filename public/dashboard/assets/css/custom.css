@@ -171,7 +171,6 @@ h2 span {
 
 .searchBox {
     position: absolute;
-    bottom: 96%;
     left: 10%;
     transform: translate(-50%, 50%);
     background: #2f3640;

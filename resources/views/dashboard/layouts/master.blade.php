@@ -392,6 +392,12 @@ Author: Ali Rahmani
     <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
     <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
     <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+    <script>
+       oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+       $('#myInputTextField').keyup(function() {
+           oTable.search($(this).val()).draw();
+       })
+   </script>
     @toastr_js
     @toastr_render
     @include('sweet::alert')
