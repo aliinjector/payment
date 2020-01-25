@@ -36,13 +36,13 @@
                if (isConfirm) {
                    $.ajax({
                        type: "post",
-                       url:  document.location.origin + "admin-panel/shop/categrory-managment/product-category/delete",
+                       url:  "/admin-panel/shop/categrory-managment/product-category/delete",
                        data: {
                            id: id,
                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                        },
                        success: function(data) {
-                           var url = document.location.origin + "/admin-panel/shop/categrory-managment/product-category";
+                           var url = "/admin-panel/shop/categrory-managment/product-category";
                            location.href = url;
                        }
                    });
@@ -64,7 +64,7 @@
                if (isConfirm) {
                    $.ajax({
                        type: "post",
-                       url:  document.location.origin + "admin-panel/shop/categrory-managment/product-category/icon/delete",
+                       url:  "/admin-panel/shop/categrory-managment/product-category/icon/delete",
                        data: {
                            id: id,
                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()

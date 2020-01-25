@@ -19,7 +19,7 @@
                     if (isConfirm) {
                         $.ajax({
                             type: "post",
-                            url: document.location.origin + "/admin-panel/shop/categrory-managment/feature/delete",
+                            url: "/admin-panel/shop/categrory-managment/feature/delete",
                             data: {
                                 id: id,
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()

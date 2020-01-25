@@ -27,13 +27,13 @@
                if (isConfirm) {
                    $.ajax({
                        type: "post",
-                       url: document.location.origin + "admin-panel/shop/comment/delete",
+                       url: "/admin-panel/shop/comment/delete",
                        data: {
                            id: id,
                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                        },
                        success: function(data) {
-                           var url = document.location.origin + "/admin-panel/shop/product-comments";
+                           var url = "/admin-panel/shop/product-comments";
                            location.href = url;
                        }
                    });

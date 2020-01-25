@@ -38,6 +38,8 @@ class CreateStatsTable extends Migration
             $table->string('hour');
             $table->string('page');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

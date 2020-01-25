@@ -18,6 +18,7 @@ class CreateColorsTable extends Migration
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

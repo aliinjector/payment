@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
+
 
 
 class Cart extends Model
 {
-    use SoftDeletes;
+  use SoftDeletes, CascadeSoftDeletes;
     protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
 

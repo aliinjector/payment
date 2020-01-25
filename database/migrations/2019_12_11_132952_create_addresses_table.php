@@ -20,8 +20,8 @@ class CreateAddressesTable extends Migration
             $table->string('province');
             $table->string('zip_code');
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
 
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

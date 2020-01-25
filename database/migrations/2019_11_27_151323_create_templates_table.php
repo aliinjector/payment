@@ -20,6 +20,8 @@ class CreateTemplatesTable extends Migration
             $table->text('picture')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

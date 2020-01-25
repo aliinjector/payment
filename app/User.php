@@ -4,8 +4,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
 class User extends Authenticatable
 {
+  use SoftDeletes, CascadeSoftDeletes;
+
+  protected $dates = ['deleted_at'];
     use HasApiTokens, Notifiable;
     /**
      * The attributes that are mass assignable.

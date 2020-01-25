@@ -477,6 +477,11 @@ else{
                   Facility::create(['name' => $facility, 'product_id' => $product->id]);
               }
           }
+          else{
+            if(Facility::where('id', $facility_id)->get()->first() != null){
+              Facility::where('id', $facility_id)->get()->first()->delete();
+            }
+          }
         }
 
 

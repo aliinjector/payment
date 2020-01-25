@@ -36,13 +36,13 @@ $(document).on('click', '#removerProduct', function(e) {
             if (isConfirm) {
                 $.ajax({
                     type: "post",
-                    url: document.location.origin + "/admin-panel/shop/product-list/delete",
+                    url: "/admin-panel/shop/product-list/delete",
                     data: {
                         id: id,
                         "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                     },
                     success: function(data) {
-                        var url = document.location.origin + "/admin-panel/shop/product-list";
+                        var url = "/admin-panel/shop/product-list";
                         location.href = url;
                     }
                 });

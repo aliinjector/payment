@@ -20,7 +20,7 @@ class CreateUserVouchersTable extends Migration
             $table->bigInteger('user_purchase_id')->unsigned()->index();
             $table->bigInteger('shop_id')->unsigned()->index();
             $table->timestamps();
-            $table->softDeletes( );
+            $table->softDeletes();
 
 
 

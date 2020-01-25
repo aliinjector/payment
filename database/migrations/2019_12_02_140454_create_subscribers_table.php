@@ -18,6 +18,8 @@ class CreateSubscribersTable extends Migration
             $table->unsignedInteger('shop_id');
             $table->string('email');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

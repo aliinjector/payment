@@ -33,13 +33,13 @@ $(window).resize(function() {
                 if (isConfirm) {
                     $.ajax({
                         type: "post",
-                        url: document.location.origin + "admin-panel/shop/managment/slideshow/delete",
+                        url: "/admin-panel/shop/managment/slideshow/delete",
                         data: {
                             id: id,
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
-                            var url = document.location.origin + "/admin-panel/shop/managment/slideshow";
+                            var url = "/admin-panel/shop/managment/slideshow";
                             location.href = url;
                         }
                     });

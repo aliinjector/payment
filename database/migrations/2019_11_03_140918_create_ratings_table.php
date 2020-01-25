@@ -13,6 +13,7 @@ class CreateRatingsTable extends Migration
             $table->morphs('ratingable');
             $table->morphs('author');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

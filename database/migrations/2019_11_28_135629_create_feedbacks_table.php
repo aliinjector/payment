@@ -20,8 +20,10 @@ class CreateFeedbacksTable extends Migration
            $table->bigInteger('user_id')->unsigned()->index();
            $table->bigInteger('shop_id')->unsigned()->index();
            $table->boolean('approved')->default(0);
-           $table->softDeletes();
            $table->timestamps();
+           $table->softDeletes();
+
+
            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

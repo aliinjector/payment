@@ -32,13 +32,13 @@ $( document ).ready(function() {
                if (isConfirm) {
                    $.ajax({
                        type: "post",
-                       url: document.location.origin + "admin-panel/shop/brand/delete",
+                       url: "/admin-panel/shop/brand/delete",
                        data: {
                            id: id,
                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                        },
                        success: function(data) {
-                           var url = document.location.origin + "/admin-panel/shop/brand";
+                           var url = "/admin-panel/shop/brand";
                            location.href = url;
                        }
                    });
@@ -60,7 +60,7 @@ $( document ).ready(function() {
                 if (isConfirm) {
                     $.ajax({
                         type: "post",
-                        url: document.location.origin + "admin-panel/shop/brand/icon/delete",
+                        url: "/admin-panel/shop/brand/icon/delete",
                         data: {
                             id: id,
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()

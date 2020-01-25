@@ -18,6 +18,8 @@ class CreateFacilitiesTable extends Migration
             $table->string('name');
             $table->bigInteger('product_id')->unsigned()->index();
             $table->timestamps();
+            $table->softDeletes();
+
 
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');

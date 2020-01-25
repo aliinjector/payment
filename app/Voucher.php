@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
+
 
 
 class Voucher extends Model
 {
-    use SoftDeletes;
+  use SoftDeletes, CascadeSoftDeletes;
 
     protected $casts = ['users' => 'array'];
     protected $dates = ['deleted_at'];

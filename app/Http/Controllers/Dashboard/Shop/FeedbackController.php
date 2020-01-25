@@ -97,8 +97,16 @@ class FeedbackController extends Controller
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Feedback $feedback)
+    public function destroy(Request $request)
     {
-        //
+      $feedback = Feedback::find($request->id);
+
+      if ($feedback->shop->user_id !== \Auth::user()->id) {
+              alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+              return redirect()->back();
+            }
+               $feedback->delete();
+               alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+               return redirect()->back();
+   }
     }
-}

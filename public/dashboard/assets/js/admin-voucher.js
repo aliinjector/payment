@@ -36,7 +36,7 @@ $(window).resize(function() {
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
-                            var url = document.location.origin + "/admin-panel/shop/vouchers";
+                            var url = "/admin-panel/shop/vouchers";
                             location.href = url;
                         }
                     });

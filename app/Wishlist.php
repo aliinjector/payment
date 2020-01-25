@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Iatstuti\Database\Support\CascadeSoftDeletes;
+
 
 
 class Wishlist extends Model {
-    use SoftDeletes;
+  use SoftDeletes, CascadeSoftDeletes;
 
     protected $guarded = ['id'];
     protected $dates = ['deleted_at'];
@@ -20,7 +22,7 @@ class Wishlist extends Model {
     public function shop() {
         return $this->belongsTo('App\Shop');
     }
-    
+
     public function user() {
         return $this->belongsTo('App\User');
     }
