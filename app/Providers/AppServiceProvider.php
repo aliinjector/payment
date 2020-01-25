@@ -28,12 +28,15 @@ class AppServiceProvider extends ServiceProvider
            if (\Auth::check()){
           if(\Auth::user()->cart()->get()->first() != null){
             $products = \Auth::user()->cart()->get()->first()->products();
+            $cart = \Auth::user()->cart()->get()->first();
+            $view->with(['products' => $products, 'cart' => $cart]);
 
           }
           else{
             $products = [];
+            $view->with(['products' => $products]);
+
           }
-               $view->with('products', $products);
            }
        });
    }

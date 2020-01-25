@@ -18,6 +18,7 @@ class CreateCartProductTable extends Migration
             $table->bigInteger('product_id')->unsigned()->index();
             $table->bigInteger('cart_id')->unsigned()->index();
             $table->integer('quantity')->default(1);
+            $table->bigInteger('color_id')->unsigned()->index()->nullable();
             $table->integer('total_price')->nullable();
             $table->enum('download_status',['0', '1'])->default(0);
             $table->timestamps();
@@ -26,6 +27,7 @@ class CreateCartProductTable extends Migration
 
 
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade')->onUpdate('cascade');
         });
     }

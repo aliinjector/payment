@@ -17,4 +17,12 @@ class CartProduct extends Model
   {
       return $this->hasMany('App\Product');
   }
+  public function product()
+  {
+      return $this->belongsTo('App\Product');
+  }
+  public function color()
+  {
+      return $this->belongsTo('App\Color');
+  }
 }

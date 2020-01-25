@@ -106,10 +106,17 @@
                   <div class="tt-wrapper m-4">
                      <div class="tt-add-info">
                         <ul class="tt-options-swatch options-middle flex-row mb-2">
+                          @php
+                          $i = 0;
+                           @endphp
                            @foreach($product->colors as $color)
-                           <li>
-                              <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                             <li class="color-select {{ $i == 0 ? 'active' : '' }}">
+                              <a class="options-color tt-border tt-color-bg-08" href="#" data-color="{{ $color->id }}" style="background-color:#{{ $color->code }}">
+                              </a>
                            </li>
+                           @php
+                           $i ++;
+                            @endphp
                            @endforeach
                         </ul>
                         <ul>
@@ -334,5 +341,23 @@ $(window).load(function() {
       $('.image-box-card').addClass('h-50-vh');
     }, 100)
 })
+</script>
+
+<script>
+
+if ($("#color-selection").length == 0){
+if ($("li.color-select").hasClass("active")) {
+  var colorId = $("li.color-select > a").data('color');
+  $("div.tt-input-counter").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+}
+}
+//when the Add Field button is clicked
+$('.options-color').on('click', function() {
+  var colorId = $(this).data('color');
+if ($("#color-selection").length > 0){
+  $("#color-selection").remove();
+}
+$("div.tt-input-counter").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+});
 </script>
 @endsection

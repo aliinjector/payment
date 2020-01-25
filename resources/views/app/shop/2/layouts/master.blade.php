@@ -196,27 +196,30 @@
                                                     <div class="tt-cart-list">
                                                         <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                                                             @csrf
-                                                            @foreach ($products as $product)
+                                                            @isset($cart)
+                                                            @foreach ($cart->cartProduct as $cartProduct)
                                                             <div class="tt-item border-bottom p-3">
-                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">
-                                                                    <div class="tt-item-img"><img src="{{ $product->image['80,80'] }}" data-src="{{ $product->image['80,80'] }}" alt=""></div>
+                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->id]) }}" target="_blank">
+                                                                    <div class="tt-item-img"><img src="{{ $cartProduct->product->image['80,80'] }}" data-src="{{ $cartProduct->product->image['80,80'] }}" alt=""></div>
                                                                     <div class="tt-item-descriptions">
-                                                                        <h2 class="tt-title">{{ $product->title }}</h2>
+                                                                        <h2 class="tt-title">{{ $cartProduct->product->title }}</h2>
                                                                         <ul class="tt-add-info">
-                                                                            <li>زرد</li>
+                                                                            <li>{{ !$cartProduct->color ? '' : $cartProduct->color->name}}</li>
                                                                         </ul>
-                                                                        <div class="tt-quantity"> <input class="border-0" name="{{ $product->id }}" type="text"
-                                                                              value="{{ $product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}">
+                                                                        <div class="tt-quantity"> <input class="border-0" name="{{ $cartProduct->product->id }}" type="text"
+                                                                              value="{{ $cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity }}">
                                                                             {{ __('app-shop-2-layouts-master.adad') }}</div>
                                                                         <br />
-                                                                        <div class="tt-price">{{ number_format($product->price) }} {{ __('app-shop-2-layouts-master.tooman') }}</div>
+                                                                        <div class="tt-price">{{ number_format($cartProduct->product->price) }} {{ __('app-shop-2-layouts-master.tooman') }}</div>
                                                                     </div>
                                                                 </a>
                                                                 <div class="tt-item-close">
-                                                                    <a href="" id="removeProduct" class="tt-btn-close" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $product->id }}"></a>
+                                                                    <a href="" id="removeProduct" class="tt-btn-close" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"></a>
                                                                 </div>
                                                             </div>
                                                             @endforeach
+                                                          @endisset($cart)
+
                                                     </div>
                                                     <div class="tt-cart-btn">
                                                         <div class="tt-item bg-primary"><button type="submit" class="btn">{{ __('app-shop-2-layouts-master.tasviyeHesab') }}</button></div>
@@ -615,6 +618,7 @@
         e.preventDefault();
         var id = $(this).data('id');
         var cart = $(this).data('cart');
+        var color = $(this).data('color');
         swal("آیا اطمینان دارید؟", {
                 dangerMode: true,
                 buttons: ["انصراف", "حذف"],
@@ -628,6 +632,7 @@
                         data: {
                             id: id,
                             cart: cart,
+                            color: color,
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
@@ -654,4 +659,22 @@
     )
 </script>
 
+<script>
+if ($("#color-selection").length == 0){
+if ($("li.color-select").hasClass("active")) {
+  var colorId = $("li.color-select > a").data('color');
+  $("button.tt-btn-addtocart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+}
+}
+//when the Add Field button is clicked
+$('.options-color').on('click', function() {
+  var colorId = $(this).data('color');
+//Append a new row of code to the "#items" div
+if ($("#color-selection").length > 0){
+  $("#color-selection").remove();
+}
+  $("button.tt-btn-addtocart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+});
+
+</script>
 </html>

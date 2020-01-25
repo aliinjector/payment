@@ -47,11 +47,12 @@ class CartController extends \App\Http\Controllers\Controller {
      */
     public function show($shop) {
         $shop = Shop::where('english_name', $shop)->first();
+        $cart = \Auth::user()->cart()->get()->first();
         $shopCategories = $shop->ProductCategories()->get();
         $template_folderName = $shop->template->folderName;
         if (\Auth::user()->cart()->get()->count() != 0) {
             $products = \Auth::user()->cart()->get()->first()->products();
-            return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories', 'products'));
+            return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories', 'products','cart'));
         } else {
             return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories'));
         }
@@ -67,7 +68,7 @@ class CartController extends \App\Http\Controllers\Controller {
             $cart->status = 0;
             $cart->save();
         }
-        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->first();
+        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shop)->get()->first()->id;
         $product = Product::where('id', $request->product_id)->get()->first();
@@ -84,7 +85,7 @@ class CartController extends \App\Http\Controllers\Controller {
                   }
                 }
               }
-            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id], ]);
+            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color], ]);
             toastr()->success('افزوده شد.', '');
 
             return redirect()->back();
@@ -97,7 +98,7 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function removeFromCart(Request $request){
-        DB::table('cart_product')->where('product_id', '=', $request->id)->where('cart_id', '=', $request->cart)->delete();
+        DB::table('cart_product')->where('product_id', '=', $request->id)->where('cart_id', '=', $request->cart)->where('color_id', '=', $request->color)->delete();
         if(is_null(DB::table('cart_product')->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->first())) {
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
         }

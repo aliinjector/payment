@@ -70,7 +70,7 @@
 							<ul class="tt-options-swatch options-middle">
 								@foreach ($colors as $color)
 								<li>
-									<a class="options-color" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}">
+									<a class="options-color color-filter" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}">
 									</a>
 								</li>
 								@endforeach
@@ -150,6 +150,20 @@
 									</div>
 									<div class="tt-description">
 										<div class="tt-row">
+											<ul class="tt-options-swatch options-middle flex-row mb-2">
+												@php
+												$i = 0;
+												 @endphp
+												 @foreach($product->colors as $color)
+													 <li class="color-select {{ $i == 0 ? 'active' : '' }}">
+														<a class="options-color tt-border tt-color-bg-08" href="#" data-color="{{ $color->id }}" style="background-color:#{{ $color->code }}">
+														</a>
+												 </li>
+												 @php
+												 $i ++;
+													@endphp
+												 @endforeach
+											</ul>
 											<ul class="tt-add-info">
 												<li><a href="#">{{ $product->productCategory->name }}</a></li>
 											</ul>
@@ -198,6 +212,5 @@
 
 @section('footerScripts')
 	<script src="{{ asset('/app/shop/2/js/category.js') }}"></script>
-
 
 @endsection

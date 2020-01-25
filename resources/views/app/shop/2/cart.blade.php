@@ -19,12 +19,13 @@
                   </tr>
                   <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                      @csrf
-                     @foreach ($products as $product)
+                     @if(\Auth::user()->cart()->get()->first() != null)
+                     @foreach ($cart->cartProduct as $cartProduct)
                      <tr>
                         <td>
-                           <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></h2>
+                           <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->id]) }}" target="_blank">{{ $cartProduct->product->title }}</a></h2>
                            <ul class="tt-list-description">
-                              <li>Color: Green</li>
+                              <li>{{ !$cartProduct->color ? '' : $cartProduct->color->name}}</li>
                            </ul>
                            <ul class="tt-list-parameters">
                               <li>
@@ -39,23 +40,23 @@
                            </ul>
                         </td>
                         <td>
-                           <div class="tt-price">{{ number_format($product->price) }}</div>
+                           <div class="tt-price">{{ number_format($cartProduct->product->price) }}</div>
                         </td>
                         <td>
                            <div class="tt-price subtotal">
-                              @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0
-                              @else {{ number_format($product->price-$product->off_price)}}
+                              @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($cartProduct->product->off_price == null) 0
+                              @else {{ number_format($cartProduct->product->price-$cartProduct->product->off_price)}}
                               @endif
                            </div>
                         </td>
                         <td>
                            <div class="detach-quantity-desctope">
                               <div class="tt-input-counter style-01"><span class="minus-btn"></span>
-                                 <input name="{{ $product->id }}" type="text" @if($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 1)
-                                 value="1" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 1)
-                                 value="1" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 2)
-                                 value="2" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 3)
-                                 value="3" @elseif($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 4)
+                                 <input name="{{ $cartProduct->product->id }}" type="text" @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1)
+                                 value="1" @elseif($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1)
+                                 value="1" @elseif($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 2)
+                                 value="2" @elseif($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 3)
+                                 value="3" @elseif($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 4)
                                  value="4"
                                  @else
                                  value="5"
@@ -64,10 +65,11 @@
                            </div>
                         </td>
                         <td>
-                           <a href="" id="removeProduct" class="tt-btn-close" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $product->id }}"></a>
+                           <a href="" id="removeProduct" class="tt-btn-close" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"></a>
                         </td>
                      </tr>
                      @endforeach
+                   @endif
                </tbody>
             </table>
             <div class="tt-shopcart-btn d-flex input-group-append justify-content-end iranyekan">

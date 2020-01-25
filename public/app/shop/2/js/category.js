@@ -68,7 +68,7 @@ $('.show-more').on('click', function() {
 });
 
 $(document).ready(function() {
-  $(".options-color").click(function(e) {
+  $(".color-filter").click(function(e) {
     e.preventDefault();
 
     var color = $(this).data('color');

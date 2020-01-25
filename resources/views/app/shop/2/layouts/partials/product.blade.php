@@ -40,10 +40,16 @@
         <div class="tt-price mt-2">{{ number_format($product->price) }} {{ __('app-shop-2-layouts-partials-product.tooman') }}</div>
         <div class="tt-option-block">
             <ul class="tt-options-swatch">
+              @php
+              $i = 0;
+               @endphp
                 @foreach($product->colors as $color)
-                    <li>
-                        <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                    <li class="color-select {{ $i == 0 ? 'active' : '' }}">
+                        <a class="options-color tt-border tt-color-bg-08" data-color="{{ $color->id }}" href="#" style="background-color:#{{ $color->code }}"></a>
                     </li>
+                    @php
+                    $i ++;
+                     @endphp
                     @endforeach
             </ul>
         </div>
