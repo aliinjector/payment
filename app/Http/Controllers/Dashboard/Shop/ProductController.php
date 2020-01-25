@@ -154,7 +154,7 @@ class ProductController extends Controller
 
   //add facilities
   if($request->facility[0] != null){
-    foreach($request->facility as $facility){
+    foreach(array_slice($request->facility, 0, 50) as $facility){
       DB::table('facilities')->insert(['name' => $facility, 'product_id' => $product->id]);
     }
   }
@@ -242,7 +242,7 @@ class ProductController extends Controller
 
   //add facilities
   if($request->facility[0] != null){
-    foreach($request->facility as $facility){
+    foreach(array_slice($request->facility, 0, 50) as $facility){
       DB::table('facilities')->insert(['name' => $facility, 'product_id' => $product->id]);
     }
   }
@@ -467,7 +467,7 @@ else{
         ]);
 
         //add facilities
-          foreach($request->facility as $facility_id => $facility){
+          foreach(array_slice($request->facility, 0, 50, true) as $facility_id => $facility){
             if($facility != null){
 
               if($product->facilities->count() != 0){
