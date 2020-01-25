@@ -92,3 +92,4 @@ $( document ).ready(function() {
           }
     });
     });
+    oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said

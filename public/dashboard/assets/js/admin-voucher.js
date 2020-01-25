@@ -89,3 +89,4 @@ $(document).ready(function(){
         $('.show-tick').addClass("p-1");
         $('.show-tick').addClass("border");
     });
+    oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
