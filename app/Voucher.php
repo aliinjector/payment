@@ -11,6 +11,7 @@ use Iatstuti\Database\Support\CascadeSoftDeletes;
 class Voucher extends Model
 {
   use SoftDeletes, CascadeSoftDeletes;
+  protected $cascadeDeletes = ['userVouchers'];
 
     protected $casts = ['users' => 'array'];
     protected $dates = ['deleted_at'];
@@ -21,4 +22,9 @@ class Voucher extends Model
     {
         return $this->belongsTo('App\Shop');
     }
+
+    public function userVouchers()
+  {
+       return $this->hasMany('App\UserVoucher');
+   }
 }

@@ -9,7 +9,7 @@ use Laravel\Scout\Searchable;
 class Shop extends Model
 {
     use SoftDeletes, CascadeSoftDeletes, Searchable;
-    protected $cascadeDeletes = ['ProductCategories' , 'products'];
+    protected $cascadeDeletes = ['ProductCategories' , 'products', 'slideshows', 'purchases', 'vouchers', 'brands', 'feedbacks', 'tags', 'subscribers', 'invoice', 'donwloadLinkRequests', 'stats', 'compares', 'wishlists', 'faqs','shopContact'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [
