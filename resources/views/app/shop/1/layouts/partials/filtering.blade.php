@@ -31,7 +31,7 @@
                 <ul class="tt-options-swatch options-middle">
   								@foreach ($colors as $color)
   								<li>
-  									<a class="options-color" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}">
+  									<a class="options-color border color-filtering" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}">
   									</a>
   								</li>
   								@endforeach

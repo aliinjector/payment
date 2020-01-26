@@ -65,6 +65,14 @@
                                     <p class="product-price byekan">{{ number_format($product->price) }} {{ __('app-shop-1-category.tooman') }} <span class="ml-2 byekan"></span>
                                         @endif
                             </div>
+                            <ul class="tt-options-swatch options-middle">
+                              @foreach($product->colors as $color)
+              								<li>
+              									<a class="options-color p-3 border" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}; height:auto; width:20px" >
+              									</a>
+              								</li>
+              								@endforeach
+              							</ul>
                             <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
                                 @csrf
                                 <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
@@ -73,7 +81,7 @@
                             <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
-                                <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                                <button type="submit" class="btn-add-to-cart btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                                     @if($product->type == 'file'){{ __('app-shop-1-category.daryafteFile') }}
                                         @else {{ __('app-shop-1-category.addToCart') }}
                                         @endif</button>
