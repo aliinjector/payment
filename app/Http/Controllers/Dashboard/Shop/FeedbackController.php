@@ -86,9 +86,13 @@ class FeedbackController extends Controller
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Feedback $feedback)
+    public function update(Request $request, $id)
     {
-        //
+      $feedback = \Auth::user()->shop()->first()->feedbacks()->where('id',$id)->get()->first()->update($request->except(['_token']));
+
+
+      alert()->success('سوال شما با موفقیت ویرایش شد', 'ثبت شد');
+      return redirect()->route('feedback.index');
     }
 
     /**

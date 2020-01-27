@@ -23,37 +23,37 @@
 
                             <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                                 @csrf
-                                @foreach ($products as $product)
+                                @foreach ($cart->cartProduct as $cartProduct)
                                 <tr>
-                                    <td><img src="{{ $product->image['80,80'] }}" alt="" height="52">
-                                        <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" target="_blank"
-                                              class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
-                                            <br><span class="text-muted font-13">رنگ قرمز</span></p>
+                                    <td><img src="{{ $cartProduct->product->image['80,80'] }}" alt="" height="52">
+                                        <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->id]) }}" target="_blank"
+                                              class="d-inline-block align-middle mb-0 product-name">{{ $cartProduct->product->title }}</a>
+                                            <br><span class="text-muted font-13">{{ !$cartProduct->color ? '' : $cartProduct->color->name}}</span></p>
                                     </td>
-                                    <td>{{ number_format($product->price) }} {{ __('app-shop-1-cart.tooman') }} </td>
+                                    <td>{{ number_format($cartProduct->product->price) }} {{ __('app-shop-1-cart.tooman') }} </td>
                                     <td>
-                                        @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price == null) 0
-                                            @else {{ number_format($product->price-$product->off_price)}}
+                                        @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($cartProduct->product->off_price == null) 0
+                                        @else {{ number_format($cartProduct->product->price-$cartProduct->product->off_price)}}
                                             @endif
                                     </td>
                                     <td>
-                                        <select class="form-control col-lg-5 p-1" autocomplete="off" tabindex="-1" name="{{ $product->id }}">
-                                            <option @if($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 1) selected
+                                        <select class="form-control col-lg-5 p-1" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}">
+                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1) selected
                                                 @endif value="1">۱</option>
-                                            <option @if($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 2) selected
+                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 2) selected
                                                 @endif value="2">۲</option>
-                                            <option @if($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 3) selected
+                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 3) selected
                                                 @endif value="3">۳</option>
-                                            <option @if($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 4) selected
+                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 4) selected
                                                 @endif value="4">۴</option>
-                                            <option @if($product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $product->id)->first()->quantity == 5) selected
+                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 5) selected
                                                 @endif value="5">۵</option>
                                         </select>
 
                                     </td>
 
                                     <td>
-                                        <a href="" class="text-danger" id="removeProduct" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $product->id }}"><i class="mdi mdi-close-circle-outline font-18"></i></a>
+                                        <a href="" class="text-danger" id="removeProduct" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}"  data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"><i class="mdi mdi-close-circle-outline font-18"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

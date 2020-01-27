@@ -247,7 +247,6 @@
                 </div>
                 @endguest
                 @auth
-                @if(\Auth::user()->id == $shop->user_id)
                     <div class="dropdown search-icon d-flex align-items-center mx-3 my-4">
                         <button class="btn bg-blue-omid text-white rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             حساب کاربری
@@ -263,13 +262,7 @@
                             <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>{{ __('app-shop-1-layouts-master.khorooj') }}</a>
                         </div>
                     </div>
-                    @else
-                    <div class="search-icon d-flex align-items-center mx-3 ">
-                        <a href="{{ route('user.purchased.list') }}" style="font-size:13px;">
-                            <button type="button" class="btn bg-blue-omid text-white rounded"> {{ __('app-shop-1-layouts-master.listSefaareshaat') }}</button>
-                        </a>
-                    </div>
-                    @endif
+
                     <div class="search-icon d-flex align-items-center ml-5">
                         <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
                             <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">{{ __('app-shop-1-layouts-master.cart') }} <i class="mr-2 fas fa-shopping-cart"></i>
@@ -345,6 +338,7 @@
                 }
             )
         </script>
+      
 </body>
 
 </html>

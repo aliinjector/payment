@@ -566,7 +566,7 @@
                                     </div>
                                  </td>
                                  <td>{{ number_format($product->price) }}</td>
-                                 <td>{{ $product->off_price }}</td>
+                                 <td>{{ number_format($product->off_price) }}</td>
                                  <td>
                                     @csrf {{ method_field('put') }}
                                     <button class="btn btn-link change" type="submit" data-id="{{ $product->id }}">

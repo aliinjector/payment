@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">بازخورد :</span></div>
-                                    <textarea class="form-control" rows="5" id="message" name="feedback" value="{{ $feedback->feedback }}"></textarea>
+                                    <textarea class="form-control" rows="5" id="message" name="feedback">{{ $feedback->feedback }}</textarea>
                                 </div>
                             </div>
                             <!--end form-group-->

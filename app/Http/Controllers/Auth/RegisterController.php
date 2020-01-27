@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Jobs\SendRegisterSms;
 use App\User;
+use App\Shop;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,11 +68,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-if(!isset($data['shop_id'])){
+if(!isset(request()->shop)){
     $data['shop_id'] = null;
     $data['type'] = 'user';
 }
 else{
+  $data['shop_id'] = Shop::where('english_name', request()->shop)->get()->first()->id;
   $data['type'] = 'customer';
 }
         $user = User::create([

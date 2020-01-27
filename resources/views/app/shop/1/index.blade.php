@@ -67,7 +67,7 @@
             <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
                 <div class="view">
                     <a href="{{ $slideshow->url }}">
-                        <img class="d-block w-100" src="{{ $slideshow->image['original'] }}" alt="{{ $slideshow->title }}">
+                        <img class="d-block w-100" src="{{ $slideshow->image['original'] }}" alt="{{ $slideshow->title }}" style=" max-height: 70vh;">
                         <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">

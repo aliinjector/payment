@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\shop;
+use App\Shop;
 use App\Compare;
 use App\Product;
 use Illuminate\Http\Request;

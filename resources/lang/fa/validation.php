@@ -182,5 +182,6 @@ return array(
         'feedback' => 'بازخورد',
         'zip_code' => 'کد پستی',
         'shipping_way' => 'روش ارسال',
+        'discount_amount' => 'میزان تخفیف',
     ),
 );

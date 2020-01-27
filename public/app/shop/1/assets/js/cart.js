@@ -2,6 +2,8 @@ $(document).on('click', '#removeProduct', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
     var cart = $(this).data('cart');
+    var color = $(this).data('color');
+
     swal("آیا اطمینان دارید؟", {
             dangerMode: true,
             buttons: ["انصراف", "حذف"],
@@ -15,6 +17,7 @@ $(document).on('click', '#removeProduct', function(e) {
                     data: {
                         id: id,
                         cart: cart,
+                        color: color,
                         "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                     },
                     success: function(data) {

@@ -34,7 +34,7 @@
                             <p class="text-muted mb-0">{{ __('register.p') }}</p>
                         </div>
                         <!--end auth-logo-text-->
-                        <form class="form-horizontal auth-form my-4"  method="post" action="{{ route('register')  }}">
+                        <form class="form-horizontal auth-form my-4"  method="post" action="{{ route('register', ['shop' => request()->shop])  }}">
                             @csrf
                             <div class="form-group">
                                 <label for="username">{{ __('register.firstName') }}</label>

@@ -66,16 +66,22 @@
                                         @endif
                             </div>
                             <ul class="tt-options-swatch options-middle">
+                              @php
+                              $i = 0;
+                               @endphp
                               @foreach($product->colors as $color)
-              								<li>
-              									<a class="options-color p-3 border" data-color="{{ $color->code }}" style="background-color:#{{ $color->code }}; height:auto; width:20px" >
+              								<li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
+              									<a class="options-color p-3 border" data-color="{{ $color->id }}" style="background-color:#{{ $color->code }}; height:auto; width:20px" >
               									</a>
               								</li>
+                              @php
+                              $i ++;
+                               @endphp
               								@endforeach
               							</ul>
                             <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
                                 @csrf
-                                <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"   data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
                             </form>
                             @if(\Auth::user())
                             <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
@@ -135,6 +141,34 @@
             " - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
       }
   });
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+$('li.color-sel').click(function() {
+  $(this).siblings("li").removeClass('active');
+  $(this).addClass('active');
+});
+});
+  </script>
+
+  <script>
+  if ($("#color-selection").length == 0){
+  if ($("li.color-select").hasClass("active")) {
+    var colorId = $("li.color-select > a").data('color');
+    $("button.tt-btn-addtocart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+  }
+  }
+  //when the Add Field button is clicked
+  $('.options-color').on('click', function() {
+    var colorId = $(this).data('color');
+  //Append a new row of code to the "#items" div
+  if ($("#color-selection").length > 0){
+    $("#color-selection").remove();
+  }
+    $("button.tt-btn-addtocart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+  });
+
   </script>
 
 @endsection

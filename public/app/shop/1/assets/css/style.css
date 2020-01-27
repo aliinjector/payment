@@ -3330,7 +3330,7 @@ label {
 .form-control {
     font-size: 13px;
     border: 1px solid #e8ebf3;
-    height: calc(2.3rem + 2px);
+    height: calc(3.3rem + 1px);
     color: #2f5275
 }
 
