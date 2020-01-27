@@ -40,6 +40,7 @@
                                         <th class="border-top-0">محصول</th>
                                         <th class="border-top-0">نام</th>
                                         <th class="border-top-0">تعداد</th>
+                                        <th class="border-top-0">رنگ</th>
                                         <th class="border-top-0">قیمت واحد کالا</th>
                                         <th class="border-top-0">قیمت جمع کالا</th>
                                         <th class="border-top-0">روش پرداخت</th>
@@ -54,6 +55,7 @@
                                         <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img src="{{ $product->image['200,100']}}" alt="user"></a></td>
                                         <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
                                         <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}</td>
+                                        <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color->name }}</td>
                                         <td>{{ number_format($product->price) }}</td>
                                         <td>{{ number_format($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price) }}</td>
                                         <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">
