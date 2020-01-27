@@ -23,7 +23,7 @@ class CategoryController extends Controller
       $brands = $shop->brands;
       //color product and category product merging
       if($request->color == null){
-        $colorAndCategoryProducts = $this->getAllCategoriesProducts((int)$categroyId);
+        $colorAndCategoryProducts = $this->getAllCategoriesProducts((int)$categroyId)->sortByDesc('created_at');
       }
       else{
         $colorProducts = Color::where('code', $request->color)->get()->first()->products;
@@ -42,7 +42,7 @@ class CategoryController extends Controller
           $maxPrice = $request->maxprice;
           $filterBy = $request->type;
           $sortBy = $request->sortBy['field'];
-          $perPage = 8;
+          $perPage = 16;
           if($shop->template->folderName == 2){
             $sortBy_array = explode('|', $request->sortBy['field']);
             $sortBy = $sortBy_array[0];
@@ -53,8 +53,10 @@ class CategoryController extends Controller
           }
           if ($request->type == 'all') {
               if ($orderBy == 'desc') {
+
                   $products = $colorAndCategoryProducts->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy)->unique('id');
               } else {
+
                   $products = $colorAndCategoryProducts->whereBetween('price', [$minPrice, $maxPrice])->sortBy($sortBy)->unique('id');
               }
           } else {
@@ -73,7 +75,7 @@ class CategoryController extends Controller
           $products = $colorAndCategoryProducts;
       }
       $total = $products->count();
-      $perPage = 8; // How many items do you want to display.
+      $perPage = 16; // How many items do you want to display.
       $currentPage = request()->page; // The index page.
       $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
       SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);
