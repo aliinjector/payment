@@ -125,6 +125,11 @@
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $lastProducts[0]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
                     </form>
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[0]->id]) }}" method="post" id="wishlistForm{{ $lastProducts[0]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProducts[0]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                    </form>
                       @if(\Auth::user())
                     <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
@@ -163,6 +168,11 @@
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[1]->id]) }}" method="post" id="compareForm{{ $lastProducts[1]->id }}">
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $lastProducts[1]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                    </form>
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[1]->id]) }}" method="post" id="wishlistForm{{ $lastProducts[1]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProducts[1]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
                     </form>
                                         @if(\Auth::user())
 
@@ -205,7 +215,13 @@
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[2]->id]) }}" method="post" id="compareForm{{ $lastProducts[2]->id }}">
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $lastProducts[2]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
-                    </form>                    @if(\Auth::user())
+                    </form>
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[2]->id]) }}" method="post" id="wishlistForm{{ $lastProducts[2]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProducts[2]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                    </form>
+                                      @if(\Auth::user())
 
                     {{-- @if($lastProducts[2]->type == 'file' and $lastProducts[2]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                 <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
@@ -250,11 +266,16 @@
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[3]->id]) }}" method="post" id="compareForm{{ $lastProducts[3]->id }}">
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $lastProducts[3]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
-                    </form>                    @if(\Auth::user())
+                    </form>
 
-                    {{-- @if($lastProducts[3]->type == 'file' and $lastProducts[3]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
-                  <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[3]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
-                  @else --}}
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$lastProducts[3]->id]) }}" method="post" id="wishlistForm{{ $lastProducts[3]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProducts[3]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                    </form>
+
+                           @if(\Auth::user())
+
                     <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[3]->id}}">
@@ -324,7 +345,15 @@
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[0]->id]) }}" method="post" id="compareForm{{ $bestSelling[0]->id }}">
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $bestSelling[0]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
-                    </form>                    @if(\Auth::user())
+                    </form>
+
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[0]->id]) }}" method="post" id="wishlistForm{{ $bestSelling[0]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $bestSelling[0]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                    </form>
+
+                                    @if(\Auth::user())
 
                     <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
@@ -363,7 +392,14 @@
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[1]->id]) }}" method="post" id="compareForm{{ $bestSelling[1]->id }}">
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $bestSelling[1]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
-                    </form>                    @if(\Auth::user())
+                    </form>
+
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[1]->id]) }}" method="post" id="wishlistForm{{ $bestSelling[1]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $bestSelling[1]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                    </form>
+                            @if(\Auth::user())
 
                     {{-- @if($bestSelling[1]->type == 'file' and $bestSelling[1]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                       <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[1]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
@@ -406,7 +442,14 @@
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[2]->id]) }}" method="post" id="compareForm{{ $bestSelling[2]->id }}">
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $bestSelling[2]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
-                    </form>                    @if(\Auth::user())
+                    </form>
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[2]->id]) }}" method="post" id="wishlistForm{{ $bestSelling[2]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $bestSelling[2]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                    </form>
+
+                          @if(\Auth::user())
 
                     {{-- @if($bestSelling[2]->type == 'file' and $bestSelling[2]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                         <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[2]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
@@ -447,7 +490,14 @@
                     <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[3]->id]) }}" method="post" id="compareForm{{ $bestSelling[3]->id }}">
                         @csrf
                         <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $bestSelling[3]->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
-                    </form>                    @if(\Auth::user())
+                    </form>
+
+                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$bestSelling[3]->id]) }}" method="post" id="wishlistForm{{ $bestSelling[3]->id }}">
+                        @csrf
+
+                      <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $bestSelling[3]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                    </form>
+                        @if(\Auth::user())
                     {{-- @if($bestSelling[3]->type == 'file' and $bestSelling[3]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                           <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[3]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                           @else --}}
