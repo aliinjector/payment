@@ -17,7 +17,7 @@ class Cart extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Product')->get();
+        return $this->belongsToMany('App\Product')->withTrashed();
     }
     public function cartProduct()
     {

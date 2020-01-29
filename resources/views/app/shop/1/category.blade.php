@@ -52,6 +52,7 @@
         </form>
         <div class="row col-lg-12 {{ $products->count() == null ? 'd-flex justify-content-center mt-4' : '' }}">
             @if($products->count() != null)
+
                 @foreach ($productsPaginate as $product)
                 <div class="col-lg-3 row">
                     <div class="card e-co-product min-height-60 col-lg-12">
@@ -93,7 +94,7 @@
                             <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
-                                <button type="submit" class="btn-add-to-cart btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                                <button type="submit" @if($product->colors->count() != 0) data-col="true" @endif class="btn-add-to-cart btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                                     @if($product->type == 'file'){{ __('app-shop-1-category.daryafteFile') }}
                                         @else {{ __('app-shop-1-category.addToCart') }}
                                         @endif</button>
@@ -162,9 +163,10 @@ $('li.color-sel').click(function() {
   if ($("#color-selection").length == 0){
   if ($("li.color-select").hasClass("active")) {
     var colorId = $("li.color-select > a").data('color');
-    $("button.tt-btn-addtocart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+   $("button.btn-add-to-cart").filter("[data-col='true']").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
   }
   }
+
   //when the Add Field button is clicked
   $('.options-color').on('click', function() {
     var colorId = $(this).data('color');
@@ -172,7 +174,7 @@ $('li.color-sel').click(function() {
   if ($("#color-selection").length > 0){
     $("#color-selection").remove();
   }
-    $("button.tt-btn-addtocart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+    $("button.btn-add-to-cart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
   });
 
   </script>

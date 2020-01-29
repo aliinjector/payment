@@ -28,7 +28,7 @@
                                                   <!--end tr-->
                                               </thead>
                                               <tbody
-                                                @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products() as $product)
+                                                @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products()->get() as $product)
                                                   <tr class="byekan">
                                                       <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></a></td>
                                                       <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>

@@ -1,8 +1,8 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
 <div class="row">
-    <div class="col-lg-12">
-        <div class="card">
+    <div class="col-lg-12 p-5">
+        <div class="card p-4">
             @if(isset($wishlistProducts))
 
             <div class="card-body font-18">

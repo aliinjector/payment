@@ -55,20 +55,3 @@
             $('#submit').trigger('submit');
         });
     });
-
-
-    if ($("#color-selection").length == 0){
-    if ($("li.color-select").hasClass("active")) {
-      var colorId = $("li.color-select > a").data('color');
-      $("button.btn-add-to-cart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
-    }
-    }
-    //when the Add Field button is clicked
-    $('.options-color').on('click', function() {
-      var colorId = $(this).data('color');
-    //Append a new row of code to the "#items" div
-    if ($("#color-selection").length > 0){
-      $("#color-selection").remove();
-    }
-      $("button.btn-add-to-cart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
-    });
