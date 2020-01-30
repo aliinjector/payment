@@ -14,7 +14,12 @@ class UserPurchasesController extends Controller
 
       public function userPurchaseList() {
           $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
-          return view("app.shop.user-purchased-list", compact('purchases'));
+          return view("app.shop.account.userPurchases", compact('purchases'));
+      }
+
+      public function showPurchase($id){
+        $purchase = \auth::user()->purchases()->where('id', $id)->get()->first();
+        return view("app.shop.account.purchaseShow", compact('purchase'));
       }
 
 

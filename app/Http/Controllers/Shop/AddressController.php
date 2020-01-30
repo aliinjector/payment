@@ -17,7 +17,7 @@ class AddressController extends Controller
     public function index()
     {
       $user_addresses = \auth()->user()->addresses;
-      return view("app.shop.2.account.account-address", compact('user_addresses'));
+      return view("app.shop.account.account-address", compact('user_addresses'));
     }
 
     /**
@@ -27,7 +27,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-      return view("app.shop.2.account.account-address-create");
+      return view("app.shop.account.account-address-create");
     }
 
     /**
@@ -70,7 +70,7 @@ class AddressController extends Controller
     public function edit($id)
     {
       $address = Address::find($id);
-      return view("app.shop.2.account.account-address-edit", compact('address'));
+      return view("app.shop.account.account-address-edit", compact('address'));
 
     }
 
