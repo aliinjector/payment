@@ -26,93 +26,12 @@
 <div id="tt-pageContent" class="d-flex justify-content-center">
    <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
       @include('dashboard.layouts.errors')
-      <div class="card-body invoice-head">
-         <div class="row justify-content-around p-2 d-none printable">
-            <img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="35">
-            <div class="row">
-               <b class="mx-1">شماره : </b> 23443
-            </div>
-            <div class="row">
-               <b class="mx-1">تاریخ : </b> 1399/3/3
-            </div>
-         </div>
-         <div class="row border">
-            <h5 class="col-lg-12 d-flex justify-content-center bg-gray p-2 border">مشخصات فروشنده :</h5>
-            <div>
-               <div class="row">
-                  <div class="items p-3">
-                     <b class="mr-5">نام فروشگاه :</b> {{ $shop->name }}
-                     <b class="mr-5">تلفن فروشگاه :</b> {{ $shop->shopContact->tel }}
-                     <b class="mr-5">ایمیل فروشگاه :</b> {{ $shop->shopContact->shop_email }}
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="items p-3">
-                     <b class="mr-5">کد اقتصادی فروشگاه :</b> {{ $shop->invoice->economic_code_number }}
-                     <b class="mr-5">شماره ثبت فروشگاه :</b> {{ $shop->invoice->registration_number‌_number }}
-                     <b class="mr-5">آدرس فروشگاه :</b> {{ $shop->shopContact->address }}
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="row border mb-4 d-none printable">
-            <h5 class="col-lg-12 d-flex justify-content-center bg-gray p-2 border">مشخصات خریدار :</h5>
-            <div>
-               <div class="row">
-                  <div class="items p-3">
-                     <b class="mx-3">نام و نام خانوادگی :</b> test
-                     <b class="mx-3">شماره خریدار :</b> test
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="items p-3">
-                     <b class="mx-3">آدرس خریدار :</b> test
-                     <b class="mx-3">ایمیل خریدار :</b> test
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-4 align-self-center">
-               <img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="26">
-               <p class="mt-2 mb-0 text-muted">{{ $shop->description }}.</p>
-            </div>
-            <!--end col-->
-            <div class="col-md-8">
-               <ul class="list-inline mb-0 contact-detail float-right">
-                  <li class="list-inline-item">
-                     <div class="pr-3">
-                        <i class="mdi mdi-web"></i>
-                        <p class="text-muted mb-0">www.modirproje/{{ $shop->english_name }}.com</p>
-                        <p class="text-muted mb-0"><br></p>
-                     </div>
-                  </li>
-                  <li class="list-inline-item">
-                     <div class="pr-3">
-                        <i class="mdi mdi-phone"></i>
-                        <p class="text-muted mb-0">{{ $shop->shopContact->tel }}</p>
-                        <p class="text-muted mb-0">{{ $shop->shopContact->phone }}</p>
-                     </div>
-                  </li>
-                  <li class="list-inline-item">
-                     <div class="pr-3">
-                        <i class="mdi mdi-map-marker"></i>
-                        <p class="text-muted mb-0">{{ $shop->shopContact->city }} {{ $shop->shopContact->province }}</p>
-                        <p class="text-muted mb-0">{{ $shop->shopContact->address }}</p>
-                     </div>
-                  </li>
-               </ul>
-            </div>
-            <!--end col-->
-         </div>
-         <!--end row-->
-      </div>
+
       <!--end card-body-->
       <div class="card-body">
          <div class="row">
             <div class="col-md-12 mb-3">
-               <div class="d-flex d-flex justify-content-between">
-                  <h6 class="mb-0"><b>تاریخ ثبت فاکتور :</b> {{ jdate() }}</h6>
+               <div class="d-flex d-flex justify-content-end">
                   <a href="{{ route('user-cart' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
                   <button class="btn rounded d-none-print tt-btn-addtocart"><i class="fa fa-undo pl-1"></i>سبد خرید</button>
                   </a>
@@ -210,6 +129,8 @@
                                  <td>% 9</td>
                               </tr>
                               @endif
+                              @if($product->type != 'file')
+
                               <tr>
                                  <td class="payment-title"> روش ارسال :</td>
                                  <td>
@@ -245,7 +166,6 @@
                                           </div>
                                           @endif
                                        </li>
-                                       @if($product->type != 'file')
 
                                        <li class="mt-2 "><span class=" showAddresses btn tt-btn-addtocart font-weight-bolder">انتخاب آدرس
                                           </span>
@@ -274,10 +194,14 @@
                                       <ul class="list-unstyled mb-0">
                                           <li>
                                               @if($shop->cash_payment == 'enable')
+                                                @if($product->type != 'file')
+
                                                   <div class="radio radio-info">
                                                       <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked" style="height:13px!important;width:13px!important">
                                                       <label for="cash_payment">پرداخت نقدی</label>
                                                   </div>
+
+                                                  @endif
                                                   @endif
                                               @if($shop->online_payment == 'enable')
                                                   <div class="radio radio-info">

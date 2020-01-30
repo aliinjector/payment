@@ -82,7 +82,7 @@
                                             @endif
                                           </span></td>
                                         <td>{{ number_format($purchase->total_price -  $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price)}}</td>
-                                        <td>{{ number_format(($purchase->total_price -  $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price) + $product->price) }}
+                                        <td>{{ number_format($purchase->shipping_price) }}
 
                                         </td>
                                         <td>

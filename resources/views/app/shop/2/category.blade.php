@@ -180,7 +180,7 @@
 											<form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
 												@csrf
 												<input type="hidden" name="product_id" value="{{$product->id}}">
-												<button type="submit" class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
+												<button type="submit" @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
 													@if($product->type == 'file'){{ __('app-shop-2-category.daryafteFile') }}
 														@else {{ __('app-shop-2-category.addToCart') }}
 														@endif</button>

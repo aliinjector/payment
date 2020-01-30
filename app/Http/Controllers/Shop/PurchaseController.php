@@ -232,6 +232,7 @@ class PurchaseController extends Controller
               }
 
           $purchase->shipping = $request->shipping_way;
+          $purchase->shipping_price = $shopShippingWayPrice;
           $purchase->payment_method = $request->payment_method;
           $shop = Shop::where('english_name', $shop)->first();
 

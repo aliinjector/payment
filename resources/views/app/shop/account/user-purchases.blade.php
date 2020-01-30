@@ -22,6 +22,7 @@
       font-size: 16px;
       font-weight: bolder;
     }
+
     </style>
     @toastr_css
 </head>
@@ -39,10 +40,10 @@
                                 <thead>
                                     <tr>
                                         <th>سفارش</th>
-                                        <th>تاریخ ثبت</th>
                                         <th>نوع پرداخت</th>
                                         <th>وضعیت سفارش</th>
                                         <th>مبلغ کل</th>
+                                        <th>تاریخ ثبت</th>
                                         <th>عملیات</th>
                                     </tr>
                                 </thead>
@@ -50,14 +51,17 @@
                                   @php
                                     $id = 1;
                                   @endphp
-                                  @foreach (\auth::user()->purchases()->get() as $purchase)
+                                  @foreach ($purchases as $purchase)
                                     <tr>
-                                        <td><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
-                                        <td>{{ jdate($purchase->created_at) }}</td>
+                                        <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
                                         <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
                                         <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
                                         <td>{{ number_format($purchase->total_price) }} تومان</td>
-                                        <td><a href="{{ route('user.purchased.list.show', $purchase->id) }}" class="btn text-white rounded byekan m-1">مشاهده سفارش</a></td>
+                                        <td>{{ jdate($purchase->created_at) }}</td>
+                                        <td>
+                                          <a href="{{ route('user.purchased.list.show', $purchase->id) }}" class="btn text-white rounded byekan m-1">مشاهده سفارش</a>
+                                          <a href="{{ route('user.purchased.list.show.invoice', $purchase->id) }}" class="btn text-white rounded byekan m-1" style="  padding: 20px 36px!important;background-color: #28a745;background-image: linear-gradient(-180deg,#34d058,#28a745 90%);">فاکتور سفارش</a>
+                                        </td>
                                     </tr>
                                     @php
                                       $id ++

@@ -22,7 +22,6 @@ class CreateInvoicesTable extends Migration
           $table->enum('number',['enable', 'disable'])->nullable();
           $table->enum('custom_info',['enable', 'disable'])->nullable();
           $table->enum('seller_info',['enable', 'disable'])->nullable();
-          $table->enum('approved',['enable', 'disable'])->nullable();
           $table->enum('address',['enable', 'disable'])->nullable();
           $table->enum('tel',['enable', 'disable'])->nullable();
           $table->enum('email',['enable', 'disable'])->nullable();

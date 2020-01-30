@@ -21,6 +21,7 @@ class CreateUserPurchasesTable extends Migration
             $table->integer('total_price');
             $table->string('address')->nullable();
             $table->string('shipping')->nullable();
+            $table->integer('shipping_price')->nullable();
             $table->string('payment_method');
             $table->integer('status')->default(0);
             $table->timestamps();

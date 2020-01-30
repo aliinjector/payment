@@ -156,6 +156,7 @@
                                                 <td>% 9</td>
                                             </tr>
                                             @endif
+                                            @if($product->type != 'file')
 
                                             <tr>
                                                 <td class="payment-title"> روش ارسال :</td>
@@ -192,7 +193,6 @@
                                                                     </div>
                                                                     @endif
                                                         </li>
-                                                        @if($product->type != 'file')
 
                                                         <li class="mt-2 "><span class=" showAddresses btn btn-soft-primary font-weight-bolder">انتخاب آدرس
                                                             </span>
@@ -235,10 +235,13 @@
                                                     <ul class="list-unstyled mb-0">
                                                         <li>
                                                             @if($shop->cash_payment == 'enable')
+                                                              @if($product->type != 'file')
+
                                                                 <div class="radio radio-info">
                                                                     <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked">
                                                                     <label for="cash_payment">پرداخت نقدی</label>
                                                                 </div>
+                                                              @endif
                                                                 @endif
                                                             @if($shop->online_payment == 'enable')
                                                                 <div class="radio radio-info">

@@ -13,14 +13,31 @@ class UserPurchasesController extends Controller
 {
 
       public function userPurchaseList() {
-          $purchases = \auth::user()->purchases()->orderBy('id', 'ASC')->get();
-          return view("app.shop.account.userPurchases", compact('purchases'));
+          $purchases = \auth::user()->purchases()->orderBy('created_at', 'desc')->get();
+          return view("app.shop.account.user-purchases", compact('purchases'));
       }
+
+
+
 
       public function showPurchase($id){
         $purchase = \auth::user()->purchases()->where('id', $id)->get()->first();
-        return view("app.shop.account.purchaseShow", compact('purchase'));
+        return view("app.shop.account.purchase-show", compact('purchase'));
       }
+
+
+
+
+
+      public function showInvoice($purchaseId) {
+        $purchase = \auth::user()->purchases()->where('id', $purchaseId)->get()->first();
+        $cart = $purchase->cart()->withTrashed()->get()->first();
+        $shop = $purchase->shop;
+        $shopCategories = $shop->ProductCategories()->get();
+        $products = $cart->products;
+        return view("app.shop.account.invoice", compact('purchase','products','shop','purchase','shopCategories'));
+
+          }
 
 
 

@@ -732,15 +732,6 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem7') }}</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name="approved">
-                                    <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemEnable') }}</option>
-                                    <option value="disable" @if(\Auth::user()->shop()->first()->invoice->approved == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem8') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="address">

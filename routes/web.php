@@ -183,6 +183,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     //User-pruchased List
     Route::get('/user-purchased-list', 'UserPurchasesController@userPurchaseList')->name('user.purchased.list');
     Route::get('/user-purchased-list/show/{id}', 'UserPurchasesController@showPurchase')->name('user.purchased.list.show');
+    Route::get('/user-purchased-list/invoice/{id}', 'UserPurchasesController@showInvoice')->name('user.purchased.list.show.invoice');
 
     //Address
     Route::resource('/user-address', 'AddressController');

@@ -22,7 +22,10 @@ class RedirectIfAuthenticated
             return redirect('/'.request()->shop);
 
           }
-            return redirect('/');
+          if(Auth::user()->type == 'user'){
+            return redirect()->route('dashboard.index');
+          }
+            return redirect()->route('user.purchased.list');
         }
 
         return $next($request);

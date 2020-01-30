@@ -68,6 +68,7 @@ class CartController extends \App\Http\Controllers\Controller {
             $cart->status = 0;
             $cart->save();
         }
+
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shop)->get()->first()->id;
@@ -78,7 +79,7 @@ class CartController extends \App\Http\Controllers\Controller {
 
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
               if (\Auth::user()->cart()->count() != 0) {
-                foreach(\Auth::user()->cart()->get()->first()->products() as $singleCartProduct){
+                foreach(\Auth::user()->cart()->get()->first()->products()->get() as $singleCartProduct){
                   if($singleCartProduct->type == 'file' and $product->type != 'file' or $singleCartProduct->type != 'file' and $product->type == 'file'){
                     alert()->error('نمیتوان همزمان فایل و کالای غیر فایلی به سبد خرید اضافه کرد', 'خطا');
                     return redirect()->back();

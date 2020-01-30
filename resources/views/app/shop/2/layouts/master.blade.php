@@ -663,7 +663,8 @@
 if ($("#color-selection").length == 0){
 if ($("li.color-select").hasClass("active")) {
   var colorId = $("li.color-select > a").data('color');
-  $("button.tt-btn-addtocart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+  console.log(colorId);
+  $("button.tt-btn-addtocart").filter("[data-col='true']").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
 }
 }
 //when the Add Field button is clicked
