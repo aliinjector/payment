@@ -21,6 +21,7 @@ class PurchaseController extends Controller
 {
 
   public function approved($shopName, $productId, Request $request) {
+    dd();
     $shop = Shop::where('english_name', $shopName)->first();
     $product = Product::where('id', $productId)->get()->first();
     $shopCategories = $shop->ProductCategories()->get();
@@ -141,8 +142,14 @@ class PurchaseController extends Controller
         $template_folderName = $shop->template->folderName;
           foreach($request->except('_token') as $productId => $quantity){
             $product = Product::find($productId);
+            if($product->off_price != null){
+              $productPrice = $product->off_price;
+            }
+            else{
+              $productPrice = $product->price;
+            }
             if(RequestFacade::server('HTTP_REFERER') !== route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id])){
-              DB::table('cart_product')->where([['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->update(['quantity' => $quantity, 'total_price' => $product->price * $quantity]);
+              DB::table('cart_product')->where([['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->update(['quantity' => $quantity, 'total_price' => $productPrice * $quantity]);
             }
         }
         $total_price = 0;
@@ -152,7 +159,6 @@ class PurchaseController extends Controller
         $cartUpdate = $cart->update([
           'total_price' => $total_price,
           ]);
-
         return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
 
@@ -160,28 +166,12 @@ class PurchaseController extends Controller
 
 
 
-      public function purchaseSubmit($shop, $cartID, Request $request) {
-
+      public function purchaseSubmit($shopName, $cartID, Request $request) {
+          $cart = \Auth::user()->cart()->get()->first();
+          $shop = Shop::where('english_name', $shopName)->first();
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
-          $cart = \Auth::user()->cart()->get()->first()->id;
-          $productsID = [];
-          $quantity = [];
-          $productTotal_price = [];
-          foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
-              $productsID[] = $a->product_id;
-              $quantity[] = $a->quantity;
-              $productTotal_price[] = $a->total_price;
-          }
-          $products = [];
-          foreach ($productsID as $productID) {
-              $product = Product::where('id', $productID)->get()->first();
-              $products[] = $product;
-          }
-          $cart = Cart::where('id', $cartID)->get()->first();
-          $shopId = Shop::where('english_name', $shop)->get()->first()->id;
-          $product = $products[0];
           // address and new addres validation condition
-          if($product->type != 'file'){
+          if($cart->cartProduct[0]->type != 'file'){
 
           if (!isset($request->address)) {
 
@@ -193,11 +183,11 @@ class PurchaseController extends Controller
         }
         $shipping = $request->shipping_way;
         $shipping_price = $shipping.'_price';
-        $shopShippingWayPrice = Shop::where('english_name', $shop)->get()->first()->$shipping_price;
+        $shopShippingWayPrice = Shop::where('english_name', $shopName)->get()->first()->$shipping_price;
           $purchase = new UserPurchase;
-          $purchase->cart_id = $cartID;
+          $purchase->cart_id = $cart->id;
           $purchase->user_id = \Auth::user()->id;
-          $purchase->shop_id = $shopId;
+          $purchase->shop_id = $shop->id;
           // check if user send new address or select address from his addresses
           if ($request->new_address == null) {
             $purchase->address = $request->address;
@@ -208,15 +198,16 @@ class PurchaseController extends Controller
           $purchase->shipping = $request->shipping_way;
           $purchase->shipping_price = $shopShippingWayPrice;
           $purchase->payment_method = $request->payment_method;
-          $shop = Shop::where('english_name', $shop)->first();
+
           if (Session::get(\Auth::user()->id .'-'. $shop->english_name) == null) {
             if($shop->VAT == 'enable') {
-              $purchase->total_price = (\Auth::user()->cart()->get()->first()->total_price) + (\Auth::user()->cart()->get()->first()->total_price * $shop->VAT_amount / 100) + $shopShippingWayPrice;
+              $purchase->total_price = ($total_price) + ($total_price * $shop->VAT_amount / 100) + $shopShippingWayPrice;
             }
             else{
-              $purchase->total_price = \Auth::user()->cart()->get()->first()->total_price + $shopShippingWayPrice;
+              $purchase->total_price = $total_price + $shopShippingWayPrice;
             }
           }
+
           else {
             $voucher = Voucher::where('code' , Session::get('voucher_code'))->get()->first();
             if($shop->VAT == 'enable') {
@@ -226,6 +217,7 @@ class PurchaseController extends Controller
               $purchase->total_price = Session::get(\Auth::user()->id .'-'. $shop->english_name) + $shopShippingWayPrice;
             }
           }
+
           $purchase->save();
           // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
           if(isset($voucher)){
@@ -241,6 +233,7 @@ class PurchaseController extends Controller
           SEOTools::opengraph()->addProperty('type', 'website');
           return redirect()->route('user.purchased.list', ['userID' => \auth::user()->id]);
       }
+
 
 
 
