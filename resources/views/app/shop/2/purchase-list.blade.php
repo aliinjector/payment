@@ -249,7 +249,6 @@
             <div class="input-group-append">
             <button type="submit" class="btn tt-btn-addtocart  mt-4">ثبت فاکتور</button>
             </form>
-            <button onclick="print_invoice()" class="btn tt-btn-addtocart text-white mt-4 mr-2">چاپ فاکتور</button>
             </div>
             </div>
             </div>

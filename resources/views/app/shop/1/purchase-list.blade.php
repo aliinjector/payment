@@ -198,26 +198,13 @@
                                                             </span>
                                                         </li>
                                                         <li>
+                                                           @foreach (\auth::user()->addresses as $address)
 
-                                                            @if(isset(\auth::user()->userInformation()->get()->first()->address))
-                                                                <div class="radio radio-info mt-3 d-none address_1">
-                                                                    <input type="radio" name="address" id="address_1" value="address_1" checked>
-                                                                    <label class="min-width-100-fix" for="address_1">{{ \auth::user()->userInformation()->get()->first()->address }}</label>
-                                                                </div>
-                                                                @endif
-                                                                @if(isset(\auth::user()->userInformation()->get()->first()->address_2))
-                                                                    <div class="radio radio-info mt-3 d-none address_2">
-                                                                        <input type="radio" name="address" id="address_2" value="address_2">
-                                                                        <label class="min-width-100-fix" for="address_2">{{ \auth::user()->userInformation()->get()->first()->address_2 }}</label>
-                                                                    </div>
-                                                                    @endif
-                                                                    @if(isset(\auth::user()->userInformation()->get()->first()->address_3))
-                                                                        <div class="radio radio-info mt-3 d-none address_3">
-                                                                            <input type="radio" name="address" id="address_3" value="address_3">
-                                                                            <label class="min-width-100-fix" for="address_3">{{ \auth::user()->userInformation()->get()->first()->address_3 }}</label>
-                                                                        </div>
-                                                                        @endif
-
+                                                           <div class="mt-3 d-none address border-bottom p-2 radio radio-info">
+                                                              <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->address }}">
+                                                              <label class="min-width-100-fix" for="{{ $address->id }}">{{ $address->address }}</label>
+                                                           </div>
+                                                           @endforeach
                                                         </li>
                                                       @endif
 
@@ -283,7 +270,6 @@
                         <div class="input-group-append">
                             <button type="submit" class="btn bg-blue-omid text-white mt-4">ثبت فاکتور</button>
                             </form>
-                            <button onclick="print_invoice()" class="btn bg-orange-omid text-white mt-4 mr-2">چاپ فاکتور</button>
                         </div>
                     </div>
                 </div>
