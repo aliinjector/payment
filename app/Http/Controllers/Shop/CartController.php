@@ -45,8 +45,8 @@ class CartController extends \App\Http\Controllers\Controller {
      * @param  \App\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show($shop) {
-        $shop = Shop::where('english_name', $shop)->first();
+    public function show($shopName) {
+        $shop = Shop::where('english_name', $shopName)->first();
         $cart = \Auth::user()->cart()->get()->first();
         $shopCategories = $shop->ProductCategories()->get();
         $template_folderName = $shop->template->folderName;
@@ -60,6 +60,7 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
 
+
     public function addToCart($shop, $userID, Request $request) {
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
@@ -68,7 +69,6 @@ class CartController extends \App\Http\Controllers\Controller {
             $cart->status = 0;
             $cart->save();
         }
-
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shop)->get()->first()->id;
@@ -76,7 +76,6 @@ class CartController extends \App\Http\Controllers\Controller {
         if($request->quantity == null){
           $request->merge(['quantity' => 1]);
         }
-
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
               if (\Auth::user()->cart()->count() != 0) {
                 foreach(\Auth::user()->cart()->get()->first()->products()->get() as $singleCartProduct){
@@ -95,6 +94,9 @@ class CartController extends \App\Http\Controllers\Controller {
             return redirect()->back();
         }
     }
+
+
+
 
 
 
