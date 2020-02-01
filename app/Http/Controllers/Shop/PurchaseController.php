@@ -20,42 +20,32 @@ use Artesaos\SEOTools\Facades\SEOTools;
 class PurchaseController extends Controller
 {
 
-  public function approved($shopName, $productId, Request $request) {
-    dd();
+  public function approved($shopName, Request $request) {
+    // dd($request->all());
     $shop = Shop::where('english_name', $shopName)->first();
-    $product = Product::where('id', $productId)->get()->first();
     $shopCategories = $shop->ProductCategories()->get();
-    $total_price = \Auth::user()->cart()->get()->first()->total_price;
-    $cart = \Auth::user()->cart()->get()->first()->id;
+    $cart = \Auth::user()->cart()->get()->first();
+    $total_price = $cart->total_price;
     $voucher = Voucher::where('code' , $request->code)->get()->first();
     $userID = \Auth::user()->id;
     $userVoucherName =  \Auth::user()->firstName .' '.   \Auth::user()->lastName . '-' . \Auth::user()->email;
+    // code for this shop check
       if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first() == null) {
-          $productsID = [];
-          $quantity = [];
-          $productTotal_price = [];
-          foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
-              $productsID[] = $a->product_id;
-              $quantity[] = $a->quantity;
-              $productTotal_price[] = $a->total_price;
-          }
-          $products = [];
-          foreach ($productsID as $productID) {
-              $product = Product::where('id', $productID)->get()->first();
-              $products[] = $product;
-          }
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
-
-          $template_folderName = $shop->template->folderName;
-
-          return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'products', 'quantity', 'productTotal_price', 'total_price'));
+          return redirect()->back();
       }
+
       if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
+
+        //first purchase chekc
         if(Voucher::where('code', $request->code)->get()->first()->first_purchase == 'enable' and \Auth::user()->purchases()->where('shop_id', $shop->id)->get()->count() != 0){
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
           return redirect()->back();
         }
-        if(Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->users == null){
+
+        //check if is not for certain users and its for all users
+        if(Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ]])->get()->first()->users == null){
+          // code is one time use and user use it before check
           if($voucher->disposable == 'enable'){
             $userVoucherUse = UserVoucher::where([['user_id', $userID], ['voucher_id', $voucher->id], ['shop_id', $shop->id]])->first();
             if($userVoucherUse){
@@ -63,28 +53,15 @@ class PurchaseController extends Controller
               return redirect()->back();
             }
           }
-          $productsID = [];
-          $quantity = [];
-          $productTotal_price = [];
-          foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
-              $productsID[] = $a->product_id;
-              $quantity[] = $a->quantity;
-              $productTotal_price[] = $a->total_price;
-          }
-          $products = [];
-          foreach ($productsID as $productID) {
-              $product = Product::where('id', $productID)->get()->first();
-              $products[] = $product;
-          }
-          $cartTotalPrice = \Auth::user()->cart()->get()->first()->total_price;
-          $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
-          $discountedPrice = $cartTotalPrice - $voucherDiscount;
-          Session::put( \Auth::user()->id .'-'. $shop->english_name, $discountedPrice);
-          Session::put('voucher_code', $request->code);
-          alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-          $template_folderName = $shop->template->folderName;
-
-          return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
+          //approved voucher and decrease price
+          $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
+          $discountedPrice = $total_price - $voucherDiscountAmount;
+          // dd($voucherDiscountAmount);
+          $cartUpdate = $cart->update([
+            'total_price' => $discountedPrice,
+            ]);
+           alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
+          return redirect()->back();
         }
         else{
           if($voucher->disposable == 'enable'){
@@ -94,29 +71,13 @@ class PurchaseController extends Controller
               return redirect()->back();
             }
           }
-          $voucherId = Voucher::where('code', $request->code)->get()->first()->id;
-          if(collect($this->getVochersUsers($voucherId))->contains($userVoucherName)){
-            $productsID = [];
-            $quantity = [];
-            $productTotal_price = [];
-            foreach (DB::table('cart_product')->where('cart_id', '=', $cart)->get() as $a) {
-                $productsID[] = $a->product_id;
-                $quantity[] = $a->quantity;
-                $productTotal_price[] = $a->total_price;
-            }
-            $products = [];
-            foreach ($productsID as $productID) {
-                $product = Product::where('id', $productID)->get()->first();
-                $products[] = $product;
-            }
-            $cartTotalPrice = \Auth::user()->cart()->get()->first()->total_price;
-            $voucherDiscount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
-            $discountedPrice = $cartTotalPrice - $voucherDiscount;
-            Session::put(\Auth::user()->id .'-'. $shop->english_name, $discountedPrice);
-            Session::put('voucher_code', $request->code);
-            alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-            $template_folderName = $shop->template->folderName;
-            return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'product', 'discountedPrice', 'voucherDiscount', 'products', 'quantity', 'productTotal_price', 'total_price'));
+          if(collect($this->getVochersUsers($voucher->id))->contains($userVoucherName)){
+            $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
+            $discountedPrice = $total_price - $voucherDiscountAmount;
+            $cartUpdate = $cart->update([
+              'total_price' => $discountedPrice,
+              ]);            alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
+            return redirect()->back();
           }
           else{
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
