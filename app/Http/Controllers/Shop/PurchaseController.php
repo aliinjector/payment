@@ -54,7 +54,12 @@ class PurchaseController extends Controller
           }
           //approved voucher and decrease price
           $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
+          if($voucher->type == 'number'){
           $discountedPrice = $total_price - $voucherDiscountAmount;
+        }
+        else{
+          $discountedPrice =($total_price) - ($total_price * $voucherDiscountAmount / 100);
+        }
           if($discountedPrice < 0){
             $discountedPrice = 0;
           }
@@ -82,7 +87,12 @@ class PurchaseController extends Controller
           }
           if(collect($this->getVochersUsers($voucher->id))->contains($userVoucherName)){
             $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
+            if($voucher->type == 'number'){
             $discountedPrice = $total_price - $voucherDiscountAmount;
+          }
+          else{
+            $discountedPrice =($total_price) - ($total_price * $voucherDiscountAmount / 100);
+          }
             if($discountedPrice < 0){
               $discountedPrice = 0;
             }
