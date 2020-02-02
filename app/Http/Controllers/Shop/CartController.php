@@ -108,8 +108,13 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function removeFromCart(Request $request){
-        DB::table('cart_product')->where('product_id', '=', $request->id)->where('cart_id', '=', $request->cart)->where('color_id', '=', $request->color)->delete();
-        if(is_null(DB::table('cart_product')->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->first())) {
+      CartProduct::where([
+        ['product_id', '=', $request->id],
+        ['cart_id', '=', $request->cart],
+        ['color_id', '=', $request->color],
+        ])->delete();
+        $cartProduct = CartProduct::where('cart_id', \Auth::user()->cart()->get()->first()->id);
+        if($cartProduct->count() == 0){
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
         }
         alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');

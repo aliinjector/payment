@@ -20,7 +20,6 @@
                             </tr>
                         </thead>
                         <tbody class="">
-
                             <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                                 @csrf
                                 @foreach ($cart->cartProduct as $cartProduct)

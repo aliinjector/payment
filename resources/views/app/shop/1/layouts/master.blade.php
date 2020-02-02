@@ -266,7 +266,7 @@
                     <div class="search-icon d-flex align-items-center ml-5">
                         <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
                             <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">{{ __('app-shop-1-layouts-master.cart') }} <i class="mr-2 fas fa-shopping-cart"></i>
-                                @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
+                                @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->cartProduct()->count() }}
                                     @else 0
                                     @endif</button>
                         </a>
@@ -338,7 +338,7 @@
                 }
             )
         </script>
-      
+
 </body>
 
 </html>
