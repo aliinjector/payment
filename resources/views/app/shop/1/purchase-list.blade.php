@@ -83,21 +83,21 @@
                             <!--end tr-->
                         </thead>
                         <tbody class="iranyekan font-14">
-                          @foreach ($cart->products as $product)
+                          @foreach ($cart->cartProduct as $product)
                             <tr>
                                 <td>
-                                    <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
-                                        <h5 class="mt-0 mb-1">{{ $product->title }}</h5>
+                                    <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->product()->get()->first()->id]) }}">
+                                        <h5 class="mt-0 mb-1">{{ $product->product()->get()->first()->title }}</h5>
                                     </a>
                                 </td>
-                                <td>{{ number_format($product->price) }}</td>
+                                <td>{{ number_format($product->product()->get()->first()->price) }}</td>
                                 <td>
-                                    @if($product->off_price == null) 0
-                                        @else {{ number_format($product->price-$product->off_price)}}
+                                    @if($product->product()->get()->first()->off_price == null) 0
+                                        @else {{ number_format($product->product()->get()->first()->price-$product->product()->get()->first()->off_price)}}
                                         @endif
                                 </td>
-                                <td>{{ $cart->cartProduct->where('product_id' , $product->id)->first()->quantity }}</td>
-                                <td> {{ number_format($cart->cartProduct->where('product_id' , $product->id)->first()->total_price) }} </td>
+                                <td>{{ $cart->cartProduct->where('product_id' , $product->product()->get()->first()->id)->first()->quantity }}</td>
+                                <td> {{ number_format($cart->cartProduct->where('product_id' , $product->product()->get()->first()->id)->first()->total_price) }} </td>
                             </tr>
                             @endforeach
                             <!--end tr-->

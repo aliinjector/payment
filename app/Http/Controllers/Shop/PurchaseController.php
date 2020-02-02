@@ -128,6 +128,7 @@ class PurchaseController extends Controller
               DB::table('cart_product')->where([['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->update(['quantity' => $quantity, 'total_price' => $productPrice * $quantity]);
             }
         }
+
         $total_price = 0;
         foreach($cart->cartProduct as $cartProduct){
           $total_price += $cartProduct->total_price;
