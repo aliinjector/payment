@@ -20,9 +20,17 @@
     body{
       margin: auto;
       font-size: 16px;
-      font-weight: bolder;
-    }
+    font-weight: 500;    }
 
+    th, td {
+      font-family: iranyekan !important;
+    }
+.tt-table-shop-01 thead th{
+  font-size: 18px!important;
+}
+.btn {
+  font-size: 16px!important;
+}
     </style>
     @toastr_css
 </head>
@@ -39,7 +47,7 @@
                             <table class="tt-table-shop-01">
                                 <thead>
                                     <tr>
-                                        <th>سفارش</th>
+                                        <th class="iranyekan">سفارش</th>
                                         <th>نوع پرداخت</th>
                                         <th>وضعیت سفارش</th>
                                         <th>مبلغ کل</th>
@@ -60,7 +68,7 @@
                                         <td>{{ jdate($purchase->created_at) }}</td>
                                         <td>
                                           <a href="{{ route('user.purchased.list.show', $purchase->id) }}" class="btn text-white rounded byekan m-1">مشاهده سفارش</a>
-                                          <a href="{{ route('user.purchased.list.show.invoice', $purchase->id) }}" class="btn text-white rounded byekan m-1" style="  padding: 20px 36px!important;background-color: #28a745;background-image: linear-gradient(-180deg,#34d058,#28a745 90%);">فاکتور سفارش</a>
+                                          <a href="{{ route('user.purchased.list.show.invoice', $purchase->id) }}" class="btn text-white rounded byekan m-1" style="  padding: 20px 37px!important;background-color: #28a745;background-image: linear-gradient(-180deg,#34d058,#28a745 90%);">فاکتور سفارش</a>
                                         </td>
                                     </tr>
                                     @php

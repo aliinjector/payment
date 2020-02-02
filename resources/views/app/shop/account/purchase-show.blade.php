@@ -26,8 +26,17 @@
     body{
       margin: auto;
       font-size: 16px;
-      font-weight: bolder;
+    font-weight: 500;    }
+    th, td,a {
+      font-family: iranyekan !important;
     }
+.tt-table-shop-01 thead th{
+  font-size: 18px!important;
+}
+.btn {
+  font-size: 16px!important;
+}
+
     </style>
     @toastr_css
 </head>
@@ -81,10 +90,10 @@
                                               دریافت حضوری
                                             @endif
                                           </span></td>
-                                        <td>{{ number_format($purchase->total_price -  $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price)}}</td>
-                                        <td>{{ number_format($purchase->shipping_price) }}
-
+                                        <td>
+                                          {{ number_format($purchase->shipping_price) }}
                                         </td>
+                                          <td>{{ number_format($purchase->total_price)}}</td>
                                         <td>
                                           @if($product->type == 'file')
                                               <div class="icon-show row">

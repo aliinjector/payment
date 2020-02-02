@@ -1,4 +1,6 @@
-
+function print_invoice() {
+    window.print();
+}
    $(document).ready(function() {
        $(".showAddresses").click(function() {
            $(".address").removeClass("d-none");
