@@ -26,6 +26,7 @@ class CreateVouchersTable extends Migration
             $table->unsignedInteger('status')->default(1);
             $table->text('users')->nullable();
             $table->enum('first_purchase',['enable', 'disable'])->default('disable');
+            $table->enum('type',['number', 'percentage'])->default('number');
             $table->enum('disposable',['enable', 'disable'])->default('disable');
             $table->timestamp('starts_at')->nullable();
             $table->timestamp('expires_at')->nullable();

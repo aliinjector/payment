@@ -90,3 +90,13 @@ $(document).ready(function(){
         $('.show-tick').addClass("border");
     });
     oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+
+    $('#togBtn').on('change', function() {
+      if($('#placeToggle').attr("placeholder") != "مثال  10000"){
+        $('#placeToggle').attr("placeholder", "مثال  10000");
+      }
+      else{
+        $('#placeToggle').attr("placeholder", "مثال  10 ( نیازی به علامت % نیست)");
+
+      }
+});

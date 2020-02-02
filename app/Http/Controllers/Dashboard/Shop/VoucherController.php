@@ -72,6 +72,10 @@ class VoucherController extends Controller
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
 
+        if($request->type != "on")
+        $request->type = 'percentage';
+        else
+        $request->type = 'number';
         if ( $request->first_purchase != "on")
         $request->first_purchase = 'disable';
         else
@@ -86,6 +90,7 @@ class VoucherController extends Controller
             'shop_id' => $request->shop_id,
             'code' => $this->createRandomPassword(),
             'description' => $request->description,
+            'type' => $request->type,
             'uses' => $request->uses,
             'discount_amount' => $request->discount_amount,
             'users' => $request->users,

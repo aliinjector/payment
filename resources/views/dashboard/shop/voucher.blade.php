@@ -2,6 +2,7 @@
 @section('content')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
+  <link href="{{ asset('/dashboard/assets/css/toggle-button.css') }}" rel="stylesheet">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
@@ -15,6 +16,7 @@
     });
 </script>
 <div class="page-content">
+
     <div class="container-fluid">
         <!-- Page-Title -->
         <div class="row">
@@ -69,8 +71,12 @@
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem4') }}:</span></div>
-                                    <input type="text" class="form-control inputfield" name="discount_amount" placeholder="{{ __('dashboard-shop-voucher.addModalItem4ex') }}">
-                                    <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> {{ __('dashboard-shop-voucher.addModalItem4Left') }}</span></div>
+                                    <input type="text" class="form-control inputfield" id="placeToggle" name="discount_amount" placeholder="مثال : 10 ( نیازی به علامت % نیست)">
+                                    <div class="input-group-append">
+                                      <label class="switch">
+                                        <input type="checkbox" name="type" id="togBtn">
+                                        <div class="slider round">
+                                      <!--ADDED HTML --><span class="on iranyekan">عددی</span><span class="off iranyekan">درصدی</span><!--END--></div></label></div>
 
                                 </div>
 
