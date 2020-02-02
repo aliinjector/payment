@@ -85,7 +85,14 @@ class CartController extends \App\Http\Controllers\Controller {
                   }
                 }
               }
-            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color], ]);
+            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $product->price], ]);
+            $total_price = 0;
+            foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
+              $total_price += $cartProduct->total_price;
+            }
+            $cartUpdate = \Auth::user()->cart()->get()->first()->update([
+              'total_price' => $total_price,
+              ]);
             toastr()->success('افزوده شد.', '');
 
             return redirect()->back();

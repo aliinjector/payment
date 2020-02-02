@@ -227,7 +227,9 @@ class ShopSettingController extends Controller
 
       if(isset($request->slide_category))
       $slide_category = $request->slide_category;
-
+      else
+      $slide_category = null;
+      
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
         'menu_show_count' => $request->menu_show_count,

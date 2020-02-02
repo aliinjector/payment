@@ -59,6 +59,7 @@ class PurchaseController extends Controller
             $cartUpdate = $cart->update([
               'total_price' => $discountedPrice,
               'voucher_status' => 'used',
+              'voucher_id' => $voucher->id,
               ]);
              alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
              return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
@@ -83,6 +84,7 @@ class PurchaseController extends Controller
               $cartUpdate = $cart->update([
                 'total_price' => $discountedPrice,
                 'voucher_status' => 'used',
+                'voucher_id' => $voucher->id,
                 ]);
                alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
                return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
@@ -133,6 +135,7 @@ class PurchaseController extends Controller
         $cartUpdate = $cart->update([
           'total_price' => $total_price,
           'voucher_status' => 'unused',
+          'voucher_id' => null,
           ]);
         return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
@@ -174,32 +177,19 @@ class PurchaseController extends Controller
           $purchase->shipping_price = $shopShippingWayPrice;
           $purchase->payment_method = $request->payment_method;
 
-          if (Session::get(\Auth::user()->id .'-'. $shop->english_name) == null) {
             if($shop->VAT == 'enable') {
               $purchase->total_price = ($total_price) + ($total_price * $shop->VAT_amount / 100) + $shopShippingWayPrice;
             }
             else{
               $purchase->total_price = $total_price + $shopShippingWayPrice;
             }
-          }
 
-          else {
-            $voucher = Voucher::where('code' , Session::get('voucher_code'))->get()->first();
-            if($shop->VAT == 'enable') {
-              $purchase->total_price = (Session::get(\Auth::user()->id .'-'. $shop->english_name)) + (Session::get(\Auth::user()->id .'-'. $shop->english_name) * $shop->VAT_amount / 100) + $shopShippingWayPrice;
-            }
-            else{
-              $purchase->total_price = Session::get(\Auth::user()->id .'-'. $shop->english_name) + $shopShippingWayPrice;
-            }
-          }
 
           $purchase->save();
           // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
-          if(isset($voucher)){
-            DB::table('user_vouchers')->insert(['user_id' => \Auth::user()->id, 'voucher_id' => $voucher->id, 'user_purchase_id' => $purchase->id, 'shop_id' => $shop->id]);
-            Session::pull('voucher_code', $request->code);
+          if($cart->voucher_status == 'used'){
+            DB::table('user_vouchers')->insert(['user_id' => \Auth::user()->id, 'voucher_id' => $cart->voucher_id, 'user_purchase_id' => $purchase->id, 'shop_id' => $shop->id]);
           }
-          Session::pull(\Auth::user()->id .'-'. $shop->english_name);
           DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
           alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
