@@ -21,20 +21,19 @@ class PurchaseController extends Controller
 {
 
   public function approved($shopName, Request $request) {
-    // dd($request->all());
     $shop = Shop::where('english_name', $shopName)->first();
     $shopCategories = $shop->ProductCategories()->get();
     $cart = \Auth::user()->cart()->get()->first();
     $total_price = $cart->total_price;
     $voucher = Voucher::where('code' , $request->code)->get()->first();
     $userID = \Auth::user()->id;
+    $template_folderName = $shop->template->folderName;
     $userVoucherName =  \Auth::user()->firstName .' '.   \Auth::user()->lastName . '-' . \Auth::user()->email;
     // code for this shop check
       if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first() == null) {
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
-          return redirect()->back();
+          return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
-
       if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
 
         //first purchase chekc
@@ -56,12 +55,18 @@ class PurchaseController extends Controller
           //approved voucher and decrease price
           $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
           $discountedPrice = $total_price - $voucherDiscountAmount;
-          // dd($voucherDiscountAmount);
-          $cartUpdate = $cart->update([
-            'total_price' => $discountedPrice,
-            ]);
-           alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-          return redirect()->back();
+          if($cart->voucher_status == 'unused'){
+            $cartUpdate = $cart->update([
+              'total_price' => $discountedPrice,
+              'voucher_status' => 'used',
+              ]);
+             alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
+             return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+          }
+          else{
+            alert()->error('شما قبلا از این کد تخفیف استفاده کردید.', 'خطا');
+            return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+          }
         }
         else{
           if($voucher->disposable == 'enable'){
@@ -74,10 +79,18 @@ class PurchaseController extends Controller
           if(collect($this->getVochersUsers($voucher->id))->contains($userVoucherName)){
             $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             $discountedPrice = $total_price - $voucherDiscountAmount;
-            $cartUpdate = $cart->update([
-              'total_price' => $discountedPrice,
-              ]);            alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-            return redirect()->back();
+            if($cart->voucher_status == 'unused'){
+              $cartUpdate = $cart->update([
+                'total_price' => $discountedPrice,
+                'voucher_status' => 'used',
+                ]);
+               alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
+               return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+            }
+            else{
+              alert()->error('شما قبلا از این کد تخفیف استفاده کردید.', 'خطا');
+              return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+            }
           }
           else{
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
@@ -119,6 +132,7 @@ class PurchaseController extends Controller
         }
         $cartUpdate = $cart->update([
           'total_price' => $total_price,
+          'voucher_status' => 'unused',
           ]);
         return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
       }

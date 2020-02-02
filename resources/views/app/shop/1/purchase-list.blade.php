@@ -116,7 +116,7 @@
                     <!--end table-->
                 </div>
                 <div class="col-lg-6 mt-3 mr-lg-n4 d-none-print">
-                    <form class="form-inline col-lg-12" action="{{ route('approved',['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post">
+                    <form class="form-inline col-lg-12" action="{{ route('approved',['shop'=>$shop->english_name]) }}" method="post">
                         @csrf
                         <input type="text" name="code" class="border-muted form-control col-lg-6 col-md-12 col-sm-12" placeholder="کد" aria-describedby="button-addon2">
                         <button class="btn btn-outline-pink col-lg-6 rounded" type="submit" id="button-addon2">اعمال تخفیف</button>
