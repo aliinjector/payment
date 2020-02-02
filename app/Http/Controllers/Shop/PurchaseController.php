@@ -55,6 +55,9 @@ class PurchaseController extends Controller
           //approved voucher and decrease price
           $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
           $discountedPrice = $total_price - $voucherDiscountAmount;
+          if($discountedPrice < 0){
+            $discountedPrice = 0;
+          }
           if($cart->voucher_status == 'unused'){
             $cartUpdate = $cart->update([
               'total_price' => $discountedPrice,
@@ -80,6 +83,9 @@ class PurchaseController extends Controller
           if(collect($this->getVochersUsers($voucher->id))->contains($userVoucherName)){
             $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             $discountedPrice = $total_price - $voucherDiscountAmount;
+            if($discountedPrice < 0){
+              $discountedPrice = 0;
+            }
             if($cart->voucher_status == 'unused'){
               $cartUpdate = $cart->update([
                 'total_price' => $discountedPrice,
