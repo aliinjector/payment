@@ -73,6 +73,11 @@ class CartController extends \App\Http\Controllers\Controller {
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shop)->get()->first()->id;
         $product = Product::where('id', $request->product_id)->get()->first();
+        if($product->off_price != null){
+          $productPrice = $product->off_price;
+        }else{
+          $productPrice = $product->price;
+        }
         if($request->quantity == null){
           $request->merge(['quantity' => 1]);
         }
@@ -85,7 +90,7 @@ class CartController extends \App\Http\Controllers\Controller {
                   }
                 }
               }
-            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $product->price], ]);
+            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice], ]);
             $total_price = 0;
             foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
               $total_price += $cartProduct->total_price;
