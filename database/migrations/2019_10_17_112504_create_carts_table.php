@@ -21,8 +21,13 @@ class CreateCartsTable extends Migration
             $table->timestamp('expires_at')->nullable();
             $table->integer('total_price');
             $table->enum('voucher_status',['used', 'unused'])->default('unused');
+            $table->bigInteger('voucher_id')->unsigned()->index();
             $table->timestamps();
-            $table->softDeletes( );
+            $table->softDeletes();
+
+
+            $table->foreign('voucher_id')->references('id')->on('vouchers')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

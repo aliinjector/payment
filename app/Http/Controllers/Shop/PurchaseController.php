@@ -26,15 +26,16 @@ class PurchaseController extends Controller
     $cart = \Auth::user()->cart()->get()->first();
     $total_price = $cart->total_price;
     $voucher = Voucher::where('code' , $request->code)->get()->first();
+    $validVoucher = Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ],['uses', '>', 0]])->get()->first();
     $userID = \Auth::user()->id;
     $template_folderName = $shop->template->folderName;
     $userVoucherName =  \Auth::user()->firstName .' '.   \Auth::user()->lastName . '-' . \Auth::user()->email;
     // code for this shop check
-      if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ],['uses', '<=', now() ] ])->get()->first() == null) {
+      if ($validVoucher == null) {
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
           return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
-      if (Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ], ])->get()->first()->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
+      if ($validVoucher != null and $validVoucher->shop_id == Shop::where('english_name', $shopName)->get()->first()->id) {
 
         //first purchase chekc
         if(Voucher::where('code', $request->code)->get()->first()->first_purchase == 'enable' and \Auth::user()->purchases()->where('shop_id', $shop->id)->get()->count() != 0){
@@ -43,7 +44,7 @@ class PurchaseController extends Controller
         }
 
         //check if is not for certain users and its for all users
-        if(Voucher::where([['code', $request->code], ['status', 1], ['expires_at', '>', now() ], ['starts_at', '<', now() ]])->get()->first()->users == null){
+        if($validVoucher != null and $validVoucher->users == null){
           // code is one time use and user use it before check
           if($voucher->disposable == 'enable'){
             $userVoucherUse = UserVoucher::where([['user_id', $userID], ['voucher_id', $voucher->id], ['shop_id', $shop->id]])->first();
@@ -206,7 +207,7 @@ class PurchaseController extends Controller
           // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
           if($cart->voucher_status == 'used'){
             DB::table('user_vouchers')->insert(['user_id' => \Auth::user()->id, 'voucher_id' => $cart->voucher_id, 'user_purchase_id' => $purchase->id, 'shop_id' => $shop->id]);
-            DB::table('vouchers')->decrement('uses');
+            DB::table('vouchers')->where('id', '=', $cart->voucher_id)->decrement('uses');
           }
           DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();

@@ -139,7 +139,6 @@ class VoucherController extends Controller
         $voucher = \Auth::user()->shop()->first()->vouchers()->where('id',$id)->get()->first()->update([
             'name' => $request->name,
             'shop_id' => $request->shop_id,
-            'code' => $this->createRandomPassword(),
             'description' => $request->description,
             'uses' => $request->uses,
             'discount_amount' => $request->discount_amount,
