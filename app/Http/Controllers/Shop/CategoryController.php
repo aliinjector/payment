@@ -83,7 +83,7 @@ class CategoryController extends Controller
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.category", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags','colors'));
+      return view("app.shop.$template_folderName.layouts.partials.products", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags','colors'));
   }
 
 

@@ -14,10 +14,12 @@
 							</div>
 						</div>
 					</div>
+          @isset($category)
 					<div class="tt-collapse">
 						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.zirDasteha') }}</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
+
 								<li class="active"><a href="#">{{ $category->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
 								@foreach($subCategories as $subCategory)
 								<li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}">{{ $subCategory->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
@@ -25,10 +27,15 @@
 							</ul>
 						</div>
 					</div>
+        @endisset
+
 					<div class="tt-collapse">
 						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterGheymat') }}</h3>
 						<div class="tt-collapse-content">
-							<form action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category]) }}" id="submit" method="get">
+							<form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
+              @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'name' => $tag->name ])}}"
+              @else action="{{ route('brand', ['shop' => $shop->english_name,'id' => $brand->id ])}}"
+              @endif id="submit" method="get">
 
 								<ul class="tt-list-row">
 									<input type="text" id="available-price-1" class="w-100 p-2 iranyekan font-14" style="border:0; color:#2979FE !important; font-weight:bold;">
@@ -83,8 +90,8 @@
 						<h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterBrand') }}</h3>
 						<div class="tt-collapse-content">
 							<ul class="tt-list-row">
-								@foreach($brands as $brand)
-								<li><a href="{{ route('brand', ['shop'=>$shop->english_name, 'name'=>$brand->name]) }}">{{ $brand->name }}</a></li>
+								@foreach($brands as $shopBrand)
+								<li><a href="{{ route('brand', ['shop'=>$shop->english_name, 'name'=>$shopBrand->id]) }}">{{ $shopBrand->name }}</a></li>
 								@endforeach
 							</ul>
 							<div class="show-more">
@@ -110,7 +117,7 @@
 				<div class="col-md-12 col-lg-9 col-xl-9">
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 						<div class="tt-filters-options" id="js-tt-filters-options">
-							<h1 class="tt-title">{{ $category->name }} <span class="tt-title-total byekan">({{ $products->count() }})</span></h1>
+							<h1 class="tt-title">@if(isset($category)) {{ $category->name }} @elseif(isset($tag)) {{ $tag->name }} @else {{ $brand->name }} @endif <span class="tt-title-total byekan">({{ $products->count() }})</span></h1>
 							<div class="tt-btn-toggle"><a href="#">{{ __('app-shop-2-category.filter') }}</a></div>
 							<div class="tt-sort d-flex">
 								<select class="available-filter-1" name="sortBy[field]">
@@ -145,7 +152,7 @@
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"></a>
 										</form>
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img class="col-12" src="images/loader.svg" data-src="{{ $product->image['250,250'] }}"
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img class="col-12" src="{{ $product->image['250,250'] }}" data-src="{{ $product->image['250,250'] }}"
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
 									<div class="tt-description">
