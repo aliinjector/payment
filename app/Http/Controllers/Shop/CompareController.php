@@ -14,15 +14,15 @@ use Artesaos\SEOTools\Facades\SEOTools;
 class CompareController extends Controller
 {
 
-      public function index($shop)
+      public function index($shopName)
       {
 
-          if (Shop::where('english_name', $shop)->first() == null) {
+          if (Shop::where('english_name', $shopName)->first() == null) {
               return abort(404);
           }
           $compareProducts = \Auth::user()->compare()->get()->first()->products;
-          $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
-          $shop = Shop::where('english_name', $shop)->first();
+          $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
+          $shop = Shop::where('english_name', $shopName)->first();
           $template_folderName = $shop->template->folderName;
           // toastr()->info('محصولات اضافه شدند.');
 

@@ -32,18 +32,18 @@
      */
     public $discountedPrice;
 
-    public function index($shop) {
+    public function index($shopName) {
 
-      if (Shop::where('english_name', $shop)->first() == null) {
+      if (Shop::where('english_name', $shopName)->first() == null) {
           return abort(404);
       }
 
-      $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
-      if(Shop::where('english_name', $shop)->first()->slide_category != null){
-        $slideCategoryNames = array_slice(Shop::where('english_name', $shop)->first()->slide_category, 0, 3);
+      $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
+      if(Shop::where('english_name', $shopName)->first()->slide_category != null){
+        $slideCategoryNames = array_slice(Shop::where('english_name', $shopName)->first()->slide_category, 0, 3);
         $slideCategories = [];
         foreach($slideCategoryNames as $slideCategoryName){
-          $category = Shop::where('english_name', $shop)->first()->ProductCategories()->where('name', $slideCategoryName)->get()->first();
+          $category = Shop::where('english_name', $shopName)->first()->ProductCategories()->where('name', $slideCategoryName)->get()->first();
            $slideCategories[] =  $category;
         }
       }
@@ -51,7 +51,7 @@
         $slideCategories = null;
       }
 
-      $shop = Shop::where('english_name', $shop)->first();
+      $shop = Shop::where('english_name', $shopName)->first();
       $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
       $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
       $template_folderName = $shop->template->folderName;
@@ -94,12 +94,12 @@
     }
 
 
-    public function downlaodLink(Request $request, $shop, $id) {
+    public function downlaodLink(Request $request, $shopName, $id) {
         if (!$request->hasValidSignature()) {
             abort(401);
         }
-        $uri = Shop::where('english_name', $shop)->get()->first()->products()->where('id', $id)->get()->first()->attachment;
-        $shopId = Shop::where('english_name', $shop)->get()->first()->id;
+        $uri = Shop::where('english_name', $shopName)->get()->first()->products()->where('id', $id)->get()->first()->attachment;
+        $shopId = Shop::where('english_name', $shopName)->get()->first()->id;
         $product = Product::where('id', $id)->get()->first();
         $fileName = explode("_", $uri, 3);
         if (\Auth::guest()) {
@@ -114,14 +114,14 @@
 
 
 
-      public function registerShow($shop)
+      public function registerShow($shopName)
       {
-          if (Shop::where('english_name', $shop)->first() == null) {
+          if (Shop::where('english_name', $shopName)->first() == null) {
               return abort(404);
           }
 
-          $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
-          $shop = Shop::where('english_name', $shop)->first();
+          $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
+          $shop = Shop::where('english_name', $shopName)->first();
           $template_folderName = $shop->template->folderName;
 
           SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
@@ -132,9 +132,9 @@
 
       }
 
-      public function register(UserRequest $request, $shop)
+      public function register(UserRequest $request, $shopName)
       {
-          $shop = Shop::where('english_name', $shop)->first();
+          $shop = Shop::where('english_name', $shopName)->first();
           $user = User::create([
               'firstName' => $request['firstName'],
               'lastName' => $request['lastName'],
@@ -151,14 +151,14 @@
       }
 
 
-      public function login($shop)
+      public function login($shopName)
       {
-          if (Shop::where('english_name', $shop)->first() == null) {
+          if (Shop::where('english_name', $shopName)->first() == null) {
               return abort(404);
           }
 
-          $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
-          $shop = Shop::where('english_name', $shop)->first();
+          $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
+          $shop = Shop::where('english_name', $shopName)->first();
           $template_folderName = $shop->template->folderName;
 
           SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');
@@ -171,14 +171,14 @@
 
 
 
-      public function contact($shop)
+      public function contact($shopName)
       {
-          if (Shop::where('english_name', $shop)->first() == null) {
+          if (Shop::where('english_name', $shopName)->first() == null) {
               return abort(404);
           }
 
-          $shopCategories = Shop::where('english_name', $shop)->first()->ProductCategories()->get();
-          $shop = Shop::where('english_name', $shop)->first();
+          $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
+          $shop = Shop::where('english_name', $shopName)->first();
           $template_folderName = $shop->template->folderName;
 
           SEOTools::setTitle($shop->name . ' | ' . 'صفحه اصلی');

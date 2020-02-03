@@ -9,11 +9,11 @@ use App\Http\Controllers\Controller;
 
 class ProductContoller extends \App\Http\Controllers\Controller
 {
-  public function show($shop, $id) {
-      if (Shop::where('english_name', $shop)->first() == null || Shop::where('english_name', $shop)->first()->products()->where('id', $id)->first() == null) {
+  public function show($shopName, $id) {
+      if (Shop::where('english_name', $shopName)->first() == null || Shop::where('english_name', $shopName)->first()->products()->where('id', $id)->first() == null) {
           return abort(404);
       }
-      $shop = Shop::where('english_name', $shop)->first();
+      $shop = Shop::where('english_name', $shopName)->first();
       $shopCategories = $shop->ProductCategories()->get();
       $product = $shop->products()->where('id', $id)->first();
       // dd($product->rates);

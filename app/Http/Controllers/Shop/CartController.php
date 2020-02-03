@@ -61,17 +61,17 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
 
-    public function addToCart($shop, $userID, Request $request) {
+    public function addToCart($shopName, $userID, Request $request) {
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
             $cart->user_id = \Auth::user()->id;
-            $cart->shop_id = Shop::where('english_name', $shop)->first()->id;
+            $cart->shop_id = Shop::where('english_name', $shopName)->first()->id;
             $cart->status = 0;
             $cart->save();
         }
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
-        $currentshopID = Shop::where('english_name' , $shop)->get()->first()->id;
+        $currentshopID = Shop::where('english_name' , $shopName)->get()->first()->id;
         $product = Product::where('id', $request->product_id)->get()->first();
         if($product->off_price != null){
           $productPrice = $product->off_price;

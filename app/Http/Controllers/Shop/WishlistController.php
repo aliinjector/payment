@@ -15,8 +15,8 @@ class WishlistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-     public function index($shop) {
-      $shop = Shop::where('english_name', $shop)->first();
+     public function index($shopName) {
+      $shop = Shop::where('english_name', $shopName)->first();
       $shopCategories = $shop->ProductCategories()->get();
       $template_folderName = $shop->template->folderName;
       if(\Auth::user()->wishlist != null)
