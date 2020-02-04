@@ -21,6 +21,9 @@ class CategoryController extends Controller
       $category = ProductCategory::where('id', $categroyId)->get()->first();
       $subCategories = $this->getAllSubCategories($categroyId)->where('parent_id',$categroyId);
       $brands = $shop->brands;
+      $shopProducts = $shop->products;
+      $minPriceProduct = $shopProducts->min('price');
+      $maxPriceProduct = $shopProducts->max('price');
       //color product and category product merging
       if($request->color == null){
         $colorAndCategoryProducts = $this->getAllCategoriesProducts((int)$categroyId)->sortByDesc('created_at');
@@ -83,7 +86,7 @@ class CategoryController extends Controller
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.layouts.partials.products", compact('products', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags','colors'));
+      return view("app.shop.$template_folderName.layouts.partials.products", compact('products', 'minPriceProduct', 'maxPriceProduct', 'shopCategories', 'shop', 'category', 'categories', 'productsPaginate', 'subCategories', 'brands', 'shopTags','colors'));
   }
 
 

@@ -22,6 +22,9 @@ class TagController extends Controller
       $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id', null);
       $tag = Tag::where('name', $name)->get()->first();
       $brands = $shop->brands;
+      $shopProducts = $shop->products;
+      $minPriceProduct = $shopProducts->min('price');
+      $maxPriceProduct = $shopProducts->max('price');
       //color product and category product merging
       if($request->color == null){
         $colorAndTagProducts = $tag->products->sortByDesc('created_at');
@@ -85,6 +88,6 @@ class TagController extends Controller
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.layouts.partials.products", compact('products', 'shopCategories', 'shop', 'categories', 'tag', 'productsPaginate', 'brands', 'shopTags','colors'));
+      return view("app.shop.$template_folderName.layouts.partials.products", compact('products','minPriceProduct', 'maxPriceProduct', 'shopCategories', 'shop', 'categories', 'tag', 'productsPaginate', 'brands', 'shopTags','colors'));
     }
 }

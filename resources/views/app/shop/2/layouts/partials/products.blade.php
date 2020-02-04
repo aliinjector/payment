@@ -95,5 +95,32 @@
 
 @section('footerScripts')
 	<script src="{{ asset('/app/shop/2/js/category.js') }}"></script>
+	<script>
+	$(document).ready(function() {
+	  $("#mySlider").slider({
+	    range: true,
+	    min: {{ $minPriceProduct }},
+	    max: {{ $maxPriceProduct }},
+          values: [@if(request()->minprice != null){{request()->minprice}} @else {{ $minPriceProduct }} @endif, @if(request()->maxprice != null){{request()->maxprice}} @else {{ $maxPriceProduct }} @endif],
+	    slide: function(event, ui) {
+	      if (isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true) {
+	        $("#available-price-1").val(" از " +{{ $minPriceProduct }}  + " تومان " + " - " + " تا " +{{ $maxPriceProduct }}  + " تومان ");
+	        $("#available-price-min").val({{ $minPriceProduct }});
+	        $("#available-price-max").val({{ $maxPriceProduct }});
+	      } else {
+	        $("#available-price-1").val(" از " + ui.values[0] + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+	        $("#available-price-min").val(ui.values[0]);
+	        $("#available-price-max").val(ui.values[1]);
+	      }
+	    }
+	  });
+	  if (isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true) {
+	    $("#available-price-1").val(" از " +{{ $minPriceProduct }}  + " تومان " + " - " + " تا " +{{ $maxPriceProduct }}  + " تومان ");
+	  } else {
+	    $("#available-price-1").val(" از " + $("#mySlider").slider("values", 0).toLocaleString('en') + " تومان " +
+	      " - " + " تا " + $("#mySlider").slider("values", 1).toLocaleString('en') + " تومان ");
+	  }
 
+	});
+	</script>
 @endsection

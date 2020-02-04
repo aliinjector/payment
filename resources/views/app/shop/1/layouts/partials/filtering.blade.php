@@ -1,6 +1,6 @@
 @inject('CategoryCTLR', 'App\Http\Controllers\Shop\CategoryController')
 <div class="@if($products->count() != null) col-lg-3 @endif">
-    <div class="card e-co-product" style="max-width: 25rem;">
+    <div class="card e-co-product" style="max-width: 30rem;">
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">{{ __('app-shop-1-layouts-partials-filter.filterType') }}</h5>
         <div class="card-body d-flex justify-content-center text-primary">
             <form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
@@ -24,9 +24,9 @@
                 </label>
             </div>
             <h5 class="text-dark pr-1 border-btm font-weight-500 m-2">{{ __('app-shop-1-layouts-partials-filter.filterPrice') }}</h5>
-            <input type="text" id="available-price-1" class="w-100 p-2 iranyekan font-14" style="border:0; color:#F68712 !important; font-weight:bold;">
-            <input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
-            <input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
+            <input type="text" id="available-price-1" class="w-100 p-4 font-14 byekan" style="border:0; color:#15939D !important; font-weight:bold;">
+            <input type="hidden" id="available-price-min"  name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
+            <input type="hidden" id="available-price-max"  name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
             <div id="mySlider"></div>
 
             <h5 class="text-dark pr-1 border-btm font-weight-500 m-2  mt-5">{{ __('app-shop-1-layouts-partials-filter.filterColor') }}</h5>
@@ -63,7 +63,7 @@
 
 
     </div>
-    <div class="card p-3 align-items-start iranyekan font-15" style="max-width: 25rem;">
+    <div class="card p-3 align-items-start iranyekan font-15" style="max-width: 30rem;">
         <h5 class="text-dark pr-1 border-btm font-weight-500 m-2" style="width: 90%;">{{ __('app-shop-1-layouts-partials-filter.dasteBandiHa') }}</h5>
         <div class="border-0">
             <div class="list-group list-group-root well border-0">

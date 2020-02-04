@@ -22,6 +22,9 @@ class BrandController extends Controller
       $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id', null);
       $brand = Brand::where('id', $id)->get()->first();
       $brands = $shop->brands;
+      $shopProducts = $shop->products;
+      $minPriceProduct = $shopProducts->min('price');
+      $maxPriceProduct = $shopProducts->max('price');
       //color product and category product merging
       if($request->color == null){
         $colorAndBrandProducts = $brand->products->sortByDesc('created_at');
@@ -84,7 +87,7 @@ class BrandController extends Controller
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.layouts.partials.products", compact('products', 'shopCategories', 'brand', 'shop', 'categories', 'productsPaginate', 'brands', 'shopTags','colors'));
+      return view("app.shop.$template_folderName.layouts.partials.products", compact('products','minPriceProduct', 'maxPriceProduct', 'shopCategories', 'brand', 'shop', 'categories', 'productsPaginate', 'brands', 'shopTags','colors'));
       }
 
 }
