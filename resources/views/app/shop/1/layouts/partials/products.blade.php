@@ -1,6 +1,7 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
 <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
+<link rel="stylesheet" href="/app/shop/1/assets/css/jquery.ui.slider-rtl.css" />
 <link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
 
 <div class="row">
@@ -93,9 +94,11 @@
 @section('pageScripts')
   <script src="{{ asset('/app/shop/1/assets/js/category.js') }}"></script>
   <script src="/app/shop/1/assets/js/jquery-ui.js"></script>
+  <script src="/app/shop/1/assets/js/jquery.ui.slider-rtl.js"></script>
   <script>
   $(document).ready(function() {
-      $("#mySlider").slider({
+      $("#mySlider").slider({isRTL: true,
+          isRTL: true,
           range: true,
           min: {{ $minPriceProduct }},
           max: {{ $maxPriceProduct }},
