@@ -191,5 +191,14 @@
 
       }
 
+      public function showFaq($shopName){
+        $shop = Shop::where('english_name', $shopName)->get()->first();
+        $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
+        $shopFaqs = $shop->faqs;
+        $template_folderName = $shop->template->folderName;
+
+        return view("app.shop.$template_folderName.faq", compact('shop','shopCategories', 'shopFaqs'));
+      }
+
 
 }

@@ -221,6 +221,7 @@ Route::namespace('Shop')->group(function () {
     Route::get('/{shop}/tag/{name}', 'TagController@tagProducts')->name('tag');
     Route::get('/{shop}/brand/{id}', 'BrandController@brandProduct')->name('brand');
     Route::post('/{shop}/search/', 'SearchController@index')->name('search');
+    Route::get('/{shop}/faq/', 'ShopController@showFaq')->name('faq.show');
     //Comment
     Route::post('comment', 'CommentController@comment')->middleware('auth');
     Route::post('/comment/answer', 'CommentController@answer')->middleware('auth');
