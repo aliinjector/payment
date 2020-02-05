@@ -36,11 +36,11 @@
                                       <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post" id="addToCartForm{{ $product->id }}">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                                      	<a href="javascript:{}" onclick="document.getElementById('addToCartForm{{ $product->id }}').submit();" class="btn bg-orange-omid text-white rounded byekan m-1"><i class="icon-f-39"></i>اضافه به سبد خرید</a>
+                                      	<a href="javascript:{}" onclick="document.getElementById('addToCartForm{{ $product->id }}').submit();" class="btn bg-orange-omid text-white rounded m-1"><i class="icon-f-39"></i>اضافه به سبد خرید</a>
                                       </form>
 
-                                      <a class="btn bg-blue-omid text-white rounded byekan m-1" target="_blank" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" data-target="#ModalquickView"><i class="icon-f-73"></i>مشاهده محصول</a>
-                                      <a href="#" class="btn btn-danger text-white rounded byekan m-1" id="removeProduct" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist->id }}" data-id="{{ $product->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
+                                      <a class="btn bg-blue-omid text-white rounded m-1" target="_blank" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" data-target="#ModalquickView"><i class="icon-f-73"></i>مشاهده محصول</a>
+                                      <a href="#" class="btn btn-danger text-white rounded m-1" id="removeProduct" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist->id }}" data-id="{{ $product->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

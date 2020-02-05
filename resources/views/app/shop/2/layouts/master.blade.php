@@ -175,7 +175,7 @@
                             <div class="tt-desctop-parent-cart tt-parent-box">
                                 <div class="tt-cart tt-dropdown-obj" data-tooltip="{{ __('app-shop-2-layouts-master.cart') }}" data-tposition="bottom">
                                     <button class="tt-dropdown-toggle"><i class="icon-f-39"></i> <span class="tt-badge-cart ml-1">
-                                            @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->products()->count() }}
+                                      @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->cartProduct()->count() }}
                                                 @else 0
                                                 @endif
                                         </span>

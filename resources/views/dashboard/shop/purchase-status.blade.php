@@ -52,7 +52,6 @@
 
                                 <tbody class="font-18">
                                     @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products()->get() as $product)
-
                                     <tr class="byekan">
                                         <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img src="{{ $product->image['200,100']}}" alt="user"></a></td>
                                         <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
@@ -62,6 +61,7 @@
                                         @else
                                           <td></td>
                                       @endif
+
                                         <td>{{ number_format($product->price) }}</td>
                                         <td>{{ number_format($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price) }}</td>
                                         <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">

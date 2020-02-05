@@ -43,13 +43,6 @@
     <!-- end page title end breadcrumb -->
 
 
-
-
-
-
-
-
-
     <!--Carousel Wrapper-->
     <div style="width: 90%; margin: auto" id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
         <!--Indicators-->
@@ -222,10 +215,6 @@
                       <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProducts[2]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
                     </form>
                                       @if(\Auth::user())
-
-                    {{-- @if($lastProducts[2]->type == 'file' and $lastProducts[2]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
-                <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($lastProducts[2]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
-                @else --}}
                     <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[2]->id}}">
@@ -244,9 +233,6 @@
             <!--end card-->
         </div>
         @endif
-
-        {{-- hjkl--}}
-
         <!--end col-->
         @if(isset($lastProducts[3]))
         <div class="col-lg-3">
@@ -566,7 +552,7 @@
 
         <div class="row mt-5 mb-4">
             <div class="col-12">
-                <div id="carouselContent" class="carousel slide" data-ride="carousel">
+                <div id="carouselContentBrand" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                       @foreach($brands as $brand)
 
@@ -578,11 +564,11 @@
                       @endforeach
                     </a>
                     </div>
-                    <a class="carousel-control-prev bg-orange-omid" href="#carouselContent" role="button" data-slide="prev" style="width: 3%;opacity: 1;">
+                    <a class="carousel-control-prev bg-orange-omid" href="#carouselContentBrand" role="button" data-slide="prev" style="width: 3%;opacity: 1;">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">قبلی</span>
                     </a>
-                    <a class="carousel-control-next bg-orange-omid" href="#carouselContent" role="button" data-slide="next" style="width: 3%;opacity: 1;">
+                    <a class="carousel-control-next bg-orange-omid" href="#carouselContentBrand" role="button" data-slide="next" style="width: 3%;opacity: 1;">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">بعدی</span>
                     </a>
