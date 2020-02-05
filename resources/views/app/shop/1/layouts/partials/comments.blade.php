@@ -7,7 +7,7 @@
         @auth
 
             @if($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-danger p-3 rounded">
                     <p><strong>متاسفانه مشکلی در ارسال نظر رخ داده است:</strong></p>
                     <ul>
                         @foreach ($errors->all() as $error)

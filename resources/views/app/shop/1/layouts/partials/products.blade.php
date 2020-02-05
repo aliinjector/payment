@@ -3,6 +3,26 @@
 <link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
 <div class="row">
     <div class="col-sm-12">
+      <div class="col-sm-3 mt-3">
+          <form class="card card-sm" action="{{ route('search', $shop->english_name) }}" method="post">
+              @csrf
+              <div class="card-body row no-gutters align-items-center">
+                  <div class="col-auto">
+                      <i style="color: #F68712!important;" class="fas fa-search h4 text-body"></i>
+                  </div>
+                  <!--end of col-->
+                  <div class="col">
+                      <input class="form-control form-control-lg form-control-borderless" name="queryy" type="search" placeholder="{{ __('app-shop-1-index.searchPlaceholder') }}...">
+                  </div>
+                  <!--end of col-->
+                  <div class="col-auto">
+                      <button class="btn bg-blue-omid text-white rounded" type="submit">{{ __('app-shop-1-index.jostojoo') }}</button>
+                  </div>
+                  <!--end of col-->
+              </div>
+          </form>
+          <!--end page-title-box-->
+      </div>
         <div class="page-title-box">
             <h4 class="page-title iranyekan">{{ __('app-shop-1-category.forooshgah') }} {{ $shop->name }}</h4>
         </div>

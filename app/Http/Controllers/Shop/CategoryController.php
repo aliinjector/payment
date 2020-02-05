@@ -32,12 +32,16 @@ class CategoryController extends Controller
         $colorProducts = Color::where('code', $request->color)->get()->first()->products;
         $categoryProducts = $this->getAllCategoriesProducts((int)$categroyId);
         $colorAndCategoryProducts = collect();
+        $colorAndCategoryProductsNoRepeat = collect();
         foreach($colorProducts->toBase()->merge($categoryProducts)->groupBy('id') as $allProducts){
         if($allProducts->count() > 1){
           $colorAndCategoryProducts[] = $allProducts;
               }
         }
-      $colorAndCategoryProducts = $colorAndCategoryProducts->first();
+        foreach ($colorAndCategoryProducts as $colorAndCategoryProduct) {
+          $colorAndCategoryProductsNoRepeat[] = $colorAndCategoryProduct->first();
+        }
+      $colorAndCategoryProducts = $colorAndCategoryProductsNoRepeat;
       }
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
         if($colorAndCategoryProducts != null){
