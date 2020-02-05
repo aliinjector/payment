@@ -258,7 +258,13 @@
                                                                     @endif
                                                             </span></i>مقایسه ها</a>
                                                 </li>
-                                                <li><a href=""><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.panelKarbari') }}</a></li>
+                                                <li>
+                                                  @if(\Auth::user()->id == $shop->user_id)
+                                                    <a href="{{ route('dashboard.index') }}"><i class="icon-f-94"></i>پنل مدیریت</a>
+                                                  @else
+                                                    <a href="{{ route('user.purchased.list') }}"><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.panelKarbari') }}</a>
+                                                  @endif
+                                                </li>
                                                 <li><a href="{{ route('user-address.index') }}"><i class="fa fa-address-card ml-2"></i>{{ __('app-shop-2-layouts-master.addressHa') }}</a></li>
                                                 <li><a href="{{ route('user.purchased.list') }}"><i class="icon-f-47"></i>{{ __('app-shop-2-layouts-master.listSefaareshaat') }}</a></li>
                                                 <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>{{ __('app-shop-2-layouts-master.khorooj') }}</a></li>
@@ -380,7 +386,7 @@
                                                 @if($shop->menu_show == "nestead_menu")
                                                     @if($shopCategory->children()->exists())
                                                         <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;
-                                       width: 18%!important;z-index: 10000;">
+                                       width: 21%!important;z-index: 10000;">
                                                             @foreach ($shopCategory->children()->get() as $subCategory)
                                                             @if (!$subCategory->children()->exists())
                                                             <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" class="font-weight-bold iranyekan" style="color: #465f73!important; font-size:16px">
@@ -458,7 +464,7 @@
                                         @if($loop->iteration > 5)
                                             @break
                                             @endif
-                                            <li><a href=""> {{ $catetory->name }} </a></li>
+                                            <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$catetory->id]) }}"> {{ $catetory->name }} </a></li>
                                             @endforeach
                                 </ul>
                             </div>

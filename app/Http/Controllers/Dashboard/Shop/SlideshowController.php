@@ -41,7 +41,7 @@ class SlideshowController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate(['title' => 'required', 'image' => 'required']);
+        $request->validate(['image' => 'required']);
         $image = $this->uploadFile($request->file('image'), false, true);
 
         switch ($request->input('action')) {

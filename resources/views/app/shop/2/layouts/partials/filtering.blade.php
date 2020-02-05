@@ -23,6 +23,22 @@
 @endisset
 
   <div class="tt-collapse">
+    <h3 class="tt-collapse-title">تمامی دسته بندی ها</h3>
+    <div class="tt-collapse-content">
+      <ul class="tt-list-row">
+        @foreach($shop->productCategories as $categorySingle)
+        <li>
+          <div class="d-flex justify-content-between p-3">
+              <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$categorySingle->id]) }}">{{ $categorySingle->name }}</a>
+              @if($shop->cat_image_status == 'enable')<img src="{{ $categorySingle->icon['45,45'] }}" alt=""> @endif
+          </div>
+        </li>
+        @endforeach
+      </ul>
+    </div>
+  </div>
+
+  <div class="tt-collapse">
     <h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterGheymat') }}</h3>
     <div class="tt-collapse-content">
       <form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"

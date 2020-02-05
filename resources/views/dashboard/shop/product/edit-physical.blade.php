@@ -125,7 +125,7 @@
 
                                         <select class="selectpicker" multiple data-live-search="true" name="color[]" title="موردی انتخاب نشده است">
                                             @foreach($colors as $color)
-                                            <option @if($product->colors->count() != 0) @foreach($product->colors as $selectedColor) {{ $color->id == $selectedColor->id ? 'selected' : ''}}
+                                            <option style="background:linear-gradient(#{{ $color->code }} , #{{ $color->code }})bottom right/ 15% 2px;background-repeat:no-repeat;"  @if($product->colors->count() != 0) @foreach($product->colors as $selectedColor) {{ $color->id == $selectedColor->id ? 'selected' : ''}}
                                                     @endforeach
                                                     @endif value="{{ $color->id }}">{{ $color->name }}</option>
                                             @endforeach

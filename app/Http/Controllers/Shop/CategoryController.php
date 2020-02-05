@@ -41,6 +41,7 @@ class CategoryController extends Controller
         foreach ($colorAndCategoryProducts as $colorAndCategoryProduct) {
           $colorAndCategoryProductsNoRepeat[] = $colorAndCategoryProduct->first();
         }
+
       $colorAndCategoryProducts = $colorAndCategoryProductsNoRepeat;
       }
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
