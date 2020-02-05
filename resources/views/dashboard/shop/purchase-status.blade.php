@@ -49,13 +49,19 @@
                                     </tr>
                                     <!--end tr-->
                                 </thead>
+
                                 <tbody class="font-18">
-                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products() as $product)
+                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products()->get() as $product)
+
                                     <tr class="byekan">
                                         <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img src="{{ $product->image['200,100']}}" alt="user"></a></td>
                                         <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
                                         <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}</td>
-                                        <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color->name }}</td>
+                                        @if($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color)
+                                      <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color->name }}</td>
+                                        @else
+                                          <td></td>
+                                      @endif
                                         <td>{{ number_format($product->price) }}</td>
                                         <td>{{ number_format($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price) }}</td>
                                         <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">
@@ -73,9 +79,7 @@
                                         <td class="d-flex justify-content-lg-end align-items-center h-25vh" style="direction: ltr">{{ jdate($purchase->created_at) }}
                                             @if($product->type == 'file')
                                                 <div class="icon-show">
-                                                    <a href="{{ route('file-download', ['shop'=>$purchase->product()->first()->shop()->first()->english_name, 'id'=>$purchase->product()->first()->id]) }}" id="downloadFile"><i
-                                                          class="fa fa-download text-success mr-1 button font-15"></i>
-                                                    </a>
+
                                                 </div>
                                                 @endif
                                         </td>

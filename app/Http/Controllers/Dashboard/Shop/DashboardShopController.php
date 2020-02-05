@@ -32,8 +32,8 @@ class DashboardShopController extends Controller
     public function purchaseStatus()
     {
         $shop = \Auth::user()->shop()->first();
-        $purchases = UserPurchase::where('shop_id' , $shop->id)->get()->sortByDesc('created_at');
-        return view('dashboard.shop.purchase-status', compact('purchases'));
+        $purchases = $shop->purchases->sortByDesc('created_at');
+        return view('dashboard.shop.purchase-status', compact('purchases','shop'));
     }
 
     /**
