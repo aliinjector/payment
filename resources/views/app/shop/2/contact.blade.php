@@ -21,9 +21,9 @@
     <div id="tt-pageContent">
         <div class="container-indent">
             <div class="container">
-                <div class="contact-map">
+                {{-- <div class="contact-map">
                   <iframe src="https://api.neshan.org/v2/static?key=web.onKnTdZAW1q6GOdUeazO1QChtptWRKTf7DD0RCBN&type=dreamy&zoom=10&center=35.671313,51.072476&width=1120&height=300&marker=red"></iframe>
-                  </div>
+                  </div> --}}
             </div>
         </div>
 
