@@ -1,9 +1,6 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
-<link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
-<link rel="stylesheet" href="/app/shop/1/assets/css/jquery.ui.slider-rtl.css" />
 <link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
-
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -93,13 +90,14 @@
 @endsection
 @section('pageScripts')
   <script src="{{ asset('/app/shop/1/assets/js/category.js') }}"></script>
+  <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <link type="text/css" href="jquery.ui.slider-rtl.css" rel="stylesheet">
   <script src="/app/shop/1/assets/js/jquery-ui.js"></script>
   <script src="/app/shop/1/assets/js/jquery.ui.slider-rtl.js"></script>
   <script>
   $(document).ready(function() {
-      $("#mySlider").slider({isRTL: true,
-          isRTL: true,
-          range: true,
+      $("#mySlider").slider({isRTL: true, range: true,
           min: {{ $minPriceProduct }},
           max: {{ $maxPriceProduct }},
           values: [@if(request()->minprice != null){{request()->minprice}} @else {{ $minPriceProduct }} @endif, @if(request()->maxprice != null){{request()->maxprice}} @else {{ $maxPriceProduct }} @endif],
@@ -120,8 +118,8 @@
         $("#available-price-1").val(" از " + min + " تومان " + " - " + " تا " + max + " تومان ");
       }
       else{
-        $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0) + " تومان " +
-            " - " + " تا " + $("#mySlider").slider("values", 1) + " تومان ");
+        $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0).toLocaleString('en') + " تومان " +
+            " - " + " تا " + $("#mySlider").slider("values", 1).toLocaleString('en') + " تومان ");
       }
   });
   </script>

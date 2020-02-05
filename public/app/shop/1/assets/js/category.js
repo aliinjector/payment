@@ -1,4 +1,5 @@
     $(document).ready(function() {
+      $( ".ui-slider-handle" ).addClass( "p-2" );
         $('#available-filter-1').click(function() {
             setInterval("$('#submit').submit()", 1000);
         });
@@ -29,6 +30,10 @@
         });
         $('#available-price-min').click(function() {
             $('.available-price-min').attr('checked', true);
+            setInterval("$('#submit').submit()", 1000);
+        });
+        $('#available-price-max').click(function() {
+            $('.available-price-max').attr('checked', true);
             setInterval("$('#submit').submit()", 1000);
         });
         $('#mySlider').click(function() {

@@ -95,10 +95,12 @@
 
 @section('footerScripts')
 	<script src="{{ asset('/app/shop/2/js/category.js') }}"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="/app/shop/2/js/jquery-ui.js"></script>
+	<script src="/app/shop/2/js/jquery.ui.slider-rtl.js"></script>
 	<script>
 	$(document).ready(function() {
-	  $("#mySlider").slider({
-	    range: true,
+		$("#mySlider").slider({isRTL: true, range: true,
 	    min: {{ $minPriceProduct }},
 	    max: {{ $maxPriceProduct }},
           values: [@if(request()->minprice != null){{request()->minprice}} @else {{ $minPriceProduct }} @endif, @if(request()->maxprice != null){{request()->maxprice}} @else {{ $maxPriceProduct }} @endif],
