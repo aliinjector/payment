@@ -54,6 +54,8 @@
       $shop = Shop::where('english_name', $shopName)->first();
       $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
       $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
+      $mostView = $shop->products()->orderBy('viewCount', 'DESC')->take(4)->get();
+      $hasDescount = $shop->products()->whereNotNull('off_price')->take(4)->get();
       $template_folderName = $shop->template->folderName;
       $brands = $shop->brands;
       $feedbacks = $shop->feedbacks;
@@ -62,7 +64,7 @@
       SEOTools::setDescription($shop->description);
       SEOTools::opengraph()->addProperty('type', 'website');
 
-      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts', 'shopCategories', 'bestSelling', 'brands', 'feedbacks', 'slideshows','slideCategories'));
+      return view("app.shop.$template_folderName.index", compact('shop', 'lastProducts','hasDescount' ,'mostView', 'shopCategories', 'bestSelling', 'brands', 'feedbacks', 'slideshows','slideCategories'));
 
     }
 
