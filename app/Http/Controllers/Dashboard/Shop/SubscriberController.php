@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Subscriber;
+use App\ErrorLog;
 use Illuminate\Http\Request;
 
 class SubscriberController extends \App\Http\Controllers\Controller

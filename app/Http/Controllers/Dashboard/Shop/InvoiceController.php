@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Invoice;
 use Illuminate\Http\Request;
 use App\Http\Requests\InvoiceRequest;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 
 

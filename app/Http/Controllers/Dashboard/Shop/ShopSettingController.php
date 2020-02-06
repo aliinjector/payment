@@ -6,6 +6,7 @@ use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Requests\ShopSettingRequest;
 use App\Http\Requests\ShopContactRequest;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 use App\Shop;
 use App\Template;
@@ -229,7 +230,7 @@ class ShopSettingController extends Controller
       $slide_category = $request->slide_category;
       else
       $slide_category = null;
-      
+
       $shop = \Auth::user()->shop()->first()->update([
         'menu_show' => $request->menu_show,
         'menu_show_count' => $request->menu_show_count,

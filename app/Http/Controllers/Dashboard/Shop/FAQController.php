@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\FAQ;
 use Illuminate\Http\Request;
 use App\Http\Requests\FAQRequest;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 
 class FAQController extends Controller

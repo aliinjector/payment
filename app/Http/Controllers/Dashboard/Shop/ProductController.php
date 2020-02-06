@@ -5,6 +5,7 @@ use App\Tag;
 use App\Shop;
 use App\Product;
 use App\Brand;
+use App\ErrorLog;
 use App\Color;
 use App\Value;
 use App\Facility;

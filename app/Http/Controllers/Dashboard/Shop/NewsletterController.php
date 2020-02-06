@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Newsletter;
+use App\ErrorLog;
 use Illuminate\Http\Request;
 
 class NewsletterController extends \App\Http\Controllers\Controller

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Brand;
 use App\Shop;
+use App\ErrorLog;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use App\Http\Requests\BrandRequest;

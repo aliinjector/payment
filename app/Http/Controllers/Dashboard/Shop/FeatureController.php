@@ -6,6 +6,7 @@ use App\Feature;
 use App\ProductCategory;
 use App\Shop;
 use Illuminate\Http\Request;
+use App\ErrorLog;
 use App\Http\Requests\FeatureRequest;
 use App\Http\Controllers\Controller;
 

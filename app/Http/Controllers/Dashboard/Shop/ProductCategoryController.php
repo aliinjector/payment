@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Shop;
 use Illuminate\Http\Request;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 use App\ProductCategory;
 use App\Http\Requests\ProductCategoryRequest;

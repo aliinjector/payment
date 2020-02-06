@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Feedback;
 use Illuminate\Http\Request;
 use App\Http\Requests\FeedbackRequest;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 
 

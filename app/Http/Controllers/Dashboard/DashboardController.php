@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Dashboard;
 use App\Shop;
+use App\ErrorLog;
 use Illuminate\Http\Request;
 
 
