@@ -135,9 +135,9 @@
                                                 <td class="d-flex justify-content-between">
                                                     {{ $feedback->feedback}}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $feedback->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $feedback->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $feedback->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $feedback->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeCat" data-name="{{ $feedback->title }}" data-id="{{ $feedback->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeCat" data-name="{{ $feedback->title }}" title="حذف" data-id="{{ $feedback->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

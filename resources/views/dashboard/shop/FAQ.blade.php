@@ -140,9 +140,9 @@
                                                 <td>{{ $faq->question }}</td>
                                                 <td>{{ $faq->answer }}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $faq->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $faq->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $faq->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $faq->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeCat" data-name="{{ $faq->title }}" data-id="{{ $faq->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeCat" title="حذف" data-name="{{ $faq->title }}" data-id="{{ $faq->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

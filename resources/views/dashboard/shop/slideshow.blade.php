@@ -157,9 +157,9 @@
                                                 <td class="d-flex justify-content-between">
                                                     {{ $slideshow->url }}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $slideshow->id }}" id="editSlide" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $slideshow->id }}" id="editSlide" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeSlide" data-name="{{ $slideshow->title }}" data-id="{{ $slideshow->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeSlide" title="حذف" data-name="{{ $slideshow->title }}" data-id="{{ $slideshow->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

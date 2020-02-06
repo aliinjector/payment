@@ -276,10 +276,10 @@
                                                 <td>{{ jdate($voucher->starts_at) }}</td>
                                                 <td class=" p-3">{{ jdate($voucher->expires_at) }}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $voucher->id }}" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $voucher->id }}" title="ویرایش" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
 
-                                                        <a href="" id="removeVoucher" data-id="{{ $voucher->id }}" data-name="{{ $voucher->description }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeVoucher" title="حذف" data-id="{{ $voucher->id }}" data-name="{{ $voucher->description }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
 

@@ -102,9 +102,9 @@
                                                 <td class="d-flex justify-content-between">{{ $categoryFeature->name }}
                                                   <div class="d-none icon-show">
                                                   <a href="{{ route('feature.edit', ['productCategoryFeatureid'=>$categoryFeature->id , 'cat_id' => $category->id]) }}"><i
-                                                     class="far fa-edit text-info mr-1 button font-18"></i>
+                                                     class="far fa-edit text-info mr-1 button font-18" title="ویرایش"></i>
                                                   </a>
-                                                  <a href="" id="removeFeature" data-name="{{ $categoryFeature->name }}" data-id="{{ $categoryFeature->id }}"><i class="fa-trash-alt far text-danger"></i></a>
+                                                  <a href="" title="حذف" id="removeFeature" data-name="{{ $categoryFeature->name }}" data-id="{{ $categoryFeature->id }}"><i class="fa-trash-alt far text-danger"></i></a>
                                                   </div>
                                                 </td>
                                             </tr>

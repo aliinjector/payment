@@ -153,10 +153,10 @@
                            </button>
                         </h5>
                         <div class="p-3">
-                           <a href="{{ $parentCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $parentCategory->id }}"><i class="far fa-edit text-info mr-1 button font-18"></i>
+                           <a href="{{ $parentCategory->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $parentCategory->id }}"><i class="far fa-edit text-info mr-1 button font-18"></i>
                            </a>
-                           <a href="" id="removeCat" data-name="{{ $parentCategory->name }}" data-id="{{ $parentCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
-                           <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$parentCategory->id]) }}"><i class="fa fa-eye text-success mr-1 button font-18"></i></a>
+                           <a href="" id="removeCat" data-name="{{ $parentCategory->name }}" title="حذف" data-id="{{ $parentCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
+                           <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$parentCategory->id]) }}" title="مشاهده محصولات دسته بندی"><i class="fa fa-eye text-success mr-1 button font-18"></i></a>
                            <a href="{{ route('feature.index', ['cat_id'=>$parentCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                         </div>
                      </div>
@@ -173,10 +173,10 @@
                                     </button>
                                  </h5>
                                  <div class="p-3">
-                                    <a href="{{ $subCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $subCategory->id }}"><i class="far fa-edit text-info mr-1 button font-18"></i>
+                                    <a href="{{ $subCategory->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $subCategory->id }}"><i class="far fa-edit text-info mr-1 button font-18"></i>
                                     </a>
-                                    <a href="" id="removeCat" data-name="{{ $subCategory->name }}" data-id="{{ $subCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
-                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}"><i class="fa fa-eye text-success mr-1 button font-18"></i>
+                                    <a href="" id="removeCat" data-name="{{ $subCategory->name }}" title="حذف" data-id="{{ $subCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
+                                    <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}" title="مشاهده محصولات دسته بندی"><i class="fa fa-eye text-success mr-1 button font-18"></i>
                                     </a>
                                      <a href="{{ route('feature.index', ['cat_id'=>$subCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                                  </div>
@@ -194,11 +194,11 @@
                                              </button>
                                           </h5>
                                           <div class="p-3">
-                                             <a href="{{ $subSubCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $subSubCategory->id }}"><i
+                                             <a href="{{ $subSubCategory->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $subSubCategory->id }}"><i
                                                 class="far fa-edit text-info mr-1 button font-18"></i>
                                              </a>
-                                             <a href="" id="removeCat" data-name="{{ $subSubCategory->name }}" data-id="{{ $subSubCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
-                                             <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"><i class="fa fa-eye text-success mr-1 button font-18"></i>
+                                             <a href="" title="حذف" id="removeCat" data-name="{{ $subSubCategory->name }}" data-id="{{ $subSubCategory->id }}"><i class="far fa-trash-alt text-danger font-18"></i></a>
+                                             <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}" title="مشاهده محصولات دسته بندی"><i class="fa fa-eye text-success mr-1 button font-18"></i>
                                              </a>
                                               <a href="{{ route('feature.index', ['cat_id'=>$subSubCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
                                           </div>
@@ -218,12 +218,12 @@
                                                             </button>
                                                          </h5>
                                                          <div class="p-3">
-                                                            <a href="{{ $subSubSubCategory->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $subSubSubCategory->id }}"><i
+                                                            <a href="{{ $subSubSubCategory->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $subSubSubCategory->id }}"><i
                                                                class="far fa-edit text-info mr-1 button font-18"></i>
                                                             </a>
-                                                            <a href="" id="removeCat" data-name="{{ $subSubSubCategory->name }}" data-id="{{ $subSubSubCategory->id }}"><i
+                                                            <a href="" title="حذف" id="removeCat" data-name="{{ $subSubSubCategory->name }}" data-id="{{ $subSubSubCategory->id }}"><i
                                                                class="far fa-trash-alt text-danger font-18"></i></a>
-                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"><i
+                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}" title="مشاهده محصولات دسته بندی"><i
                                                                class="fa fa-eye text-success mr-1 button font-18"></i>
                                                             </a>
                                                              <a href="{{ route('feature.index', ['cat_id'=>$subSubSubCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
@@ -244,13 +244,13 @@
                                                                            </button>
                                                                         </h5>
                                                                         <div class="p-3">
-                                                                           <a href="{{ $subSubSubSubCategory->id }}" id="editCat" data-toggle="modal"
+                                                                           <a href="{{ $subSubSubSubCategory->id }}" id="editCat" title="ویرایش" data-toggle="modal"
                                                                               data-target="#UpdateProductCategoryModal{{ $subSubSubSubCategory->id }}"><i
                                                                               class="far fa-edit text-info mr-1 button font-18"></i>
                                                                            </a>
-                                                                           <a href="" id="removeCat" data-name="{{ $subSubSubSubCategory->name }}" data-id="{{ $subSubSubSubCategory->id }}"><i
+                                                                           <a href="" title="حذف" id="removeCat" data-name="{{ $subSubSubSubCategory->name }}" data-id="{{ $subSubSubSubCategory->id }}"><i
                                                                               class="far fa-trash-alt text-danger font-18"></i></a>
-                                                                           <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubSubCategory->id]) }}"><i
+                                                                           <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubSubCategory->id]) }}" title="مشاهده محصولات این دسته بندی"><i
                                                                               class="fa fa-eye text-success mr-1 button font-18"></i>
                                                                            </a>
                                                                             <a href="{{ route('feature.index', ['cat_id'=>$subSubSubSubCategory->id]) }}"><i class="fa fa-tasks text-purple mr-1 button font-18" title="ویژگی ها"></i></a>
