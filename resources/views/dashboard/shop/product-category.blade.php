@@ -32,12 +32,13 @@
                </button>
             </div>
             <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-               <form action="{{ route('product-category.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+               <form action="{{ route('product-category.store', ['continue' => 1, 'shop' => \Auth::user()->shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                   @csrf
                   <div class="form-group mb-0">
                      <div class="input-group mt-3">
-                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.addCategoryItem1') }} :</span></div>
-                        <input type="text" class="form-control inputfield" name="name" placeholder="{{ __('dashboard-shop-product-category.addCategoryItem1ex') }}">
+                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                           class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-category.addCategoryItem1') }} :</span></div>
+                        <input type="text" class="form-control inputfield" value="{{ old('name') }}" name="name" placeholder="{{ __('dashboard-shop-product-category.addCategoryItem1ex') }}">
                      </div>
                      <div class="input-group mt-3">
                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.addCategoryItem2') }}:</span></div>
@@ -55,7 +56,7 @@
                      </div>
                      <div class="input-group mt-3">
                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.addCategoryItem3') }} :</span></div>
-                        <input type="text" class="form-control inputfield" name="description" placeholder="{{ __('dashboard-shop-product-category.addCategoryItem3ex') }}">
+                        <input type="text" class="form-control inputfield" value="{{ old('title') }}" name="description" placeholder="{{ __('dashboard-shop-product-category.addCategoryItem3ex') }}">
                      </div>
                      <div class="card mt-3">
                         <div class="card-body">
@@ -88,12 +89,13 @@
                </button>
             </div>
             <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-               <form action="{{ route('product-category.update', $category->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+               <form action="{{ route('product-category.update',['id' => $category->id, 'shop' => \Auth::user()->shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                   @csrf
                   {{ method_field('PATCH') }}
                   <div class="form-group mb-0">
                      <div class="input-group mt-3">
-                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.editCategoryItem1') }} :</span></div>
+                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                           class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-category.editCategoryItem1') }} :</span></div>
                         <input type="text" class="form-control inputfield" name="name" value="{{ $category->name }}">
                      </div>
                      <div class="input-group mt-3">

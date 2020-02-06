@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Invoice;
 use Illuminate\Http\Request;
+use App\Http\Requests\InvoiceRequest;
 use App\Http\Controllers\Controller;
 
 
@@ -69,9 +70,9 @@ class InvoiceController extends Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(InvoiceRequest $request, Invoice $invoice)
     {
-      \Auth::user()->shop()->first()->invoice->update($request->except('_token'));
+      \Auth::user()->shop()->first()->invoice->update($request->except('_token', 'shop'));
       alert()->success(' فاکتور فروشگاه شما با موفقیت ویراش شد.', 'انجام شد');
       return redirect()->route('shop-setting.index');
     }

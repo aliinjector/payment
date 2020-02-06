@@ -31,17 +31,19 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('feedback.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('feedback.store', ['continue' => 1, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان بازخورد :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>عنوان بازخورد :</span></div>
                                     <input type="text" class="form-control inputfield" name="title" placeholder="مثال: گارانتی بازگشت وجه">
                                     <input type="hidden" value="{{ $shop->id }}" class="form-control" name="shop_id">
                                     <input type="hidden" value="{{ \Auth::user()->id }}" class="form-control" name="user_id">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">بازخورد :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>بازخورد :</span></div>
                                     <textarea class="form-control" rows="5" id="message" name="feedback"></textarea>
                                 </div>
                             </div>
@@ -69,18 +71,20 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('feedback.update', $feedback->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('feedback.update', ['id' => $feedback->id, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان بازخورد:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>عنوان بازخورد:</span></div>
                                     <input type="text" class="form-control inputfield" name="title" value="{{ $feedback->title }}">
                                     <input type="hidden" value="{{ $shop->id }}" class="form-control" name="shop_id">
                                     <input type="hidden" value="{{ \Auth::user()->id }}" class="form-control" name="user_id">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">بازخورد :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>بازخورد :</span></div>
                                     <textarea class="form-control" rows="5" id="message" name="feedback">{{ $feedback->feedback }}</textarea>
                                 </div>
                             </div>

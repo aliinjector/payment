@@ -31,15 +31,17 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('feature.store',['continue'=>1, 'cat_id' => $category->id]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('feature.store',['continue'=>1, 'cat_id' => $category->id, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام ویژگی :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>نام ویژگی :</span></div>
                                     <input type="text" class="form-control inputfield" name="name" placeholder="مثال: ورزشی">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">دسته بندی ویژگی:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>دسته بندی ویژگی:</span></div>
                                     <select class="form-control inputfield" name="productCat_id" id="">
                                         <option style="font-family: BYekan!important;" selected value="{{ $category->id }}">{{ $category->name }}
                                         </option>

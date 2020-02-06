@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Slideshow;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SlideShowRequest;
+
 
 
 class SlideshowController extends Controller
@@ -39,7 +41,7 @@ class SlideshowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SlideShowRequest $request)
     {
         $request->validate(['image' => 'required']);
         $image = $this->uploadFile($request->file('image'), false, true);
@@ -103,7 +105,7 @@ class SlideshowController extends Controller
      * @param  \App\Slideshow  $slideshow
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SlideShowRequest $request, $id)
     {
       if($request->file('image') == null){
         $image = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->image;
@@ -112,7 +114,6 @@ class SlideshowController extends Controller
         $image = $this->uploadFile($request->file('image'), false, true);
       }
 
-        $request->validate(['title' => 'required']);
         $slideshow = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->update([
             'title' => $request->title,
             'url' => $request->url,

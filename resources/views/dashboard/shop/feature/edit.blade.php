@@ -23,7 +23,7 @@
 <div class="tab-content">
 
     <div class="tab-pane fade in show active" id="info" role="tabpanel">
-        <form method="post" action="{{ route('feature.update', ['productCategoryFeatureid'=>$productCategoryFeature->id , 'cat_id' => $category->id]) }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('feature.update', ['productCategoryFeatureid'=>$productCategoryFeature->id , 'cat_id' => $category->id, 'shop' => $shop->english_name]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -35,7 +35,8 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group row py-4">
-                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نام ویژگی</label>
+                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center"><i
+                                           class="fas fa-star required-star mr-1"></i>نام ویژگی</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control inputfield" name="name" value="{{ $productCategoryFeature->name }}">
                                         </div>

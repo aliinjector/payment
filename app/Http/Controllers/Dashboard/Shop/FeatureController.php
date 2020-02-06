@@ -6,6 +6,7 @@ use App\Feature;
 use App\ProductCategory;
 use App\Shop;
 use Illuminate\Http\Request;
+use App\Http\Requests\FeatureRequest;
 use App\Http\Controllers\Controller;
 
 
@@ -48,7 +49,7 @@ class FeatureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FeatureRequest $request)
     {
       if($request->file('icon') == null){
         $icon = null;
@@ -60,7 +61,6 @@ class FeatureController extends Controller
       switch ($request->input('action')) {
         //save and close modal
           case 'justSave':
-                  $request->validate(['name' => 'required']);
                   $feature = new Feature;
                   $feature->name = $request->name;
                   $feature->productCat_id = $request->productCat_id;
@@ -107,9 +107,10 @@ class FeatureController extends Controller
      */
     public function edit(Request $request, $productCategoryFeatureid)
     {
+      $shop = \Auth::user()->shop()->first();
       $category = ProductCategory::find($request->cat_id);
       $productCategoryFeature = \Auth::user()->shop()->first()->ProductCategories()->where('id', $request->cat_id)->get()->first()->features->find($productCategoryFeatureid);
-      return view('dashboard.shop.feature.edit', compact('productCategoryFeature','category'));
+      return view('dashboard.shop.feature.edit', compact('productCategoryFeature','category','shop'));
     }
 
     /**
@@ -119,7 +120,7 @@ class FeatureController extends Controller
      * @param  \App\Feature  $feature
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $productCategoryFeatureid)
+    public function update(FeatureRequest $request, $productCategoryFeatureid)
     {
       if($request->file('icon') == null){
         $icon = null;
@@ -127,7 +128,6 @@ class FeatureController extends Controller
       else{
         $icon = $this->uploadFile($request->file('icon'), false, true);
       }
-        $request->validate(['name' => 'required']);
         $productCategoryFeature = \Auth::user()->shop()->first()->ProductCategories()->where('id', $request->cat_id)->get()->first()->features->find($productCategoryFeatureid)->update([
                 'name' => $request->name,
                 'icon' => $icon

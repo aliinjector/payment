@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Feedback;
 use Illuminate\Http\Request;
+use App\Http\Requests\FeedbackRequest;
 use App\Http\Controllers\Controller;
 
 
@@ -37,19 +38,18 @@ class FeedbackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FeedbackRequest $request)
     {
-      $request->validate(['title' => 'required' , 'feedback' => 'required']);
       switch ($request->input('action')) {
         //save and close modal
           case 'justSave':
-        $feedback = \Auth::user()->shop()->first()->feedbacks()->create($request->except(['_token', 'action', 'continue', 1]));
+        $feedback = \Auth::user()->shop()->first()->feedbacks()->create($request->except(['_token', 'action', 'continue', 1, 'shop']));
         alert()->success('بازخورد برای فروشگاه شما با موفقیت اضافه شد.', 'انجام شد');
         return redirect()->route('feedback.index');
         break;
 
           case 'saveAndContinue':
-        $feedback = \Auth::user()->shop()->first()->feedbacks()->create($request->except(['_token', 'action', 'continue', 1]));
+        $feedback = \Auth::user()->shop()->first()->feedbacks()->create($request->except(['_token', 'action', 'continue', 1, 'shop']));
         session()->flash('flashModal');
         alert()->success('بازخورد برای فروشگاه شما با موفقیت اضافه شد.', 'انجام شد');
         return redirect()->route('feedback.index');
@@ -86,9 +86,9 @@ class FeedbackController extends Controller
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FeedbackRequest $request, $id)
     {
-      $feedback = \Auth::user()->shop()->first()->feedbacks()->where('id',$id)->get()->first()->update($request->except(['_token']));
+      $feedback = \Auth::user()->shop()->first()->feedbacks()->where('id',$id)->get()->first()->update($request->except(['_token','shop']));
 
 
       alert()->success('سوال شما با موفقیت ویرایش شد', 'ثبت شد');
