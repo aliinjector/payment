@@ -38,7 +38,7 @@
           return abort(404);
       }
 
-      $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
+      $shopCategories = Shop::where('english_name', $shsopName)->first()->ProductCategories()->get();
       if(Shop::where('english_name', $shopName)->first()->slide_category != null){
         $slideCategoryNames = array_slice(Shop::where('english_name', $shopName)->first()->slide_category, 0, 3);
         $slideCategories = [];
