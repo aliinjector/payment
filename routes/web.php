@@ -107,6 +107,11 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Feature
         Route::resource('feature', 'FeatureController');
         Route::post('feature/delete', 'FeatureController@destroy')->name('feature.delete');
+
+
+        //Specification
+        Route::resource('specification', 'specificationController');
+        Route::post('specification/delete', 'specificationController@destroy')->name('specification.delete');
       });
 
 

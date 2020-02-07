@@ -64,8 +64,8 @@ class Handler extends ExceptionHandler
         'userAgent' =>  $userAgent,
         'userIp' =>  $userIp,
       ]);
+      event(new ErrorLoged());
     }
-    event(new ErrorLoged());
       return parent::render($request, $exception);
 
     }
