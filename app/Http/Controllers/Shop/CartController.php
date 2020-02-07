@@ -6,6 +6,7 @@ use App\Cart;
 use App\Shop;
 use App\Product;
 use App\CartProduct;
+use App\Http\Requests\CartRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -35,7 +36,7 @@ class CartController extends \App\Http\Controllers\Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(CartRequest $request) {
         //
 
     }
@@ -61,7 +62,7 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
 
-    public function addToCart($shopName, $userID, Request $request) {
+    public function addToCart($shopName, $userID, CartRequest $request) {
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
             $cart->user_id = \Auth::user()->id;

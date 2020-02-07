@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Address;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddressRequest;
 use App\Http\Controllers\Controller;
 
 
@@ -36,9 +37,8 @@ class AddressController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddressRequest $request)
     {
-      $request->validate(['city' => 'required','province' => 'required','zip_code' => 'required','zip_code' => 'digits:10','address' => 'required']);
       $address = new Address;
       $address->city = $request->city;
       $address->province = $request->province;
@@ -81,7 +81,7 @@ class AddressController extends Controller
      * @param  \App\Address  $address
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AddressRequest $request, $id)
     {
       if (!\Auth::user()->addresses()->find($id)->get()){
           alert()->error('خطا', 'خطا');
@@ -89,7 +89,6 @@ class AddressController extends Controller
           exit;
       }
 
-      $request->validate(['city' => 'required','province' => 'required','zip_code' => 'required','zip_code' => 'digits:10','address' => 'required']);
       $user_address = \Auth::user()->addresses()->where('id', $id)->first()->update([
       'city' => $request->city,
       'province' => $request->province,
