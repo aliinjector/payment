@@ -44,7 +44,7 @@
 <div class="tab-content">
 
     <div class="tab-pane fade in show active" id="info" role="tabpanel">
-        <form method="post" action="{{ route('shop-setting.update', \Auth::user()->id) }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('shop-setting.update', ['id' => \Auth::user()->id, 'shop' => \Auth::user()->shop->english_name]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -353,7 +353,7 @@
     </div>
 
     <div class="tab-pane fade" id="theme" role="tabpanel">
-        <form method="post" action="{{ route('shop-setting.setting-update', \Auth::user()->shop()->first()->id) }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('shop-setting.setting-update',['id' => \Auth::user()->shop()->first()->id, 'shop' => \Auth::user()->shop->english_name]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -489,7 +489,7 @@
     </div>
 
     <div class="tab-pane fade" id="contact" role="tabpanel">
-        <form method="post" action="{{ route('shop.setting.update-contact', \Auth::user()->shop()->first()->id) }}">
+        <form method="post" action="{{ route('shop.setting.update-contact', ['id' => \Auth::user()->shop()->first()->id, 'shop' => \Auth::user()->shop->english_name]) }}">
             @csrf
             @method('PUT')
 

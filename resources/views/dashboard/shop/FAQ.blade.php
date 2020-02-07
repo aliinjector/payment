@@ -37,17 +37,17 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>عنوان سوال :</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" placeholder="مثال: ثبت نام">
+                                    <input type="text" class="form-control inputfield" value="{{ old('title') }}" name="title" placeholder="مثال: ثبت نام">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>متن سوال :</span></div>
-                                    <input type="text" class="form-control inputfield" name="question" placeholder="مثال: چگونه در سایت خرید ثبت کنیم">
+                                    <input type="text" class="form-control inputfield" value="{{ old('question') }}" name="question" placeholder="مثال: چگونه در سایت خرید ثبت کنیم">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>متن پاسخ :</span></div>
-                                    <input type="text" class="form-control inputfield" name="answer" placeholder="مثال : با انجام مراحل خرید کالای جدید">
+                                    <input type="text" class="form-control inputfield" value="{{ old('answer') }}" name="answer" placeholder="مثال : با انجام مراحل خرید کالای جدید">
                                 </div>
                             </div>
                             <!--end form-group-->

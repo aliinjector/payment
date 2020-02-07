@@ -6,6 +6,7 @@ use App\Dashboard;
 use Illuminate\Http\Request;
 use App\Http\Requests\ShopSettingRequest;
 use App\Http\Requests\ShopContactRequest;
+use App\Http\Requests\ShopThemeRequest;
 use App\ErrorLog;
 use App\Http\Controllers\Controller;
 use App\Shop;
@@ -114,7 +115,7 @@ class ShopSettingController extends Controller
      * @param  \App\ShopSetting  $shopSetting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(ShopSettingRequest $request)
     {
 
       if(!isset($request->icon)){
@@ -218,7 +219,7 @@ class ShopSettingController extends Controller
     }
 
 
-    public function updateSetting(Request $request){
+    public function updateSetting(ShopThemeRequest $request){
       if($request->file('watermark') == null){
         $watermark = \Auth::user()->shop()->first()->watermark;
       }

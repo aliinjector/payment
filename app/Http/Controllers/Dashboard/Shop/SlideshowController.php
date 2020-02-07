@@ -47,7 +47,6 @@ class SlideshowController extends Controller
          try{
            $request->validate(['image' => 'required']);
            $image = $this->uploadFile($request->file('image'), false, true);
-
            switch ($request->input('action')) {
              //save and close modal
                case 'justSave':
@@ -55,7 +54,7 @@ class SlideshowController extends Controller
                        $slideshow->title = $request->title;
                        $slideshow->url = $request->url;
                        $slideshow->description = $request->description;
-                       $slideshow->image = $imagse;
+                       $slideshow->image = $image;
                        $slideshow->shop_id = \Auth::user()->shop()->first()->id;
                        $slideshow->save();
                        alert()->success('اسلاید جدید شما باموفقیت اضافه شد.', 'ثبت شد');
@@ -86,13 +85,17 @@ class SlideshowController extends Controller
                $massage = $e->getMessage();
                $routeName = \Request::route()->getName();
                $methodName = $request->route()->getActionMethod();
+               $userAgent = \Request::header('user-agent');
+               $userIp = \Request::ip();
                ErrorLog::create([
                  'massage' =>  $massage,
                  'controller' =>  $controllerName,
                  'route' =>  $routeName,
                  'method' =>  $methodName,
+                 'userAgent' =>  $userAgent,
+                 'userIp' =>  $userIp,
                ]);
-               return redirect()->back()->withErrors('متاسفانه خطایی در انجام عملیات رخ داده است . بزودی این مشکل برطرف خواهد شد.');;
+               return redirect()->back()->withErrors('با عرض پوزش در روند عملیات خطایی رخ داده است . این خطا به تیم فنی ارسال شده است و به زودی برطرف خواهد شد . با تشکر از صبر و شکیبایی شما.');;
              }
     }
        }
