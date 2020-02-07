@@ -12,6 +12,7 @@
   use App\Cart;
   use App\Rating;
   use App\CartProduct;
+  use App\Events\ErrorLoged;
   use App\ProductCategory;
   use Illuminate\Http\Request;
   use Request as RequestFacade;
@@ -38,7 +39,7 @@
           return abort(404);
       }
 
-      $shopCategories = Shop::where('english_name', $shsopName)->first()->ProductCategories()->get();
+      $shopCategories = Shop::where('english_name', $shospName)->first()->ProductCategories()->get();
       if(Shop::where('english_name', $shopName)->first()->slide_category != null){
         $slideCategoryNames = array_slice(Shop::where('english_name', $shopName)->first()->slide_category, 0, 3);
         $slideCategories = [];
