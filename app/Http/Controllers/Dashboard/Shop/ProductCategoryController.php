@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Shop;
 use Illuminate\Http\Request;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 use App\ProductCategory;
 use App\Http\Requests\ProductCategoryRequest;
@@ -46,7 +47,7 @@ class ProductCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductCategoryRequest $request)
     {
 
       //check if icon is null or not
@@ -59,7 +60,6 @@ class ProductCategoryController extends Controller
         switch ($request->input('action')) {
           //save and close modal
             case 'justSave':
-                    $request->validate(['name' => 'required']);
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
                     if($request->parent_id == 'null')
@@ -75,7 +75,6 @@ class ProductCategoryController extends Controller
                 break;
             //save and open new modal
             case 'saveAndContinue':
-                    $request->validate(['name' => 'required']);
                     $productCategory = new ProductCategory;
                     $productCategory->name = $request->name;
                     if($request->parent_id == 'null')
@@ -100,7 +99,7 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductCategory $productCategory)
+    public function show(ProductCategoryRequest $productCategory)
     {
         //
     }
@@ -124,7 +123,7 @@ class ProductCategoryController extends Controller
      * @param  \App\ProductCategory  $productCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductCategoryRequest $request, $id)
     {
       //check if icon is null or not
       if($request->file('icon') == null){
@@ -136,7 +135,6 @@ class ProductCategoryController extends Controller
       if($request->parent_id == 'null'){
         $request->parent_id = null;
         }
-        $request->validate(['name' => 'required']);
         $productCategory = \Auth::user()->shop()->first()->ProductCategories()->where('id',$id)->get()->first()->update([
             'name' => $request->name,
             'parent_id' => $request->parent_id,

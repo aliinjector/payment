@@ -31,24 +31,25 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('slideshow.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('slideshow.store', ['continue' => 1, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" placeholder="مثال: عکس اول">
+                                    <input type="text" class="form-control inputfield" value="{{ old('title') }}" name="title" placeholder="مثال: عکس اول">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" name="description" placeholder="مثال: توضیحات مختصری درمورد اسلاید ">
+                                    <input type="text" class="form-control inputfield" value="{{ old('description') }}" name="description" placeholder="مثال: توضیحات مختصری درمورد اسلاید ">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">آدرس صفحه اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" name="url" placeholder="مثال: /product ">
+                                    <input type="text" class="form-control inputfield" value="{{ old('url') }}" name="url" placeholder="مثال: /product ">
                                 </div>
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">عکس اسلاید</h4>
+                                        <h4 class="mt-0 header-title"><i
+                                           class="fas fa-star required-star mr-1"></i>عکس اسلاید</h4>
                                         <input type="file" id="input-file-now" name="image" class="dropify">
                                     </div>
                                 </div>
@@ -95,7 +96,8 @@
                                 </div>
                                 <div class="card mt-3">
                                     <div class="card-body">
-                                        <h4 class="mt-0 header-title">عکس اسلاید</h4>
+                                        <h4 class="mt-0 header-title"><i
+                                           class="fas fa-star required-star mr-1"></i>عکس اسلاید</h4>
                                         <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $slideshow->image['original'] }}">
                                     </div>
                                 </div>
@@ -157,9 +159,9 @@
                                                 <td class="d-flex justify-content-between">
                                                     {{ $slideshow->url }}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $slideshow->id }}" id="editSlide" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $slideshow->id }}" id="editSlide" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeSlide" data-name="{{ $slideshow->title }}" data-id="{{ $slideshow->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeSlide" title="حذف" data-name="{{ $slideshow->title }}" data-id="{{ $slideshow->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

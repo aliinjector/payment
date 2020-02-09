@@ -50,6 +50,10 @@ public function sluggable()
  {
      return $this->belongsToMany('App\Wishlist');
  }
+ public function specifications()
+ {
+     return $this->belongsToMany('App\Specification');
+ }
  public function compare()
  {
      return $this->belongsToMany('App\Compare');

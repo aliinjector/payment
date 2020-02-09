@@ -6,6 +6,7 @@ use App\Stat;
 use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ErrorLog;
 use Jenssegers\Agent\Agent;
 use PulkitJalan\GeoIP\GeoIP;
 

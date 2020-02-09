@@ -31,12 +31,13 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('brand.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('brand.store', ['continue' => 1, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> نام برند :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" placeholder="مثال: ورزشی">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140"  id="basic-addon7"> <i
+                                       class="fas fa-star required-star mr-1"></i>نام برند :</span></div>
+                                    <input type="text" class="form-control inputfield" value="{{ old('name') }}" name="name" placeholder="مثال: ورزشی">
                                 </div>
                                 <div class="card mt-3">
                                     <div class="card-body">
@@ -69,12 +70,13 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('brand.update', $brand->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('brand.update', ['id' => $brand->id, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">نام برند:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>نام برند:</span></div>
                                     <input type="text" class="form-control inputfield" name="name" value="{{ $brand->name }}">
                                 </div>
                                 <div class="card mt-3">
@@ -138,9 +140,9 @@
                                                 </td>
                                                 <td>{{ $brand->name }}
                                                   <div class="d-none icon-show">
-                                                      <a href="{{ $brand->id }}" id="editBrand" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $brand->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                      <a href="{{ $brand->id }}" id="editBrand" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $brand->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                       </a>
-                                                      <a href="" id="removeBrand" data-name="{{ $brand->name }}" data-id="{{ $brand->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                      <a href="" id="removeBrand" title="حذف" data-name="{{ $brand->name }}" data-id="{{ $brand->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                       <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$brand->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
                                                       </a>
                                                   </div>

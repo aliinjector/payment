@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\ErrorLog;
 use App\UserPurchase;
 
 class DashboardShopController extends Controller

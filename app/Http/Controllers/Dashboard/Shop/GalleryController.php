@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Gallery;
 use App\Product;
 use Illuminate\Http\Request;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 
 class GalleryController extends \App\Http\Controllers\Controller

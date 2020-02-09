@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Comment;
 use App\Shop;
+use App\ErrorLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ProductDownloadStatus;
+use App\ErrorLog;
 use Illuminate\Support\Facades\DB;
 
 class DownloadLinkRequestController extends Controller

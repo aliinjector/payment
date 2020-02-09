@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\FAQ;
 use Illuminate\Http\Request;
+use App\Http\Requests\FAQRequest;
+use App\ErrorLog;
 use App\Http\Controllers\Controller;
 
 class FAQController extends Controller
@@ -37,12 +39,11 @@ class FAQController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FAQRequest $request)
     {
       switch ($request->input('action')) {
         //save and close modal
           case 'justSave':
-                  $request->validate(['title' => 'required','question' => 'required','answer' => 'required']);
                   $faq = new FAQ;
                   $faq->title = $request->title;
                   $faq->question = $request->question;
@@ -54,7 +55,6 @@ class FAQController extends Controller
               break;
           //save and open new modal
           case 'saveAndContinue':
-          $request->validate(['title' => 'required','question' => 'required','answer' => 'required']);
                   $faq = new FAQ;
                   $faq->title = $request->title;
                   $faq->question = $request->question;
@@ -98,7 +98,7 @@ class FAQController extends Controller
      * @param  \App\FAQ  $fAQ
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FAQRequest $request, $id)
     {
       $faq = \Auth::user()->shop()->first()->faqs()->where('id',$id)->get()->first()->update([
           'title' => $request->title,

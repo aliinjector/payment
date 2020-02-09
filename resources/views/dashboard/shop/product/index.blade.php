@@ -34,7 +34,6 @@
                      </button>
                   </div>
                   <div class="modal-body">
-                     <form action="{{ route('card.store') }}" method="post" class="form-horizontal">
                         @csrf
                         <div class="form-group mb-0">
                            <a data-dismiss="modal" data-toggle="modal" href="#AddProductModal">
@@ -73,7 +72,6 @@
                   <button type="button" class="btn btn-danger rounded" data-dismiss="modal">{{ __('dashboard-shop-product-index.addEnseraf') }}
                   </button>
                   </div>
-                  </form>
                </div>
             </div>
          </div>
@@ -87,7 +85,7 @@
                      </button>
                   </div>
                   <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                     <form action="{{ route('Product-list.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                     <form action="{{ route('Product-list.storeProduct', ['shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-0">
                            <div class="input-group mt-3">
@@ -245,7 +243,7 @@
                      </button>
                   </div>
                   <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                     <form action="{{ route('Product-list.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                     <form action="{{ route('Product-list.storeProduct' , ['shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-0">
                            <div class="input-group mt-3">
@@ -378,7 +376,7 @@
                      </button>
                   </div>
                   <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                     <form action="{{ route('Product-list.storeProduct') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                     <form action="{{ route('Product-list.storeProduct', ['shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group mb-0">
                            <div class="input-group mt-3">

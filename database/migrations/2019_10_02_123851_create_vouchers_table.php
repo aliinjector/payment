@@ -22,7 +22,6 @@ class CreateVouchersTable extends Migration
             $table->string('description')->nullable();
             $table->integer('uses')->nullable();
             $table->integer('discount_amount');
-            $table->boolean('is_fixed')->default(true);
             $table->unsignedInteger('status')->default(1);
             $table->text('users')->nullable();
             $table->enum('first_purchase',['enable', 'disable'])->default('disable');

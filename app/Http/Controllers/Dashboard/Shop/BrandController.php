@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Brand;
 use App\Shop;
+use App\ErrorLog;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
+use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
 
 
@@ -39,7 +41,7 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BrandRequest $request)
     {
       //check if icon is null or not
       if($request->file('icon') == null){
@@ -51,7 +53,6 @@ class BrandController extends Controller
         switch ($request->input('action')) {
           //save and close modal
             case 'justSave':
-                    $request->validate(['name' => 'required']);
                     $brand = new Brand;
                     $brand->name = $request->name;
                     $brand->icon = $icon;
@@ -62,7 +63,6 @@ class BrandController extends Controller
                 break;
             //save and open new modal
             case 'saveAndContinue':
-                    $request->validate(['name' => 'required']);
                     $brand = new Brand;
                     $brand->name = $request->name;
                     $brand->icon = $icon;
@@ -104,7 +104,7 @@ class BrandController extends Controller
      * @param  \App\Brand  $brand
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, $id)
     {
       //check if icon is null or not
       if($request->file('icon') == null){
@@ -113,7 +113,6 @@ class BrandController extends Controller
       else{
         $icon = $this->uploadFile($request->file('icon'), false, true);
       }
-        $request->validate(['name' => 'required']);
         $productCategory = \Auth::user()->shop()->first()->brands()->where('id',$id)->get()->first()->update([
             'name' => $request->name,
             'icon' => $icon
@@ -144,6 +143,10 @@ class BrandController extends Controller
 
 
     public function destroyIcon(Request $request){
+      if ($brand->shop->user_id !== \Auth::user()->id) {
+              alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+              return redirect()->back();
+            }
       $brand = Brand::find($request->id);
       foreach($brand->icon as $icon){
         $icon = ltrim($icon, '/');
@@ -155,41 +158,5 @@ class BrandController extends Controller
     }
 
 
-    public function brandProduct($shop, $name, Request $request) {
-        $shop = Shop::where('english_name', $shop)->first();
-        $shopTags = $shop->tags;
-        $shopCategories = $shop->ProductCategories()->get();
-        $brandName = Brand::where('name', $name)->get()->first()->name;
-        $brands = $shop->brands;
-        if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice')) {
-          $minPrice = $request->minprice;
-          $maxPrice = $request->maxprice;
-          $filterBy = $request->type;
-          $sortBy = $request->sortBy['field'];
-          if($shop->template->folderName == 2){
-            $sortBy_array = explode('|', $request->sortBy['field']);
-            $sortBy = $sortBy_array[0];
-            $orderBy = $sortBy_array[1];
-          }
-          else{
-            $orderBy = $request->sortBy['orderBy'];
-          }
-            $perPage = 8;
-            if ($request->type == 'all') {
-                $products = Brand::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->orderBy($sortBy, $orderBy)->paginate($perPage);
-            } else {
-                $products = Brand::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->where('type', $request->type)->orderBy($sortBy, $orderBy)->paginate($perPage);
-            }
-        } else {
-            $products = Brand::where('name', $name)->get()->first()->products()->where('shop_id', $shop->id)->paginate(8);
-        }
-        $template_folderName = $shop->template->folderName;
-
-        SEOTools::setTitle($shop->name . ' | ' . $brandName);
-        SEOTools::setDescription($shop->description);
-        SEOTools::opengraph()->addProperty('type', 'website');
-
-        return view("app.shop.$template_folderName.brands-product", compact('products', 'shop', 'shopCategories', 'brandName', 'brands', 'shopTags'));
-    }
 
 }

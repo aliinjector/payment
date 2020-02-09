@@ -31,20 +31,23 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('faq.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('faq.store', ['continue' => 1, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان سوال :</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" placeholder="مثال: ثبت نام">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>عنوان سوال :</span></div>
+                                    <input type="text" class="form-control inputfield" value="{{ old('title') }}" name="title" placeholder="مثال: ثبت نام">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">متن سوال :</span></div>
-                                    <input type="text" class="form-control inputfield" name="question" placeholder="مثال: چگونه در سایت خرید ثبت کنیم">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>متن سوال :</span></div>
+                                    <input type="text" class="form-control inputfield" value="{{ old('question') }}" name="question" placeholder="مثال: چگونه در سایت خرید ثبت کنیم">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">متن پاسخ :</span></div>
-                                    <input type="text" class="form-control inputfield" name="answer" placeholder="مثال : با انجام مراحل خرید کالای جدید">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>متن پاسخ :</span></div>
+                                    <input type="text" class="form-control inputfield" value="{{ old('answer') }}" name="answer" placeholder="مثال : با انجام مراحل خرید کالای جدید">
                                 </div>
                             </div>
                             <!--end form-group-->
@@ -71,20 +74,23 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('faq.update', $faq->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('faq.update', ['id' => $faq->id, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان سوال :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>عنوان سوال :</span></div>
                                     <input type="text" class="form-control inputfield" name="title" value="{{ $faq->title }}">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">متن سوال :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>متن سوال :</span></div>
                                     <input type="text" class="form-control inputfield" name="question" value="{{ $faq->question }}">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">پاسخ :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>پاسخ :</span></div>
                                     <input type="text" class="form-control inputfield" name="answer" value="{{ $faq->answer }}">
                                 </div>
                             </div>
@@ -140,9 +146,9 @@
                                                 <td>{{ $faq->question }}</td>
                                                 <td>{{ $faq->answer }}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $faq->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $faq->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $faq->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $faq->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeCat" data-name="{{ $faq->title }}" data-id="{{ $faq->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeCat" title="حذف" data-name="{{ $faq->title }}" data-id="{{ $faq->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

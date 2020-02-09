@@ -63,6 +63,10 @@ class Shop extends Model
     {
         return $this->hasMany('App\Brand');
     }
+    public function specifications()
+    {
+        return $this->hasMany('App\Specification');
+    }
     public function feedbacks()
     {
         return $this->hasMany('App\Feedback');

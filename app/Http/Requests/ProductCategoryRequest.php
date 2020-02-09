@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Shop;
+
 
 class ProductCategoryRequest extends FormRequest
 {
@@ -11,11 +13,16 @@ class ProductCategoryRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return true;
-    }
-
+     public function authorize()
+     {
+       $shop_userid = Shop::where('english_name', \request('shop'))->get()->first()->user_id;
+       if($shop_userid == \auth::user()->id){
+         return true;
+       }
+       else{
+         return false;
+       }
+     }
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,8 +31,9 @@ class ProductCategoryRequest extends FormRequest
     public function rules()
     {
       return [
-          'name' => 'required',
-          'description' => 'required',
+          'name' => 'required|max:25',
+          'icon' => 'mimes:jpeg,png,jpg,gif|max:2048',
+
       ];
     }
 }

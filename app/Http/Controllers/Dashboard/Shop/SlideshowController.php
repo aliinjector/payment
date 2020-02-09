@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Dashboard\Shop;
 
 use App\Slideshow;
+use App\ErrorLog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SlideShowRequest;
+
 
 
 class SlideshowController extends Controller
@@ -18,7 +21,6 @@ class SlideshowController extends Controller
     {
       $shop = \Auth::user()->shop()->first();
       $slideshows = \Auth::user()->shop()->first()->slideshows()->get();
-
       return view('dashboard.shop.slideshow', compact('slideshows' , 'shop'));
 
     }
@@ -39,40 +41,40 @@ class SlideshowController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $request->validate(['image' => 'required']);
-        $image = $this->uploadFile($request->file('image'), false, true);
+     public function store(SlideShowRequest $request)
+       {
+           $request->validate(['image' => 'required']);
+           $image = $this->uploadFile($request->file('image'), false, true);
+           switch ($request->input('action')) {
+             //save and close modal
+               case 'justSave':
+                       $slideshow = new Slideshow;
+                       $slideshow->title = $request->title;
+                       $slideshow->url = $request->url;
+                       $slideshow->description = $request->description;
+                       $slideshow->image = $image;
+                       $slideshow->shop_id = \Auth::user()->shop()->first()->id;
+                       $slideshow->save();
+                       alert()->success('اسلاید جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+                       return redirect()->route('slideshow.index');
+                   break;
+               //save and open new modal
+               case 'saveAndContinue':
+                       $slideshow = new Slideshow;
+                       $slideshow->title = $request->title;
+                       $slideshow->description = $request->description;
+                       $slideshow->url = $request->url;
+                       $slideshow->image = $image;
+                       $slideshow->shop_id = \Auth::user()->shop()->first()->id;
+                       $slideshow->save();
+                       session()->flash('flashModal');
+                       alert()->success('اسلاید جدید شما باموفقیت اضافه شد.', 'ثبت شد');
+                       return redirect()->route('slideshow.index');
+                   break;
+                 }
+        
+       }
 
-        switch ($request->input('action')) {
-          //save and close modal
-            case 'justSave':
-                    $slideshow = new Slideshow;
-                    $slideshow->title = $request->title;
-                    $slideshow->url = $request->url;
-                    $slideshow->description = $request->description;
-                    $slideshow->image = $image;
-                    $slideshow->shop_id = \Auth::user()->shop()->first()->id;
-                    $slideshow->save();
-                    alert()->success('اسلاید جدید شما باموفقیت اضافه شد.', 'ثبت شد');
-                    return redirect()->route('slideshow.index');
-                break;
-            //save and open new modal
-            case 'saveAndContinue':
-                    $slideshow = new Slideshow;
-                    $slideshow->title = $request->title;
-                    $slideshow->description = $request->description;
-                    $slideshow->url = $request->url;
-                    $slideshow->image = $image;
-                    $slideshow->shop_id = \Auth::user()->shop()->first()->id;
-                    $slideshow->save();
-                    session()->flash('flashModal');
-                    alert()->success('اسلاید جدید شما باموفقیت اضافه شد.', 'ثبت شد');
-                    return redirect()->route('slideshow.index');
-                break;
-
-        }
-    }
 
     /**
      * Display the specified resource.
@@ -103,7 +105,7 @@ class SlideshowController extends Controller
      * @param  \App\Slideshow  $slideshow
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SlideShowRequest $request, $id)
     {
       if($request->file('image') == null){
         $image = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->image;
@@ -112,7 +114,6 @@ class SlideshowController extends Controller
         $image = $this->uploadFile($request->file('image'), false, true);
       }
 
-        $request->validate(['title' => 'required']);
         $slideshow = \Auth::user()->shop()->first()->slideshows()->where('id',$id)->get()->first()->update([
             'title' => $request->title,
             'url' => $request->url,

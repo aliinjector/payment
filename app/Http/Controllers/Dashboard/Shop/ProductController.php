@@ -5,6 +5,7 @@ use App\Tag;
 use App\Shop;
 use App\Product;
 use App\Brand;
+use App\ErrorLog;
 use App\Color;
 use App\Value;
 use App\Facility;
@@ -40,11 +41,12 @@ class ProductController extends Controller
               return redirect()->route('product-category.index');
           }
           else{
+              $shop = \Auth::user()->shop()->first();
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
               $brands = \Auth::user()->shop()->first()->brands()->get();
               $colors = Color::all();
               $products = \Auth::user()->shop()->first()->products()->get();
-              return view('dashboard.shop.product.index', compact('productCategories','products', 'brands', 'colors'));
+              return view('dashboard.shop.product.index', compact('productCategories','products', 'brands', 'colors','shop'));
               }
             }
     }

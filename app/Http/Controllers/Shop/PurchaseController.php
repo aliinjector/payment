@@ -171,10 +171,10 @@ class PurchaseController extends Controller
 
           if (!isset($request->address)) {
 
-              $request->validate(['new_address' => 'required', 'shipping_way' => 'required']);
+              $request->validate(['new_address' => 'required|max:250', 'shipping_way' => 'required']);
           } else {
 
-              $request->validate(['address' => 'required', 'shipping_way' => 'required']);
+              $request->validate(['address' => 'required|max:250', 'shipping_way' => 'required']);
           }
         }
         $shipping = $request->shipping_way;

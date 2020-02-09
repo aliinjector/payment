@@ -3,7 +3,7 @@
 @section('headerScripts')
 <style media="screen">
   .alert-danger{
-    background-color: #DC143C;
+    background-color: #e35471;
     color: white;
     padding: 1em;
   }

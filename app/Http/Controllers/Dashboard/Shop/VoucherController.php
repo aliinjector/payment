@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dashboard\Shop;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\VoucherRequest;
 use App\Http\Controllers\Controller;
+use App\ErrorLog;
 use App\Product;
 use App\Shop;
 use App\Voucher;
@@ -63,12 +65,8 @@ class VoucherController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(VoucherRequest $request)
     {
-        $request->validate([
-              'name' => 'required',
-              'discount_amount' => 'required',
-        ]);
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
 
@@ -132,7 +130,7 @@ class VoucherController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VoucherRequest $request, $id)
     {
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
@@ -147,7 +145,11 @@ class VoucherController extends Controller
           ]);
           alert()->success('کد تخفیف شما باموفقیت ویرایش شد.', 'ثبت شد');
           return redirect()->route('vouchers.index');
+
     }
+
+
+
 
     public function changeStatus(Request $request){
         $voucher = Voucher::find($request->id);
@@ -159,10 +161,15 @@ class VoucherController extends Controller
 
     }
 
+
+
+
     public function voucherReport(){
       $vouchersReports = \Auth::user()->shop()->first()->userVoucher;
       return view('dashboard.shop.voucher-report' , compact('vouchersReports'));
     }
+
+
 
     /**
      * Remove the specified resource from storage.

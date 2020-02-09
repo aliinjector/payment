@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use App\ErrorLog;
+use App\Events\ErrorLoged;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -46,6 +48,25 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        return parent::render($request, $exception);
+
+      if (config('app.debug') == false){
+      $controllerName = \Route::currentRouteAction();
+      $massage = $exception->getMessage();
+      $routeName = \Request::route()->getName();
+      $methodName = \Request::route()->getActionMethod();
+      $userAgent = \Request::header('user-agent');
+      $userIp = \Request::ip();
+      ErrorLog::firstOrCreate([
+        'massage' =>  $massage,
+        'controller' =>  $controllerName,
+        'route' =>  $routeName,
+        'method' =>  $methodName,
+        'userAgent' =>  $userAgent,
+        'userIp' =>  $userIp,
+      ]);
+      event(new ErrorLoged());
+    }
+      return parent::render($request, $exception);
+
     }
 }

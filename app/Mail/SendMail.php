@@ -19,7 +19,9 @@ class SendMail extends Mailable
      */
     public function __construct($data)
     {
+      if(isset($data)){
         $this->data = $data;
+      }
     }
 
     /**
@@ -29,8 +31,12 @@ class SendMail extends Mailable
      */
     public function build()
     {
-
-        return $this->from('oomidshop@gmail.com')->subject('پیام جدید از تماس با ما وبسایت')->view('dynamic_email_template')->with('data', $this->data);
+      if(!isset($data)){
+        return $this->from('oomidshop@gmail.com')->subject('یک خطای جدید گزارش شد')->view('emails.error-email');
+      }
+      else{
+        return $this->from('oomidshop@gmail.com')->subject('پیام جدید از تماس با ما وبسایت')->view('emails.dynamic_email_template')->with('data', $this->data);
+      }
     }
 }
 

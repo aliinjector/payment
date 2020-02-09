@@ -31,18 +31,20 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('feedback.store', ['continue', 1]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('feedback.store', ['continue' => 1, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان بازخورد :</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" placeholder="مثال: گارانتی بازگشت وجه">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>عنوان بازخورد :</span></div>
+                                    <input type="text" class="form-control inputfield" value="{{ old('title') }}" name="title" placeholder="مثال: گارانتی بازگشت وجه">
                                     <input type="hidden" value="{{ $shop->id }}" class="form-control" name="shop_id">
                                     <input type="hidden" value="{{ \Auth::user()->id }}" class="form-control" name="user_id">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">بازخورد :</span></div>
-                                    <textarea class="form-control" rows="5" id="message" name="feedback"></textarea>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>بازخورد :</span></div>
+                                    <textarea class="form-control" rows="5" id="message" value="{{ old('feedback') }}" name="feedback"></textarea>
                                 </div>
                             </div>
                             <!--end form-group-->
@@ -69,18 +71,20 @@
                         </button>
                     </div>
                     <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
-                        <form action="{{ route('feedback.update', $feedback->id) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="{{ route('feedback.update', ['id' => $feedback->id, 'shop' => $shop->english_name]) }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان بازخورد:</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>عنوان بازخورد:</span></div>
                                     <input type="text" class="form-control inputfield" name="title" value="{{ $feedback->title }}">
                                     <input type="hidden" value="{{ $shop->id }}" class="form-control" name="shop_id">
                                     <input type="hidden" value="{{ \Auth::user()->id }}" class="form-control" name="user_id">
                                 </div>
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">بازخورد :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                       class="fas fa-star required-star mr-1"></i>بازخورد :</span></div>
                                     <textarea class="form-control" rows="5" id="message" name="feedback">{{ $feedback->feedback }}</textarea>
                                 </div>
                             </div>
@@ -135,9 +139,9 @@
                                                 <td class="d-flex justify-content-between">
                                                     {{ $feedback->feedback}}
                                                     <div class="d-none icon-show">
-                                                        <a href="{{ $feedback->id }}" id="editCat" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $feedback->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        <a href="{{ $feedback->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $feedback->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeCat" data-name="{{ $feedback->title }}" data-id="{{ $feedback->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeCat" data-name="{{ $feedback->title }}" title="حذف" data-id="{{ $feedback->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

@@ -12,6 +12,7 @@
   use App\Cart;
   use App\Rating;
   use App\CartProduct;
+  use App\Events\ErrorLoged;
   use App\ProductCategory;
   use Illuminate\Http\Request;
   use Request as RequestFacade;
