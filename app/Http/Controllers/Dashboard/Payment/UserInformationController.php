@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard\Payment;
 use App\UserInformation;
 use App\Http\Requests\UserInformationRequest;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use Carbon\Carbon;
 
 class UserInformationController extends \App\Http\Controllers\Controller
 {
@@ -22,6 +24,17 @@ class UserInformationController extends \App\Http\Controllers\Controller
         }
 
         $userInformation = \Auth::user()->userInformation()->first();
+
+        if(! $userInformation->sms_date >= Carbon::now()->subMinutes(10)->toDateTimeString()){
+          if($userInformation->status == 1){
+            return redirect()->route('verification.sms');
+          }
+        }
+
+        if(! $userInformation->sms_date <= Carbon::now()->subMinutes(5)->toDateTimeString()){
+          alert()->warning('کد تایید برای شما ارسال شده است.')->autoclose(5000);
+        }
+
         return view('dashboard.payment.userInformation', compact('userInformation'));
     }
 
@@ -147,4 +160,45 @@ class UserInformationController extends \App\Http\Controllers\Controller
     {
         //
     }
+
+
+    public function sms(Request $request)
+    {
+
+      $userInformation = \Auth::user()->userInformation()->first();
+
+        if($request->mobileCode){
+          if($request->mobileCode == $userInformation->sms_code){
+            \Auth::user()->userInformation()->first()->update(['status' => 2]);
+            alert()->success('حساب کاربری شما تایید شد.')->autoclose(5000);
+            return view('dashboard.payment.userInformation', compact('userInformation'));
+          }else{
+            alert()->error('کد وارد شده نادرست است.')->autoclose(5000);
+            return view('dashboard.payment.userInformation', compact('userInformation'));
+          }
+
+
+        }
+
+        $code = mt_rand(1111,9999);
+        \Auth::user()->userInformation()->first()->update(['sms_date' => now(), 'sms_code' => $code]);
+
+
+        $client = new Client();
+        $res = $client->request('POST', 'https://rest.payamak-panel.com/api/SendSMS/SendSMS', [
+          'form_params' => [
+            'username' => 'riecocompany',
+            'password' => '8833',
+            'to' => '09201010328',
+            'from' => '10001010111',
+            'text' => 'تست',
+          ]
+        ]);
+
+
+        alert()->success('کد پیامک شد', 'کد تایید ارسال شد.')->autoclose(5000);
+        return view('dashboard.payment.userInformation', compact('userInformation'));
+    }
+
+
 }

@@ -21,8 +21,6 @@ class CreateTicketsTable extends Migration
             $table->string('scope');
             $table->string('status');
             $table->text('attachment')->nullable();
-            $table->text('doerDescription')->nullable();
-            $table->unsignedInteger('doer_id')->nullable();
             $table->timestamps();
         });
     }

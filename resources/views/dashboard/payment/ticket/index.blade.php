@@ -63,7 +63,7 @@
                                                 <div class="form-group row">
                                                     <label for="example-url-input" class="col-sm-2 col-form-label text-center">توضیحات</label>
                                                     <div class="col-sm-10">
-                                                        <textarea class="form-control" name="description" id="description" cols="30" rows="3">{{$ticket->description}}</textarea>
+                                                        <textarea class="form-control" name="description" id="description" cols="30" rows="5">{{$ticket->description}}</textarea>
                                                     </div>
                                                 </div>
 
@@ -273,7 +273,6 @@
                         <thead>
                         <tr>
                             <th>عنوان</th>
-                            <th>توضیحات</th>
                             <th>وضعیت</th>
                             <th>حوزه</th>
                             <th>تاریخ آخرین تغییر</th>
@@ -285,11 +284,10 @@
                         @foreach ($tickets as $ticket)
                             <tr>
                                 <td>{{ $ticket->title }}</td>
-                                <td>{{ $ticket->description }}</td>
                                 <td>{{ $ticket->status }}</td>
                                 <td>{{ $ticket->scope }}</td>
                                 <td style="font-family: BYekan; direction: ltr">{{ jdate($ticket->updated_at) }}</td>
-                               <td><button type="button" class="btn btn-dark waves-effect success" data-toggle="modal" data-animation="bounce" data-target="#ticketDetail{{$ticket->id}}">مشاهده جزییات</button></td>
+                               <td><a href="{{ route('ticket.show', $ticket->id) }}"><button type="button" class="btn btn-dark waves-effect success">مشاهده جزییات</button></a></td>
                             </tr>
                         @endforeach
                         </tbody>

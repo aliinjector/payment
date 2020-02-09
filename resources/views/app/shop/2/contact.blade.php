@@ -39,14 +39,17 @@
                             <div class="tt-contact-info"><i class="tt-icon icon-f-93"></i>
                                 <h6 class="tt-title">شماره تماس:</h6>{{ $shop->shopContact->tel}}</div>
                         </div>
+
                         <div class="col-sm-6 col-md-4">
                             <div class="tt-contact-info"><i class="tt-icon icon-f-24"></i>
                                 <h6 class="tt-title">آدرس:</h6><address>{{ $shop->shopContact->address }}</address></div>
                         </div>
+
                         <div class="col-sm-6 col-md-4">
                             <div class="tt-contact-info"><i class="tt-icon icon-f-93"></i>
                                 <h6 class="tt-title">ایمیل: </h6>{{ $shop->shopContact->shop_email}}</div>
                         </div>
+
                     </div>
                 </div>
             </div>

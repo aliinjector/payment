@@ -21,10 +21,10 @@
             <div class="card">
                 <div class="card-body">
                     <ol class="c-progress-steps">
-                        <li class="c-progress-steps__step done "><span>ایجاد حساب کاربری</span></li>
-                        <li class="c-progress-steps__step {{  $userInformation->status == 1 ? "current" : '' }} {{  $userInformation->status >= 2 ? "done" : '' }}"><span>تکمیل اطلاعات فردی و آپلود مدارک</span></li>
-                        <li class="c-progress-steps__step {{  $userInformation->status == 2 ? "current" : '' }} {{  $userInformation->status >=  3 ? "done" : '' }}"><span>بررسی مدارک توسط پایان پی</span></li>
-                        <li class="c-progress-steps__step  {{  $userInformation->status >=  4 ? "done" : '' }}"><span>تایید کاربر</span></li>
+                        <li class="c-progress-steps__step  {{  $userInformation->status == 1 ? "current" : '' }} {{  $userInformation->status >= 2 ? "done" : '' }} "><span>تایید شماره همراه</span></li>
+                        <li class="c-progress-steps__step {{  $userInformation->status == 2 ? "current" : '' }} {{  $userInformation->status >=  3 ? "done" : '' }}"><span>تایید ایمیل</span></li>
+                        <li class="c-progress-steps__step {{  $userInformation->status == 3 ? "current" : '' }} {{  $userInformation->status >= 4 ? "done" : '' }}"><span>تکمیل اطلاعات فردی و آپلود مدارک</span></li>
+                        <li class="c-progress-steps__step  {{  $userInformation->status >=  5 ? "done" : '' }}"><span>بررسی و تایید توسط فرادیس</span></li>
                     </ol>
                 </div>
                 <!--end card-body-->
@@ -52,13 +52,94 @@
     @include('dashboard.layouts.errors')
 
 
+
+    <div class="row">
+        <div class="col-xl-6 {{  $userInformation->status == 1 ? "" : 'comming-soon' }}">
+            <form method="get" action="{{ route('verification.sms') }}">
+                <div class="card">
+                <div class="card-body ">
+                    <h4 class="mt-0 header-title">مرحله 1: تایید شماره موبایل</h4>
+                    <p class="text-muted mb-3">لطفا کد ارسال شده به شماره همراه خودرا وارد نمایید</p>
+                    <div class="form-group row">
+                        <label for="example-text-input"
+                               class="col-sm-2 col-form-label text-center">شماره موبایل:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="mob" disabled
+                                   value="{{ \Auth::user()->mobile }}" id="example-text-input">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label style="text-align: center" for="example-email-input"
+                               class="col-sm-2 col-form-label text-center">کد تایید:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="mobileCode">
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions text-center pt-3 ">
+                        <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                            <i class="fa fa-check-square-o"></i> اعتبار سنجی
+                        </button>
+                    </div>
+                </div>
+                <!--end card-body-->
+            </div>
+            <!--end card-->
+            </form>
+        </div>
+        <!--end col-->
+        <div class="col-xl-6 {{  $userInformation->status == 2 ? "" : 'comming-soon' }}">
+            <form method="post" enctype="multipart/form-data" action="{{ route('ShensnamehUpload') }}">
+                @csrf
+                <div class="card">
+                <div class="card-body">
+                    <h4 class="mt-0 header-title">مرحله دوم: تایید آدرس ایمیل</h4>
+                    <p class="text-muted mb-3">لطفا کد ارسال شده به ایمیل خودرا وارد نمایید</p>
+                    <div class="form-group row">
+                        <label for="example-text-input"
+                               class="col-sm-2 col-form-label text-center">آدرس ایمیل:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="firstName" disabled
+                                   value="{{ \Auth::user()->email }}" id="example-text-input">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label style="text-align: center" for="example-email-input"
+                               class="col-sm-2 col-form-label text-center">کد تایید:</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="emailCode">
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions text-center  pt-3  ">
+                        <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                            <i class="fa fa-check-square-o"></i> ارسال کد تایید ایمیل
+                        </button>
+                    </div>
+                </div>
+                <!--end card-body-->
+            </div>
+            <!--end card-->
+            </form>
+        </div>
+    </div>
+
+
+
+
     <form method="post" enctype="multipart/form-data" action="{{ route('UserInformation.store') }}">
-        ` @csrf
-        <div class="row">
+         @csrf
+        <div class="row {{  $userInformation->status == 3 ? "" : 'comming-soon' }}">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">اطلاعات کاربری</h4>
+                        <h4 class="mt-0 header-title">مرحله سوم: اطلاعات کاربری</h4>
                         <p class="text-muted mb-3">در این قسمت اطلاعات شخصی و هویتی خود را وارد نموده و مدارک درخواستی
                             را آپلود نمایید سپس منتظر تایید مدارک و اطلاعات توسط تیم پایان پی باشید.</p><br>
                         <div class="row">
@@ -195,7 +276,7 @@
             <!--end col-->
         </div>
 
-        <div class="row">
+        <div class="row {{  $userInformation->status == 3 ? "" : 'comming-soon' }}">
             <div class="col-xl-6">
                 <form method="post" enctype="multipart/form-data" action="{{ route('ShensnamehUpload') }}">
                     @csrf
@@ -234,7 +315,7 @@
                 </form>
             </div>
             <!--end col-->
-            <div class="col-xl-6">
+            <div class="col-xl-6 {{  $userInformation->status == 3 ? "" : 'comming-soon' }}">
                 <form method="post" enctype="multipart/form-data" action="{{ route('melliUpload') }}">
                     @csrf
                     <div class="card">
@@ -271,6 +352,7 @@
             </div>
             <!--end col-->
         </div>
+      </div>
 @endsection
 
 

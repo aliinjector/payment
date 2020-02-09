@@ -702,6 +702,7 @@ class ComposerStaticInitddea55d124224173b57cabc36bdd4095
         'Algolia\\AlgoliaSearch\\Support\\Helpers' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/Support/Helpers.php',
         'Algolia\\AlgoliaSearch\\Support\\UserAgent' => __DIR__ . '/..' . '/algolia/algoliasearch-client-php/src/Support/UserAgent.php',
         'App\\Address' => __DIR__ . '/../..' . '/app/Address.php',
+        'App\\Answer' => __DIR__ . '/../..' . '/app/Answer.php',
         'App\\Bank' => __DIR__ . '/../..' . '/app/Bank.php',
         'App\\Bill' => __DIR__ . '/../..' . '/app/Bill.php',
         'App\\Brand' => __DIR__ . '/../..' . '/app/Brand.php',

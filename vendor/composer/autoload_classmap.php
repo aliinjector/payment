@@ -64,6 +64,7 @@ return array(
     'Algolia\\AlgoliaSearch\\Support\\Helpers' => $vendorDir . '/algolia/algoliasearch-client-php/src/Support/Helpers.php',
     'Algolia\\AlgoliaSearch\\Support\\UserAgent' => $vendorDir . '/algolia/algoliasearch-client-php/src/Support/UserAgent.php',
     'App\\Address' => $baseDir . '/app/Address.php',
+    'App\\Answer' => $baseDir . '/app/Answer.php',
     'App\\Bank' => $baseDir . '/app/Bank.php',
     'App\\Bill' => $baseDir . '/app/Bill.php',
     'App\\Brand' => $baseDir . '/app/Brand.php',

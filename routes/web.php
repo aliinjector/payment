@@ -52,7 +52,9 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::resource('UserInformation', 'UserInformationController');
         Route::post('melliUpload', 'UserInformationController@melliUpload')->name('melliUpload');
         Route::post('ShensnamehUpload', 'UserInformationController@ShensnamehUpload')->name('ShensnamehUpload');
+        Route::get('verification/sms/{mobileCode?}', 'UserInformationController@sms')->name('verification.sms');
         Route::resource('ticket', 'TicketController');
+        Route::post('ticket/answer', 'TicketController@answer')->name('ticket.answer');
         Route::resource('setting', 'SettingController');
         Route::resource('card', 'CardController');
         Route::get('card/delete/{id}', 'CardController@destroy')->name('card.delete');

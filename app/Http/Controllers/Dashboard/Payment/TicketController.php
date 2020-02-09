@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard\Payment;
 
+use App\Answer;
+use App\Http\Requests\AnswerRequest;
 use App\Ticket;
 use App\Http\Requests\TicketRequest;
 use Illuminate\Http\Request;
@@ -16,7 +18,7 @@ class TicketController extends \App\Http\Controllers\Controller
     public function index()
     {
         $tickets = \Auth::user()->tickets()->get();
-        return view('dashboard.payment.ticket', compact('tickets'));
+        return view('dashboard.payment.ticket.index', compact('tickets'));
     }
 
     /**
@@ -38,16 +40,19 @@ class TicketController extends \App\Http\Controllers\Controller
     public function store(TicketRequest $request)
     {
         // check if form uploaded !?
-//        if ($request->file('attachment') != null){
-//            $attachment = $this->uploadFile($request->file('attachment'), false, false);
-//        }
+       if ($request->file('attachment') != null){
+           $attachment = $this->uploadFile($request->file('attachment'), false, false);
+       }
 
         $ticket = new Ticket;
         $ticket->user_id = \Auth::user()->id;
         $ticket->title = $request->title;
         $ticket->description = $request->description;
         $ticket->scope = $request->scope;
-//        $ticket->attachment = $attachment;
+      if ($request->file('attachment') != null){
+           $ticket->attachment = $attachment;
+      }
+
         $ticket->status = 'بررسی نشده';
         $ticket->save();
 
@@ -55,6 +60,35 @@ class TicketController extends \App\Http\Controllers\Controller
         return redirect()->route('ticket.index');
 
     }
+
+
+    public function answer(AnswerRequest $request)
+    {
+        // check if form uploaded !?
+        if ($request->file('attachment') != null){
+            $attachment = $this->uploadFile($request->file('attachment'), false, false);
+        }
+
+        $answer = new Answer;
+        $answer->user_id = \Auth::user()->id;
+        $answer->ticket_id = $request->ticket_id;
+        $answer->type = 'user';
+        $answer->description = $request->description;
+        if ($request->file('attachment') != null){
+            $ticket->attachment = $attachment;
+        }
+
+        $answer->save();
+
+        Ticket::find($request->ticket_id)->update(['status' => 'درانتظار بررسی']);
+
+
+        alert()->success('پاسخ شما باموفقیت اضافه شد.', 'ثبت شد');
+        return redirect()->route('ticket.show', $request->ticket_id);
+
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -64,7 +98,7 @@ class TicketController extends \App\Http\Controllers\Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        return view('dashboard.payment.ticket.show', compact('ticket'));
     }
 
     /**
