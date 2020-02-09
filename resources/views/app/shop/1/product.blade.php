@@ -7,6 +7,10 @@
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
     width: 20%;
 }
+.green-text{
+      color: #15939D!important;
+      font-size : 14px!important;
+}
 </style>
 
 <div class="row">
@@ -48,19 +52,7 @@
                               <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.naaMojood') }}</span>
                               @endif
                             </div>
-                            <div class="mt-4 mb-3">
-                              @foreach($product->specifications as $specification)
-                                <label class="p-3">
-                                  {{ $specification->name }} :
-                                </label>
-                            <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification{{ $specification->id }}[]" title="موردی انتخاب نشده است">
-                              @foreach($specification->items as $item)
-                                 <option {{ $loop->first ? 'selected' : '' }}>{{ $item->name }}</option>
-                               @endforeach
-                             </select>
 
-                           @endforeach
-                           </div>
                          </div>
 
                             @if($product->off_price != null)
@@ -94,6 +86,7 @@
                             <li>{{ $product->weight }} گرم</li>
 
                         </ul>
+                        @if($product->colors->count() != 0)
                         <ul class="tt-options-swatch options-middle">
                           @php
                           $i = 0;
@@ -101,13 +94,13 @@
                            @foreach($product->colors as $color)
                              <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
                               <a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
-
                            </li>
                            @php
                            $i ++;
                             @endphp
                            @endforeach
                         </ul>
+                      @endif
                         @endif
                         <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
                             @csrf
@@ -129,6 +122,19 @@
                                 @else
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
+                                    <div class="mb-3">
+                                      @foreach($product->specifications as $specification)
+                                        <label class="p-3">
+                                          {{ $specification->name }} :
+                                        </label>
+                                    <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification-{{ $specification->id }}[]" title="موردی انتخاب نشده است">
+                                      @foreach($specification->items as $item)
+                                         <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                                       @endforeach
+                                     </select>
+
+                                   @endforeach
+                                   </div>
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
                                     <button type="submit" data-col="true" class="text-white btn bg-blue-omid iranyekan rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.ezaafeBeSabadeKharid') }} </button>
                                     @endif
@@ -387,14 +393,21 @@
   <script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
   <script type="text/javascript">
   $(window).on("load", function() {
-
-  $(".bootstrap-select").children("button.dropdown-toggle").addClass("btn-outline-blue");
+  $(".bootstrap-select").children("button.dropdown-toggle").addClass("bg-orange-omid");
+  $(".bootstrap-select").children("button.dropdown-toggle").addClass("text-light");
   $(".filter-option-inner-inner").addClass("iranyekan");
   $(".bootstrap-select").children(".dropdown-menu").css('background-color','white');
   $(".bootstrap-select").children(".dropdown-menu").children("div.inner").children("ul.dropdown-menu").css('background-color','white');
   $(".filter-option").css('text-align','center');
 });
+  </script>
+  <script type="text/javascript">
+  $(window).ready(function(){
+    setInterval(function(){
+      $(".text").addClass("green-text")
+    }, 100);
 
+  });
   </script>
   <script type="text/javascript">
   $(document).ready(function() {
