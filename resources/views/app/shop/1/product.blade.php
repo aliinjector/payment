@@ -53,7 +53,7 @@
                                 <label class="p-3">
                                   {{ $specification->name }} :
                                 </label>
-                            <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="color[]" title="موردی انتخاب نشده است">
+                            <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification{{ $specification->id }}[]" title="موردی انتخاب نشده است">
                               @foreach($specification->items as $item)
                                  <option {{ $loop->first ? 'selected' : '' }}>{{ $item->name }}</option>
                                @endforeach
@@ -95,10 +95,17 @@
 
                         </ul>
                         <ul class="tt-options-swatch options-middle">
+                          @php
+                          $i = 0;
+                           @endphp
                            @foreach($product->colors as $color)
-                           <li>
-                              <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                             <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
+                              <a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
+
                            </li>
+                           @php
+                           $i ++;
+                            @endphp
                            @endforeach
                         </ul>
                         @endif
@@ -117,13 +124,13 @@
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.daryaafteFile') }} </button>
+                                    <button type="submit" data-col="true" class="btn btn-primary iranyekan rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.daryaafteFile') }} </button>
                                 </form>
                                 @else
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" class="text-white btn bg-blue-omid iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.ezaafeBeSabadeKharid') }} </button>
+                                    <button type="submit" data-col="true" class="text-white btn bg-blue-omid iranyekan rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> {{ __('app-shop-1-product.ezaafeBeSabadeKharid') }} </button>
                                     @endif
 
                                 </form>
@@ -387,6 +394,34 @@
   $(".bootstrap-select").children(".dropdown-menu").children("div.inner").children("ul.dropdown-menu").css('background-color','white');
   $(".filter-option").css('text-align','center');
 });
+
+  </script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+$('li.color-sel').click(function() {
+  $(this).siblings("li").removeClass('active');
+  $(this).addClass('active');
+});
+});
+  </script>
+
+  <script>
+  if ($("#color-selection").length == 0){
+  if ($("li.color-select").hasClass("active")) {
+    var colorId = $("li.color-select > a").data('color');
+   $("button.btn-add-to-cart").filter("[data-col='true']").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+  }
+  }
+
+  //when the Add Field button is clicked
+  $('.options-color').on('click', function() {
+    var colorId = $(this).data('color');
+  //Append a new row of code to the "#items" div
+  if ($("#color-selection").length > 0){
+    $("#color-selection").remove();
+  }
+    $("button.btn-add-to-cart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
+  });
 
   </script>
 @include('sweet::alert')

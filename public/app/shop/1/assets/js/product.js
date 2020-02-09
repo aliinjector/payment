@@ -21,3 +21,13 @@
     $(function() {
         var $gallery = $('.gallery a').simpleLightbox();
     });
+
+    $(document).ready(function() {
+        $(".color-filtering").click(function(e) {
+            e.preventDefault();
+
+            var color = $(this).data('color');
+            $("#color-input").val(color);
+            $('#submit').trigger('submit');
+        });
+    });

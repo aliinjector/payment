@@ -63,6 +63,7 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function addToCart($shopName, $userID, CartRequest $request) {
+        dd($request->all());
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
             $cart->user_id = \Auth::user()->id;
