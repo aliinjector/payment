@@ -1,5 +1,7 @@
 @extends('app.shop.2.layouts.master')
 @section('headerScripts')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 @endsection
 @section('content')
   <style media="screen">
@@ -82,6 +84,21 @@
                            @endif</button>
                         </div>
                      </div>
+                     <div class="mt-4 mb-3 d-flex">
+                       @foreach($product->specifications as $specification)
+                         <div class="">
+                         <label class="p-3">
+                           {{ $specification->name }} :
+                         </label>
+                     <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="color[]" title="موردی انتخاب نشده است">
+                       @foreach($specification->items as $item)
+                          <option {{ $loop->first ? 'selected' : '' }}>{{ $item->name }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+
+                    @endforeach
+                    </div>
                   </form>
                 @endauth
                 @guest
@@ -360,4 +377,11 @@ if ($("#color-selection").length > 0){
 $("div.tt-input-counter").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
 });
 </script>
+<script>
+$(window).on("load", function() {
+$(".filter-option").css('text-align','center');
+});
+</script>
+<script async src="/app/shop/2/js/bootstrap.bundle.min.js"></script>
+
 @endsection

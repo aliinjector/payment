@@ -152,8 +152,8 @@
                                                             <a href="{{ $specification->id }}" id="editBrand" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $specification->id }}"><i
                                                                   class="far fa-edit text-info mr-1 button font-15"></i>
                                                             </a>
-                                                            <a href="" id="removeBrand" title="حذف" data-name="{{ $specification->name }}" data-id="{{ $specification->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
-                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$specification->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
+                                                            <a href="" id="removeSpecification" title="حذف" data-name="{{ $specification->name }}" data-id="{{ $specification->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                            <a href="{{ route('specification-item.main', ['id' => $specification->id]) }}" title="گزینه ها"><i class="fa fa-tasks text-success mr-1 button font-17"></i>
                                                             </a>
                                                         </div>
                                                     </td>
@@ -177,7 +177,7 @@
     <!-- Attachment Modal -->
     @endsection
     @section('pageScripts')
-    <script src="{{ asset('/dashboard/assets/js/admin-brand.js') }}"></script>
+    <script src="{{ asset('/dashboard/assets/js/admin-specification.js') }}"></script>
 
     @if(session()->has('flashModal'))
         <script>

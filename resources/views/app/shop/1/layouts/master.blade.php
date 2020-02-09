@@ -339,6 +339,8 @@
         <!-- App js -->
         <script src="/app/shop/1/assets/js/app.js"></script>
         <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 
         @toastr_js
         @toastr_render

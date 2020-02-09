@@ -13,10 +13,11 @@ class CreateItemSpecificationTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_specification', function (Blueprint $table) {
+        Schema::create('specification_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('price')->nullable();
+            $table->enum('status',['enable', 'disable'])->default('enable');
             $table->bigInteger('specification_id')->unsigned()->index();
             $table->timestamps();
             $table->softDeletes();

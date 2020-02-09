@@ -7,6 +7,7 @@ use App\Product;
 use App\Brand;
 use App\ErrorLog;
 use App\Color;
+use App\specification;
 use App\Value;
 use App\Facility;
 use App\Dashboard;
@@ -161,12 +162,13 @@ class ProductController extends Controller
     }
   }
 
-  //add tags and colors and features to the product
+  //add tags and colors and features and specifications to the product
     if($product)
     {
         $tagIds = [];
         $colorIds = [];
         $featureIds = [];
+        $sepecificationIds = [];
 
         //get all tags of product
         $tagNames = explode(',',$request->get('tags'));
@@ -191,6 +193,18 @@ class ProductController extends Controller
               }
           }
           $product->colors()->sync($colorIds);
+        }
+
+        if($request->get('specifications')){
+          foreach($request->get('specifications') as $specificationName)
+          {
+              $specification = Specification::firstOrCreate(['id'=>$specificationName]);
+              if($specification)
+              {
+                $sepecificationIds[] = $specification->id;
+              }
+          }
+          $product->specifications()->sync($sepecificationIds);
         }
 
 
@@ -253,6 +267,7 @@ class ProductController extends Controller
   {
       $tagIds = [];
       $colorIds = [];
+      $sepecificationIds = [];
       //get all tags of product
       $tagNames = explode(',',$request->get('tags'));
       foreach($tagNames as $tagName)
@@ -274,6 +289,18 @@ class ProductController extends Controller
             }
         }
         $product->colors()->sync($colorIds);
+      }
+
+      if($request->get('specifications')){
+        foreach($request->get('specifications') as $specificationName)
+        {
+            $specification = Specification::firstOrCreate(['id'=>$specificationName]);
+            if($specification)
+            {
+              $sepecificationIds[] = $specification->id;
+            }
+        }
+        $product->specifications()->sync($sepecificationIds);
       }
 
 
@@ -336,6 +363,7 @@ else{
 
     public function editPhysical($id)
     {
+      $shop = \Auth::user()->shop()->first();
       $product = Product::find($id);
       $tags = [];
       foreach($product->tags as $tag){
@@ -345,13 +373,14 @@ else{
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
-      return view('dashboard.shop.product.edit-physical', compact('product','productCategories','brands','colors','tags'));
+      return view('dashboard.shop.product.edit-physical', compact('product','productCategories','brands','colors','tags','shop'));
     }
 
 
 
     public function editFile($id)
     {
+      $shop = \Auth::user()->shop()->first();
       $product = Product::find($id);
       $tags = [];
       foreach($product->tags as $tag){
@@ -361,7 +390,7 @@ else{
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
-      return view('dashboard.shop.product.edit-file', compact('product','productCategories','brands','colors','tags'));
+      return view('dashboard.shop.product.edit-file', compact('product','productCategories','brands','colors','tags','shop'));
     }
 
 
@@ -369,6 +398,7 @@ else{
 
     public function editService($id)
     {
+      $shop = \Auth::user()->shop()->first();
       $product = Product::find($id);
       $tags = [];
       foreach($product->tags as $tag){
@@ -378,7 +408,7 @@ else{
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
-      return view('dashboard.shop.product.edit-service', compact('product','productCategories','brands','colors','tags'));
+      return view('dashboard.shop.product.edit-service', compact('product','productCategories','brands','colors','tags','shop'));
     }
 
     /**
@@ -491,6 +521,7 @@ else{
         {
             $tagIds = [];
             $colorIds = [];
+            $sepecificationIds = [];
             //get all tags of product
             $tagNames = explode(',',$request->get('tags'));
             foreach($tagNames as $tagName)
@@ -514,6 +545,17 @@ else{
               \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->colors()->sync($colorIds);
             }
 
+            if($request->get('specifications')){
+              foreach($request->get('specifications') as $specificationName)
+              {
+                  $specification = Specification::firstOrCreate(['id'=>$specificationName]);
+                  if($specification)
+                  {
+                    $sepecificationIds[] = $specification->id;
+                  }
+              }
+              $product->specifications()->sync($sepecificationIds);
+            }
 
                     //get all features of product
                     if($request->get('value')){

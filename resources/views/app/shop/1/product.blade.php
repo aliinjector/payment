@@ -1,8 +1,13 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <link href='/app/shop/1/assets/css//simplelightbox.min.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
-
+<style>
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 20%;
+}
+</style>
 
 <div class="row">
     <div class="col-sm-12">
@@ -34,11 +39,30 @@
                             <h3 class="pro-title iranyekan pb-5">{{ $product->title }}
                                 <div class="custom-border mt-3"></div>
                             </h3>
-                            @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
-                            <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.mojoodi') }}</span>
-                            @else
-                            <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.naaMojood') }}</span>
-                            @endif
+                            <div class="">
+
+                            <div class="">
+                              @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
+                              <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.mojoodi') }}</span>
+                              @else
+                              <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.naaMojood') }}</span>
+                              @endif
+                            </div>
+                            <div class="mt-4 mb-3">
+                              @foreach($product->specifications as $specification)
+                                <label class="p-3">
+                                  {{ $specification->name }} :
+                                </label>
+                            <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="color[]" title="موردی انتخاب نشده است">
+                              @foreach($specification->items as $item)
+                                 <option {{ $loop->first ? 'selected' : '' }}>{{ $item->name }}</option>
+                               @endforeach
+                             </select>
+
+                           @endforeach
+                           </div>
+                         </div>
+
                             @if($product->off_price != null)
                                 <h2 class="pro-price">{{ number_format($product->off_price) }} {{ __('app-shop-1-product.tooman') }}</h2>
                                 <span><del>{{ number_format($product->price) }} {{ __('app-shop-1-product.tooman') }}</del></span>
@@ -354,5 +378,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
   <script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
+  <script type="text/javascript">
+  $(window).on("load", function() {
+
+  $(".bootstrap-select").children("button.dropdown-toggle").addClass("btn-outline-blue");
+  $(".filter-option-inner-inner").addClass("iranyekan");
+  $(".bootstrap-select").children(".dropdown-menu").css('background-color','white');
+  $(".bootstrap-select").children(".dropdown-menu").children("div.inner").children("ul.dropdown-menu").css('background-color','white');
+  $(".filter-option").css('text-align','center');
+});
+
+  </script>
 @include('sweet::alert')
 @stop

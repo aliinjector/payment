@@ -60,7 +60,7 @@
 										<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
 										<div class="tt-product-inside-hover">
 											@auth
-											<form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id, 'id' => $cart->]) }}" method="post">
+											<form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id, 'id' => \Auth::user()->cart->id]) }}" method="post">
 												@csrf
 												<input type="hidden" name="product_id" value="{{$product->id}}">
 												<button type="submit" @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>

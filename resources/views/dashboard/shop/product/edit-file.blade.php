@@ -94,6 +94,18 @@
                                   </div>
 
                                   <div class="input-group mt-3">
+                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> خصوصیات انتخابی :</span></div>
+
+                                      <select class="selectpicker" multiple data-live-search="true" name="specifications[]" title="موردی انتخاب نشده است">
+                                        @foreach($shop->specifications as $specification)
+                                          <option @if($product->specifications->count() != 0) @foreach($product->specifications as $selectedSpecification) {{ $specification->id == $selectedSpecification->id ? 'selected' : ''}}
+                                                  @endforeach
+                                                  @endif value="{{ $specification->id }}">{{ $specification->name }}</option>
+                                          @endforeach
+                                      </select>
+                                  </div>
+                                  
+                                  <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>
                                       <input value="{{ $tags }}" type="text" id="input-tags" name="tags" class="form-control" />
 

@@ -112,6 +112,12 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Specification
         Route::resource('specification', 'specificationController');
         Route::post('specification/delete', 'specificationController@destroy')->name('specification.delete');
+
+        //SpecificationItem
+        Route::resource('specification-item', 'specificationItemController');
+        Route::get('specification-item/main/{id}', 'specificationItemController@main')->name('specification-item.main');
+        Route::put('specification-item/main/change-status/{id}', 'specificationItemController@changeStatus')->name('specification-item.change-status');
+        Route::post('specification-item/main/delete', 'specificationItemController@destroy')->name('specification-item.delete');
       });
 
 

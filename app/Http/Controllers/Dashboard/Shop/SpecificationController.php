@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Specification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\BrandRequest;
+use App\Http\Requests\SpecificationRequest;
 
 
 class SpecificationController extends Controller
@@ -38,7 +38,7 @@ class SpecificationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandRequest $request)
+    public function store(SpecificationRequest $request)
     {
 
         switch ($request->input('action')) {
@@ -95,9 +95,16 @@ class SpecificationController extends Controller
      * @param  \App\Specification  $specification
      * @return \Illuminate\Http\Response
      */
-    public function update(BrandRequest $request, Specification $specification)
+    public function update(SpecificationRequest $request, Specification $specification)
     {
-        //
+      $specification = \Auth::user()->shop()->first()->specifications()->where('id',$specification->id)->get()->first()->update([
+          'name' => $request->name,
+          'type' => $request->type,
+      ]);
+
+
+      alert()->success(' خصوصیت  شما با موفقیت ویرایش شد.', 'ثبت شد');
+      return redirect()->back();
     }
 
     /**
@@ -106,8 +113,17 @@ class SpecificationController extends Controller
      * @param  \App\Specification  $specification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Specification $specification)
+    public function destroy(Specification $specification, Request $request)
     {
-        //
+      {
+        $specification = Specification::find($request->id);
+        if ($specification->shop->user_id !== \Auth::user()->id) {
+                alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                return redirect()->back();
+              }
+                 $specification->delete();
+                 alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+                 return redirect()->back();
+      }
     }
 }

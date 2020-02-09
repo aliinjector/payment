@@ -14,7 +14,9 @@
     <script src="/app/shop/1/assets/js/jquery.min.js"></script>
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     @yield('headerScripts')
+    @if(\Request::route()->getName() != 'product')
     <link rel="stylesheet" href="{{ asset('/app/shop/2/css/master.css') }}" />
+  @endif
     @toastr_css
 </head>
 
@@ -37,11 +39,6 @@
             <!-- /tt-top-panel -->
             <!-- tt-mobile menu -->
             <nav class="panel-menu mobile-main-menu">
-
-
-
-
-
                 <ul>
                   @foreach ($shopCategories->where('parent_id' , null)->take($shop->menu_show_count) as $shopCategory)
                     @if($shopCategory->children()->exists())
@@ -603,16 +600,17 @@
         </div>
     </div>
     <!-- Modal (newsletter) -->
-    <script async src="/app/shop/2/js/bundle.js"></script>
-    <script src="/app/shop/1/assets/js/jquery-ui.js"></script>
-    <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
 
-        });
-    </script>
+
     <a href="#" class="tt-back-to-top d-none-print" id="js-back-to-top">{{ __('app-shop-2-layouts-master.up') }}</a>
 </body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script async src="/app/shop/2/js/bundle.js"></script>
+<script src="/app/shop/1/assets/js/jquery-ui.js"></script>
+<script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
 <link rel="stylesheet" href="/app/shop/2/css/custom.css">
 @toastr_js
