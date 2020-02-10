@@ -16,5 +16,9 @@ class Ticket extends Model
       return $this->hasMany(Answer::class);
     }
 
+    public function buzzes(){
+        return $this->hasMany(Buzz::class);
+    }
+
 
 }

@@ -35,7 +35,58 @@
     <!-- end page title end breadcrumb -->
 
     <!--end row-->
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card card-eco">
+                <div class="card-body">
+                    <h4 class="title-text mt-0">مجموع تراکنش ها</h4>
+                    <div class="d-flex justify-content-between">
 
+                        <h3 class="font-weight-bold">300,000 تومان </h3></div>
+                </div>
+                <!--end card-body-->
+            </div>
+            <!--end card-->
+        </div>
+
+        <!--end col-->
+        <div class="col-lg-3">
+            <div class="card card-eco">
+                <div class="card-body">
+                    <h4 class="title-text mt-0"> درگاه ها</h4>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="font-weight-bold">1</h3><i class="dripicons-cart card-eco-icon text-secondary align-self-center"></i></div>
+                </div>
+                <!--end card-body-->
+            </div>
+            <!--end card-->
+        </div>
+        <!--end col-->
+        <div class="col-lg-3">
+            <div class="card card-eco">
+                <div class="card-body">
+                    <h4 class="title-text mt-0"> آخرین تسویه </h4>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="font-weight-bold">1398/05/29 </h3><i class="dripicons-jewel card-eco-icon text-warning align-self-center"></i></div>
+                </div>
+                <!--end card-body-->
+            </div>
+            <!--end card-->
+        </div>
+        <!--end col-->
+        <div class="col-lg-3">
+            <div class="card card-eco">
+                <div class="card-body">
+                    <h4 class="title-text mt-0">مجموع تسویه ها </h4>
+                    <div class="d-flex justify-content-between">
+                        <h3 class="font-weight-bold">    100,300,000 تومان </h3></div>
+                </div>
+                <!--end card-body-->
+            </div>
+            <!--end card-->
+        </div>
+        <!--end col-->
+    </div>
 
 
     <div class="row">
@@ -44,7 +95,7 @@
                 <div class="card-body">
                     <h4 class="mt-0 header-title">لیست درخواست های تسویه حساب شما</h4>
                     <p class="text-muted mb-3">در این قسمت، میتوانید لیست درخواست های تسویه ثبت شده توسط خودرا مشاهده نمایید.</p>
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center">
+                    <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;text-align: center">
                         <thead>
                         <tr>
                             <th>شماره کارت</th>
@@ -84,12 +135,20 @@
 
 @section('pageScripts')
     <!-- Responsive examples -->
+    <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/jszip.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="/dashboard/assets/plugins/datatables/buttons.colVis.min.js"></script>
 
-        <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-        <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+{{--        <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>--}}
+{{--        <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>--}}
+{{--        <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>--}}
+{{--        <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>--}}
+{{--        <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>--}}
+{{--        <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>--}}
 
 @stop

@@ -21,7 +21,8 @@
                         <li class="breadcrumb-item active">داشبورد پایان پی</li>
                     </ol>
                 </div>
-                <h4 class="page-title">داشبورد اصلی</h4></div>
+                <h4 class="page-title">داشبورد اصلی</h4>
+            </div>
             <!--end page-title-box-->
         </div>
         <!--end col-->
@@ -33,6 +34,7 @@
           <div class="card">
               <div class="card-body">
                   <h4 class="mt-0 header-title pb-3">عنوان درخواست: {{$ticket->title}}</h4>
+                  <a href="{{ route('ticket.buzz', $ticket->id) }}"><button style="float:left;" type="submit" class="btn btn-danger"><i class="fa fa-check-square-o"></i> BUZZ</button></a>
                   <div class="row">
                       <div class="col-lg-6">
                           <div class="form-group row">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard\Payment;
 
 use App\Answer;
+use App\Buzz;
 use App\Http\Requests\AnswerRequest;
 use App\Ticket;
 use App\Http\Requests\TicketRequest;
@@ -134,4 +135,23 @@ class TicketController extends \App\Http\Controllers\Controller
     {
         //
     }
+
+    public function buzz(Ticket $ticket)
+    {
+
+       if(Buzz::where('ticket_id', $ticket->id)->where('status', 'بررسی نشده')->count() >= 1){
+           alert()->warning('درخواست شما ثبت شده است.');
+           return redirect()->route('ticket.show', $ticket->id);
+       }
+
+        $buzz = Buzz::create([
+            'ticket_id' => $ticket->id,
+            'user_id' => \Auth::user()->id,
+            'status' => 'بررسی نشده',
+        ]);
+
+        alert()->success('موضوع پیگیری و با شما تماس گرفته خواهد شد.', 'ثبت شد');
+        return redirect()->route('ticket.show', $ticket->id);
+    }
+
 }

@@ -119,7 +119,7 @@
                                 <!-- end col-->
                                 <div class="col-sm-8">
                                     <h3 class="byekan">1200</h3>
-                                    <p class="text-muted font-14 mb-0">مشتری راضی</p>
+                                    <p class="text-muted font-14 mb-0">کاربران آنلاین</p>
                                 </div>
                                 <!-- end col-->
                             </div>
@@ -141,7 +141,7 @@
                                 <!-- end col-->
                                 <div class="col-sm-8">
                                     <h3 class="byekan">101</h3>
-                                    <p class="text-muted font-14 mb-0">مشتری جدید</p>
+                                    <p class="text-muted font-14 mb-0">کل مشتریان</p>
                                 </div>
                                 <!-- end col-->
                             </div>
@@ -188,7 +188,7 @@
                                 <!-- end col-->
                                 <div class="col-sm-8">
                                     <h3 class="byekan">964</h3>
-                                    <p class="text-muted font-14 mb-0">کاربر جدید</p>
+                                    <p class="text-muted font-14 mb-0">مشتریان جدید</p>
                                 </div>
                                 <!-- end col-->
                             </div>

@@ -55,6 +55,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('verification/sms/{mobileCode?}', 'UserInformationController@sms')->name('verification.sms');
         Route::resource('ticket', 'TicketController');
         Route::post('ticket/answer', 'TicketController@answer')->name('ticket.answer');
+        Route::get('ticket/buzz/{ticket}', 'TicketController@buzz')->name('ticket.buzz');
         Route::resource('setting', 'SettingController');
         Route::resource('card', 'CardController');
         Route::get('card/delete/{id}', 'CardController@destroy')->name('card.delete');
