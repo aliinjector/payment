@@ -117,6 +117,7 @@ Author: Ali Rahmani
             <div class="main-icon-menu">
                 <nav class="nav">
 
+
                     <a href="#PayanPayDashboard"
                       class="nav-link {{ request()->is('*verification/sms*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} "
                       data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="{{ __('dashboard-layouts-master.sideBarTitleDashboardAsli') }}">
