@@ -118,10 +118,9 @@ Author: Ali Rahmani
                 <nav class="nav">
 
                     <a href="#PayanPayDashboard"
-                      class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} "
+                      class="nav-link {{ request()->is('*verification/sms*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} "
                       data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="{{ __('dashboard-layouts-master.sideBarTitleDashboardAsli') }}">
-                        <i style="color: #86a3f7;font-size: 25px"
-                          class="  {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'menu-active' : '' }} mdi mdi-desktop-mac-dashboard"></i>
+                        <i style="color: #86a3f7;font-size: 25px" class="  {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('*verification/sms*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'menu-active' : '' }} mdi mdi-desktop-mac-dashboard"></i>
                     </a>
 
 
@@ -204,8 +203,7 @@ Author: Ali Rahmani
                             <h6 class="menu-title">داشبورد اصلی</h6>
                         </div>
                         <ul class="nav">
-                            <li class="nav-item "><a style="color: red" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و
-                                    احراز هویت</a></li>
+                            <li class="nav-item "><a style="color: red" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('*verification/sms*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و احراز هویت</a></li>
                             <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
                             <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
                             <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>

@@ -17,6 +17,18 @@ class UserInformationController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
+        if(\Auth::user()->wallets()->first() == null){
+            $key = str_replace( '=' , '', base64_encode(mt_rand(0, 99) . time()  . substr(\Auth::user()->id, 0, 5)));
+            $wallet = \Auth::user()->wallets()->create([
+                'name' => 'کیف پول اصلی',
+                'amount' => 0,
+                'key' => $key,
+            ]);
+        }
+
+
+
+
         if(\Auth::user()->userInformation()->first() == null){
             \Auth::user()->userInformation()->create([
             'status' => 1,
@@ -176,8 +188,6 @@ class UserInformationController extends \App\Http\Controllers\Controller
             alert()->error('کد وارد شده نادرست است.')->autoclose(5000);
             return view('dashboard.payment.userInformation', compact('userInformation'));
           }
-
-
         }
 
         $code = mt_rand(1111,9999);
@@ -189,9 +199,9 @@ class UserInformationController extends \App\Http\Controllers\Controller
           'form_params' => [
             'username' => 'riecocompany',
             'password' => '8833',
-            'to' => '09201010328',
+            'to' => \Auth::user()->mobile,
             'from' => '10001010111',
-            'text' => 'تست',
+            'text' => "کد تایید: $code | پایان پی",
           ]
         ]);
 
