@@ -45,25 +45,26 @@
                                         <th class="border-top-0">قیمت جمع کالا</th>
                                         <th class="border-top-0">روش پرداخت</th>
                                         <th class="border-top-0">روش ارسال</th>
+                                        <th class="border-top-0">خصوصیات محصول</th>
                                         <th class="border-top-0">زمان سفارش</th>
                                     </tr>
                                     <!--end tr-->
                                 </thead>
 
                                 <tbody class="font-18">
-                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products()->get() as $product)
+                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct()->get() as $product)
                                     <tr class="byekan">
-                                        <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img src="{{ $product->image['200,100']}}" alt="user"></a></td>
-                                        <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
-                                        <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}</td>
-                                        @if($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color)
-                                      <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color->name }}</td>
+                                        <td><a href="{{ route('product', ['shop' => $product->product->shop->english_name, 'id' => $product->product->id]) }}" target="_blank"><img src="{{ $product->product->image['200,100']}}" alt="user"></a></td>
+                                        <td><a href="{{ route('product', ['shop'=>$product->product->shop->english_name, 'id'=>$product->product->id]) }}" target="_blank">{{ $product->product->title }}</a></td>
+                                        <td>{{ $product->quantity }}</td>
+                                        @if($product->color)
+                                      <td>{{ $product->color->name }}</td>
                                         @else
                                           <td></td>
                                       @endif
 
-                                        <td>{{ number_format($product->price) }}</td>
-                                        <td>{{ number_format($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price) }}</td>
+                                        <td>{{ number_format($product->product->price) }}</td>
+                                        <td>{{ number_format($product->total_price) }}</td>
                                         <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">
                                                 {{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}
                                             </span></td>
@@ -76,10 +77,20 @@
                                                 دریافت حضوری
                                               @endif
                                             </span></td>
+                                            <td>
+                                            @if($product->specification)
+                                              @foreach ($shopSpecifications as $specification)
+                                                @foreach ($product->specification as $specificationId)
+                                                @foreach ($specification->items->where('id', $specificationId) as $item)
+                                                {{ $item->specification->name }}  : {{ $item->name }} <br />
+                                                @endforeach
+                                                @endforeach
+                                              @endforeach
+                                          @endif
+                                          </td>
                                         <td class="d-flex justify-content-lg-end align-items-center h-25vh" style="direction: ltr">{{ jdate($purchase->created_at) }}
-                                            @if($product->type == 'file')
+                                            @if($product->product->type == 'file')
                                                 <div class="icon-show">
-
                                                 </div>
                                                 @endif
                                         </td>

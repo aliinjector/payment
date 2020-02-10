@@ -63,7 +63,6 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function addToCart($shopName, $userID, CartRequest $request) {
-        dd($request->all());
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
             $cart->user_id = \Auth::user()->id;
@@ -71,7 +70,7 @@ class CartController extends \App\Http\Controllers\Controller {
             $cart->status = 0;
             $cart->save();
         }
-        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->first();
+        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', \json_encode($request->specification))->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shopName)->get()->first()->id;
         $product = Product::where('id', $request->product_id)->get()->first();
@@ -83,6 +82,10 @@ class CartController extends \App\Http\Controllers\Controller {
         if($request->quantity == null){
           $request->merge(['quantity' => 1]);
         }
+        if(!isset($request->specification)){
+          $request->merge(['specification' => null]);
+        }
+
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
               if (\Auth::user()->cart()->count() != 0) {
                 foreach(\Auth::user()->cart()->get()->first()->products()->get() as $singleCartProduct){
@@ -92,7 +95,9 @@ class CartController extends \App\Http\Controllers\Controller {
                   }
                 }
               }
-            DB::table('cart_product')->insert([['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice], ]);
+            DB::table('cart_product')->insert([
+              ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => \json_encode($request->specification)]
+              , ]);
             $total_price = 0;
             foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
               $total_price += $cartProduct->total_price;
