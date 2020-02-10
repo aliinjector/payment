@@ -5,7 +5,6 @@
 	<div class="container-indent">
 		<div class="container">
 			<div class="row">
-
 				@include('app.shop.2.layouts.partials.filtering')
 
 				<div class="col-md-12 col-lg-9 col-xl-9">
@@ -31,6 +30,7 @@
 										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img class="col-12" src="{{ $product->image['250,250'] }}" data-src="{{ $product->image['250,250'] }}"
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
+
 									<div class="tt-description">
 										<div class="tt-row">
 											<ul class="tt-options-swatch options-middle flex-row mb-2">
@@ -46,6 +46,7 @@
 												 $i ++;
 													@endphp
 												 @endforeach
+
 											</ul>
 											<ul class="tt-add-info">
 												<li><a href="#">{{ $product->productCategory->name }}</a></li>
@@ -60,8 +61,10 @@
 										<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
 										<div class="tt-product-inside-hover">
 											@auth
-											<form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id, 'id' => \Auth::user()->cart->id]) }}" method="post">
+
+											<form @if(\Auth::user()->cart != null) action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id , 'id' => \Auth::user()->cart->id]) }}" @else action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" @endif method="post">
 												@csrf
+
 												<input type="hidden" name="product_id" value="{{$product->id}}">
 												<button type="submit" @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
 													@if($product->type == 'file'){{ __('app-shop-2-category.daryafteFile') }}

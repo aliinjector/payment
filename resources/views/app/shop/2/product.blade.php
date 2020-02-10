@@ -7,6 +7,9 @@
   <style media="screen">
     .h-50-vh{
       height: 50vh!important;
+      .w-22{
+        width: 22%!important;
+      }
     }
   </style>
 <div id="tt-pageContent">
@@ -90,9 +93,9 @@
                          <label class="p-3">
                            {{ $specification->name }} :
                          </label>
-                     <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="color[]" title="موردی انتخاب نشده است">
+                     <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification[]" title="موردی انتخاب نشده است">
                        @foreach($specification->items as $item)
-                          <option {{ $loop->first ? 'selected' : '' }}>{{ $item->name }}</option>
+                         <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
                         @endforeach
                       </select>
                     </div>
@@ -383,5 +386,10 @@ $(".filter-option").css('text-align','center');
 });
 </script>
 <script async src="/app/shop/2/js/bootstrap.bundle.min.js"></script>
-
+<script>
+  setInterval(function(){
+    $('.col-6').css('width', '22%');
+    $('.draggable').css('width', '100%');
+  }, 1000);
+</script>
 @endsection

@@ -127,7 +127,7 @@
                                         <label class="p-3">
                                           {{ $specification->name }} :
                                         </label>
-                                    <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification-{{ $specification->id }}[]" title="موردی انتخاب نشده است">
+                                    <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification[]" title="موردی انتخاب نشده است">
                                       @foreach($specification->items as $item)
                                          <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
                                        @endforeach
