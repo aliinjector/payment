@@ -37,7 +37,7 @@ class ShopSettingController extends Controller
               $shop->category_id = 1;
               $shop->status = 0;
               $shop->quick_way = "disable";
-              $shop->posting_way = "disable";
+              $shop->posting_way = "enable";
               $shop->person_way = "disable";
               $shop->cash_payment = "enable";
               $shop->online_payment = "enable";
@@ -118,20 +118,6 @@ class ShopSettingController extends Controller
     public function update(ShopSettingRequest $request)
     {
 
-      if(!isset($request->icon)){
-      $icon = \Auth::user()->shop()->first()->icon;
-      }
-      else{
-       $icon = $this->uploadFile($request->file('icon'), false, true);
-      }
-      if(!isset($request->logo)){
-      $logo = \Auth::user()->shop()->first()->logo;
-      }
-      else{
-      $logo = $this->uploadFile($request->file('logo'), false, true);
-      }
-
-
         if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
           //check for unique name for shop
             $request->validate([
@@ -143,6 +129,10 @@ class ShopSettingController extends Controller
                   'english_name' => 'required|unique:shops|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/'
             ]);
         }
+        if(!isset($request->quick_way) and !isset($request->posting_way) and !isset($request->person_way)){
+          return redirect()->back()->withErrors(['باید حداقل یک روش ارسال انتخاب شود']);
+         }
+          else{
         if ( $request->quick_way != "on")
         $request->quick_way = 'disable';
      else
@@ -157,6 +147,8 @@ class ShopSettingController extends Controller
         $request->person_way = 'disable';
      else
      $request->person_way = 'enable';
+     }
+
 
         if ( $request->online_payment != "on")
         $request->online_payment = 'disable';
@@ -168,6 +160,18 @@ class ShopSettingController extends Controller
      else
      $request->cash_payment = 'enable';
 
+     if(!isset($request->icon)){
+     $icon = \Auth::user()->shop()->first()->icon;
+     }
+     else{
+      $icon = $this->uploadFile($request->file('icon'), false, true);
+     }
+     if(!isset($request->logo)){
+     $logo = \Auth::user()->shop()->first()->logo;
+     }
+     else{
+     $logo = $this->uploadFile($request->file('logo'), false, true);
+     }
 
       $shop = \Auth::user()->shop()->first()->update([
         'name' => $request->name,

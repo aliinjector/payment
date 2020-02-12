@@ -32,7 +32,7 @@ class ShopSettingRequest extends FormRequest
     public function rules()
     {
       return [
-            'name' => 'required|min:1|max:50|alpha_dash',
+            'name' => 'required|min:1|max:50|regex:/^[\pL\s\-]+$/u',
             'description' => 'required|min:1|max:100',
             'quick_way' => 'in:on',
             'posting_way' => 'in:on',

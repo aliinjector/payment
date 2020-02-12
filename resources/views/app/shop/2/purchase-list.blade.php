@@ -55,30 +55,24 @@
                         <!--end tr-->
                      </thead>
                      <tbody class="iranyekan font-14">
-                        @php $i=0
-                        @endphp
-                        @php $j=0
-                        @endphp
-                        @foreach($products as $product)
+
+                        @foreach($cart->cartProduct as $product)
                         <tr>
                            <td>
-                              <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
-                                 <h5 class="mt-0 mb-1">{{ $product->title }}</h5>
-                              </a>
+                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->product()->get()->first()->id]) }}">
+                                 <h5 class="mt-0 mb-1">{{ $product->product()->get()->first()->title }}</h5>
+                             </a>
                            </td>
-                           <td>{{ number_format($product->price) }}</td>
+                           <td>{{ number_format($product->product()->get()->first()->price) }}</td>
                            <td>
-                              @if($product->off_price == null) 0
-                              @else {{ number_format($product->price-$product->off_price)}}
-                              @endif
+                             @if($product->product()->get()->first()->off_price == null) 0
+                                 @else {{ number_format($product->product()->get()->first()->price-$product->product()->get()->first()->off_price)}}
+                                 @endif
                            </td>
-                           <td>{{ $quantity[$i] }}</td>
-                           <td> {{ number_format($productTotal_price[$j]) }} </td>
+                           <td>{{ $cart->cartProduct->where('product_id' , $product->product()->get()->first()->id)->first()->quantity }}</td>
+                           <td> {{ number_format($cart->cartProduct->where('product_id' , $product->product()->get()->first()->id)->first()->total_price) }} </td>
                         </tr>
-                        @php $i++
-                        @endphp
-                        @php $j++
-                        @endphp
+
                         @endforeach
                         <!--end tr-->
                         <!--end tr-->
@@ -90,9 +84,9 @@
                            </th>
                            <td class="border-0 font-14"><b>جمع کل</b></td>
                            <td>
-                              @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
-                              @else {{ number_format($total_price) }}
-                              @endif
+                             @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
+                             @else {{ number_format($cart->total_price) }}
+                             @endif
                            </td>
                         </tr>
                         <!--end tr-->
@@ -101,9 +95,8 @@
                   <!--end table-->
                </div>
                <div class="col-lg-6 mt-3 mr-lg-n4 d-none-print">
-                  <form class="form-inline col-lg-12" action="{{ route('approved',['shop'=>$shop->english_name, 'id'=>$product->id]) }}" method="post">
+                 <form class="form-inline col-lg-12" action="{{ route('approved',['shop'=>$shop->english_name]) }}" method="post">
                      @csrf
-                     <input type="hidden" name="total_price" value="{{ $total_price }}">
                      <input type="text" name="code" class="border-muted form-control col-lg-6 col-md-12 col-sm-12" placeholder="کد" aria-describedby="button-addon2">
                      <button class="btn tt-btn-addtocart col-lg-6 rounded " type="submit" id="button-addon2">اعمال تخفیف</button>
                   </form>
@@ -118,9 +111,9 @@
                               <tr>
                                  <td class="payment-title border-bottom-0">قیمت کل :</td>
                                  <td class="border-bottom-0">
-                                    @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
-                                    @else {{ number_format($total_price) }}
-                                    @endif
+                                   @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
+                                   @else {{ number_format($cart->total_price) }}
+                                   @endif
                                  </td>
                               </tr>
                               @if($shop->VAT == 'enable')
@@ -217,15 +210,10 @@
                                  <td class="payment-title font-weight-bolder">مبلغ قابل پرداخت :</td>
                                  <td class="total-payable-price">
                                    <span class="price font-16" id="price-span">
-                                    @if(isset($discountedPrice))
-                                    @if($shop->VAT == 'enable') {{ number_format(($discountedPrice) + ($discountedPrice * $shop->VAT_amount / 100)) }}
-                                    @else {{ number_format($discountedPrice) }}
-                                    @endif
-                                    @else
-                                    @if($shop->VAT == 'enable') {{ number_format(($total_price) + ($total_price * $shop->VAT_amount / 100))  }}
-                                    @else {{ number_format($total_price) }}
-                                    @endif
-                                    @endif
+                                     @if(isset($discountedPrice))
+                                     @if($shop->VAT == 'enable') {{ number_format(($discountedPrice) + ($discountedPrice * $shop->VAT_amount / 100)) }} @else {{ number_format($discountedPrice) }}  @endif
+                                     @else @if($shop->VAT == 'enable') {{ number_format(($cart->total_price) + ($cart->total_price * $shop->VAT_amount / 100))  }} @else {{ number_format($cart->total_price) }} @endif
+                                         @endif
                                   </span>
                                  </td>
                               </tr>
