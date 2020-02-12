@@ -103,9 +103,9 @@
 
                                 </div>
                                 <div class="form-group">
-                                    <label for="mo_number">{{ __('register.registerBtn') }}</label>
+                                    <label for="mo_number">{{ __('register.mobile') }}</label>
                                     <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-phone"></i> </span>
-                                        <input type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{old('mobile')}}"  id="mobile" placeholder="مثال: 09202020222">
+                                        <input type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}"  id="mobile" placeholder="مثال: 09202020222">
                                         @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

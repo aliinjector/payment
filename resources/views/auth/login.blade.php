@@ -62,13 +62,10 @@
                             <!--end form-group-->
                             <div class="form-group row mt-4">
                                 <div class="col-sm-6">
-                                    <div class="custom-control custom-switch switch-success">
-                                        <input type="checkbox" class="custom-control-input" id="customSwitchSuccess">
-                                        <label class="custom-control-label text-muted" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                    </div>
+                                    <div class="custom-control custom-switch switch-success"></div>
                                 </div>
                                 <!--end col-->
-                                <div class="col-sm-6 text-right"><a href="" class="text-muted font-12"><i class="dripicons-lock"></i> {{ __('login.forget') }}</a></div>
+                                <div class="col-sm-6 text-right"><a href="{{ route('password.request') }}" class="text-muted font-12"><i class="dripicons-lock"></i> {{ __('login.forget') }}</a></div>
                                 <!--end col-->
                             </div>
                             <!--end form-group-->
@@ -90,14 +87,6 @@
                 <!--end card-body-->
             </div>
             <!--end card-->
-            <div class="account-social text-center mt-4">
-                <h6 class="my-4"> {{ __('login.with') }}</h6>
-                <ul class="list-inline mb-4">
-                    <li class="list-inline-item"><a href="" class=""><i class="fab fa-facebook-f facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="" class=""><i class="fab fa-twitter twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="" class=""><i class="fab fa-google google"></i></a></li>
-                </ul>
-            </div>
             <!--end account-social-->
         </div>
         <!--end auth-page-->

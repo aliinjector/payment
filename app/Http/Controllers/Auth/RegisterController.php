@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin-panel/shop/managment/shop-setting';
+    protected $redirectTo = '/admin-panel/payment/UserInformation';
 
     /**
      * Create a new controller instance.

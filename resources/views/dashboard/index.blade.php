@@ -84,7 +84,7 @@
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-body" style="position: relative;">
-
+                    <h4 class="mt-0 header-title mb-3">مقدار ریالی واریزی ها ازطریق درگاه های شما</h4>
 
                     <script src="https://code.highcharts.com/highcharts.js"></script>
                     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -468,13 +468,31 @@
             },
             yAxis: {
                 title: {
-                    text: 'مبلغ (هزار تومان)'
+                    text: 'مبلغ تراکنش'
                 }
+            },
+            tooltip: {
+                useHTML: true,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'tahoma',
+                    direction: 'rtl',
+                },
+                headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                pointFormat: '<span style="color:{point.color}">{point.name}</span><b>{point.y}</b> ریال<br/>'
             },
             plotOptions: {
                 line: {
                     dataLabels: {
-                        enabled: true
+                        enabled: true,
+                        format: '\u202B' + '{point.name}: {point.y}', // \u202B is RLE char for RTL support
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'tahoma',
+                            textShadow: false, //bug fixed IE9 and EDGE
+                        },
+                        useHTML: true,
+
                     },
                     enableMouseTracking: true
                 }
