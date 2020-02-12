@@ -4,6 +4,18 @@
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
+			<div>
+				@if($errors->any())
+				<div class="alert alert-danger p-5">
+					 <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
+					 <ul>
+							@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+							@endforeach
+					 </ul>
+				</div>
+				@endif
+			</div>
 			<div class="row">
 				@include('app.shop.2.layouts.partials.filtering')
 
@@ -62,7 +74,7 @@
 										<div class="tt-product-inside-hover">
 											@auth
 
-											<form @if(\Auth::user()->cart != null) action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id , 'id' => \Auth::user()->cart->id]) }}" @else action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" @endif method="post">
+											{{-- <form @if(\Auth::user()->cart != null) action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id , 'id' => \Auth::user()->cart->id]) }}" @else action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" @endif method="post">
 												@csrf
 
 												<input type="hidden" name="product_id" value="{{$product->id}}">
@@ -70,7 +82,13 @@
 													@if($product->type == 'file'){{ __('app-shop-2-category.daryafteFile') }}
 														@else {{ __('app-shop-2-category.addToCart') }}
 														@endif</button>
-											</form>
+											</form> --}}
+
+											<button @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="text-white">
+											مشاهده محصول
+											</a>
+														</button>
 											@endauth
 											<div class="tt-row-btn">
 												<a href="#" class="tt-btn-wishlist"></a>

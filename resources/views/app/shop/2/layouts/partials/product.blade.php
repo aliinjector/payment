@@ -55,14 +55,19 @@
         </div>
         <div class="tt-product-inside-hover">
             @if(\Auth::user())
-            <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+            {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                 @csrf
                 <input type="hidden" name="product_id" value="{{$product->id}}">
                 <button type="submit" @if($product->colors->count() != 0) data-col="true" @endif class="btn btn-cart btn-sm waves-effect waves-light iranyekan tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
                     @if($product->type == 'file') {{ __('app-shop-2-layouts-partials-product.daryafteFile') }}
                         @else {{ __('app-shop-2-layouts-partials-product.addToCart') }}
                         @endif</button>
-            </form>
+            </form> --}}
+            <button @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
+          <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="text-white">
+            مشاهده محصول
+            </a>
+                </button>
             @endif
             <div class="tt-row-btn">
                 <a href="#" class="tt-btn-wishlist"></a>

@@ -82,14 +82,21 @@
                             </form>
 
                             @if(\Auth::user())
-                            <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                            {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="product_id" value="{{$product->id}}">
                                 <button type="submit" @if($product->colors->count() != 0) data-col="true" @endif class="btn-add-to-cart btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                                     @if($product->type == 'file'){{ __('app-shop-1-category.daryafteFile') }}
                                         @else {{ __('app-shop-1-category.addToCart') }}
                                         @endif</button>
-                            </form>
+                            </form> --}}
+
+                            <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                              <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="text-white">
+                                  مشاهده محصول
+                                </a>
+                                 </button>
+
                             @endif
                         </div>
                         <!--end card-body-->

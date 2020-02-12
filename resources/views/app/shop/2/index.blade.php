@@ -6,6 +6,18 @@
 
 @section('content')
 <div id="tt-pageContent">
+  <div>
+    @if($errors->any())
+    <div class="alert alert-danger p-5">
+       <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
+       <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+       </ul>
+    </div>
+    @endif
+  </div>
   @if($slideCategories != null and count($slideCategories) == 3)
     <div class="container-indent nomargin">
         <div class="container-fluid-custom">

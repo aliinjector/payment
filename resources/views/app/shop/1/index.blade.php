@@ -124,15 +124,19 @@
                       <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProducts[0]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
                     </form>
                       @if(\Auth::user())
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[0]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             @if($lastProducts[0]->type == 'file'){{ __('app-shop-1-index.daryafteFile') }}
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
-                    </form>
-
+                    </form> --}}
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
 
                     @endif
 
@@ -169,7 +173,7 @@
                     </form>
                                         @if(\Auth::user())
 
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[1]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
@@ -177,7 +181,12 @@
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
 
-                    </form>
+                    </form> --}}
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
 
                     @endif
 
@@ -215,14 +224,20 @@
                       <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProducts[2]->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
                     </form>
                                       @if(\Auth::user())
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[2]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             @if($lastProducts[2]->type == 'file'){{ __('app-shop-1-index.daryafteFile') }}
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
-                    </form>
+                    </form> --}}
+
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
 
 
                     @endif
@@ -262,15 +277,20 @@
 
                            @if(\Auth::user())
 
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$lastProducts[3]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             @if($lastProducts[3]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
-                    </form>
+                    </form> --}}
 
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
                     @endif
                 </div>
                 <!--end card-body-->
@@ -341,14 +361,21 @@
 
                                     @if(\Auth::user())
 
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[0]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             @if($bestSelling[0]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
-                    </form>
+                    </form> --}}
+
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
+
                     @endif
 
                 </div>
@@ -390,14 +417,19 @@
                     {{-- @if($bestSelling[1]->type == 'file' and $bestSelling[1]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                       <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[1]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                       @else --}}
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[1]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             @if($bestSelling[1]->type == 'file'){{ __('app-shop-1-index.daryafteFile') }}
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
-                    </form>
+                    </form> --}}
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
 
 
                     @endif
@@ -440,14 +472,20 @@
                     {{-- @if($bestSelling[2]->type == 'file' and $bestSelling[2]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                         <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[2]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                         @else --}}
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[2]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             @if($bestSelling[2]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
-                    </form>
+                    </form> --}}
+
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
 
                     @endif
                 </div>
@@ -487,14 +525,20 @@
                     {{-- @if($bestSelling[3]->type == 'file' and $bestSelling[3]->purchases()->get()->where('user_id' , \Auth::user()->id)->count() >= 1)
                           <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan comming-soon"><i class="mdi mdi-cart mr-1"></i> @if($bestSelling[3]->type == 'file') شما قبلا این فایل را خریداری کرده اید @endif</button>
                           @else --}}
-                    <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
+                    {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                         @csrf
                         <input type="hidden" name="product_id" value="{{$bestSelling[3]->id}}">
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             @if($bestSelling[3]->type == 'file') {{ __('app-shop-1-index.daryafteFile') }}
                                 @else {{ __('app-shop-1-index.addToCart') }}
                                 @endif</button>
-                    </form>
+                    </form> --}}
+
+                    <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}" class="text-white">
+                          مشاهده محصول
+                        </a>
+                         </button>
 
                     @endif
                 </div>

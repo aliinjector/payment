@@ -13,6 +13,18 @@
     }
   </style>
 <div id="tt-pageContent">
+  <div>
+    @if($errors->any())
+    <div class="alert alert-danger p-5">
+       <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
+       <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+       </ul>
+    </div>
+    @endif
+  </div>
    <div class="container-indent">
       <!-- mobile product slider  -->
       <div class="tt-mobile-product-layout visible-xs">

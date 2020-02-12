@@ -8,6 +8,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="stylesheet" href="/app/shop/2/css/style.css">
+    <link rel="stylesheet" href="/app/shop/2/css/alert.css">
     <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/app/shop/2/css/pagination.css" rel="stylesheet">
     <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />

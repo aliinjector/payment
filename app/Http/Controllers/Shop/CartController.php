@@ -59,10 +59,11 @@ class CartController extends \App\Http\Controllers\Controller {
         }
     }
 
-
-
-
     public function addToCart($shopName, $userID, CartRequest $request) {
+      $product = Product::where('id', $request->product_id)->get()->first();
+      if($product->specifications()->where('type', 'radio')->count() != 0 and !isset($request->specification)){
+        return redirect()->back()->withErrors(['باید خصوصیت تک انتخابی کالا انتخاب شود']);
+      }
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
             $cart->user_id = \Auth::user()->id;
@@ -73,7 +74,6 @@ class CartController extends \App\Http\Controllers\Controller {
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', \json_encode($request->specification))->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shopName)->get()->first()->id;
-        $product = Product::where('id', $request->product_id)->get()->first();
         if($product->off_price != null){
           $productPrice = $product->off_price;
         }else{
@@ -83,7 +83,10 @@ class CartController extends \App\Http\Controllers\Controller {
           $request->merge(['quantity' => 1]);
         }
         if(!isset($request->specification)){
-          $request->merge(['specification' => null]);
+          $specification = null;
+        }
+        else{
+          $specification = \json_encode($request->specification);
         }
 
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
@@ -96,7 +99,7 @@ class CartController extends \App\Http\Controllers\Controller {
                 }
               }
             DB::table('cart_product')->insert([
-              ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => \json_encode($request->specification)]
+              ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => $specification]
               , ]);
             $total_price = 0;
             foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
