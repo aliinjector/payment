@@ -52,7 +52,7 @@
                         <td>
                            <div class="detach-quantity-desctope">
                               <div class="tt-input-counter style-01"><span class="minus-btn"></span>
-                                 <input name="{{ $cartProduct->product->id }}" type="text" @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1)
+                                 <input name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}" type="text" @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1)
                                  value="1" @elseif($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1)
                                  value="1" @elseif($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 2)
                                  value="2" @elseif($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 3)

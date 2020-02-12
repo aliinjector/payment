@@ -91,6 +91,4 @@ public function sluggable()
         return $this->hasMany('App\Facility');
     }
 
-
-
 }

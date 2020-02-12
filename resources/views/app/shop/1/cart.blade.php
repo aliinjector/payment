@@ -16,6 +16,7 @@
                                 <th>{{ __('app-shop-1-cart.cartTableItem2') }}</th>
                                 <th>{{ __('app-shop-1-cart.cartTableItem3') }}</th>
                                 <th>{{ __('app-shop-1-cart.cartTableItem4') }}</th>
+                                <th>خصوصیت محصول</th>
                                 <th>{{ __('app-shop-1-cart.cartTableItem5') }}</th>
                             </tr>
                         </thead>
@@ -36,7 +37,7 @@
                                             @endif
                                     </td>
                                     <td>
-                                        <select class="form-control col-lg-5 p-1" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}">
+                                        <select class="form-control col-lg-5 p-1" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
                                             <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1) selected
                                                 @endif value="1">۱</option>
                                             <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 2) selected
@@ -50,6 +51,15 @@
                                         </select>
 
                                     </td>
+                                    <td>
+                                      {{-- {{ dd($specificationItems) }} --}}
+
+                                    @foreach($cartProduct->specification as $specificationId)
+                                      @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
+                                      {{ $specificationItem->specification->name }} :  {{ $specificationItem->name }} <br>
+                                      @endforeach
+                                    @endforeach
+                                  </td>
 
                                     <td>
                                         <a href="" class="text-danger" id="removeProduct" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}"  data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"><i class="mdi mdi-close-circle-outline font-18"></i></a>

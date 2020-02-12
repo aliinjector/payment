@@ -77,6 +77,7 @@
                                 <th>نام محصول</th>
                                 <th>قیمت واحد کالا</th>
                                 <th> میزان تخفیف</th>
+                                <th>هزینه خصوصیات</th>
                                 <th>تعداد</th>
                                 <th>قیمت مجموع</th>
                             </tr>
@@ -96,14 +97,17 @@
                                         @else {{ number_format($product->product()->get()->first()->price-$product->product()->get()->first()->off_price)}}
                                         @endif
                                 </td>
-                                <td>{{ $cart->cartProduct->where('product_id' , $product->product()->get()->first()->id)->first()->quantity }}</td>
-                                <td> {{ number_format($cart->cartProduct->where('product_id' , $product->product()->get()->first()->id)->first()->total_price) }} </td>
+                                <td>
+                                  {{ $product->specification_price }}
+                                </td>
+                                <td>{{ $product->quantity }}</td>
+                                <td> {{ number_format($product->total_price + $product->specification_price) }} </td>
                             </tr>
                             @endforeach
                             <!--end tr-->
                             <!--end tr-->
                             <tr class="bg-dark text-white">
-                                <th colspan="3" class="border-0"></th>
+                                <th colspan="4" class="border-0"></th>
                                 <td class="border-0 font-14"><b>جمع کل</b></td>
                                 <td>
                                     @if(isset($discountedPrice)) {{number_format($discountedPrice)}}

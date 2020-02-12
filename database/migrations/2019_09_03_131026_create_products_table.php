@@ -37,7 +37,7 @@ class CreateProductsTable extends Migration
             $table->integer('weight')->nullable();
             $table->integer('file_size')->nullable();
             $table->integer('buyCount')->default(0);
-            $table->integer('price');
+            $table->bigInteger('price');
             $table->integer('off_price')->nullable();
             $table->text('attachment')->nullable();
             $table->timestamps();

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\SpecificationItem;
 use Illuminate\Support\Facades\Session;
 use Artesaos\SEOTools\Facades\SEOTools;
 
@@ -133,7 +134,11 @@ class PurchaseController extends Controller
         $shop = Shop::where('english_name', $shop)->first();
         $shopCategories = $shop->ProductCategories()->get();
         $template_folderName = $shop->template->folderName;
-          foreach($request->except('_token') as $productId => $quantity){
+
+          foreach($request->except('_token') as $productIdAndCartProductId => $quantity){
+          $productId = explode('-',$productIdAndCartProductId)[0];
+          $cartProductId = explode('-',$productIdAndCartProductId)[1];
+
             $product = Product::find($productId);
             if($product->off_price != null){
               $productPrice = $product->off_price;
@@ -142,14 +147,21 @@ class PurchaseController extends Controller
               $productPrice = $product->price;
             }
             if(RequestFacade::server('HTTP_REFERER') !== route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id])){
-              DB::table('cart_product')->where([['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->update(['quantity' => $quantity, 'total_price' => $productPrice * $quantity]);
+              $SinglecartProduct = DB::table('cart_product')->where([['id', '=', $cartProductId],['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->get()->first();
+              $specificationPrice = 0;
+              foreach(\json_decode($SinglecartProduct->specification) as $specificationItem){
+                $specificationItem = SpecificationItem::find($specificationItem);
+                $specificationPrice += $specificationItem->price;
+              }
+              DB::table('cart_product')->where([['id', '=', $cartProductId], ['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->update(['quantity' => $quantity, 'total_price' => $productPrice * $quantity, 'specification_price' => $specificationPrice * $quantity]);
             }
         }
 
         $total_price = 0;
         foreach($cart->cartProduct as $cartProduct){
-          $total_price += $cartProduct->total_price;
+          $total_price += $cartProduct->total_price + $cartProduct->specification_price;
         }
+
         $cartUpdate = $cart->update([
           'total_price' => $total_price,
           'voucher_status' => 'unused',

@@ -138,7 +138,7 @@
                                         </label>
                                     <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification[]" title="موردی انتخاب نشده است">
                                       @foreach($specification->items as $item)
-                                         <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                                         <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
                                        @endforeach
                                      </select>
 

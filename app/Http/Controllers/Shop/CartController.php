@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Request as RequestFacade;
+use App\SpecificationItem;
 class CartController extends \App\Http\Controllers\Controller {
     /**
      * Display a listing of the resource.
@@ -52,12 +53,23 @@ class CartController extends \App\Http\Controllers\Controller {
         $shopCategories = $shop->ProductCategories()->get();
         $template_folderName = $shop->template->folderName;
         if (\Auth::user()->cart()->get()->count() != 0) {
+          $specificationItems = collect();
+          foreach ($cart->cartProduct as $cartProduct){
+            foreach($cartProduct->specification as $specification){
+              $specificationItem = SpecificationItem::find($specification);
+              $specificationItems[] = $specificationItem;
+            }
+          }
+          $specificationItem = $specificationItems->unique('id');
+
             $products = \Auth::user()->cart()->get()->first()->products();
-            return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories', 'products','cart'));
+            return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories', 'products','cart','specificationItems'));
         } else {
             return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories'));
         }
     }
+
+
 
     public function addToCart($shopName, $userID, CartRequest $request) {
       $product = Product::where('id', $request->product_id)->get()->first();
@@ -88,7 +100,11 @@ class CartController extends \App\Http\Controllers\Controller {
         else{
           $specification = \json_encode($request->specification);
         }
-
+        $specificationPrice = 0;
+        foreach($request->specification as $specificationItem){
+          $specificationItem = SpecificationItem::find($specificationItem);
+          $specificationPrice += $specificationItem->price;
+        }
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
               if (\Auth::user()->cart()->count() != 0) {
                 foreach(\Auth::user()->cart()->get()->first()->products()->get() as $singleCartProduct){
@@ -99,7 +115,7 @@ class CartController extends \App\Http\Controllers\Controller {
                 }
               }
             DB::table('cart_product')->insert([
-              ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => $specification]
+              ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => $specification, 'specification_price' => $specificationPrice]
               , ]);
             $total_price = 0;
             foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
