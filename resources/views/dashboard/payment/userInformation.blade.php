@@ -24,7 +24,7 @@
                         <li class="c-progress-steps__step  {{  $userInformation->status == 1 ? "current" : '' }} {{  $userInformation->status >= 2 ? "done" : '' }} "><span>تایید شماره همراه</span></li>
                         <li class="c-progress-steps__step {{  $userInformation->status == 2 ? "current" : '' }} {{  $userInformation->status >=  3 ? "done" : '' }}"><span>تایید ایمیل</span></li>
                         <li class="c-progress-steps__step {{  $userInformation->status == 3 ? "current" : '' }} {{  $userInformation->status >= 4 ? "done" : '' }}"><span>تکمیل اطلاعات فردی و آپلود مدارک</span></li>
-                        <li class="c-progress-steps__step  {{  $userInformation->status >=  5 ? "done" : '' }}"><span>بررسی و تایید توسط فرادیس</span></li>
+                        <li class="c-progress-steps__step  {{  $userInformation->status >=  5 ? "done" : '' }}"><span>بررسی و تایید توسط امیدشاپ</span></li>
                     </ol>
                 </div>
                 <!--end card-body-->
@@ -58,7 +58,7 @@
             <form method="get" action="{{ route('verification.sms') }}">
                 <div class="card">
                 <div class="card-body ">
-                    <h4 class="mt-0 header-title">مرحله 1: تایید شماره موبایل</h4>
+                    <h4 class="mt-0 header-title">مرحله اول: تایید شماره موبایل</h4>
                     <p class="text-muted mb-3">لطفا کد ارسال شده به شماره همراه خودرا وارد نمایید</p>
                     <div class="form-group row">
                         <label for="example-text-input"
@@ -92,7 +92,7 @@
         </div>
         <!--end col-->
         <div class="col-xl-6 {{  $userInformation->status == 2 ? "" : 'comming-soon' }}">
-            <form method="post" enctype="multipart/form-data" action="{{ route('ShensnamehUpload') }}">
+            <form method="get" action="{{ route('verification.email') }}">
                 @csrf
                 <div class="card">
                 <div class="card-body">
@@ -282,27 +282,10 @@
                     @csrf
                     <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">تصویر شناسنامه</h4>
+                        <h4 class="mt-0 header-title">مرحله چهارم: تصویر شناسنامه</h4>
                         <p class="text-muted mb-3">لطفا تصویر اسکن شده شناسنامه خود را آپلود نمایید.</p>
-                        <div class="dropify-wrapper has-preview" style="height: 514px;">
-                            <div class="dropify-message"><span class="file-icon"></span>
-                                <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
-                                <p class="dropify-error">خطا</p>
-                            </div>
-                            <div class="dropify-loader" style="display: none;"></div>
-                            <div class="dropify-errors-container">
-                                <ul></ul>
-                            </div>
-                            <input type="file" id="input-file-now-custom-3" name="shenasnamehPic" class="dropify" data-height="500" data-default-file="{{ $userInformation->shenasnamehPic }}">
-                            <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="{{ $userInformation->shenasnamehPic }}" style="max-height: 500px;"></span>
-                                <div class="dropify-infos">
-                                    <div class="dropify-infos-inner">
-                                        <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">تصویر شناسنامه شما</span></p>
-                                        <p class="dropify-infos-message">جهت تغییر کلیک کنید</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <input type="file" id="input-file-now" data-default-file="{{ $userInformation->shenasnamehPic }}" name="shenasnamehPic" class="dropify">
+
                         <div class="form-actions text-center  pt-3  ">
                             <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
                                 <i class="fa fa-check-square-o"></i> ارسال تصویر شناسنامه
@@ -320,27 +303,10 @@
                     @csrf
                     <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">تصویر کارت ملی</h4>
+                        <h4 class="mt-0 header-title">مرحله پنجم: تصویر کارت ملی</h4>
                         <p class="text-muted mb-3">لطفا تصویر اسکن شده کارت ملی خود را آپلود نمایید.</p>
-                        <div class="dropify-wrapper has-preview" style="height: 514px;">
-                            <div class="dropify-message"><span class="file-icon"></span>
-                                <p>با استفاده از درگ دراپ ویا کلیک برروی کادر زیر فایل را آپلود نمایید.</p>
-                                <p class="dropify-error">خطا</p>
-                            </div>
-                            <div class="dropify-loader" style="display: none;"></div>
-                            <div class="dropify-errors-container">
-                                <ul></ul>
-                            </div>
-                            <input type="file" id="input-file-now-custom-3" name="melliCardPic" class="dropify" data-height="500" data-default-file="{{ $userInformation->melliCardPic }}">
-                            <div class="dropify-preview" style="display: block;"><span class="dropify-render"><img src="{{ $userInformation->melliCardPic }}" style="max-height: 500px;"></span>
-                                <div class="dropify-infos">
-                                    <div class="dropify-infos-inner">
-                                        <p class="dropify-filename"><span class="file-icon"></span> <span class="dropify-filename-inner">تصویر کارت ملی شما</span></p>
-                                        <p class="dropify-infos-message">جهت تغییر کلیک کنید</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><div class="form-actions text-center  pt-3  ">
+                        <input type="file" id="input-file-now" data-default-file="{{ $userInformation->melliCardPic }}" name="melliCardPic" class="dropify">
+                        <div class="form-actions text-center  pt-3  ">
                             <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
                                 <i class="fa fa-check-square-o"></i> ارسال تصویر کارت ملی
                             </button>
@@ -353,11 +319,42 @@
             <!--end col-->
         </div>
       </div>
+
+
+    <div class="row {{  $userInformation->status == 3 ? "" : 'comming-soon' }}">
+        <div class="col-xl-12">
+            <form method="post" enctype="multipart/form-data" action="{{ route('ShensnamehUpload') }}">
+                @csrf
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">مرحله آخر: تصویر شناسنامه</h4>
+                        <p class="text-muted mb-3">لطفا تصویر سلفی خود را با شناسنامه و کارت ملی ضمیمه نمایید.
+                            <a href="">مشاهده فیلم آموزشی</a>
+                        </p>
+                        <input type="file" id="input-file-now" data-default-file="{{ $userInformation->personPic }}" name="personPic" class="dropify">
+                        <div class="form-actions text-center  pt-3  ">
+                            <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
+                                <i class="fa fa-check-square-o"></i> ارسال تصویر شناسنامه
+                            </button>
+                        </div>
+                    </div>
+                    <!--end card-body-->
+                </div>
+                <!--end card-->
+            </form>
+        </div>
+        <!--end col-->
+
+        <!--end col-->
+    </div>
+    </div>
+
+
+
+
 @endsection
 
 
 @section('pageScripts')
 
-    <script src="/dashboard/assets/js/dropify.min.js"></script>
-    <script src="/dashboard/assets/js/jquery.form-upload.init.js"></script>
 @stop
