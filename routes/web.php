@@ -53,6 +53,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::post('melliUpload', 'UserInformationController@melliUpload')->name('melliUpload');
         Route::post('ShensnamehUpload', 'UserInformationController@ShensnamehUpload')->name('ShensnamehUpload');
         Route::get('verification/sms/{mobileCode?}', 'UserInformationController@sms')->name('verification.sms');
+        Route::get('verification/email/{emailCode?}', 'UserInformationController@email')->name('verification.email');
         Route::resource('ticket', 'TicketController');
         Route::post('ticket/answer', 'TicketController@answer')->name('ticket.answer');
         Route::get('ticket/buzz/{ticket}', 'TicketController@buzz')->name('ticket.buzz');

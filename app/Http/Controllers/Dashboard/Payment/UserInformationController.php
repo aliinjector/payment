@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Dashboard\Payment;
 
+use App\Mail\SendMail;
+use App\Mail\UserRegistred;
+use App\Mail\UserVerification;
 use App\UserInformation;
 use App\Http\Requests\UserInformationRequest;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class UserInformationController extends \App\Http\Controllers\Controller
 {
@@ -37,14 +41,22 @@ class UserInformationController extends \App\Http\Controllers\Controller
 
         $userInformation = \Auth::user()->userInformation()->first();
 
-        if(! $userInformation->sms_date >= Carbon::now()->subMinutes(10)->toDateTimeString()){
-          if($userInformation->status == 1){
-            return redirect()->route('verification.sms');
-          }
-        }
 
-        if(! $userInformation->sms_date <= Carbon::now()->subMinutes(5)->toDateTimeString()){
-          alert()->warning('کد تایید برای شما ارسال شده است.')->autoclose(5000);
+        if($userInformation->status == 1){
+            if(! $userInformation->sms_date >= Carbon::now()->subMinutes(10)->toDateTimeString()){
+                    return redirect()->route('verification.sms');
+            }
+            if(! $userInformation->sms_date <= Carbon::now()->subMinutes(5)->toDateTimeString()){
+                alert()->warning('کد تایید برای شما ارسال شده است.')->autoclose(5000);
+            }
+        }elseif($userInformation->status == 2){
+            if(! $userInformation->email_date >= Carbon::now()->subMinutes(100)->toDateTimeString()){
+                    return redirect()->route('verification.email');
+            }
+            if(! $userInformation->sms_date <= Carbon::now()->subMinutes(100)->toDateTimeString()){
+                alert()->warning('کد تایید ایمیل برای شما ارسال شده است.')->autoclose(5000);
+            }
+
         }
 
         return view('dashboard.payment.userInformation', compact('userInformation'));
@@ -182,8 +194,9 @@ class UserInformationController extends \App\Http\Controllers\Controller
         if($request->mobileCode){
           if($request->mobileCode == $userInformation->sms_code){
             \Auth::user()->userInformation()->first()->update(['status' => 2]);
-            alert()->success('حساب کاربری شما تایید شد.')->autoclose(5000);
-            return view('dashboard.payment.userInformation', compact('userInformation'));
+            alert()->success('موبایل شما تایید شد.')->autoclose(5000);
+              $userInformation = \Auth::user()->userInformation()->first();
+              return view('dashboard.payment.userInformation', compact('userInformation'));
           }else{
             alert()->error('کد وارد شده نادرست است.')->autoclose(5000);
             return view('dashboard.payment.userInformation', compact('userInformation'));
@@ -210,5 +223,36 @@ class UserInformationController extends \App\Http\Controllers\Controller
         return view('dashboard.payment.userInformation', compact('userInformation'));
     }
 
+
+    public function email(Request $request)
+    {
+
+        $userInformation = \Auth::user()->userInformation()->first();
+
+        if($request->emailCode){
+            if($request->emailCode == $userInformation->email_code){
+                \Auth::user()->userInformation()->first()->update(['status' => 3]);
+                alert()->success('ایمیل شما تایید شد.')->autoclose(5000);
+                $userInformation = \Auth::user()->userInformation()->first();
+                return view('dashboard.payment.userInformation', compact('userInformation'));
+            }else{
+                alert()->error('کد وارد شده نادرست است.')->autoclose(5000);
+                return view('dashboard.payment.userInformation', compact('userInformation'));
+            }
+        }
+
+        $code = mt_rand(1111,9999);
+        \Auth::user()->userInformation()->first()->update(['email_date' => now(), 'email_code' => $code]);
+
+
+            $data1 = array(
+                'code'   =>   $code,
+            );
+            Mail::to(\Auth::user()->email)->send(new UserVerification($data1));
+
+
+        alert()->success('کد ایمیل شد', 'کد تایید ارسال شد.')->autoclose(5000);
+        return view('dashboard.payment.userInformation', compact('userInformation'));
+    }
 
 }
