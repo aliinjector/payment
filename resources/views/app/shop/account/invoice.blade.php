@@ -145,8 +145,7 @@
                      <thead class="thead-light">
                         <tr>
                            <th>نام محصول</th>
-                           <th>قیمت واحد کالا</th>
-                           <th> میزان تخفیف</th>
+                           <th>قیمت</th>
                            <th>تعداد</th>
                            <th>رنگ</th>
                            <th>قیمت مجموع</th>
@@ -154,32 +153,27 @@
                         <!--end tr-->
                      </thead>
                      <tbody class="iranyekan font-14">
-                        @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products()->get() as $product)
+                       @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $product)
                         <tr>
                            <td>
                               <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">
-                                 <h5 class="mt-0 mb-1">{{ $product->title }}</h5>
+                                 <h5 class="mt-0 mb-1">{{ $product->product->title }}</h5>
                               </a>
                            </td>
-                           <td>{{ number_format($product->price) }}</td>
-                           <td>
-                              @if($product->off_price == null) 0
-                              @else {{ number_format($product->price-$product->off_price)}}
-                              @endif
-                           </td>
-                           <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}</td>
-                           @if($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color)
-                           <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color->name }}</td>
+                           <td>{{ number_format($product->total_price / $product->quantity ) }}</td>
+                           <td>{{ $product->quantity }}</td>
+                           @if($product->color)
+                           <td>{{ $product->color->name }}</td>
                            @else
                              <td></td>
                          @endif
-                           <td> {{ number_format($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->total_price) }} </td>
+                           <td> {{ number_format($product->total_price) }} </td>
                         </tr>
                         @endforeach
                         <!--end tr-->
                         <!--end tr-->
                         <tr class="bg-dark text-white">
-                           <th colspan="4" class="border-0">
+                           <th colspan="3" class="border-0">
                               <div class="">
                                  <b> هزینه ارسال : </b>{{ number_format($purchase->shipping_price) }} تومان<br />
                               </div>

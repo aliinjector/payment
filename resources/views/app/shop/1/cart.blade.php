@@ -52,17 +52,19 @@
 
                                     </td>
                                     <td>
-                                      {{-- {{ dd($specificationItems) }} --}}
 
+                                    @if ($cartProduct->specification != null)
                                     @foreach($cartProduct->specification as $specificationId)
                                       @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
                                       {{ $specificationItem->specification->name }} :  {{ $specificationItem->name }} <br>
                                       @endforeach
                                     @endforeach
+                                  @endif
+
                                   </td>
 
                                     <td>
-                                        <a href="" class="text-danger" id="removeProduct" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}"  data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"><i class="mdi mdi-close-circle-outline font-18"></i></a>
+                                        <a href="" class="text-danger" id="removeProduct" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}"  data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}" data-cartp="{{ $cartProduct->id }}"><i class="mdi mdi-close-circle-outline font-18"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

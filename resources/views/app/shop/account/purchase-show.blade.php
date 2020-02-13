@@ -67,14 +67,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products()->get() as $product)
+                                  @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $product)
 
                                     <tr>
-                                        <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'id'=>$product->id]) }}">{{ $product->title }}</a></td>
+                                        <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'id'=>$product->product->id]) }}">{{ $product->title }}</a></td>
                                         <td>{{ number_format($product->price) }}</td>
-                                        <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->quantity }}</td>
-                                        @if($purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color)
-                                        <td>{{ $purchase->cart()->withTrashed()->where('user_id' , $purchase->user->id)->where('status' , 1)->get()->first()->cartProduct->where('product_id' , $product->id)->first()->color->name }}</td>
+                                        <td>{{ $product->quantity }}</td>
+                                        @if($product->color)
+                                        <td>{{ $product->color->name }}</td>
                                         @else
                                           <td></td>
                                       @endif
@@ -95,11 +95,11 @@
                                         </td>
                                           <td>{{ number_format($purchase->total_price)}}</td>
                                         <td>
-                                          @if($product->type == 'file')
+                                          @if($product->product->type == 'file')
                                               <div class="icon-show row">
-                                                  <a href="{{ route('file-download', ['shop'=>$product->shop()->first()->english_name, 'id'=>$product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-18 ml-5 p-3 "></i>
+                                                  <a href="{{ route('file-download', ['shop'=>$product->product->shop()->first()->english_name, 'id'=>$product->product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-18 ml-5 p-3 "></i>
                                                   </a>
-                                                  <form action="{{ route('downloadLinkRequest',['product_id'=>$product->id, 'user_purchase_id' => $purchase->id]) }}" method="post">
+                                                  <form action="{{ route('downloadLinkRequest',['product_id'=>$product->product->id, 'user_purchase_id' => $purchase->id]) }}" method="post">
                                                       @csrf
                                                   <button class="btn btn-primary">
                                                     درخواست لینک دانلود جدید

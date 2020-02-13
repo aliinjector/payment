@@ -55,9 +55,11 @@ class CartController extends \App\Http\Controllers\Controller {
         if (\Auth::user()->cart()->get()->count() != 0) {
           $specificationItems = collect();
           foreach ($cart->cartProduct as $cartProduct){
-            foreach($cartProduct->specification as $specification){
-              $specificationItem = SpecificationItem::find($specification);
-              $specificationItems[] = $specificationItem;
+            if($cartProduct->specification != null){
+              foreach($cartProduct->specification as $specification){
+                $specificationItem = SpecificationItem::find($specification);
+                $specificationItems[] = $specificationItem;
+              }
             }
           }
           $specificationItem = $specificationItems->unique('id');
@@ -101,9 +103,11 @@ class CartController extends \App\Http\Controllers\Controller {
           $specification = \json_encode($request->specification);
         }
         $specificationPrice = 0;
+        if($request->specification != null){
         foreach($request->specification as $specificationItem){
           $specificationItem = SpecificationItem::find($specificationItem);
           $specificationPrice += $specificationItem->price;
+        }
         }
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
               if (\Auth::user()->cart()->count() != 0) {
@@ -141,6 +145,7 @@ class CartController extends \App\Http\Controllers\Controller {
     public function removeFromCart(Request $request){
       CartProduct::where([
         ['product_id', '=', $request->id],
+        ['id', '=', $request->cartProductId],
         ['cart_id', '=', $request->cart],
         ['color_id', '=', $request->color],
         ])->delete();

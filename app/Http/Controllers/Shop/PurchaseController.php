@@ -149,10 +149,13 @@ class PurchaseController extends Controller
             if(RequestFacade::server('HTTP_REFERER') !== route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id])){
               $SinglecartProduct = DB::table('cart_product')->where([['id', '=', $cartProductId],['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->get()->first();
               $specificationPrice = 0;
-              foreach(\json_decode($SinglecartProduct->specification) as $specificationItem){
-                $specificationItem = SpecificationItem::find($specificationItem);
-                $specificationPrice += $specificationItem->price;
+              if($SinglecartProduct->specification != null){
+                foreach(\json_decode($SinglecartProduct->specification) as $specificationItem){
+                  $specificationItem = SpecificationItem::find($specificationItem);
+                  $specificationPrice += $specificationItem->price;
+                }
               }
+
               DB::table('cart_product')->where([['id', '=', $cartProductId], ['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->update(['quantity' => $quantity, 'total_price' => $productPrice * $quantity, 'specification_price' => $specificationPrice * $quantity]);
             }
         }

@@ -15,6 +15,7 @@
                      <th>{{ __('app-shop-2-cart.cartTableItem2') }}</th>
                      <th>{{ __('app-shop-2-cart.cartTableItem3') }}</th>
                      <th>{{ __('app-shop-2-cart.cartTableItem4') }}</th>
+                     <th>خصوصیات محصول</th>
                      <th>{{ __('app-shop-2-cart.cartTableItem5') }}</th>
                   </tr>
                   <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
@@ -65,7 +66,18 @@
                            </div>
                         </td>
                         <td>
-                           <a href="" id="removeProduct" class="tt-btn-close" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"></a>
+
+                        @if ($cartProduct->specification != null)
+                        @foreach($cartProduct->specification as $specificationId)
+                          @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
+                          {{ $specificationItem->specification->name }} :  {{ $specificationItem->name }} <br>
+                          @endforeach
+                        @endforeach
+                      @endif
+
+                      </td>
+                        <td>
+                           <a href="" id="removeProduct" data-cartp="{{ $cartProduct->id }}" class="tt-btn-close" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"></a>
                         </td>
                      </tr>
                      @endforeach
