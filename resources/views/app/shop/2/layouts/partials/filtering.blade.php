@@ -48,8 +48,8 @@
 
         <ul class="tt-list-row">
           <input type="text" id="available-price-1" class="w-100 p-2 byekan font-14" style="border:0; color:#2979FE !important; font-weight:bold;">
-          <input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
-          <input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
+          <input type="hidden" id="available-price-min" name="minprice" value="@if(request()->minprice == null) {{ $minPriceProduct }} @else {{ request()->minprice }} @endif">
+          <input type="hidden" id="available-price-max" name="maxprice" value="@if(request()->maxprice == null) {{ $maxPriceProduct }} @else {{ request()->maxprice }} @endif">
           <div id="mySlider"></div>
         </ul>
     </div>
