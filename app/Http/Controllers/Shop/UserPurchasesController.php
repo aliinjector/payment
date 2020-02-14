@@ -22,7 +22,21 @@ class UserPurchasesController extends Controller
 
       public function showPurchase($id){
         $purchase = \auth::user()->purchases()->where('id', $id)->get()->first();
-        return view("app.shop.account.purchase-show", compact('purchase'));
+        $specificationItems = collect();
+        if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->shop->specifications != null){
+        foreach($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->shop->specifications as $specification){
+          foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $cartProduct) {
+            if($cartProduct->specification != null){
+          foreach ($cartProduct->specification as $itemId) {
+            foreach ($specification->items->where('id', $itemId) as $item) {
+              $specificationItems[] = $item;
+            }
+                }
+              }
+              }
+        }
+      }
+        return view("app.shop.account.purchase-show", compact('purchase','specificationItems'));
       }
 
 
@@ -35,7 +49,21 @@ class UserPurchasesController extends Controller
         $shop = $purchase->shop;
         $shopCategories = $shop->ProductCategories()->get();
         $products = $cart->products;
-        return view("app.shop.account.invoice", compact('purchase','products','shop','purchase','shopCategories'));
+        $specificationItems = collect();
+        if($cart->shop->specifications != null){
+        foreach($cart->shop->specifications as $specification){
+          foreach ($cart->cartProduct as $cartProduct) {
+            if($cartProduct->specification != null){
+          foreach ($cartProduct->specification as $itemId) {
+            foreach ($specification->items->where('id', $itemId) as $item) {
+              $specificationItems[] = $item;
+            }
+                }
+              }
+              }
+        }
+      }
+        return view("app.shop.account.invoice", compact('purchase','products','shop','purchase','shopCategories','specificationItems'));
 
           }
 

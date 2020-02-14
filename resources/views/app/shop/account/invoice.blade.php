@@ -148,6 +148,7 @@
                            <th>قیمت</th>
                            <th>تعداد</th>
                            <th>رنگ</th>
+                           <th>خصوصیات</th>
                            <th>قیمت مجموع</th>
                         </tr>
                         <!--end tr-->
@@ -167,13 +168,24 @@
                            @else
                              <td></td>
                          @endif
+                         @if ($product->specification != null)
+                           <td>
+                         @foreach($product->specification as $specificationId)
+                           @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
+                           {{ $specificationItem->specification->name }} :  {{ $specificationItem->name }} <br>
+                           @endforeach
+                         @endforeach
+                       </td>
+                     @else
+                       <td></td>
+                       @endif
                            <td> {{ number_format($product->total_price) }} </td>
                         </tr>
                         @endforeach
                         <!--end tr-->
                         <!--end tr-->
                         <tr class="bg-dark text-white">
-                           <th colspan="3" class="border-0">
+                           <th colspan="4" class="border-0">
                               <div class="">
                                  <b> هزینه ارسال : </b>{{ number_format($purchase->shipping_price) }} تومان<br />
                               </div>
