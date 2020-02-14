@@ -12,7 +12,6 @@
       font-size : 14px!important;
 }
 </style>
-
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -179,7 +178,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @if ($product->fast_sending == 1)
+                    @if ($product->fast_sending == 'on')
                     <div class="col-lg-3">
                         <div class="pro-order-box min-height-160 border bg-orange-rock"><i class="mdi mdi-truck-fast text-white"></i>
                             <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.ersaaleSari') }}</h4>
@@ -188,7 +187,7 @@
                     </div>
                     @endif
                     <!--end col-->
-                    @if ($product->money_back == 1)
+                    @if ($product->money_back == 'on')
                     <div class="col-lg-3">
                         <div class="pro-order-box min-height-160 border bg-red-rock"><i class="mdi mdi-refresh text-white"></i>
                             <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.baazgasteVajh') }}</h4>
@@ -198,7 +197,7 @@
                     @endif
 
                     <!--end col-->
-                    @if ($product->support == 1)
+                    @if ($product->support == 'on')
                     <div class="col-lg-3">
                         <div class="pro-order-box min-height-160 border bg-green-rock"><i class="mdi mdi-headset text-white"></i>
                             <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.poshtibaani') }}</h4>
@@ -208,7 +207,7 @@
                     @endif
 
                     <!--end col-->
-                    @if ($product->secure_payment == 1)
+                    @if ($product->secure_payment == 'on')
                     <div class="col-lg-3">
                         <div class="pro-order-box mb-0 min-height-160 border bg-blue-rock"><i class="mdi mdi-wallet text-white"></i>
                             <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.pardaakhteAmn') }}</h4>

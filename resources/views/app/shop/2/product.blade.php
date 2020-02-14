@@ -2,6 +2,7 @@
 @section('headerScripts')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
 @endsection
 @section('content')
   <style media="screen">
@@ -93,7 +94,7 @@
                               </div>
                            </div>
                            <input type="hidden" name="product_id" value="{{$product->id}}">
-                           <button type="submit" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
+                           <button type="submit" class="btn iranyekan mt-1"><i class="icon-f-39"></i>
                            @if($product->type == 'file'){{ __('app-shop-2-product.daryaafteFile') }}
                            @else {{ __('app-shop-2-product.ezaafeBeSabadeKharid') }}
                            @endif</button>
@@ -167,7 +168,7 @@
                         </ul>
                      </div>
                   </div>
-                  <div class="tt-collapse-block m-4">
+                  <div class="border-bottom m-4 mb-5 tt-collapse-block">
                      <div class="tt-item">
                         <div class="tt-collapse-title">{{ __('app-shop-2-product.tozihaat') }}</div>
                         <div style="text-align: justify" class="tt-collapse-content">
@@ -314,8 +315,48 @@
                         </div>
                      </div>
                   </div>
+
                </div>
             </div>
+         </div>
+         <div class="row">
+           @if ($product->fast_sending == 'on')
+           <div class="col-lg-3">
+               <div class="pro-order-box border bg-orange-rock p-4 rounded" style="max-height: 20vh;min-height: 200px;"><i class="mdi mdi-truck-fast text-white"></i>
+                   <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.ersaaleSari') }}</h4>
+                   <p class="text-white mb-0">{{ __('app-shop-1-product.ersaaleSariDesc') }}.</p>
+               </div>
+           </div>
+           @endif
+           <!--end col-->
+           @if ($product->money_back == 'on')
+           <div class="col-lg-3">
+               <div class="bg-red-rock border p-4 rounded pro-order-box " style="max-height: 20vh;min-height: 200px;"><i class="mdi mdi-refresh text-white"></i>
+                   <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.baazgasteVajh') }}</h4>
+                   <p class="text-white mb-0">{{ __('app-shop-1-product.baazgasteVajhDesc') }}.</p>
+               </div>
+           </div>
+           @endif
+
+           <!--end col-->
+           @if ($product->support == 'on')
+           <div class="col-lg-3">
+               <div class="pro-order-box border bg-green-rock p-4 rounded" style="max-height: 20vh;min-height: 200px;"><i class="mdi mdi-headset text-white"></i>
+                   <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.poshtibaani') }}</h4>
+                   <p class="mb-0 text-white">{{ __('app-shop-1-product.poshtibaaniDesc') }}.</p>
+               </div>
+           </div>
+           @endif
+
+           <!--end col-->
+           @if ($product->secure_payment == 'on')
+           <div class="col-lg-3">
+               <div class="pro-order-box mb-0 border bg-blue-rock p-4 rounded" style="max-height: 20vh;min-height: 200px;"><i class="mdi mdi-wallet text-white"></i>
+                   <h4 class="header-title text-white font-weight-bold">{{ __('app-shop-1-product.pardaakhteAmn') }}</h4>
+                   <p class="text-white mb-0">{{ __('app-shop-1-product.pardaakhteAmnDesc') }}.</p>
+               </div>
+           </div>
+           @endif
          </div>
       </div>
    </div>

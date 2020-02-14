@@ -195,6 +195,7 @@
                                                         <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
                                                             @csrf
                                                             @isset($cart)
+                                                              @if($cart->cartProduct != null)
                                                             @foreach ($cart->cartProduct as $cartProduct)
                                                             <div class="tt-item border-bottom p-3">
                                                                 <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->id]) }}" target="_blank">
@@ -216,6 +217,7 @@
                                                                 </div>
                                                             </div>
                                                             @endforeach
+                                                          @endif
                                                           @endisset($cart)
 
                                                     </div>
