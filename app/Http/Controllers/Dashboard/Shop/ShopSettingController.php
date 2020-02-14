@@ -179,11 +179,11 @@ class ShopSettingController extends Controller
         'user_id' => \Auth::user()->id,
         'status' => 0,
         'quick_way' => $request->quick_way,
-        'quick_way_price' => $request->quick_way_price,
+        'quick_way_price' => $this->fa_num_to_en($request->quick_way_price),
         'posting_way' => $request->posting_way,
-        'posting_way_price' => $request->posting_way_price,
+        'posting_way_price' => $this->fa_num_to_en($request->posting_way_price),
         'person_way' => $request->person_way,
-        'person_way_price' => $request->person_way_price,
+        'person_way_price' => $this->fa_num_to_en($request->person_way_price),
         'cash_payment' => $request->cash_payment,
         'online_payment' => $request->online_payment,
         'description' => $request->description,
@@ -200,7 +200,7 @@ class ShopSettingController extends Controller
 
     public function updateContact(ShopContactRequest $request){
       $shop = \Auth::user()->shop()->first()->shopContact()->get()->first()->update([
-        'tel' => $request->tel,
+        'tel' => $this->fa_num_to_en($request->tel),
         'shop_email' => $request->shop_email,
         'address' => $request->address,
         'city' => $request->city,

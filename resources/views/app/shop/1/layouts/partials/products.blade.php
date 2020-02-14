@@ -44,7 +44,7 @@
         <div class="row col-lg-12 {{ $products->count() == null ? 'd-flex justify-content-center mt-4' : '' }}">
             @if($products->count() != null)
 
-                @foreach ($productsPaginate as $product)
+                @foreach ($productsPaginate->where('status', 'enable') as $product)
                 <div class="col-lg-3 row">
                     <div class="card e-co-product min-height-60 col-lg-12">
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>

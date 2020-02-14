@@ -6,29 +6,29 @@ setInterval(function(){
 });
 $(document).ready(function() {
   $('#available-filter-1').click(function() {
-    setInterval("$('#submit').submit()", 700);
+    setTimeout("$('#submit').submit()", 700);
   });
   $('#available-filter-2').click(function() {
-    setInterval("$('#submit').submit()", 700);
+    setTimeout("$('#submit').submit()", 700);
   });
   $('#available-filter-3').click(function() {
-    setInterval("$('#submit').submit()", 700);
+    setTimeout("$('#submit').submit()", 700);
   });
   $('#available-filter-4').click(function() {
-    setInterval("$('#submit').submit()", 700);
+    setTimeout("$('#submit').submit()", 700);
   });
 });
 
 $('select').on('change', function() {
-  setInterval("$('#submit').submit()", 800);
+  setTimeout("$('#submit').submit()", 800);
 });
 $('#available-price-min').click(function() {
   $('.available-price-min').attr('checked', true);
-  setInterval("$('#submit').submit()", 800);
+  setTimeout("$('#submit').submit()", 800);
 });
 $('#mySlider').click(function() {
   $('.available-price-max').attr('checked', true);
-  setInterval("$('#submit').submit()", 800);
+  setTimeout("$('#submit').submit()", 800);
 });
 if ($('.ty-compact-list').length > 5) {
   $('.ty-compact-list:gt(2)').hide();

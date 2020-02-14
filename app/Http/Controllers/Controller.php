@@ -97,6 +97,7 @@ class Controller extends BaseController
 
     protected function fa_num_to_en($string)
     {
+
         $persian1 = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
         $persian2 = array('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩');
         $num = range(0, 9);

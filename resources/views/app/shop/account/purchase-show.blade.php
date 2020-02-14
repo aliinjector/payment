@@ -59,6 +59,7 @@
                                         <th>قیمت</th>
                                         <th>تعداد</th>
                                         <th>رنگ</th>
+                                        <th>خصوصیات</th>
                                         <th>روش پرداخت</th>
                                         <th>روش ارسال</th>
                                         <th>هزینه ارسال</th>
@@ -71,13 +72,24 @@
 
                                     <tr>
                                         <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'id'=>$product->product->id]) }}">{{ $product->title }}</a></td>
-                                        <td>{{ number_format($product->price) }}</td>
+                                        <td>{{ number_format($product->total_price / $product->quantity ) }}</td>
                                         <td>{{ $product->quantity }}</td>
                                         @if($product->color)
                                         <td>{{ $product->color->name }}</td>
                                         @else
-                                          <td></td>
+                                          <td>-</td>
                                       @endif
+                                      @if ($product->specification != null)
+                                        <td>
+                                      @foreach($product->specification as $specificationId)
+                                        @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
+                                        {{ $specificationItem->specification->name }} :  {{ $specificationItem->name }} <br>
+                                        @endforeach
+                                      @endforeach
+                                    </td>
+                                  @else
+                                    <td>-</td>
+                                    @endif
                                       <td><span>
                                               {{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}
                                           </span></td>
@@ -93,11 +105,11 @@
                                         <td>
                                           {{ number_format($purchase->shipping_price) }}
                                         </td>
-                                          <td>{{ number_format($purchase->total_price)}}</td>
+                                          <td>{{ number_format($product->total_price)}}</td>
                                         <td>
                                           @if($product->product->type == 'file')
                                               <div class="icon-show row">
-                                                  <a href="{{ route('file-download', ['shop'=>$product->product->shop()->first()->english_name, 'id'=>$product->product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-18 ml-5 p-3 "></i>
+                                                  <a href="{{ route('file-download', ['shop'=>$product->product->shop()->first()->english_name, 'id'=>$product->product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success p-3 button font-18 "></i>
                                                   </a>
                                                   <form action="{{ route('downloadLinkRequest',['product_id'=>$product->product->id, 'user_purchase_id' => $purchase->id]) }}" method="post">
                                                       @csrf

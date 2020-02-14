@@ -583,10 +583,10 @@ else{
     public function changeStatus(Request $request){
 
         $product = Product::find($request->id);
-        if($product->status == 0)
-            $product->status = 1;
+        if($product->status == "disable")
+            $product->status = "enable";
         else
-            $product->status = 0;
+            $product->status = "disable";
         $product->save();
         return back();
     }

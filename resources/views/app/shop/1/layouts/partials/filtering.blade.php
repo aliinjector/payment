@@ -25,8 +25,8 @@
             </div>
             <h5 class="text-dark pr-1 border-btm font-weight-500 m-2">{{ __('app-shop-1-layouts-partials-filter.filterPrice') }}</h5>
             <input type="text" id="available-price-1" class="w-100 p-4 font-14 byekan" style="border:0; color:#15939D !important; font-weight:bold;">
-            <input type="hidden" id="available-price-min"  name="minprice" value="@if(request()->minprice == null) 1000 @else {{ request()->minprice }} @endif">
-            <input type="hidden" id="available-price-max"  name="maxprice" value="@if(request()->maxprice == null) 100000000 @else {{ request()->maxprice }} @endif">
+            <input type="hidden" id="available-price-min"  name="minprice" value="@if(request()->minprice == null) {{ $minPriceProduct }} @else {{ request()->minprice }} @endif">
+            <input type="hidden" id="available-price-max"  name="maxprice" value="@if(request()->maxprice == null) {{ $maxPriceProduct }} @else {{ request()->maxprice }} @endif">
             <div id="mySlider"></div>
 
             <h5 class="text-dark pr-1 border-btm font-weight-500 m-2  mt-5">{{ __('app-shop-1-layouts-partials-filter.filterColor') }}</h5>
