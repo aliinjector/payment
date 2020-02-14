@@ -49,7 +49,7 @@ class SpecificationItemController extends Controller
           case 'justSave':
                   $specificationItem = new SpecificationItem;
                   $specificationItem->name = $request->name;
-                  $specificationItem->price = $request->price;
+                  $specificationItem->price = $this->fa_num_to_en($request->price);
                   $specificationItem->specification_id = $request->specification_id;
                   $specificationItem->save();
                   alert()->success('خصوصیت جدید شما باموفقیت اضافه شد.', 'ثبت شد');
@@ -59,7 +59,7 @@ class SpecificationItemController extends Controller
           case 'saveAndContinue':
                   $specificationItem = new SpecificationItem;
                   $specificationItem->name = $request->name;
-                  $specificationItem->price = $request->price;
+                  $specificationItem->price = $this->fa_num_to_en($request->price);
                   $specificationItem->specification_id = $request->specification_id;
                   $specificationItem->save();
                   session()->flash('flashModal');

@@ -90,7 +90,7 @@ class VoucherController extends Controller
             'description' => $request->description,
             'type' => $request->type,
             'uses' => $request->uses,
-            'discount_amount' => $request->discount_amount,
+            'discount_amount' => $this->fa_num_to_en($request->discount_amount),
             'users' => $request->users,
             'first_purchase' => $request->first_purchase,
             'disposable' => $request->disposable,
