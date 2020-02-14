@@ -223,6 +223,7 @@ Author: Ali Rahmani
                             <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/card*') == 1 ? 'active' : '' }}" href="{{ route('card.index') }}"><i class="fas fa-credit-card"></i>کارت های بانکی</a></li>
                             <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/checkout*') == 1 ? 'active' : '' }}" href="{{ route('checkout.index') }}"><i class="fas fa-credit-card"></i>لیست درخواست های تسویه</a></li>
                             <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/fast-pay*') == 1 ? 'active' : '' }}" href="{{ route('fast-pay.index') }}"><i class="fas fa-credit-card"></i>لینک های پرداخت آنی</a></li>
+                            <li class="nav-item"><a class="nav-link {{ request()->is('dashboard/sharing*') == 1 ? 'active' : '' }}" href="{{ route('sharing.index') }}"><i class="fas fa-credit-card"></i>تسهیم وجوه</a></li>
                         </ul>
                     </div>
                     <!-- end Crypto -->

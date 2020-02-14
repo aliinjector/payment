@@ -49,6 +49,7 @@ Route::get('/paymentHelper', function (Request $request) {
 Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(function () {
     Route::resource('index', 'DashboardController');
       Route::namespace('Payment')->prefix('payment')->middleware('auth')->group(function () {
+        Route::resource('sharing', 'ShareController');
         Route::resource('UserInformation', 'UserInformationController');
         Route::post('melliUpload', 'UserInformationController@melliUpload')->name('melliUpload');
         Route::post('ShensnamehUpload', 'UserInformationController@ShensnamehUpload')->name('ShensnamehUpload');
