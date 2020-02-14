@@ -21,7 +21,7 @@ class CategoryController extends Controller
       $category = ProductCategory::where('id', $categroyId)->get()->first();
       $subCategories = $this->getAllSubCategories($categroyId)->where('parent_id',$categroyId);
       $brands = $shop->brands;
-      $shopProducts = $shop->products;
+      $shopProducts = $shop->products->where('status', 'enable');
       $minPriceProduct = $shopProducts->min('price');
       $maxPriceProduct = $shopProducts->max('price');
       //color product and category product merging

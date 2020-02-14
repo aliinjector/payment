@@ -464,7 +464,7 @@
                                  @endforeach
                               </select>
                            </div>
-                           
+
                            <div class="facility">
                               <div class="input-group mt-3">
                                  <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>
@@ -554,14 +554,15 @@
                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending">
                                     {{ __('dashboard-shop-product-index.ListMahsoolatTableItem3') }}
                                  </th>
-                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem4') }}
+                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem7') }}
                                  </th>
+
                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem5') }}
                                  </th>
                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width:150px;">
                                     {{ __('dashboard-shop-product-index.ListMahsoolatTableItem6') }}
                                  </th>
-                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem7') }}
+                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem4') }}
                                  </th>
                                  <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem8') }}
                                  </th>
@@ -581,22 +582,9 @@
                                  </td>
                                  <td>{{ $product->productCategory()->first()->name }}</td>
                                  <td>
-                                    <div class="tt-collapse-content" style="display: block;">
-                                       <ul class="tt-options-swatch options-middle">
-                                          @foreach($product->colors as $color)
-                                          <li>
-                                             <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
-                                          </li>
-                                          @endforeach
-                                       </ul>
-                                    </div>
-                                 </td>
-                                 <td>{{ number_format($product->price) }}</td>
-                                 <td>{{ number_format($product->off_price) }}</td>
-                                 <td>
                                     @csrf {{ method_field('put') }}
                                     <button class="btn btn-link change" type="submit" data-id="{{ $product->id }}">
-                                    @if($product->status == 1)
+                                    @if($product->status == "enable")
                                     <i class="fa fa-toggle-on text-success show{{ $product->id }}"></i>
                                     <i class="fa fa-toggle-off text-muted d-none {{ $product->id }}"></i>
                                     @else
@@ -604,7 +592,7 @@
                                     <i class="fa fa-toggle-off text-muted show{{ $product->id }}"></i>
                                     @endif
                                     </button>
-                                    @if ($product->status == 1)
+                                    @if ($product->status == "enable")
                                     <span class="badge badge-soft-success show{{ $product->id }}">
                                     {{ __('dashboard-shop-product-index.ListMahsoolatTableStatusEnable') }}
                                     </span>
@@ -619,6 +607,25 @@
                                     {{ __('dashboard-shop-product-index.ListMahsoolatTableStatusDisable') }}
                                     </span>
                                     @endif
+                                 </td>
+
+                                 <td>{{ number_format($product->price) }}</td>
+                                 @if($product->off_price != null)
+                                 <td>{{ number_format($product->off_price) }}</td>
+                               @else
+                                 <td></td>
+                               @endif
+
+                                 <td>
+                                    <div class="tt-collapse-content" style="display: block;">
+                                       <ul class="tt-options-swatch options-middle">
+                                          @foreach($product->colors as $color)
+                                          <li>
+                                             <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
+                                          </li>
+                                          @endforeach
+                                       </ul>
+                                    </div>
                                  </td>
                                  <td>
                                     @if ($product->type == 'service') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem2') }}
