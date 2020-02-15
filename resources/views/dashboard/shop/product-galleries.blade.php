@@ -86,7 +86,7 @@
                                     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
                                     <script src="/dashboard/assets/plugins/dropzone/dropzone.js"></script>
 
-                                    <form method="post" action="{{ url('/dashboard/shop/image/upload/store/' . collect(request()->segments())->last() )}}" enctype="multipart/form-data"
+                                    <form method="post" action="{{ url('/admin-panel/shop/image/upload/store/' . collect(request()->segments())->last() )}}" enctype="multipart/form-data"
                                           class="dropzone" id="dropzone">
                                         <div class="dz-message" data-dz-message><span>جهت افزودن تصویر به گالری، اینجا کلیک کنید</span></div>
                                         @csrf
