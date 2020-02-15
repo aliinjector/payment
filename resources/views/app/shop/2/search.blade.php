@@ -209,7 +209,7 @@
 													</div>
 											</div>
 											<div class="tt-product-listing row">
-												@foreach($products as $product)
+												@foreach($products->where('status', 'enable') as $product)
 													<div class="col-6 col-md-4 tt-col-item">
 															<div class="tt-product thumbprod-center">
 																	<div class="tt-image-box">

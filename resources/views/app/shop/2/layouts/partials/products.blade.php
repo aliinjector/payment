@@ -25,7 +25,7 @@
 						@include('app.shop.2.layouts.partials.ordering')
 
 						<div class="tt-product-listing row tt-col-three" id="tt-product-listing">
-							@foreach($productsPaginate as $product)
+							@foreach($productsPaginate->where('status', 'enable') as $product)
 							<div class="col-5 col-md-2 tt-col-item p-2">
 								<div class="tt-product thumbprod-center">
 									<div class="tt-image-box" style="height: 30vh!important;">
