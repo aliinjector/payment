@@ -581,7 +581,15 @@ else{
 
 
     public function changeStatus(Request $request){
-
+        $shop = Shop::where('english_name', $request->shop)->get()->first();
+        foreach($shop->carts as $cart){
+          foreach($cart->cartProduct as $cartProduct){
+            $disabledProduct = $cartProduct->product()->where('status', 'disable')->get()->first();
+            if($disabledProduct){
+              $cartProduct->where('product_id', $disabledProduct->id)->delete();
+            }
+          }
+        }
         $product = Product::find($request->id);
         if($product->status == "disable")
             $product->status = "enable";

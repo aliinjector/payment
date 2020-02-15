@@ -12,7 +12,7 @@ class Product extends Model
 {
   // use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable, Searchable;
   use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable;
-    protected $cascadeDeletes = ['galleries', 'facilities','rates','comments'];
+    protected $cascadeDeletes = ['galleries', 'facilities','rates','comments','cartProduct'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [
@@ -40,6 +40,10 @@ public function sluggable()
    public function shop()
  {
      return $this->belongsTo('App\Shop');
+ }
+   public function cartProduct()
+ {
+   return $this->hasMany('App\CartProduct');
  }
 
  public function tags()
@@ -90,5 +94,7 @@ public function sluggable()
     {
         return $this->hasMany('App\Facility');
     }
+
+
 
 }

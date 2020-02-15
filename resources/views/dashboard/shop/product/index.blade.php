@@ -583,7 +583,7 @@
                                  <td>{{ $product->productCategory()->first()->name }}</td>
                                  <td>
                                     @csrf {{ method_field('put') }}
-                                    <button class="btn btn-link change" type="submit" data-id="{{ $product->id }}">
+                                    <button class="btn btn-link change" type="submit" data-id="{{ $product->id }}" data-shop="{{ $shop->english_name }}">
                                     @if($product->status == "enable")
                                     <i class="fa fa-toggle-on text-success show{{ $product->id }}"></i>
                                     <i class="fa fa-toggle-off text-muted d-none {{ $product->id }}"></i>

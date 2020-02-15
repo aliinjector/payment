@@ -50,6 +50,12 @@ class CartController extends \App\Http\Controllers\Controller {
     public function show($shopName) {
         $shop = Shop::where('english_name', $shopName)->first();
         $cart = \Auth::user()->cart()->get()->first();
+        if($cart){
+          $cartProduct = CartProduct::where('cart_id', $cart->id);
+          if($cartProduct->count() == 0){
+            Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
+          }
+        }
         $shopCategories = $shop->ProductCategories()->get();
         $template_folderName = $shop->template->folderName;
         if (\Auth::user()->cart()->get()->count() != 0) {
@@ -85,7 +91,10 @@ class CartController extends \App\Http\Controllers\Controller {
             $cart->status = 0;
             $cart->save();
         }
-        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', \json_encode($request->specification))->first();
+        if($request->specification != null){
+          $request->specification = \json_encode($request->specification);
+        }
+        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', $request->specification)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shopName)->get()->first()->id;
         if($product->off_price != null){
@@ -113,7 +122,7 @@ class CartController extends \App\Http\Controllers\Controller {
               if (\Auth::user()->cart()->count() != 0) {
                 foreach(\Auth::user()->cart()->get()->first()->products()->get() as $singleCartProduct){
                   if($singleCartProduct->type == 'file' and $product->type != 'file' or $singleCartProduct->type != 'file' and $product->type == 'file'){
-                    alert()->error('نمیتوان همزمان فایل و کالای غیر فایلی به سبد خرید اضافه کرد', 'خطا');
+                    toastr()->error('نمیتوان همزمان فایل و کالای فیزیکی به سبد خرید اضافه کرد', '');
                     return redirect()->back();
                   }
                 }
@@ -132,14 +141,10 @@ class CartController extends \App\Http\Controllers\Controller {
 
             return redirect()->back();
         } else {
-            alert()->error('محصول از قبل در سبد خرید شما وجود دارد و یا محصول متعلق به یک فروشگاه نمیباشد', 'خطا');
+            toastr()->error('محصول از قبل در سبد خرید شما وجود دارد یا متعلق به فروشگاه دیگری میباشد', '');
             return redirect()->back();
         }
     }
-
-
-
-
 
 
     public function removeFromCart(Request $request){

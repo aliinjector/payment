@@ -53,12 +53,14 @@ $(document).on('click', '#removerProduct', function(e) {
 });
     $(".change").click(function() {
         var id = $(this).data("id");
+        var shop = $(this).data("shop");
         $.ajax({
             url: "product-list/change-status/" + id,
             type: 'put',
             dataType: "JSON",
             data: {
                 "id": id,
+                "shop": shop,
                 "_method": 'put',
                 "_token": $('#csrf-token')[0].content,
             }
