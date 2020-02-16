@@ -40,9 +40,9 @@ class ShopSettingRequest extends FormRequest
             'online_payment' => 'in:on',
             'online_payment' => 'in:on',
             'cash_payment' => 'in:on',
-            'quick_way_price' => 'nullable|numeric|min:0|max:99999999999999999',
-            'posting_way_price' => 'nullable|numeric|min:0|max:99999999999999999',
-            'person_way_price' => 'nullable|numeric|min:0|max:99999999999999999',
+            'quick_way_price' => 'numeric|min:0|max:99999999999999999',
+            'posting_way_price' => 'numeric|min:0|max:99999999999999999',
+            'person_way_price' => 'numeric|min:0|max:99999999999999999',
             'logo' => 'mimes:jpeg,png,jpg,gif|max:2048',
             'icon' => 'mimes:jpeg,png,jpg,gif|max:2048',
 

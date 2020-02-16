@@ -117,7 +117,6 @@ class ShopSettingController extends Controller
      */
     public function update(ShopSettingRequest $request)
     {
-
         if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
           //check for unique name for shop
             $request->validate([
