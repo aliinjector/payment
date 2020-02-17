@@ -254,16 +254,16 @@
                         <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>{{ __('app-shop-1-layouts-master.alagheMandiHa') }} <span
                                   class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->count() != 0 ?  \Auth::user()->wishlist()->get()->first()->products()->count() : 0 }} </span></a>
-                                  @if(\Auth::user()->id == $shop->user_id)
-                                    <a class="dropdown-item" href="{{ route('dashboard.index') }}"><i class="fas fa-user p-2"></i>پنل مدیریت</a>
-                                  @else
-                                    <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-user p-2"></i>{{ __('app-shop-1-layouts-master.panelKarbari') }}</a>
-                                  @endif
-                            <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>{{ __('app-shop-1-layouts-master.addressHa') }}</a>
-                            <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>{{ __('app-shop-1-layouts-master.listSefaareshaat') }}</a>
-                            <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>{{ __('app-shop-1-layouts-master.moghayese') }} <span
-                                  class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->count() != 0 ?  \Auth::user()->compare()->get()->first()->products()->count() : 0 }}</span></a>
-                            <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>{{ __('app-shop-1-layouts-master.khorooj') }}</a>
+                            @if(\Auth::user()->id == $shop->user_id)
+                                <a class="dropdown-item" href="{{ route('dashboard.index') }}"><i class="fas fa-user p-2"></i>پنل مدیریت</a>
+                                @else
+                                <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-user p-2"></i>{{ __('app-shop-1-layouts-master.panelKarbari') }}</a>
+                                @endif
+                                <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>{{ __('app-shop-1-layouts-master.addressHa') }}</a>
+                                <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>{{ __('app-shop-1-layouts-master.listSefaareshaat') }}</a>
+                                <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>{{ __('app-shop-1-layouts-master.moghayese') }} <span
+                                      class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->count() != 0 ?  \Auth::user()->compare()->get()->first()->products()->count() : 0 }}</span></a>
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>{{ __('app-shop-1-layouts-master.khorooj') }}</a>
                         </div>
                     </div>
 
@@ -300,21 +300,28 @@
             <footer style="margin: 25px; font-family: iranyekan" class="footer text-center text-sm-left text-muted bg-green-rock">
                 <div class="border-bottom">
                     <ul class="list-group">
-                      <a href="{{ route('faq.show', ['shopName' => $shop->english_name]) }}">
-                        <li class="list-group-item border-0 text-white iranyekan font-15" style="background-color: transparent">سوالات متداول</li>
-                      </a>
-                      <a href="{{ route('template.contact', $shop->english_name) }}">
-                        <li class="list-group-item border-0 text-white iranyekan font-15" style="background-color: transparent">درباره ما و تماس</li>
-                        </a>
+                        <li class="list-group-item border-0 text-white iranyekan font-15" style="background-color: transparent">
+                            <a href="{{ route('faq.show', ['shopName' => $shop->english_name]) }}" class="text-white">
+                                سوالات متداول
+                            </a>
+
+                        </li>
+                        <li class="list-group-item border-0 text-white iranyekan font-15" style="background-color: transparent">
+                            <a href="{{ route('template.contact', $shop->english_name) }}" class="text-white">
+
+                                درباره ما و تماس
+                            </a>
+
+                        </li>
                     </ul>
                 </div>
                 <div class="pt-3 text-white">
 
-                &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
-                <a target="_blank" href="https://omidshop.net">
-                    <span class="text-white d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
-                </a>
-              </div>
+                    &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
+                    <a target="_blank" href="https://omidshop.net">
+                        <span class="text-white d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
+                    </a>
+                </div>
 
             </footer>
 

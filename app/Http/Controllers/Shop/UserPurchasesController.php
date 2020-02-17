@@ -14,7 +14,13 @@ class UserPurchasesController extends Controller
 
       public function userPurchaseList() {
           $purchases = \auth::user()->purchases()->orderBy('created_at', 'desc')->get();
-          return view("app.shop.account.user-purchases", compact('purchases'));
+          if(\auth::user()->shop_id != null){
+            $shop_name = Shop::where('id', \auth::user()->shop_id)->get()->first()->english_name;
+            return view("app.shop.account.user-purchases", compact('purchases', 'shop_name'));
+          }
+          else{
+            return view("app.shop.account.user-purchases", compact('purchases'));
+          }
       }
 
 

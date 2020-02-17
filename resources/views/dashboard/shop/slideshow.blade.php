@@ -36,11 +36,11 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" value="{{ old('title') }}" name="title" placeholder="مثال: عکس اول">
+                                    <textarea class="form-control" id="title" name="title"></textarea>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" value="{{ old('description') }}" name="description" placeholder="مثال: توضیحات مختصری درمورد اسلاید ">
+                                    <textarea class="form-control" id="description" name="description"></textarea>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">آدرس صفحه اسلاید :</span></div>
@@ -84,11 +84,12 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" value="{{ $slideshow->title }}">
+                                    <textarea class="form-control" id="titleEdit{{ $slideshow->id }}" name="title">{{ $slideshow->title }}</textarea>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" name="description" value="{{ $slideshow->description }}">
+                                    <textarea class="form-control" id="descriptionEdit{{ $slideshow->id }}" name="description">{{ $slideshow->description }}</textarea>
+
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">آدرس اسلاید :</span></div>
@@ -185,7 +186,28 @@
     @endsection
     @section('pageScripts')
       <script src="{{ asset('/dashboard/assets/js/admin-slideshow.js') }}"></script>
+      <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+      <script type="text/javascript">
+         CKEDITOR.replace('description', {
+             language: 'fa',
+             uiColor: '#F3F6F7'
+         });
+         CKEDITOR.replace('title', {
+             language: 'fa',
+             uiColor: '#F3F6F7'
+         });
+         @foreach($slideshowIds as $slideshowId)
+            CKEDITOR.replace('titleEdit'+{{$slideshowId}}, {
+             language: 'fa',
+             uiColor: '#F3F6F7'
+         });
+         CKEDITOR.replace('descriptionEdit'+{{$slideshowId}}, {
+             language: 'fa',
+             uiColor: '#F3F6F7'
+         });
+       @endforeach
 
+      </script>
       @if(session()->has('flashModal'))
           <script>
               $('#AddProductCategoryModal').modal('show');

@@ -64,8 +64,8 @@
                         <div class="mask rgba-black-light"></div>
                 </div>
                 <div class="carousel-caption">
-                    <h3 class="h3-responsive">{{ $slideshow->title }}</h3>
-                    <p>{{ $slideshow->description }}</p>
+                    <h3 class="h3-responsive">{!! $slideshow->title !!}</h3>
+                    <p>{!! $slideshow->description !!}</p>
                 </div>
             </div>
             </a>
@@ -632,4 +632,6 @@
 
     @endsection
     @section('pageScripts')
+  
+
     @stop

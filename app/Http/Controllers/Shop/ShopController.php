@@ -53,10 +53,10 @@
       }
 
       $shop = Shop::where('english_name', $shopName)->first();
-      $lastProducts = $shop->products()->orderBy('created_at', 'DESC')->take(4)->get();
-      $bestSelling = $shop->products()->orderBy('buyCount', 'DESC')->take(4)->get();
-      $mostView = $shop->products()->orderBy('viewCount', 'DESC')->take(4)->get();
-      $hasDescount = $shop->products()->whereNotNull('off_price')->take(4)->get();
+      $lastProducts = $shop->products()->where('status', 'enable')->orderBy('created_at', 'DESC')->take(4)->get();
+      $bestSelling = $shop->products()->where('status', 'enable')->orderBy('buyCount', 'DESC')->take(4)->get();
+      $mostView = $shop->products()->where('status', 'enable')->orderBy('viewCount', 'DESC')->take(4)->get();
+      $hasDescount = $shop->products()->where('status', 'enable')->whereNotNull('off_price')->take(4)->get();
       $template_folderName = $shop->template->folderName;
       $brands = $shop->brands;
       $feedbacks = $shop->feedbacks;

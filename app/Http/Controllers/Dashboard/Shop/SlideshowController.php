@@ -21,7 +21,11 @@ class SlideshowController extends Controller
     {
       $shop = \Auth::user()->shop()->first();
       $slideshows = \Auth::user()->shop()->first()->slideshows()->get();
-      return view('dashboard.shop.slideshow', compact('slideshows' , 'shop'));
+      $slideshowIds = collect();
+      foreach($slideshows as $slideshow){
+        $slideshowIds[] = $slideshow->id;
+      }
+      return view('dashboard.shop.slideshow', compact('slideshows' , 'shop','slideshowIds'));
 
     }
 
@@ -72,7 +76,7 @@ class SlideshowController extends Controller
                        return redirect()->route('slideshow.index');
                    break;
                  }
-        
+
        }
 
 

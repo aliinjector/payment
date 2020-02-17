@@ -71,7 +71,7 @@
                                   @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $product)
 
                                     <tr>
-                                        <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'id'=>$product->product->id]) }}">{{ $product->title }}</a></td>
+                                        <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'id'=>$product->product->id]) }}">{{ $product->product->title }}</a></td>
                                         <td>{{ number_format($product->total_price / $product->quantity ) }}</td>
                                         <td>{{ $product->quantity }}</td>
                                         @if($product->color)

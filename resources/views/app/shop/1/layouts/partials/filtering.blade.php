@@ -44,10 +44,14 @@
 
             <h5 class="text-dark pr-1 border-btm font-weight-500 m-2  mt-5">تگ ها</h5>
             <ul class="tags iranyekan">
+              <div class="wrapper">
                 @foreach($shopTags as $shopTag)
-                <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$shopTag->name]) }}" class="tag iranyekan" style="padding-top:0px!important">{{ $shopTag->name }}</a></li>
+                    <li class="ty-compact-list"><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$shopTag->name]) }}" class="tag iranyekan" style="padding-top:0px!important">{{ $shopTag->name }}</a></li>
                 @endforeach
+              </div>
             </ul>
+            <div class="show-more">نمایش بیشتر</div>
+
 
             <h5 class="text-dark pr-1 font-weight-500 m-2  mt-5">برند ها</h5>
                 @foreach($brands as $brand)

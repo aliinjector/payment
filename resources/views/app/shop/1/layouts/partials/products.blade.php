@@ -1,6 +1,11 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
 <link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
+<style media="screen">
+  .off-btn{
+    position: relative;bottom: 28px;
+  }
+</style>
 <div class="row">
     <div class="col-sm-12">
       <div class="col-sm-3 mt-3">
@@ -31,8 +36,7 @@
     <!--end col-->
 </div>
 </div>
-
-<h2 class="line-throw line-height-none"><span> {{ __('app-shop-1-category.mahsoolatDasteBandi') }}</span></h2>
+<h2 class="line-throw line-height-none"><span> @if(\Request::route()->getName() == 'category'){{ __('app-shop-1-category.mahsoolatDasteBandi') }} {{ $category->name }} @elseif(\Request::route()->getName() == 'tag') محصولات تگ {{ $tag->name }}  @else محصولات برند {{ $brand->name }} @endif</span></h2>
 <div class="row p-5">
 
     @include('app.shop.1.layouts.partials.filtering')
@@ -45,16 +49,18 @@
             @if($products->count() != null)
 
                 @foreach ($productsPaginate->where('status', 'enable') as $product)
-                <div class="col-lg-3 row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3 row">
                     <div class="card e-co-product min-height-60 col-lg-12">
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
                         <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="product-title">{{ $product->title }}</a>
                             <div class="d-flex justify-content-between my-2 byekan">
                                 @if($product->off_price != null)
-                                    <p class="product-price byekan">{{ number_format($product->off_price) }} {{ __('app-shop-1-category.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del class="byekan font-16">{{ number_format($product->price) }} {{ __('app-shop-1-category.tooman') }}</del></span>
+                                    <p class="product-price byekan">{{ number_format($product->off_price) }} {{ __('app-shop-1-category.tooman') }} <span class="ml-2 byekan"></span>
+                                      <br />
+                                      <span class="ml-2"><del class="byekan font-16">{{ number_format($product->price) }} {{ __('app-shop-1-category.tooman') }}</del></span>
                                     </p>
                                     @else
-                                    <p class="product-price byekan">{{ number_format($product->price) }} {{ __('app-shop-1-category.tooman') }} <span class="ml-2 byekan"></span>
+                                    <p class="product-price byekan min-width-se" style="width: 170px;z-index:100000">{{ number_format($product->price) }} {{ __('app-shop-1-category.tooman') }} <span class="ml-2 byekan"></span>
                                         @endif
                             </div>
                             <ul class="tt-options-swatch options-middle">
@@ -73,12 +79,12 @@
               							</ul>
                             <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
                                 @csrf
-                                <a href="javascript:{}" title="افزودن به مقایسه" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"   data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                                <a href="javascript:{}" title="افزودن به مقایسه" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"   data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale {{ $product->off_price != null ? 'off-btn' : '' }}"></i></a>
                             </form>
                             <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="wishlistForm{{ $product->id }}">
                                 @csrf
 
-                              <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
+                              <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2 {{ $product->off_price != null ? 'off-btn' : '' }}"></i></a>
                             </form>
 
                             @if(\Auth::user())
@@ -91,7 +97,7 @@
                                         @endif</button>
                             </form> --}}
 
-                            <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                            <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan {{ $product->off_price != null ? 'mt-n5' : '' }}"><i class="mdi mdi-cart mr-1"></i>
                               <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="text-white">
                                   مشاهده محصول
                                 </a>
@@ -179,5 +185,19 @@ $('li.color-sel').click(function() {
   });
 
   </script>
+  <script type="text/javascript">
+  if ($('.ty-compact-list').length > 10) {
+      $('.ty-compact-list:gt(10)').hide();
+      $('.show-more').show();
+  }
+
+  $('.show-more').on('click', function() {
+      //toggle elements with class .ty-compact-list that their index is bigger than 2
+      $('.ty-compact-list:gt(10)').toggle();
+      //change text of show more element just for demonstration purposes to this demo
+      $(this).text() !== 'بستن' ? $(this).text('بستن') : $(this).text('موارد بیشتر');
+  });
+
+</script>
 
 @endsection

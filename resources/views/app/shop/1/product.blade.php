@@ -50,6 +50,7 @@
                         <div class="single-pro-detail">
                             <h3 class="pro-title iranyekan pb-5">{{ $product->title }}
                                 <div class="custom-border mt-3"></div>
+                              <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$product->productCategory->id]) }}" class="font-14"> {{ $product->productCategory->name }}</a>
                             </h3>
                             <div class="">
 
@@ -89,11 +90,13 @@
                         </ul>
                         @endif
                         @if ($product->type == "product")
+                          @if($product->weight != null)
                         <h6 class="text-muted font-13">{{ __('app-shop-1-product.vazneMahsool') }} :</h6>
                         <ul class="list-unstyled pro-features border-0 iranyekan">
                             <li>{{ $product->weight }} گرم</li>
 
                         </ul>
+                      @endif
                         @if($product->colors->count() != 0)
                         <ul class="tt-options-swatch options-middle">
                           @php

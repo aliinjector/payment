@@ -179,6 +179,10 @@ class PurchaseController extends Controller
 
       public function purchaseSubmit($shopName, $cartID, Request $request) {
           $cart = \Auth::user()->cart()->get()->first();
+          $productIds = collect();
+          foreach($cart->cartProduct as $cartProduct){
+            $productIds[] = $cartProduct->product_id;
+          }
           $shop = Shop::where('english_name', $shopName)->first();
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           // address and new addres validation condition
@@ -226,6 +230,9 @@ class PurchaseController extends Controller
           }
           DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
+          foreach($productIds as $productId){
+            Product::find($productId)->increment('buyCount');
+          }
           alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
           SEOTools::setTitle($shop->name);
           SEOTools::setDescription($shop->description);

@@ -382,3 +382,14 @@ h2 span {
 .text-color-orginal{
   color :#3b3b3b!important;
 }
+
+@media only screen and (max-width: 400px) {
+  .pagination {
+    font-size: 7px;
+        margin-right: 15px
+        }
+        .min-width-se{
+            width: 122px!important;
+          z-index:100000;
+        }
+}

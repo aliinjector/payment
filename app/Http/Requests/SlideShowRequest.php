@@ -32,8 +32,8 @@ class SlideShowRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'max:25',
-            'description' => 'max:50',
+            'title' => 'max:150',
+            'description' => 'max:250',
             'url' => 'max:150|url',
             'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
         ];
