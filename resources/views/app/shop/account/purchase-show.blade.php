@@ -105,7 +105,7 @@
                                         <td>
                                           {{ number_format($purchase->shipping_price) }}
                                         </td>
-                                          <td>{{ number_format($product->total_price)}}</td>
+                                          <td>{{ number_format($product->total_price + $product->specification_price)}}</td>
                                         <td>
                                           @if($product->product->type == 'file')
                                               <div class="icon-show row">

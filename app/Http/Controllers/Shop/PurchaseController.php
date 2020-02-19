@@ -164,6 +164,7 @@ class PurchaseController extends Controller
         foreach($cart->cartProduct as $cartProduct){
           $total_price += $cartProduct->total_price + $cartProduct->specification_price;
         }
+        // dd($total_price);
 
         $cartUpdate = $cart->update([
           'total_price' => $total_price,
@@ -186,7 +187,7 @@ class PurchaseController extends Controller
           $shop = Shop::where('english_name', $shopName)->first();
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           // address and new addres validation condition
-          if($cart->cartProduct[0]->type != 'file'){
+          if($cart->cartProduct[0]->product->type != 'file'){
 
           if (!isset($request->address)) {
 
@@ -233,11 +234,11 @@ class PurchaseController extends Controller
           foreach($productIds as $productId){
             Product::find($productId)->increment('buyCount');
           }
-          alert()->success('خرید شما با موفقیت ثبت شد', 'تبریک');
+          toastr()->success('خرید شما با موفقیت ثبت شد', 'انجام شد');
           SEOTools::setTitle($shop->name);
           SEOTools::setDescription($shop->description);
           SEOTools::opengraph()->addProperty('type', 'website');
-          return redirect()->route('user.purchased.list', ['userID' => \auth::user()->id]);
+          return redirect()->route('user.purchased.list');
       }
 
 

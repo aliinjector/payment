@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>{{ __('app-shop-2-layouts-master.pageTitle') }}</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="stylesheet" href="/app/shop/2/css/style.css">
     <link rel="stylesheet" href="/app/shop/2/css/alert.css">
@@ -19,6 +17,14 @@
     <link rel="stylesheet" href="{{ asset('/app/shop/2/css/master.css') }}" />
   @endif
     @toastr_css
+    <style media="screen">
+
+.btn-outline-primary:hover{
+        color: transparent!important;
+        background-color: transparent!important;
+        border-color: #2879FE!important;
+}
+    </style>
 </head>
 
 <body>
@@ -222,9 +228,7 @@
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item bg-primary"><button type="submit" class="btn">{{ __('app-shop-2-layouts-master.tasviyeHesab') }}</button></div>
-                                                        <div class="tt-item" style="background-color: currentColor;"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}"
-                                                              class="btn btn-border tt-hidden-desctope">{{ __('app-shop-2-layouts-master.seeCart') }}</a></div>
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}"><button type="submit" class="btn btn-outline-primary">مشاهده سبد خرید</a></button></div>
                                                     </div>
                                                 </div>
                                             </div>
