@@ -1,6 +1,6 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
-<div class="row">
+<div class="row p-5">
     <div class="col-lg-12">
         <div class="card">
             @if(isset($products))
@@ -37,7 +37,7 @@
                                             @endif
                                     </td>
                                     <td>
-                                        <select class="form-control col-lg-5 p-1" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
+                                        <select class="form-control p-1" style="width: 65px;" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
                                             <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1) selected
                                                 @endif value="1">۱</option>
                                             <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 2) selected

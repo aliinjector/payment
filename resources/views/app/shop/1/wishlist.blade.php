@@ -8,14 +8,14 @@
             <div class="card-body font-18">
                 <h4 class="header-title mt-0">علاقه مندی ها</h4>
                 <p class="mb-4 text-muted">لیست محصولات مورد علاقه شما</p>
-                <div class="table-responsive shopping-cart">
-                    <table class="table mb-0">
+                <div class="table-responsive">
+                    <table class="table">
                         <thead>
                             <tr>
-                                <th>{{ __('app-shop-1-cart.cartTableItem1') }}</th>
-                                <th>{{ __('app-shop-1-cart.cartTableItem2') }}</th>
-                                <th>{{ __('app-shop-1-cart.cartTableItem3') }}</th>
-                                <th class="d-flex justify-content-around">{{ __('app-shop-1-cart.cartTableItem5') }}</th>
+                                <th class="border-bottom-0">{{ __('app-shop-1-cart.cartTableItem1') }}</th>
+                                <th class="border-bottom-0">{{ __('app-shop-1-cart.cartTableItem2') }}</th>
+                                <th class="border-bottom-0">{{ __('app-shop-1-cart.cartTableItem3') }}</th>
+                                <th class="d-flex justify-content-around border-bottom-0">{{ __('app-shop-1-cart.cartTableItem5') }}</th>
                             </tr>
                         </thead>
                         <tbody class="">

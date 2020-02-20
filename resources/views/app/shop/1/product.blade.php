@@ -293,13 +293,13 @@
                             @csrf {{ method_field('PATCH') }}
                             @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
                                 @else
-                                <select id="combostar">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                </select>
+                                  <select id="combostar">
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                                     <option value="3">3</option>
+                                     <option value="4">4</option>
+                                     <option value="5">5</option>
+                                  </select>
                                 @endif
                                 <input id="starcount" type="hidden" name="rate" value="">
                                 <input type="hidden" name="id" value="{{ $product->id }}">
@@ -367,7 +367,7 @@
                 </ul>
                 @endif
 
-                <h4 class="mt-3 mb-3">{{ __('app-shop-1-product.tags') }} :</h4>
+                <h4 class="mb-3 mt-3 p-4">{{ __('app-shop-1-product.tags') }} :</h4>
                 <ul class="tags iranyekan">
                     @foreach ($product->tags()->get() as $tag)
                     <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$tag->name]) }}" class="tag iranyekan ">{{ $tag->name }}</a></li>
@@ -398,9 +398,9 @@
 
 @endsection
 @section('pageScripts')
+  <script src="/app/shop/1/assets/js/jquery.combostars.js"></script>
   <script src="{{ asset('/app/shop/1/assets/js/product.js') }}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
   <script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
   <script type="text/javascript">
   $(window).on("load", function() {

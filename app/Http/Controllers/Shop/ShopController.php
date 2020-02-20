@@ -38,7 +38,6 @@
       if (Shop::where('english_name', $shopName)->first() == null) {
           return abort(404);
       }
-
       $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
       if(Shop::where('english_name', $shopName)->first()->slide_category != null){
         $slideCategoryNames = array_slice(Shop::where('english_name', $shopName)->first()->slide_category, 0, 3);
@@ -51,7 +50,6 @@
       else{
         $slideCategories = null;
       }
-
       $shop = Shop::where('english_name', $shopName)->first();
       $lastProducts = $shop->products()->where('status', 'enable')->orderBy('created_at', 'DESC')->take(4)->get();
       $bestSelling = $shop->products()->where('status', 'enable')->orderBy('buyCount', 'DESC')->take(4)->get();
@@ -70,15 +68,15 @@
     }
 
 
+
+
+
+
     public function downlaodFile($shop, $id, $purchaseId) {
         $product = Product::find($id);
         $purchase = UserPurchase::where('id', $purchaseId)->get();
-
-        // dd($purchase->first()->cart()->withTrashed()->get()->first()->products()->where('id', $id)->first());
-
         if (\auth::user()) {
             $userPurchase = $purchase->where('user_id', \auth::user()->id);
-
         } else {
             $userPurchase = null;
         }
@@ -95,6 +93,9 @@
             return redirect()->route('login');
         }
     }
+
+
+
 
 
     public function downlaodLink(Request $request, $shopName, $id) {

@@ -1,6 +1,26 @@
-@extends('app.shop.2.layouts.master-user')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('headerScripts')
+<head>
+    <meta charset="utf-8">
+    <title>{{ __('app-shop-2-layouts-master.pageTitle') }}</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="stylesheet" href="/app/shop/2/css/style.css">
+    <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/app/shop/2/css/pagination.css" rel="stylesheet">
+    <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
+    <script src="/app/shop/1/assets/js/jquery.min.js"></script>
+    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
+    @yield('headerScripts')
+    <link rel="stylesheet" href="{{ asset('/app/shop/2/css/master.css') }}" />
+    <style media="screen">
+    </style>
+    @toastr_css
+</head>
+
+<body class="p-5">
 <style media="screen">
     .alert-danger {
       background-color: #e35471;
@@ -8,10 +28,7 @@
         padding: 1em;
     }
 </style>
-@endsection
 
-@section('content')
-{{-- {{ dd($address) }} --}}
 <div id="tt-pageContent">
     <div class="container-indent">
         <div class="container container-fluid-custom-mobile-padding">
@@ -56,8 +73,18 @@
     </div>
 </div>
 
-@endsection
 
-@section('footerScripts')
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+  <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
+  <link rel="stylesheet" href="/app/shop/2/css/custom.css">
+  @toastr_js
+  @toastr_render
+  @include('sweet::alert')
+  @yield('footerScripts')
+  <script src="{{url('stats/script.js')}}"></script>
 
-@endsection
+  </html>

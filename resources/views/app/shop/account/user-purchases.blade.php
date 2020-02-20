@@ -77,7 +77,7 @@
                                         <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
                                         <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
                                         <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
-                                        <td>{{ number_format($purchase->total_price) }} تومان</td>
+                                        <td>{{ number_format($purchase->total_price + $purchase->shipping_price) }} تومان</td>
                                         <td>{{ jdate($purchase->created_at) }}</td>
                                         <td>
                                             <a href="{{ route('user.purchased.list.show', $purchase->id) }}" class="btn text-white rounded byekan m-1">مشاهده سفارش</a>

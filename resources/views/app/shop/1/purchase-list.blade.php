@@ -14,10 +14,13 @@
 
     }
 }
-
+@media only screen and (max-width: 500px) {
+  .payment-title{
+    display: none!important;
+  }
+}
   </style>
 <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
-
     @include('dashboard.layouts.errors')
     <div class="card-body invoice-head">
         <div class="row">
@@ -76,9 +79,10 @@
                             <tr>
                                 <th>نام محصول</th>
                                 <th>قیمت واحد کالا</th>
+                                <th>تعداد</th>
+                                <th>رنگ</th>
                                 <th> میزان تخفیف</th>
                                 <th>هزینه خصوصیات</th>
-                                <th>تعداد</th>
                                 <th>قیمت مجموع</th>
                             </tr>
                             <!--end tr-->
@@ -92,6 +96,9 @@
                                     </a>
                                 </td>
                                 <td>{{ number_format($product->product()->get()->first()->price) }}</td>
+                                <td>{{ $product->quantity }}</td>
+
+                                <td>{{ $product->color ? $product->color->name : '-'}}</td>
                                 <td>
                                     @if($product->product()->get()->first()->off_price == null) 0
                                         @else {{ number_format($product->product()->get()->first()->price-$product->product()->get()->first()->off_price)}}
@@ -100,14 +107,13 @@
                                 <td>
                                   {{ $product->specification_price }}
                                 </td>
-                                <td>{{ $product->quantity }}</td>
                                 <td> {{ number_format($product->total_price + $product->specification_price) }} </td>
                             </tr>
                             @endforeach
                             <!--end tr-->
                             <!--end tr-->
                             <tr class="bg-dark text-white">
-                                <th colspan="4" class="border-0"></th>
+                                <th colspan="5" class="border-0"></th>
                                 <td class="border-0 font-14"><b>جمع کل</b></td>
                                 <td>
                                     @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
@@ -184,7 +190,7 @@
                                                                     @endif
                                                         </li>
 
-                                                        <li class="mt-2 "><span class=" showAddresses btn btn-soft-primary font-weight-bolder">انتخاب آدرس
+                                                        <li class="p-5"><span class=" showAddresses btn btn-soft-primary font-weight-bolder">انتخاب آدرس
                                                             </span>
                                                         </li>
                                                         <li>

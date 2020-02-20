@@ -4,7 +4,7 @@
     <div class="row row p-5">
             @if($offeredProducts[0])
                 <div class="col-lg-3">
-                    <div class="card e-co-product">
+                    <div class="card e-co-product" style="min-height: 40vh;">
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[0]->id]) }}"><img src="{{ $offeredProducts[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
                         <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[0]->id]) }}" class="product-title">{{ $offeredProducts[0]->title }}</a>
                             <div class="d-flex justify-content-between my-2 byekan">
@@ -28,7 +28,7 @@
 
             @if(isset($offeredProducts[1]))
                 <div class="col-lg-3">
-                    <div class="card e-co-product">
+                    <div class="card e-co-product" style="min-height: 40vh;">
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[1]->id]) }}"><img src="{{ $offeredProducts[1]->image['250,250']}}" alt="" class="img-fluid"></a>
                         <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[1]->id]) }}" class="product-title">{{ $offeredProducts[1]->title }}</a>
                             <div class="d-flex justify-content-between my-2">
@@ -55,7 +55,7 @@
 
             @if(isset($offeredProducts[2]))
                 <div class="col-lg-3">
-                    <div class="card e-co-product">
+                    <div class="card e-co-product" style="min-height: 40vh;">
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[2]->id]) }}"><img src="{{ $offeredProducts[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
                         <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[2]->id]) }}" class="product-title">{{ $offeredProducts[2]->title }}</a>
                             <div class="d-flex justify-content-between my-2">
@@ -83,7 +83,7 @@
         <!--end col-->
             @if(isset($offeredProducts[3]))
                 <div class="col-lg-3">
-                    <div class="card e-co-product">
+                    <div class="card e-co-product" style="min-height: 40vh;">
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[3]->id]) }}"><img src="{{ $offeredProducts[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
                         {{-- <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div> --}}
                         <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[3]->id]) }}" class="product-title"></a>{{ $offeredProducts[3]->title }}</a>
