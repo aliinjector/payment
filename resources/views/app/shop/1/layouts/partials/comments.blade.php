@@ -1,24 +1,10 @@
 <link rel="stylesheet" href="/app/shop/1/assets/css/comment.css">
 
-<div style="font-family: iranyekan" class="comments-container">
+<div style="font-family: iranyekan" class="col-12 comments-container">
     <h2 class="line-throw"><span>نظرات محصول </span></h2>
 
     <div class="mt-4">
         @auth
-
-            @if($errors->any())
-                <div class="alert alert-danger p-3 rounded">
-                    <p><strong>متاسفانه مشکلی در ارسال نظر رخ داده است:</strong></p>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-
-
             <form method="post" action="/comment">
             @csrf
             <div class="form-group">

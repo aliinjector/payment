@@ -216,10 +216,10 @@ class PurchaseController extends Controller
           $purchase->payment_method = $request->payment_method;
 
             if($shop->VAT == 'enable') {
-              $purchase->total_price = ($total_price) + ($total_price * $shop->VAT_amount / 100) + $shopShippingWayPrice;
+              $purchase->total_price = ($total_price) + ($total_price * $shop->VAT_amount / 100);
             }
             else{
-              $purchase->total_price = $total_price + $shopShippingWayPrice;
+              $purchase->total_price = $total_price;
             }
 
 

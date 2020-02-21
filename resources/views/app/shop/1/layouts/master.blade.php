@@ -247,13 +247,15 @@
                     </div>
                     @endguest
                     @auth
-                    <div class="dropdown search-icon d-flex align-items-center mx-3 my-4">
+                    <div class="dropdown search-icon d-flex align-items-center mx-5 my-4">
                         <button class="btn bg-blue-omid text-white rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            حساب کاربری
+                          ناحیه کاربری
                         </button>
-                        <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu p-3 position-absolute" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>{{ __('app-shop-1-layouts-master.alagheMandiHa') }} <span
                                   class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->count() != 0 ?  \Auth::user()->wishlist()->get()->first()->products()->count() : 0 }} </span></a>
+                            <a class="dropdown-item" href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}"><i class="fas fa-shopping-cart p-2"></i>سبد خرید<span
+                                  class="circle-bg byekan font-14 m-2">{{ \Auth::user()->cart()->get()->count()  != 0 ?  \Auth::user()->cart()->get()->first()->cartProduct()->count() : 0 }} </span></a>
                             @if(\Auth::user()->id == $shop->user_id)
                                 <a class="dropdown-item" href="{{ route('dashboard.index') }}"><i class="fas fa-user p-2"></i>پنل مدیریت</a>
                                 @else
@@ -266,22 +268,13 @@
                                 <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>{{ __('app-shop-1-layouts-master.khorooj') }}</a>
                         </div>
                     </div>
-
-                    <div class="search-icon d-flex align-items-center ml-5">
-                        <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="font-size:13px;">
-                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 rounded text-white">{{ __('app-shop-1-layouts-master.cart') }} <i class="mr-2 fas fa-shopping-cart"></i>
-                                @if(\Auth::user()->cart()->get()->count() != 0) {{ \Auth::user()->cart()->get()->first()->cartProduct()->count() }}
-                                    @else 0
-                                    @endif</button>
-                        </a>
-                    </div>
                     @endauth
 
 
 
                     <li class="nav-item">
                         <a href="{{ route('shop', $shop->english_name) }}">
-                            <img class="img-fluid d-sm-none d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
+                            <img class="img-fluid d-lg-block" src="{{ $shop->logo['200,100'] }}" alt="">
                         </a>
                     </li>
 

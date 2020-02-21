@@ -69,7 +69,7 @@
                                     </g>
                                 </svg> ویرایش </a>
 
-                            <a class="btn-link" href="" id="removeBrand" data-name="{{ $user_addresse->address }}" data-id="{{ $user_addresse->id }}"><i class="far fa-trash-alt  font-15"><i class="icon-h-02"></i>حذف</a></div>
+                            <a class="btn-link" href="" id="removeAddress" data-name="{{ $user_addresse->address }}" data-id="{{ $user_addresse->id }}"><i class="far fa-trash-alt  font-15"><i class="icon-h-02"></i>حذف</a></div>
 
                     </div>
                     @php $i++;
@@ -83,6 +83,7 @@
         </div>
     </div>
   </body>
+  <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
   <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
   <link rel="stylesheet" href="/app/shop/2/css/custom.css">
   @toastr_js
@@ -90,4 +91,34 @@
   @include('sweet::alert')
   @yield('footerScripts')
   <script src="{{url('stats/script.js')}}"></script>
+  <script>
+        $(document).on('click', '#removeAddress', function(e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            swal(` ${'حذف دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                    dangerMode: true,
+                    icon: "warning",
+                    buttons: ["انصراف", "حذف"],
+                })
+                .then(function(isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            type: "post",
+                            url: "{{url('/user-address/delete')}}",
+                            data: {
+                                id: id,
+                                "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                            },
+                            success: function(data) {
+                                var url = document.location.origin + "/user-address/";
+                                location.href = url;
+                            }
+                        });
+                    } else {
+                        toastr.warning('لغو شد.', '', []);
+                    }
+                });
+        });
+    </script>
   </html>

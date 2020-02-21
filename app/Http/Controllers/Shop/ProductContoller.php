@@ -21,7 +21,7 @@ class ProductContoller extends \App\Http\Controllers\Controller
       $userProducts = [];
       if (\auth::user()) {
           foreach (\auth::user()->cart()->withTrashed()->where('status', 1)->get() as $cart) {
-              foreach ($cart->products() as $single_product) {
+              foreach ($cart->products as $single_product) {
                   $userProducts[] = $single_product;
               }
           }

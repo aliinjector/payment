@@ -420,6 +420,7 @@ else{
      */
      public function update(Request $request, $id)
       {
+        $request->validate(['image' => 'mimes:jpeg,png,jpg,gif|max:2048']);
           $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
           if($request->type == 'file' and $request->file('attachment') == null){
               $attachment = $product->attachment;
