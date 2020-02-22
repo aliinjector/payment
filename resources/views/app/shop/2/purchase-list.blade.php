@@ -20,6 +20,8 @@
 }
 
   </style>
+  @toastr_css
+
 @endsection
 @section('content')
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -32,7 +34,7 @@
          <div class="row">
             <div class="col-md-12 mb-3">
                <div class="d-flex d-flex justify-content-end">
-                  <a href="{{ route('user-cart' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
+                  <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}) }}">
                   <button class="btn rounded d-none-print tt-btn-addtocart"><i class="fa fa-undo pl-1"></i>سبد خرید</button>
                   </a>
                </div>
@@ -82,9 +84,6 @@
                         <!--end tr-->
                         <tr class="bg-dark text-white">
                            <th colspan="4" class="border-0">
-                              <div class="">
-                                 <b class="text-dark"> توضیحات : </b>{{ $shop->invoice->description }}
-                              </div>
                            </th>
                            <td class="border-0 font-14"><b>جمع کل</b></td>
                            <td>
@@ -126,7 +125,7 @@
                                  <td>% 9</td>
                               </tr>
                               @endif
-                              @if($product->type != 'file')
+                              @if($product->product()->get()->first()->type != 'file')
 
                               <tr>
                                  <td class="payment-title"> روش ارسال :</td>
@@ -191,7 +190,7 @@
                                       <ul class="list-unstyled mb-0">
                                           <li>
                                               @if($shop->cash_payment == 'enable')
-                                                @if($product->type != 'file')
+                                                @if($product->product()->get()->first()->type != 'file')
 
                                                   <div class="radio radio-info">
                                                       <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked" style="height:13px!important;width:13px!important">

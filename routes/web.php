@@ -115,14 +115,14 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
 
         //Specification
-        Route::resource('specification', 'specificationController');
-        Route::post('specification/delete', 'specificationController@destroy')->name('specification.delete');
+        Route::resource('specification', 'SpecificationController');
+        Route::post('specification/delete', 'SpecificationController@destroy')->name('specification.delete');
 
         //SpecificationItem
-        Route::resource('specification-item', 'specificationItemController');
-        Route::get('specification-item/main/{id}', 'specificationItemController@main')->name('specification-item.main');
-        Route::put('specification-item/main/change-status/{id}', 'specificationItemController@changeStatus')->name('specification-item.change-status');
-        Route::post('specification-item/main/delete', 'specificationItemController@destroy')->name('specification-item.delete');
+        Route::resource('specification-item', 'SpecificationItemController');
+        Route::get('specification-item/main/{id}', 'SpecificationItemController@main')->name('specification-item.main');
+        Route::put('specification-item/main/change-status/{id}', 'SpecificationItemController@changeStatus')->name('specification-item.change-status');
+        Route::post('specification-item/main/delete', 'SpecificationItemController@destroy')->name('specification-item.delete');
       });
 
 

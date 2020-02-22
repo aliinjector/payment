@@ -247,7 +247,7 @@
                                                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
                                                         {{ __('dashboard-shop-voucher.listCodeTakhfifItem4') }}</th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem5') }}</th>
+                                                        تعداد باقی مانده</th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
                                                         {{ __('dashboard-shop-voucher.listCodeTakhfifItem6') }}</th>
                                                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">

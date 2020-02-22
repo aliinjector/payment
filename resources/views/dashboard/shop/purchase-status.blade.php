@@ -73,8 +73,10 @@
                                                 ارسال سریع
                                               @elseif($purchase->shipping =="posting_way")
                                                 ارسال پستی
-                                              @else
+                                              @elseif($purchase->shipping =="person_way")
                                                 دریافت حضوری
+                                              @else
+                                                __
                                               @endif
                                             </span></td>
                                             <td>

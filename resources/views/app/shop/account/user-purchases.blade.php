@@ -39,6 +39,7 @@
 </head>
 
 <body class="p-5">
+<<<<<<< HEAD
   <div class="row justify-content-end">
   @if(\auth::user()->type == 'customer')
     <a href="{{ url('/'.$shop_name) }}">
@@ -59,6 +60,17 @@
         </button>
 </a>
 </div>
+=======
+    @if(\auth::user()->type == 'customer')
+        <div class="row justify-content-end">
+            <a href="{{ url('/'.$shop_name) }}">
+                <button type="button" class="btn-primary">
+                    بازشگت به فروشگاه <i class="fa fa-arrow-circle-left m-2"></i>
+                </button>
+            </a>
+        </div>
+        @endif
+>>>>>>> 5a97ef3d4db0d35c8903e68cce62f60bf2d8e964
 
     <div id="tt-pageContent">
         <div class="container-indent">
@@ -101,35 +113,35 @@
                                     @endphp
                                     @endforeach
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tt-wrapper">
-                        <h3 class="tt-title">اطلاعات حساب</h3>
-                        <div class="tt-table-responsive">
-                            <table class="tt-table-shop-02">
-                                <tbody>
-                                    <tr>
-                                        <td>نام:</td>
-                                        <td>{{ \auth::user()->firstName .' '. \auth::user()->lastName }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ایمیل:</td>
-                                        <td>{{ \auth::user()->email }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>شماره:</td>
-                                        <td>{{ \auth::user()->mobile }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="tt-wrapper">
+                            <h3 class="tt-title">اطلاعات حساب</h3>
+                            <div class="tt-table-responsive">
+                                <table class="tt-table-shop-02">
+                                    <tbody>
+                                        <tr>
+                                            <td>نام:</td>
+                                            <td>{{ \auth::user()->firstName .' '. \auth::user()->lastName }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ایمیل:</td>
+                                            <td>{{ \auth::user()->email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>شماره:</td>
+                                            <td>{{ \auth::user()->mobile }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 </body>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">

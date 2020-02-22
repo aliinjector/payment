@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Shop;
 
-use App\specificationItem;
+use App\SpecificationItem;
 use App\Specification;
 use App\Http\Requests\SpecificationItemRequest;
 use Illuminate\Http\Request;

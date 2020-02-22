@@ -20,6 +20,8 @@ class CreateCartProductTable extends Migration
             $table->integer('quantity')->default(1);
             $table->bigInteger('color_id')->unsigned()->index()->nullable();
             $table->integer('total_price')->nullable();
+            $table->text('specification')->nullable();
+            $table->bigInteger('specification_price')->default(0);
             $table->enum('download_status',['0', '1'])->default(0);
             $table->timestamps();
             $table->softDeletes( );

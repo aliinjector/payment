@@ -270,7 +270,7 @@
                            </div>
                            <div class="input-group mt-3">
                               <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>
-                                 {{ __('dashboard-shop-product-index.addMahsoolFileItem3') }}ل :</span>
+                                 {{ __('dashboard-shop-product-index.addMahsoolFileItem3') }} :</span>
                               </div>
                               <select class="form-control inputfield selectFile" name="productCat_id">
                                  <option style="font-family: iranyekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolFileItem3Select') }}

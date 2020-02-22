@@ -152,7 +152,7 @@
                                                 <td>% 9</td>
                                             </tr>
                                             @endif
-                                            @if($product->type != 'file')
+                                            @if($product->product()->get()->first()->type != 'file')
 
                                             <tr>
                                                 <td class="payment-title"> روش ارسال :</td>
@@ -218,7 +218,7 @@
                                                     <ul class="list-unstyled mb-0">
                                                         <li>
                                                             @if($shop->cash_payment == 'enable')
-                                                              @if($product->type != 'file')
+                                                              @if($product->product()->get()->first()->type != 'file')
 
                                                                 <div class="radio radio-info">
                                                                     <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked">
