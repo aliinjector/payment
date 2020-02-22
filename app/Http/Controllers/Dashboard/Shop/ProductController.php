@@ -602,10 +602,24 @@ else{
 
 
     public function getFeatures(Request $request){
-
-      $features = ProductCategory::find($request->id)->features;
-      return response()->json($features);
-
+      $features = collect();
+      foreach($this->getAllParentCategories($request->id) as $category){
+        $features[] = ProductCategory::find($category->id)->features;
+      }
+//       if($request->has('value')){
+//         $values = collect();
+//         $product = Product::find($request->productid);
+//         foreach($product->features as $feature){
+//         $values[] = $feature->pivot->value;
+//         }
+//         return response()->json(array(
+//       'features' => $features,
+//       'values' => $values,
+//   ));
+// }
+// else{
+  return response()->json($features);
+// }
     }
 
 
@@ -622,7 +636,6 @@ else{
                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
                  return redirect()->back();
              }
-
              $ProductCategory = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
@@ -650,6 +663,33 @@ else{
                 'attachment' => null
             ]);
           }
+        }
+
+
+
+        public static function getAllParentCategories($cat_id) {
+            $allSubCategories = collect();
+            if (ProductCategory::find($cat_id)->parent()->exists()) {
+            foreach (ProductCategory::find($cat_id)->parent()->get() as $subCategory) {
+                $allSubCategories[] = $subCategory;
+                if ($subCategory->parent()->exists()) {
+                    foreach ($subCategory->parent()->get() as $subSubCategory) {
+                        $allSubCategories[] = $subSubCategory;
+                    }
+                    if ($subSubCategory->parent()->exists()) {
+                        foreach ($subSubCategory->parent()->get() as $subSubSubCategory) {
+                            $allSubCategories[] = $subSubSubCategory;
+                            if ($subSubSubCategory->parent()->exists()) {
+                                foreach ($subSubSubCategory->parent()->get() as $subSubSubSubCategory) {
+                                    $allSubCategories[] = $subSubSubSubCategory;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+          }
+            return $allSubCategories;
         }
 
 

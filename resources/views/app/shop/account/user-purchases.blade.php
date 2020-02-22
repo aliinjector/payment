@@ -39,15 +39,26 @@
 </head>
 
 <body class="p-5">
-  @if(\auth::user()->type == 'customer')
   <div class="row justify-content-end">
+  @if(\auth::user()->type == 'customer')
     <a href="{{ url('/'.$shop_name) }}">
-    <button type="button" class="btn-primary">
-        بازشگت به فروشگاه <i class="fa fa-arrow-circle-left m-2"></i>
-    </button>
+      <button type="button" class="border-0 btn-warning p-2 rounded" style="
+            font-size: 19px;
+            padding-bottom: 7px!important;
+            padding-top: 13px!important;
+        ">
+                بازشگت به فروشگاه
+            </button>
   </a>
-  </div>
 @endif
+  <a href="{{ route('logout') }}">
+    <button type="button" class="border-0 btn-danger mr-3 p-1 px-3 rounded" style="
+          font-size: 18px;
+      ">
+            خروج از حساب<i class="fa fa-arrow-circle-left m-2"></i>
+        </button>
+</a>
+</div>
 
     <div id="tt-pageContent">
         <div class="container-indent">

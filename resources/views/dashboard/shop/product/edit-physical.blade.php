@@ -54,7 +54,7 @@
 
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>
-                                        <select class="form-control inputfield selectPhysical" name="productCat_id" id="">
+                                        <select class="form-control inputfield selectPhysical" name="productCat_id" data-productid="{{ $product->id }}">
                                             <option style="font-family: BYekan!important;" value="{{ $product->productCategory->id }}">{{ $product->productCategory->name }}
                                             </option>
                                             @foreach($productCategories as $productCategory)
@@ -66,6 +66,12 @@
                                         </select>
 
                                     </div>
+                                    @foreach($product->features as $feature)
+                                    <div class="input-group mt-3">
+                                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ $feature->name }} :</span></div>
+                                        <input type="text" class="form-control inputfield" name="weight" placeholder="مثال: 30" value="{{ $product->weight }}">
+                                    </div>
+                                  @endforeach
                                     <div class="border border-info input-group mt-3 pb-3 rounded d-none physicalFeatures">
 
                                     </div>
