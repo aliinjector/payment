@@ -79,6 +79,7 @@ else{
     'price' => 'required|numeric|min:0|max:99999999999999999',
     'off_price' => 'nullable|lt:price|numeric|min:0|max:999999999999999999',
     'tags' => 'max:200',
+    'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
     'facility' => 'max:300',
     ];
 }

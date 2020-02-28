@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 
@@ -418,7 +419,7 @@ else{
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-     public function update(Request $request, $id)
+     public function update(ProductUpdateRequest $request, $id)
       {
         $request->validate(['image' => 'mimes:jpeg,png,jpg,gif|max:2048']);
           $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
@@ -522,6 +523,7 @@ else{
         {
             $tagIds = [];
             $colorIds = [];
+            $featureIds = [];
             $sepecificationIds = [];
             //get all tags of product
             $tagNames = explode(',',$request->get('tags'));

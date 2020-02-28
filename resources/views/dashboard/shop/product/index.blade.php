@@ -712,4 +712,7 @@
        uiColor: '#F3F6F7'
    });
 </script>
+<script type="text/javascript">
+
+</script>
 @stop

@@ -9,6 +9,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.width = '83%';
 	config.contentsLangDirection = 'rtl';
 	config.extraPlugins = 'colorbutton';
+	config.allowedContent = true;
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html

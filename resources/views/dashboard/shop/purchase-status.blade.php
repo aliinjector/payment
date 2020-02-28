@@ -54,8 +54,8 @@
                                 <tbody class="font-18">
                                     @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct()->get() as $product)
                                     <tr class="byekan">
-                                        <td><a href="{{ route('product', ['shop' => $product->product->shop->english_name, 'id' => $product->product->id]) }}" target="_blank"><img src="{{ $product->product->image['200,100']}}" alt="user"></a></td>
-                                        <td><a href="{{ route('product', ['shop'=>$product->product->shop->english_name, 'id'=>$product->product->id]) }}" target="_blank">{{ $product->product->title }}</a></td>
+                                        <td><a href="{{ route('product', ['shop' => $product->product()->withTrashed()->get()->first()->shop->english_name, 'id' => $product->product()->withTrashed()->get()->first()->id]) }}" target="_blank"><img src="{{ $product->product()->withTrashed()->get()->first()->image['200,100']}}" alt="user"></a></td>
+                                        <td><a href="{{ route('product', ['shop'=>$product->product()->withTrashed()->get()->first()->shop->english_name, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}" target="_blank">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
                                         <td>{{ $product->quantity }}</td>
                                         @if($product->color)
                                       <td>{{ $product->color->name }}</td>
@@ -63,7 +63,7 @@
                                           <td></td>
                                       @endif
 
-                                        <td>{{ number_format($product->product->price) }}</td>
+                                        <td>{{ number_format($product->product()->withTrashed()->get()->first()->price) }}</td>
                                         <td>{{ number_format($product->total_price) }}</td>
                                         <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">
                                                 {{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}
@@ -91,7 +91,7 @@
                                           @endif
                                           </td>
                                         <td class="d-flex justify-content-lg-end align-items-center h-25vh" style="direction: ltr">{{ jdate($purchase->created_at) }}
-                                            @if($product->product->type == 'file')
+                                            @if($product->product()->withTrashed()->get()->first()->type == 'file')
                                                 <div class="icon-show">
                                                 </div>
                                                 @endif

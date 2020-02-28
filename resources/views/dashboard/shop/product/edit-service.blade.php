@@ -28,7 +28,7 @@
 <div class="tab-content">
 
     <div class="tab-pane fade in show active" id="info" role="tabpanel">
-      <form method="post" action="{{ route('product-list.update', $product->id) }}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('product-list.update', ['id' => $product->id, 'shop' => $shop->english_name]) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="row">
@@ -65,6 +65,17 @@
                                           @endforeach
                                       </select>
                                   </div>
+
+                                  @foreach($product->features as $feature)
+                                  <div class="input-group mt-3 old">
+                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ $feature->name }} :</span></div>
+                                      <input type="text" class="form-control inputfield" name="value[{{ $feature->id }}]" value="{{ $feature->pivot->value }}">
+                                  </div>
+                                @endforeach
+                                  <div class="border border-info input-group mt-3 pb-3 rounded d-none physicalFeatures">
+
+                                  </div>
+
 
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>

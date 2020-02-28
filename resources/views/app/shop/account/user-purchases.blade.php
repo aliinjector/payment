@@ -39,7 +39,6 @@
 </head>
 
 <body class="p-5">
-<<<<<<< HEAD
   <div class="row justify-content-end">
   @if(\auth::user()->type == 'customer')
     <a href="{{ url('/'.$shop_name) }}">
@@ -60,17 +59,6 @@
         </button>
 </a>
 </div>
-=======
-    @if(\auth::user()->type == 'customer')
-        <div class="row justify-content-end">
-            <a href="{{ url('/'.$shop_name) }}">
-                <button type="button" class="btn-primary">
-                    بازشگت به فروشگاه <i class="fa fa-arrow-circle-left m-2"></i>
-                </button>
-            </a>
-        </div>
-        @endif
->>>>>>> 5a97ef3d4db0d35c8903e68cce62f60bf2d8e964
 
     <div id="tt-pageContent">
         <div class="container-indent">

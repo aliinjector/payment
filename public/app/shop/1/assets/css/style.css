@@ -539,6 +539,11 @@ small {
     color: #435177
 }
 
+span.marker{
+  background-color: yellow!important;
+
+}
+
 .tooltip.tooltip-custom.bs-tooltip-top .arrow::before,
 .tooltip.tooltip-sky.bs-tooltip-top .arrow::before {
     border-top-color: #f1f5fa

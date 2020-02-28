@@ -49,8 +49,12 @@
                     <div class="col-lg-6 align-self-center">
                         <div class="single-pro-detail">
                             <h3 class="pro-title iranyekan pb-5">{{ $product->title }}
-                                <div class="custom-border mt-3"></div>
-                              <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$product->productCategory->id]) }}" class="font-14"> {{ $product->productCategory->name }}</a>
+                                <div class="custom-border mt-4"></div>
+                            <span class="font-15">دسته بندی :</span><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$product->productCategory->id]) }}" class="font-14"> {{ $product->productCategory->name }}</a>
+                            </br>
+                            @if($product->brand)
+                              <span class="font-15">برند :</span><a href="{{ route('brand', ['shop'=>$shop->english_name, 'brandId'=>$product->brand->id]) }}" class="font-14"> {{ $product->brand->name }}</a>
+                            @endif
                             </h3>
                             <div class="">
 

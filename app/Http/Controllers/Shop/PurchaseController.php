@@ -184,6 +184,11 @@ class PurchaseController extends Controller
           foreach($cart->cartProduct as $cartProduct){
             $productIds[] = $cartProduct->product_id;
           }
+          foreach($productIds as $productId){
+            if (Product::find($productId)->amount < 1){
+              return redirect()->back()->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' موجود نمیباشد. لطفا از سبد خرید خود حذف نمایید.');
+            }
+            }
           $shop = Shop::where('english_name', $shopName)->first();
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           // address and new addres validation condition
@@ -233,6 +238,7 @@ class PurchaseController extends Controller
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
           foreach($productIds as $productId){
             Product::find($productId)->increment('buyCount');
+            Product::find($productId)->decrement('amount');
           }
           toastr()->success('خرید شما با موفقیت ثبت شد', 'انجام شد');
           SEOTools::setTitle($shop->name);

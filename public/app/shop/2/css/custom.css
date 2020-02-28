@@ -214,3 +214,8 @@ label {
   .bg-gray{
     background-color: #E8ECEE!important;
   }
+
+  span.marker{
+    background-color: yellow!important;
+
+  }
