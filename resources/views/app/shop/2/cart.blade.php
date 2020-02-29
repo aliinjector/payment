@@ -24,7 +24,7 @@
                      @foreach ($cart->cartProduct as $cartProduct)
                      <tr>
                         <td>
-                           <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->id]) }}" target="_blank">{{ $cartProduct->product->title }}</a></h2>
+                           <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->slug]) }}" target="_blank">{{ $cartProduct->product->title }}</a></h2>
                            <ul class="tt-list-description">
                               <li>{{ !$cartProduct->color ? '' : $cartProduct->color->name}}</li>
                            </ul>

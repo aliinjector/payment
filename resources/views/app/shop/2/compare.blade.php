@@ -26,7 +26,7 @@
                             <div class="tt-img">
                                 <a href="product.html"><img src="images/product/product-01.jpg" alt=""></a>
                             </div>
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->id]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image">
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->slug]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image">
                               </a>
                             <h2 class="tt-title"><a href="product.html">{{ $compareProduct->title }}</a></h2>
                             <div class="tt-price">{{ number_format($compareProduct->price) }}</div>

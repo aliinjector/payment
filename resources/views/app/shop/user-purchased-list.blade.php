@@ -30,8 +30,8 @@
                                               <tbody
                                                 @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products()->get() as $product)
                                                   <tr class="byekan">
-                                                      <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank"><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></a></td>
-                                                      <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->id]) }}" target="_blank">{{ $product->title }}</a></td>
+                                                      <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->slug]) }}" target="_blank"><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></a></td>
+                                                      <td><a href="{{ route('product', ['shop'=>$product->shop->english_name, 'id'=>$product->slug]) }}" target="_blank">{{ $product->title }}</a></td>
                                                       <td class="d-flex justify-content-between align-items-center h-25vh">{{ jdate($purchase->created_at) }} @if($product->type == 'file')
                                                           <div class="icon-show row">
                                                               <a href="{{ route('file-download', ['shop'=>$product->shop()->first()->english_name, 'id'=>$product->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success mr-1 button font-18 ml-5 p-3 "></i>

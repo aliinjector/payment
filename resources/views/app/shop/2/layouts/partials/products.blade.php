@@ -39,7 +39,7 @@
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"></a>
 										</form>
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}"><span class="tt-img"><img class="col-12" src="{{ $product->image['250,250'] }}" data-src="{{ $product->image['250,250'] }}"
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}"><span class="tt-img"><img class="col-12" src="{{ $product->image['250,250'] }}" data-src="{{ $product->image['250,250'] }}"
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
 
@@ -69,7 +69,7 @@
 													@endfor
 											</div>
 										</div>
-										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}">{{ $product->title }}</a></h2>
+										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}">{{ $product->title }}</a></h2>
 										<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
 										<div class="tt-product-inside-hover">
 											@auth
@@ -85,7 +85,7 @@
 											</form> --}}
 
 											<button @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->id]) }}" class="text-white">
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="text-white">
 											مشاهده محصول
 											</a>
 														</button>

@@ -83,7 +83,12 @@ class CategoryController extends Controller
           $products = $colorAndCategoryProducts;
       }
       $total = $products->count();
-      $perPage = 16; // How many items do you want to display.
+      if(count(request()->all()) == 0){
+        $perPage = 16; // How many items do you want to display.
+      }
+      else{
+        $perPage = 10000; // How many items do you want to display.
+      }
       $currentPage = request()->page; // The index page.
       $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
       SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);

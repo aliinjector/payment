@@ -104,8 +104,8 @@
         @if($lastProducts[0])
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}"><img src="{{ $lastProducts[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}" class="product-title">{{ $lastProducts[0]->title }}</a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->slug]) }}"><img src="{{ $lastProducts[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->slug]) }}" class="product-title">{{ $lastProducts[0]->title }}</a>
                     <div class="d-flex justify-content-between my-2 byekan">
                         @if($lastProducts[0]->off_price != null)
                             <p class="product-price byekan">{{ number_format($lastProducts[0]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[0]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
@@ -133,7 +133,7 @@
                                 @endif</button>
                     </form> --}}
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[0]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -151,8 +151,8 @@
         @if(isset($lastProducts[1]))
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}"><img src="{{ $lastProducts[1]->image['250,250']}}" alt="" class="img-fluid"></a>
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}" class="product-title">{{ $lastProducts[1]->title }}</a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->slug]) }}"><img src="{{ $lastProducts[1]->image['250,250']}}" alt="" class="img-fluid"></a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->slug]) }}" class="product-title">{{ $lastProducts[1]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($lastProducts[1]->off_price != null)
                             <p class="product-price byekan">{{ number_format($lastProducts[1]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[1]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
@@ -183,7 +183,7 @@
 
                     </form> --}}
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[1]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -203,8 +203,8 @@
         @if(isset($lastProducts[2]))
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}"><img src="{{ $lastProducts[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}" class="product-title">{{ $lastProducts[2]->title }}</a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->slug]) }}"><img src="{{ $lastProducts[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->slug]) }}" class="product-title">{{ $lastProducts[2]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($lastProducts[2]->off_price != null)
                             <p class="product-price byekan">{{ number_format($lastProducts[2]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[2]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
@@ -234,7 +234,7 @@
                     </form> --}}
 
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[2]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -252,9 +252,9 @@
         @if(isset($lastProducts[3]))
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}"><img src="{{ $lastProducts[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->slug]) }}"><img src="{{ $lastProducts[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
                 {{-- <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div> --}}
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}" class="product-title"></a>{{ $lastProducts[3]->title }}</a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->slug]) }}" class="product-title"></a>{{ $lastProducts[3]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($lastProducts[3]->off_price != null)
                             <p class="product-price byekan">{{ number_format($lastProducts[3]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProducts[3]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
@@ -287,7 +287,7 @@
                     </form> --}}
 
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProducts[3]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -337,8 +337,8 @@
 
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}"><img src="{{ $bestSelling[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}" class="product-title"></a> {{ $bestSelling[0]->title }} </a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->slug]) }}"><img src="{{ $bestSelling[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->slug]) }}" class="product-title"></a> {{ $bestSelling[0]->title }} </a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[0]->off_price != null)
                             <p class="product-price byekan">{{ number_format($bestSelling[0]->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[0]->price) }} {{ __('app-shop-1-index.tooman') }}</del></span>
@@ -371,7 +371,7 @@
                     </form> --}}
 
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[0]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -390,9 +390,9 @@
 
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}"><img src="{{ $bestSelling[1]->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->slug]) }}"><img src="{{ $bestSelling[1]->image['250,250'] }}" alt="" class="img-fluid"></a>
                 {{-- <div class="ribbon ribbon-secondary"><span>جدید</span></div> --}}
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}" class="product-title"></a>{{ $bestSelling[1]->title }}</a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->slug]) }}" class="product-title"></a>{{ $bestSelling[1]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[1]->off_price != null)
                             <p class="product-price byekan">{{ number_format($bestSelling[1]->off_price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[1]->price) }} {{ __('app-shop-1-index.tooman') }} </del></span>
@@ -426,7 +426,7 @@
                                 @endif</button>
                     </form> --}}
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[1]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -447,8 +447,8 @@
 
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}"><img src="{{ $bestSelling[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}" class="product-title">{{ $bestSelling[2]->title }}</a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->slug]) }}"><img src="{{ $bestSelling[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->slug]) }}" class="product-title">{{ $bestSelling[2]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[2]->off_price != null)
                             <p class="product-price byekan">{{ number_format($bestSelling[2]->off_price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[2]->price) }} {{ __('app-shop-1-index.tooman') }} </del></span>
@@ -482,7 +482,7 @@
                     </form> --}}
 
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[2]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -501,8 +501,8 @@
 
         <div class="col-lg-3">
             <div class="card e-co-product">
-                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}"><img src="{{ $bestSelling[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}" class="product-title">{{ $bestSelling[3]->title }}</a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->slug]) }}"><img src="{{ $bestSelling[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
+                <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->slug]) }}" class="product-title">{{ $bestSelling[3]->title }}</a>
                     <div class="d-flex justify-content-between my-2">
                         @if($bestSelling[3]->off_price != null)
                             <p class="product-price byekan">{{ number_format($bestSelling[3]->off_price) }} {{ __('app-shop-1-index.tooman') }}  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling[3]->price) }} {{ __('app-shop-1-index.tooman') }} </del></span>
@@ -535,7 +535,7 @@
                     </form> --}}
 
                     <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->id]) }}" class="text-white">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling[3]->slug]) }}" class="text-white">
                           مشاهده محصول
                         </a>
                          </button>
@@ -632,6 +632,6 @@
 
     @endsection
     @section('pageScripts')
-  
+
 
     @stop

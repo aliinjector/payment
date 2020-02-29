@@ -208,7 +208,7 @@
                                                               @if($cart->cartProduct != null)
                                                             @foreach ($cart->cartProduct as $cartProduct)
                                                             <div class="tt-item border-bottom p-3">
-                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->id]) }}" target="_blank">
+                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->slug]) }}" target="_blank">
                                                                     <div class="tt-item-img"><img src="{{ $cartProduct->product->image['80,80'] }}" data-src="{{ $cartProduct->product->image['80,80'] }}" alt=""></div>
                                                                     <div class="tt-item-descriptions">
                                                                         <h2 class="tt-title">{{ $cartProduct->product->title }}</h2>

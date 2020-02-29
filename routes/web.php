@@ -232,7 +232,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
 Route::namespace('Shop')->group(function () {
   //shop
     Route::get('/{shop}', 'ShopController@index')->name('shop');
-    Route::get('/{shop}/product/{id}', 'ProductContoller@show')->name('product');
+    Route::get('/{shop}/product/{slug}', 'ProductContoller@show')->name('product');
     Route::get('/{shop}/category/{categroyId}', 'CategoryController@index')->name('category');
     Route::get('/{shop}/tag/{name}', 'TagController@tagProducts')->name('tag');
     Route::get('/{shop}/brand/{id}', 'BrandController@brandProduct')->name('brand');

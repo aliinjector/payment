@@ -125,7 +125,7 @@
 
                     <tr role="row" class="odd">
                       <td>{{ $id }}</td>
-                        <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
+                        <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'id'=>$product->product()->withTrashed()->get()->first()->slug]) }}">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
                         <td>{{ number_format($product->total_price / $product->quantity ) }}</td>
                         <td>{{ $product->quantity }}</td>
                         @if($product->color)
