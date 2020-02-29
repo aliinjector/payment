@@ -393,3 +393,6 @@ h2 span {
           z-index:100000;
         }
 }
+.throw-background{
+  background-color: #F5F5F5;
+}

@@ -71,6 +71,7 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+
          //check if product category is null
          if($request->productCat_id == "null"){
            $request->merge(['productCat_id' => null]);
@@ -421,15 +422,15 @@ else{
      */
      public function update(ProductUpdateRequest $request, $id)
       {
-        $request->validate(['image' => 'mimes:jpeg,png,jpg,gif|max:2048']);
           $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
           if($request->type == 'file' and $request->file('attachment') == null){
               $attachment = $product->attachment;
               $file_size = $product->file_size;
           }
           elseif($request->type == 'file'){
-              $attachment = $this->uploadFile($request->file('attachment'), false, false);
-              $file_size = $request->file('attachment')->getSize();
+                $request->validate(['attachment' => 'required|mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp,rar|max:50000']);
+                $file_size = $request->file('attachment')->getSize();
+                $attachment = Storage::putFileAs('attachment', $request->file('attachment'), \Auth::user()->id."_".time()."_".$request->file('attachment')->getClientOriginalName());
           }
               else{
               $attachment = null;
@@ -439,6 +440,7 @@ else{
                  $image = $product->image;
              }
              else{
+                $request->validate(['image' => 'mimes:jpeg,png,jpg,gif|max:2048']);
                  $image = $this->uploadFile($request->file('image'), false, true);
              }
 
@@ -503,7 +505,6 @@ else{
         //add facilities
           foreach(array_slice($request->facility, 0, 50, true) as $facility_id => $facility){
             if($facility != null){
-
               if($product->facilities->count() != 0){
                 Facility::updateOrCreate(['id' => $facility_id],['name' => $facility, 'product_id' => $product->id]);
               }

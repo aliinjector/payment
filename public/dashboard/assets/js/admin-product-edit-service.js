@@ -1,5 +1,4 @@
-
-      $('#input-tags').tagsInput();
+  $('#input-tags').tagsInput();
 
       $(window).resize(function() {
           if ($(window).width() < 1300) {

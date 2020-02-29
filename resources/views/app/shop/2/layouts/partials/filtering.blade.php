@@ -30,7 +30,7 @@
         <li>
           <div class="d-flex justify-content-between p-3">
               <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$categorySingle->id]) }}">{{ $categorySingle->name }}</a>
-              @if($shop->cat_image_status == 'enable')<img src="{{ $categorySingle->icon['45,45'] }}" alt=""> @endif
+              @if($shop->cat_image_status == 'enable')<img src="{{ $categorySingle->icon != null ? $categorySingle->icon['45,45'] : '' }}" alt=""> @endif
           </div>
         </li>
         @endforeach

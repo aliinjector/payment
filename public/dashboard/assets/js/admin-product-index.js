@@ -130,6 +130,8 @@ $(document).on('click', '#removerProduct', function(e) {
 
 $(document).ready(function(){
  $('#datatable_filter').parent().remove();
+ $('#datatable_wrapper').children(':first').find('.col-sm-12').removeClass('col-sm-12 col-md-6');
+
 });
 $(document).ready(function(){
  $('input#myInputTextField').on("focus", function(){

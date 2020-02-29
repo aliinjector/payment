@@ -11,10 +11,10 @@
             <div class="float-right">
                 <ol style="direction: ltr" class="breadcrumb">
                     <li class="breadcrumb-item"><a href="">داشبورد</a></li>
-                    <li class="breadcrumb-item active">ویژگی های دسته بندی ها</li>
+                    <li class="breadcrumb-item active">محصول خدماتی</li>
                 </ol>
             </div>
-            <h4 class="page-title">ویرایش ویژگی ها</h4>
+            <h4 class="page-title">ویرایش خدمت</h4>
         </div>
         <!--end page-title-box-->
     </div>
@@ -35,8 +35,8 @@
                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h3 class="mt-0 header-title">ویرایش ویژگی ها</h3>
-                            <p class="text-muted mb-3">در این بخش میتوانید ویژگی های دسته بندی مورد نظر خود را ویرایش نمایید.</p><br>
+                            <h3 class="mt-0 header-title">ویرایش خدمت</h3>
+                            <p class="text-muted mb-3">در این بخش میتوانید خدمت خود را ویرایش نمایید.</p><br>
                             <div class="row">
 
                               <div class="form-group mb-0 col-12">
@@ -115,15 +115,10 @@
                                       </select>
                                   </div>
 
-                                  <div class="input-group mt-3">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>
-                                      <input value="{{ $tags }}" type="text" id="input-tags" name="tags" class="form-control" />
-
-                                  </div>
                                   @forelse( $product->facilities as $facility)
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> امکانات محصول :</span></div>
-                                        <input type="text" class="form-control inputfield" name="facility[]" value="{{ $facility->name }}">
+                                        <input type="text" class="form-control inputfield" name="facility[{{ $facility->id }}]" value="{{ $facility->name }}">
                                     </div>
                                   @empty
                                   @endforelse
@@ -137,6 +132,11 @@
                                 </div>
                               </div>
 
+                              <div class="input-group mt-3">
+                                  <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>
+                                  <input value="{{ $tags }}" type="text" id="input-tags" name="tags" class="form-control" />
+
+                              </div>
 
                                   <div class="input-group mt-3 bg-white">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه خدمت :</span></div>

@@ -1,3 +1,24 @@
+$(window).resize(function() {
+    if ($(window).width() < 1300) {
+        $("body").addClass('enlarge-menu');
+
+    } else {
+        $("body").removeClass('enlarge-menu');
+
+    }
+}).resize();
+$(window).resize(function() {
+    if ($(window).width() < 1070) {
+        $(".icon-show").removeClass('d-none');
+
+    } else {
+        $(".icon-show").addClass('d-none');
+
+    }
+}).resize();
+$(document).ready(function() {
+    $(".dropify-clear").remove();
+});
    oTable = $('#datatable').DataTable({
        "order": [
            [2, "desc"]
@@ -45,6 +66,10 @@
 
 $(document).ready(function(){
   $('#datatable_filter').parent().remove();
+  $('#datatable1_filter').parent().remove();
+  $('#datatable_wrapper').children(':first').find('.col-sm-12').removeClass('col-sm-12 col-md-6');
+  $('#datatable1_wrapper').children(':first').find('.col-sm-12').removeClass('col-sm-12 col-md-6');
+
 });
 $(document).ready(function(){
   $('input#myInputTextField').on("focus", function(){

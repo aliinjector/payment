@@ -63,7 +63,7 @@ else if($request->type == 'file'){
     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
     'tags' => 'max:200',
     'facility' => 'max:300',
-    'attachment' => 'required|mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp|max:50000',
+    'attachment' => 'required|mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp,rar|max:50000',
 
   ];
 }

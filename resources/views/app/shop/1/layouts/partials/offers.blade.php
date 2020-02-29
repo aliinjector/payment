@@ -1,5 +1,5 @@
 
-    <h2 class="line-throw"><span>محصولات پیشنهادی </span></h2>
+    <h2 class="line-throw mt-5"><span class="throw-background">محصولات پیشنهادی </span></h2>
 
     <div class="row row p-5">
             @if($offeredProducts[0])

@@ -1,7 +1,7 @@
 @extends('app.shop.2.layouts.master')
-
 @section('headerScripts')
   <link rel="stylesheet" href="{{ asset('/app/shop/2/css/app-index.css') }}" />
+  @toastr_css
 @endsection
 
 @section('content')
@@ -77,7 +77,7 @@
 
                       @foreach($lastProducts as $product)
 
-                        <div class="col-6 col-md-4 col-lg-3">
+                        <div class="col-6 col-md-4 col-lg-3 m-90">
                           @include('app.shop.2.layouts.partials.product')
                         </div>
 
@@ -92,7 +92,7 @@
 
                       @foreach($bestSelling as $product)
 
-                        <div class="col-6 col-md-4 col-lg-3">
+                        <div class="col-6 col-md-4 col-lg-3 m-90">
                           @include('app.shop.2.layouts.partials.product')
                         </div>
 
@@ -104,7 +104,7 @@
                     <div class="row tt-layout-product-item">
                       @foreach($mostView as $product)
 
-                        <div class="col-6 col-md-4 col-lg-3">
+                        <div class="col-6 col-md-4 col-lg-3 m-90">
                           @include('app.shop.2.layouts.partials.product')
                         </div>
 
@@ -115,7 +115,7 @@
                     <div class="row tt-layout-product-item">
                       @foreach($hasDescount as $product)
 
-                        <div class="col-6 col-md-4 col-lg-3">
+                        <div class="col-6 col-md-4 col-lg-3 m-90">
 
                           @include('app.shop.2.layouts.partials.product')
 
@@ -260,7 +260,7 @@
 
               @foreach($brands as $brand)
                 <div>
-                    <a href="/brands/{{ $brand->id }}"><img src="{{ $brand->icon['120,50'] }}" alt=""></a>
+                    <a href="{{ route('brand', ['shop' => $shop->english_name, 'id' => $brand->id]) }}"><img src="{{ $brand->icon['120,50'] }}" alt=""></a>
                 </div>
               @endforeach
 

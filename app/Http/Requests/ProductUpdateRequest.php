@@ -63,15 +63,12 @@ class ProductUpdateRequest extends FormRequest
      'secure_payment' => 'in:on',
      'tags' => 'max:200',
      'facility' => 'max:300',
-     'attachment' => 'required|mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp|max:50000',
-
    ];
    }
    else{
    return [
      'title' => 'required|max:50',
      'description' => 'required|min:10|max:350',
-     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
      'fast_sending' => 'in:on',
      'money_back' => 'in:on',
      'support' => 'in:on',

@@ -218,8 +218,7 @@
                         <h4 class="mt-0 header-title">{{ __('dashboard-shop-voucher.listCodeTakhfifTitle') }}</h4>
 
 
-                        <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-voucher.listCodeTakhfifDesc') }}.</p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                        <p class="text-muted mb-4 font-13" style="padding-bottom:100px!important">{{ __('dashboard-shop-voucher.listCodeTakhfifDesc') }}.</p>
 
                             <div class="row">
                                 <div class="col-sm-12 table-responsive">

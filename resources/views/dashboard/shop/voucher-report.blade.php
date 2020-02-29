@@ -20,7 +20,6 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title">گزارش کدهای تخفیف</h4>
                         <p class="text-muted mb-4 font-13">در این بخش میتوانید گزارشی از کد های تخفیف خود ملاحظه کنید . این گزارش بر اساس نام استفاده کننده ی کد تخفیف و تاریخ استفاده به نمایش در می آیند.</p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
 
                                 <div class="col-sm-12 table-responsive">

@@ -24,7 +24,6 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست درخواست های لینک دانلود</h4>
                         <p class="text-muted mb-4 font-13">تمامی فایل های فروشگاه شما تنها یکبار قابلیت دانلود شدن توسط مشتری را دارند.در صورت دانلود مجدد مشتری درخواست تولید لینک جدید را ارسال میکند که در زیر لیست آن ها را میتوانید مشخص نمایید و در صورت صلاحدید لینک جدید برای مشتریان بسازید.</p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="searchBox bg-dark"  style="margin-top: -15px;">

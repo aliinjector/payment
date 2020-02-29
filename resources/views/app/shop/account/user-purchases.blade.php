@@ -50,15 +50,25 @@
                 بازشگت به فروشگاه
             </button>
   </a>
-@endif
+  @else
+  <a href="{{ route('dashboard.index') }}">
+    <button type="button" class="border-0 btn-warning p-2 rounded" style="
+          font-size: 19px;
+          padding-bottom: 7px!important;
+          padding-top: 13px!important;
+      ">
+            پنل مدیریت
+          </button>
+  </a>
+  @endif
   <a href="{{ route('logout') }}">
     <button type="button" class="border-0 btn-danger mr-3 p-1 px-3 rounded" style="
           font-size: 18px;
       ">
             خروج از حساب<i class="fa fa-arrow-circle-left m-2"></i>
         </button>
-</a>
-</div>
+  </a>
+  </div>
 
     <div id="tt-pageContent">
         <div class="container-indent">

@@ -26,7 +26,6 @@
             <div class="card">
                <div class="card-body">
                   <h4 class="mt-0 header-title">{{ __('dashboard-shop-product-comment.listNazaraatTitle') }}</h4>
-                  <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                      <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-product-comment.listNazaraatDesc') }}
                      </p>
                      <div class="row">
@@ -47,6 +46,8 @@
                                         <i class="fa fa-search"></i>
                                     </button>
                                 </div>
+                                <div class="table-responsive">
+
                                  <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer text-center" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
                                     aria-describedby="datatable_info">
                                     <thead>
@@ -119,15 +120,17 @@
                                        @endforeach
                                     </tbody>
                                  </table>
+                               </div>
                               </div>
                               <div class="tab-pane" id="kt_tabs_3_3" role="tabpanel">
-                                 <div class="searchBox">
-                                    <input type="text" id="myInputTextField1" class="searchInput">
-                                    <button class="searchButton" href="#">
-                                    <i class="fa fa-search"></i>
+                                <div class="searchBox bg-dark"  style="margin-top: -15px;">
+                                    <input type="text" id="myInputTextField" class="searchInput iranyekan">
+                                    <button class="searchButton border" href="#">
+                                        <i class="fa fa-search"></i>
                                     </button>
-                                 </div>
-                                 <table id="datatable1" class="table table-bordered dt-responsive nowrap dataTable no-footer text-center" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
+                                </div>
+                                <div class="table-responsive">
+                                 <table id="datatable1" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
                                     aria-describedby="datatable_info">
                                     <thead>
                                        <tr role="row">
@@ -200,6 +203,7 @@
                                        @endforeach
                                     </tbody>
                                  </table>
+                               </div>
                               </div>
                            </div>
                         </div>

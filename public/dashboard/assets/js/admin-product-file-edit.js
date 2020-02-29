@@ -41,7 +41,7 @@
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
-                            $(".dropify-preview").addClass('d-none');
+                          $('#icon-delete').next('div').children(".dropify-preview").addClass('d-none');
                         }
                     });
                 } else {
@@ -68,7 +68,7 @@
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
                         success: function(data) {
-                            $(".dropify-preview").addClass('d-none');
+                          $('#file-delete').next('div').children(".dropify-preview").addClass('d-none');
                         }
                     });
                 } else {

@@ -104,7 +104,6 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست برند ها</h4>
                         <p class="text-muted mb-4 font-13">در این بخش میتوانید لیست تمامی برند های فروشگاه را مشاهده نمایید . همچنین در این بخش قادر خواهید بود که برند جدید به فروشگاه خود اضافه کنید یا آن ها را ویرایش کنید و یا حذف نمایید . لازم بذکر میباشد که در هنگام ساخت محصول جدید میتوانید برند مورد نظر خود را به محصول اختصاص دهید.</p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="searchBox bg-dark" style="margin-top: -15px;">
@@ -143,7 +142,7 @@
                                                       <a href="{{ $brand->id }}" id="editBrand" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $brand->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                       </a>
                                                       <a href="" id="removeBrand" title="حذف" data-name="{{ $brand->name }}" data-id="{{ $brand->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
-                                                      <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$brand->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
+                                                      <a href="{{ route('brand', ['shop'=>$shop->english_name, 'categroyId'=>$brand->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
                                                       </a>
                                                   </div>
                                                 </td>

@@ -10,13 +10,14 @@
     <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/app/shop/2/css/pagination.css" rel="stylesheet">
     <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
+    @toastr_css
+
     <script src="/app/shop/1/assets/js/jquery.min.js"></script>
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     @yield('headerScripts')
     @if(\Request::route()->getName() != 'product')
     <link rel="stylesheet" href="{{ asset('/app/shop/2/css/master.css') }}" />
   @endif
-    @toastr_css
     <style media="screen">
 
 .btn-outline-primary:hover{
@@ -24,6 +25,9 @@
         background-color: transparent!important;
         border-color: #2879FE!important;
 }
+    .toast-message {
+        font-size: 20px;
+    }
     </style>
 </head>
 
@@ -228,7 +232,7 @@
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}"><button type="submit" class="btn btn-outline-primary">مشاهده سبد خرید</a></button></div>
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="color: white;"><button type="submit" class="btn btn-outline-primary">مشاهده سبد خرید</a></button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -611,6 +615,8 @@
 
     <a href="#" class="tt-back-to-top d-none-print" id="js-back-to-top">{{ __('app-shop-2-layouts-master.up') }}</a>
 </body>
+@toastr_js
+@toastr_render
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -620,8 +626,7 @@
 <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
 <link rel="stylesheet" href="/app/shop/2/css/custom.css">
-@toastr_js
-@toastr_render
+
 @include('sweet::alert')
 @yield('footerScripts')
 <script src="{{url('stats/script.js')}}"></script>
