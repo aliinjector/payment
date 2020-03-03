@@ -600,7 +600,6 @@ else{
         else
             $product->status = "disable";
         $product->save();
-        return back();
     }
 
 

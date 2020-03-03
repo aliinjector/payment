@@ -83,7 +83,7 @@ class CategoryController extends Controller
           $products = $colorAndCategoryProducts;
       }
       $total = $products->count();
-      if(count(request()->all()) == 0){
+      if(!$request->has('type')){
         $perPage = 16; // How many items do you want to display.
       }
       else{

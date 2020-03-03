@@ -1,6 +1,16 @@
 @extends('app.shop.2.layouts.master')
 @section('content')
 	<link rel="stylesheet" href="{{ asset('/app/shop/2/css/category.css') }}" />
+	<style media="screen">
+	@media only screen and (max-width: 1025px) {
+		.btn-off-price{
+			    margin-top: 58px!important;
+		}
+		.btn-rate-ig{
+			margin-top: 35px!important;
+		}
+		}
+	</style>
 <div id="tt-pageContent">
 	<div class="container-indent">
 		<div class="container">
@@ -43,23 +53,9 @@
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
 
-									<div class="tt-description">
+									<div class="tt-description {{ $product->off_price == null ? 'btn-off-price' : '' }} {{ (int)$product->avgRating != 0 ? 'btn-rate-ig' : '' }}">
 										<div class="tt-row">
-											<ul class="tt-options-swatch options-middle flex-row mb-2">
-												@php
-												$i = 0;
-												 @endphp
-												 @foreach($product->colors as $color)
-													 <li class="color-select {{ $i == 0 ? 'active' : '' }}">
-														<a class="options-color tt-border tt-color-bg-08" href="#" data-color="{{ $color->id }}" style="background-color:#{{ $color->code }}">
-														</a>
-												 </li>
-												 @php
-												 $i ++;
-													@endphp
-												 @endforeach
 
-											</ul>
 											<ul class="tt-add-info">
 												<li><a href="#">{{ $product->productCategory->name }}</a></li>
 											</ul>
@@ -69,21 +65,25 @@
 													@endfor
 											</div>
 										</div>
-										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}">{{ $product->title }}</a></h2>
-										<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
+										@php
+										$stringCut = substr($product->title, 0, 25);
+    								$endPoint = strrpos($stringCut, ' ');
+    								//if the string doesn't contain any space then it will cut without word basis.
+    								$string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+										$string .= '...';
+
+										@endphp
+										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}">{{ strlen($product->title) >= 25 != 0 ?
+     $string :  $product->title }}</a></h2>
+										@if($product->off_price != null)
+												<div class="tt-price byekan" style="color: #999;"><del class="byekan font-16">{{ number_format($product->price) }} <span class="text-dark" style="color: #999!important">{{ __('app-shop-1-category.tooman') }}</span></del></div>
+												<div class="tt-price byekan" style="">{{ number_format($product->off_price) }} <span class="iranyekan" style="">تومان</span> </div>
+														<br />
+												@else
+													<div class="tt-price byekan">{{ number_format($product->price) }} <span class="iranyekan">تومان</span> </div>
+														@endif
 										<div class="tt-product-inside-hover">
 											@auth
-
-											{{-- <form @if(\Auth::user()->cart != null) action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id , 'id' => \Auth::user()->cart->id]) }}" @else action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" @endif method="post">
-												@csrf
-
-												<input type="hidden" name="product_id" value="{{$product->id}}">
-												<button type="submit" @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
-													@if($product->type == 'file'){{ __('app-shop-2-category.daryafteFile') }}
-														@else {{ __('app-shop-2-category.addToCart') }}
-														@endif</button>
-											</form> --}}
-
 											<button @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
 										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="text-white">
 											مشاهده محصول

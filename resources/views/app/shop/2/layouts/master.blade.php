@@ -54,48 +54,48 @@
                   @foreach ($shopCategories->where('parent_id' , null)->take($shop->menu_show_count) as $shopCategory)
                     @if($shopCategory->children()->exists())
                     <li>
-                        <a href="listing-right-column.html">{{ $shopCategory->name }}</a>
+                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">{{ $shopCategory->name }}</a>
                         <ul>
                           @foreach ($shopCategory->children()->get() as $subCategory)
                             @if($subCategory->children()->exists())
                             <li>
-                                <a href="listing-right-column.html">{{ $subCategory->name }}</a>
+                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}">{{ $subCategory->name }}</a>
                                 <ul>
                                   @foreach ($subCategory->children()->get() as $subSubCategory)
                                     @if($subSubCategory->children()->exists())
                                     <li>
-                                        <a href="listing-right-column.html">{{ $subSubCategory->name }}</a>
+                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}">{{ $subSubCategory->name }}</a>
                                         <ul>
                                           @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
                                             @if($subSubSubCategory->children()->exists())
                                             <li>
-                                                <a href="listing-right-column.html">{{ $subSubSubCategory->name }}</a>
+                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}">{{ $subSubSubCategory->name }}</a>
                                                 <ul>
                                                   @foreach ($subSubSubCategory->children()->get() as $subSubSubSubCategory)
-                                                    <li><a href="index-rtl.html">{{ $subSubSubSubCategory->name }}</a></li>
+                                                    <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubSubCategory->id]) }}">{{ $subSubSubSubCategory->name }}</a></li>
                                                   @endforeach
                                                 </ul>
                                             </li>
                                           @else
-                                            <li><a href="index-rtl.html">{{ $subSubSubCategory->name }}</a></li>
+                                            <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}">{{ $subSubSubCategory->name }}</a></li>
                                           @endif
                                           @endforeach
                                         </ul>
                                     </li>
                                   @else
-                                    <li><a href="index-rtl.html">{{ $subSubCategory->name }}</a></li>
+                                    <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}">{{ $subSubCategory->name }}</a></li>
                                   @endif
                                   @endforeach
                             </ul>
                             </li>
                           @else
-                            <li><a href="index-rtl.html">{{ $subCategory->name }}</a></li>
+                            <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}">{{ $subCategory->name }}</a></li>
                           @endif
                           @endforeach
                         </ul>
                     </li>
                   @else
-                  <li><a href="index-rtl.html">{{ $shopCategory->name }}</a></li>
+                  <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id]) }}">{{ $shopCategory->name }}</a></li>
                 @endif
                 @endforeach
 
@@ -232,7 +232,7 @@
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="color: white;"><button type="submit" class="btn btn-outline-primary">مشاهده سبد خرید</a></button></div>
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="color: white;"><button type="submit" class="btn ">مشاهده سبد خرید</a></button></div>
                                                     </div>
                                                 </div>
                                             </div>

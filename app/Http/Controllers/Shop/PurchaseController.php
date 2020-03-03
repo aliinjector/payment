@@ -185,7 +185,7 @@ class PurchaseController extends Controller
             $productIds[] = $cartProduct->product_id;
           }
           foreach($productIds as $productId){
-            if (Product::find($productId)->amount < 1){
+            if (Product::find($productId)->type == 'product' && Product::find($productId)->amount < 1 || Product::find($productId)->status == 'disable'){
               return redirect()->back()->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' موجود نمیباشد. لطفا از سبد خرید خود حذف نمایید.');
             }
             }

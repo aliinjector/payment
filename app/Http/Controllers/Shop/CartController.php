@@ -52,7 +52,7 @@ class CartController extends \App\Http\Controllers\Controller {
         $cart = \Auth::user()->cart()->get()->first();
         if(isset($cart->products)){
           foreach($cart->products as $product){
-            if($product->amount < 1){
+            if($product->type == 'product' && $product->amount < 1){
               CartProduct::where('product_id', '=', $product->id)->delete();
             }
           }
@@ -88,7 +88,7 @@ class CartController extends \App\Http\Controllers\Controller {
 
     public function addToCart($shopName, $userID, CartRequest $request) {
       $product = Product::where('id', $request->product_id)->get()->first();
-      if($product->amount < 1){
+      if($product->type == 'product' && $product->amount < 1){
         return redirect()->back()->withErrors(['کالای مورد نظر موجود نمیباشد']);
       }
       if($product->specifications()->where('type', 'radio')->count() != 0 and !isset($request->specification)){

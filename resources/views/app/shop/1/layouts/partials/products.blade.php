@@ -52,10 +52,18 @@
             @if($products->count() != null)
 
                 @foreach ($productsPaginate->where('status', 'enable') as $product)
+                  @php
+                  $stringCut = substr($product->title, 0, 25);
+                  $endPoint = strrpos($stringCut, ' ');
+                  //if the string doesn't contain any space then it will cut without word basis.
+                  $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                  $string .= '...';
+
+                  @endphp
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3 row">
                     <div class="card e-co-product min-height-60 col-lg-12">
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
-                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="product-title">{{ strlen($product->title) > 22 != 0 ? substr_replace($product->title, "...", 22) :  $product->title }} </a>
+                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="product-title">{{ strlen($product->title) >= 25 != 0 ? $string :  $product->title }} </a>
 
                             <div class="d-flex justify-content-between my-2 byekan">
                                 @if($product->off_price != null)

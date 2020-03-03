@@ -1,94 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('app.shop.account.layouts.master')
+@section('content')
 
-<head>
-    <meta charset="utf-8">
-    <title>{{ __('app-shop-2-layouts-master.pageTitle') }}</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet" href="/app/shop/2/css/style.css">
-    <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/app/shop/2/css/pagination.css" rel="stylesheet">
-    <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
-    <script src="/app/shop/1/assets/js/jquery.min.js"></script>
-    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
-    @yield('headerScripts')
-    <link rel="stylesheet" href="{{ asset('/app/shop/2/css/master.css') }}" />
-    <style media="screen">
-        body {
-            margin: auto;
-            font-size: 16px;
-            font-weight: 500;
-        }
 
-        th,
-        td {
-            font-family: iranyekan !important;
-        }
-
-        .tt-table-shop-01 thead th {
-            font-size: 18px !important;
-        }
-
-        .btn {
-            font-size: 16px !important;
-        }
-    </style>
-    @toastr_css
-</head>
-
-<body class="p-5">
-  <div class="row justify-content-end">
-  @if(\auth::user()->type == 'customer')
-    <a href="{{ url('/'.$shop_name) }}">
-      <button type="button" class="border-0 btn-warning p-2 rounded" style="
-            font-size: 19px;
-            padding-bottom: 7px!important;
-            padding-top: 13px!important;
-        ">
-                بازشگت به فروشگاه
-            </button>
-  </a>
-  @else
-  <a href="{{ route('dashboard.index') }}">
-    <button type="button" class="border-0 btn-warning p-2 rounded" style="
-          font-size: 19px;
-          padding-bottom: 7px!important;
-          padding-top: 13px!important;
-      ">
-            پنل مدیریت
-          </button>
-  </a>
-  @endif
-  <a href="{{ route('logout') }}">
-    <button type="button" class="border-0 btn-danger mr-3 p-1 px-3 rounded" style="
-          font-size: 18px;
-      ">
-            خروج از حساب<i class="fa fa-arrow-circle-left m-2"></i>
-        </button>
-  </a>
-  </div>
-
-    <div id="tt-pageContent">
+    <div id="">
         <div class="container-indent">
             <div class="container container-fluid-custom-mobile-padding">
-                <h1 class="tt-title-subpages noborder">حساب کاربری</h1>
-                <div class="tt-shopping-layout">
-                    <div class="tt-wrapper">
-                        <h3 class="tt-title">سوابق سفارشات</h3>
-                        <div class="tt-table-responsive">
-                            <table class="tt-table-shop-01">
-                                <thead>
-                                    <tr>
-                                        <th class="iranyekan">سفارش</th>
-                                        <th>نوع پرداخت</th>
-                                        <th>وضعیت سفارش</th>
-                                        <th>مبلغ کل</th>
-                                        <th>تاریخ ثبت</th>
-                                        <th>عملیات</th>
-                                    </tr>
-                                </thead>
+                <h1 class="">حساب کاربری</h1>
+                <div class="">
+                    <div class="">
+                        <h3 class="">سوابق سفارشات</h3>
+                        <div class="">
+                            <table class="">
+                              <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
+                                aria-describedby="datatable_info">
+                                  <thead>
+                                      <tr role="row">
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
+                                          </th>
+
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">وضعیت سفارش
+                                          </th>
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">نحوه پرداخت
+                                          </th>
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">نحوه ارسال
+                                          </th>
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">هزینه ارسال
+                                          </th>
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">مبلغ کل
+                                          </th>
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">تاریخ ثبت
+                                          </th>
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">عملیات
+                                          </th>
+                                      </tr>
+                                  </thead>
                                 <tbody>
                                     @php
                                     $id = 1;
@@ -96,14 +41,24 @@
                                     @foreach ($purchases as $purchase)
                                     <tr>
                                         <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
-                                        <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
                                         <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
+                                        <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
+                                        <td><span>
+                                                                   @if($purchase->shipping =="quick_way")
+                                                                     ارسال سریع
+                                                                   @elseif($purchase->shipping =="posting_way")
+                                                                     ارسال پستی
+                                                                   @else
+                                                                     دریافت حضوری
+                                                                   @endif
+                                                                 </span></td>                                        <td>{{ $purchase->shipping_price }}</td>
+
                                         <td>{{ number_format($purchase->total_price + $purchase->shipping_price) }} تومان</td>
                                         <td>{{ jdate($purchase->created_at) }}</td>
                                         <td>
-                                            <a href="{{ route('user.purchased.list.show', $purchase->id) }}" class="btn text-white rounded byekan m-1">مشاهده سفارش</a>
-                                            <a href="{{ route('user.purchased.list.show.invoice', $purchase->id) }}" class="btn text-white rounded byekan m-1"
-                                              style="  padding: 20px 37px!important;background-color: #28a745;background-image: linear-gradient(-180deg,#34d058,#28a745 90%);">فاکتور سفارش</a>
+                                            <a href="{{ route('user.purchased.list.show', $purchase->id) }}" title="مشاهده سفارش"3778><i class="far fa-eye text-primary font-15"></i></a>
+                                            <a href="{{ route('user.purchased.list.show.invoice', $purchase->id) }}" title="فاکتور"><i class="fas fa-file-invoice text-danger"></i></a>
+
                                         </td>
                                     </tr>
                                     @php
@@ -115,39 +70,77 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="tt-wrapper">
-                            <h3 class="tt-title">اطلاعات حساب</h3>
-                            <div class="tt-table-responsive">
-                                <table class="tt-table-shop-02">
-                                    <tbody>
-                                        <tr>
-                                            <td>نام:</td>
-                                            <td>{{ \auth::user()->firstName .' '. \auth::user()->lastName }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ایمیل:</td>
-                                            <td>{{ \auth::user()->email }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>شماره:</td>
-                                            <td>{{ \auth::user()->mobile }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <section class="section no-pdy section-contact bg-transparent mt-5">
 
-</body>
-<link rel="stylesheet" href="/app/shop/2/css/rtl.css">
-<link rel="stylesheet" href="/app/shop/2/css/custom.css">
-@toastr_js
-@toastr_render
-@include('sweet::alert')
-@yield('footerScripts')
-<script src="{{url('stats/script.js')}}"></script>
+            <div class="container">
+                <!-- Block @s -->
+                <div class="nk-block block-contact animated" data-animate="fadeInUp" data-delay=".9" id="contact">
+                    <div class="row justify-content-center no-gutters">
+                        <div class="col-lg-6">
+                            <div class="contact-wrap split split-left split-lg-left bg-white">
+                                <h1 class="title title-md">اطلاعات حساب</h1>
 
-</html>
+                                    <div class="field-item">
+                                    <div style="font-size: 0.94rem;color: rgba(65,80,118,0.6);">
+                                      نام :
+                                    </div>
+                                    <div class="">
+
+                                    {{ \auth::user()->firstName }}
+                                  </div>
+
+                                    </div>
+                                    <div class="field-item">
+                                    <div style="font-size: 0.94rem;color: rgba(65,80,118,0.6);">
+                                      نام خانوادگی :
+                                    </div>
+                                    <div class="">
+
+                                  {{ \auth::user()->lastName}}
+                                  </div>
+
+                                    </div>
+
+
+                            </div>
+                        </div><!-- .col -->
+                        <div class="col-lg-4">
+                            <div class="contact-wrap split split-right split-lg-right bg-genitian bg-theme tc-light">
+                                <div class="d-flex flex-column justify-content-between h-100">
+                                    <ul class="contact-list">
+
+                                        <li>
+                                            <em class="contact-icon fas fa-phone"></em>
+                                            <div class="contact-text">
+                                                <span class="byekan">{{ \auth::user()->mobile }}</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <em class="contact-icon fas fa-envelope"></em>
+                                            <div class="contact-text">
+                                                <span>{{ \auth::user()->email }}</span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .block @e -->
+            </div>
+
+            <div class="nk-ovm ovm-top ovm-h-60 bg-light"></div><!-- .nk-ovm -->
+        </section>
+        <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
+        <link rel="stylesheet" href="/app/shop/2/css/custom.css">
+        @toastr_js
+        @toastr_render
+        @include('sweet::alert')
+        @yield('footerScripts')
+      @endsection
