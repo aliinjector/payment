@@ -20,6 +20,10 @@ class DownloadLinkRequestController extends Controller
       if(\Auth::user()->type == 'customer'){
           return redirect()->back();
       }else{
+        if(request()->has('notification')){
+          $user = \auth()->user();
+          $user->notifications()->where('type', 'App\Notifications\NewDownloadLinkRequest')->update(['read_at' => now()]);
+        }
       $shop = \Auth::user()->shop()->first();
       $requests = $shop->donwloadLinkRequests;
       return view('dashboard.shop.download-link-request', compact('requests', 'shop'));

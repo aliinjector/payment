@@ -12,6 +12,10 @@ class CommentsController extends \App\Http\Controllers\Controller
 {
     public function index()
     {
+      if(request()->has('notification')){
+        $user = \auth()->user();
+        $user->notifications()->where('type', 'App\Notifications\NewComment')->update(['read_at' => now()]);
+      }
         $shop = \Auth::user()->shop()->first();
         $comments = $shop->comments;
         return view('dashboard.shop.product-comments', compact('comments' , 'shop'));

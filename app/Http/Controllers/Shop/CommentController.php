@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Comment;
+use App\Shop;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOTools;
+use App\Notifications\NewComment;
+
 
 class CommentController extends  \App\Http\Controllers\Controller
 {
@@ -93,14 +97,21 @@ class CommentController extends  \App\Http\Controllers\Controller
 
     public function comment(Request $request)
     {
+      $shop = Shop::find($request->shop_id);
+      $shopOwner = $shop->user;
+      $product = Product::find($request->commentable_id);
         $this->validate($request, [
             'comment' => 'required|min:3|max:1000'
         ]);
         Comment::create(array_merge([
             'user_id' => auth()->user()->id,
         ], $request->all() ));
+        $details = [
+              'message' => 'یک نظر جدید برای محصول' .' '. $product->title,
+              'url' => 'product-comments.index'
+          ];
+        $shopOwner->notify(new NewComment($details));
         alert()->success('نظر شما پس از تایید قرارداده خواهد شد.', 'ثبت شد');
-
         return redirect()->back();
     }
 

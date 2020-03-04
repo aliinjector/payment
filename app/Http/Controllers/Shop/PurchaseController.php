@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Auth;
 use App\SpecificationItem;
 use Illuminate\Support\Facades\Session;
 use Artesaos\SEOTools\Facades\SEOTools;
+use App\Notifications\NewPurchaseForShopOwner;
+
 
 class PurchaseController extends Controller
 {
@@ -190,6 +192,7 @@ class PurchaseController extends Controller
             }
             }
           $shop = Shop::where('english_name', $shopName)->first();
+          $shopOwner = $shop->user;
           $total_price = \Auth::user()->cart()->get()->first()->total_price;
           // address and new addres validation condition
           if($cart->cartProduct[0]->product->type != 'file'){
@@ -240,6 +243,11 @@ class PurchaseController extends Controller
             Product::find($productId)->increment('buyCount');
             Product::find($productId)->decrement('amount');
           }
+          $details = [
+                'message' => 'یک سفارش جدید ثبت شد',
+                'url' => 'purchase.status'
+            ];
+          $shopOwner->notify(new NewPurchaseForShopOwner($details));
           toastr()->success('خرید شما با موفقیت ثبت شد', 'انجام شد');
           SEOTools::setTitle($shop->name);
           SEOTools::setDescription($shop->description);

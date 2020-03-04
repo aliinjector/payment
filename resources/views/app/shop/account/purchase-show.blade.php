@@ -74,7 +74,7 @@
                                   @if($product->download_status == 1)
                                   <form action="{{ route('downloadLinkRequest',['product_id'=>$product->product()->withTrashed()->get()->first()->id, 'user_purchase_id' => $purchase->id]) }}" method="post" id="link" class="p-3">
                                       @csrf
-                                    <a href="javascript:$('#link').submit();" title="درخواست لینک دانلود جدید"><i class="fa fa-repeat" aria-hidden="true"></i></a>
+                                    <a href="javascript:$('#link').submit();" title="درخواست لینک دانلود جدید"><i class="fa fa-repeat text-danger" aria-hidden="true"></i></a>
                                     </form>
                                   @endif
                               </div>

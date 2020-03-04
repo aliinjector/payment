@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\ProductDownloadStatus;
 use App\UserPurchase;
 use App\Shop;
+use App\Product;
+use App\Notifications\NewDownloadLinkRequest;
+
 
 
 class UserPurchasesController extends Controller
@@ -76,10 +79,16 @@ class UserPurchasesController extends Controller
 
 
       public function downloadLinkRequest($product_id, $user_purchase_id, Request $request){
-        $shopId =  UserPurchase::find($user_purchase_id)->shop->id;
+        $shop =  UserPurchase::find($user_purchase_id)->shop;
+        $shopOwner =  $shop->user;
+        $product =  Product::find($product_id);
         $downloadLinkRequest = ProductDownloadStatus::updateOrCreate(
-          ['product_id' => $product_id, 'user_purchase_id' => $user_purchase_id, 'shop_id' => $shopId]);
-
+          ['product_id' => $product_id, 'user_purchase_id' => $user_purchase_id, 'shop_id' => $shop->id]);
+          $details = [
+                'message' => 'یک درخواست لینک دانلود جدید برای فایل' .' '. $product->title,
+                'url' => 'download-link-request-status.index'
+            ];
+          $shopOwner->notify(new NewDownloadLinkRequest($details));
           toastr()->success('درخواست شما با موفقیت ارسال شد و پس از بررسی توسط مدیر فروشگاه لینک جدید در همین صفحه قابل دسترسی میباشد', 'انجام شد');
           return redirect()->back();
 }

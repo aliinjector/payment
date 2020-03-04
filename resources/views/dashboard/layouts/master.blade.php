@@ -59,6 +59,9 @@ Author: Ali Rahmani
         .page-link {
             font-family: BYekan !important;
         }
+        /* .slimScrollDiv{
+              height: 65px!important;
+        } */
     </style>
 </head>
 
@@ -73,19 +76,28 @@ Author: Ali Rahmani
         <nav class="navbar-custom">
             <ul class="list-unstyled topbar-nav float-right mb-0">
                 <li class="dropdown notification-list"><a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><i
-                          class="dripicons-bell noti-icon"></i> <span class="badge badge-danger badge-pill noti-icon-badge">۲</span></a>
+                          class="dripicons-bell noti-icon"></i>
+                        @if(\auth()->user()->notifications->where('read_at', null)->count() > 0)
+                          <span class="badge badge-danger badge-pill noti-icon-badge BYekan">{{ \auth()->user()->notifications->where('read_at', null)->count() }}</span>
+                        @endif
+                        </a>
                     <div class="dropdown-menu dropdown-lg">
                         <!-- item-->
-                        <h6 class="dropdown-item-text">{{ __('dashboard-layouts-master.headerelaan') }} (۲)</h6>
+                        <h6 class="dropdown-item-text BYekan">{{ __('dashboard-layouts-master.headerelaan') }} ({{ \auth()->user()->notifications->where('read_at', null)->count() }})</h6>
+                        @foreach (\auth()->user()->notifications->where('read_at', null) as $notification)
                         <div class="slimscroll notification-list">
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                            <a href="{{ route($notification['data']['url'],'notification') }}" class="dropdown-item notify-item active">
                                 <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-                                <p class="notify-details">{{ __('dashboard-layouts-master.headerelaanTitle') }}<small class="text-muted">{{ __('dashboard-layouts-master.headerelaanDesc') }}</small></p>
+                                <p class="notify-details">{{ __('dashboard-layouts-master.headerelaanTitle') }}<small class="text-muted">
+                              {{ $notification['data']['message'] }}
+                                </small></p>
                             </a>
                             <!-- item-->
                         </div>
-                        <!-- All--><a href="javascript:void(0);" class="dropdown-item text-center text-primary">{{ __('dashboard-layouts-master.headerelaanShowAll') }} <i class="fi-arrow-right"></i></a>
+                      @endforeach
+                        <!-- All--><a href="" class="dropdown-item text-center text-primary"><i class="fas fa-eye ml-1"></i>{{ __('dashboard-layouts-master.headerelaanShowAll') }}</a>
+                        <!-- All--><a href="javascript:void(0);" class="dropdown-item text-center text-primary"><i class="fas fa-check-double ml-1"></i>خوانده شده</a>
                     </div>
                 </li>
                 <li class="dropdown">

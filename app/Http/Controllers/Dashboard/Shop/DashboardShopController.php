@@ -32,6 +32,10 @@ class DashboardShopController extends Controller
 
     public function purchaseStatus()
     {
+      if(request()->has('notification')){
+        $user = \auth()->user();
+        $user->notifications()->where('type', 'App\Notifications\NewPurchaseForShopOwner')->update(['read_at' => now()]);
+      }
         $shop = \Auth::user()->shop()->first();
         $purchases = $shop->purchases->sortByDesc('created_at');
         $shopSpecifications = $shop->specifications;

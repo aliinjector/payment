@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Request;
+use App\Notifications\NewUserRegisterInShop;
+
 
 class RegisterController extends Controller
 {
@@ -75,6 +77,7 @@ if(!isset(request()->shop)){
 else{
   $data['shop_id'] = Shop::where('english_name', request()->shop)->get()->first()->id;
   $data['type'] = 'customer';
+
 }
         $user = User::create([
             'firstName' => $data['firstName'],
@@ -87,6 +90,14 @@ else{
         ]);
 
 //        $this->dispatch(new SendRegisterSms($user));
+if(isset(request()->shop) && $user){
+  $shopOwner = Shop::where('english_name', request()->shop)->get()->first()->user;
+  $details = [
+        'message' => 'یک کاربر جدید در فروشگاه شما ثبت نام کرد',
+        'url' => 'users.index'
+    ];
+  $shopOwner->notify(new NewUserRegisterInShop($details));
+}
         return $user;
 
     }

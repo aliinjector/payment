@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Iatstuti\Database\Support\CascadeSoftDeletes;
 class User extends Authenticatable
 {
-  use SoftDeletes, CascadeSoftDeletes;
+  use SoftDeletes, CascadeSoftDeletes, Notifiable;
   protected $cascadeDeletes = ['addresses', 'userInformation', 'wishlist', 'comments','compare', 'shop', 'purchases', 'cart'];
 
   protected $dates = ['deleted_at'];
