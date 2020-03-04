@@ -9,6 +9,10 @@ use App\User;
 class UserController extends Controller
 {
     public function index(){
+      if(request()->has('notification')){
+        $user = \auth()->user();
+        $user->notifications()->where('type', 'App\Notifications\NewUserRegisterInShop')->update(['read_at' => now()]);
+      }
       $shop = \Auth::user()->shop()->first();
       $users = $shop->users()->get();
 

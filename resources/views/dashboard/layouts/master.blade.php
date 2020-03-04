@@ -249,7 +249,9 @@ Author: Ali Rahmani
                         @endif
                         <ul class="nav">
                             @if (\Auth::user()->shop()->count() == 0)
+                              @if(\Auth::user()->type == 'user')
                             <li class="nav-item"><a class="nav-link " href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarIjadForooshgah') }}</a></li>
+                          @endif
                             @else
                             <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.index') }}"><i class="dripicons-view-thumb"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarDashboard') }}</a></li>
                             <li class="nav-item"><a class="nav-link {{ request()->is('*galleries*') == 1 ? 'active' : '' }}" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarListKalaha') }}</a></li>
@@ -270,7 +272,6 @@ Author: Ali Rahmani
                             <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="dripicons-calendar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarFeedback') }}</a></li>
                             </div>
 
-                            @endif
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapsepurchases" aria-expanded="false" aria-controls="collapsepurchases"><i class="fa fa-clone"></i>مدیریت سفارشات</a></li>
                             <div class="collapse mr-4 {{ request()->is('*purchases-managment*') == 1 ? 'show' : '' }}" id="collapsepurchases">
                             <li class="nav-item"><a class="nav-link" href="{{ route('purchase.status') }}"><i class="fa fa-clipboard"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarVaziaatSefaareshaat') }} </a></li>
@@ -279,6 +280,8 @@ Author: Ali Rahmani
 
                             <li class="nav-item"><a class="nav-link" href="{{ route('stats.index') }}"><i class="fas fa-chart-bar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarAmaarBazdid') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatKarbaraan') }}</a></li>
+                          @endif
+
 
                         </ul>
                         </li>
