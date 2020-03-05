@@ -159,6 +159,9 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('users/purcheses/{user}', 'UserController@purcheses')->name('users.purcheses');
         Route::post('users/delete', 'UserController@destroy')->name('user.delete');
 
+        //notification
+        Route::put('notification/read-all', 'NotificationController@readAll')->name('notification.read-all');
+
       Route::prefix('managment')->group(function () {
 
           //Slideshow
@@ -216,7 +219,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
 
     //Rating
     Route::patch('/{shop}/{id}/rate', 'RatingController@updateRate')->name('rate');
-    
+
     //Compare
     Route::get('/{shop}/compare', 'CompareController@index')->name('compare');
     Route::post('/{shop}/compare/store', 'CompareController@store')->name('compare.store');

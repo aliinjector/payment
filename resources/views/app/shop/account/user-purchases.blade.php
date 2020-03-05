@@ -43,7 +43,7 @@
                                         <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
                                         <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
                                         <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
-                                        <td><span>
+                                        <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else <span>
                                                                    @if($purchase->shipping =="quick_way")
                                                                      ارسال سریع
                                                                    @elseif($purchase->shipping =="posting_way")
@@ -51,8 +51,8 @@
                                                                    @else
                                                                      دریافت حضوری
                                                                    @endif
-                                                                 </span></td>                                        <td>{{ $purchase->shipping_price }}</td>
-
+                                                                 @endif</span></td>
+                                        <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else{{ $purchase->shipping_price }} @endif</td>
                                         <td>{{ number_format($purchase->total_price + $purchase->shipping_price) }} تومان</td>
                                         <td>{{ jdate($purchase->created_at) }}</td>
                                         <td>

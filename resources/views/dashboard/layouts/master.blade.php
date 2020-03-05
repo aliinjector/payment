@@ -96,8 +96,11 @@ Author: Ali Rahmani
                             <!-- item-->
                         </div>
                       @endforeach
-                        <!-- All--><a href="" class="dropdown-item text-center text-primary"><i class="fas fa-eye ml-1"></i>{{ __('dashboard-layouts-master.headerelaanShowAll') }}</a>
-                        <!-- All--><a href="javascript:void(0);" class="dropdown-item text-center text-primary"><i class="fas fa-check-double ml-1"></i>خوانده شده</a>
+                      <form action="{{ route('notification.read-all') }}" method="post" id="readall">
+                        @csrf
+                        @method('PUT')
+                        <!-- All--><a href="javascript:$('#readall').submit();" class="dropdown-item text-center text-primary"><i class="fas fa-check-double ml-1"></i>خوانده شده</a>
+                      </form>
                     </div>
                 </li>
                 <li class="dropdown">
