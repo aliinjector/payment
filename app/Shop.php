@@ -21,9 +21,17 @@ class Shop extends Model
     {
         return $this->hasOne('App\ShopContact','shop_id');
     }
+    public function application()
+    {
+        return $this->hasOne('App\Application');
+    }
     public function slideshows()
     {
         return $this->hasMany('App\Slideshow', 'shop_id');
+    }
+    public function tickets()
+    {
+        return $this->hasMany('App\Ticket');
     }
 
    public function ProductCategories()

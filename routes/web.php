@@ -149,6 +149,13 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
         Route::post('brand/icon/delete', 'BrandController@destroyIcon')->name('brand.icon.delete');
 
+        //application
+        Route::resource('application', 'ApplicationController');
+        Route::put('application/change-status/{id}', 'ApplicationController@changeStatus');
+        Route::post('application/applicatio-request', 'ApplicationController@applicatioRequest')->name('application.applicatio-request');
+
+
+
 
         //Stats
         Route::resource('stats', 'StatController');

@@ -225,7 +225,7 @@
                                               </div>
                                               <div class="row">
 
-                                                <button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#person_way_price">تعیین مبلغ (تومان) </button>
+                                              
                                               </div>
                                                   <div id="person_way_price" class="collapse mt-2">
                                                       <input class="form-control border-custom" type="number" name="person_way_price" value="{{ $shopInformation->person_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">

@@ -10,6 +10,7 @@ use App\Http\Requests\ShopThemeRequest;
 use App\ErrorLog;
 use App\Http\Controllers\Controller;
 use App\Shop;
+use App\Application;
 use App\Template;
 use App\Invoice;
 use App\ShopCategory;
@@ -35,7 +36,7 @@ class ShopSettingController extends Controller
               $shop->english_name = \Auth::user()->id;
               $shop->user_id = \Auth::user()->id;
               $shop->category_id = 1;
-              $shop->status = 0;
+              $shop->status = 1;
               $shop->quick_way = "disable";
               $shop->posting_way = "enable";
               $shop->person_way = "disable";
@@ -57,6 +58,13 @@ class ShopSettingController extends Controller
               $shopContact->city = "تهران";
               $shopContact->province = "تهران";
               $shopContact->save();
+
+
+              // new shop application
+              $shopApplication = new Application;
+              $shopApplication->shop_id = \Auth::user()->shop()->first()->id;
+              $shopApplication->title =  'اپلیکیشن' .' ' . \Auth::user()->shop()->first()->name;
+              $shopApplication->save();
           }
           $shopCategories = ShopCategory::all();
           $shopInformation = \Auth::user()->shop()->first();
@@ -182,7 +190,7 @@ class ShopSettingController extends Controller
         'posting_way' => $request->posting_way,
         'posting_way_price' => $this->fa_num_to_en($request->posting_way_price),
         'person_way' => $request->person_way,
-        'person_way_price' => $this->fa_num_to_en($request->person_way_price),
+        'person_way_price' => 0,
         'cash_payment' => $request->cash_payment,
         'online_payment' => $request->online_payment,
         'description' => $request->description,

@@ -227,7 +227,7 @@ Author: Ali Rahmani
                         </ul>
                     </div>
                     <!-- end Analytic -->
-                    <div id="PayanPayPardakhtYari" class="main-icon-menu-pane">
+                    <div id="PayanPayPardakhtYari" class="main-icon-menu-pane {{ request()->is('*payment*') == 1 ? 'active' : '' }}">
                         <div class="title-box">
                             <h6 class="menu-title">پرداخت یاری</h6>
                         </div>
@@ -249,6 +249,7 @@ Author: Ali Rahmani
                         </div>
                         @if (\Auth::user()->shop()->count() != 0)
                         <li class="nav-item bg-light p-2 pr-4 mb-2 mt-2"><a class="nav-link" target="_blank" href="{{ route('shop', \Auth::user()->shop()->first()->english_name) }}"><i class="fa fa-eye"></i> {{ __('dashboard-layouts-master.forooshgahSazSideBarShow') }} </a></li>
+                        <li class="nav-item bg-primary p-2 pr-4 mb-2 mt-2 rounded"><a class="nav-link text-white iranyekan font-weight-bolder" href="{{ request()->is('*application*') != 1 ? route('application.index') : '#' }}"><i class="fas fa-arrow-alt-circle-down	text-white"></i> درخواست اپلیکیشن </a></li>
                         @endif
                         <ul class="nav">
                             @if (\Auth::user()->shop()->count() == 0)

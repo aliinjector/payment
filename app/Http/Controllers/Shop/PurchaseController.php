@@ -229,8 +229,6 @@ class PurchaseController extends Controller
             else{
               $purchase->total_price = $total_price;
             }
-
-
           $purchase->save();
           // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
           if($cart->voucher_status == 'used'){
