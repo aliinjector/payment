@@ -102,9 +102,9 @@ class CartController extends \App\Http\Controllers\Controller {
             $cart->save();
         }
         if($request->specification != null){
-          $request->specification = \json_encode($request->specification);
+          $specificationOrg = json_encode($request->specification);
         }
-        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', $request->specification)->first();
+        $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', $specificationOrg)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shopName)->get()->first()->id;
         if($product->off_price != null){
@@ -119,10 +119,11 @@ class CartController extends \App\Http\Controllers\Controller {
           $specification = null;
         }
         else{
-          $specification = \json_encode($request->specification);
+          $specification = json_encode($request->specification);
         }
         $specificationPrice = 0;
         if($request->specification != null){
+          // dd($request->specification);
         foreach($request->specification as $specificationItem){
           $specificationItem = SpecificationItem::find($specificationItem);
           $specificationPrice += $specificationItem->price;
@@ -158,12 +159,14 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function removeFromCart(Request $request){
+
       CartProduct::where([
         ['product_id', '=', $request->id],
         ['id', '=', $request->cartProductId],
         ['cart_id', '=', $request->cart],
         ['color_id', '=', $request->color],
         ])->delete();
+
         $cartProduct = CartProduct::where('cart_id', \Auth::user()->cart()->get()->first()->id);
         if($cartProduct->count() == 0){
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();

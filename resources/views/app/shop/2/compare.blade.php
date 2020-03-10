@@ -10,9 +10,9 @@
         <div class="container-indent">
             <div class="container">
                 <h1 class="tt-title-subpages noborder">مقایسه محصولات</h1>
-                <div class="tt-compare-table" id="tt-compare-table">
+                <div class="tt-compare-table row">
                   @foreach($compareProducts as $compareProduct)
-                    <div class="tt-item border">
+                    <div class="tt-item border col-3 m-5">
                         <div class="tt-image-box">
                             <div class="tt-row-custom">
                                 <div class="tt-col">
@@ -23,20 +23,17 @@
                                     <a href="#" id="removeProductCompare" data-shop="{{ $shop->english_name }}" data-compare="{{ \Auth::user()->compare->id }}" data-id="{{ $compareProduct->id }}" class="tt-remove-item"></a>
                                 </div>
                             </div>
-                            <div class="tt-img">
-                                <a href="product.html"><img src="images/product/product-01.jpg" alt=""></a>
-                            </div>
                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->slug]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image">
                               </a>
                             <h2 class="tt-title"><a href="product.html">{{ $compareProduct->title }}</a></h2>
                             <div class="tt-price">{{ number_format($compareProduct->price) }}</div>
                         </div>
-                        @foreach($compareProduct->features as $compareProductFeature)
+                        @foreach($compareProduct->productCategory->features as $compareProductFeature)
                         <div class="tt-col tt-table-title">{{ $compareProductFeature->name }}</div>
-                        <div class="tt-col js-description">{{ $compareProductFeature->pivot->value == null ? 'تعیین نشده' : $compareProductFeature->pivot->value }}</div>
+                        <div class="tt-col js-description">@if(!isset($compareProductFeature->pivot->value) or $compareProductFeature->pivot->value == null) تعیین نشده @else $compareProductFeature->pivot->value @endif</div>
                       @endforeach
-
-                        <div class="tt-col"><a href="#" class="tt-btn-addtocart" data-toggle="modal" data-target="#modalAddToCartProduct"><i class="icon-f-39"></i>افزودن به سبد خرید</a></div>
+                        <div class="tt-col">
+                          <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->slug]) }}" class="tt-btn-addtocart" ><i class="icon-f-39"></i>مشاهده محصول</a></div>
                     </div>
                   @endforeach
 

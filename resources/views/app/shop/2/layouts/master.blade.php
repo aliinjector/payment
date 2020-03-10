@@ -223,7 +223,7 @@
                                                                     </div>
                                                                 </a>
                                                                 <div class="tt-item-close">
-                                                                    <a href="" id="removeProduct" class="tt-btn-close" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}"></a>
+                                                                    <a href="" id="removeProduct" class="tt-btn-close" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}" data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-cartp="{{ $cartProduct->id }}" data-id="{{ $cartProduct->product->id }}"></a>
                                                                 </div>
                                                             </div>
                                                             @endforeach
@@ -232,7 +232,7 @@
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="color: white;"><button type="submit" class="btn ">مشاهده سبد خرید</a></button></div>
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="color: white;"><button type="submit" class="btn btn-blue">مشاهده سبد خرید</a></button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -291,30 +291,7 @@
                             @endauth
                             <!-- /tt-account -->
                             <!-- tt-langue and tt-currency -->
-                            <div style="display:none" class="tt-desctop-parent-multi tt-parent-box">
-                                <div class="tt-multi-obj tt-dropdown-obj">
-                                    <button class="tt-dropdown-toggle" data-tooltip="Settings" data-tposition="bottom"><i class="icon-f-79"></i></button>
-                                    <div class="tt-dropdown-menu">
-                                        <div class="tt-mobile-add">
-                                            <button class="tt-close">{{ __('app-shop-2-layouts-master.bastan') }}</button>
-                                        </div>
-                                        <div class="tt-dropdown-inner">
-                                            <ul>
-                                                <li class="active"><a href="#">انگلیسی</a></li>
-                                                <li><a href="#">انگلیسی</a></li>
-                                                <li><a href="#">انگلیسی</a></li>
-                                                <li><a href="#">انگلیسی</a></li>
-                                            </ul>
-                                            <ul>
-                                                <li class="active"><a href="#"><i class="icon-h-59"></i>{{ __('app-shop-2-layouts-master.tooman') }}</a></li>
-                                                <li class="active"><a href="#"><i class="icon-h-59"></i>USD - US Dollar</a></li>
-                                                <li><a href="#"><i class="icon-h-60"></i>EUR - Euro</a></li>
-                                                <li><a href="#"><i class="icon-h-61"></i>GBP - British Pound Sterling</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <!-- /tt-langue and tt-currency -->
                         </div>
                     </div>

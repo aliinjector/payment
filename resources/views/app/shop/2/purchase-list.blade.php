@@ -18,7 +18,21 @@
 
   }
 }
+@media only screen and (max-width: 360px) {
+  .total_price , .maaliaat , .ravesh , .ghaabel , .pardaakht{
+    display: none;
+  }
+}
+input[type='radio']:checked:after {
+    width: 16px!important;
+    height: 16px!important;
+    background-color: dodgerblue!important;
+    border: 2px solid #2879FE!important;
+}
 
+input[type='radio']:after {
+    border: 2px solid #2879fe!important;
+}
   </style>
   @toastr_css
 
@@ -34,7 +48,7 @@
          <div class="row">
             <div class="col-md-12 mb-3">
                <div class="d-flex d-flex justify-content-end">
-                  <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}) }}">
+                  <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}">
                   <button class="btn rounded d-none-print tt-btn-addtocart"><i class="fa fa-undo pl-1"></i>سبد خرید</button>
                   </a>
                </div>
@@ -115,7 +129,7 @@
                         <table class="table">
                            <tbody>
                               <tr>
-                                 <td class="payment-title border-bottom-0">قیمت کل :</td>
+                                 <td class="payment-title border-bottom-0 total_price">قیمت کل :</td>
                                  <td class="border-bottom-0">
                                    @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
                                    @else {{ number_format($cart->total_price) }}
@@ -124,20 +138,20 @@
                               </tr>
                               @if($shop->VAT == 'enable')
                               <tr>
-                                 <td class="payment-title">مالیات بر ارزش افزوده :</td>
+                                 <td class="payment-title maaliaat">مالیات بر ارزش افزوده :</td>
                                  <td>% 9</td>
                               </tr>
                               @endif
                               @if($product->product()->get()->first()->type != 'file')
 
                               <tr>
-                                 <td class="payment-title"> روش ارسال :</td>
+                                 <td class="payment-title ravesh"> روش ارسال :</td>
                                  <td>
                                     <ul class="list-unstyled mb-0">
                                        <li>
                                           @if($shop->quick_way == 'enable')
                                           <div class="radio radio-info">
-                                             <input type="radio"  data-shipping="quick_way_price" class="shipping" data-shop="{{ $shop->english_name }}" name="shipping_way" id="quick_way" value="quick_way" style="height:13px!important;width:13px!important">
+                                             <input type="radio"  data-shipping="quick_way_price" class="shipping" data-shop="{{ $shop->english_name }}" name="shipping_way" id="quick_way" value="quick_way" style="height:10px!important;width:18px!important">
                                              <label for="quick_way">ارسال سریع</label>
                                              <span class="font-13 mr-2 position-relative text-custom" style="top: 3px;">
                                                  +  {{ $shop->quick_way_price }} تومان
@@ -148,7 +162,7 @@
                                        <li>
                                           @if($shop->posting_way == 'enable')
                                           <div class="radio radio-info mt-2">
-                                             <input type="radio" name="shipping_way" data-shipping="posting_way_price" class="shipping" data-shop="{{ $shop->english_name }}" id="posting_way" value="posting_way" style="height:13px!important;width:13px!important">
+                                             <input type="radio" name="shipping_way" data-shipping="posting_way_price" class="shipping" data-shop="{{ $shop->english_name }}" id="posting_way" value="posting_way" style="height:10px!important;width:18px!important">
                                              <label for="posting_way">ارسال پستی</label>
                                              <span class="font-13 mr-2 position-relative text-custom" style="top: 3px;">
                                                  +  {{ $shop->posting_way_price }} تومان
@@ -157,7 +171,7 @@
                                           @endif
                                           @if($shop->person_way == 'enable')
                                           <div class="radio radio-info mt-2">
-                                             <input type="radio" name="shipping_way" data-shipping="person_way_price" class="shipping" data-shop="{{ $shop->english_name }}" id="person_way" value="person_way" style="height:13px!important;width:13px!important">
+                                             <input type="radio" name="shipping_way" data-shipping="person_way_price" class="shipping" data-shop="{{ $shop->english_name }}" id="person_way" value="person_way" style="height:10px!important;width:18px!important">
                                              <label for="person_way">دریافت حضوری</label>
                                              <span class="font-13 mr-2 position-relative text-custom" style="top: 3px;">
                                                  +  {{ $shop->person_way_price }} تومان
@@ -188,7 +202,7 @@
                                  </td>
                               </tr>
                               <tr>
-                                  <td class="payment-title"> روش  پرداخت :</td>
+                                  <td class="payment-title pardaakht"> روش  پرداخت :</td>
                                   <td>
                                       <ul class="list-unstyled mb-0">
                                           <li>
@@ -196,7 +210,7 @@
                                                 @if($product->product()->get()->first()->type != 'file')
 
                                                   <div class="radio radio-info">
-                                                      <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked" style="height:13px!important;width:13px!important">
+                                                      <input type="radio" name="payment_method" id="cash_payment" value="cash_payment" checked="checked" style="height:10px!important;width:18px!important">
                                                       <label for="cash_payment">پرداخت نقدی</label>
                                                   </div>
 
@@ -204,7 +218,7 @@
                                                   @endif
                                               @if($shop->online_payment == 'enable')
                                                   <div class="radio radio-info">
-                                                      <input type="radio" name="payment_method" id="online_payment" value="online_payment" checked="checked" style="height:13px!important;width:13px!important">
+                                                      <input type="radio" name="payment_method" id="online_payment" value="online_payment" checked="checked" style="height:10px!important;width:18px!important">
                                                       <label for="online_payment">پرداخت آنلاین</label>
                                                   </div>
                                                   @endif
@@ -213,7 +227,7 @@
                                   </td>
                               </tr>
                               <tr>
-                                 <td class="payment-title font-weight-bolder">مبلغ قابل پرداخت :</td>
+                                 <td class="payment-title font-weight-bolder ghaabel">مبلغ قابل پرداخت :</td>
                                  <td class="total-payable-price">
                                    <span class="price font-16" id="price-span">
                                      @if(isset($discountedPrice))

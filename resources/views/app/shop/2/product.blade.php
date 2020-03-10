@@ -19,6 +19,20 @@
             display: none;
         }
     }
+    .card{
+      height: 520px;
+    }
+    .crd-img{
+          height: 335px;
+    }
+    .crd-img-off{
+          height: 305px!important;
+    }
+    @media only screen and (max-width: 600px) {
+  .icon-f-39 {
+  display: none;
+  }
+}
 </style>
 <div id="tt-pageContent">
     <div>
@@ -404,22 +418,27 @@
         </div>
     </div>
 
-                <h3 class="tt-title-small">{{ __('app-shop-2-product.moshabeh') }}</h3>
+                <h3 class="tt-title-small pt-5">{{ __('app-shop-2-product.moshabeh') }}</h3>
             </div>
             <div class="row">
-
                 @foreach($offeredProducts as $product)
-                <div class="col-12 col-md-6 col-lg-3">
-                    {{-- @include('app.shop.2.layouts.partials.product') --}}
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
+                  <div class="col-sm-6 col-md-6 col-lg-3 py-3">
+                    <div class="card">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="{{ $product->off_price != null ? 'crd-img-off' :  'crd-img'}}">
+                      <img class="card-img-top" src="{{ $product->image['250,250'] }}" alt="Card image cap">
+                      </a>
+                      <div class="card-body">
+                        <h5 class="card-title">{{ $product->title }}</h5>
+                        @if($product->off_price != null)
+                          <p class="card-text"><del>{{ number_format($product->price) }}</del> تومان</p>
+                        <p class="card-text">{{ number_format($product->off_price) }}  تومان</p>
+                            @else
+                              <p class="card-text">{{ $product->price }} تومان</p>
+                            @endif
+                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="btn btn-primary">مشاهده محصول</a>
+                      </div>
                     </div>
-                </div>
+                  </div>
                 @endforeach
               </div>
 

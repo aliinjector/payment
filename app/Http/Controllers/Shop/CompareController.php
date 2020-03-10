@@ -24,7 +24,6 @@ class CompareController extends Controller
           $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
           $shop = Shop::where('english_name', $shopName)->first();
           $template_folderName = $shop->template->folderName;
-          // toastr()->info('محصولات اضافه شدند.');
 
           SEOTools::setTitle($shop->name . ' | ' . 'مقایسه محصولات');
           SEOTools::setDescription($shop->description);
@@ -64,6 +63,7 @@ class CompareController extends Controller
             return redirect()->back();
           }
           else{
+
             toastr()->error('برای مقایسه , محصولات باید در دسته بندی یکسان باشند.', '');
             return redirect()->back();
           }
