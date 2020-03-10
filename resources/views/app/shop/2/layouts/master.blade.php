@@ -219,7 +219,7 @@
                                                                               value="{{ $cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity }}">
                                                                             {{ __('app-shop-2-layouts-master.adad') }}</div>
                                                                         <br />
-                                                                        <div class="tt-price">{{ number_format($cartProduct->product->price) }} {{ __('app-shop-2-layouts-master.tooman') }}</div>
+                                                                        <div class="tt-price">{{ number_format($cartProduct->total_price) }} {{ __('app-shop-2-layouts-master.tooman') }}</div>
                                                                     </div>
                                                                 </a>
                                                                 <div class="tt-item-close">
@@ -626,6 +626,8 @@
 <script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
 <link rel="stylesheet" href="/app/shop/2/css/custom.css">
+<link href="/app/css/custom.css" rel="stylesheet" type="text/css">
+
 
 @include('sweet::alert')
 @yield('footerScripts')

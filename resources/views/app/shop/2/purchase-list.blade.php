@@ -52,6 +52,7 @@
                            <th>قیمت واحد کالا</th>
                            <th> میزان تخفیف</th>
                            <th>هزینه خصوصیات</th>
+                           <th>رنگ</th>
                            <th>تعداد</th>
                            <th>قیمت مجموع</th>
                         </tr>
@@ -75,6 +76,8 @@
                            <td>
                              {{ $product->specification_price }}
                            </td>
+                           <td>{{ $product->color ? $product->color->name : '-'}}</td>
+
                            <td>{{ $product->quantity }}</td>
                            <td> {{ number_format($product->total_price + $product->specification_price) }} </td>
                         </tr>
@@ -83,7 +86,7 @@
                         <!--end tr-->
                         <!--end tr-->
                         <tr class="bg-dark text-white">
-                           <th colspan="4" class="border-0">
+                           <th colspan="5" class="border-0">
                            </th>
                            <td class="border-0 font-14"><b>جمع کل</b></td>
                            <td>

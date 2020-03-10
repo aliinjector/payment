@@ -307,6 +307,7 @@
                                 @endif
                                 <input id="starcount" type="hidden" name="rate" value="">
                                 <input type="hidden" name="id" value="{{ $product->id }}">
+                                <input type="hidden" name="slug" value="{{ $product->slug }}">
                                 <input type="hidden" name="shop" value="{{ $shop->english_name }}">
                                 <br>
                                 @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)

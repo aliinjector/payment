@@ -12,7 +12,7 @@
                <tbody>
                   <tr>
                      <th>{{ __('app-shop-2-cart.cartTableItem1') }}</th>
-                     <th>{{ __('app-shop-2-cart.cartTableItem2') }}</th>
+                     <th>قیمت کالا</th>
                      <th>{{ __('app-shop-2-cart.cartTableItem3') }}</th>
                      <th>{{ __('app-shop-2-cart.cartTableItem4') }}</th>
                      <th>خصوصیات محصول</th>
@@ -41,7 +41,7 @@
                            </ul>
                         </td>
                         <td>
-                           <div class="tt-price">{{ number_format($cartProduct->product->price) }}</div>
+                           <div class="tt-price">{{ number_format($cartProduct->total_price) }}</div>
                         </td>
                         <td>
                            <div class="tt-price subtotal">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Address;
+use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddressRequest;
 use App\Http\Controllers\Controller;
@@ -18,7 +19,14 @@ class AddressController extends Controller
     public function index()
     {
       $user_addresses = \auth()->user()->addresses;
-      return view("app.shop.account.account-address", compact('user_addresses'));
+      if(\Auth::user()->type == 'customer'){
+
+        $shop = Shop::find(\auth()->user()->shop_id);
+        return view("app.shop.account.account-address", compact('user_addresses', 'shop'));
+      }
+      else{
+        return view("app.shop.account.account-address", compact('user_addresses'));
+      }
     }
 
     /**

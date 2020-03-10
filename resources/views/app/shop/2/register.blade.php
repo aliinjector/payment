@@ -30,7 +30,7 @@
 
 
 
-                                    <form action="{{ route('template.register', $shop->english_name) }}" method="post" novalidate="novalidate">
+                                    <form action="{{ route('register', ['shop' => request()->shop])  }}" method="post" novalidate="novalidate">
                                         @csrf
                                         <input type="hidden" name="shop_id" value="{{ $shop->id }}">
 

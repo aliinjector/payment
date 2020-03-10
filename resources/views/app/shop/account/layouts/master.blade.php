@@ -150,7 +150,7 @@ padding-top: 35.5px;
                             </ul>
                             <ul class="menu-btns">
                               @if(\auth::user()->type == 'customer')
-                                <li><a href="{{ url('/'.$shop_name) }}" class="btn btn-md btn-auto btn-grad"><span>فروشگاه</span></a></li>
+                                <li><a href="{{ url('/'.$shop->english_name) }}" class="btn btn-md btn-auto btn-grad"><span>فروشگاه</span></a></li>
                               @else
                                 <li><a href="{{ route('dashboard.index') }}" class="btn btn-md btn-auto btn-grad"><span>پنل مدیریت</span></a></li>
                               @endif

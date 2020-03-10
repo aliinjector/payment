@@ -33,8 +33,15 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin-panel/payment/UserInformation';
-
+    protected function redirectPath()
+    {
+      if (\Auth::user()->type == 'customer') {
+      $shop = Shop::find(\Auth::user()->shop_id);
+        return '/'.$shop->english_name;
+      } else {
+        return '/admin-panel/payment/UserInformation';
+      }
+    }
     /**
      * Create a new controller instance.
      *

@@ -56,7 +56,7 @@ return [
             'driver' => 'mysql',
             'host' => '127.0.0.1',
             'port' => '3306',
-            'database' => 'payment_org',
+            'database' => 'payment_original',
             'username' => 'payment',
             'password' => '0212202',
             'unix_socket' => '',
