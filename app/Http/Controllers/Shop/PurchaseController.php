@@ -18,6 +18,7 @@ use App\SpecificationItem;
 use Illuminate\Support\Facades\Session;
 use Artesaos\SEOTools\Facades\SEOTools;
 use App\Notifications\NewPurchaseForShopOwner;
+use App\Notifications\MinAmountWarning;
 
 
 class PurchaseController extends Controller
@@ -240,12 +241,20 @@ class PurchaseController extends Controller
           foreach($productIds as $productId){
             Product::find($productId)->increment('buyCount');
             Product::find($productId)->decrement('amount');
+            if(Product::find($productId)->amount <=   Product::find($productId)->min_amount){
+            $details = [
+                  'message' => ' موجودی کالای ' . Product::find($productId)->title . ' درحال اتمام میباشد ',
+                  'url' => 'product-list.index'
+              ];
+            $shopOwner->notify(new MinAmountWarning($details));
+            }
           }
           $details = [
                 'message' => 'یک سفارش جدید ثبت شد',
                 'url' => 'purchase.status'
             ];
           $shopOwner->notify(new NewPurchaseForShopOwner($details));
+
           toastr()->success('خرید شما با موفقیت ثبت شد', 'انجام شد');
           SEOTools::setTitle($shop->name);
           SEOTools::setDescription($shop->description);

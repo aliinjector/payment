@@ -330,7 +330,7 @@
 </div>
 <div class="row">
    <div class="col-lg-4">
-      <div class="card">
+      <div class="card" style="height: 300px;">
          <div class="card-body">
             <div class="row">
                <div class="col-8 align-self-center">
@@ -447,7 +447,7 @@
    </div>
    <!--end col-->
    <div class="col-lg-4">
-      <div class="card">
+      <div class="card" style="height: 300px;">
          <div class="card-body">
             <h4 class="mt-0 header-title mb-3">{{ __('dashboard-shop-dashboard-shop.nemoodarNewCustomer') }}</h4>
             <div class="row">
@@ -530,7 +530,7 @@
    </div>
    <!--end col-->
    <div class="col-lg-4">
-      <div class="card carousel-bg-img" style="height: 28vh">
+      <div class="card carousel-bg-img" style="height: 300px;">
          <div class="card-body dash-info-carousel">
             <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.mahsoolateMahboob') }}</h4>
             <div id="carousel_2" class="carousel slide" data-ride="carousel">
@@ -559,49 +559,7 @@
    </div>
    <!--end col-->
 </div>
-<div class="row">
-   <div class="col-12">
-      <div class="card">
-         <div class="card-body order-list">
-            <h4 class="header-title mt-0 mb-3">{{ __('dashboard-shop-dashboard-shop.listSefareshaat') }}</h4>
-            <div class="table-responsive">
-               <table class="table table-hover mb-0">
-                  <thead class="thead-light">
-                     <tr class="byekan">
-                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem1') }}</th>
-                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem2') }}</th>
-                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem3') }}</th>
-                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem4') }}</th>
-                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem5') }}</th>
-                        <th class="border-top-0">{{ __('dashboard-shop-dashboard-shop.listSefareshaatItem6') }}</th>
-                     </tr>
-                     <!--end tr-->
-                  </thead>
-                  <tbody>
 
-                     {{-- @foreach($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products() as $product)
-                     <tr class="byekan">
-                        <td>{{ $productv->id}}</td>
-                        <td><img class="product-img" src="{{ $product->image['80,80']}}" alt="user"></td>
-                        <td>{{ $product->title}}</td>
-                        <td>{{ jdate($purchase->created_at) }}</td>
-                        <td>{{ number_format($purchase->total_price) }}تومان</td>
-                        <td><span class="badge badge-boxed badge-soft-success">@if($purchase->status == 0 ) تایید شده @endif</span></td>
-                     </tr>
-                     @endforeach --}}
-                     <!--end tr-->
-                  </tbody>
-               </table>
-               <!--end table-->
-            </div>
-            <!--end /div-->
-         </div>
-         <!--end card-body-->
-      </div>
-      <!--end card-->
-   </div>
-   <!--end col-->
-</div>
 @endsection
 @section('pageScripts')
    <script src="https://code.highcharts.com/highcharts.js"></script>

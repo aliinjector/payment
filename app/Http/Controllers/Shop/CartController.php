@@ -103,6 +103,8 @@ class CartController extends \App\Http\Controllers\Controller {
         }
         if($request->specification != null){
           $specificationOrg = json_encode($request->specification);
+        }else{
+            $specificationOrg = null;
         }
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', $specificationOrg)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;

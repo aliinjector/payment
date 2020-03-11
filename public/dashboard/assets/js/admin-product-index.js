@@ -26,7 +26,6 @@ $(document).on('click', '#removerProduct', function(e) {
     e.preventDefault();
     var id = $(this).data('id');
     var name = $(this).data('name');
-    console.log(name)
     swal(` ${'حذف محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
             dangerMode: true,
             icon: "warning",

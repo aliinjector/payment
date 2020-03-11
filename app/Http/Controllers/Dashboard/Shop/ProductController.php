@@ -34,6 +34,10 @@ class ProductController extends Controller
      */
     public function index()
     {
+      if(request()->has('notification')){
+        $user = \auth()->user();
+        $user->notifications()->where('type', 'App\Notifications\MinAmountWarning')->update(['read_at' => now()]);
+      }
 
         if(\Auth::user()->type == 'customer'){
             return redirect()->back();
