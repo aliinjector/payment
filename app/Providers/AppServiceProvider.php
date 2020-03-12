@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Shop;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
      public function boot()
    {
+     $shop = Shop::where('english_name', preg_split("#/#", $this->app->request->getRequestUri())[1])->get()->first();
+    if($shop != null){
+      if($shop->status == 0){
+        abort(404);
+      }
+    }
        $this->app->setLocale(\Cookie::get('lang'));
        view()->composer('app.shop.2.layouts.master', function($view) {
            if (\Auth::check()){
