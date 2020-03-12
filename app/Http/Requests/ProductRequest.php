@@ -34,12 +34,22 @@ class ProductRequest extends FormRequest
         return [
           'title' => 'required|max:50',
           'description' => 'required|min:10|max:350',
-          'amount' => 'required|numeric|min:0|not_in:0|max:999999',
-          'min_amount' => 'required|numeric|min:0|max:999999',
+          'amount' => ['required',
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:999999','min:0'
+        ],
+          'min_amount' => ['required',
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:999999','min:0'
+        ],
           'measure' => 'required|max:50',
-          'price' => 'required|numeric|min:0|max:99999999999999999',
-          'off_price' => 'nullable|lt:price|numeric|min:0|max:999999999999999999',
-          'weight' => 'nullable|numeric|min:0|max:99999999',
+          'price' => ['required',
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+        ],
+          'off_price' => ['nullable','lt:price',
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+        ],
+          'weight' => ['nullable',
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999','min:0'
+        ],
           'fast_sending' => 'in:on',
           'money_back' => 'in:on',
           'support' => 'in:on',
@@ -54,8 +64,12 @@ else if($request->type == 'file'){
   return [
     'title' => 'required|max:50',
     'description' => 'required|min:10|max:350',
-    'price' => 'required|numeric|min:0|max:99999999999999999',
-    'off_price' => 'nullable|lt:price|numeric|min:0|max:999999999999999999',
+    'price' => ['required',
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+  ],
+    'off_price' => ['nullable','lt:price',
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+  ],
     'fast_sending' => 'in:on',
     'money_back' => 'in:on',
     'support' => 'in:on',
@@ -76,8 +90,12 @@ else{
     'money_back' => 'in:on',
     'support' => 'in:on',
     'secure_payment' => 'in:on',
-    'price' => 'required|numeric|min:0|max:99999999999999999',
-    'off_price' => 'nullable|lt:price|numeric|min:0|max:999999999999999999',
+    'price' => ['required',
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+  ],
+    'off_price' => ['nullable','lt:price',
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+  ],
     'tags' => 'max:200',
     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
     'facility' => 'max:300',

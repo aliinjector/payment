@@ -33,7 +33,10 @@ class SpecificationItemRequest extends FormRequest
     {
       return [
         'name' => 'required|max:150',
-        'price' => 'required|numeric|min:0|max:99999999999999999',
+        'price' => ['required',
+        'regex:/^([0-9]+$)|^([۰-۹]+$)/'
+        ]
       ];
     }
 }
+  // /^[\u0600-\u06FF\s۰-۱۰]+$/
