@@ -118,6 +118,11 @@ class ProductController extends Controller
        if (!isset($request->secure_payment))
        $request->secure_payment = 'off';
 
+       if (!isset($request->discount_status))
+       $request->discount_status = 'disable';
+       else
+       $request->discount_status = 'enable';
+
       //check amount of product and change fa number to en
       if($request->amount != null){
         $request->amount = $this->fa_num_to_en($request->amount);
@@ -154,6 +159,7 @@ class ProductController extends Controller
         'money_back' => $request->money_back,
         'support' => $request->support,
         'secure_payment' => $request->secure_payment,
+        'discount_status' => $request->discount_status,
         'description' => $request->description,
         'image' => $image,
         'attachment' => $attachment,
@@ -255,6 +261,7 @@ class ProductController extends Controller
     'money_back' => $request->money_back,
     'support' => $request->support,
     'secure_payment' => $request->secure_payment,
+    'discount_status' => $request->discount_status,
     'description' => $request->description,
     'image' => $image,
     'attachment' => $attachment,
@@ -471,6 +478,11 @@ else{
        if (!isset($request->secure_payment))
        $request->secure_payment = 'off';
 
+       if (!isset($request->discount_status))
+       $request->discount_status = 'disable';
+       else
+       $request->discount_status = 'enable';
+
 
         if($request->amount != null){
           $request->amount = $this->fa_num_to_en($request->amount);
@@ -499,6 +511,7 @@ else{
           'money_back' => $request->money_back,
           'support' => $request->support,
           'secure_payment' => $request->secure_payment,
+          'discount_status' => $request->discount_status,
           'description' => $request->description,
           'image' => $image,
           'attachment' => $attachment,
@@ -612,20 +625,7 @@ else{
       foreach($this->getAllParentCategories($request->id) as $category){
         $features[] = ProductCategory::find($category->id)->features;
       }
-//       if($request->has('value')){
-//         $values = collect();
-//         $product = Product::find($request->productid);
-//         foreach($product->features as $feature){
-//         $values[] = $feature->pivot->value;
-//         }
-//         return response()->json(array(
-//       'features' => $features,
-//       'values' => $values,
-//   ));
-// }
-// else{
   return response()->json($features);
-// }
     }
 
 

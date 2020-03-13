@@ -199,23 +199,27 @@
                               <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem12') }} :</span></div>
                               <input value="{{ old('tags') }}" type="text" id="input-tags" name="tags" class="form-control" />
                            </div>
-                           <div class="input-group mt-3 bg-white">
+                           <div class="input-group mt-3 bg-white col-lg-12">
                               <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13') }} :</span></div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="supportProduct" name="support">
                                  <label class="custom-control-label iranyekan font-15" for="supportProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item1') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="money_backProduct" name="money_back">
                                  <label class="custom-control-label iranyekan font-15" for="money_backProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item2') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="fast_sendingProduct" name="fast_sending">
                                  <label class="custom-control-label iranyekan font-15" for="fast_sendingProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item3') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="secure_paymentProduct" name="secure_payment">
                                  <label class="custom-control-label iranyekan font-15" for="secure_paymentProduct">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13Item4') }}</label>
+                              </div>
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
+                                 <input type="checkbox" class="custom-control-input" id="discount_statusProduct" name="discount_status" checked>
+                                 <label class="custom-control-label iranyekan font-15" for="discount_statusProduct">قابلیت تخفیف</label>
                               </div>
                            </div>
                            <div class="card mt-3">
@@ -335,21 +339,25 @@
                            </div>
                            <div class="input-group mt-3 bg-white">
                               <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFileItem8') }} :</span></div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="supportFile" name="support">
                                  <label class="custom-control-label iranyekan font-15" for="supportFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item1') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="money_backFile" name="money_back">
                                  <label class="custom-control-label iranyekan font-15" for="money_backFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item2') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="fast_sendingFile" name="fast_sending">
                                  <label class="custom-control-label iranyekan font-15" for="fast_sendingFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item3') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="secure_paymentFile" name="secure_payment">
                                  <label class="custom-control-label iranyekan font-15" for="secure_paymentFile">{{ __('dashboard-shop-product-index.addMahsoolFileItem9Item4') }}</label>
+                              </div>
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
+                                 <input type="checkbox" class="custom-control-input" id="discount_statusFile" name="discount_status" checked>
+                                 <label class="custom-control-label iranyekan font-15" for="discount_statusFile">قابلیت تخفیف</label>
                               </div>
                            </div>
                            <div class="card mt-3">
@@ -482,21 +490,25 @@
                            </div>
                            <div class="input-group mt-3 bg-white">
                               <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9') }} :</span></div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="supportService" name="support">
                                  <label class="custom-control-label iranyekan font-15" for="supportService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item1') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="money_backService" name="money_back">
                                  <label class="custom-control-label iranyekan font-15" for="money_backService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item2') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="fast_sendingService" name="fast_sending">
                                  <label class="custom-control-label iranyekan font-15" for="fast_sendingService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item3') }}</label>
                               </div>
-                              <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                  <input type="checkbox" class="custom-control-input" id="secure_paymentService" name="secure_payment">
                                  <label class="custom-control-label iranyekan font-15" for="secure_paymentService">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9Item4') }}</label>
+                              </div>
+                              <div class="custom-control custom-switch switch-blue mr-5 py-3">
+                                 <input type="checkbox" class="custom-control-input" id="discount_statusService" name="discount_status" checked>
+                                 <label class="custom-control-label iranyekan font-15" for="discount_statusService">قابلیت تخفیف</label>
                               </div>
                            </div>
                            <div class="card mt-3">

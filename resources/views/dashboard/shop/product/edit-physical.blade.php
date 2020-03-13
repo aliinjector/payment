@@ -175,23 +175,28 @@
 
                                   <div class="input-group mt-3 bg-white">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">امکانات ویژه محصول :</span></div>
-                                      <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-1">
+                                      <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                           <input type="checkbox" class="custom-control-input" id="supportProductUpdate{{ $product->id }}" name="support" @if($product->support == 'on') checked @endif>
                                               <label class="custom-control-label iranyekan font-15" for="supportProductUpdate{{ $product->id }}">پشتیبانی</label>
                                       </div>
-                                      <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                                      <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                           <input type="checkbox" class="custom-control-input" id="money_backProductUpdate{{ $product->id }}" name="money_back" @if($product->money_back == 'on') checked @endif>
                                               <label class="custom-control-label iranyekan font-15" for="money_backProductUpdate{{ $product->id }}">بازگشت وجه
                                               </label>
                                       </div>
-                                      <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                                      <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                           <input type="checkbox" class="custom-control-input" id="fast_sendingProductUpdate{{ $product->id }}" name="fast_sending" @if($product->fast_sending == 'on') checked @endif>
                                               <label class="custom-control-label iranyekan font-15" for="fast_sendingProductUpdate{{ $product->id }}">ارسال سریع
                                               </label>
                                       </div>
-                                      <div class="custom-control custom-switch switch-blue mr-5 p-3 col-lg-2">
+                                      <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                           <input type="checkbox" class="custom-control-input" id="secure_paymentProductUpdate{{ $product->id }}" name="secure_payment" @if($product->secure_payment == 'on') checked @endif>
                                               <label class="custom-control-label iranyekan font-15" for="secure_paymentProductUpdate{{ $product->id }}">پرداخت امن
+                                              </label>
+                                      </div>
+                                      <div class="custom-control custom-switch switch-blue mr-5 py-3">
+                                          <input type="checkbox" class="custom-control-input" id="discount_statusProductUpdate{{ $product->id }}" name="discount_status" @if($product->discount_status == 'enable') checked @endif>
+                                              <label class="custom-control-label iranyekan font-15" for="discount_statusProductUpdate{{ $product->id }}">قابلیت تخفیف
                                               </label>
                                       </div>
 

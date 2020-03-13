@@ -58,12 +58,28 @@ class PurchaseController extends Controller
             }
           }
           //approved voucher and decrease price
+          $disableDiscountCartPrice = 0;
+          foreach ($cart->cartProduct as $cartProduct) {
+          if($cartProduct->product->discount_status == 'disable'){
+            $disableDiscountCartPrice += $cartProduct->total_price + $cartProduct->specification_price;
+          }
+          }
           $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
           if($voucher->type == 'number'){
-          $discountedPrice = $total_price - $voucherDiscountAmount;
+          if((($total_price - $disableDiscountCartPrice)) == 0){
+            $discountedPrice = $total_price;
+            }
+            else{
+              $discountedPrice = (($total_price - $disableDiscountCartPrice) - $voucherDiscountAmount) + $disableDiscountCartPrice;
+            }
         }
         else{
-          $discountedPrice =($total_price) - ($total_price * $voucherDiscountAmount / 100);
+          if((($total_price - $disableDiscountCartPrice)) == 0){
+            $discountedPrice = $total_price;
+            }
+            else{
+              $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+            }
         }
           if($discountedPrice < 0){
             $discountedPrice = 0;
@@ -93,10 +109,20 @@ class PurchaseController extends Controller
           if(collect($this->getVochersUsers($voucher->id))->contains($userVoucherName)){
             $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             if($voucher->type == 'number'){
-            $discountedPrice = $total_price - $voucherDiscountAmount;
+              if((($total_price - $disableDiscountCartPrice)) == 0){
+                $discountedPrice = $total_price;
+                }
+                else{
+                  $discountedPrice = (($total_price - $disableDiscountCartPrice) - $voucherDiscountAmount) + $disableDiscountCartPrice;
+                }
           }
           else{
-            $discountedPrice =($total_price) - ($total_price * $voucherDiscountAmount / 100);
+            if((($total_price - $disableDiscountCartPrice)) == 0){
+              $discountedPrice = $total_price;
+              }
+              else{
+                $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+              }
           }
             if($discountedPrice < 0){
               $discountedPrice = 0;
