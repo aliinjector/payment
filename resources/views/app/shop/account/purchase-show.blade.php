@@ -57,7 +57,8 @@
                         <td>
                       @foreach($product->specification as $specificationId)
                         @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
-                        {{ $specificationItem->specification->name }} :  {{ $specificationItem->name }} <br>
+
+                        {{ $specificationItem->specification()->withTrashed()->get()->first()->name }} :  {{ $specificationItem->name }} <br>
                         @endforeach
                       @endforeach
                     </td>

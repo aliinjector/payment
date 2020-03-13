@@ -63,7 +63,7 @@
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="d-flex d-flex justify-content-between">
-                    <a href="{{ route('user-cart' , ['shop' => $shop->english_name , 'userID' => \Auth::user()->id]) }}) }}">
+                    <a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}">
                         <button class="btn bg-orange-omid text-white rounded d-none-print"><i class="fas fa-undo pl-1"></i>سبد خرید</button>
                     </a>
                 </div>

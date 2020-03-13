@@ -18,6 +18,7 @@ use App\SpecificationItem;
 use Illuminate\Support\Facades\Session;
 use Artesaos\SEOTools\Facades\SEOTools;
 use App\Notifications\NewPurchaseForShopOwner;
+use App\Notifications\MinAmountWarning;
 
 
 class PurchaseController extends Controller
@@ -57,12 +58,28 @@ class PurchaseController extends Controller
             }
           }
           //approved voucher and decrease price
+          $disableDiscountCartPrice = 0;
+          foreach ($cart->cartProduct as $cartProduct) {
+          if($cartProduct->product->discount_status == 'disable'){
+            $disableDiscountCartPrice += $cartProduct->total_price + $cartProduct->specification_price;
+          }
+          }
           $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
           if($voucher->type == 'number'){
-          $discountedPrice = $total_price - $voucherDiscountAmount;
+          if((($total_price - $disableDiscountCartPrice)) == 0){
+            $discountedPrice = $total_price;
+            }
+            else{
+              $discountedPrice = (($total_price - $disableDiscountCartPrice) - $voucherDiscountAmount) + $disableDiscountCartPrice;
+            }
         }
         else{
-          $discountedPrice =($total_price) - ($total_price * $voucherDiscountAmount / 100);
+          if((($total_price - $disableDiscountCartPrice)) == 0){
+            $discountedPrice = $total_price;
+            }
+            else{
+              $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+            }
         }
           if($discountedPrice < 0){
             $discountedPrice = 0;
@@ -92,10 +109,20 @@ class PurchaseController extends Controller
           if(collect($this->getVochersUsers($voucher->id))->contains($userVoucherName)){
             $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             if($voucher->type == 'number'){
-            $discountedPrice = $total_price - $voucherDiscountAmount;
+              if((($total_price - $disableDiscountCartPrice)) == 0){
+                $discountedPrice = $total_price;
+                }
+                else{
+                  $discountedPrice = (($total_price - $disableDiscountCartPrice) - $voucherDiscountAmount) + $disableDiscountCartPrice;
+                }
           }
           else{
-            $discountedPrice =($total_price) - ($total_price * $voucherDiscountAmount / 100);
+            if((($total_price - $disableDiscountCartPrice)) == 0){
+              $discountedPrice = $total_price;
+              }
+              else{
+                $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+              }
           }
             if($discountedPrice < 0){
               $discountedPrice = 0;
@@ -240,12 +267,20 @@ class PurchaseController extends Controller
           foreach($productIds as $productId){
             Product::find($productId)->increment('buyCount');
             Product::find($productId)->decrement('amount');
+            if(Product::find($productId)->amount <=   Product::find($productId)->min_amount){
+            $details = [
+                  'message' => ' موجودی کالای ' . Product::find($productId)->title . ' درحال اتمام میباشد ',
+                  'url' => 'product-list.index'
+              ];
+            $shopOwner->notify(new MinAmountWarning($details));
+            }
           }
           $details = [
                 'message' => 'یک سفارش جدید ثبت شد',
                 'url' => 'purchase.status'
             ];
           $shopOwner->notify(new NewPurchaseForShopOwner($details));
+
           toastr()->success('خرید شما با موفقیت ثبت شد', 'انجام شد');
           SEOTools::setTitle($shop->name);
           SEOTools::setDescription($shop->description);

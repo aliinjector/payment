@@ -9,7 +9,10 @@
 }
 .green-text{
       color: #15939D!important;
-      font-size : 14px!important;
+      font-size : 12px!important;
+}
+.dropdown-menu .dropdown-item {
+    padding: 3px 2px!important;
 }
 </style>
 <div class="row">

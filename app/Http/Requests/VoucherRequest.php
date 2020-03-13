@@ -38,7 +38,9 @@ class VoucherRequest extends FormRequest
           'first_purchase' => 'in:on',
           'disposable' => 'in:on',
           'users' => 'max:170',
-          'discount_amount' => 'required|numeric|min:0|not_in:0',
+          'discount_amount' => ['required',
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+        ],
           'starts_at' => 'required|numeric',
           'expires_at' => 'required|numeric|gt:starts_at',
         ];

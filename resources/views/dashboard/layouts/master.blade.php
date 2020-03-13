@@ -62,6 +62,9 @@ Author: Ali Rahmani
         /* .slimScrollDiv{
               height: 65px!important;
         } */
+        .notification-list {
+    height: 69px!important;
+}
     </style>
 </head>
 

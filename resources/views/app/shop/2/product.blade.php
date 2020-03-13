@@ -33,6 +33,12 @@
   display: none;
   }
 }
+.collapse{
+  display: inline!important;
+}
+.dropdown-toggle::after {
+    display: none!important;
+}
 </style>
 <div id="tt-pageContent">
     <div>
@@ -147,7 +153,7 @@
                             @endauth
                             @guest
                             <a href="{{ route('login') }}">
-                                <button type="button" class="btn iranyekan col-5 mt-1"><i class="icon-f-39"></i>
+                                <button type="button" class="btn iranyekan mt-1"><i class="icon-f-39"></i>
                                     {{ __('app-shop-2-product.registerForAddToCart') }}
                                 </button>
                             </a>
