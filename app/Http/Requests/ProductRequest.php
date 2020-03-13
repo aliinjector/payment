@@ -30,6 +30,7 @@ class ProductRequest extends FormRequest
      */
     public function rules(Request $request)
     {
+
       if ($request->type == 'product') {
         return [
           'title' => 'required|max:50',

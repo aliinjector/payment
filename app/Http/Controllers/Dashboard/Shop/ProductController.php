@@ -76,6 +76,26 @@ class ProductController extends Controller
      public function storeProduct(ProductRequest $request)
        {
 
+         if($request->off_price == null){
+           $request->off_price_started_at == null;
+           $request->off_price_expired_at == null;
+         }
+         else{
+           $request->validate([
+             'off_price_started_at' => 'required_with:off_price',
+             'off_price_expired_at' => 'required_with:off_price|gt:off_price_started_at',
+           ]);
+           //check for started and and expired for off_price
+           if($request->off_price_started_at != null){
+             $realTimestampStart = substr($request->off_price_started_at,0,10);
+             $request->off_price_started_at = date('Y-m-d H:i:s', (int)$realTimestampStart);
+           }
+           if($request->off_price_expired_at != null){
+             $realTimestampExpire = substr($request->off_price_expired_at,0,10);
+             $request->off_price_expired_at = date('Y-m-d H:i:s', (int)$realTimestampExpire);
+           }
+         }
+
          //check if product category is null
          if($request->productCat_id == "null"){
            $request->merge(['productCat_id' => null]);
@@ -163,6 +183,8 @@ class ProductController extends Controller
         'description' => $request->description,
         'image' => $image,
         'attachment' => $attachment,
+        'off_price_started_at' => $request->off_price_started_at,
+        'off_price_expired_at' => $request->off_price_expired_at,
         'description' => $request->description,
         'file_size' => $file_size,
       ]);
@@ -265,6 +287,8 @@ class ProductController extends Controller
     'description' => $request->description,
     'image' => $image,
     'attachment' => $attachment,
+    'off_price_started_at' => $request->off_price_started_at,
+    'off_price_expired_at' => $request->off_price_expired_at,
     'description' => $request->description,
     'file_size' => $file_size,
   ]);
@@ -433,6 +457,28 @@ else{
      */
      public function update(ProductUpdateRequest $request, $id)
       {
+        //off price timing
+        if($request->off_price == null){
+          $request->merge(['off_price_started_at' => null]);
+          $request->merge(['off_price_expired_at' => null]);
+        }
+        else{
+          $request->validate([
+            'off_price_started_at' => 'required_with:off_price',
+            'off_price_expired_at' => 'required_with:off_price|gt:off_price_started_at',
+          ]);
+          //check for started and and expired for off_price
+          if($request->off_price_started_at != null){
+            $realTimestampStart = substr($request->off_price_started_at,0,10);
+            $request->off_price_started_at = date('Y-m-d H:i:s', (int)$realTimestampStart);
+          }
+          if($request->off_price_expired_at != null){
+            $realTimestampExpire = substr($request->off_price_expired_at,0,10);
+            $request->off_price_expired_at = date('Y-m-d H:i:s', (int)$realTimestampExpire);
+          }
+        }
+
+
           $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
           if($request->type == 'file' and $request->file('attachment') == null){
               $attachment = $product->attachment;
@@ -515,6 +561,8 @@ else{
           'description' => $request->description,
           'image' => $image,
           'attachment' => $attachment,
+          'off_price_started_at' => $request->off_price_started_at,
+          'off_price_expired_at' => $request->off_price_expired_at,
           'description' => $request->description,
           'file_size' => $file_size,
         ]);

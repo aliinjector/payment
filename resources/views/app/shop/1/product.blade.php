@@ -68,10 +68,8 @@
                               <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">{{ __('app-shop-1-product.naaMojood') }}</span>
                               @endif
                             </div>
-
                          </div>
-
-                            @if($product->off_price != null)
+                            @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
                                 <h2 class="pro-price">{{ number_format($product->off_price) }} {{ __('app-shop-1-product.tooman') }}</h2>
                                 <span><del>{{ number_format($product->price) }} {{ __('app-shop-1-product.tooman') }}</del></span>
                                 @else

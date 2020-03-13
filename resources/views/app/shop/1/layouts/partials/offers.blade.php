@@ -1,110 +1,30 @@
-
-    <h2 class="line-throw mt-5"><span class="throw-background">محصولات پیشنهادی </span></h2>
-
-    <div class="row row p-5">
-            @if($offeredProducts[0])
-                <div class="col-lg-3">
-                    <div class="card e-co-product" style="min-height: 40vh;">
-                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[0]->slug]) }}"><img src="{{ $offeredProducts[0]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[0]->slug]) }}" class="product-title">{{ $offeredProducts[0]->title }}</a>
-                            <div class="d-flex justify-content-between my-2 byekan">
-                                @if($offeredProducts[0]->off_price != null)
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[0]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($offeredProducts[0]->price) }} تومان</del></span>
-                                    </p>
-                                @else
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[0]->price) }} تومان  <span class="ml-2 byekan"></span>
-                                @endif
-                            </div>
-                            <p class="text-center">
-                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[0]->slug]) }}"><button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> مشاهده جزییات</button></a>
-                            </p>
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end card-->
-                </div>
-            @endif
-        <!--end col-->
-
-            @if(isset($offeredProducts[1]))
-                <div class="col-lg-3">
-                    <div class="card e-co-product" style="min-height: 40vh;">
-                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[1]->slug]) }}"><img src="{{ $offeredProducts[1]->image['250,250']}}" alt="" class="img-fluid"></a>
-                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[1]->slug]) }}" class="product-title">{{ $offeredProducts[1]->title }}</a>
-                            <div class="d-flex justify-content-between my-2">
-                                @if($offeredProducts[1]->off_price != null)
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[1]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($offeredProducts[1]->price) }} تومان</del></span>
-                                    </p>
-                                @else
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[1]->price) }} تومان  <span class="ml-2 byekan"></span>
-                                @endif
-
-                            </div>
-                            <p class="text-center">
-                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[1]->slug]) }}"><button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> مشاهده جزییات</button></a>
-                            </p>
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end card-->
-                </div>
-                <!--end col-->
-            @endif
-
-
-
-            @if(isset($offeredProducts[2]))
-                <div class="col-lg-3">
-                    <div class="card e-co-product" style="min-height: 40vh;">
-                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[2]->slug]) }}"><img src="{{ $offeredProducts[2]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[2]->slug]) }}" class="product-title">{{ $offeredProducts[2]->title }}</a>
-                            <div class="d-flex justify-content-between my-2">
-                                @if($offeredProducts[2]->off_price != null)
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[2]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($offeredProducts[2]->price) }} تومان</del></span>
-                                    </p>
-                                @else
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[2]->price) }} تومان  <span class="ml-2 byekan"></span>
-                                @endif
-
-                            </div>
-                            <p class="text-center">
-                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[2]->slug]) }}"><button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> مشاهده جزییات</button></a>
-                            </p>
-
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end card-->
-                </div>
-            @endif
-
-            {{--                hjkl--}}
-
-        <!--end col-->
-            @if(isset($offeredProducts[3]))
-                <div class="col-lg-3">
-                    <div class="card e-co-product" style="min-height: 40vh;">
-                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[3]->slug]) }}"><img src="{{ $offeredProducts[3]->image['250,250'] }}" alt="" class="img-fluid"></a>
-                        {{-- <div class="ribbon ribbon-pink"><span class="byekan">50% تخفیف</span></div> --}}
-                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[3]->slug]) }}" class="product-title"></a>{{ $offeredProducts[3]->title }}</a>
-                            <div class="d-flex justify-content-between my-2">
-                                @if($offeredProducts[3]->off_price != null)
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[3]->off_price) }} تومان  <span class="ml-2 byekan"></span><span class="ml-2"><del>{{  number_format($offeredProducts[3]->price) }} تومان</del></span>
-                                    </p>
-                                @else
-                                    <p class="product-price byekan">{{  number_format($offeredProducts[3]->price) }} تومان  <span class="ml-2 byekan"></span>
-                                @endif
-
-                            </div>
-                                    <p class="text-center">
-                                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProducts[3]->slug]) }}"><button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> مشاهده جزییات</button></a>
-                                    </p>
-                        </div>
-                        <!--end card-body-->
-                    </div>
-                    <!--end card-->
-                </div>
-        @endif
-
-        <!--end col-->
+<h2 class="line-throw mt-5"><span class="throw-background">محصولات پیشنهادی </span></h2>
+<div class="row row p-5">
+    @forelse ($offeredProducts as $offeredProduct)
+      <div class="col-lg-3">
+          <div class="card e-co-product" style="min-height: 40vh;">
+              <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProduct->slug]) }}"><img src="{{ $offeredProduct->image['250,250'] }}" alt="" class="img-fluid"></a>
+              <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProduct->slug]) }}" class="product-title">{{ $offeredProduct->title }}</a>
+                  <div class="d-flex justify-content-between my-2 byekan">
+                      @if($offeredProduct->off_price != null and $offeredProduct->off_price_started_at < now() and $offeredProduct->off_price_expired_at > now())
+                              <p class="product-price byekan">{{ number_format($offeredProduct->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($offeredProduct->price) }} تومان</del></span>
+                              </p>
+                              @else
+                              <p class="product-price byekan">{{ number_format($offeredProduct->price) }} تومان <span class="ml-2 byekan"></span>
+                                  @endif
+                  </div>
+                  <p class="text-center">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$offeredProduct->slug]) }}"><button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> مشاهده
+                              جزییات</button></a>
+                  </p>
+              </div>
+          </div>
+      </div>
+    @empty
+      <div class="align-items-center justify-content-center row w-100 text-danger">
+          <h4>
+              {{ __('app-shop-1-index.noProduct') }}
+          </h4>
+      </div>
+    @endforelse
     </div>

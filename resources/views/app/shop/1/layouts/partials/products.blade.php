@@ -66,7 +66,7 @@
                         <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="product-title">{{ strlen($product->title) >= 25 != 0 ? $string :  $product->title }} </a>
 
                             <div class="d-flex justify-content-between my-2 byekan">
-                                @if($product->off_price != null)
+                                @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
                                     <p class="product-price mb-5 byekan">{{ number_format($product->off_price) }} <span class="text-dark">{{ __('app-shop-1-category.tooman') }}</span> <span class="ml-2 byekan"></span>
                                       <br />
                                       <span class="ml-2"><del class="byekan font-16">{{ number_format($product->price) }} <span class="text-dark">{{ __('app-shop-1-category.tooman') }}</span></del></span>
@@ -91,16 +91,16 @@
               							</ul> --}}
                             <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
                                 @csrf
-                                <a href="javascript:{}" title="افزودن به مقایسه" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"   data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale {{ $product->off_price != null ? 'off-btn' : '' }}"></i></a>
+                                <a href="javascript:{}" title="افزودن به مقایسه" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"   data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="fa fa-balance-scale off-btn" @else class="fa fa-balance-scale"  @endif></i></a>
                             </form>
                             <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="wishlistForm{{ $product->id }}">
                                 @csrf
 
-                              <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2 {{ $product->off_price != null ? 'off-btn' : '' }}"></i></a>
+                              <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="fas fa-heart m-2 off-btn" @else class="fas fa-heart m-2" @endif></i></a>
                             </form>
 
                             @if(\Auth::user())
-                            <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan  p-2 px-2 {{ $product->off_price != null ? 'mt-n5 btn-off-price' : '' }}"><i class="mdi mdi-cart mr-1"></i>
+                            <button type="submit" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="btn btn-cart btn-sm waves-effect waves-light iranyekan  p-2 px-2 mt-n5 btn-off-price" @else class="btn btn-cart btn-sm waves-effect waves-light iranyekan  p-2 px-2"  @endif><i class="mdi mdi-cart mr-1"></i>
                               <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="text-white">
                                   مشاهده محصول
                                 </a>

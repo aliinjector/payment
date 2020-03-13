@@ -227,5 +227,7 @@ return array(
         'special_offer' => 'نمایش پیغام پیشنهاد ویژه در بالای تمامی صفحات',
         'watermark' => 'تصویر واترمارک',
         'special_offer_text' => 'متن پیغام پیشنهاد ویژه',
+        'off_price_started_at' => 'تاریخ شروع تخفیف',
+        'off_price_expired_at' => 'تاریخ اتمام تخفیف',
           ),
 );

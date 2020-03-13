@@ -5,7 +5,36 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
   <link href="{{ asset('/dashboard/assets/css/admin-product-edit-file.css') }}" rel="stylesheet">
-
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $('.start-field-example-file').persianDatepicker({
+              altField: '.start-alt-field-file',
+              initialValue: false,
+              timePicker: {
+                enabled: true,
+                }
+          });
+          $('.expire-field-example-file').persianDatepicker({
+              altField: '.expire-alt-field-file',
+              initialValue: false,
+              timePicker: {
+                enabled: true,
+                }
+          });
+          $('.expire-alt-field-file').persianDatepicker({
+            initialValue: false,
+              formatter: function(unix) {
+                  return unix;
+              }
+          });
+          $('.start-alt-field-file').persianDatepicker({
+            initialValue: false,
+              formatter: function(unix) {
+                  return unix;
+              }
+          });
+      });
+  </script>
   <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
@@ -100,7 +129,28 @@
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت بعد از تخفیف:</span></div>
                                       <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" value="{{ $product->off_price }}">
                                       <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">
+                                          <button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#timing-file">اختصاص بازه زمانی</button>
+                                      </label>
+                                      <div class="col-sm-10">
+                                          <div id="timing-file" class="collapse mt-2">
+                                            <div class="input-group mt-3">
+                                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem6') }}:</span></div>
+                                                <input type="hidden" class="start-alt-field-file col h-50px" name="off_price_started_at" />
+                                                <input class="start-field-example-file col h-50px" name="" />
 
+                                            </div>
+                                            <div class="input-group mt-3">
+                                                <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem7') }}:</span></div>
+                                                <input type="hidden" class="expire-alt-field-file col h-50px" name="off_price_expired_at" />
+                                                <input class="expire-field-example-file col h-50px" name="" />
+                                            </div>
+
+                                          </div>
+
+                                      </div>
                                   </div>
 
                                   <div class="input-group mt-3">
@@ -230,6 +280,8 @@
   <script src="{{ asset('/dashboard/assets/js/feature.js') }}"></script>
   <script src="{{ asset('/dashboard/assets/js/admin-product-file-edit.js') }}"></script>
   <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+  <script src="/dashboard/assets/js/persian-date.js"></script>
+  <script src="/dashboard/assets/js/persian-datepicker.js"></script>
   @if(session()->has('flashModalProduct'))
       <script>
           $('#AddProductModal').modal('show');
