@@ -53,7 +53,7 @@
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
 
-									<div class="tt-description {{ $product->off_price == null ? 'btn-off-price' : '' }} {{ (int)$product->avgRating != 0 ? 'btn-rate-ig' : '' }}">
+									<div @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="tt-description {{ (int)$product->avgRating != 0 ? 'btn-rate-ig' : '' }}" @else class="tt-description btn-off-price {{ (int)$product->avgRating != 0 ? 'btn-rate-ig' : '' }}" @endif>
 										<div class="tt-row">
 
 											<ul class="tt-add-info">
@@ -75,7 +75,7 @@
 										@endphp
 										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}">{{ strlen($product->title) >= 25 != 0 ?
      $string :  $product->title }}</a></h2>
-										@if($product->off_price != null)
+										@if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
 												<div class="tt-price byekan" style="color: #999;"><del class="byekan font-16">{{ number_format($product->price) }} <span class="text-dark" style="color: #999!important">{{ __('app-shop-1-category.tooman') }}</span></del></div>
 												<div class="tt-price byekan" style="">{{ number_format($product->off_price) }} <span class="iranyekan" style="">تومان</span> </div>
 														<br />

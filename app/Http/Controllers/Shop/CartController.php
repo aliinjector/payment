@@ -109,7 +109,7 @@ class CartController extends \App\Http\Controllers\Controller {
         $cartProduct = DB::table('cart_product')->where('product_id', '=', $request->product_id)->where('cart_id', '=', \Auth::user()->cart()->get()->first()->id)->where('color_id', '=', $request->color)->where('specification', '=', $specificationOrg)->where('deleted_at', null)->first();
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shopName)->get()->first()->id;
-        if($product->off_price != null){
+        if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()){
           $productPrice = $product->off_price;
         }else{
           $productPrice = $product->price;

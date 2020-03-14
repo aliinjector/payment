@@ -32,8 +32,10 @@
                                     </td>
                                     <td>{{ number_format($cartProduct->product->price) }} {{ __('app-shop-1-cart.tooman') }} </td>
                                     <td>
-                                        @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($cartProduct->product->off_price == null) 0
-                                        @else {{ number_format($cartProduct->product->price-$cartProduct->product->off_price)}}
+                                        @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($cartProduct->product->off_price != null and $cartProduct->product->off_price_started_at < now() and $cartProduct->product->off_price_expired_at > now())
+                                          {{ number_format($cartProduct->product->price-$cartProduct->product->off_price)}}
+                                        @else
+                                          0
                                             @endif
                                     </td>
                                     <td>

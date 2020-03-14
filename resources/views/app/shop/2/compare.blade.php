@@ -26,7 +26,12 @@
                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->slug]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image">
                               </a>
                             <h2 class="tt-title"><a href="product.html">{{ $compareProduct->title }}</a></h2>
-                            <div class="tt-price">{{ number_format($compareProduct->price) }}</div>
+                            @if($compareProduct->off_price != null and $compareProduct->off_price_started_at < now() and $compareProduct->off_price_expired_at > now())
+                              <del><div class="tt-price text-muted">{{ number_format($compareProduct->price) }}</div></del>
+                              <div class="tt-price">{{ number_format($compareProduct->off_price) }}</div>
+                            @else
+                              <div class="tt-price">{{ number_format($compareProduct->price) }}</div>
+                            @endif
                         </div>
                         @foreach($compareProduct->productCategory->features as $compareProductFeature)
                         <div class="tt-col tt-table-title">{{ $compareProductFeature->name }}</div>

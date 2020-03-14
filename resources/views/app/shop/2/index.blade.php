@@ -38,17 +38,6 @@
 
     <br><br><br>
 
-    {{-- <div class="carousel-item {{ $loop->iteration == 1 ? 'active' : '' }}">
-        <div class="view">
-                <img class="d-block w-100" src="{{ $slideshow->image['original'] }}" alt="{{ $slideshow->title }}" style=" max-height: 70vh;">
-                <div class="mask rgba-black-light"></div>
-        </div>
-        <div class="carousel-caption">
-            <h3 class="h3-responsive">{!! $slideshow->title !!}</h3>
-        </div>
-    </div> --}}
-
-
 
 
     <div>
@@ -140,7 +129,7 @@
                 <div class="tab-pane" id="tt-tab01-02">
                     <div class="row tt-layout-product-item">
 
-                        @foreach($bestSelling as $product)
+                        @foreach($bestSellings as $product)
 
                         <div class="col-6 col-md-4 col-lg-3 m-90">
                             @include('app.shop.2.layouts.partials.product')

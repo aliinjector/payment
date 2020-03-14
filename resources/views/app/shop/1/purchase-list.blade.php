@@ -100,7 +100,7 @@
 
                                 <td>{{ $product->color ? $product->color->name : '-'}}</td>
                                 <td>
-                                    @if($product->product()->get()->first()->off_price != null and $product->product()->get()->first()->off_price_started_at < now() and $bestSelling->off_price_expired_at > now())
+                                    @if($product->product()->get()->first()->off_price != null and $product->product()->get()->first()->off_price_started_at < now() and $product->product()->get()->first()->off_price_expired_at > now())
                                       {{ number_format($product->product()->get()->first()->price-$product->product()->get()->first()->off_price)}}
                                         @else
                                           0

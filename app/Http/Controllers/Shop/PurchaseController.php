@@ -169,7 +169,7 @@ class PurchaseController extends Controller
           $cartProductId = explode('-',$productIdAndCartProductId)[1];
 
             $product = Product::find($productId);
-            if($product->off_price != null){
+            if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()){
               $productPrice = $product->off_price;
             }
             else{

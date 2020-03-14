@@ -102,7 +102,7 @@
                             </ul>
                         </div>
                         <h3 class="tt-title m-4">{{ $product->title }}</h3>
-                        @if($product->off_price != null)
+                        @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
                             <div class="tt-price m-4"><span class="new-price"><del>{{ number_format($product->price) }}</del> {{ __('app-shop-2-product.tooman') }}</span></div>
                             <div class="tt-price m-4"><span class="new-price">{{ number_format($product->off_price) }} {{ __('app-shop-2-product.tooman') }}</span></div>
                             @else
@@ -430,12 +430,12 @@
                 @foreach($offeredProducts as $product)
                   <div class="col-sm-6 col-md-6 col-lg-3 py-3">
                     <div class="card">
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="{{ $product->off_price != null ? 'crd-img-off' :  'crd-img'}}">
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="crd-img-off" @else class="crd-img" @endif >
                       <img class="card-img-top" src="{{ $product->image['250,250'] }}" alt="Card image cap">
                       </a>
                       <div class="card-body">
                         <h5 class="card-title">{{ $product->title }}</h5>
-                        @if($product->off_price != null)
+                        @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
                           <p class="card-text"><del>{{ number_format($product->price) }}</del> تومان</p>
                         <p class="card-text">{{ number_format($product->off_price) }}  تومان</p>
                             @else

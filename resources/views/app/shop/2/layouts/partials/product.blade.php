@@ -37,7 +37,12 @@
 
         </div>
         <h2 class="tt-title"><a href="">{{ $product->title }}</a></h2>
-        <div class="tt-price mt-2">{{ number_format($product->price) }} {{ __('app-shop-2-layouts-partials-product.tooman') }}</div>
+        @if($product->price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
+          <del><div class="tt-price mt-2 text-muted">{{ number_format($product->price) }} {{ __('app-shop-2-layouts-partials-product.tooman') }}</div></del>
+          <div class="tt-price mt-2">{{ number_format($product->off_price) }} {{ __('app-shop-2-layouts-partials-product.tooman') }}</div>
+        @else
+          <div class="tt-price mt-2">{{ number_format($product->price) }} {{ __('app-shop-2-layouts-partials-product.tooman') }}</div>
+        @endif
         <div class="tt-option-block">
             <ul class="tt-options-swatch">
               @php
