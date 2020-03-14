@@ -187,11 +187,13 @@ class PurchaseController extends Controller
             else{
               $productPrice = $product->price;
             }
+
             if(RequestFacade::server('HTTP_REFERER') !== route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id])){
-              $SinglecartProduct = DB::table('cart_product')->where([['id', '=', $cartProductId],['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->get()->first();
+              $singleCartProduct = DB::table('cart_product')->where([['id', '=', $cartProductId],['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->get()->first();
               $specificationPrice = 0;
-              if($SinglecartProduct->specification != null){
-                foreach(\json_decode($SinglecartProduct->specification) as $specificationItem){
+
+              if($singleCartProduct->specification != null){
+                foreach(\json_decode($singleCartProduct->specification) as $specificationItem){
                   $specificationItem = SpecificationItem::find($specificationItem);
                   $specificationPrice += $specificationItem->price;
                 }
@@ -221,6 +223,9 @@ class PurchaseController extends Controller
 
       public function purchaseSubmit($shopName, $cartID, Request $request) {
           $cart = \Auth::user()->cart()->get()->first();
+          $shop = Shop::where('english_name', $shopName)->first();
+          $shopOwner = $shop->user;
+          $total_price = \Auth::user()->cart()->get()->first()->total_price;
           $productIds = collect();
           foreach($cart->cartProduct as $cartProduct){
             $productIds[] = $cartProduct->product_id;
@@ -230,9 +235,12 @@ class PurchaseController extends Controller
               return redirect()->back()->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' موجود نمیباشد. لطفا از سبد خرید خود حذف نمایید.');
             }
             }
-          $shop = Shop::where('english_name', $shopName)->first();
-          $shopOwner = $shop->user;
-          $total_price = \Auth::user()->cart()->get()->first()->total_price;
+          foreach($productIds as $productId){
+            if (Product::find($productId)->off_price != null and Product::find($productId)->off_price_started_at > now() or Product::find($productId)->off_price_expired_at < now()){
+              return redirect()->route('user-cart', ['shop' => $shop->english_name])->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' از حالت تخفیف خارج شده است.');
+            }
+            }
+
           // address and new addres validation condition
           if($cart->cartProduct[0]->product->type != 'file'){
 

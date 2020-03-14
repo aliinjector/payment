@@ -2,7 +2,28 @@
 @section('content')
 <div class="row p-5">
     <div class="col-lg-12">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="page-title-box">
+                  <div>
+                    @if($errors->any())
+                    <div class="alert alert-danger p-5">
+                       <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
+                       <ul>
+                          @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                          @endforeach
+                       </ul>
+                    </div>
+                    @endif
+                  </div>
+              </div>
+              <!--end page-title-box-->
+          </div>
+          <!--end col-->
+      </div>
         <div class="card">
+
             @if(isset($products))
 
             <div class="card-body font-18">

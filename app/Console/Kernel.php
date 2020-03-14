@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Product;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +25,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+      $schedule->call(function () {
+        Product::where('off_price_expired_at', '<',  now())
+        ->update(
+          ['off_price' => null , 'off_price_expired_at' => null, 'off_price_started_at' => null],
+        );
+        })->everyMinute();
+
     }
 
     /**
