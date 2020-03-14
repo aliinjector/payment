@@ -207,7 +207,6 @@ class PurchaseController extends Controller
         foreach($cart->cartProduct as $cartProduct){
           $total_price += $cartProduct->total_price + $cartProduct->specification_price;
         }
-        // dd($total_price);
 
         $cartUpdate = $cart->update([
           'total_price' => $total_price,
@@ -279,11 +278,17 @@ class PurchaseController extends Controller
           $purchase->save();
           // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
           if($cart->voucher_status == 'used'){
+            DB::transaction(function () use ($cart, $purchase, $shop) {
+
             DB::table('user_vouchers')->insert(['user_id' => \Auth::user()->id, 'voucher_id' => $cart->voucher_id, 'user_purchase_id' => $purchase->id, 'shop_id' => $shop->id]);
             DB::table('vouchers')->where('id', '=', $cart->voucher_id)->decrement('uses');
+          });
           }
+          DB::transaction(function () {
           DB::table('carts')->where('id', '=', \Auth::user()->cart()->get()->first()->id)->update(['status' => 1]);
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
+        });
+
           foreach($productIds as $productId){
             Product::find($productId)->increment('buyCount');
             Product::find($productId)->decrement('amount');

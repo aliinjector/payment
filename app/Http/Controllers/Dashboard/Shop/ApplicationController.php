@@ -75,6 +75,8 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
+      DB::transaction(function () {
+
       $appInformation = \Auth::user()->shop->application->update([
         'title' => $request->title,
         'color_1' => $request->color_1,
@@ -84,6 +86,8 @@ class ApplicationController extends Controller
       if(\Auth::user()->shop->tickets->where('title', 'درخواست اپلیکیشن')->first()->created_at < \Auth::user()->shop->application->updated_at){
         \Auth::user()->shop->tickets->where('title', 'درخواست اپلیکیشن')->first()->delete();
       }
+    });
+
 
       alert()->success('تنظیمات اپلیکیشن شما با موفقیت تغییر کرد.', 'ثبت شد');
       return redirect()->route('application.index');

@@ -140,20 +140,23 @@ class CartController extends \App\Http\Controllers\Controller {
                   }
                 }
               }
-            DB::table('cart_product')->insert([
-              ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => $specification, 'specification_price' => $specificationPrice]
-              , ]);
-            $total_price = 0;
-            foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
-              $total_price += $cartProduct->total_price;
-            }
-            $cartUpdate = \Auth::user()->cart()->get()->first()->update([
-              'total_price' => $total_price,
-              ]);
-            toastr()->success('افزوده شد.', '');
+              DB::transaction(function () use ($request, $specification, $specificationPrice, $productPrice) {
+                DB::table('cart_product')->insert([
+                  ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => $specification, 'specification_price' => $specificationPrice]
+                  , ]);
+                $total_price = 0;
+                foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
+                  $total_price += $cartProduct->total_price;
+                }
+                $cartUpdate = \Auth::user()->cart()->get()->first()->update([
+                  'total_price' => $total_price,
+                  ]);
 
-            return redirect()->back();
-        } else {
+               });
+               toastr()->success('افزوده شد.', '');
+               return redirect()->back();
+        }
+         else {
             toastr()->error('محصول از قبل در سبد خرید شما وجود دارد یا متعلق به فروشگاه دیگری میباشد', '');
             return redirect()->back();
         }
@@ -161,6 +164,7 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function removeFromCart(Request $request){
+      DB::transaction(function () use ($request) {
 
       CartProduct::where([
         ['product_id', '=', $request->id],
@@ -173,6 +177,8 @@ class CartController extends \App\Http\Controllers\Controller {
         if($cartProduct->count() == 0){
           Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
         }
+      });
+
         alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
     }
     /**

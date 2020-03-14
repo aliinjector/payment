@@ -54,6 +54,7 @@ class CompareController extends Controller
     {
       $product = Product::find($request->productID);
       $shop =  Shop::where('english_name', $shopName)->first();
+
       $compare = Compare::firstOrCreate(['user_id'=>\Auth::user()->id, 'shop_id' =>$shop->id]);
       if ($compare and $compare->products->count() != 0) {
         foreach ($compare->products as $compareProduct) {

@@ -199,6 +199,8 @@ class ProductController extends Controller
   //add tags and colors and features and specifications to the product
     if($product)
     {
+      DB::transaction(function () use ($request, $product) {
+
         $tagIds = [];
         $colorIds = [];
         $featureIds = [];
@@ -256,7 +258,7 @@ class ProductController extends Controller
         }
 
 
-
+});
     }
 
 
@@ -302,6 +304,8 @@ class ProductController extends Controller
   //add tags to the product
   if($product)
   {
+    DB::transaction(function () use ($request, $product) {
+
       $tagIds = [];
       $colorIds = [];
       $sepecificationIds = [];
@@ -372,6 +376,7 @@ else{
   break;
 
 }
+});
     }
     /**
      * Display the specified resource.
