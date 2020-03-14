@@ -1,7 +1,7 @@
     $('#input-tags').tagsInput();
 
     $(window).resize(function() {
-        if ($(window).width() < 1300) {
+        if ($(window).width() < 1400) {
             $("body").addClass('enlarge-menu');
 
         } else {

@@ -11,3 +11,14 @@
 #input-tags_addTag {
     float: right !important;
 }
+
+.amount-warning {
+
+    animation: amount-warning 3s linear infinite;
+  }
+
+  @keyframes amount-warning {
+    50% {
+      background-color: #FD9D9E;
+    }
+}
