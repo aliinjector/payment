@@ -90,6 +90,7 @@ class PurchaseController extends Controller
               'voucher_status' => 'used',
               'voucher_id' => $voucher->id,
               ]);
+
              alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
              return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
           }
@@ -156,6 +157,12 @@ class PurchaseController extends Controller
 
 
       public function purchaseList($shop, Request $request) {
+        if(\Session::get('checkDirectAccess') != \auth::user()->id . \auth::user()->cart->id . \auth::user()->cart->created_at->timestamp){
+          \abort('403');
+        }
+        else{
+          Session::forget('checkDirectAccess');
+        }
         if (\Auth::guest()) {
             return redirect()->route('register');
         }
@@ -164,10 +171,15 @@ class PurchaseController extends Controller
         $shopCategories = $shop->ProductCategories()->get();
         $template_folderName = $shop->template->folderName;
 
+        if(!$request->has('_token') or app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName() != 'user-cart'){
+          foreach ($cart->cartproduct as $singleCartproduct) {
+            DB::table('cart_product')->where([['id', '=', $singleCartproduct->id], ['cart_id', '=', $cart->id], ['product_id', '=', $singleCartproduct->product->id]])->update(['quantity' => 1, 'total_price' => $singleCartproduct->product->price]);
+          }
+        }
+        else{
           foreach($request->except('_token') as $productIdAndCartProductId => $quantity){
           $productId = explode('-',$productIdAndCartProductId)[0];
           $cartProductId = explode('-',$productIdAndCartProductId)[1];
-
             $product = Product::find($productId);
             if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()){
               $productPrice = $product->off_price;
@@ -188,7 +200,7 @@ class PurchaseController extends Controller
               DB::table('cart_product')->where([['id', '=', $cartProductId], ['cart_id', '=', $cart->id], ['product_id', '=', $productId]])->update(['quantity' => $quantity, 'total_price' => $productPrice * $quantity, 'specification_price' => $specificationPrice * $quantity]);
             }
         }
-
+        }
         $total_price = 0;
         foreach($cart->cartProduct as $cartProduct){
           $total_price += $cartProduct->total_price + $cartProduct->specification_price;

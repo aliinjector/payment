@@ -42,7 +42,6 @@ class AppServiceProvider extends ServiceProvider
           else{
             $products = [];
             $view->with(['products' => $products]);
-
           }
            }
        });

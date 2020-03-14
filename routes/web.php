@@ -207,10 +207,10 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
 
 Route::namespace('Shop')->middleware('auth')->group(function () {
-    //Purchase (invoice)
-    Route::any('/{shop}/purchase-list/voucher', 'PurchaseController@approved')->name('approved');
+    //Purchase List
+    Route::post('/{shop}/purchase-list/voucher', 'PurchaseController@approved')->name('approved');
     Route::post('/{shop}/purchase-list/{cartID}/store', 'PurchaseController@purchaseSubmit')->name('purchase-list.store');
-    Route::any('/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list');
+    Route::match(['get', 'post'],'/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list')->middleware('PreventDirectAccessToPreOrder');
     Route::post('/{shop}/purchase-list/getShippingPrice/calculate', 'PurchaseController@getShippingPrice')->name('purchase-list.getShippingPrice');
 
     //User-pruchased List
