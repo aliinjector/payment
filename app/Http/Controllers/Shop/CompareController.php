@@ -8,6 +8,8 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Http\Requests\CompareRequest;
+
 use Artesaos\SEOTools\Facades\SEOTools;
 
 
@@ -50,7 +52,7 @@ class CompareController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-     public function store(Request $request, $shopName)
+     public function store(CompareRequest $request, $shopName)
     {
       $product = Product::find($request->productID);
       $shop =  Shop::where('english_name', $shopName)->first();

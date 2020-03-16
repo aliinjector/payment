@@ -73,8 +73,10 @@
                                   <a href="{{ route('file-download', ['shop'=>$product->product()->withTrashed()->get()->first()->shop()->first()->english_name, 'id'=>$product->product()->withTrashed()->get()->first()->id, 'purchaseId'=>$purchase->id]) }}" id="downloadFile"><i class="fa fa-download text-success p-3 button font-18 "></i>
                                   </a>
                                   @if($product->download_status == 1)
-                                  <form action="{{ route('downloadLinkRequest',['product_id'=>$product->product()->withTrashed()->get()->first()->id, 'user_purchase_id' => $purchase->id]) }}" method="post" id="link" class="p-3">
+                                  <form action="{{ route('downloadLinkRequest') }}" method="post" id="link" class="p-3">
                                       @csrf
+                                      <input type="hidden" name="product_id" value="{{ $product->product()->withTrashed()->get()->first()->id }}">
+                                      <input type="hidden" name="user_purchase_id" value="{{ $purchase->id }}">
                                     <a href="javascript:$('#link').submit();" title="درخواست لینک دانلود جدید"><i class="fa fa-repeat text-danger" aria-hidden="true"></i></a>
                                     </form>
                                   @endif

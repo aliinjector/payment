@@ -1,13 +1,15 @@
 <div class="tt-product thumbprod-center border p-2 image-box-card">
     <div class="tt-image-box" style="height: 30vh!important;">
-        <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="wishlistForm{{ $product->id }}">
+        <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="wishlistForm{{ $product->id }}">
             @csrf
+            <input type="hidden" name="productID" value="{{ $product->id }}">
 
             <a href="javascript:{}" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="{{ __('app-shop-2-layouts-partials-product.alagheMandiHa') }}" data-tposition="left"></a>
         </form>
 
-        <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
+        <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $product->id }}">
             @csrf
+            <input type="hidden" name="productID" value="{{ $product->id }}">
 
             <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-layouts-partials-product.moghayese') }}" data-tposition="left"></a>
 
@@ -70,11 +72,13 @@
             <div class="tt-row-btn">
               <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="wishlistForm{{ $product->id }}">
                   @csrf
+                  <input type="hidden" name="productID" value="{{ $product->id }}">
 
                   <a href="javascript:{}" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" class="tt-btn-wishlist submit" data-tooltip="{{ __('app-shop-2-layouts-partials-product.alagheMandiHa') }}" data-tposition="left"></a>
               </form>
-              <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
+              <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $product->id }}">
                   @csrf
+                  <input type="hidden" name="productID" value="{{ $product->id }}">
 
                   <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-layouts-partials-product.moghayese') }}" data-tposition="left"></a>
 

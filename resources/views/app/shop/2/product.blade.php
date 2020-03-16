@@ -160,14 +160,18 @@
                             @endguest
                             <div class="tt-wrapper m-4">
                                 <ul class="tt-list-btn">
-                                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="myForm{{ $product->id }}">
+                                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="myForm{{ $product->id }}">
                                         @csrf
+                                        <input type="hidden" name="productID" value="{{ $product->id }}">
+
                                         <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('myForm{{ $product->id }}').submit();"><i class="icon-n-072"></i>{{ __('app-shop-2-product.addToAlaaghemandiHa') }}</a></li>
                                     </form>
-                                    <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
+                                    <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $product->id }}">
                                         @csrf
                                         <li><a class="btn-link" href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"><i class="icon-n-08"></i>{{ __('app-shop-2-product.addToAfzoodanBeMoghayese') }}</a>
                                         </li>
+                                        <input type="hidden" name="productID" value="{{ $product->id }}">
+
                                     </form>
                                 </ul>
                             </div>

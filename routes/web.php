@@ -245,7 +245,7 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::post('{shop}/wishlist/remove', 'WishlistController@deleteFromWishlist')->name('wishlist.remove');
 
     //download link request
-    Route::post('/download-link-request/send/{product_id}/{user_purchase_id}', 'UserPurchasesController@downloadLinkRequest')->name('downloadLinkRequest');
+    Route::post('/download-link-request/send', 'UserPurchasesController@downloadLinkRequest')->name('downloadLinkRequest');
 
 });
 

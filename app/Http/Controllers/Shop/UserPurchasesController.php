@@ -9,6 +9,8 @@ use App\UserPurchase;
 use App\Shop;
 use App\Product;
 use App\Notifications\NewDownloadLinkRequest;
+use App\Http\Requests\UserPurchasesRequest;
+
 
 
 
@@ -78,12 +80,12 @@ class UserPurchasesController extends Controller
 
 
 
-      public function downloadLinkRequest($product_id, $user_purchase_id, Request $request){
-        $shop =  UserPurchase::find($user_purchase_id)->shop;
+      public function downloadLinkRequest(UserPurchasesRequest $request){
+        $shop =  UserPurchase::find($request->user_purchase_id)->shop;
         $shopOwner =  $shop->user;
-        $product =  Product::find($product_id);
+        $product =  Product::find($request->product_id);
         $downloadLinkRequest = ProductDownloadStatus::updateOrCreate(
-          ['product_id' => $product_id, 'user_purchase_id' => $user_purchase_id, 'shop_id' => $shop->id]);
+          ['product_id' => $request->product_id, 'user_purchase_id' => $request->user_purchase_id, 'shop_id' => $shop->id]);
           $details = [
                 'message' => 'یک درخواست لینک دانلود جدید برای فایل' .' '. $product->title,
                 'url' => 'download-link-request-status.index'

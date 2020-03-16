@@ -720,7 +720,10 @@
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">
                                                     ردیف
                                                 </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 705px;">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">
+                                                تصویر
+                                                </th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">
                                                     {{ __('dashboard-shop-product-index.ListMahsoolatTableItem2') }}
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Category: activate to sort column ascending">
@@ -731,19 +734,12 @@
 
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem5') }}
                                                 </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width:150px;">
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">
                                                     {{ __('dashboard-shop-product-index.ListMahsoolatTableItem6') }}
                                                 </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem4') }}
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">
-                                                    برند محصول
-                                                </th>
+
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">
                                                     موجودی
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">
-                                                    تعداد فروش
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem8') }}
                                                 </th>
@@ -759,8 +755,9 @@
                                               @endphp
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                                 <td class="sorting_1" style="width:5%">{{ $id }}</td>
-                                                <td class="sorting_1 w-25 ">
-                                                    <img src="{{ $product->image['80,80'] }}" class="img-fluid" alt="Responsive image">
+                                                <td class="sorting_1" style="width:5%"><img src="{{ $product->image['80,80'] }}" class="img-fluid" alt="Responsive image"></td>
+                                                <td class="sorting_1">
+
                                                     <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product', ['shop'=>\Auth::user()->shop()->first()->english_name, 'id'=>$product->slug]) }}" target="_blank"
                                                           class="d-inline-block align-middle mb-0 product-name">{{ limitString($product->title) }}</a>
                                                 </td>
@@ -799,20 +796,9 @@
                                                     @else
                                                     <td>-</td>
                                                     @endif
-                                                    <td>
-                                                        <div class="tt-collapse-content" style="display: block;">
-                                                            <ul class="tt-options-swatch options-middle">
-                                                                @foreach($product->colors as $color)
-                                                                    <li>
-                                                                        <a class="options-color tt-border tt-color-bg-08" href="#" style="background-color:#{{ $color->code }}"></a>
-                                                                    </li>
-                                                                    @endforeach
-                                                            </ul>
-                                                        </div>
-                                                    </td>
-                                                    <td>{{ $product->brand != null ? $product->brand->name : '-' }}</td>
+
                                                     <td @if($product->amount <= $product->min_amount) class="text-danger amount-warning" @endif >{{ $product->amount != null ? $product->amount : '-' }}</td>
-                                                    <td>{{ $product->buyCount }}</td>
+
                                                     <td>
                                                         @if ($product->type == 'service') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem2') }}
                                                         @elseif($product->type == 'file') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem3') }}

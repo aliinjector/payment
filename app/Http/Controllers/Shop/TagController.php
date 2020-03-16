@@ -8,12 +8,14 @@ use App\Tag;
 use App\Shop;
 use Artesaos\SEOTools\Facades\SEOTools;
 use App\Color;
+use App\Http\Requests\FilteringRequest;
+
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class TagController extends Controller
 {
-  public function tagProducts($shop, $name, Request $request) {
+  public function tagProducts($shop, $name, FilteringRequest $request) {
 
       $colors = Color::all();
       $shop = Shop::where('english_name', $shop)->first();

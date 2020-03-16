@@ -7,14 +7,15 @@ use App\Shop;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FilteringRequest;
+
 use App\Color;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
 class BrandController extends Controller
 {
-  public function brandProduct($shop, $id, Request $request) {
-
+  public function brandProduct($shop, $id, FilteringRequest $request) {
       $colors = Color::all();
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;

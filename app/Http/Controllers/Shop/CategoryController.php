@@ -7,12 +7,14 @@ use App\Shop;
 use App\Color;
 use App\Product;
 use App\ProductCategory;
+use App\Http\Requests\FilteringRequest;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Pagination\LengthAwarePaginator;
 class CategoryController extends Controller
 {
 
-  public function index($shop, $categroyId, Request $request) {
+  public function index($shop, $categroyId, FilteringRequest $request) {
+    // dd($request->all());
       $colors = Color::all();
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;

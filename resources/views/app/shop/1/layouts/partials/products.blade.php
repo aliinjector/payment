@@ -11,6 +11,26 @@
 </style>
 <div class="row">
     <div class="col-sm-12">
+        <div class="page-title-box">
+            <div>
+              @if($errors->any())
+              <div class="alert alert-danger p-5">
+                 <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
+                 <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                 </ul>
+              </div>
+              @endif
+            </div>
+        </div>
+        <!--end page-title-box-->
+    </div>
+    <!--end col-->
+</div>
+<div class="row">
+    <div class="col-sm-12">
       <div class="col-sm-3 mt-3">
           <form class="card card-sm" action="{{ route('search', $shop->english_name) }}" method="post">
               @csrf
@@ -89,12 +109,14 @@
                                @endphp
               								@endforeach
               							</ul> --}}
-                            <form action="{{ route('compare.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="compareForm{{ $product->id }}">
+                            <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $product->id }}">
                                 @csrf
                                 <a href="javascript:{}" title="افزودن به مقایسه" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"   data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="fa fa-balance-scale off-btn" @else class="fa fa-balance-scale"  @endif></i></a>
+                                  <input type="hidden" name="productID" value="{{ $product->id }}">
                             </form>
-                            <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name, 'productID'=>$product->id]) }}" method="post" id="wishlistForm{{ $product->id }}">
+                            <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="wishlistForm{{ $product->id }}">
                                 @csrf
+                                <input type="hidden" name="productID" value="{{ $product->id }}">
 
                               <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="fas fa-heart m-2 off-btn" @else class="fas fa-heart m-2" @endif></i></a>
                             </form>

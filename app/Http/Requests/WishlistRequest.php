@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Shop;
 
-class CartRequest extends FormRequest
+
+class WishlistRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,9 +15,12 @@ class CartRequest extends FormRequest
      */
     public function authorize()
     {
-
       if(\auth::user()){
-        return true;
+        $currentShop = Shop::where('english_name', explode('/', url()->current())[3])->get()->first();
+        $shopProducts = $currentShop->products;
+        if($shopProducts->where('id', $this->request->all()['productID'])->count() > 0){
+          return true;
+        }
       }
       else{
         return false;
@@ -30,7 +35,7 @@ class CartRequest extends FormRequest
     public function rules()
     {
         return [
-          'total_price' => 'numeric',
+          'productID' =>  'required|numeric|min:0|max:10000000000000000',
         ];
     }
 }
