@@ -361,6 +361,8 @@ class ProductController extends Controller
 
 
       $product->tags()->sync($tagIds);
+    });
+
   }
 if ($request->type == 'file') {
     session()->flash('flashModalFile');
@@ -371,12 +373,14 @@ elseif($request->type == 'service'){
 else{
     session()->flash('flashModalProduct');
 }
+// });
+
   alert()->success('محصول جدید شما باموفقیت اضافه شد.', 'ثبت شد');
   return redirect()->route('product-list.index');
   break;
 
 }
-});
+
     }
     /**
      * Display the specified resource.

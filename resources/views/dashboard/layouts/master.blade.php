@@ -34,6 +34,7 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
     @toastr_css
     {{--ا--}}
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
@@ -88,7 +89,7 @@ Author: Ali Rahmani
                         <!-- item-->
                         <h6 class="dropdown-item-text BYekan">{{ __('dashboard-layouts-master.headerelaan') }} ({{ \auth()->user()->notifications->where('read_at', null)->count() }})</h6>
                         @foreach (\auth()->user()->notifications->where('read_at', null) as $notification)
-                        <div class="slimscroll notification-list">
+                        <div class="slimscroll notification-list border">
                             <!-- item-->
                             <a href="{{ route($notification['data']['url'],'notification') }}" class="dropdown-item notify-item active">
                                 <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
@@ -96,7 +97,8 @@ Author: Ali Rahmani
                               {{ $notification['data']['message'] }}
                                 </small></p>
                             </a>
-                            <!-- item-->
+                            <small class="text-muted m-2">{{ jdate($notification->created_at) }}</small>
+
                         </div>
                       @endforeach
                       <form action="{{ route('notification.read-all') }}" method="post" id="readall">
