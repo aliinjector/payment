@@ -11,9 +11,15 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        return view('app.index');
+        if(request()->getHost() === 'omidshop.net'){
+            return view('app.index');
+        }else{
+            $shop = Shop::where('url', request()->getHost())->first();
+            return \Redirect::to('/' . $shop->english_name);
+
+        }
     }
 
 
