@@ -2,6 +2,7 @@
 
 namespace Illuminate\Foundation\Auth;
 
+use App\Shop;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -127,14 +128,15 @@ trait AuthenticatesUsers
 
 
         $ip = (isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR']);
-        $geoip->setIp('46.4.219.148');
-//        $geoip->setIp($ip);
+//        $geoip->setIp('46.4.219.148');
+        $geoip->setIp($ip);
         $country = visitor_country($geoip->getRaw()['countryCode']);
         $countryCode = ($geoip->getRaw()['countryCode']);
         $city = visitor_city($geoip->getRaw()['city']);
         $isp = visitor_isp($geoip->getRaw()['isp']);
 
         $user_id = \Auth::user()->id;
+        $shop = Shop::where('user_id', $user_id)->first();
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
         $today = jdate()->forge('today')->format('Y/m/d');
@@ -156,6 +158,7 @@ trait AuthenticatesUsers
         $userAagent = $_SERVER['HTTP_USER_AGENT'];
 
         $stat = User::find(\Auth::user()->id)->first()->stats()->create([
+            'shop_id' => $shop->id,
             'osName' => $osName,
             'osVersion' => $osVersion,
             'browserName' => $browserName,

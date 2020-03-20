@@ -17,6 +17,7 @@ class CreateShopsTable extends Migration
             $table->bigIncrements('id')->unsigned();
             $table->string('name');
             $table->string('english_name')->unique();
+            $table->string('url')->nullable();
             $table->unsignedInteger('user_id');
             $table->bigInteger('category_id')->unsigned()->index();
             $table->unsignedInteger('contact_id')->nullable();
