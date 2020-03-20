@@ -434,7 +434,7 @@
                 @foreach($offeredProducts as $product)
                   <div class="col-sm-6 col-md-6 col-lg-3 py-3">
                     <div class="card">
-                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="crd-img-off" @else class="crd-img" @endif >
+                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="crd-img-off" @else class="crd-img" @endif >
                       <img class="card-img-top" src="{{ $product->image['250,250'] }}" alt="Card image cap">
                       </a>
                       <div class="card-body">
@@ -445,7 +445,7 @@
                             @else
                               <p class="card-text">{{ $product->price }} تومان</p>
                             @endif
-                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="btn btn-primary">مشاهده محصول</a>
+                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="btn btn-primary">مشاهده محصول</a>
                       </div>
                     </div>
                   </div>

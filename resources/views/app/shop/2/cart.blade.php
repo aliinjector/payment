@@ -48,7 +48,7 @@
                                   @foreach ($cart->cartProduct as $cartProduct)
                                   <tr>
                                       <td><img src="{{ $cartProduct->product->image['80,80'] }}" alt="" height="52">
-                                          <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->slug]) }}" target="_blank"
+                                          <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" target="_blank"
                                                 class="d-inline-block align-middle mb-0 product-name">{{ $cartProduct->product->title }}</a>
                                               <br><span class="text-muted font-13">{{ !$cartProduct->color ? '' : $cartProduct->color->name}}</span></p>
                                       </td>

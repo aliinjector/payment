@@ -82,8 +82,8 @@
                   @endphp
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3 row">
                     <div class="card e-co-product min-height-60 col-lg-12">
-                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
-                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="product-title">{{ strlen($product->title) >= 25 != 0 ? $string :  $product->title }} </a>
+                        <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
+                        <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="product-title">{{ strlen($product->title) >= 25 != 0 ? $string :  $product->title }} </a>
 
                             <div class="d-flex justify-content-between my-2 byekan">
                                 @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
@@ -123,7 +123,7 @@
 
                             @if(\Auth::user())
                             <button type="submit" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="btn btn-cart btn-sm waves-effect waves-light iranyekan  p-2 px-2 mt-n5 btn-off-price" @else class="btn btn-cart btn-sm waves-effect waves-light iranyekan  p-2 px-2"  @endif><i class="mdi mdi-cart mr-1"></i>
-                              <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="text-white">
+                              <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="text-white">
                                   مشاهده محصول
                                 </a>
                                  </button>

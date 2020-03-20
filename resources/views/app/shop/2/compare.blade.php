@@ -20,10 +20,10 @@
                                     </div>
                                 </div>
                                 <div class="tt-col">
-                                    <a href="#" id="removeProductCompare" data-shop="{{ $shop->english_name }}" data-compare="{{ \Auth::user()->compare->id }}" data-id="{{ $compareProduct->id }}" class="tt-remove-item"></a>
+                                    <a href="#" id="removeProductCompare" data-shop="{{ $shop->english_name }}" data-compare="{{ \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->id }}" data-id="{{ $compareProduct->id }}" class="tt-remove-item"></a>
                                 </div>
                             </div>
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->slug]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image">
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image">
                               </a>
                             <h2 class="tt-title"><a href="product.html">{{ $compareProduct->title }}</a></h2>
                             @if($compareProduct->off_price != null and $compareProduct->off_price_started_at < now() and $compareProduct->off_price_expired_at > now())
@@ -38,7 +38,7 @@
                         <div class="tt-col js-description">@if(!isset($compareProductFeature->pivot->value) or $compareProductFeature->pivot->value == null) تعیین نشده @else $compareProductFeature->pivot->value @endif</div>
                       @endforeach
                         <div class="tt-col">
-                          <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$compareProduct->slug]) }}" class="tt-btn-addtocart" ><i class="icon-f-39"></i>مشاهده محصول</a></div>
+                          <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}" class="tt-btn-addtocart" ><i class="icon-f-39"></i>مشاهده محصول</a></div>
                     </div>
                   @endforeach
 

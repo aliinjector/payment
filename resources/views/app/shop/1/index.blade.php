@@ -71,8 +71,8 @@
     @forelse ($lastProducts as $lastProduct)
     <div class="col-lg-3">
         <div class="card e-co-product">
-            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProduct->slug]) }}"><img src="{{ $lastProduct->image['250,250'] }}" alt="" class="img-fluid"></a>
-            <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProduct->slug]) }}" class="product-title">{{ $lastProduct->title }}</a>
+            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}"><img src="{{ $lastProduct->image['250,250'] }}" alt="" class="img-fluid"></a>
+            <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}" class="product-title">{{ $lastProduct->title }}</a>
                 <div class="d-flex justify-content-between my-2 byekan">
                     @if($lastProduct->off_price != null and $lastProduct->off_price_started_at < now() and $lastProduct->off_price_expired_at > now())
                             <p class="product-price byekan">{{ number_format($lastProduct->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProduct->price) }}
@@ -106,7 +106,7 @@
                         @endif</button>
                         </form> --}}
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$lastProduct->slug]) }}" class="text-white">
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}" class="text-white">
                                 مشاهده محصول
                             </a>
                         </button>
@@ -134,8 +134,8 @@
       @forelse ($bestSellings as $bestSelling)
         <div class="col-lg-3">
         <div class="card e-co-product">
-            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling->slug]) }}"><img src="{{ $bestSelling->image['250,250'] }}" alt="" class="img-fluid"></a>
-            <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling->slug]) }}" class="product-title"></a> {{ $bestSelling->title }} </a>
+            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}"><img src="{{ $bestSelling->image['250,250'] }}" alt="" class="img-fluid"></a>
+            <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}" class="product-title"></a> {{ $bestSelling->title }} </a>
                 <div class="d-flex justify-content-between my-2">
                     @if($bestSelling->off_price != null and $bestSelling->off_price_started_at < now() and $bestSelling->off_price_expired_at > now())
                         <p class="product-price byekan">{{ number_format($bestSelling->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling->price) }}
@@ -172,7 +172,7 @@
                         </form> --}}
 
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$bestSelling->slug]) }}" class="text-white">
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}" class="text-white">
                                 مشاهده محصول
                             </a>
                         </button>

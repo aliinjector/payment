@@ -18,13 +18,13 @@
                         <div class="tt-col-description">
                             <div class="tt-img"><img src="{{ $wishlistProduct->image['80,80'] }}" alt=""></div>
                             <div class="tt-description">
-                                <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$wishlistProduct->slug]) }}">{{ $wishlistProduct->title }}</a></h2>
+                                <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$wishlistProduct->slug, 'id' => $wishlistProduct->id]) }}">{{ $wishlistProduct->title }}</a></h2>
                             </div>
                         </div>
 
                         <div class="tt-col-btn d-flex">
-                            <a class="btn-link mt-3" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$wishlistProduct->slug]) }}" data-target="#ModalquickView"><i class="icon-f-73"></i>مشاهده محصول</a>
-                            <a href="#" class="btn-link mt-3" id="removeProduct" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist->id }}" data-id="{{ $wishlistProduct->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
+                            <a class="btn-link mt-3" href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$wishlistProduct->slug, 'id' => $wishlistProduct->id]) }}" data-target="#ModalquickView"><i class="icon-f-73"></i>مشاهده محصول</a>
+                            <a href="#" class="btn-link mt-3" id="removeProduct" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->id }}" data-id="{{ $wishlistProduct->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
 
                         </div>
                     </div>

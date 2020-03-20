@@ -208,7 +208,7 @@
                                                               @if($cart->cartProduct != null)
                                                             @foreach ($cart->cartProduct as $cartProduct)
                                                             <div class="tt-item border-bottom p-3">
-                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$cartProduct->product->slug]) }}" target="_blank">
+                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$cartProduct->product->slug,'id'=>$cartProduct->product->id]) }}" target="_blank">
                                                                     <div class="tt-item-img"><img src="{{ $cartProduct->product->image['80,80'] }}" data-src="{{ $cartProduct->product->image['80,80'] }}" alt=""></div>
                                                                     <div class="tt-item-descriptions">
                                                                         <h2 class="tt-title">{{ $cartProduct->product->title }}</h2>
@@ -255,13 +255,13 @@
                                             <ul>
                                                 @auth()
                                                 <li><a href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="icon-n-072"><span class="tt-badge-cart">
-                                                                @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->first()->products()->count() }}
+                                                                @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->products()->count() }}
                                                                     @else 0
                                                                     @endif
                                                             </span></i>{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a>
                                                 </li>
                                                 <li><a href="{{ route('compare' , ['shop' => $shop->english_name]) }}"><i class="fa fa-adjust ml-1" style="font-size: 17px;"><span class="tt-badge-cart">
-                                                                @if(\Auth::user()->compare()->get()->count() != 0) {{ \Auth::user()->compare()->get()->first()->products()->count() }}
+                                                                @if(\Auth::user()->compare()->get()->count() != 0) {{ \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->products()->count() }}
                                                                     @else 0
                                                                     @endif
                                                             </span></i>مقایسه ها</a>

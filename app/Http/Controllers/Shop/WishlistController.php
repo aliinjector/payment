@@ -21,9 +21,9 @@ class WishlistController extends Controller
       $shop = Shop::where('english_name', $shopName)->first();
       $shopCategories = $shop->ProductCategories()->get();
       $template_folderName = $shop->template->folderName;
-      if(\Auth::user()->wishlist != null)
-        $wishlistProducts = \Auth::user()->wishlist->products;
-
+      if(\Auth::user()->wishlist != null){
+        $wishlistProducts = \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->products;
+      }
       else
       $wishlistProducts = [];
       $template_folderName = $shop->template->folderName;

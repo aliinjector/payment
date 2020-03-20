@@ -253,7 +253,7 @@
                         </button>
                         <div class="dropdown-menu p-3 position-absolute" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>{{ __('app-shop-1-layouts-master.alagheMandiHa') }} <span
-                                  class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->count() != 0 ?  \Auth::user()->wishlist()->get()->first()->products()->count() : 0 }} </span></a>
+                                  class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->count() != 0 ?  \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->products()->count() : 0 }} </span></a>
                             <a class="dropdown-item" href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}"><i class="fas fa-shopping-cart p-2"></i>سبد خرید<span
                                   class="circle-bg byekan font-14 m-2">{{ \Auth::user()->cart()->get()->count()  != 0 ?  \Auth::user()->cart()->get()->first()->cartProduct()->count() : 0 }} </span></a>
                             @if(\Auth::user()->id == $shop->user_id)
@@ -264,7 +264,7 @@
                                 <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>{{ __('app-shop-1-layouts-master.addressHa') }}</a>
                                 <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>{{ __('app-shop-1-layouts-master.listSefaareshaat') }}</a>
                                 <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>{{ __('app-shop-1-layouts-master.moghayese') }} <span
-                                      class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->count() != 0 ?  \Auth::user()->compare()->get()->first()->products()->count() : 0 }}</span></a>
+                                      class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->count() != 0 ?  \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->products()->count() : 0 }}</span></a>
                                 <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>{{ __('app-shop-1-layouts-master.khorooj') }}</a>
                         </div>
                     </div>

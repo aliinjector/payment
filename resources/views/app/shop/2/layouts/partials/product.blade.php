@@ -15,7 +15,7 @@
 
         </form>
 
-        <a style="margin: auto;" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}">
+        <a style="margin: auto;" href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}">
             <span class="tt-img">
                 <img src="/app/shop/2/images/loader.svg" data-src="{{ $product->image['250,250'] }}" alt="">
             </span>
@@ -64,7 +64,7 @@
             @if(\Auth::user())
 
             <button @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
-          <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="text-white">
+          <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="text-white">
             مشاهده محصول
             </a>
                 </button>

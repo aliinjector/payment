@@ -195,7 +195,7 @@
                                     @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $product)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->product->slug]) }}">
+                                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->product->slug, 'id' => $product->product->id]) }}">
                                                 <h5 class="mt-0 mb-1">{{ $product->product->title }}</h5>
                                             </a>
                                         </td>

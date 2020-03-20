@@ -22,7 +22,7 @@
                                 @foreach ($wishlistProducts as $product)
                                 <tr>
                                     <td><img src="{{ $product->image['80,80'] }}" alt="" height="52">
-                                        <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" target="_blank"
+                                        <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" target="_blank"
                                               class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                             <br></p>
                                     </td>
@@ -35,8 +35,8 @@
                                             @endif
                                     </td>
                                     <td class="d-flex justify-content-center">
-                                      <a class="btn bg-blue-omid text-white rounded m-1" target="_blank" href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" data-target="#ModalquickView"><i class="icon-f-73"></i>مشاهده محصول</a>
-                                      <a href="#" class="btn btn-danger text-white rounded m-1" id="removeProduct" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist->id }}" data-id="{{ $product->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
+                                      <a class="btn bg-blue-omid text-white rounded m-1" target="_blank" href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" data-target="#ModalquickView"><i class="icon-f-73"></i>مشاهده محصول</a>
+                                      <a href="#" class="btn btn-danger text-white rounded m-1" id="removeProduct" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->id }}" data-id="{{ $product->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
                                     </td>
                                 </tr>
                                 @endforeach

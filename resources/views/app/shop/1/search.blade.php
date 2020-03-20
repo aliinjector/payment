@@ -73,13 +73,13 @@
 
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
-                            <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="product-title">{{ $product->title }}</a>
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
+                            <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="product-title">{{ $product->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
                                     <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span></p>
 
                                 </div>
-                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}">
+                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}">
                                     <a target="_blank" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
                                     <button class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i> خرید </button>
                             </a>

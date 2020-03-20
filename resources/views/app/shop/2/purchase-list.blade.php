@@ -77,7 +77,7 @@ input[type='radio']:after {
                         @foreach($cart->cartProduct as $product)
                         <tr>
                            <td>
-                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->product()->get()->first()->slug]) }}">
+                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->product()->get()->first()->slug, 'id'=>$product->product()->get()->first()->id]) }}">
                                  <h5 class="mt-0 mb-1">{{ $product->product()->get()->first()->title }}</h5>
                              </a>
                            </td>

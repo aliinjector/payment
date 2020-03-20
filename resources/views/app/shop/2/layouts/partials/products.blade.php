@@ -52,7 +52,7 @@
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"></a>
 										</form>
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}"><span class="tt-img"><img class="col-12" src="{{ $product->image['250,250'] }}" data-src="{{ $product->image['250,250'] }}"
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><span class="tt-img"><img class="col-12" src="{{ $product->image['250,250'] }}" data-src="{{ $product->image['250,250'] }}"
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
 
@@ -76,7 +76,7 @@
 										$string .= '...';
 
 										@endphp
-										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}">{{ strlen($product->title) >= 25 != 0 ?
+										<h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}">{{ strlen($product->title) >= 25 != 0 ?
      $string :  $product->title }}</a></h2>
 										@if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
 												<div class="tt-price byekan" style="color: #999;"><del class="byekan font-16">{{ number_format($product->price) }} <span class="text-dark" style="color: #999!important">{{ __('app-shop-1-category.tooman') }}</span></del></div>
@@ -88,7 +88,7 @@
 										<div class="tt-product-inside-hover">
 											@auth
 											<button @if($product->colors->count() != 0) data-col="true" @endif class="tt-btn-addtocart thumbprod-button-bg"><i class="mdi mdi-cart mr-1"></i>
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'id'=>$product->slug]) }}" class="text-white">
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="text-white">
 											مشاهده محصول
 											</a>
 														</button>
