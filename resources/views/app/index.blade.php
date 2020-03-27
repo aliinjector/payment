@@ -1,1056 +1,809 @@
-<!DOCTYPE html>
-<html class="no-js" lang="fa">
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<!DOCTYPE HTML>
+<html lang="fa">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="سیستم فروشگاه ساز امید">
-    <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="/app/images/favicon.png">
-    <!-- Site Title  -->
-    <title>{{ __('index.title') }}</title>
-    <!-- Bundle and Base CSS -->
-    <link rel="stylesheet" href="/app/css/vendor.bundlee332.css?ver=161">
-    <link rel="stylesheet" href="/app/css/stylee332.css?ver=161">
-    <!-- Color Scheme CSS -->
-    <link rel="stylesheet" href="/app/css/themee332.css?ver=161" id="theming">
-    <!-- RTL Styles -->
-    <link rel="stylesheet" href="/app/css/rtle332.css?ver=161">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
+    <!--=============== basic  ===============-->
+    <meta charset="UTF-8">
+    <title>سیستم فروشگاه ساز امید</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow"/>
+    <meta name="keywords" content="فروشگاه ساز امید"/>
+    <meta name="description" content="راه اندازی و ایجاد فروشگاه آنلاین در کمترین زمان و پایینترین هزینه"/>
+    <!--=============== css  ===============-->
+    <link type="text/css" rel="stylesheet" href="/index/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="/index/css/plugins.css">
+    <link type="text/css" rel="stylesheet" href="/index/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/index/css/color.css">
+    <!--=============== favicons ===============-->
+    <link rel="shortcut icon" href="images/favicon.ico">
 </head>
-<style>
-    .demo-panel {
-        display: none !important;
-    }
+<body>
+<!--loader-->
+<div class="loader-wrap">
+    <div class="loader-inner">
+        <div class="loader-inner-cirle"></div>
+    </div>
+</div>
+<!--loader end-->
+<!-- main start  -->
+<div id="main">
+    <!-- header -->
+    <header class="main-header">
+        <a href="" class="logo-holder"><img style="    width: 60px!important;" src="http://fannavars.ir/media/logos/logo0.png" alt=""></a>
 
-    .promo-content {
-        display: none !important;
-    }
+        <div class="nav-holder main-menu">
+            <nav>
+                <ul class="no-list-style">
+                    <li><a href="">تماس</a></li>
+                    <li><a href="">قوانین و شرایط استفاده</a></li>
+                    <li><a href="#products">آخرین محصولات</a></li>
+                    {{--<li><a href="">شهر ها</a></li>--}}
+                    <li><a href="#shops">آخرین فروشگاه ها</a></li>
+                    <li><a href="#search">جستجوی محصول</a></li>
 
-    .promo-trigger {
-        display: none !important;
-    }
-</style>
-
-<body class="nk-body body-wider bg-light has-rtl" dir="rtl">
-    <div class="nk-wrap">
-        <header class="nk-header page-header is-transparent is-sticky is-shrink" id="header">
-            <!-- Header @s -->
-            <div class="header-main">
-                <div class="header-container container">
-                    <div class="header-wrap">
-                        <!-- Logo @s -->
-                        <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".6">
-                            <a href="/" class="logo-link">
-                                <img class="logo-dark" src="/app/images/logo.png" srcset="images/logo.png 2x" alt="logo">
-                                <img class="logo-light" src="/app/images/logo.png" srcset="images/logo.png 2x" alt="logo">
-                            </a>
-                        </div>
-
-                        <!-- Menu Toogle @s -->
-                        <div class="header-nav-toggle">
-                            <a href="/" class="navbar-toggle" data-menu-toggle="header-menu">
-                                <div class="toggle-line">
-                                    <span></span>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- Menu @s -->
-                        <div class="header-navbar animated" data-animate="fadeInDown" data-delay=".75">
-                            <nav class="header-menu mr-5" id="header-menu">
-                                <ul class="menu">
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#">{{ __('index.menu1') }}</a>
-                                    </li>
-
-                                    <li class="menu-item"> <a href="#about" class="menu-link nav-link">{{ __('index.menu2') }}م </a> </li>
-
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#services"> {{ __('index.menu3') }}</a>
-                                    </li>
-
-
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" target="_blank" href="/shops">{{ __('index.menu4') }}</a>
-                                    </li>
-
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" target="_blank" href="/products">{{ __('index.menu5') }}</a>
-                                    </li>
-
-
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#faq">{{ __('index.menu6') }}</a>
-                                    </li>
-
-
-                                    <li class="menu-item">
-                                        <a class="menu-link nav-link" href="#contact">{{ __('index.menu7') }}</a>
-                                    </li>
-
-
-                                </ul>
-                                <ul class="menu-btns">
-                                    <li><a href="{{ route('login') }}" class="btn btn-md btn-auto btn-grad"><span>{{ __('index.loginBtn') }}</span></a></li>
-                                    <li><a href="{{ route('register') }}" class="btn btn-md btn-auto btn-grad"><span>{{ __('index.registerBtn') }}</span></a></li>
-
-
-                                </ul>
-                            </nav>
-                        </div><!-- .header-navbar @e -->
-                    </div>
-                </div>
-            </div><!-- .header-main @e -->
-
-            <!-- Banner @s -->
-            <div class="header-banner bg-theme-grad">
-                <div class="nk-banner">
-                    <div class="banner banner-fs banner-single banner-gap-b2">
-                        <div class="banner-wrap">
-                            <div class="container">
-                                <div class="row align-items-center justify-content-center">
-                                    <div class="col-lg-5 order-lg-last">
-                                        <div class="banner-gfx banner-gfx-re-s1 animated" data-animate="fadeInUp" data-delay=".9">
-                                            <img src="/app/images/header/gfx-a.png" alt="header">
-                                        </div>
-                                    </div><!-- .col -->
-                                    <div class="col-lg-7 col-sm-10 text-center text-lg-left">
-                                        <div class="banner-caption cpn tc-light">
-                                            <div class="cpn-head">
-                                                <h1 class="title animated" data-animate="fadeInUp" data-delay=".1">{{ __('index.title') }}</h1><br class="d-none d-md-block">
-                                                <h4 class="title animated" data-animate="fadeInUp" data-delay=".2">{{ __('index.shoar') }}</h4>
-                                            </div>
-                                            <div class="cpn-text">
-                                                <p class="animated" data-animate="fadeInUp" data-delay="2">
-                                                    <ul class="list list-check animated" data-animate="fadeInUp" data-delay=".3">
-                                                        <li>{{ __('index.ghabeliat1') }}</li>
-                                                        <li>{{ __('index.ghabeliat2') }}</li>
-                                                        <li>{{ __('index.ghabeliat3') }}</li>
-                                                        <li>{{ __('index.ghabeliat4') }}</li>
-                                                    </ul>
-                                            </div>
-                                            <div class="cpn-action">
-
-
-                                                <div class="cpn-btns animated" data-animate="fadeInUp" data-delay="1.2"> <a class="btn btn-grad" href="{{ route('shops.show') }}">{{ __('index.shopLists') }}</a> <a class="btn btn-grad"
-                                                      href="{{ route('products.show') }}">{{ __('index.productSearch') }}</a> </div>
-                                                <ul class="cpn-links animated" data-animate="fadeInUp" data-delay="1.3">
-                                                    <li><a class="link" href="#steps"><em class="link-icon far fa-file-alt"></em>{{ __('index.ehraz') }}</a></li>
-                                                    <li><a class="link" href="#services"><em class="link-icon fas fa-lightbulb"></em>{{ __('index.raahkar') }}</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div><!-- .col -->
-                                </div><!-- .row -->
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- .nk-banner -->
-                <div class="nk-ovm mask-a shape-a"></div>
-
-                <!-- Place Particle Js -->
-                <div id="particles-bg" class="particles-container particles-bg"></div>
-            </div>
-            <!-- .header-banner @e -->
-        </header>
-
-        <main class="nk-pages">
-            <section class="section no-pd text-center over-up">
-                <ul class="rank-list">
-                    <li class="rank-item rank-item1 animated" data-animate="fadeInUp" data-delay=".9">
-                        <span style="color: white" class="rank-count">{{ __('index.box1') }}</span>
-                    </li>
-                    <li class="rank-item rank-item2 animated" data-animate="fadeInUp" data-delay="1">
-                        <span style="color: white" class="rank-count">{{ __('index.box2') }}</span>
-                    </li>
-                    <li class="rank-item rank-item3 animated" data-animate="fadeInUp" data-delay="1.1">
-                        <span style="color: white" class="rank-count">{{ __('index.box3') }}</span>
-                    </li>
-                    <li class="rank-item rank-item4 animated" data-animate="fadeInUp" data-delay="1.2">
-                        <span style="color: white" class="rank-count">{{ __('index.box4') }}</span>
-                    </li>
-                    <li class="rank-item rank-item5 animated" data-animate="fadeInUp" data-delay="1.3">
-                        <span style="color: white" class="rank-count">{{ __('index.box5') }}</span>
-                    </li>
-                    <li class="rank-item rank-item6 animated" data-animate="fadeInUp" data-delay="1.4">
-                        <span style="color: white" class="rank-count">{{ __('index.box6') }}</span>
-                    </li>
-                    <li class="rank-item rank-item7 animated" data-animate="fadeInUp" data-delay="1.5">
-                        <div style="color: white" class="rank-count pt-1">{{ __('index.box7') }}</div>
-                    </li>
                 </ul>
-            </section>
-            <!-- // -->
-            <section id="about" class="section bg-light section-l section-about" id="about">
+            </nav>
+        </div>
 
-                <div class="container">
-                    <!-- Block @s -->
-                    <div class="nk-block nk-block-about">
-                        <div class="row align-items-center gutter-vr-30px pdb-l">
-                            <div class="col-lg-12 mb-3">
-                                <div class="nk-block-text">
-                                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">{{ __('index.aboutTitle') }}</h2>
-                                    <p class="animated" data-animate="fadeInUp" data-delay=".2">
-                                        {{ __('index.aboutDesc') }}
-                                    </p>
+
+        <!-- header opt end-->
+
+        <!-- nav-button-wrap-->
+        <div class="nav-button-wrap color-bg">
+            <div class="nav-button">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <!-- nav-button-wrap end-->
+        <!--  navigation -->
+
+
+        <a href="/register" class="add-list color-bg">عضویت و ایجاد فروشگاه <span><i class="fal fa-layer-plus"></i></span></a>
+        <a href="/login"><div class="show-reg-form avatar-img" data-srcav="images/avatar/3.jpg"><i class="fal fa-user"></i>ورود به سیستم</div></a>
+
+        <!-- navigation  end -->
+        <!-- header-search_container -->
+
+        <!-- header-search_container  end -->
+        <!-- wishlist-wrap-->
+
+        <!--wishlist-wrap end -->
+    </header>
+    <!-- header end-->
+    <!-- wrapper-->
+    <div id="wrapper">
+        <!-- content-->
+        <div class="content">
+            <!--section  -->
+            <section class="hero-section" id="search"  data-scrollax-parent="true">
+                <div class="bg-tabs-wrap">
+                    <div class="bg-parallax-wrap" data-scrollax="properties: { translateY: '200px' }">
+                        <!--ms-container-->
+                        <div class="slideshow-container" data-scrollax="properties: { translateY: '300px' }" >
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <!--ms_item-->
+
+                                    <!--ms_item end-->
+                                    <!--ms_item-->
+                                    <div class="swiper-slide ">
+                                        <div class="ms-item_fs fl-wrap full-height">
+                                            <div class="bg" data-bg="images/bg/6.jpg"></div>
+                                            <div class="overlay op7"></div>
+                                        </div>
+                                    </div>
+                                    <!--ms_item end-->
+                                    <!--ms_item-->
+                                    <div class="swiper-slide">
+                                        <div class="ms-item_fs fl-wrap full-height">
+                                            <div class="bg" data-bg="images/bg/35.html"></div>
+                                            <div class="overlay op7"></div>
+                                        </div>
+                                    </div>
+                                    <!--ms_item end-->
                                 </div>
                             </div>
-
                         </div>
-                    </div><!-- .block @e -->
-                    <!-- Section Head @s -->
-                    <div class="section-head">
-                        <h2 class="title title-lg animated" data-animate="fadeInUp" data-delay=".6">{{ __('index.mazayatitle') }}</h2>
-                    </div><!-- .section-head @e -->
-                    <!-- Block @s -->
-                    <div class="nk-block nk-block-features mgb-m30">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="feature animated" data-animate="fadeInUp" data-delay=".7">
-                                    <div class="feature-icon dot">
-                                        <em class="icon ikon ikon-paricle-alt"></em>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h5 class="title title-sm">{{ __('index.maziat1title') }}</h5>
-                                        <p>
-                                            {{ __('index.maziat1') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="feature animated" data-animate="fadeInUp" data-delay=".8">
-                                    <div class="feature-icon dot">
-                                        <em class="icon ikon ikon-donught"></em>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h5 class="title title-sm">{{ __('index.maziat2title') }}</h5>
-                                        <p>
-                                            {{ __('index.maziat2') }} </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="feature animated" data-animate="fadeInUp" data-delay=".9">
-                                    <div class="feature-icon dot">
-                                        <em class="icon ikon ikon-document"></em>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h5 class="title title-sm">{{ __('index.maziat3title') }}</h5>
-                                        <p>{{ __('index.maziat3') }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- .block @s -->
-                </div>
-
-            </section>
-            <!-- // -->
-            <section id="steps" class="section section-l section-features bg-white" id="why">
-
-                <div class="container">
-                    <!-- Block @s -->
-                    <div class="nk-block nk-block-features-s2">
-                        <div class="row align-items-center flex-row-reverse">
-                            <div class="col-lg-5">
-                                <div class="gfx py-4 animated" data-animate="fadeInUp" data-delay=".4">
-                                    <img src="/app/images/gfx/gfx-a.png" alt="gfx">
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-lg-7">
-                                <!-- Section Head @s -->
-                                <div class="section-head">
-                                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">{{ __('index.marahelTitle') }}</h2>
-                                    <p class="animated" data-animate="fadeInUp" data-delay=".2">
-                                        {{ __('index.marahelDesc') }}
-                                    </p>
-                                </div><!-- .section-head @e -->
-                                <div class="features-list mr-4 mgb-m30">
-                                    <div class="feature feature-s2 animated" data-animate="fadeInUp" data-delay=".4">
-                                        <div class="feature-icon dot">
-                                            <em class="icon ikon ikon-shiled-alt"></em>
-                                        </div>
-                                        <div class="feature-text">
-                                            <h5 class="title title-sm">{{ __('index.marhale1Title') }}</h5>
-                                            <p> {{ __('index.marhale1Desc') }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="feature feature-s2 animated" data-animate="fadeInUp" data-delay=".5">
-                                        <div class="feature-icon dot">
-                                            <em class="icon ikon ikon-user"></em>
-                                        </div>
-                                        <div class="feature-text">
-                                            <h5 class="title title-sm">{{ __('index.marhale2Title') }}</h5>
-                                            <p>{{ __('index.marhale2Desc') }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="feature feature-s2 animated" data-animate="fadeInUp" data-delay=".6">
-                                        <div class="feature-icon dot">
-                                            <em class="icon ikon ikon-data-server"></em>
-                                        </div>
-                                        <div class="feature-text">
-                                            <h5 class="title title-sm">{{ __('index.marhale3Title') }}</h5>
-                                            <p> {{ __('index.marhale3Desc') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .block @e -->
-                </div>
-
-            </section>
-            <!-- // -->
-            <section id="services" class="section section-l section-problem bg-light" id="problem">
-
-                <div class="container">
-                    <!-- Section Head @s -->
-                    <div class="section-head text-center wide-auto-sm">
-                        <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">{{ __('index.raahkatHatitle') }}
-                        </h2>
-                        <p class="animated" data-animate="fadeInUp" data-delay=".2">{{ __('index.raahkatDesc') }}</p>
-                    </div><!-- .section-head @e -->
-                    <!-- Block @s -->
-                    <div class="nk-block nk-block-problems tc-light">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-lg-6">
-                                <div class="feature boxed boxed-lg bg-theme no-mg split-lg-left split-left animated" data-animate="fadeInUp" data-delay=".3">
-                                    <h4 class="title title-md">{{ __('index.raah1Title') }}</h4>
-                                    <p>
-                                        {{ __('index.raah1Desc') }}
-                                    </p>
-                                    <ul class="list list-dot">
-                                        <li>{{ __('index.raahItem1') }}</li>
-                                        <li>{{ __('index.raahItem2') }}</li>
-                                        <li>{{ __('index.raahItem3') }}</li>
-                                        <li>{{ __('index.raahItem4') }}</li>
-                                        <li>{{ __('index.raahItem5') }}</li>
-                                        <li>{{ __('index.raahItem6') }}</li>
-                                        <li>{{ __('index.raahItem7') }}</li>
-                                        <li>{{ __('index.raahItem8') }}</li>
-                                    </ul>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-lg-6">
-                                <div class="feature-group bg-theme-alt split-right split-lg animated" data-animate="fadeInUp" data-delay=".4">
-                                    <div class="feature boxed bg-white-10">
-                                        <div class="feature-text">
-                                            <h4 class="title title-md">{{ __('index.raah2Title') }}</h4>
-                                            <p>
-                                                {{ __('index.raah2Desc') }} </p>
-                                        </div>
-                                    </div>
-                                    <div class="feature boxed bg-white-2">
-                                        <div class="feature-text">
-                                            <h4 class="title title-md"> {{ __('index.raah3Title') }}</h4>
-                                            <p>
-                                                {{ __('index.raah3Desc') }} </p>
-
-                                        </div>
-                                    </div>
-                                    <div class="feature boxed bg-black-10">
-                                        <div class="feature-text">
-                                            <h4 class="title title-md">
-                                                {{ __('index.raah4Title') }}
-                                            </h4>
-                                            <p>
-                                                {{ __('index.raah4Desc') }} </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .block @e -->
-                </div>
-
-            </section>
-            <!-- // -->
-            <section class="section section-l section-solution bg-light pt-0" id="solution">
-
-                <div class="container">
-                    <!-- Section Head @s -->
-                    <div class="section-head text-center wide-auto-sm">
-                        <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">{{ __('index.saayerKhadamatTitle') }}</h2>
-                        <p class="animated" data-animate="fadeInUp" data-delay=".2">
-                            {{ __('index.saayerKhadamatDesc') }}</p>
-                    </div><!-- .section-head @e -->
-                    <!-- Block @s -->
-                    <div class="nk-block nk-block-features-s3 mgb-m40 mgt-m20">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6 col-md-10">
-                                <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".3">
-                                    <div class="feature-icon">
-                                        <i class="fa fa-cart-arrow-down
-                                              "></i>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h4 class="title title-md title-dark">{{ __('index.khedmat1Title') }}
-                                        </h4>
-                                        <p>
-                                            {{ __('index.khedmat1Desc') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-lg-6 col-md-10">
-                                <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".4">
-                                    <div class="feature-icon">
-                                        <i class="fa fa-money"></i>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h4 class="title title-md title-dark">{{ __('index.khedmat2Title') }}
-                                        </h4>
-                                        <p>
-                                            {{ __('index.khedmat2Desc') }} </p>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-lg-6 col-md-10">
-                                <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".5">
-                                    <div class="feature-icon">
-                                        <i class="fa fa-file-text mt-4"></i>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h4 class="title title-md title-dark">{{ __('index.khedmat3Title') }}</h4>
-                                        <p>
-                                            {{ __('index.khedmat3Desc') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-
-                            <div class="col-lg-6 col-md-10">
-                                <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".6">
-                                    <div class="feature-icon">
-                                        <i class="fa fa-newspaper-o mt-4"></i>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h4 class="title title-md title-dark">{{ __('index.khedmat4Title') }}</h4>
-                                        <p>
-                                            {{ __('index.khedmat4Desc') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-lg-6 col-md-10">
-                                <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".7">
-                                    <div class="feature-icon">
-                                        <i class="fa fa-line-chart mt-4"></i>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h4 class="title title-md title-dark">
-
-                                            <br>
-                                            {{ __('index.khedmat5Title') }}
-                                        </h4>
-                                        <p>
-                                        {{ __('index.khedmat5Desc') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-lg-6 col-md-10">
-                                <div class="feature feature-s3 feature-center animated" data-animate="fadeInUp" data-delay=".8">
-                                    <div class="feature-icon">
-                                        <i class="fa fa-instagram mt-4"></i>
-                                    </div>
-                                    <div class="feature-text">
-                                        <h4 class="title title-md title-dark">  {{ __('index.khedmat6Title') }}</h4>
-                                        <p>
-                                            {{ __('index.khedmat6Desc') }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .block @e -->
-                </div>
-
-            </section>
-
-
-            <section class="bg-theme bg-pattern-dots" id="tokens">
-
-                <div class="section-l section-tokensale tc-light">
-
-                    <div class="container">
-                        <!-- Section Head @s -->
-                        <div class="section-head text-center wide-auto">
-                            <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">{{ __('index.listKhadamatVaEmkanatTitle') }}</h2>
-                            <p class="animated" data-animate="fadeInUp" data-delay=".2">
-                                {{ __('index.listKhadamatVaEmkanatDesc') }}</p>
-                        </div><!-- .section-head @e -->
-                        <!-- Block @s -->
-                        <div class="nk-block nk-block-token mgb-m30">
-                            <div class="row">
-
-                                <div class="col-lg-6">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".1">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat1') }}</h6>
-                                    </div>
-                                </div><!-- .col -->
-
-                                <div class="col-lg-6">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".2">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat2') }}</h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-
-
-
-
-
-                            </div><!-- .row -->
-
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".3">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat3') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".4">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat4') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".5">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat5') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".6">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat6') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-                            </div>
-
-
-
-                            <div class="row">
-
-
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".7">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat7') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".8">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat8') }}</h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".9">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat9') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-
-                                <div class="col-lg-3">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".10">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat10') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-
-
-                            </div><!-- .row -->
-
-
-
-                            <div class="row">
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".11">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat11') }}</h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".12">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat12') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".13">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat13') }}</h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".14">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat14') }}</h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".15">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat15') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".16">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat16') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-
-
-
-
-
-
-                            </div><!-- .row -->
-
-
-
-                            <div class="row">
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".17">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat17') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".18">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat18') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".19">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center">{{ __('index.KhadamatVaEmkanat19') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".20">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat20') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".21">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat21') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-                                <div class="col-lg-2">
-                                    <div style="    padding: 20px;text-align: center;" class="token-info bg-theme animated" data-animate="fadeInUp" data-delay=".22">
-                                        <span style="font-weight: 500;font-size: 18px;  color: #23c99d;" class="title title-md mb-2 text-sm-center"> {{ __('index.KhadamatVaEmkanat22') }} </h6>
-                                    </div>
-                                </div><!-- .col -->
-
-
-
-
-
-                            </div><!-- .row -->
-
-
-
-
-
-
-
-
-                        </div><!-- .block @e -->
+                        <!--ms-container end-->
                     </div>
-
-                </div><!-- .section-tokensale -->
-
-
-            </section>
-            <!-- // -->
-
-
-            <section class="section section-l section-wallet bg-white" id="app-download">
-
-                <div class="container">
-                    <!-- Block @s -->
-                    <div class="nk-block nk-block-text-wrap">
-                        <div class="row align-items-center justify-content-center flex-row-reverse">
-                            <div class="col-lg-7 mb-4 mb-lg-0">
-                                <div class="nk-block-img bg-pattern-dots-color">
-                                    <div class="app-slide-wrap animated" data-animate="fadeInUp" data-delay=".1">
-                                        <div class="app-slide">
-                                            <img src="/app/images/app-screens/login.jpg" alt="App Screen">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 col-md-10 text-center text-lg-left">
-                                <div class="nk-block-text">
-                                    <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">{{ __('index.narmAfzareMobileTitle') }}
-                                    </h2>
-                                    <p class="animated" data-animate="fadeInUp" data-delay=".2"> {{ __('index.narmAfzareMobileDesc') }}</p>
-                                    <div class="pdt-m animated" data-animate="fadeInUp" data-delay=".3">
-                                        <a href="#" class="btn btn-grad">{{ __('index.narmAfzareMobileBtn') }}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- .block @e -->
                 </div>
+                <div class="container small-container">
+                    <div class="intro-item fl-wrap">
+                        <span class="section-separator"></span>
+                        <div class="bubbles">
+                            <h1>جستجوی محصولات امیدشاپ</h1>
+                        </div>
+                        <h3>محصول مورد نظر خودرا در کمترین زمان پیدا کنید</h3>
+                    </div>
+                    <!-- main-search-input-tabs-->
+                    <div class="main-search-input-tabs  tabs-act fl-wrap">
 
-            </section>
-            <!-- // -->
-
-
-            {{-- <section style="display:none" id="faq" class="section section-l section-faq bg-white" id="faq">
-
-                <div class="container">
-                    <!-- Section Head @s -->
-                    <div class="section-head text-center wide-auto">
-                        <h2 class="title animated" data-animate="fadeInUp" data-delay=".1">سوالات متداول</h2>
-                        <p class="animated" data-animate="fadeInUp" data-delay=".2">در این قسمت، سوالات متداول کاربران را مشاهده میکنید.
-                        </p>
-                    </div><!-- .section-head @e -->
-                    <!-- Block @s -->
-                    <div class="nk-block block-faq">
-                        <div class="row">
-                            <div class="col-md-4 col-lg-3 mb-4 mb-lg-0">
-                                <ul class="nav tab-nav tab-nav-vr tab-nav-bdr mr-lg-3 animated" data-animate="fadeInUp" data-delay=".3">
-                                    <li><a class="active" data-toggle="tab" href="#general-questions"><em class="fas fa-caret-right"></em>سوالات کلی</a></li>
-                                    <li><a data-toggle="tab" href="#ico-questions"><em class="fas fa-caret-right"></em>پرداخت
-                                            یاری</a></li>
-                                    <li><a data-toggle="tab" href="#tokens-sales"><em class="fas fa-caret-right"></em>فروشگاه
-                                            ساز</a></li>
-                                    <li><a data-toggle="tab" href="#clients-releted"><em class="fas fa-caret-right"></em>سیستم
-                                            فروش شارژ</a></li>
-                                </ul>
-                            </div><!-- .col -->
-                            <div class="col-md-8 col-lg-9">
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active" id="general-questions">
-                                        <div class="accordion accordion-faq" id="faq-1">
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".1">
-                                                <h5 class="accordion-title accordion-title-sm" data-toggle="collapse" data-target="#faq-1-1">
-                                                    آیا عضویت در سیستم فروشگاه ساز امید رایگان است؟ <span class="accordion-icon"></span>
-                                                </h5>
-                                                <div id="faq-1-1" class="collapse show" data-parent="#faq-1">
-                                                    <div class="accordion-content">
-                                                        <p>بله، عضویت در سیستم کاملا رایگان است و بدون پرداخت هزینه میتوانید عضو سیستم شوید.</p>
-                                                    </div>
+                        <!--tabs -->
+                        <div class="tabs-container fl-wrap  ">
+                            <!--tab -->
+                            <div class="tab">
+                                <div id="tab-inpt1" class="tab-content first-tab">
+                                    <div class="main-search-input-wrap fl-wrap">
+                                        <form method="post" action="{{ route('products.search') }}">
+                                            @csrf
+                                            <div class="main-search-input fl-wrap">
+                                                <div class="main-search-input-item">
+                                                    <label><i class="fal fa-keyboard"></i></label>
+                                                    <input type="text" name="keyword" placeholder="به دنبال چه محصول/خدمتی میگردید؟" value=""/>
                                                 </div>
+                                                <button class="main-search-button color2-bg">جستجو <i class="far fa-search"></i></button>
                                             </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".2">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-1-2">چگونه میتوانم لیست تراکنش های درگاه خود را مشاهده کنم؟ <span class="accordion-icon"></span></h5>
-                                                <div id="faq-1-2" class="collapse" data-parent="#faq-1">
-                                                    <div class="accordion-content">
-                                                        <p>با ورود به پنل کاربری، کلیک برروی منوی پرداخت یاری و ورود به قسمت تراکنش ها، میتوانید لیست تراکنش های مربوط به درگاه خودرا مشاهده نمایید.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".3">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-1-3">پشتیبانی فروشگاه ساز امید به چه صورت است؟ <span class="accordion-icon"></span></h5>
-                                                <div id="faq-1-3" class="collapse" data-parent="#faq-1">
-                                                    <div class="accordion-content">
-                                                        <p>میتوانید بصورت 24 ساعته از طریق ارسال تیکت و چت پشتیبانی باما در ارتباط باشید. همچنین میتوانید با تماس با شماره تلفن دفتر فروشگاه ساز امید، با تیم پشتیبانی ارتباط برقرار کنید.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                        </form>
                                     </div>
-                                    <div class="tab-pane fade" id="ico-questions">
-                                        <div class="accordion accordion-faq" id="faq-2">
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".1">
-                                                <h5 class="accordion-title accordion-title-sm" data-toggle="collapse" data-target="#faq-2-1">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-2-1" class="collapse show" data-parent="#faq-2">
-                                                    <div class="accordion-content">
-                                                        <div class="accordion-content">
-                                                            <p>متن پاسخ</p>
+                                </div>
+                            </div>
+                            <!--tab end-->
+                            <!--tab -->
+
+                            <!--tab end-->
+                        </div>
+                        <!--tabs end-->
+                    </div>
+                    <!-- main-search-input-tabs end-->
+                    <div class="hero-categories fl-wrap">
+                        <h4 class="hero-categories_title">به دنبال فروشگاه هستید؟ نمایش فروشگاه ها براساس دسته بندی</h4>
+                        <ul class="no-list-style">
+                            <li><a href=""><i class="far fa-cheeseburger"></i><span>رستوران ها</span></a></li>
+                            <li><a href=""><i class="far fa-tshirt"></i><span>فروشگاه لباس</span></a></li>
+                            <li><a href=""><i class="far fa-tablet"></i><span>لوازم الکترونیکی</span></a></li>
+                            <li><a href=""><i class="far fa-cocktail"></i><span>کافیشاپ</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-sec-link">
+                    <a href="#sec1" class="custom-scroll-link"><i class="fal fa-angle-double-down"></i></a>
+                </div>
+            </section>
+            <!--section end-->
+            <!--section  -->
+            <section class="slw-sec" id="shops">
+                <div class="section-title">
+                    <h2>آخرین فروشگاه ها</h2>
+                    <div class="section-subtitle">آخرین فروشگاه های امیدشاپ</div>
+                    <span class="section-separator"></span>
+                    <p style="direction: rtl">آخرین فروشگاه های ایجاد شده در فروشگاه ساز امید را مشاهده مینمایید.</p>
+                </div>
+                <div class="listing-slider-wrap fl-wrap">
+                    <div class="listing-slider fl-wrap">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <!--  swiper-slide  -->
+                                @foreach ($shops as $shop)
+                                    <div class="swiper-slide">
+                                        <div class="listing-slider-item fl-wrap">
+                                            <!-- listing-item  -->
+                                            <div class="listing-item listing_carditem">
+                                                <article class="geodir-category-listing fl-wrap">
+                                                    <div class="geodir-category-img">
+                                                        <a target="_blank" href="/{{ $shop->english_name }}"  class="geodir-category-img-wrap fl-wrap">
+                                                            <img style="height: 100%; max-height: 250px" src="{{ $shop->logo['original'] }}" alt="">
+                                                        </a>
+                                                        <div class="geodir_status_date gsd_open">امید الکترونیک</div>
+                                                        <div class="geodir-category-opt">
+                                                            <div class="geodir-category-opt_title">
+                                                                <h4><a target="_blank" href="/{{ $shop->english_name }}">{{ $shop->name }}</a></h4>
+                                                                <div class="geodir-category-location"><a href="#">  آدرس: تهران - خیابان پاسداران<i class="fas fa-map-marker-alt"></i></a></div>
+                                                            </div>
+
+                                                            <div class="listing_carditem_footer fl-wrap">
+                                                                <a class="listing-item-category-wrap" href="#">
+                                                                    <span>دسته:‌ {{ $shop->shopCategory->name }}</span>
+                                                                </a>
+
+                                                                <div  class="post-author"><span style="direction: rtl;color: white;">مدیر فروشگاه: {{ isset($shop->user) ? $shop->user->firstName . ' ' . $shop->user->lastName : '' }}</span></div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </article>
                                             </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".2">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-2-2">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-2-2" class="collapse" data-parent="#faq-2">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".3">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-2-3">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-2-3" class="collapse" data-parent="#faq-2">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".4">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-2-4">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-2-4" class="collapse" data-parent="#faq-2">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <!-- listing-item end -->
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="tokens-sales">
-                                        <div class="accordion accordion-faq" id="faq-3">
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".1">
-                                                <h5 class="accordion-title accordion-title-sm" data-toggle="collapse" data-target="#faq-3-1">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-3-1" class="collapse show" data-parent="#faq-3">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".2">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-3-2">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-3-2" class="collapse" data-parent="#faq-3">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".3">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-3-3">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-3-3" class="collapse" data-parent="#faq-3">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".4">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-3-4">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-3-4" class="collapse" data-parent="#faq-3">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="clients-releted">
-                                        <div class="accordion accordion-faq" id="faq-4">
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".1">
-                                                <h5 class="accordion-title accordion-title-sm" data-toggle="collapse" data-target="#faq-4-1">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-4-1" class="collapse show" data-parent="#faq-4">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".2">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-4-2">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-4-2" class="collapse" data-parent="#faq-4">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".3">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-4-3">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-4-3" class="collapse" data-parent="#faq-4">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item animated" data-animate="fadeInUp" data-delay=".4">
-                                                <h5 class="accordion-title accordion-title-sm collapsed" data-toggle="collapse" data-target="#faq-4-4">متن سوال<span class="accordion-icon"></span></h5>
-                                                <div id="faq-4-4" class="collapse" data-parent="#faq-4">
-                                                    <div class="accordion-content">
-                                                        <p>متن پاسخ</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .block @e -->
+                                @endforeach
+
+
+
+
+
+                                <!--  swiper-slide end  -->
+                            </div>
+                        </div>
+                        <div class="listing-carousel-button listing-carousel-button-next2"><i class="fas fa-caret-right"></i></div>
+                        <div class="listing-carousel-button listing-carousel-button-prev2"><i class="fas fa-caret-left"></i></div>
+                    </div>
+                    <div class="tc-pagination_wrap">
+                        <div class="tc-pagination2"></div>
+                    </div>
                 </div>
-
-            </section> --}}
-        </main>
-
-        <footer id="contact" class="nk-footer bg-theme-grad">
-            <section class="section no-pdy section-contact bg-transparent">
-
-                <div class="container">
-                    <!-- Block @s -->
-                    <div class="nk-block block-contact animated" data-animate="fadeInUp" data-delay=".9" id="contact">
-                        <div class="row justify-content-center no-gutters">
-                            <div class="col-lg-6">
-                                <div class="contact-wrap split split-left split-lg-left bg-white">
-                                    <h5 class="title title-md">{{ __('index.tamasBaMaTitle') }}</h5>
-                                    <form method="post" action="{{ route('sendemail.send') }}">
-                                        @csrf
-                                        <div class="field-item">
-                                            <input name="name" type="text" class="input-line required">
-                                            <label class="field-label field-label-line">{{ __('index.tamasBaMaFormName') }}</label>
-                                        </div>
-                                        <div class="field-item">
-                                            <input name="email" type="email" class="input-line required email">
-                                            <label class="field-label field-label-line">{{ __('index.tamasBaMaFormEmail') }}</label>
-                                        </div>
-                                        <div class="field-item">
-                                            <textarea name="message" class="input-line input-textarea required"></textarea>
-                                            <label class="field-label field-label-line">{{ __('index.tamasBaMaFormText') }}</label>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <button type="submit" class="btn btn-lg btn-grad">{{ __('index.tamasBaMaFormBtn') }}</button>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="form-results"></div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!-- .col -->
-                            <div class="col-lg-4">
-                                <div class="contact-wrap split split-right split-lg-right bg-genitian bg-theme tc-light">
-                                    <div class="d-flex flex-column justify-content-between h-100">
-                                        <ul class="contact-list">
-                                            <li>
-                                                <em class="contact-icon fas fa-building"></em>
-                                                <div class="contact-text">
-                                                    <h6>
-                                                        {{ __('index.tamasBaMaLeftBoxItem1') }}
-                                                    </h6>
-                                                    <span></span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <em class="contact-icon fas fa-phone"></em>
-                                                <div class="contact-text">
-                                                    <span class="byekan">{{ __('index.tamasBaMaLeftBoxItem2') }}</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <em class="contact-icon fas fa-envelope"></em>
-                                                <div class="contact-text">
-                                                    <span>{{ __('index.tamasBaMaLeftBoxItem3') }}</span>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <em class="contact-icon fas fa-paper-plane"></em>
-                                                <div class="contact-text">
-                                                    <span>{{ __('index.tamasBaMaLeftBoxItem4') }}</span>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="contact-social">
-                                            <h6>{{ __('index.tamasBaMaLeftBoxItem5') }}</h6>
-                                            <ul class="social-links">
-                                                <li><a href="#"><em class="fab fa-twitter"></em></a></li>
-                                                <li><a href="#"><em class="fab fa-telegram"></em></a></li>
-                                                <li><a href="#"><em class="fab fa-facebook-f"></em></a></li>
-                                                <li><a href="#"><em class="fab fa-youtube"></em></a></li>
-                                                <li><a href="#"><em class="fab fa-instagram"></em></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .block @e -->
-                </div>
-
-                <div class="nk-ovm ovm-top ovm-h-60 bg-light"></div><!-- .nk-ovm -->
             </section>
-            <!-- // -->
-            <section class="section section-footer section-l tc-light bg-transparent">
-
+            <!--section end-->
+            <div class="sec-circle fl-wrap"></div>
+            <!--section -->
+            <section style="display: none"  class="gray-bg hidden-section particles-wrapper">
                 <div class="container">
-                    <!-- Block @s -->
-                    <div class="nk-block block-footer">
+                    <div class="section-title">
+                        <h2>برخی شهر های مورد پوشش</h2>
+                        <div class="section-subtitle">شهر های تحت پوشش امیدشاپ</div>
+                        <span class="section-separator"></span>
+                        <p style="direction: rtl">امیدشاپ بدون درنظر گرفتن محدودیت جغرافیایی، در سراسر ایران خدمت رسانی می نماید.</p>
+                    </div>
+                    <div class="listing-item-grid_container fl-wrap">
+                        <div style="direction: rtl; text-align: right" class="row">
+                            <!--  listing-item-grid  -->
+
+                            <div style="float: right;" class="col-sm-8">
+                                <div class="listing-item-grid">
+                                    <div class="bg"  data-bg="images/all/59.jpg"></div>
+                                    <div class="d-gr-sec"></div>
+                                    <div class="listing-counter color2-bg"><span>۴۴ </span> فروشگاه</div>
+                                    <div class="listing-item-grid_title">
+                                        <h3><a href="">تهران</a></h3>
+                                        <p>با کلیک برروی نام شهر، فروشگاه ها را مشاهده نمایید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="listing-item-grid">
+                                    <div class="bg"  data-bg="images/all/56.jpg"></div>
+                                    <div class="d-gr-sec"></div>
+                                    <div class="listing-counter color2-bg"><span>۱۵ </span> فروشگاه</div>
+                                    <div class="listing-item-grid_title">
+                                        <h3><a href="">البرز</a></h3>
+                                        <p>با کلیک برروی نام شهر، فروشگاه ها را مشاهده نمایید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  listing-item-grid end  -->
+                            <!--  listing-item-grid  -->
+                            <div class="col-sm-4">
+                                <div class="listing-item-grid">
+                                    <div class="bg"  data-bg="images/all/57.jpg"></div>
+                                    <div class="d-gr-sec"></div>
+                                    <div class="listing-counter color2-bg"><span>۲۲ </span> فروشگاه</div>
+                                    <div class="listing-item-grid_title">
+                                        <h3><a href="">اصفهان</a></h3>
+                                        <p>با کلیک برروی نام شهر، فروشگاه ها را مشاهده نمایید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  listing-item-grid end  -->
+                            <!--  listing-item-grid  -->
+                            <div class="col-sm-4">
+                                <div class="listing-item-grid">
+                                    <div class="bg"  data-bg="images/all/58.jpg"></div>
+                                    <div class="d-gr-sec"></div>
+                                    <div class="listing-counter color2-bg"><span>۹ </span> فروشگاه</div>
+                                    <div class="listing-item-grid_title">
+                                        <h3><a href="">یزد</a></h3>
+                                        <p>با کلیک برروی نام شهر، فروشگاه ها را مشاهده نمایید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  listing-item-grid end  -->
+                            <!--  listing-item-grid  -->
+                            <div class="col-sm-4">
+                                <div class="listing-item-grid">
+                                    <div class="bg"  data-bg="images/all/60.jpg"></div>
+                                    <div class="d-gr-sec"></div>
+                                    <div class="listing-counter color2-bg"><span>۱۲ </span> فروشگاه</div>
+                                    <div class="listing-item-grid_title">
+                                        <h3><a href="">مشهد</a></h3>
+                                        <p>با کلیک برروی نام شهر، فروشگاه ها را مشاهده نمایید.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  listing-item-grid end  -->
+                            <!--  listing-item-grid  -->
+
+                            <!--  listing-item-grid end  -->
+                        </div>
+                    </div>
+                    <a href="" class="btn dec_btn   color2-bg">مشاهده تمامی شهرها<i class="fal fa-arrow-alt-right"></i></a>
+                </div>
+            </section>
+            <!--  section  -->
+            <!--section end-->
+            <section class="parallax-section small-par" data-scrollax-parent="true">
+                <div class="bg par-elem "  data-bg="images/bg/22.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                <div class="overlay  op7"></div>
+                <div class="container">
+                    <div class=" single-facts single-facts_2 fl-wrap">
+                        <!-- inline-facts -->
+                        <div class="inline-facts-wrap">
+                            <div class="inline-facts">
+                                <div class="milestone-counter">
+                                    <div class="stats animaper">
+                                        <div class="num" data-content="0" data-num="16422">16422</div>
+                                    </div>
+                                </div>
+                                <h6>محصول فروخته شده</h6>
+                            </div>
+                        </div>
+                        <!-- inline-facts end -->
+                        <!-- inline-facts  -->
+                        <div class="inline-facts-wrap">
+                            <div class="inline-facts">
+                                <div class="milestone-counter">
+                                    <div class="stats animaper">
+                                        <div class="num" data-content="0" data-num="23422">23422</div>
+                                    </div>
+                                </div>
+                                <h6>محصول ثبت شده</h6>
+                            </div>
+                        </div>
+                        <!-- inline-facts end -->
+                        <!-- inline-facts  -->
+                        <div class="inline-facts-wrap">
+                            <div class="inline-facts">
+                                <div class="milestone-counter">
+                                    <div class="stats animaper">
+                                        <div class="num" data-content="0" data-num="611">611</div>
+                                    </div>
+                                </div>
+                                <h6>اپلیکیشن موبایل فعال</h6>
+                            </div>
+                        </div>
+                        <!-- inline-facts end -->
+                        <!-- inline-facts  -->
+                        <div class="inline-facts-wrap">
+                            <div class="inline-facts">
+                                <div class="milestone-counter">
+                                    <div class="stats animaper">
+                                        <div class="num" data-content="0" data-num="722">722</div>
+                                    </div>
+                                </div>
+                                <h6>فروشگاه فعال</h6>
+                            </div>
+                        </div>
+                        <!-- inline-facts end -->
+                    </div>
+                </div>
+            </section>
+            <!--section end-->
+            <!--section  -->
+            <section id="products">
+                <div class="container big-container">
+                    <div class="section-title">
+                        <h2><span>آخرین محصولات فروشگاه ها</span></h2>
+                        <div class="section-subtitle">فروشگاه ساز امید</div>
+                        <span class="section-separator"></span>
+                        <p style="direction: rtl">آخرین محصولات فروشگاه ها در این قسمت قابل مشاهده میباشد.</p>
+                    </div>
+
+                    <div class="grid-item-holder gallery-items fl-wrap">
+                        <!--  gallery-item-->
+                        @foreach ($products as $product)
+                            <div class="gallery-item restaurant events">
+                                <div class="listing-item" style="">
+                                    <article class="geodir-category-listing fl-wrap">
+                                        <div class="geodir-category-img">
+                                            <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
+                                                <img style="height: 250px;" src="{{ $product->image['original'] }}" alt="">
+                                            </a>
+                                            <div class="listing-avatar"><a href=""><img src="{{ $product->shop->user->avatar }}" alt=""></a>
+                                                <span class="avatar-tooltip">مدیر فروشگاه:‌  <strong> {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</strong></span>
+                                            </div>
+                                            <div class="geodir_status_date gsd_open">نام فروشگاه: {{ $product->shop->name }}</div>
+
+                                        </div>
+                                        <div class="geodir-category-content fl-wrap title-sin_item">
+                                            <div class="geodir-category-content-title fl-wrap">
+                                                <div class="geodir-category-content-title-item">
+                                                    <h3 class="title-sin_map">
+                                                        <a href="">{{ $product->title }}</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-text fl-wrap">
+                                                <p class="small-text">   {!! str_limit($product->description, 100) !!} </p>
+
+                                            </div>
+                                            <div class="geodir-category-footer fl-wrap">
+                                                <a class="listing-item-category-wrap" href="#">
+                                                    <div class="listing-item-category blue-bg"><i class="fa fa-user"></i></div>
+                                                    <span>مدیر فروشگاه:‌ {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+
+                        @endforeach
+
+
+                    </div>
+                    <a href="" class="btn  dec_btn  color2-bg">مشاهده آخرین محصولات<i class="fal fa-arrow-alt-right"></i></a>
+                </div>
+            </section>
+            <!--section end-->
+
+            <!--section  -->
+            <section      data-scrollax-parent="true">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>از کجا شروع کنم؟</h2>
+                        <div class="section-subtitle">استفاده از امیدشاپ </div>
+                        <span class="section-separator"></span>
+                        <p style="direction: rtl"> در این بخش، مراحل عضویت، پیکربندی و بهره گیری از فروشگاه شما تشریح داده شده است.</p>
+                    </div>
+                    <div class="process-wrap fl-wrap">
+                        <ul class="no-list-style">
+                            <li>
+                                <div class="process-item">
+                                    <span class="process-count">۳ </span>
+                                    <div class="time-line-icon"><i class="fal fa-chart-pie"></i></div>
+                                    <h4 style="direction: rtl"> از گزارشات فروش لذت ببرید !</h4>
+                                    <p style="direction: rtl">فروشگاه شما آماده استفاده است!  گزارشات برخط و گرافیکی جهت تصمیم گیری و نظارت بهتر شما آماده شده است که میتوانید از آنها بهره مند شوید. </p>
+                                </div>
+                                <span class="pr-dec"></span>
+                            </li>
+                            <li>
+                                <div class="process-item">
+                                    <span class="process-count">۲</span>
+                                    <div class="time-line-icon"><i class="fal fa-cog"></i></div>
+                                    <h4> تکمیل تنظیمات اولیه</h4>
+                                    <p style="direction: rtl">پس از عضویت، میبایست دسته بندیها، محصولات و سایر موارد مورد نیاز را در پنل مدیریت فروشگاه خود تنظیم نمایید تا فروشگاه شما اماده بهره برداری شود.</p>
+                                </div>
+                                <span class="pr-dec"></span>
+                            </li>
+                            <li>
+                                <div class="process-item">
+                                    <span class="process-count">۱</span>
+                                    <div class="time-line-icon"><i class="fal fa-layer-plus"></i></div>
+                                    <h4> عضویت در فروشگاه ساز</h4>
+                                    <p style="direction: rtl">در کمتر از ۳ دقیقه میتوانید فرم عضویت در فروشگاه ساز امید را تکمیل و حساب کاربری خودرا آماده ورود به دنیای مجانی کنید.</p>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="process-end"><i class="fal fa-check"></i></div>
+                    </div>
+                </div>
+            </section>
+            <!--section end-->
+
+
+
+
+            <section style="display: none" id="sec1" data-scrollax-parent="true">
+                <div class="container">
+                    <div class="section-title">
+                        <h2> قیمت خدمات </h2>
+                        <div class="section-subtitle">پکیج های امیدشاپ</div>
+                        <span class="section-separator"></span>
+                        <p>در این بخش، میتوانید پکیج های ارایه خدمات فروشگاه ساز امید را مشاهده نمایید و به مقایسه آنها بپردازید.</p>
+                    </div>
+                    <div class="pricing-switcher">
+                        <div class="fieldset color-bg">
+                            <input type="radio" name="duration-1" id="monthly-1" class="tariff-toggle" checked="">
+                            <label for="monthly-1">ماهانه</label>
+                            <input type="radio" name="duration-1" class="tariff-toggle" id="yearly-1">
+                            <label for="yearly-1">سالانه</label>
+                            <span class="switch"></span>
+                        </div>
+                    </div>
+                    <div style="direction: rtl" class="pricing-wrap fl-wrap">
+                        <!-- price-item-->
+                        <div class="price-item">
+                            <div class="price-head  purp-gradient-bg">
+                                <h3>مقدماتی</h3>
+                                <div class="price-num col-dec-1 fl-wrap">
+                                    <div class="price-num-item"><span class="mouth-cont">۴۹<span class="curen">هزار تومان</span></span><span class="year-cont">۵۳۰<span class="curen">هزار تومان</span></span></div>
+                                    <div class="clearfix"></div>
+                                    <div class="price-num-desc"><span class="mouth-cont">هر ماه</span><span class="year-cont">هر سال</span></div>
+                                </div>
+                                <div class="circle-wrap" style="right:20%;top:50px;">
+                                    <div class="circle_bg-bal circle_bg-bal_versmall" data-scrollax="properties: { translateY: '50px' }" style="transform: translateZ(0px) translateY(-7.65661px);"></div>
+                                </div>
+                                <div class="circle-wrap" style="right:75%;top:90px;">
+                                    <div class="circle_bg-bal circle_bg-bal_versmall"></div>
+                                </div>
+                                <div class="footer-wave">
+                                    <svg viewBox="0 0 100 25">
+                                        <path fill="#fff" d="M0 30 V12 Q30 17 55 12 T100 11 V30z"></path>
+                                    </svg>
+                                </div>
+                                <div class="footer-wave footer-wave2">
+                                    <svg viewBox="0 0 100 25">
+                                        <path fill="#fff" d="M0 90 V12 Q30 7 45 12 T100 11 V30z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="price-content fl-wrap">
+                                <div class="price-desc fl-wrap">
+                                    <ul class="no-list-style">
+                                        <li>قابلیت شماره ۱</li>
+                                        <li>قابلیت شماره ۲</li>
+                                        <li>قابلیت شماره ۳</li>
+                                        <li>قابلیت شماره ۴</li>
+                                    </ul>
+                                    <a href="#" class="price-link purp-bg">انتخاب پکیج</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- price-item end-->
+                        <!-- price-item-->
+                        <div class="price-item best-price">
+                            <div class="price-head   gradient-bg">
+                                <h3>حرفه ای</h3>
+                                <div class="price-num col-dec-2 fl-wrap">
+                                    <div class="price-num-item"><span class="mouth-cont">۱۰۹<span class="curen">هزار تومان</span></span><span class="year-cont">۱۰۱۰<span class="curen">هزار تومان</span></span></div>
+                                    <div class="clearfix"></div>
+                                    <div class="price-num-desc"><span class="mouth-cont">هر ماه</span><span class="year-cont">هر سال</span></div>
+                                </div>
+                                <div class="circle-wrap" style="right:20%;top:70px;">
+                                    <div class="circle_bg-bal circle_bg-bal_versmall"></div>
+                                </div>
+                                <div class="circle-wrap" style="right:70%;top:40px;">
+                                    <div class="circle_bg-bal circle_bg-bal_versmall" data-scrollax="properties: { translateY: '-150px' }" style="transform: translateZ(0px) translateY(22.9698px);"></div>
+                                </div>
+                                <div class="footer-wave">
+                                    <svg viewBox="0 0 100 25">
+                                        <path fill="#fff" d="M0 60 V2 Q30 17 55 12 T100 11 V30z"></path>
+                                    </svg>
+                                </div>
+                                <div class="footer-wave footer-wave2">
+                                    <svg viewBox="0 0 100 25">
+                                        <path fill="#fff" d="M0 90 V16 Q30 7 45 12 T100 5 V30z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="price-content fl-wrap">
+                                <div class="price-desc fl-wrap">
+                                    <ul class="no-list-style">
+                                        <li>قابلیت شماره ۱</li>
+                                        <li>قابلیت شماره ۲</li>
+                                        <li>قابلیت شماره ۳</li>
+                                        <li>قابلیت شماره ۴</li>
+                                    </ul>
+                                    <a href="#" class="price-link rec-link color-bg">انتخاب پکیج</a>
+                                    <div class="recomm-price">
+                                        <i class="fal fa-check"></i>
+                                        پیشنهادی
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- price-item end-->
+                        <!-- price-item-->
+                        <div class="price-item">
+                            <div class="price-head green-gradient-bg  ">
+                                <h3>بیزنس</h3>
+                                <div class="price-num col-dec-1 fl-wrap">
+                                    <div class="price-num-item"><span class="mouth-cont">۱۴۹<span class="curen">هزار تومان</span></span><span class="year-cont">۱۴۳۰<span class="curen">هزار تومان</span></span></div>
+                                    <div class="clearfix"></div>
+                                    <div class="price-num-desc"><span class="mouth-cont">هر ماه</span><span class="year-cont">هر سال</span></div>
+                                </div>
+                                <div class="circle-wrap" style="right:20%;top:50px;">
+                                    <div class="circle_bg-bal circle_bg-bal_versmall" data-scrollax="properties: { translateY: '50px' }" style="transform: translateZ(0px) translateY(-7.65661px);"></div>
+                                </div>
+                                <div class="circle-wrap" style="right:75%;top:90px;">
+                                    <div class="circle_bg-bal circle_bg-bal_versmall"></div>
+                                </div>
+                                <div class="footer-wave">
+                                    <svg viewBox="0 0 100 25">
+                                        <path fill="#fff" d="M0 30 V12 Q30 17 55 12 T100 11 V30z"></path>
+                                    </svg>
+                                </div>
+                                <div class="footer-wave footer-wave2">
+                                    <svg viewBox="0 0 100 25">
+                                        <path fill="#fff" d="M0 90 V12 Q30 7 45 12 T100 11 V30z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="price-content fl-wrap">
+                                <div class="price-desc fl-wrap">
+                                    <ul class="no-list-style">
+                                        <li>قابلیت شماره ۱</li>
+                                        <li>قابلیت شماره ۲</li>
+                                        <li>قابلیت شماره ۳</li>
+                                        <li>قابلیت شماره ۴</li>
+                                    </ul>
+                                    <a href="#" class="price-link green-bg">انتخاب پکیج</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- price-item end-->
+                    </div>
+                    <span class="section-separator"></span>
+                    <!-- features-box-container -->
+                    <div class="features-box-container fl-wrap">
                         <div class="row">
-
-
-                            <div class="col-lg-2 col-sm-4 mb-4 mb-sm-0">
-                                <div class="wgs wgs-menu animated" data-animate="fadeInUp" data-delay=".3">
-                                    <h6 class="wgs-title">{{ __('index.linkHayePorKarbordTitle') }}</h6>
-                                    <div class="wgs-body">
-                                        <ul class="wgs-links">
-                                            <li><a target="_blank" href="{{ route('terms') }}">{{ __('index.linkHayePorKarbordItem1') }}</a></li>
-                                            <li><a target="_blank" href="/app//docs">{{ __('index.linkHayePorKarbordItem2') }}</a></li>
-                                            <li><a target="_blank" href="/app//docs">{{ __('index.linkHayePorKarbordItem3') }}</a></li>
-                                            <li><a href="/app/#faq">{{ __('index.linkHayePorKarbordItem4') }}</a></li>
-                                            <li><a href="/lang/fa">فارسی</a></li>
-                                            <li><a href="/lang/ar">عربی</a></li>
-                                        </ul>
+                            <!--features-box -->
+                            <div class="col-md-4">
+                                <div class="features-box">
+                                    <div class="time-line-icon">
+                                        <i class="fal fa-headset"></i>
                                     </div>
+                                    <h3>پشتیبانی ۲۴ ساعته</h3>
+                                    <p> امیدشاپ به پشتیبانی از مشتریان خود  متعهد است و مشتریان گرامی میتوانند بصورت ثبت تیکت، تلفنی و چت با پشتیبانی در ارتباط باشند. </p>
                                 </div>
-                            </div><!-- .col -->
-
-                            <div class="col-lg-6 mb-4 mb-lg-0 order-lg-first">
-                                <div class="wgs wgs-text animated" data-animate="fadeInUp" data-delay=".1">
-                                    <div class="wgs-body">
-                                        <a href="/" class="wgs-logo">
-                                            <img src="/app/images/logo.png" srcset="images/logo.png 2x" alt="logo">
-                                        </a>
-                                        <p style="font-family: BYekan!important;">{{ __('index.FooterTitle') }}</p>
-                                        <p class="copyright-text">{{ __('index.FooterDesc') }}</p>
+                            </div>
+                            <!-- features-box end  -->
+                            <!--features-box -->
+                            <div class="col-md-4">
+                                <div class="features-box">
+                                    <div class="time-line-icon">
+                                        <i class="fal fa-users-cog"></i>
                                     </div>
+                                    <h3>پنل مدیریت</h3>
+                                    <p> در سامانه امیدشاپ، با بهره گیری از آخرین ابزار تکنولوژی به راحتی و در هرزمان و مکان امکان مدیریت فروشگاه آنلاین فراهم میباشد. </p>
                                 </div>
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .block @e -->
+                            </div>
+                            <!-- features-box end  -->
+                            <!--features-box -->
+                            <div class="col-md-4">
+                                <div class="features-box ">
+                                    <div class="time-line-icon">
+                                        <i class="fal fa-mobile"></i>
+                                    </div>
+                                    <h3>اپلیکیشن موبایل</h3>
+                                    <p>پس از ایجاد فروشگاه در سیستم فروشگاه ساز امید، میتوانید درخواست ایجاد اپلیکیشن اندروید و ios فروشگاه خود را ثبت نمایید.</p>
+                                </div>
+                            </div>
+                            <!-- features-box end  -->
+                        </div>
+                    </div>
+                    <!-- features-box-container end  -->
                 </div>
-
             </section>
-            <div class="nk-ovm shape-b"></div>
-        </footer>
+
+
+
+
+            <!--section  -->
+            <section class="gradient-bg hidden-section" data-scrollax-parent="true">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="collage-image">
+                                <img src="/index/images/api.png" class="main-collage-image" alt="">
+                                <div class="images-collage-title color2-bg icdec"> <p> اپلیکیشن بر بستر امید شاپ </p></div>
+                                <div class="images-collage_icon green-bg" style="right:-20px; top:120px;"><i class="fal fa-thumbs-up"></i></div>
+                                <div class="collage-image-min cim_1"><img src="/index/images/api/1.jpg" alt=""></div>
+                                <div class="collage-image-min cim_2"><img src="/index/images/api/2.jpg" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="colomn-text  pad-top-column-text fl-wrap">
+                                <div class="colomn-text-title">
+                                    <h3 style="text-align: right">اپلیکیشن اختصاصی فروشگاه شما </h3>
+                                    <p style="text-align: right; direction: rtl">پس از ایجاد فروشگاه در سیستم فروشگاه ساز امید، میتوانید درخواست ایجاد اپلیکیشن اندروید و ios فروشگاه خود را ثبت نمایید.</p>
+                                    <a href="#" class=" down-btn color3-bg"><i class="fab fa-apple"></i>  آی او اس </a>
+                                    <a href="#" class=" down-btn color3-bg"><i class="fab fa-android"></i>  اندروید </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="gradient-bg-figure" style="right:-30px;top:10px;"></div>
+                <div class="gradient-bg-figure" style="left:-20px;bottom:30px;"></div>
+                <div class="circle-wrap" style="left:270px;top:120px;" data-scrollax="properties: { translateY: '-200px' }">
+                    <div class="circle_bg-bal circle_bg-bal_small"></div>
+                </div>
+                <div class="circle-wrap" style="right:420px;bottom:-70px;" data-scrollax="properties: { translateY: '150px' }">
+                    <div class="circle_bg-bal circle_bg-bal_big"></div>
+                </div>
+                <div class="circle-wrap" style="left:420px;top:-70px;" data-scrollax="properties: { translateY: '100px' }">
+                    <div class="circle_bg-bal circle_bg-bal_big"></div>
+                </div>
+                <div class="circle-wrap" style="left:40%;bottom:-70px;"  >
+                    <div class="circle_bg-bal circle_bg-bal_middle"></div>
+                </div>
+                <div class="circle-wrap" style="right:40%;top:-10px;"  >
+                    <div class="circle_bg-bal circle_bg-bal_versmall" data-scrollax="properties: { translateY: '-350px' }"></div>
+                </div>
+                <div class="circle-wrap" style="right:55%;top:90px;"  >
+                    <div class="circle_bg-bal circle_bg-bal_versmall" data-scrollax="properties: { translateY: '-350px' }"></div>
+                </div>
+            </section>
+            <!--section end-->
+
+            <!--section  -->
+            <section class="gray-bg">
+                <div class="container">
+                    <div class="clients-carousel-wrap fl-wrap">
+                        <div class="cc-btn   cc-prev"><i class="fal fa-angle-left"></i></div>
+                        <div class="cc-btn cc-next"><i class="fal fa-angle-right"></i></div>
+                        <div class="clients-carousel">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <!--client-item-->
+                                    <div class="swiper-slide">
+                                        <a href="#" class="client-item"><img src="http://fannavars.ir/media/logos/logo.png" alt=""></a>
+                                    </div>
+                                    <!--client-item end-->
+                                    <!--client-item-->
+                                    <div class="swiper-slide">
+                                        <a href="#" class="client-item"><img src="http://fannavars.ir/media/logos/logo.png" alt=""></a>
+                                    </div>
+                                    <!--client-item end-->
+                                    <!--client-item-->
+                                    <div class="swiper-slide">
+                                        <a href="#" class="client-item"><img src="http://fannavars.ir/media/logos/logo.png" alt=""></a>
+                                    </div>
+                                    <!--client-item end-->
+                                    <!--client-item-->
+                                    <div class="swiper-slide">
+                                        <a href="#" class="client-item"><img src="http://fannavars.ir/media/logos/logo.png" alt=""></a>
+                                    </div>
+                                    <!--client-item end-->
+                                    <!--client-item-->
+                                    <div class="swiper-slide">
+                                        <a href="#" class="client-item"><img src="http://fannavars.ir/media/logos/logo.png" alt=""></a>
+                                    </div>
+                                    <!--client-item end-->
+                                    <!--client-item-->
+                                    <div class="swiper-slide">
+                                        <a href="#" class="client-item"><img src="http://fannavars.ir/media/logos/logo.png" alt=""></a>
+                                    </div>
+                                    <!--client-item end-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--section end-->
+        </div>
+        <!--content end-->
     </div>
+    <!-- wrapper end-->
+    <!--footer -->
+    <footer class="main-footer fl-wrap">
+        <!-- footer-header-->
+        <div class="footer-header fl-wrap grad ient-dark">
+            <div class="container">
+                <div class="row">
 
-    <!---begin GOFTINO code--->
-    <script type="text/javascript">
-        !function(){var g=document.createElement("script"),s="https://www.goftino.com/widget/Hqa6DI",e=document.getElementsByTagName("script")[0];g.type="text/javascript";g.async=!0;g.src=localStorage.getItem("goftino")?s+"?o="+localStorage.getItem("goftino"):s;e.parentNode.insertBefore(g,e);}();
-    </script>
-    <!---end GOFTINO code--->
+                    <div class="col-md-7">
+                        <div class="subscribe-widget">
+                            <div class="subcribe-form">
+                                <form id="subscribe">
+                                    <input style="direction: rtl" class="enteremail fl-wrap" name="email" id="subscribe-email" placeholder="آدرس ایمیل خود را وارد نمایید" spellcheck="false" type="text">
+                                    <button type="submit" id="subscribe-button" class="subscribe-button"><i class="fal fa-envelope"></i></button>
+                                    <label for="subscribe-email" class="subscribe-message"></label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div style="text-align: right" class="subscribe-header">
+                            <h3>عضویت در خبرنامه امیدشاپ</h3>
+                            <p style="direction: rtl" >با عضویت در سامانه خبرنامه فروشگاه ساز امید، از آخرین امکانات و بروزرسانی ها باخبر شوید.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-header end-->
+        <!--footer-inner-->
 
-    <!-- JavaScript -->
-    <script src="/app/js/jquery.bundlee332.js?ver=161"></script>
-    <script src="/app/js/scriptse332.js?ver=161"></script>
-    <script src="/app/js/charts.js"></script>
+        <!--footer-inner end -->
+        <!--sub-footer-->
+        <div class="sub-footer  fl-wrap">
+            <div class="container">
+                <div class="copyright">  &#169;    تمامی حقوق محفوظ است. سیستم فروشگاه ساز امید</div>
+            </div>
+        </div>
+        <!--sub-footer end -->
+    </footer>
+    <!--footer end -->
+
+    <a class="to-top"><i class="fas fa-caret-up"></i></a>
+</div>
+<!-- Main end -->
+<!--=============== scripts  ===============-->
+<script src="/index/js/jquery.min.js"></script>
+<script src="/index/js/plugins.js"></script>
+<script src="/index/js/scripts.js"></script>
+<script src="/index/js/map-single.js"></script>
 </body>
 
 </html>

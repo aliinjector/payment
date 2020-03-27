@@ -13,12 +13,13 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-        if(request()->getHost() === 'omidshop.net'){
-            return view('app.index');
+        if(request()->getHost() === 'omidshop.net' OR request()->getHost() === '127.0.0.1'){
+            $products = Product::orderBy('id', 'DESC')->limit(6)->get();
+            $shops = Shop::orderBy('id', 'ASC')->limit(10)->get();
+            return view('app.index', compact('products', 'shops'));
         }else{
             $shop = Shop::where('url', request()->getHost())->first();
             return \Redirect::to('/' . $shop->english_name);
-
         }
     }
 
@@ -54,8 +55,9 @@ class IndexController extends Controller
 
     public function productsSearch(Request $request)
     {
-      $products = Product::search(trim($request->queryy))->get();
-      $queryy = $request->queryy;
+//      $products = Product::search(trim($request->keyword))->paginate(20);
+      $products = Product::where('title', 'like', '%' . $request->keyword . '%')->paginate(5);
+      $queryy = $request->keyword;
       return view('app.products', compact('products', 'queryy'));
     }
 
