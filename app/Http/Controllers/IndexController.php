@@ -13,12 +13,11 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-        if(request()->getHost() === 'omidshop.net'){
+        if(request()->getHost() === 'omidshop.net' or request()->getHost() === 'localhost'){
             return view('app.index');
         }else{
             $shop = Shop::where('url', request()->getHost())->first();
             return \Redirect::to('/' . $shop->english_name);
-
         }
     }
 

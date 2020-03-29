@@ -59,17 +59,19 @@
     <!--end col-->
 </div>
 </div>
-<h2 class="line-throw line-height-none"><span> @if(\Request::route()->getName() == 'category'){{ __('app-shop-1-category.mahsoolatDasteBandi') }} {{ $category->name }} @elseif(\Request::route()->getName() == 'tag') محصولات تگ {{ $tag->name }}  @else محصولات برند {{ $brand->name }} @endif</span></h2>
+<h2 class="line-throw line-height-none"><span> @if(\Request::route()->getName() == 'category'){{ __('app-shop-1-category.mahsoolatDasteBandi') }} {{ $category->name }} @elseif(\Request::route()->getName() == 'tag') محصولات تگ {{ $tag->name }} @elseif (\Request::route()->getName() == 'search') نتیحه جستوجو  @else محصولات برند {{ $brand->name }} @endif</span></h2>
 <div class="row p-5">
 
+    @if(\Request::route()->getName() != 'search')
     @include('app.shop.1.layouts.partials.filtering')
     <div class="col-lg-9">
 
       @include('app.shop.1.layouts.partials.ordering')
+    @endif
 
         </form>
         <div class="row col-lg-12 {{ $products->count() == null ? 'd-flex justify-content-center mt-4' : '' }}">
-            @if($products->count() != null)
+            @if($products->where('status', 'enable')->count() != null)
 
                 @foreach ($productsPaginate->where('status', 'enable') as $product)
                   @php
@@ -153,6 +155,8 @@
   <link type="text/css" href="jquery.ui.slider-rtl.css" rel="stylesheet">
   <script src="/app/shop/1/assets/js/jquery-ui.js"></script>
   <script src="/app/shop/1/assets/js/jquery.ui.slider-rtl.js"></script>
+  @if(\Request::route()->getName() != 'search')
+
   <script>
   $(document).ready(function() {
       $("#mySlider").slider({isRTL: true, range: true,
@@ -181,6 +185,7 @@
       }
   });
   </script>
+@endif
 
   <script type="text/javascript">
   $(document).ready(function() {

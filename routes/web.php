@@ -107,6 +107,9 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('product-list/{id}/edit-physical', 'ProductController@editPhysical')->name('product-list.edit-physical');
         Route::get('product-list/{id}/edit-file', 'ProductController@editFile')->name('product-list.edit-file');
         Route::get('product-list/{id}/edit-service', 'ProductController@editService')->name('product-list.edit-service');
+        Route::get('product-list/{product}/show-physical', 'ProductController@showPhysical')->name('product-list.show-physical');
+        Route::get('product-list/{product}/show-file', 'ProductController@showFile')->name('product-list.show-file');
+        Route::get('product-list/{product}/show-service', 'ProductController@showService')->name('product-list.show-service');
         Route::post('product-list/getFeatures', 'ProductController@getFeatures')->name('product-list.getFeatures');
 
         Route::prefix('categrory-managment')->group(function () {

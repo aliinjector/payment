@@ -25,7 +25,7 @@ class ProductCategoryController extends Controller
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
       $parentCategories = \Auth::user()->shop()->first()->ProductCategories()->get()->where('parent_id', null);
-        return view('dashboard.shop.ProductCategory.index', compact('categoires' , 'shop','parentCategories'));
+        return view('dashboard.shop.product-category.index', compact('categoires' , 'shop','parentCategories'));
             }
     }
 
@@ -116,7 +116,7 @@ class ProductCategoryController extends Controller
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
       $parentCategories = \Auth::user()->shop()->first()->ProductCategories()->get()->where('parent_id', null);
-      return view('dashboard.shop.ProductCategory.edit', compact('categoires', 'shop', 'parentCategories', 'category'));
+      return view('dashboard.shop.product-category.edit', compact('categoires', 'shop', 'parentCategories', 'category'));
     }
 
     /**

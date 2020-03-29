@@ -50,6 +50,7 @@
       else{
         $slideCategories = null;
       }
+
       $shop = Shop::where('english_name', $shopName)->first();
       $lastProducts = $shop->products()->where('status', 'enable')->orderBy('created_at', 'DESC')->take(4)->get();
       $bestSellings = $shop->products()->where('status', 'enable')->orderBy('buyCount', 'DESC')->take(4)->get();

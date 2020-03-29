@@ -1,5 +1,5 @@
 <div class="tt-filters-options" id="js-tt-filters-options">
-  <h1 class="tt-title">@if(isset($category)) {{ $category->name }} @elseif(isset($tag)) {{ $tag->name }} @else {{ $brand->name }} @endif <span class="tt-title-total byekan">({{ $products->count() }})</span></h1>
+  <h1 class="tt-title">@if(isset($category)) {{ $category->name }} @elseif(isset($tag)) {{ $tag->name }} @else {{ $brand->name }} @endif <span class="tt-title-total byekan">({{ $products->where('status', 'enable')->count() }})</span></h1>
   <div class="tt-btn-toggle"><a href="#">{{ __('app-shop-2-category.filter') }}</a></div>
   <div class="tt-sort d-flex">
     <select class="available-filter-1" name="sortBy[field]">

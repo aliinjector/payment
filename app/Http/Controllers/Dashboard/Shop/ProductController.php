@@ -388,22 +388,40 @@ else{
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showPhysical(Product $product)
     {
-      //
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }else{
+              $shop = \Auth::user()->shop()->first();
+              return view('dashboard.shop.product.show-physical', compact('product','shop'));
+            }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
 
-    public function edit(Product $product)
-   {
-             //
+
+    public function showFile(Product $product)
+    {
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }else{
+              $shop = \Auth::user()->shop()->first();
+              return view('dashboard.shop.product.show-file', compact('product','shop'));
+            }
     }
+
+
+
+    public function showService(Product $product)
+    {
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }else{
+              $shop = \Auth::user()->shop()->first();
+              return view('dashboard.shop.product.show-service', compact('product','shop'));
+            }
+    }
+
 
 
 

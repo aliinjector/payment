@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
       $schedule->call(function () {
-        Product::where('off_price_expired_at', '<',  now())
+        Product::where('off_price_expired_at', '<',  now())->orWhere('off_price_expired_at', null)
         ->update(
           ['off_price' => null , 'off_price_expired_at' => null, 'off_price_started_at' => null],
         );

@@ -61,16 +61,14 @@
                                     </td>
                                     <td>
                                         <select class="form-control p-1" style="width: 65px;" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
-                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 1) selected
-                                                @endif value="1">۱</option>
-                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 2) selected
-                                                @endif value="2">۲</option>
-                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 3) selected
-                                                @endif value="3">۳</option>
-                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 4) selected
-                                                @endif value="4">۴</option>
-                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == 5) selected
-                                                @endif value="5">۵</option>
+                                    @for ($i=1; $i < $cartProduct->product->amount; $i++)
+
+                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
+                                                {{ $i }}
+                                              </option>
+
+                                              @endfor
+
                                         </select>
 
                                     </td>

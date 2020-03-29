@@ -255,13 +255,13 @@
                                             <ul>
                                                 @auth()
                                                 <li><a href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="icon-n-072"><span class="tt-badge-cart">
-                                                                @if(\Auth::user()->wishlist()->get()->count() != 0) {{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->products()->count() }}
+                                                                @if(\Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->count() != 0) {{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->products()->count() }}
                                                                     @else 0
                                                                     @endif
                                                             </span></i>{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a>
                                                 </li>
                                                 <li><a href="{{ route('compare' , ['shop' => $shop->english_name]) }}"><i class="fa fa-adjust ml-1" style="font-size: 17px;"><span class="tt-badge-cart">
-                                                                @if(\Auth::user()->compare()->get()->count() != 0) {{ \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->products()->count() }}
+                                                                @if(\Auth::user()->compare()->get()->where('shop_id', $shop->id)->count() != 0) {{ \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->products()->count() }}
                                                                     @else 0
                                                                     @endif
                                                             </span></i>مقایسه ها</a>
@@ -463,7 +463,7 @@
                                     <li><a href="{{ route('wishlist', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a></li>
                                     <li><a href="{{ route('login', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
                                     <li><a href="{{ route('template.contact', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.darbareMaVaTamas') }}</a></li>
-                                    <li><a href="{{ route('faq.show', $shop->english_name) }}">سواالات متداول</a></li>
+                                    {{-- <li><a href="{{ route('faq.show', $shop->english_name) }}">سواالات متداول</a></li> --}}
                                 </ul>
                             </div>
                         </div>

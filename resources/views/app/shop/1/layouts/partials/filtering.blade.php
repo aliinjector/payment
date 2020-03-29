@@ -58,7 +58,7 @@
                 <ul class="list-group font-15">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                     <a class="text-color-orginal p-2" href="{{ route('brand', ['shop'=>$shop->english_name, 'name'=>$brand->id]) }}"> {{ $brand->name }} </a>
-                        <span class="badge badge-primary badge-pill byekan bg-orange-omid">{{ $brand->products->count() }}</span>
+                        <span class="badge badge-primary badge-pill byekan bg-orange-omid">{{ $brand->products->where('status', 'enable')->count() }}</span>
                     </li>
                 </ul>
                 @endforeach

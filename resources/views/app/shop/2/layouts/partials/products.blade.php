@@ -27,13 +27,15 @@
 				@endif
 			</div>
 			<div class="row">
+				@if(\Request::route()->getName() != 'search')
+
 				@include('app.shop.2.layouts.partials.filtering')
 
 				<div class="col-md-12 col-lg-9 col-xl-9">
 					<div class="content-indent container-fluid-custom-mobile-padding-02">
 
 						@include('app.shop.2.layouts.partials.ordering')
-
+@endif
 						<div class="tt-product-listing row tt-col-three" id="tt-product-listing">
 							@foreach($productsPaginate->where('status', 'enable') as $product)
 							<div class="col-5 col-md-2 tt-col-item p-2">
@@ -122,6 +124,8 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="/app/shop/2/js/jquery-ui.js"></script>
 	<script src="/app/shop/2/js/jquery.ui.slider-rtl.js"></script>
+	@if(\Request::route()->getName() != 'search')
+
 	<script>
 	$(document).ready(function() {
 		$("#mySlider").slider({isRTL: true, range: true,
@@ -149,4 +153,5 @@
 
 	});
 	</script>
+@endif
 @endsection

@@ -276,7 +276,7 @@ Author: Ali Rahmani
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="far fa-edit"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatForooshgah') }}</a></li>
                             <div class="collapse mr-4 {{ request()->is('*managment*') == 1 ? 'show' : '' }}" id="collapseExample">
                             <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarTanzimaatForooshgah') }}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fa fa-question-circle"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarFAQ') }}</a></li>
+                            {{-- <li class="nav-item"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fa fa-question-circle"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarFAQ') }}</a></li> --}}
                             <li class="nav-item"><a class="nav-link" href="{{ route('slideshow.index') }}"><i class="fa fa-clone"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarSlider') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="dripicons-calendar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarFeedback') }}</a></li>
                             </div>

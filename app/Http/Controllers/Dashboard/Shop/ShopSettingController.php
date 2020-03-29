@@ -151,7 +151,6 @@ class ShopSettingController extends Controller
         'name' => $request->name,
         'english_name' => $request->english_name,
         'user_id' => \Auth::user()->id,
-        'status' => 0,
         'quick_way' => $request->quick_way,
         'quick_way_price' => $this->fa_num_to_en($request->quick_way_price),
         'posting_way' => $request->posting_way,

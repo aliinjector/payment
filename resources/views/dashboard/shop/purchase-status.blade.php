@@ -52,7 +52,7 @@
                                 </thead>
 
                                 <tbody class="font-18">
-                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct()->get() as $product)
+                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct()->withTrashed()->get() as $product)
                                     <tr class="byekan">
                                         <td><a href="{{ route('product', ['shop' => $product->product()->withTrashed()->get()->first()->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id' => $product->product()->withTrashed()->get()->first()->id]) }}" target="_blank"><img src="{{ $product->product()->withTrashed()->get()->first()->image['200,100']}}" alt="user"></a></td>
                                         <td><a href="{{ route('product', ['shop'=>$product->product()->withTrashed()->get()->first()->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}" target="_blank">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
