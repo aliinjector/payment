@@ -539,7 +539,7 @@
                  @foreach($bestSellings as $bestSelling)
                   <div class="carousel-item {{ $i==0 ? 'active' : '' }}">
                      <div class="media">
-                        <img src="{{ $bestSelling->image['400,400'] }}"  height="230" width="190" class="mr-2" alt="...">
+                        <img src="{{ $bestSelling->image['400,400'] }}"  height="170" width="190" class="mr-2" alt="...">
                         <div class="media-body align-self-center">
                            <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
                            <h4 class="mt-0">{{ $bestSelling->title }}</h4>

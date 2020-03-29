@@ -1,5 +1,6 @@
     $('#input-tags').tagsInput();
-
+    $('#input-tags1').tagsInput();
+    $('#input-tags2').tagsInput();
     $(window).resize(function() {
         if ($(window).width() < 1400) {
             $("body").addClass('enlarge-menu');
@@ -20,6 +21,8 @@
     }).resize();
     $(document).ready(function() {
         $('#input-tags_tag').val("");
+        $('#input-tags1_tag').val("");
+        $('#input-tags2_tag').val("");
         $(".dropify-clear").remove();
     });
 $(document).on('click', '#removerProduct', function(e) {

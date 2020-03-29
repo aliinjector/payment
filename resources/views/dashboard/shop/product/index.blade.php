@@ -95,6 +95,26 @@
         });
     });
 </script>
+<style media="screen">
+<style>
+  .label-info {
+      background-color: #5bc0de;
+  }
+
+  .label {
+      display: inline;
+      padding: .2em .6em .3em;
+      font-size: 75%;
+      font-weight: 700;
+      line-height: 1;
+      color: #fff;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: .25em;
+  }
+</style>
+</style>
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -131,7 +151,7 @@
                                             <div class="p-4">
                                                 <span class="sett-card-icon set-icon-purple"><i class="fa fa-boxes f-em5"></i></span>
                                             </div>
-                                            <div class="">
+                                            <div>
                                                 <p class="f-em1-5 m-5 mr-4 iranyekan">{{ __('dashboard-shop-product-index.addItem1') }}</p>
                                             </div>
                                         </div>
@@ -310,6 +330,7 @@
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem12') }} :</span></div>
                                             <input value="{{ old('tags') }}" type="text" id="input-tags" name="tags" class="form-control" />
+                                            <label class="text-muted m-2">برای ثبت هر برچسب از Enter استفاده نمایید</label>
                                         </div>
                                         <div class="input-group mt-3 bg-white col-lg-12">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem13') }} :</span></div>
@@ -471,7 +492,9 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFileItem77') }} :</span></div>
-                                            <input value="{{ old('tags') }}" type="text" id="input-tags" name="tags" class="form-control" />
+                                            <input value="{{ old('tags') }}" type="text" id="input-tags1" name="tags" class="form-control" />
+                                            <label class="text-muted m-2">برای ثبت هر برچسب از Enter استفاده نمایید</label>
+
                                         </div>
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFileItem8') }} :</span></div>
@@ -646,7 +669,9 @@
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolServiceItem8') }}:</span></div>
-                                            <input value="{{ old('tags') }}" type="text" id="input-tags" name="tags" class="form-control" />
+                                            <input value="{{ old('tags') }}" type="text" id="input-tags2" name="tags" class="form-control" />
+                                            <label class="text-muted m-2">برای ثبت هر برچسب از Enter استفاده نمایید</label>
+
                                         </div>
                                         <div class="input-group mt-3 bg-white">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolServiceItem9') }} :</span></div>
@@ -868,6 +893,7 @@
                 @endif
                 <script type="text/javascript">
                     $(document).ready(function() {
+
                         $(".addFacility").click(function() {
                             $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('
                                 dashboard - shop - product - index.addMahsoolFizikiItem11 ') }} :</span></div><input value="{{ old('
@@ -891,7 +917,6 @@
                         uiColor: '#F3F6F7'
                     });
                 </script>
-                <script type="text/javascript">
 
-                </script>
+
                 @stop
