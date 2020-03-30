@@ -677,6 +677,11 @@ else{
 
 
     public function changeStatus(Request $request){
+      $product = Product::find($request->id);
+      if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+          return redirect()->back();
+      }
         $shop = Shop::where('english_name', $request->shop)->get()->first();
         foreach($shop->carts as $cart){
           foreach($cart->cartProduct as $cartProduct){
@@ -686,7 +691,6 @@ else{
             }
           }
         }
-        $product = Product::find($request->id);
         if($product->status == "disable")
             $product->status = "enable";
         else
@@ -724,7 +728,12 @@ else{
 
 
       public function destroyImage(Request $request){
+
         $product = Product::find($request->id);
+        if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
+            alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+            return redirect()->back();
+        }
         foreach($product->image as $image){
             $image = ltrim($image, '/');
             unlink($image);

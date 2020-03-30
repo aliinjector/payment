@@ -170,6 +170,10 @@ class ProductCategoryController extends Controller
 
      public function destroyIcon(Request $request){
        $productCategory = ProductCategory::find($request->id);
+       if ($productCategory->shop->user_id !== \Auth::user()->id) {
+               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+               return redirect()->back();
+             }
        foreach($productCategory->icon as $icon){
          $icon = ltrim($icon, '/');
          unlink($icon);
