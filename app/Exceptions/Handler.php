@@ -56,6 +56,11 @@ class Handler extends ExceptionHandler
       $methodName = \Request::route()->getActionMethod();
       $userAgent = \Request::header('user-agent');
       $userIp = \Request::ip();
+      if(\Auth::check()){
+        $user_id = \Auth::user()->id;
+      }else{
+        $user_id = null;
+      }
       ErrorLog::firstOrCreate([
         'massage' =>  $massage,
         'controller' =>  $controllerName,
@@ -63,6 +68,7 @@ class Handler extends ExceptionHandler
         'method' =>  $methodName,
         'userAgent' =>  $userAgent,
         'userIp' =>  $userIp,
+        'user_id' =>  $user_id,
       ]);
       event(new ErrorLoged());
     }

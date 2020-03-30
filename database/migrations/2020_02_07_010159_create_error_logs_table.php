@@ -21,6 +21,7 @@ class CreateErrorLogsTable extends Migration
             $table->text('method')->nullable();
             $table->text('userAgent')->nullable();
             $table->text('userIp')->nullable();
+            $table->bigInteger('user_id')->nullable();
             $table->enum('status',['not_start', 'in_progress', 'complete'])->default('not_start');
             $table->timestamps();
         });
