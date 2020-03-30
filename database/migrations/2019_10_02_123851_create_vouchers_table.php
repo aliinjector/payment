@@ -17,7 +17,7 @@ class CreateVouchersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('shop_id');
             $table->unsignedInteger('product_id')->nullable();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('description')->nullable();
             $table->integer('uses')->nullable();

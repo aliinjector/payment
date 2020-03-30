@@ -35,6 +35,7 @@ class VoucherRequest extends FormRequest
           'name' => 'required|max:50',
           'description' => 'max:70',
           'type' => 'in:on',
+          'code' => 'unique:vouchers|min:1|max:50',
           'first_purchase' => 'in:on',
           'disposable' => 'in:on',
           'users' => 'max:170',
