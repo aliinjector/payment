@@ -19,12 +19,15 @@ use Illuminate\Support\Facades\Session;
 use Artesaos\SEOTools\Facades\SEOTools;
 use App\Notifications\NewPurchaseForShopOwner;
 use App\Notifications\MinAmountWarning;
+use App\Http\Requests\PurchaseRequest;
+use App\Http\Requests\PurchaseSubmitRequest;
+
 
 
 class PurchaseController extends Controller
 {
 
-  public function approved($shopName, Request $request) {
+  public function approved($shopName, PurchaseRequest $request) {
     $shop = Shop::where('english_name', $shopName)->first();
     $shopCategories = $shop->ProductCategories()->get();
     $cart = \Auth::user()->cart()->get()->first();
@@ -213,14 +216,14 @@ class PurchaseController extends Controller
           'voucher_status' => 'unused',
           'voucher_id' => null,
           ]);
-        return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+        return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
 
 
 
 
 
-      public function purchaseSubmit($shopName, $cartID, Request $request) {
+      public function purchaseSubmit($shopName, $cartID, PurchaseSubmitRequest $request) {
           $cart = \Auth::user()->cart()->get()->first();
           $shop = Shop::where('english_name', $shopName)->first();
           $shopOwner = $shop->user;
