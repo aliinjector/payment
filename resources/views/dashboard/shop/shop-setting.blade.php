@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<link rel="stylesheet" href="/dashboard/assets/css/bootstrap-select.css" />
 <link href="{{ asset('/dashboard/assets/css/admin-shop-setting.css') }}" rel="stylesheet">
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
 
@@ -225,7 +225,7 @@
                                               </div>
                                               <div class="row">
 
-                                              
+
                                               </div>
                                                   <div id="person_way_price" class="collapse mt-2">
                                                       <input class="form-control border-custom" type="number" name="person_way_price" value="{{ $shopInformation->person_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
@@ -852,8 +852,8 @@
 
 
 @section('pageScripts')
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+  <script src="{{ asset('/dashboard/assets/js/bootstrap.bundle.min-2.js') }}"></script>
+  <script src="{{ asset('/dashboard/assets/js/bootstrap-select.min.js') }}"></script>
   <script src="{{ asset('/dashboard/assets/js/admin-shop-setting.js') }}"></script>
 
   <script>

@@ -1,10 +1,10 @@
 @extends('dashboard.layouts.master')
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-<link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-tagsinput/1.3.6/jquery.tagsinput.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('/dashboard/assets/css/bootstrap-select.css') }}" />
+<link href="{{ asset('/dashboard/assets/css/jquery.tagsinput.min.css') }}" rel="stylesheet">
 <link href="{{ asset('/dashboard/assets/css/toggle-button.css') }}" rel="stylesheet">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('/dashboard/assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('/dashboard/assets/js/bootstrap-select.min.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $('.start-field-example').persianDatepicker({
