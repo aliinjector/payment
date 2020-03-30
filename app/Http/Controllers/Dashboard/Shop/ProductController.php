@@ -75,10 +75,9 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
-
          if($request->off_price == null){
-           $request->off_price_started_at == null;
-           $request->off_price_expired_at == null;
+           $request->merge(['off_price_started_at' => null]);
+           $request->merge(['off_price_expired_at' => null]);
          }
          else{
            $request->validate([

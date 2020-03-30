@@ -239,8 +239,7 @@ class PurchaseController extends Controller
             }
           foreach($productIds as $productId){
             if (Product::find($productId)->off_price != null and (Product::find($productId)->off_price_started_at > now() or Product::find($productId)->off_price_expired_at < now())){
-              dd(Product::find($productId));
-              return redirect()->route('user-cart', ['shop' => $shop->english_name])->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' از حالت تخفیف خارج شده است.');
+              return redirect()->route('user-cart', ['shop' => $shop->english_name])->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' از حالت تخفیف خارج شده است. درصورت نیاز به خرید با قیمت جدید , پس از گذشت یک دقیقه اقدام به خرید مجدد بفرمایید.');
             }
             }
 
