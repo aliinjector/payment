@@ -1,7 +1,7 @@
 @extends('app.shop.1.layouts.master')
 @section('content')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-<link href='/app/shop/1/assets/css//simplelightbox.min.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/app/shop/1/assets/css/bootstrap-select.css" />
+<link href='/app/shop/1/assets/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
 <style>
 .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
