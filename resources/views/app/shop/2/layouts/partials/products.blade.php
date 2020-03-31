@@ -54,7 +54,7 @@
 
 											<a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();" class="tt-btn-compare" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"></a>
 										</form>
-										<a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><span class="tt-img"><img class="col-12" src="{{ $product->image['250,250'] }}" data-src="{{ $product->image['250,250'] }}"
+										<a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><span class="tt-img"><img class="col-12" src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" data-src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}"
 												  alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a>
 									</div>
 

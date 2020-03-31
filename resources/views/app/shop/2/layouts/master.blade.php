@@ -209,7 +209,7 @@
                                                             @foreach ($cart->cartProduct as $cartProduct)
                                                             <div class="tt-item border-bottom p-3">
                                                                 <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$cartProduct->product->slug,'id'=>$cartProduct->product->id]) }}" target="_blank">
-                                                                    <div class="tt-item-img"><img src="{{ $cartProduct->product->image['80,80'] }}" data-src="{{ $cartProduct->product->image['80,80'] }}" alt=""></div>
+                                                                    <div class="tt-item-img"><img src="{{ asset($cartProduct->product->image['80,80'] ? $cartProduct->product->image['80,80'] : '/images/no-image.png') }}" data-src="{{ asset($cartProduct->product->image['80,80'] ? $cartProduct->product->image['80,80'] : '/images/no-image.png') }}" alt=""></div>
                                                                     <div class="tt-item-descriptions">
                                                                         <h2 class="tt-title">{{ $cartProduct->product->title }}</h2>
                                                                         <ul class="tt-add-info">

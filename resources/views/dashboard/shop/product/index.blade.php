@@ -780,7 +780,7 @@
                                               @endphp
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                                 <td class="sorting_1" style="width:5%">{{ $id }}</td>
-                                                <td class="sorting_1" style="width:5%"><img src="{{ $product->image['80,80'] }}" class="img-fluid" alt="Responsive image"></td>
+                                                <td class="sorting_1" style="width:5%"><img src="{{ asset($product->image['80,80'] ? $product->image['80,80'] : '/images/no-image.png') }}" class="img-fluid" alt="Responsive image"></td>
                                                 <td class="sorting_1">
 
                                                     <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product', ['shop'=>\Auth::user()->shop()->first()->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" target="_blank"

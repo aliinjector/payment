@@ -69,12 +69,12 @@
                     <div class="tt-product-vertical-layout">
                         <div class="tt-product-single-img">
                             <div>
-                                <button class="tt-btn-zomm tt-top-right"><i class="icon-f-86"></i></button> <img class="zoom-product" src="{{ $product->image['original'] }}" data-zoom-image="{{ $product->image['original'] }}" alt="">
+                                <button class="tt-btn-zomm tt-top-right"><i class="icon-f-86"></i></button> <img class="zoom-product" src="{{ asset($product->image['original'] ? $product->image['original'] : '/images/no-image.png') }}" data-zoom-image="{{ asset($product->image['original'] ? $product->image['original'] : '/images/no-image.png') }}" alt="">
                             </div>
                         </div>
                         <div class="tt-product-single-carousel-vertical">
                             <ul id="smallGallery" class="tt-slick-button-vertical slick-animated-show-js">
-                                <li><a class="zoomGalleryActive" href="#" data-image="{{ $product->image['original'] }}" data-zoom-image="{{ $product->image['original'] }}"><img src="{{ $product->image['original'] }}" alt=""></a></li>
+                                <li><a class="zoomGalleryActive" href="#" data-image="{{ asset($product->image['original'] ? $product->image['original'] : '/images/no-image.png') }}" data-zoom-image="{{ asset($product->image['original'] ? $product->image['original'] : '/images/no-image.png') }}"><img src="{{ asset($product->image['original'] ? $product->image['original'] : '/images/no-image.png') }}" alt=""></a></li>
                                 @foreach ($galleries as $gallery)
                                 <li><a href="#" data-image="/{{ $gallery->filename }}" data-zoom-image="/{{ $gallery->filename }}"><img src="/{{ $gallery->filename }}" alt=""></a></li>
                                 @endforeach
@@ -435,7 +435,7 @@
                   <div class="col-sm-6 col-md-6 col-lg-3 py-3">
                     <div class="card">
                       <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="crd-img-off" @else class="crd-img" @endif >
-                      <img class="card-img-top" src="{{ $product->image['250,250'] }}" alt="Card image cap">
+                      <img class="card-img-top" src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="Card image cap">
                       </a>
                       <div class="card-body">
                         <h5 class="card-title">{{ $product->title }}</h5>

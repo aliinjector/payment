@@ -22,7 +22,11 @@ class CompareController extends Controller
           if (Shop::where('english_name', $shopName)->first() == null) {
               return abort(404);
           }
-          $compareProducts = \Auth::user()->compare()->get()->where('shop_id', Shop::where('english_name', $shopName)->first()->id)->first()->products;
+          if(\Auth::user()->compare()->get()->where('shop_id', Shop::where('english_name', $shopName)->first()->id)->first()->count() > 0){
+            $compareProducts = \Auth::user()->compare()->get()->where('shop_id', Shop::where('english_name', $shopName)->first()->id)->first()->products;
+          }else{
+            $compareProducts = collect();
+          }
           $shopCategories = Shop::where('english_name', $shopName)->first()->ProductCategories()->get();
           $shop = Shop::where('english_name', $shopName)->first();
           $template_folderName = $shop->template->folderName;

@@ -37,7 +37,7 @@
                             <a href="#" class="btn-link mt-3" id="removeProduct" data-shop="{{ $shop->english_name }}" data-compare="{{ \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->id }}" data-id="{{ $compareProduct->id }}"><i
                                   class="fa fa-trash font-18 p-1 my-4 text-danger"></i>
                             </a>
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}"><img src="{{$compareProduct->image['250,250']}}" alt="product image" class="w-100" style="max-height:15vh">
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}"><img src="{{ asset($compareProduct->image['250,250'] ? $compareProduct->image['250,250'] : '/images/no-image.png') }}" alt="product image" class="w-100" style="max-height:15vh">
                             </a>
                             <h3>
                                 <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}">

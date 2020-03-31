@@ -73,7 +73,7 @@
 
                     <div class="col-lg-3">
                         <div class="card e-co-product">
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><img src="{{ $product->image['250,250'] }}" alt="" class="img-fluid"></a>
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><img src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="" class="img-fluid"></a>
                             <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="product-title">{{ $product->title }}</a>
                                 <div class="d-flex justify-content-between my-2 byekan">
                                     <p class="product-price byekan">{{  number_format($product->price) }} تومان  <span class="ml-2 byekan"></span></p>

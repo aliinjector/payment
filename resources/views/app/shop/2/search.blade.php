@@ -214,7 +214,7 @@
 															<div class="tt-product thumbprod-center">
 																	<div class="tt-image-box">
 																			<a href="#" class="tt-btn-wishlist" data-tooltip="افزودن به علاقه مندی" data-tposition="left"></a>
-																			<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><span class="tt-img"><img src="images/loader.svg" data-src="{{ $product->image['original'] }}" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a></div>
+																			<a href="#" class="tt-btn-compare" data-tooltip="مقایسه" data-tposition="left"></a> <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><span class="tt-img"><img src="images/loader.svg" data-src="{{ asset($product->image['original'] ? $product->image['original'] : '/images/no-image.png') }}" alt=""></span><span class="tt-img-roll-over"><img src="images/loader.svg" data-src="images/product/product-25-01.jpg" alt=""></span></a></div>
 																	<div class="tt-description">
 																			<div class="tt-row">
 																					<ul class="tt-add-info">

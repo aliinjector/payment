@@ -17,7 +17,7 @@
 
         <a style="margin: auto;" href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}">
             <span class="tt-img">
-                <img src="/app/shop/2/images/loader.svg" data-src="{{ $product->image['250,250'] }}" alt="">
+                <img src="/app/shop/2/images/loader.svg" data-src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="">
             </span>
             @if(0)
             <span class="tt-img-roll-over">

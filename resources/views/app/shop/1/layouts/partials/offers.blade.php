@@ -3,7 +3,7 @@
     @forelse ($offeredProducts as $offeredProduct)
       <div class="col-lg-3">
           <div class="card e-co-product" style="min-height: 40vh;">
-              <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$offeredProduct->slug, 'id' => $offeredProduct->id]) }}"><img src="{{ $offeredProduct->image['250,250'] }}" alt="" class="img-fluid"></a>
+              <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$offeredProduct->slug, 'id' => $offeredProduct->id]) }}"><img src="{{ asset($offeredProduct->image['250,250'] ? $offeredProduct->image['250,250'] : '/images/no-image.png') }}" alt="" class="img-fluid"></a>
               <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$offeredProduct->slug, 'id' => $offeredProduct->id]) }}" class="product-title">{{ $offeredProduct->title }}</a>
                   <div class="d-flex justify-content-between my-2 byekan">
                       @if($offeredProduct->off_price != null and $offeredProduct->off_price_started_at < now() and $offeredProduct->off_price_expired_at > now())

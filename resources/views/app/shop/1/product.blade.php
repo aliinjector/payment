@@ -41,7 +41,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6"><img src="{{ $product->image['400,400'] }}" alt="" class="col-8 d-block img-thumbnail" style="max-height: 40em;">
+                    <div class="col-lg-6"><img src="{{ asset($product->image['400,400'] ? $product->image['400,400'] : '/images/no-image.png') }}" alt="" class="col-8 d-block img-thumbnail" style="max-height: 40em;">
                         <div class="gallery mt-4 mr-4">
                             @foreach ($galleries as $gallery)
                             <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
@@ -267,7 +267,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-3 align-self-center"><img src="{{ $product->image['250,250'] }}" alt="" height="250" class="d-block mx-auto col-12"></div>
+                    <div class="col-lg-3 align-self-center"><img src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="" height="250" class="d-block mx-auto col-12"></div>
                     <div class="col-lg-9">
                         <h5 class="mt-3">{{ __('app-shop-1-product.tozihaat') }} :</h5>
                         <p class="text-muted mb-4"> {!! $product->description  !!}</p>

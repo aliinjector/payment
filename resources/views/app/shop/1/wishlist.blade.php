@@ -21,7 +21,7 @@
                         <tbody class="">
                                 @foreach ($wishlistProducts as $product)
                                 <tr>
-                                    <td><img src="{{ $product->image['80,80'] }}" alt="" height="52">
+                                    <td><img src="{{ asset($product->image['80,80'] ? $product->image['80,80'] : '/images/no-image.png') }}" alt="" height="52">
                                         <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" target="_blank"
                                               class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                             <br></p>

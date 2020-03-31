@@ -71,7 +71,7 @@
     @forelse ($lastProducts as $lastProduct)
     <div class="col-lg-3">
         <div class="card e-co-product">
-            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}"><img src="{{ $lastProduct->image['250,250'] }}" alt="" class="img-fluid"></a>
+            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}"><img src="{{ asset($lastProduct->image['250,250'] ? $lastProduct->image['250,250'] : '/images/no-image.png') }}" alt="" class="img-fluid"></a>
             <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}" class="product-title">{{ $lastProduct->title }}</a>
                 <div class="d-flex justify-content-between my-2 byekan">
                     @if($lastProduct->off_price != null and $lastProduct->off_price_started_at < now() and $lastProduct->off_price_expired_at > now())
@@ -134,7 +134,7 @@
       @forelse ($bestSellings as $bestSelling)
         <div class="col-lg-3">
         <div class="card e-co-product">
-            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}"><img src="{{ $bestSelling->image['250,250'] }}" alt="" class="img-fluid"></a>
+            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}"><img src="{{ asset($bestSelling->image['250,250'] ? $bestSelling->image['250,250'] : '/images/no-image.png') }}" alt="" class="img-fluid"></a>
             <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}" class="product-title"></a> {{ $bestSelling->title }} </a>
                 <div class="d-flex justify-content-between my-2">
                     @if($bestSelling->off_price != null and $bestSelling->off_price_started_at < now() and $bestSelling->off_price_expired_at > now())

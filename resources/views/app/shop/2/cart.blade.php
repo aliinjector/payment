@@ -47,7 +47,7 @@
                                   @csrf
                                   @foreach ($cart->cartProduct as $cartProduct)
                                   <tr>
-                                      <td><img src="{{ $cartProduct->product->image['80,80'] }}" alt="" height="52">
+                                      <td><img src="{{ asset($cartProduct->product->image['80,80'] ? $cartProduct->product->image['80,80'] : '/images/no-image.png') }}" alt="" height="52">
                                           <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$cartProduct->slug, 'id' => $cartProduct->id]) }}" target="_blank"
                                                 class="d-inline-block align-middle mb-0 product-name">{{ $cartProduct->product->title }}</a>
                                               <br><span class="text-muted font-13">{{ !$cartProduct->color ? '' : $cartProduct->color->name}}</span></p>

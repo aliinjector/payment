@@ -16,7 +16,7 @@
 
                     <div class="tt-item">
                         <div class="tt-col-description">
-                            <div class="tt-img"><img src="{{ $wishlistProduct->image['80,80'] }}" alt=""></div>
+                            <div class="tt-img"><img src="{{ asset($wishlistProduct->image['80,80'] ? $wishlistProduct->image['80,80'] : '/images/no-image.png') }}" alt=""></div>
                             <div class="tt-description">
                                 <h2 class="tt-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$wishlistProduct->slug, 'id' => $wishlistProduct->id]) }}">{{ $wishlistProduct->title }}</a></h2>
                             </div>
