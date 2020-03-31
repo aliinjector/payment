@@ -13,7 +13,7 @@ class IndexController extends Controller
 
     public function index(Request $request)
     {
-        if(request()->getHost() === 'omidshop.net' OR request()->getHost() === '127.0.0.1'){
+        if(request()->getHost() === 'omidshop.net' OR request()->getHost() === '127.0.0.1' OR request()->getHost() === 'localhost:8000'){
             $products = Product::orderBy('id', 'DESC')->limit(6)->get();
             $shops = Shop::orderBy('id', 'ASC')->limit(10)->get();
             return view('app.index', compact('products', 'shops'));
