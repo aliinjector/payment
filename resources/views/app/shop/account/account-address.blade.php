@@ -77,7 +77,7 @@
             e.preventDefault();
             var id = $(this).data('id');
             var name = $(this).data('name');
-            swal(` ${'حذف دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+            swal(` ${'حذف آدرس:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
                     dangerMode: true,
                     icon: "warning",
                     buttons: ["انصراف", "حذف"],

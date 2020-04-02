@@ -197,6 +197,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
           Route::resource('shop-setting', 'ShopSettingController');
           Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
           Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
+          Route::put('shop-setting/update-template/{id}', 'ShopSettingController@updateTemplate')->name('shop.setting.update-template');
           Route::post('shop-setting/image/delete', 'ShopSettingController@destroyImage')->name('shop-setting.image.delete');
 
 

@@ -167,7 +167,6 @@ return array(
         'tel' => 'تلفن',
         'nationalCode' => 'کد ملی',
         'shenasnamehCode' => 'شماره شناسنامه',
-        'tel' => 'تلفن',
         'placeOfIssue' => 'محل سکونت',
         'birthDate' => 'تاریخ تولد',
         'zipCode' => 'کد پستی',
@@ -230,5 +229,6 @@ return array(
         'off_price_started_at' => 'تاریخ شروع تخفیف',
         'off_price_expired_at' => 'تاریخ اتمام تخفیف',
         'code' => 'کد تخفیف',
+        'uses' => 'تعداد قابل استفاده',
           ),
 );

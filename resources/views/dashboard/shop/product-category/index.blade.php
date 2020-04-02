@@ -83,6 +83,11 @@
          <div class="card">
             <div class="card-body p-0 p-lg-2 p-md-2">
                <div id="accordion">
+                @if($parentCategories->count() <= 0)
+                  <div class="d-flex font-18 justify-content-center text-red">
+                    دسته بندی وجود ندارد !!!! 
+                  </div>
+                @endif
                   @foreach($parentCategories as $parentCategory)
                   <div class="card border">
                      <div class="card-header d-flex justify-content-between flex-wrap" id="heading{{ $parentCategory->id }}">

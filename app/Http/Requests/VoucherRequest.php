@@ -33,6 +33,7 @@ class VoucherRequest extends FormRequest
     {
         return [
           'name' => 'required|max:50',
+          'uses' => 'required|integer|gt:0',
           'description' => 'max:70',
           'type' => 'in:on',
           'code' => 'unique:vouchers|min:1|max:50',

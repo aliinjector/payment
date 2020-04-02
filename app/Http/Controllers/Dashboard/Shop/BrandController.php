@@ -143,11 +143,11 @@ class BrandController extends Controller
 
 
     public function destroyIcon(Request $request){
+      $brand = Brand::find($request->id);
       if ($brand->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
               return redirect()->back();
             }
-      $brand = Brand::find($request->id);
       foreach($brand->icon as $icon){
         $icon = ltrim($icon, '/');
         unlink($icon);

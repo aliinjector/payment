@@ -26,3 +26,27 @@
 .extrem-height-image:hover {
     top: -300px;
 }
+img {
+  width: 20vw;
+  height: 20vw;
+  padding: 2vw;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+img:hover {
+  opacity:0.6;
+  cursor: pointer;
+}
+
+img:active {
+  opacity:0.4;
+  cursor: pointer;
+}
+
+input[type=radio]:checked + label > img {
+  border: 40px solid #122272
+;
+}

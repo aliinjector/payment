@@ -775,9 +775,6 @@
                                             $id = 1;
                                             @endphp
                                             @foreach($products as $product)
-                                              @php
-
-                                              @endphp
                                             <tr role="row" class="odd icon-hover hover-color" id="{{ $product->id }}">
                                                 <td class="sorting_1" style="width:5%">{{ $id }}</td>
                                                 <td class="sorting_1" style="width:5%"><img src="{{ asset($product->image['80,80'] ? $product->image['80,80'] : '/images/no-image.png') }}" class="img-fluid" alt="Responsive image"></td>
@@ -822,7 +819,7 @@
                                                     <td>-</td>
                                                     @endif
 
-                                                    <td @if($product->amount <= $product->min_amount) class="text-danger amount-warning" @endif >{{ $product->amount != null ? $product->amount : '-' }}</td>
+                                                    <td @if($product->amount <= $product->min_amount and $product->type == 'product') class="text-danger amount-warning" @endif >{{ $product->amount != null ? $product->amount : '-' }}</td>
 
                                                     <td>
                                                         @if ($product->type == 'service') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem2') }}

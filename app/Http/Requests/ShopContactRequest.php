@@ -34,8 +34,8 @@ class ShopContactRequest extends FormRequest
         return [
               'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
               'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-              'tel' => 'numeric|min:3|not_in:0|min:1|max:20',
-              'address' => 'min:1|max:220',
+              'tel' => 'nullable|string|min:3|not_in:0|max:30',
+              'address' => 'max:250',
               'shop_email' => 'string', 'email', 'max:255',
               'telegram_url' => 'max:220',
               'instagram_url' => 'max:220',

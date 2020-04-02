@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Ticket;
+use Illuminate\Support\Facades\DB;
 use App\Shop;
 
 
@@ -75,7 +76,7 @@ class ApplicationController extends Controller
      */
     public function update(Request $request, $id)
     {
-      DB::transaction(function () {
+      DB::transaction(function () use ($request) {
 
       $appInformation = \Auth::user()->shop->application->update([
         'title' => $request->title,

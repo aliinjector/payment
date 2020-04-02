@@ -102,7 +102,7 @@ class SpecificationItemController extends Controller
     {
         $specificationItem = \Auth::user()->shop()->first()->specifications()->where('id',$request->specificationId)->get()->first()->items()->where('id', $specificationItem->id)->update([
             'name' => $request->name,
-            'price' => $request->price,
+            'price' => $this->fa_num_to_en($request->price),
         ]);
 
 

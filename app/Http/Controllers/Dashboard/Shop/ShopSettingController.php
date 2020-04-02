@@ -218,9 +218,19 @@ class ShopSettingController extends Controller
         'buyCount_show' => $request->buyCount_show,
         'watermark' => $watermark,
         'special_offer' => $request->special_offer,
-        'template_id' => $request->template_id,
         'special_offer_text' => $request->special_offer_text,
         'VAT' => $request->VAT,
+      ]);
+      alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
+      return redirect()->route('shop-setting.index');
+    }
+
+
+
+
+    public function updateTemplate(ShopThemeRequest $request){
+      $shop = \Auth::user()->shop()->first()->update([
+        'template_id' => $request->template_id,
       ]);
       alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');
       return redirect()->route('shop-setting.index');

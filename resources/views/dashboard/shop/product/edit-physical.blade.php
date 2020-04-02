@@ -256,7 +256,6 @@
                                       <div class="card-body">
                                           <h4 class="mt-0 header-title">تصویر محصول</h4>
                                           <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $product->name }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
-
                                           <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $product->image['original'] }}">
                                       </div>
 

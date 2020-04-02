@@ -22,7 +22,7 @@ class CompareController extends Controller
           if (Shop::where('english_name', $shopName)->first() == null) {
               return abort(404);
           }
-          if(\Auth::user()->compare()->get()->where('shop_id', Shop::where('english_name', $shopName)->first()->id)->first()->count() > 0){
+          if(\Auth::user()->compare()->get()->where('shop_id', Shop::where('english_name', $shopName)->first()->id)->first() != null){
             $compareProducts = \Auth::user()->compare()->get()->where('shop_id', Shop::where('english_name', $shopName)->first()->id)->first()->products;
           }else{
             $compareProducts = collect();

@@ -77,7 +77,8 @@
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem3') }} :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                              class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" value="{{ old('uses') }}" placeholder="{{ __('dashboard-shop-voucher.addModalItem3ex') }}">
                                 </div>
                                 <div class="input-group mt-3">
@@ -172,7 +173,8 @@
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem3') }} :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                                              class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" value="{{ $voucher->uses }}">
                                 </div>
                                 <div class="input-group mt-3">

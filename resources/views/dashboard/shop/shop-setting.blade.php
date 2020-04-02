@@ -27,6 +27,10 @@
             <i class="fas fa-info-circle m-1"></i>{{ __('dashboard-shop-shop-setting.boxTitle1') }}</a>
     </li>
     <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#template" role="tab">
+          <i class="fa fa-file m-1" aria-hidden="true"></i>انتخاب قالب فروشگاه</a>
+    </li>
+    <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#theme" role="tab">
             <i class="fa fa-cog pr-2 m-1"></i>{{ __('dashboard-shop-shop-setting.boxTitle2') }}</a>
     </li>
@@ -457,24 +461,6 @@
 
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem7') }}</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" name="template_id" id="AgencyDetails">
-                                    <option {{ $templates[0]->id == \Auth::user()->shop()->first()->template->id ? 'selected' : ''}} value="{{ $templates[0]->id }}" data-type='<div class="img-wrapper m-5">
-                                        <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-default.png') }}"/>
-                                    </div>'>{{ $templates[0]->name }}</option>
-                                    <option {{ $templates[1]->id == \Auth::user()->shop()->first()->template->id ? 'selected' : ''}} value="{{ $templates[1]->id }}" data-type='<div class="img-wrapper m-5">
-                                        <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-1.png') }}"/>
-                                    </div>'>{{ $templates[1]->name }}</option>
-                                </select>
-                            </div>
-                            <div id="result"></div>
-
-                        </div>
-
-                        <!--end card-body-->
                     </div>
                     <!--end card-->
                 </div>
@@ -487,6 +473,52 @@
             </div>
         </form>
     </div>
+
+    <div class="tab-pane fade" id="template" role="tabpanel">
+        <form method="post" action="{{ route('shop.setting.update-template',['id' => \Auth::user()->shop()->first()->id, 'shop' => \Auth::user()->shop->english_name]) }}" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahTitle') }}</h4>
+                            <p class="text-muted mb-3">در این بخش میوانید قالب مورد نظر خود را انتخاب نمایید.<p>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                              <div class="img-wrapper m-5 test">
+                                  <input type="radio" name="template_id" id="choose-1" value="1" {{ $templates[0]->id == \Auth::user()->shop()->first()->template->id ? 'checked' : ''}}/>
+                                  <label for="choose-1">
+                                      <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-default.png') }}" />
+                                  </label>
+
+                              </div>
+                              <div class="img-wrapper m-5 test">
+                                  <input type="radio" name="template_id" id="choose-2" value="2" {{ $templates[1]->id == \Auth::user()->shop()->first()->template->id ? 'checked' : ''}}/>
+                                  <label for="choose-2">
+                                      <img class="extrem-height-image" src="{{ asset('dashboard/assets/images/theme-1.png') }}" />
+                                  </label>
+                              </div>
+                            <div id="result"></div>
+
+                        </div>
+
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <!--end col-->
+
+                <!--end col-->
+            </div>
+          </div>
+            <div class="justify-content-end row">
+              <div class="text-right mb-3 ">
+                  <button data-toggle="modal" data-target="#AddWalletModal" type="submit" class="btn btn-success px-5 py-2  iranyekan rounded ">{{ __('dashboard-shop-shop-setting.sabt') }}</button><br>
+              </div>
+            </div>
+        </form>
 
     <div class="tab-pane fade" id="contact" role="tabpanel">
         <form method="post" action="{{ route('shop.setting.update-contact', ['id' => \Auth::user()->shop()->first()->id, 'shop' => \Auth::user()->shop->english_name]) }}">
@@ -949,5 +981,20 @@
       //Load the map when the page has finished loading.
       google.maps.event.addDomListener(window, 'load', initMap);
 
+  </script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+
+      if ($(".radio").attr("checked") == "checked") {
+        $(".radio").parent().parent().addClass("outline")
+      }
+    });
+
+  </script>
+  <script type="text/javascript">
+  $('.radio').click(function() {
+    $(this).parent().parent().toggleClass("outline")
+
+});
   </script>
 @stop
