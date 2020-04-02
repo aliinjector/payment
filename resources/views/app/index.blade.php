@@ -37,10 +37,8 @@
                     <li><a href="">تماس</a></li>
                     <li><a href="">قوانین و شرایط استفاده</a></li>
                     <li><a href="#products">آخرین محصولات</a></li>
-                    {{--<li><a href="">شهر ها</a></li>--}}
                     <li><a href="#shops">آخرین فروشگاه ها</a></li>
                     <li><a href="#search">جستجوی محصول</a></li>
-
                 </ul>
             </nav>
         </div>
@@ -183,7 +181,7 @@
                                                         <a target="_blank" href="/{{ $shop->english_name }}"  class="geodir-category-img-wrap fl-wrap">
                                                             <img style="height: 100%; max-height: 250px" src="{{ $shop->logo['original'] }}" alt="">
                                                         </a>
-                                                        <div class="geodir_status_date gsd_open">امید الکترونیک</div>
+                                                        <div class="geodir_status_date gsd_open">{{ $shop->name }}</div>
                                                         <div class="geodir-category-opt">
                                                             <div class="geodir-category-opt_title">
                                                                 <h4><a target="_blank" href="/{{ $shop->english_name }}">{{ $shop->name }}</a></h4>
@@ -381,21 +379,20 @@
                             <div class="gallery-item restaurant events">
                                 <div class="listing-item" style="">
                                     <article class="geodir-category-listing fl-wrap">
-                                        <div class="geodir-category-img">
-                                            <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
+                                        <div style="height: 252px!important;" class="geodir-category-img">
+                                            <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
                                                 <img style="height: 250px;" src="{{ $product->image['original'] }}" alt="">
                                             </a>
                                             <div class="listing-avatar"><a href=""><img src="{{ $product->shop->user->avatar }}" alt=""></a>
                                                 <span class="avatar-tooltip">مدیر فروشگاه:‌  <strong> {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</strong></span>
                                             </div>
                                             <div class="geodir_status_date gsd_open">نام فروشگاه: {{ $product->shop->name }}</div>
-
                                         </div>
                                         <div class="geodir-category-content fl-wrap title-sin_item">
                                             <div class="geodir-category-content-title fl-wrap">
                                                 <div class="geodir-category-content-title-item">
                                                     <h3 class="title-sin_map">
-                                                        <a href="">{{ $product->title }}</a>
+                                                        <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ $product->title }}</a>
                                                     </h3>
                                                 </div>
                                             </div>

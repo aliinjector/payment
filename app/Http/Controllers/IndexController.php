@@ -47,7 +47,7 @@ class IndexController extends Controller
 
     public function productsShow()
     {
-      $products = Product::orderBy('id', 'desc')->take(10)->get();
+      $products = Product::orderBy('id', 'desc')->take(10)->paginate(10)->appends(request()->except('page', '_token'));
       return view('app.products', compact('products'));
     }
 
@@ -55,10 +55,8 @@ class IndexController extends Controller
 
     public function productsSearch(Request $request)
     {
-//      $products = Product::search(trim($request->keyword))->paginate(20);
-      $products = Product::where('title', 'like', '%' . $request->keyword . '%')->paginate(5);
-      $queryy = $request->keyword;
-      return view('app.products', compact('products', 'queryy'));
+      $products = Product::where('title', 'like', '%' . $request->keyword . '%')->paginate(10)->appends(request()->except('page', '_token'));
+      return view('app.products', compact('products'));
     }
 
 

@@ -4378,6 +4378,7 @@ section.gray-section .section-separator {
 }
 .geodir-category-img {
 	float:left;
+	height: 252px!important;
 	width:100%;
 	position:relative;
 	z-index:11;
