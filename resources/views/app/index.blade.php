@@ -795,6 +795,13 @@
 
     <a class="to-top"><i class="fas fa-caret-up"></i></a>
 </div>
+
+<!---start GOFTINO code--->
+<script type="text/javascript">
+    !function(){var a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/Hqa6DI",l=localStorage.getItem("goftino");g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+</script>
+<!---end GOFTINO code--->
+
 <!-- Main end -->
 <!--=============== scripts  ===============-->
 <script src="/index/js/jquery.min.js"></script>
