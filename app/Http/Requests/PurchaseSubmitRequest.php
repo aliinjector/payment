@@ -28,11 +28,29 @@ class PurchaseSubmitRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-          'shipping_way' => 'in:quick_way,posting_way,person_way',
-          'payment_method' => 'required|in:cash_payment,online_payment',
-          'new_address' => 'required_without:address|min:1|max:120|string|nullable',
-          'address' => 'min:1|max:120|string'
-        ];
+    if(request()->type == 'product'){
+      return [
+        'shipping_way' => 'in:quick_way,posting_way,person_way',
+        'payment_method' => 'required|in:cash_payment,online_payment',
+        'new_address' => 'required_without:address|min:1|max:120|string|nullable',
+        'address' => 'min:1|max:120|string'
+      ];
+    }
+  elseif(request()->type == 'service'){
+    return [
+      'shipping_way' => 'nullable|in:quick_way,posting_way,person_way',
+      'payment_method' => 'required|in:cash_payment,online_payment',
+      'new_address' => 'nullable|min:1|max:120|string|nullable',
+      'address' => 'nullable|min:1|max:120|string'
+    ];
+  }
+  else{
+    return [
+      'shipping_way' => 'nullable|in:quick_way,posting_way,person_way',
+      'payment_method' => 'in:cash_payment,online_payment',
+      'new_address' => 'nullable|min:1|max:120|string|nullable',
+      'address' => 'nullable|min:1|max:120|string'
+    ];
+  }
     }
 }

@@ -33,12 +33,15 @@ input[type='radio']:checked:after {
 input[type='radio']:after {
     border: 2px solid #2879fe!important;
 }
+h5:not([class^=tt-title]):not([class^=tt-collapse]):not([class^=tt-aside]) {
+    font-size: 13px!important;
+  }
   </style>
   @toastr_css
 
 @endsection
 @section('content')
-<link href="/app/shop/2/assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link href="/app/shop/2/css/bootstrap.min-purchase.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <div id="tt-pageContent" class="d-flex justify-content-center">
    <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
       @include('dashboard.layouts.errors')
@@ -238,6 +241,13 @@ input[type='radio']:after {
                                          @endif
                                   </span>
                                  </td>
+                                 @if($product->product()->get()->first()->type == 'product')
+                                   <input type="hidden" name="type" value="product">
+                                 @elseif ($product->product()->get()->first()->type == 'file')
+                                   <input type="hidden" name="type" value="file">
+                                 @else
+                                   <input type="hidden" name="type" value="service">
+                                 @endif
                               </tr>
                            </tbody>
                         </table>

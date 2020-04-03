@@ -41,7 +41,7 @@
                                         <th class="border-top-0">نام</th>
                                         <th class="border-top-0">تعداد</th>
                                         <th class="border-top-0">رنگ</th>
-                                        <th class="border-top-0">قیمت واحد کالا</th>
+                                        <th class="border-top-0">قیمت خصوصیت</th>
                                         <th class="border-top-0">قیمت جمع کالا</th>
                                         <th class="border-top-0">روش پرداخت</th>
                                         <th class="border-top-0">روش ارسال</th>
@@ -52,7 +52,7 @@
                                 </thead>
 
                                 <tbody class="font-18">
-                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct()->withTrashed()->get() as $product)
+                                    @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct()->get() as $product)
                                     <tr class="byekan">
                                         <td><a href="{{ route('product', ['shop' => $product->product()->withTrashed()->get()->first()->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id' => $product->product()->withTrashed()->get()->first()->id]) }}" target="_blank"><img src=" {{ asset($product->product()->withTrashed()->get()->first()->image['200,100'] ? $product->product()->withTrashed()->get()->first()->image['200,100'] : '/images/no-image.png') }}" alt="user" style="width:100px"></a></td>
                                         <td><a href="{{ route('product', ['shop'=>$product->product()->withTrashed()->get()->first()->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}" target="_blank">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
@@ -63,7 +63,7 @@
                                           <td></td>
                                       @endif
 
-                                        <td>{{ number_format($product->product()->withTrashed()->get()->first()->price) }}</td>
+                                        <td>{{ number_format($product->specification_price) }}</td>
                                         <td>{{ number_format($product->total_price) }}</td>
                                         <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">
                                                 {{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}

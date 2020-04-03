@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-   // use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable, Searchable;
- use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable;
+   use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable, Searchable;
+ // use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable;
     protected $cascadeDeletes = ['galleries', 'facilities','rates','comments','cartProduct'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];

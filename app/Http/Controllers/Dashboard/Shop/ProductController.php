@@ -700,8 +700,13 @@ else{
 
     public function getFeatures(Request $request){
       $features = collect();
-      foreach($this->getAllParentCategories($request->id) as $category){
-        $features[] = ProductCategory::find($category->id)->features;
+      if($this->getAllParentCategories($request->id)->count() == 0){
+        $features[] = ProductCategory::find($request->id)->features;
+      }
+      else{
+        foreach($this->getAllParentCategories($request->id) as $category){
+          $features[] = ProductCategory::find($category->id)->features;
+      }
       }
   return response()->json($features);
     }

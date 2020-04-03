@@ -1,68 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('app.shop.account.layouts.master')
+<style media="screen">
+  h6{
+  font-size: .8rem!important;
+  }
+  h5{
+  font-size: 1rem!important;
+  }
+</style>
 
-<head>
-    <meta charset="utf-8">
-    <title>{{ __('app-shop-2-layouts-master.pageTitle') }}</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
-    <link rel="stylesheet" href="/app/shop/2/css/style.css">
-    <link href="/app/shop/2/font/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="/app/shop/2/css/pagination.css" rel="stylesheet">
-    <link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
-    <script src="/app/shop/1/assets/js/jquery.min.js"></script>
-    <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
-    @yield('headerScripts')
-    <link rel="stylesheet" href="{{ asset('/app/shop/2/css/master.css') }}" />
-    <style>
-        .radio input {
-            opacity: 1
-        }
+@section('content')
 
-        .price {
-            animation: bubble 2s forwards;
-
-        }
-
-        @keyframesbubble {
-            from {
-                font-size: 24px;
-            }
-
-            to {
-                font-size: 16px;
-
-            }
-        }
-    </style>
-    @toastr_css
-</head>
-
-<body class="p-5" style="direction:rtl">
-
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <div class="row justify-content-end">
-        @if(\auth::user()->type == 'customer')
-            <a href="{{ url('/'.$shop_name) }}">
-                <button type="button" class="border-0 btn-warning p-2 rounded" style="font-size: 19px;padding-bottom: 7px!important;padding-top: 13px!important;">
-                    بازشگت به فروشگاه
-                </button>
-            </a>
-            @else
-              <button type="button" class="border-0 btn-warning byekan font-weight-bold iranyekan p-2 rounded" style="font-size: 19px;padding-bottom: 5px!important;padding-top: 10px!important;">
-                                پنل مدیریت
-                            </button>
-            @endif
-            <a href="{{ route('logout') }}">
-                <button type="button" class="border-0 btn-danger mr-3 p-1 px-3 rounded" style="font-size: 18px;">
-                    خروج از حساب
-                    <i class="fa fa-arrow-circle-left m-2"></i>
-                </button>
-            </a>
-    </div>
     <div id="tt-pageContent" class="d-flex justify-content-center">
         <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
+          <div class="row justify-content-between">
+              <div class="m-2 pt-4">تاریخ ثبت سفارش : {{ jdate($purchase->created_at) }} </div>
+              <img src="{{ asset($shop->logo['200,100']) ? $shop->logo['200,100'] : '' }}" class="logo-sm mr-2">
+              <div class="m-2 pt-4">شماره فاکتور :  {{ $shop->english_name . '_' . $shop->invoice->id  }} </div>
+          </div>
             @include('dashboard.layouts.errors')
             <div class="card-body invoice-head">
                 <div class="row justify-content-around p-2 d-none printable">
@@ -86,25 +40,25 @@
                         <div>
                             <div class="row">
                                 <div class="items p-3">
-                                    <b class="mr-5">نام فروشگاه :</b> {{ $shop->name }}
+                                    <b class="mx-1">نام فروشگاه :</b> <span class="mr-5">{{ $shop->name }}</span>
                                     @if($shop->invoice->tel == "enable")
-                                        <b class="mr-5">تلفن فروشگاه :</b> {{ $shop->shopContact->tel }}
+                                        <b class="mx-1">تلفن فروشگاه :</b> <span class="mr-5">{{ $shop->shopContact->tel }}</span>
                                         @endif
                                         @if($shop->invoice->email == "enable")
-                                            <b class="mr-5">ایمیل فروشگاه :</b> {{ $shop->shopContact->shop_email }}
+                                            <b class="mx-1">ایمیل فروشگاه :</b> <span class="mr-5">{{ $shop->shopContact->shop_email }}</span>
                                             @endif
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="items p-3">
                                     @if($shop->invoice->economic_code == "enable")
-                                        <b class="mr-5">کد اقتصادی فروشگاه :</b> {{ $shop->invoice->economic_code_number }}
+                                        <b class="mx-1">کد اقتصادی فروشگاه :</b> <span class="mr-5">{{ $shop->invoice->economic_code_number }}</span>
                                         @endif
                                         @if($shop->invoice->registration_number == "enable")
-                                            <b class="mr-5">شماره ثبت فروشگاه :</b> {{ $shop->invoice->registration_number‌_number }}
+                                            <b class="mx-1">شماره ثبت فروشگاه :</b> <span class="mr-5">{{ $shop->invoice->registration_number‌_number }}</span>
                                             @endif
                                             @if($shop->invoice->address == "enable")
-                                                <b class="mr-5">آدرس فروشگاه :</b> {{ $shop->shopContact->address }}
+                                                <b class="mx-1">آدرس فروشگاه :</b> <span class="mr-5">{{ $shop->shopContact->address }}</span>
                                                 @endif
                                 </div>
                             </div>
@@ -112,57 +66,25 @@
                     </div>
                     @endif
                     @if($shop->invoice->custom_info == "enable")
-                        <div class="row border mb-4 d-none printable">
+                        <div class="row border mb-4 printable">
                             <h5 class="col-lg-12 d-flex justify-content-center bg-gray p-2 border">مشخصات خریدار :</h5>
                             <div>
                                 <div class="row">
                                     <div class="items p-3">
-                                        <b class="mx-3">نام و نام خانوادگی :</b> test
-                                        <b class="mx-3">شماره خریدار :</b> test
+                                        <b class="mx-1">نام و نام خانوادگی :</b>  <span class="mr-5">{{ $purchase->user->firstName . ' ' . $purchase->user->lastName }}</span>
+                                        <b class="mx-1">شماره خریدار :</b> <span class="mr-5">{{ $purchase->user->mobile }}</span>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="items p-3">
-                                        <b class="mx-3">آدرس خریدار :</b> test
-                                        <b class="mx-3">ایمیل خریدار :</b> test
+                                        <b class="mx-1">آدرس خریدار :</b> <span class="mr-5">{{ $purchase->address }}</span>
+                                        <b class="mx-1">ایمیل خریدار :</b> <span class="mr-5">{{ $purchase->user->email }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         @endif
-                        <div class="row">
-                            <div class="col-md-4 align-self-center">
-                                <img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="26">
-                                <p class="mt-2 mb-0 text-muted">{{ $shop->description }}.</p>
-                            </div>
-                            <!--end col-->
-                            <div class="col-md-8">
-                                <ul class="list-inline mb-0 contact-detail float-right">
-                                    <li class="list-inline-item">
-                                        <div class="pr-3">
-                                            <i class="mdi mdi-web"></i>
-                                            <p class="text-muted mb-0">www.modirproje/{{ $shop->english_name }}.com</p>
-                                            <p class="text-muted mb-0"><br></p>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="pr-3">
-                                            <i class="mdi mdi-phone"></i>
-                                            <p class="text-muted mb-0">{{ $shop->shopContact->tel }}</p>
-                                            <p class="text-muted mb-0">{{ $shop->shopContact->phone }}</p>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <div class="pr-3">
-                                            <i class="mdi mdi-map-marker"></i>
-                                            <p class="text-muted mb-0">{{ $shop->shopContact->city }} {{ $shop->shopContact->province }}</p>
-                                            <p class="text-muted mb-0">{{ $shop->shopContact->address }}</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--end col-->
-                        </div>
+
                         <!--end row-->
             </div>
             <!--end card-body-->
@@ -170,7 +92,7 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <div class="d-flex d-flex justify-content-between">
-                            <h6 class="mb-0"><b>تاریخ ثبت فاکتور :</b> {{ jdate() }}</h6>
+                            <h6 class="mb-0"><b>تاریخ نمایش فاکتور :</b> {{ jdate() }}</h6>
                         </div>
                     </div>
                     <!--end col-->
@@ -287,3 +209,10 @@
 
     <script src="{{ asset('/app/shop/2/js/purchase-list.js') }}"></script>
     <script src="{{ asset('/app/shop/2/js/shipping.js') }}"></script>
+    <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
+    <link rel="stylesheet" href="/app/shop/2/css/custom.css">
+    @toastr_js
+    @toastr_render
+    @include('sweet::alert')
+    @yield('footerScripts')
+  @endsection

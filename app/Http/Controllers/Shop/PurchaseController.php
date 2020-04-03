@@ -270,8 +270,11 @@ class PurchaseController extends Controller
               }
           $purchase->shipping = $request->shipping_way;
           $purchase->shipping_price = $shopShippingWayPrice;
-          $purchase->payment_method = $request->payment_method;
-
+          if($cart->cartProduct[0]->product->type == 'file'){
+            $purchase->payment_method = 'online_payment';
+          }else{
+            $purchase->payment_method = $request->payment_method;
+          }
             if($shop->VAT == 'enable') {
               $purchase->total_price = ($total_price) + ($total_price * $shop->VAT_amount / 100);
             }

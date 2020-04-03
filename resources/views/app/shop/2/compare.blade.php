@@ -23,7 +23,7 @@
                                     <a href="#" id="removeProductCompare" data-shop="{{ $shop->english_name }}" data-compare="{{ \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->id }}" data-id="{{ $compareProduct->id }}" class="tt-remove-item"></a>
                                 </div>
                             </div>
-                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}"><img src="{{ asset($compareProduct->image['250,250'] ? $compareProduct->image['250,250'] : '/images/no-image.png') }}" alt="product image" style="width:130px">
+                            <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}"><img src="{{ asset($compareProduct->image['250,250'] ? $compareProduct->image['250,250'] : '/images/no-image.png') }}" alt="product image" style="width:130px;max-height: 10vh;">
                               </a>
                             <h2 class="tt-title"><a href="product.html">{{ $compareProduct->title }}</a></h2>
                             @if($compareProduct->off_price != null and $compareProduct->off_price_started_at < now() and $compareProduct->off_price_expired_at > now())
@@ -33,9 +33,9 @@
                               <div class="tt-price">{{ number_format($compareProduct->price) }}</div>
                             @endif
                         </div>
-                        @foreach($compareProduct->productCategory->features as $compareProductFeature)
+                        @foreach($compareProduct->features as $compareProductFeature)
                         <div class="tt-col tt-table-title">{{ $compareProductFeature->name }}</div>
-                        <div class="tt-col js-description">@if(!isset($compareProductFeature->pivot->value) or $compareProductFeature->pivot->value == null) تعیین نشده @else $compareProductFeature->pivot->value @endif</div>
+                        <div class="tt-col js-description">@if(!isset($compareProductFeature->pivot->value) or $compareProductFeature->pivot->value == null) تعیین نشده @else {{$compareProductFeature->pivot->value}} @endif</div>
                       @endforeach
                         <div class="tt-col">
                           <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$compareProduct->slug, 'id' => $compareProduct->id]) }}" class="tt-btn-addtocart" ><i class="icon-f-39"></i>مشاهده محصول</a></div>

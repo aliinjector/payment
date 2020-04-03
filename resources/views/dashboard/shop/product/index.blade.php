@@ -352,7 +352,7 @@
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                                 <input type="checkbox" class="custom-control-input" id="discount_statusProduct" name="discount_status" checked>
-                                                <label class="custom-control-label iranyekan font-15" for="discount_statusProduct">قابلیت تخفیف</label>
+                                                <label class="custom-control-label iranyekan font-15" for="discount_statusProduct">قابلیت اعمال شدن کد تخفیف</label>
                                             </div>
                                         </div>
                                         <div class="card mt-3">
@@ -516,7 +516,7 @@
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                                 <input type="checkbox" class="custom-control-input" id="discount_statusFile" name="discount_status" checked>
-                                                <label class="custom-control-label iranyekan font-15" for="discount_statusFile">قابلیت تخفیف</label>
+                                                <label class="custom-control-label iranyekan font-15" for="discount_statusFile">قابلیت اعمال شدن کد تخفیف</label>
                                             </div>
                                         </div>
                                         <div class="card mt-3">
@@ -693,7 +693,7 @@
                                             </div>
                                             <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                                 <input type="checkbox" class="custom-control-input" id="discount_statusService" name="discount_status" checked>
-                                                <label class="custom-control-label iranyekan font-15" for="discount_statusService">قابلیت تخفیف</label>
+                                                <label class="custom-control-label iranyekan font-15" for="discount_statusService">قابلیت اعمال شدن کد تخفیف</label>
                                             </div>
                                         </div>
                                         <div class="card mt-3">

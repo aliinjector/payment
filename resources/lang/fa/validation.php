@@ -230,5 +230,6 @@ return array(
         'off_price_expired_at' => 'تاریخ اتمام تخفیف',
         'code' => 'کد تخفیف',
         'uses' => 'تعداد قابل استفاده',
+        'payment_method' => 'روش پرداخت',
           ),
 );

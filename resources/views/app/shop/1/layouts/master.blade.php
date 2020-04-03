@@ -247,7 +247,7 @@
                     </div>
                     @endguest
                     @auth
-                    <div class="dropdown search-icon d-flex align-items-center mx-5 my-4">
+                    <div class="dropdown search-icon d-flex align-items-center mx-5 my-4" @if($shop->logo == null) style="margin-left: 80px!important;" @endif>
                         <button class="btn bg-blue-omid text-white rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           ناحیه کاربری
                         </button>

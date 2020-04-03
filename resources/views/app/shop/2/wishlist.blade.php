@@ -24,7 +24,7 @@
 
                         <div class="tt-col-btn d-flex">
                             <a class="btn-link mt-3" href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$wishlistProduct->slug, 'id' => $wishlistProduct->id]) }}" data-target="#ModalquickView"><i class="icon-f-73"></i>مشاهده محصول</a>
-                            <a href="#" class="btn-link mt-3" id="removeProduct" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->id }}" data-id="{{ $wishlistProduct->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
+                            <a href="#" class="btn-link mt-3" id="removeProductWishlist" data-shop="{{ $shop->english_name }}" data-wishlist="{{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->id }}" data-id="{{ $wishlistProduct->id }}"><i class="icon-h-02"></i>{{ __('app-shop-account-wishlist.hazf') }}</a>
 
                         </div>
                     </div>
@@ -41,7 +41,7 @@
 
 @section('footerScripts')
   <script>
-      $(document).on('click', '#removeProduct', function(e) {
+      $(document).on('click', '#removeProductWishlist', function(e) {
           e.preventDefault();
           var id = $(this).data('id');
           var wishlist = $(this).data('wishlist');

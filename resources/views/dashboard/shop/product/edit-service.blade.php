@@ -214,7 +214,7 @@
 
                                       <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                           <input type="checkbox" class="custom-control-input" id="discount_statusServiceUpdate{{ $product->id }}" name="discount_status" @if($product->discount_status == 'enable') checked @endif>
-                                              <label class="custom-control-label iranyekan font-15" for="discount_statusServiceUpdate{{ $product->id }}">قابلیت تخفیف
+                                              <label class="custom-control-label iranyekan font-15" for="discount_statusServiceUpdate{{ $product->id }}">قابلیت اعمال شدن کد تخفیف
                                               </label>
                                       </div>
 

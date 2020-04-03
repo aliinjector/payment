@@ -106,6 +106,9 @@ class ShopSettingController extends Controller
         if(!isset($request->quick_way) and !isset($request->posting_way) and !isset($request->person_way)){
           return redirect()->back()->withErrors(['باید حداقل یک روش ارسال انتخاب شود']);
          }
+        if(!isset($request->cash_payment) and !isset($request->online_payment)){
+          return redirect()->back()->withErrors(['باید حداقل یک روش پرداخت انتخاب شود']);
+         }
           else{
         if ( $request->quick_way != "on")
         $request->quick_way = 'disable';

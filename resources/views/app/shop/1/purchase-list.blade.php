@@ -247,6 +247,13 @@
                                                     @else @if($shop->VAT == 'enable') {{ number_format(($cart->total_price) + ($cart->total_price * $shop->VAT_amount / 100))  }} @else {{ number_format($cart->total_price) }} @endif
                                                         @endif
                                                       </span></td>
+                                                      @if($product->product()->get()->first()->type == 'product')
+                                                        <input type="hidden" name="type" value="product">
+                                                      @elseif ($product->product()->get()->first()->type == 'file')
+                                                        <input type="hidden" name="type" value="file">
+                                                      @else
+                                                        <input type="hidden" name="type" value="service">
+                                                      @endif
                                             </tr>
                                     </tbody>
                                 </table>
