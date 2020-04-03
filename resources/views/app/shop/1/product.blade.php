@@ -375,11 +375,12 @@
                     </li>
                 </ul>
                 @endif
-
                 <h4 class="mb-3 mt-3 p-4">{{ __('app-shop-1-product.tags') }} :</h4>
                 <ul class="tags iranyekan">
                     @foreach ($product->tags()->get() as $tag)
-                    <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$tag->name]) }}" class="tag iranyekan ">{{ $tag->name }}</a></li>
+                      @if($tag->name != "")
+                        <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'id'=>$tag->id]) }}" class="tag iranyekan ">{{ $tag->name }}</a></li>
+                      @endif
                     @endforeach
                 </ul>
 

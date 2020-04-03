@@ -55,6 +55,9 @@ class CartController extends \App\Http\Controllers\Controller {
             if($product->type == 'product' && $product->amount < 1){
               CartProduct::where('product_id', '=', $product->id)->delete();
             }
+            if($product->status == 'disable'){
+              CartProduct::where('product_id', '=', $product->id)->delete();
+            }
           }
         }
         if($cart){
@@ -125,7 +128,6 @@ class CartController extends \App\Http\Controllers\Controller {
         }
         $specificationPrice = 0;
         if($request->specification != null){
-          // dd($request->specification);
         foreach($request->specification as $specificationItem){
           $specificationItem = SpecificationItem::find($specificationItem);
           $specificationPrice += $specificationItem->price;
@@ -134,8 +136,8 @@ class CartController extends \App\Http\Controllers\Controller {
         if (is_null($cartProduct) and $userCartShopID == $currentshopID) {
               if (\Auth::user()->cart()->count() != 0) {
                 foreach(\Auth::user()->cart()->get()->first()->products()->get() as $singleCartProduct){
-                  if($singleCartProduct->type == 'file' and $product->type != 'file' or $singleCartProduct->type != 'file' and $product->type == 'file'){
-                    toastr()->error('نمیتوان همزمان فایل و کالای فیزیکی به سبد خرید اضافه کرد', '');
+                  if($singleCartProduct->type != $product->type ){
+                    toastr()->error('نوع کالا های سبد خرید باید یکسان باشند', '');
                     return redirect()->back();
                   }
                 }

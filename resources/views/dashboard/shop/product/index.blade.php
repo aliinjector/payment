@@ -875,6 +875,13 @@
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <script src="/dashboard/assets/js/persian-date.js"></script>
     <script src="/dashboard/assets/js/persian-datepicker.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".addFacility").click(function() {
+                $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __("dashboard-shop-product-index.addMahsoolFizikiItem11") }} :</span></div><input value="{{ old("facility[]") }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __("dashboard-shop-product-index.addMahsoolFizikiItem11ex") }} "></div>');
+            });
+        });
+    </script>
     @if(session()->has('flashModalProduct'))
         <script>
             $('#AddProductModal').modal('show');
@@ -888,18 +895,6 @@
                     $('#AddServiceModal').modal('show');
                 </script>
                 @endif
-                <script type="text/javascript">
-                    $(document).ready(function() {
-
-                        $(".addFacility").click(function() {
-                            $("div.facility").append('<div class="input-group mt-3"><div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('
-                                dashboard - shop - product - index.addMahsoolFizikiItem11 ') }} :</span></div><input value="{{ old('
-                                facility[]
-                                ') }}" type="text" class="form-control inputfield" name="facility[]" placeholder="{{ __('
-                                dashboard - shop - product - index.addMahsoolFizikiItem11ex ') }} "></div>');
-                        });
-                    });
-                </script>
                 <script type="text/javascript">
                     CKEDITOR.replace('description', {
                         language: 'fa',

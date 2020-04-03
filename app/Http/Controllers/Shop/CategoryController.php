@@ -14,8 +14,7 @@ class CategoryController extends Controller
 {
 
   public function index($shop, $categroyId, FilteringRequest $request) {
-    // dd($request->all());
-      $colors = Color::all();
+      $colors = collect();
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
       $shopCategories = $shop->ProductCategories()->get();
@@ -33,18 +32,7 @@ class CategoryController extends Controller
       else{
         $colorProducts = Color::where('code', $request->color)->get()->first()->products;
         $categoryProducts = $this->getAllCategoriesProducts((int)$categroyId);
-        $colorAndCategoryProducts = collect();
-        $colorAndCategoryProductsNoRepeat = collect();
-        foreach($colorProducts->toBase()->merge($categoryProducts)->groupBy('id') as $allProducts){
-        if($allProducts->count() > 1){
-          $colorAndCategoryProducts[] = $allProducts;
-              }
-        }
-        foreach ($colorAndCategoryProducts as $colorAndCategoryProduct) {
-          $colorAndCategoryProductsNoRepeat[] = $colorAndCategoryProduct->first();
-        }
-
-      $colorAndCategoryProducts = $colorAndCategoryProductsNoRepeat;
+        $colorAndCategoryProducts = $colorProducts->intersect($categoryProducts);
       }
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
         if($colorAndCategoryProducts != null){
@@ -91,6 +79,12 @@ class CategoryController extends Controller
       else{
         $perPage = 10000; // How many items do you want to display.
       }
+      foreach($products as $singleProduct){
+        foreach($singleProduct->colors as $color){
+          $colors[] = $color;
+        }
+      }
+      $colors = $colors->unique('id');
       $currentPage = request()->page; // The index page.
       $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);
       SEOTools::setTitle($shop->name . ' | ' . ProductCategory::where('id', $categroyId)->get()->first()->name);

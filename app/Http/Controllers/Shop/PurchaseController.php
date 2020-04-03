@@ -298,7 +298,7 @@ class PurchaseController extends Controller
           foreach($productIds as $productId){
             Product::find($productId)->increment('buyCount');
             Product::find($productId)->decrement('amount');
-            if(Product::find($productId)->amount <=   Product::find($productId)->min_amount){
+            if(Product::find($productId)->type == 'product' and Product::find($productId)->amount <= Product::find($productId)->min_amount){
             $details = [
                   'message' => ' موجودی کالای ' . Product::find($productId)->title . ' درحال اتمام میباشد ',
                   'url' => 'product-list.index'

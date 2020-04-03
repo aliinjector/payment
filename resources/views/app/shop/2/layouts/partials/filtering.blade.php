@@ -42,7 +42,7 @@
     <h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterGheymat') }}</h3>
     <div class="tt-collapse-content">
       <form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
-      @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'name' => $tag->name ])}}"
+      @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'id' => $tag->id ])}}"
       @else action="{{ route('brand', ['shop' => $shop->english_name,'id' => $brand->id ])}}"
       @endif id="submit" method="get">
 
@@ -117,7 +117,9 @@
     <div class="tt-collapse-content">
       <ul class="tt-list-inline">
         @foreach($shopTags as $shopTag)
-        <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$shopTag->name]) }}">{{ $shopTag->name }}</a></li>
+          @if($shopTag->name != "")
+        <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'id'=>$shopTag->id]) }}">{{ $shopTag->name }}</a></li>
+      @endif
         @endforeach
       </ul>
     </div>

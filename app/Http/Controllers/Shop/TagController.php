@@ -15,14 +15,14 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class TagController extends Controller
 {
-  public function tagProducts($shop, $name, FilteringRequest $request) {
+  public function tagProducts($shop, $id, FilteringRequest $request) {
 
-      $colors = Color::all();
+      $colors = collect();
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
       $shopCategories = $shop->ProductCategories()->get();
       $categories = Shop::where('english_name', $shop->english_name)->first()->ProductCategories()->get()->where('parent_id', null);
-      $tag = Tag::where('name', $name)->get()->first();
+      $tag = Tag::where('id', $id)->get()->first();
       $brands = $shop->brands;
       $shopProducts = $shop->products;
       $minPriceProduct = $shopProducts->min('price');
@@ -30,17 +30,12 @@ class TagController extends Controller
       //color product and category product merging
       if($request->color == null){
         $colorAndTagProducts = $tag->products->sortByDesc('created_at');
+
       }
       else{
         $colorProducts = Color::where('code', $request->color)->get()->first()->products;
-        $tagProducts = $tag->products;
-        $colorAndTagProducts = collect();
-        foreach($colorProducts->toBase()->merge($tagProducts)->groupBy('id') as $allProducts){
-        if($allProducts->count() > 1){
-          $colorAndTagProducts[] = $allProducts;
-              }
-        }
-      $colorAndTagProducts = $colorAndTagProducts->first();
+        $tagProducts = $tag->products->where('shop_id', $shop->id);
+        $colorAndTagProducts = $colorProducts->intersect($tagProducts);
       }
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
         if($colorAndTagProducts != null){
@@ -59,7 +54,6 @@ class TagController extends Controller
           }
           if ($request->type == 'all') {
               if ($orderBy == 'desc') {
-
                   $products = $colorAndTagProducts->whereBetween('price', [$minPrice, $maxPrice])->sortByDesc($sortBy)->unique('id');
               } else {
 
@@ -81,6 +75,12 @@ class TagController extends Controller
           $products = $colorAndTagProducts;
       }
       $total = $products->count();
+      foreach($products->where('status', 'enable') as $singleProduct){
+        foreach($singleProduct->colors as $color){
+          $colors[] = $color;
+        }
+      }
+      $colors = $colors->unique('id');
       $perPage = 16; // How many items do you want to display.
       $currentPage = request()->page; // The index page.
       $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);

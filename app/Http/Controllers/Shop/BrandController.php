@@ -16,7 +16,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class BrandController extends Controller
 {
   public function brandProduct($shop, $id, FilteringRequest $request) {
-      $colors = Color::all();
+      $colors = collect();
       $shop = Shop::where('english_name', $shop)->first();
       $shopTags = $shop->tags;
       $shopCategories = $shop->ProductCategories()->get();
@@ -33,13 +33,7 @@ class BrandController extends Controller
       else{
         $colorProducts = Color::where('code', $request->color)->get()->first()->products;
         $brandProducts = $brand->products;
-        $colorAndBrandProducts = collect();
-        foreach($colorProducts->toBase()->merge($brandProducts)->groupBy('id') as $allProducts){
-        if($allProducts->count() > 1){
-          $colorAndBrandProducts[] = $allProducts;
-              }
-        }
-      $colorAndBrandProducts = $colorAndBrandProducts->first();
+        $colorAndBrandProducts = $colorProducts->intersect($brandProducts);
       }
       if ($request->has('type') and $request->has('sortBy') and $request->has('minprice') and $request->has('maxprice') and $request->has('color')) {
         if($colorAndBrandProducts != null){
@@ -80,6 +74,12 @@ class BrandController extends Controller
           $products = $colorAndBrandProducts;
       }
       $total = $products->count();
+      foreach($products as $singleProduct){
+        foreach($singleProduct->colors as $color){
+          $colors[] = $color;
+        }
+      }
+      $colors = $colors->unique('id');
       $perPage = 16; // How many items do you want to display.
       $currentPage = request()->page; // The index page.
       $productsPaginate = new LengthAwarePaginator($products->forPage($currentPage, $perPage), $total, $perPage, $currentPage);

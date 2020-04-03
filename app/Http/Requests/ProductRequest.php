@@ -33,7 +33,7 @@ class ProductRequest extends FormRequest
 
       if ($request->type == 'product') {
         return [
-          'title' => 'required|max:50',
+          'title' => 'required|max:100',
           'description' => 'required|min:10|max:1000',
           'amount' => ['required',
           'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:999999','min:0'
@@ -63,7 +63,7 @@ class ProductRequest extends FormRequest
       }
 else if($request->type == 'file'){
   return [
-    'title' => 'required|max:50',
+    'title' => 'required|max:100',
     'description' => 'required|min:10|max:1000',
     'price' => ['required',
     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
@@ -84,7 +84,7 @@ else if($request->type == 'file'){
 }
 else{
   return [
-    'title' => 'required|max:50',
+    'title' => 'required|max:100',
     'description' => 'required|min:10|max:1000',
     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
     'fast_sending' => 'in:on',

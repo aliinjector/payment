@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
 
 class FilteringRequest extends FormRequest
 {
@@ -23,16 +25,14 @@ class FilteringRequest extends FormRequest
      */
     public function rules()
     {
-
       if($this->request->count() > 0){
 
         return [
-          'type' => 'required|in:all,file,service,product',
-          'minprice' =>  'required|numeric|min:0|max:1000000000000',
-          'maxprice' =>  'required|numeric|min:0|max:100000000000000',
+          'type' => 'in:all,file,service,product',
+          'minprice' =>  'numeric|min:0|max:1000000000000',
+          'maxprice' =>  'numeric|min:0|max:100000000000000',
           'color' =>  'min:0|max:7',
-          'sortBy' =>  'required',
-          'sortBy.field' => 'in:created_at,buyCount,price',
+          'sortBy.field' => Rule::in(['created_at', 'buyCount', 'price', "price|asc", "created_at|asc", "buyCount|asc", "buyCount|desc", "created_at|desc", "price|desc"]),
           'sortBy.orderBy' => 'in:asc,desc',
         ];
               }

@@ -4,7 +4,7 @@
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">{{ __('app-shop-1-layouts-partials-filter.filterType') }}</h5>
         <div class="card-body d-flex justify-content-center text-primary">
             <form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
-            @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'name' => $tag->name ])}}"
+            @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'id' => $tag->id ])}}"
             @else action="{{ route('brand', ['shop' => $shop->english_name,'id' => $brand->id ])}}"
             @endif id="submit" method="get">
             <div class="btn-group btn-group-toggle mb-4 flex-wrap" data-toggle="buttons">
@@ -46,7 +46,9 @@
             <ul class="tags iranyekan">
               <div class="wrapper">
                 @foreach($shopTags as $shopTag)
-                    <li class="ty-compact-list"><a href="{{ route('tag', ['shop'=>$shop->english_name, 'name'=>$shopTag->name]) }}" class="tag iranyekan" style="padding-top:0px!important">{{ $shopTag->name }}</a></li>
+                  @if($shopTag->name != "")
+                    <li class="ty-compact-list"><a href="{{ route('tag', ['shop'=>$shop->english_name, 'id'=>$shopTag->id]) }}" class="tag iranyekan" style="padding-top:0px!important">{{ $shopTag->name }}</a></li>
+                  @endif
                 @endforeach
               </div>
             </ul>
