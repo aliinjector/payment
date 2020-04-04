@@ -435,16 +435,16 @@
             </div>
             <div class="row">
                 @foreach($offeredProducts as $product)
-                  <div class="col-sm-6 col-md-6 col-lg-3 py-3">
+                  <div class="col-sm-6 col-lg-4 py-3">
                     <div class="card p-5">
                       <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="crd-img-off" @else class="crd-img" @endif >
-                      <img class="card-img-top" src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="Card image cap" style="width:350px">
+                      <img class="card-img-top" src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="Card image cap" style="width:220px">
                       </a>
                       <div class="card-body p-5">
                         <h5 class="card-title">{{ $product->title }}</h5>
                         @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
                           <p class="card-text"><del>{{ number_format($product->price) }}</del> تومان</p>
-                        <p class="card-text">{{ number_format($product->off_price) }}  تومان</p>
+                        <p class="card-text pb-2">{{ number_format($product->off_price) }}  تومان</p>
                             @else
                               <p class="card-text py-2">{{ $product->price }} تومان</p>
                             @endif

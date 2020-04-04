@@ -165,7 +165,7 @@ class VoucherController extends Controller
 
 
     public function voucherReport(){
-      $vouchersReports = \Auth::user()->shop()->first()->userVoucher;
+      $vouchersReports = \Auth::user()->shop()->first()->userVoucher()->withTrashed()->get();
       return view('dashboard.shop.voucher-report' , compact('vouchersReports'));
     }
 

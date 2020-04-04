@@ -48,9 +48,9 @@
                                             @foreach($vouchersReports as $vouchersReport)
                                             <tr role="row" class="odd icon-hover hover-color">
                                                 <td>{{ $vouchersReport->user->firstName .' '. $vouchersReport->user->lastName }}</td>
-                                                <td>{{ $vouchersReport->voucher->name }}</td>
-                                                <td>{{ $vouchersReport->voucher->code }}</td>
-                                                <td>{{ $vouchersReport->voucher->discount_amount }}</td>
+                                                <td>{{ $vouchersReport->voucher()->withTrashed()->get()->first()->name }}</td>
+                                                <td>{{ $vouchersReport->voucher()->withTrashed()->get()->first()->code }}</td>
+                                                <td>{{ $vouchersReport->voucher()->withTrashed()->get()->first()->discount_amount }}</td>
                                                 <td>{{ jdate($vouchersReport->created_at) }}</td>
                                             </tr>
                                             @endforeach

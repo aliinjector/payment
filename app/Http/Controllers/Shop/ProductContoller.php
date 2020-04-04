@@ -28,7 +28,7 @@ class ProductContoller extends \App\Http\Controllers\Controller
       }
       $comments = $product->comments;
       $galleries = $product->galleries;
-      $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(4)->get();
+      $offeredProducts = $shop->products()->where('productCat_id', $product->productCat_id)->orderBy('created_at', 'DESC')->take(3)->get();
       $template_folderName = $shop->template->folderName;
 
       SEOTools::setTitle($shop->name . ' | ' . $product->title);

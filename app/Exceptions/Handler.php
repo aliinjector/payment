@@ -70,7 +70,7 @@ class Handler extends ExceptionHandler
         'userIp' =>  $userIp,
         'user_id' =>  $user_id,
       ]);
-      event(new ErrorLoged());
+      // event(new ErrorLoged());
     }
       return parent::render($request, $exception);
 
