@@ -40,7 +40,7 @@ class Controller extends BaseController
             '::1'
         );
 
-        if(!in_array($_SERVER['REMOTE_ADDR'], $local)){
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1'){
             $folder = public_path() . '_html';
         }else{
             $folder = public_path();
@@ -77,7 +77,7 @@ class Controller extends BaseController
             '::1'
         );
 
-        if(!in_array($_SERVER['REMOTE_ADDR'], $local)){
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1'){
             $folder = public_path() . '_html';
         }else{
             $folder = public_path();

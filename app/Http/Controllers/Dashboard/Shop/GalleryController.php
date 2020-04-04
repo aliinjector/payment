@@ -24,16 +24,22 @@ class GalleryController extends \App\Http\Controllers\Controller
 
     public function fileStore(Request $request)
     {
+
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1'){
+            $folder = public_path() . '_html';
+        }else{
+            $folder = public_path();
+        }
+
+
         $image = $request->file('file');
         $imageName = time() . '_' . $image->getClientOriginalName();
-        $image->move(public_path('images/product-galleries/' . \Auth::user()->id), $imageName);
-
+        $image->move($folder . '/' . 'images/product-galleries/' . \Auth::user()->id, $imageName);
         if(strtolower(@end(explode(".",$imageName))) == "mp4" or strtolower(@end(explode(".",$imageName))) == "avi" or strtolower(@end(explode(".",$imageName))) =="wma"){
             $type = 'video';
           }else{
             $type = 'picture';
           }
-
 
         $imageAddress = 'images/product-galleries/' . \Auth::user()->id . '/' . $imageName;
         $imageUpload = new Gallery();
