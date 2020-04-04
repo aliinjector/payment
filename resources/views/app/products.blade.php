@@ -18,6 +18,20 @@
   <link rel="shortcut icon" href="images/favicon.ico">
 </head>
 <body>
+<style>
+  .page-item{
+    list-style-type:none;
+  }
+  .pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .page-link{
+    font-family: BYekan;
+  }
+</style>
 <!--loader-->
 <div class="loader-wrap">
   <div class="loader-inner">
@@ -29,18 +43,16 @@
 <div id="main">
   <!-- header -->
   <header class="main-header">
-    <a href="index.html" class="logo-holder"><img style="    width: 60px!important;" src="http://fannavars.ir/media/logos/logo0.png" alt=""></a>
+    <a href="/" class="logo-holder"><img style="    width: 60px!important;" src="http://fannavars.ir/media/logos/logo0.png" alt=""></a>
 
     <div class="nav-holder main-menu">
       <nav>
         <ul class="no-list-style">
           <li><a href="">تماس</a></li>
           <li><a href="">قوانین و شرایط استفاده</a></li>
-          <li><a href="">درباره امیدشاپ</a></li>
-          <li><a href="">شهر ها</a></li>
-          <li><a href="">آخرین فروشگاه ها</a></li>
-          <li><a href="">جستجوی فروشگاه</a></li>
-
+          <li><a href="/#products">آخرین محصولات</a></li>
+          <li><a href="/#shops">آخرین فروشگاه ها</a></li>
+          <li><a href="/#search">جستجوی محصول</a></li>
         </ul>
       </nav>
     </div>
@@ -99,7 +111,11 @@
                         <div class="main-search-input fl-wrap">
                           <div class="main-search-input-item">
                             <label><i class="fal fa-keyboard"></i></label>
-                            <input type="text" name="keyword" placeholder="به دنبال چه محصول/خدمتی میگردید؟" {{ isset($queryy) ? "value=$queryy" : '' }} />
+                            <input type="text" name="keyword" placeholder="به دنبال چه محصول/خدمتی میگردید؟"
+                             @if(isset(request()->keyword))
+                               value="{{request()->keyword}}"
+                            @endif
+                            />
                           </div>
                           <button class="main-search-button color2-bg">جستجو <i class="far fa-search"></i></button>
                         </div>
@@ -141,7 +157,7 @@
                   <div class="list-main-wrap-title">
                     <h2 style="direction: rtl">
                       نتایج جستجو برای:
-                      <span> {{ $queryy }} </span>
+                      <span> {{ request()->keyword }} </span>
                     </h2>
                   </div>
                   <!-- list-main-wrap-title end-->
@@ -179,7 +195,7 @@
                     <div class="listing-item" style="">
                       <article class="geodir-category-listing fl-wrap">
                         <div class="geodir-category-img">
-                          <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
+                          <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
                             <img style="height: 250px" src="{{ $product->image['original'] }}" alt="">
                           </a>
                           <div class="listing-avatar"><a href=""><img src="{{ $product->shop->user->avatar }}" alt=""></a>
@@ -192,7 +208,7 @@
                           <div class="geodir-category-content-title fl-wrap">
                             <div class="geodir-category-content-title-item">
                               <h3 class="title-sin_map">
-                                <a href="">{{ $product->title }}</a>
+                                <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ $product->title }}</a>
                               </h3>
                             </div>
                           </div>
@@ -306,6 +322,11 @@
 
   <a class="to-top"><i class="fas fa-caret-up"></i></a>
 </div>
+<!---start GOFTINO code--->
+<script type="text/javascript">
+  !function(){var a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/Hqa6DI",l=localStorage.getItem("goftino");g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
+</script>
+<!---end GOFTINO code--->
 <!-- Main end -->
 <!--=============== scripts  ===============-->
 <script src="/index/js/jquery.min.js"></script>

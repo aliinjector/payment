@@ -1,5 +1,49 @@
 @extends('dashboard.layouts.master')
 @section('content')
+
+    <style>
+        .page-link{
+            font-family: BYekan!important;
+        }
+        #countries {
+            width: 100%;
+            height: 400px
+        }
+
+        #cities {
+            width: 100%;
+            height: 500px;
+        }
+
+
+        #iranMap {
+            height: 600px;
+            min-width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .loading {
+            margin-top: 10em;
+            text-align: center;
+            color: gray;
+        }
+
+        #isps {
+            width: 99%;
+            height: 550px;
+        }
+
+        tspan {
+            font-family: BYekan !important;
+        }
+
+        .morris-hover {
+            font-family: BYekan !important;
+
+        }
+    </style>
+
 <div class="page-content">
     <div class="container-fluid">
         <!-- Page-Title -->
@@ -20,109 +64,61 @@
 
         @include('dashboard.layouts.errors')
 
-
         <div class="row">
-            <div class="col-lg-12">
-
-                <!--end card-->
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4 align-self-center">
-                                        <div class="icon-info"><span>بازدید کل</span></i></div>
-                                    </div>
-                                    <div class="col-8 align-self-center text-right">
-                                        <div class="ml-2">
-                                          <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
-                                            <p class="mb-1 text-muted">بازدید</p>
-                                    </div>
-                                </div>
-                                <div class="progress mt-2" style="height:3px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+            <div class="col-lg-3">
+                <div class="card card-eco">
+                        <div class="card-body">
+                            <h4 class="title-text mt-0">بازدید کل</h4>
+                            <div class="d-flex justify-content-between">
+                                <h3 class="font-weight-bold byekan">{{ $stats->count() }}</h3>
                             </div>
-                            <!--end card-body-->
                         </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4 align-self-center">
-                                      <div class="icon-info"><span>بازدید کننده کل</span></i></div>
-                                    </div>
-                                    <div class="col-8 align-self-center text-right">
-                                        <div class="ml-2">
-                                            <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
-                                        <p class="mb-1 text-muted">بازدید</p>
-                                    </div>
-                                </div>
-                                <div class="progress mt-2" style="height:3px;">
-                                    <div class="progress-bar bg-purple" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4 align-self-center">
-                                      <div class="icon-info"><span>بازدید امروز</span></i></div>
-                                    </div>
-                                    <div class="col-8 align-self-center text-right">
-                                        <div class="ml-2">
-                                            <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
-                                        <p class="mb-1 text-muted">بازدید</p>
-                                    </div>
-                                </div>
-                                <div class="progress mt-2" style="height:3px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-4 align-self-center">
-                                      <div class="icon-info"><span>بازدیدکننده امروز</span></i></div>
-                                    </div>
-                                    <div class="col-8 align-self-center text-right">
-                                        <div class="ml-2">
-                                            <h4 class="mt-0 mb-1">{{ $stats->count() }}</h4></div>
-                                        <p class="mb-1 text-muted">بازدید</p>
-                                    </div>
-                                </div>
-                                <div class="progress mt-2" style="height:3px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                            <!--end card-body-->
-                        </div>
-                        <!--end card-->
-                    </div>
-                    <!--end col-->
-                    <!--end col-->
+                    <!--end card-body-->
                 </div>
-                <!--end row-->
+                <!--end card-->
             </div>
             <!--end col-->
+            <div class="col-lg-3">
+                <div class="card card-eco">
+                        <div class="card-body">
+                            <h4 class="title-text mt-0">بازدید کننده کل</h4>
+                            <div class="d-flex justify-content-between">
+                                <h3 class="font-weight-bold byekan">{{ $stats->count() }}</h3>
+                            </div>
+                        </div>
+                    <!--end card-body-->
+                </div>
+                <!--end card-->
+            </div>
+            <!--end col-->
+            <!--end col-->
+            <div class="col-lg-3">
+                <div class="card card-eco">
+                    <div class="card-body">
+                        <h4 class="title-text mt-0">بازدید امروز</h4>
+                        <div class="d-flex justify-content-between">
+                            <h3 class="font-weight-bold byekan">{{ $stats->count() }}</h3>
+                        </div>
+                    </div>
+                    <!--end card-body-->
+                </div>
+                <!--end card-->
+            </div>
 
+            <div class="col-lg-3">
+                <div class="card card-eco">
+                    <div class="card-body">
+                        <h4 class="title-text mt-0">بازدیدکننده امروز</h4>
+                        <div class="d-flex justify-content-between">
+                            <h3 class="font-weight-bold byekan">{{ $stats->count() }}  </h3>
+                        </div>
+                    </div>
+                    <!--end card-body-->
+                </div>
+                <!--end card-->
+            </div>
+            <!--end col-->
         </div>
-
-
 
 
 
