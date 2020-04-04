@@ -105,14 +105,19 @@ h5:not([class^=tt-title]):not([class^=tt-collapse]):not([class^=tt-aside]) {
                         <!--end tr-->
                         <!--end tr-->
                         <tr class="bg-dark text-white">
-                           <th colspan="5" class="border-0">
-                           </th>
-                           <td class="border-0 font-14"><b>جمع کل</b></td>
-                           <td>
-                             @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
-                             @else {{ number_format($cart->total_price) }}
-                             @endif
-                           </td>
+                            <th colspan="3" class="border-0"></th>
+                            <td class="border-0 font-14"><b>مجموع تخفیف با کد تخفیف</b></td>
+                            <td>
+                                @if($cart->total_off_price != null)
+                               {{ number_format($cart->total_off_price) }}
+                                @else
+                                  0
+                                @endif</td>
+                            <td class="border-0 font-14"><b>جمع کل</b></td>
+                            <td>
+                                @if(isset($discountedPrice)) {{number_format($discountedPrice)}}
+                                @else {{ number_format($cart->total_price) }}
+                                @endif</td>
                         </tr>
                         <!--end tr-->
                      </tbody>

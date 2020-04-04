@@ -15,7 +15,7 @@ class ProductContoller extends \App\Http\Controllers\Controller
       }
       $shop = Shop::where('english_name', $shopName)->first();
       $shopCategories = $shop->ProductCategories()->get();
-      $product = $shop->products()->where('slug', $slug)->orWhere('id', $id)->where('status', 'enable')->first();
+      $product = $shop->products()->Where('id', $id)->where('status', 'enable')->first();
       $product->increment('viewCount');
       $productRates = $product->rates()->get();
       $userProducts = [];

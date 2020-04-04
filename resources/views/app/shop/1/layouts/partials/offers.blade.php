@@ -1,7 +1,7 @@
 <h2 class="line-throw mt-5"><span class="throw-background">محصولات پیشنهادی </span></h2>
 <div class="row row p-5">
     @forelse ($offeredProducts as $offeredProduct)
-      <div class="col-lg-3">
+      <div class="col-lg-4">
           <div class="card e-co-product" style="min-height: 40vh;">
               <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$offeredProduct->slug, 'id' => $offeredProduct->id]) }}"><img src="{{ asset($offeredProduct->image['250,250'] ? $offeredProduct->image['250,250'] : '/images/no-image.png') }}" alt="" class="img-fluid"></a>
               <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$offeredProduct->slug, 'id' => $offeredProduct->id]) }}" class="product-title">{{ $offeredProduct->title }}</a>

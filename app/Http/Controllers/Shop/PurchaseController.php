@@ -71,25 +71,31 @@ class PurchaseController extends Controller
           if($voucher->type == 'number'){
           if((($total_price - $disableDiscountCartPrice)) == 0){
             $discountedPrice = $total_price;
+            $discountPrice = 0;
             }
             else{
               $discountedPrice = (($total_price - $disableDiscountCartPrice) - $voucherDiscountAmount) + $disableDiscountCartPrice;
+              $discountPrice = $total_price - $discountedPrice;
             }
         }
         else{
           if((($total_price - $disableDiscountCartPrice)) == 0){
             $discountedPrice = $total_price;
+            $discountPrice = 0;
             }
             else{
               $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+              $discountPrice = $total_price - $discountedPrice;
             }
         }
           if($discountedPrice < 0){
             $discountedPrice = 0;
+            $discountPrice = $total_price;
           }
           if($cart->voucher_status == 'unused'){
             $cartUpdate = $cart->update([
               'total_price' => $discountedPrice,
+              'total_off_price' => $discountPrice,
               'voucher_status' => 'used',
               'voucher_id' => $voucher->id,
               ]);
@@ -115,25 +121,32 @@ class PurchaseController extends Controller
             if($voucher->type == 'number'){
               if((($total_price - $disableDiscountCartPrice)) == 0){
                 $discountedPrice = $total_price;
+                $discountPrice = 0;
+
                 }
                 else{
                   $discountedPrice = (($total_price - $disableDiscountCartPrice) - $voucherDiscountAmount) + $disableDiscountCartPrice;
+                  $discountPrice = $total_price - $discountedPrice;
                 }
           }
           else{
             if((($total_price - $disableDiscountCartPrice)) == 0){
               $discountedPrice = $total_price;
+              $discountPrice = 0;
               }
               else{
                 $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+                $discountPrice = $total_price - $discountedPrice;
               }
           }
             if($discountedPrice < 0){
               $discountedPrice = 0;
+              $discountPrice = $total_price;
             }
             if($cart->voucher_status == 'unused'){
               $cartUpdate = $cart->update([
                 'total_price' => $discountedPrice,
+                'total_off_price' => $discountPrice,
                 'voucher_status' => 'used',
                 'voucher_id' => $voucher->id,
                 ]);
@@ -215,6 +228,7 @@ class PurchaseController extends Controller
           'total_price' => $total_price,
           'voucher_status' => 'unused',
           'voucher_id' => null,
+          'total_off_price' => null,
           ]);
         return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
@@ -234,7 +248,7 @@ class PurchaseController extends Controller
           }
           foreach($productIds as $productId){
             if (Product::find($productId)->type == 'product' && Product::find($productId)->amount < 1 || Product::find($productId)->status == 'disable'){
-              return redirect()->back()->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' موجود نمیباشد. لطفا از سبد خرید خود حذف نمایید.');
+                return redirect()->route('user-cart', ['shop' => $shop->english_name])->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' موجود نمیباشد. لطفا از سبد خرید خود حذف نمایید.');
             }
             }
           foreach($productIds as $productId){

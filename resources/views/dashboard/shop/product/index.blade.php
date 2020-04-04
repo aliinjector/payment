@@ -470,15 +470,6 @@
                                         </div>
 
 
-                                        <div class="input-group color-dot mt-3">
-                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">خصوصیات انتخابی :</span></div>
-                                            <select class="selectpicker" multiple data-live-search="true" name="specifications[]" title="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10ex') }}">
-                                                @foreach($shop->specifications as $specification)
-                                                    <option class="" value="{{ $specification->id }}">{{ $specification->name }}</option>
-                                                    @endforeach
-                                            </select>
-                                        </div>
-
                                         <div class="facility">
                                             <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> {{ __('dashboard-shop-product-index.addMahsoolFizikiItem11') }} :</span></div>

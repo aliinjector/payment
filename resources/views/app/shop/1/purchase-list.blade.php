@@ -81,7 +81,7 @@
                                 <th>قیمت واحد کالا</th>
                                 <th>تعداد</th>
                                 <th>رنگ</th>
-                                <th> میزان تخفیف</th>
+                                <th> میزان تخفیف محصول</th>
                                 <th>هزینه خصوصیات</th>
                                 <th>قیمت مجموع</th>
                             </tr>
@@ -106,6 +106,7 @@
                                           0
                                         @endif
                                 </td>
+
                                 <td>
                                   {{ $product->specification_price }}
                                 </td>
@@ -115,7 +116,14 @@
                             <!--end tr-->
                             <!--end tr-->
                             <tr class="bg-dark text-white">
-                                <th colspan="5" class="border-0"></th>
+                                <th colspan="3" class="border-0"></th>
+                                <td class="border-0 font-14"><b>مجموع تخفیف با کد تخفیف</b></td>
+                                <td>
+                                    @if($cart->total_off_price != null)
+                                   {{ number_format($cart->total_off_price) }}
+                                    @else
+                                      0
+                                    @endif</td>
                                 <td class="border-0 font-14"><b>جمع کل</b></td>
                                 <td>
                                     @if(isset($discountedPrice)) {{number_format($discountedPrice)}}

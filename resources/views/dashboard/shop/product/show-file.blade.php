@@ -71,18 +71,6 @@
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
                                     </div>
 
-
-                                    <div class="input-group mt-3">
-                                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> خصوصیات انتخابی :</span></div>
-                                        @forelse ($product->specifications as $selectedSpecification)
-                                        <input type="text" class="form-control inputfield" readonly value="{{ $selectedSpecification->name }}">
-                                        @empty
-                                        <input type="text" class="form-control inputfield" readonly value="">
-
-                                        @endforelse
-                                    </div>
-
-
                                     <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>
                                       @forelse( $product->tags as $tag)

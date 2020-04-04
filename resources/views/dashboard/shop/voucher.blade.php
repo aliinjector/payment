@@ -24,6 +24,26 @@
             }
         });
     });
+    $(document).ready(function() {
+        $('.start-field-example-edit').persianDatepicker({
+            altField: '.start-alt-field-edit',
+        });
+        $('.expire-field-example-edit').persianDatepicker({
+            altField: '.expire-alt-field-edit'
+        });
+        $('.expire-alt-field-edit').persianDatepicker({
+          initialValue: false,
+            formatter: function(unix) {
+                return unix;
+            }
+            });
+        $('.start-alt-field-edit').persianDatepicker({
+          initialValue: false,
+            formatter: function(unix) {
+                return unix;
+            }
+            });
+    });
 </script>
 <div class="page-content">
 
@@ -77,8 +97,7 @@
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
-                                              class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" value="{{ old('uses') }}" placeholder="{{ __('dashboard-shop-voucher.addModalItem3ex') }}">
                                 </div>
                                 <div class="input-group mt-3">
@@ -144,7 +163,6 @@
                 </div>
             </div>
         </div>
-
         @foreach($vouchers as $voucher)
         <div class="modal fade bd-example-modal-xl" id="UpdateVoucherModal{{ $voucher->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
@@ -173,30 +191,63 @@
                                 </div>
 
                                 <div class="input-group mt-3">
-                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
-                                              class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" value="{{ $voucher->uses }}">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                               class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-voucher.editModalItem4') }}:</span></div>
                                     <input type="text" class="form-control inputfield" name="discount_amount" value="{{ $voucher->discount_amount }}">
-                                    <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
-
+                                    <div class="input-group-append">
+                                        <label class="switch">
+                                            <input type="checkbox" name="type" id="togBtn">
+                                            <div class="slider round">
+                                                <!--ADDED HTML --><span class="on iranyekan">عددی</span><span class="off iranyekan">درصدی</span>
+                                                <!--END-->
+                                            </div>
+                                        </label></div>
                                 </div>
+
+                                <div class="input-group mt-3 users-voucher">
+                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem5') }}:</span></div>
+                                    <select multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="users[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
+                                        @foreach($usersFullName as $userFullName)
+                                          @if($voucher->users != null)
+                                        <option @if(in_array($userFullName, $voucher->users)) selected @endif>{{ $userFullName }}</option>
+                                      @else
+                                        <option>{{ $userFullName }}</option>
+                                    @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+
 
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem5') }}:</span></div>
-                                    <input type="hidden" class="start-alt-field col h-50px border-0" name="starts_at" />
-                                    <input class="start-field-example col h-50px border-0" name="" value="{{ $voucher->starts_at }}" />
+                                    <input type="hidden" class="start-alt-field-edit col h-50px border-0" name="starts_at" />
+                                    <input class="start-field-example-edit col h-50px border-0" value="{{ $voucher->starts_at }}" />
 
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem6') }}:</span></div>
-                                    <input type="hidden" class="expire-alt-field col h-50px border-0" name="expires_at" />
-                                    <input class="expire-field-example col h-50px border-0" name="" value="{{ $voucher->expires_at }}" />
+                                    <input type="hidden" class="expire-alt-field-edit col h-50px border-0" name="expires_at" />
+                                    <input class="expire-field-example-edit col h-50px border-0" value="{{ $voucher->expires_at }}" />
                                 </div>
                             </div>
+                            <div class="input-group-append mt-3"><a href="#" class="voucher"><span class="h-50px input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"><i
+                                          class="fa fa-plus mr-2"></i>{{ __('dashboard-shop-voucher.addModalItem5') }}
+                                    </span></a>
+                            </div>
+                            <div class="custom-control custom-switch switch-blue input-group-append mt-3 m-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitchBlueEdit{{ $voucher->id }}" name="first_purchase" {{ $voucher->first_purchase == "enable" ? "checked" : '' }}>
+                                <label class="custom-control-label font-15 text-dark" for="customSwitchBlueEdit{{ $voucher->id }}">{{ __('dashboard-shop-voucher.addModalItem8') }}</label>
+                            </div>
+                            <div class="custom-control custom-switch switch-blue input-group-append mt-3 m-3">
+                                <input type="checkbox" class="custom-control-input" id="customSwitchDisposableEdit{{ $voucher->id }}" name="disposable" {{ $voucher->disposable == "enable" ? "checked" : '' }}>
+                                <label class="custom-control-label font-15 text-dark" for="customSwitchDisposableEdit{{ $voucher->id }}">کد یکبار مصرف باشد</label>
+                                <p class="text-muted mt-1" style="font-size: 13px;">اگر این گزینه فعال باشد کاربر فقط یکبار میتواند از این کد تخفیف استفاده کند.</p>
+                            </div>
+                            <!--end form-group-->
                             <!--end form-group-->
                     </div>
                     <div class="modal-footer justify-content-between">
@@ -222,127 +273,127 @@
 
                         <p class="text-muted mb-4 font-13" style="padding-bottom:100px!important">{{ __('dashboard-shop-voucher.listCodeTakhfifDesc') }}.</p>
 
-                            <div class="row">
-                                <div class="col-sm-12 table-responsive">
-                                    <div class="searchBox bg-dark" style="margin-top: -15px;">
-                                        <input type="text" id="myInputTextField" class="searchInput iranyekan">
-                                        <button class="searchButton border" href="#">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
-                                    <div class="table-responsive">
-
-                                        <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
-
-                                            <thead>
-                                                <tr role="row">
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 20px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem1') }}
-                                                    </th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 115px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem2') }}
-                                                    </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 55px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem3') }} </th>
-                                                    {{-- <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات </th> --}}
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem4') }}</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
-                                                        تعداد باقی مانده</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem6') }}</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem7') }}</th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
-                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifItem8') }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="byekan">
-                                                @php
-                                                $id = 1;
-                                                @endphp
-                                                @foreach($vouchers as $voucher)
-                                                <tr role="row" class="odd icon-hover hover-color" id="{{ $voucher->id }}">
-                                                    <td>{{ $id }}</td>
-                                                    <td>{{ $voucher->name }}</td>
-                                                    <td class="font-18">
-                                                        {{-- <form class="form-inline" action="" method="post"> --}}
-                                                        @csrf
-                                                        {{ method_field('put') }}
-                                                        <button class="btn btn-link p-0 change" type="submit" data-id="{{ $voucher->id }}">
-                                                            @if($voucher->status == 1)
-                                                                <i class="fa fa-toggle-on text-success show{{ $voucher->id }}"></i>
-                                                                <i class="fa fa-toggle-off text-muted d-none {{ $voucher->id }}"></i>
-                                                                @else
-                                                                <i class="fa fa-toggle-on text-success d-none {{ $voucher->id }}"></i>
-                                                                <i class="fa fa-toggle-off text-muted show{{ $voucher->id }}"></i>
-                                                                @endif
-                                                        </button>
-                                                        @if ($voucher->status == 1)
-                                                        <span class="badge badge-soft-success show{{ $voucher->id }}">
-                                                            {{ __('dashboard-shop-voucher.listCodeTakhfifEnable') }}
-                                                        </span>
-                                                        <span class="badge badge-soft-pink d-none {{ $voucher->id }}">
-                                                            {{ __('dashboard-shop-voucher.listCodeTakhfifDisable') }}
-                                                        </span>
-                                                        @else
-                                                        <span class="badge badge-soft-success d-none {{ $voucher->id }}">
-                                                            {{ __('dashboard-shop-voucher.listCodeTakhfifEnable') }}
-                                                        </span>
-                                                        <span class="badge badge-soft-pink show{{ $voucher->id }}">
-                                                            {{ __('dashboard-shop-voucher.listCodeTakhfifDisable') }}
-                                                        </span>
-                                                        @endif
-                                                        {{-- </form> --}}
-
-                                                    </td>
-                                                    {{-- <td>{{ $voucher->description }}</td> --}}
-                                                    <td>{{ $voucher->code }}</td>
-                                                    <td>{{ $voucher->uses }}</td>
-                                                    <td>{{ $voucher->discount_amount }}</td>
-                                                    <td>{{ jdate($voucher->starts_at) }}</td>
-                                                    <td class=" p-3">{{ jdate($voucher->expires_at) }}
-                                                        <div class="d-none icon-show">
-                                                            <a href="{{ $voucher->id }}" title="ویرایش" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
-                                                            </a>
-
-                                                            <a href="" id="removeVoucher" title="حذف" data-id="{{ $voucher->id }}" data-name="{{ $voucher->description }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
-                                                        </div>
-                                                    </td>
-
-                                                </tr>
-                                                @php
-                                                $id ++
-                                                @endphp
-                                                @endforeach
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-
+                        <div class="row">
+                            <div class="col-sm-12 table-responsive">
+                                <div class="searchBox bg-dark" style="margin-top: -15px;">
+                                    <input type="text" id="myInputTextField" class="searchInput iranyekan">
+                                    <button class="searchButton border" href="#">
+                                        <i class="fa fa-search"></i>
+                                    </button>
                                 </div>
-                            </div>
+                                <div class="table-responsive">
 
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 20px;">
+                                                    {{ __('dashboard-shop-voucher.listCodeTakhfifItem1') }}
+                                                </th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 115px;">
+                                                    {{ __('dashboard-shop-voucher.listCodeTakhfifItem2') }}
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 55px;">
+                                                    {{ __('dashboard-shop-voucher.listCodeTakhfifItem3') }} </th>
+                                                {{-- <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات </th> --}}
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
+                                                    {{ __('dashboard-shop-voucher.listCodeTakhfifItem4') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
+                                                    تعداد باقی مانده</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
+                                                    {{ __('dashboard-shop-voucher.listCodeTakhfifItem6') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
+                                                    {{ __('dashboard-shop-voucher.listCodeTakhfifItem7') }}</th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
+                                                    {{ __('dashboard-shop-voucher.listCodeTakhfifItem8') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="byekan">
+                                            @php
+                                            $id = 1;
+                                            @endphp
+                                            @foreach($vouchers as $voucher)
+                                            <tr role="row" class="odd icon-hover hover-color" id="{{ $voucher->id }}">
+                                                <td>{{ $id }}</td>
+                                                <td>{{ $voucher->name }}</td>
+                                                <td class="font-18">
+                                                    {{-- <form class="form-inline" action="" method="post"> --}}
+                                                    @csrf
+                                                    {{ method_field('put') }}
+                                                    <button class="btn btn-link p-0 change" type="submit" data-id="{{ $voucher->id }}">
+                                                        @if($voucher->status == 1)
+                                                            <i class="fa fa-toggle-on text-success show{{ $voucher->id }}"></i>
+                                                            <i class="fa fa-toggle-off text-muted d-none {{ $voucher->id }}"></i>
+                                                            @else
+                                                            <i class="fa fa-toggle-on text-success d-none {{ $voucher->id }}"></i>
+                                                            <i class="fa fa-toggle-off text-muted show{{ $voucher->id }}"></i>
+                                                            @endif
+                                                    </button>
+                                                    @if ($voucher->status == 1)
+                                                    <span class="badge badge-soft-success show{{ $voucher->id }}">
+                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifEnable') }}
+                                                    </span>
+                                                    <span class="badge badge-soft-pink d-none {{ $voucher->id }}">
+                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifDisable') }}
+                                                    </span>
+                                                    @else
+                                                    <span class="badge badge-soft-success d-none {{ $voucher->id }}">
+                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifEnable') }}
+                                                    </span>
+                                                    <span class="badge badge-soft-pink show{{ $voucher->id }}">
+                                                        {{ __('dashboard-shop-voucher.listCodeTakhfifDisable') }}
+                                                    </span>
+                                                    @endif
+                                                    {{-- </form> --}}
+
+                                                </td>
+                                                {{-- <td>{{ $voucher->description }}</td> --}}
+                                                <td>{{ $voucher->code }}</td>
+                                                <td>{{ $voucher->uses }}</td>
+                                                <td>{{ $voucher->discount_amount }}</td>
+                                                <td>{{ jdate($voucher->starts_at) }}</td>
+                                                <td class=" p-3">{{ jdate($voucher->expires_at) }}
+                                                    <div class="d-none icon-show">
+                                                        <a href="{{ $voucher->id }}" title="ویرایش" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
+                                                        </a>
+
+                                                        <a href="" id="removeVoucher" title="حذف" data-id="{{ $voucher->id }}" data-name="{{ $voucher->description }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                            @php
+                                            $id ++
+                                            @endphp
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
-            <!-- end col -->
         </div>
+        <!-- end col -->
     </div>
+</div>
 
 
 
 
-    <!-- Attachment Modal -->
+<!-- Attachment Modal -->
 
-    @endsection
-
-
-    @section('pageScripts')
-    <script src="/dashboard/assets/js/persian-date.js"></script>
-    <script src="/dashboard/assets/js/persian-datepicker.js"></script>
-    <script src="{{ asset('/dashboard/assets/js/admin-voucher.js') }}"></script>
+@endsection
 
 
-    @stop
+@section('pageScripts')
+<script src="/dashboard/assets/js/persian-date.js"></script>
+<script src="/dashboard/assets/js/persian-datepicker.js"></script>
+<script src="{{ asset('/dashboard/assets/js/admin-voucher.js') }}"></script>
+
+
+@stop

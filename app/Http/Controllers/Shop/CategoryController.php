@@ -79,7 +79,7 @@ class CategoryController extends Controller
       else{
         $perPage = 10000; // How many items do you want to display.
       }
-      foreach($products as $singleProduct){
+      foreach($products->where('status', 'enable') as $singleProduct){
         foreach($singleProduct->colors as $color){
           $colors[] = $color;
         }

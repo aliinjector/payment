@@ -108,7 +108,7 @@
 
                             </div>
                         </div><!-- .col -->
-                        <div class="col-lg-4">
+                        <div class="col-lg-6" >
                             <div class="contact-wrap split split-right split-lg-right bg-genitian bg-theme tc-light">
                                 <div class="d-flex flex-column justify-content-between h-100">
                                     <ul class="contact-list">
@@ -116,10 +116,10 @@
                                         <li>
                                             <em class="contact-icon fas fa-phone"></em>
                                             <div class="contact-text">
-                                                <span class="byekan">{{ \auth::user()->mobile }}</span>
+                                                <span class="byekan" style="font-size:20px">{{ \auth::user()->mobile }}</span>
                                             </div>
                                         </li>
-                                        <li>
+                                        <li style="font-size:17px">
                                             <em class="contact-icon fas fa-envelope"></em>
                                             <div class="contact-text">
                                                 <span>{{ \auth::user()->email }}</span>

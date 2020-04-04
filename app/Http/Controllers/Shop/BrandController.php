@@ -74,7 +74,7 @@ class BrandController extends Controller
           $products = $colorAndBrandProducts;
       }
       $total = $products->count();
-      foreach($products as $singleProduct){
+      foreach($products->where('status', 'enable') as $singleProduct){
         foreach($singleProduct->colors as $color){
           $colors[] = $color;
         }

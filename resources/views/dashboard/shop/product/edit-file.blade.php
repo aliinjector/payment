@@ -9,14 +9,12 @@
       $(document).ready(function() {
           $('.start-field-example-file').persianDatepicker({
               altField: '.start-alt-field-file',
-              initialValue: false,
               timePicker: {
                 enabled: true,
                 }
           });
           $('.expire-field-example-file').persianDatepicker({
               altField: '.expire-alt-field-file',
-              initialValue: false,
               timePicker: {
                 enabled: true,
                 }
@@ -139,13 +137,13 @@
                                             <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem6') }}:</span></div>
                                                 <input type="hidden" class="start-alt-field-file col h-50px" name="off_price_started_at" />
-                                                <input class="start-field-example-file col h-50px" name="" />
+                                                <input class="start-field-example-file col h-50px" name="" value="{{ $product->off_price_started_at }}" />
 
                                             </div>
                                             <div class="input-group mt-3">
                                                 <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem7') }}:</span></div>
                                                 <input type="hidden" class="expire-alt-field-file col h-50px" name="off_price_expired_at" />
-                                                <input class="expire-field-example-file col h-50px" name="" />
+                                                <input class="expire-field-example-file col h-50px" name=""  value="{{ $product->off_price_expired_at }}" />
                                             </div>
 
                                           </div>
@@ -153,17 +151,6 @@
                                       </div>
                                   </div>
 
-                                  <div class="input-group mt-3">
-                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> خصوصیات انتخابی :</span></div>
-
-                                      <select class="selectpicker" multiple data-live-search="true" name="specifications[]" title="موردی انتخاب نشده است">
-                                        @foreach($shop->specifications as $specification)
-                                          <option @if($product->specifications->count() != 0) @foreach($product->specifications as $selectedSpecification) {{ $specification->id == $selectedSpecification->id ? 'selected' : ''}}
-                                                  @endforeach
-                                                  @endif value="{{ $specification->id }}">{{ $specification->name }}</option>
-                                          @endforeach
-                                      </select>
-                                  </div>
 
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>

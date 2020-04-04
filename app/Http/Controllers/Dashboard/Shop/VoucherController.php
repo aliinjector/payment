@@ -132,6 +132,20 @@ class VoucherController extends Controller
      */
     public function update(VoucherRequest $request, $id)
     {
+
+      if($request->type != "on")
+      $request->type = 'percentage';
+      else
+      $request->type = 'number';
+      if ( $request->first_purchase != "on")
+      $request->first_purchase = 'disable';
+      else
+      $request->first_purchase = 'enable';
+      if ( $request->disposable != "on")
+      $request->disposable = 'disable';
+      else
+      $request->disposable = 'enable';
+
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
         $voucher = \Auth::user()->shop()->first()->vouchers()->where('id',$id)->get()->first()->update([
@@ -139,7 +153,11 @@ class VoucherController extends Controller
             'shop_id' => $request->shop_id,
             'description' => $request->description,
             'uses' => $request->uses,
+            'type' => $request->type,
             'discount_amount' => $request->discount_amount,
+            'users' => $request->users,
+            'first_purchase' => $request->first_purchase,
+            'disposable' => $request->disposable,
             'starts_at' => date('Y-m-d H:i:s', (int)$realTimestampStart),
             'expires_at' => date('Y-m-d H:i:s', (int)$realTimestampExpire),
           ]);

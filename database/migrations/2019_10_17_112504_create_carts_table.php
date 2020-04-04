@@ -20,6 +20,7 @@ class CreateCartsTable extends Migration
             $table->unsignedInteger('status')->default(0);
             $table->timestamp('expires_at')->nullable();
             $table->integer('total_price');
+            $table->integer('total_off_price')->default(0);
             $table->enum('voucher_status',['used', 'unused'])->default('unused');
             $table->bigInteger('voucher_id')->unsigned()->index();
             $table->timestamps();

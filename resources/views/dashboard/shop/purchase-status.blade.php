@@ -34,6 +34,7 @@
 
                     <div id="collapseOne{{$purchase->id}}" class="collapse" aria-labelledby="headingOne{{$purchase->id}}" data-parent="#accordionExample{{$purchase->id}}" style="">
                         <div class="card-body">
+                          <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead class="thead-light">
                                     <tr class="iranyekan">
@@ -102,6 +103,7 @@
                                     <!--end tr-->
                                 </tbody>
                             </table>
+                          </div>
                         </div>
                         <div class="row d-flex justify-content-around p-4 text-white" style="background-color: #122272!important">
                             <div class="font-1-4em">
@@ -126,4 +128,27 @@
 
 @endsection
 @section('pageScripts')
+  <script type="text/javascript">
+  $(window).resize(function() {
+      if ($(window).width() < 1300) {
+        $("body").addClass('enlarge-menu');
+
+      } else {
+          $("body").removeClass('enlarge-menu');
+
+      }
+  }).resize();
+  $(window).resize(function() {
+      if ($(window).width() < 1070) {
+        $(".icon-show").removeClass('d-none');
+
+      } else {
+          $(".icon-show").addClass('d-none');
+
+      }
+  }).resize();
+  $( document ).ready(function() {
+    $( ".dropify-clear" ).remove();
+    });
+  </script>
 @stop

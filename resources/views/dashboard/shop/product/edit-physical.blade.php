@@ -9,14 +9,14 @@
       $(document).ready(function() {
           $('.start-field-example-product').persianDatepicker({
               altField: '.start-alt-field-product',
-              initialValue: false,
+
               timePicker: {
                 enabled: true,
                 }
           });
           $('.expire-field-example-product').persianDatepicker({
               altField: '.expire-alt-field-product',
-              initialValue: false,
+
               timePicker: {
                 enabled: true,
                 }
@@ -139,13 +139,13 @@
                                               <div class="input-group mt-3">
                                                   <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem6') }}:</span></div>
                                                   <input type="hidden" class="start-alt-field-product col h-50px" name="off_price_started_at" />
-                                                  <input class="start-field-example-product col h-50px" name="" />
+                                                  <input class="start-field-example-product col h-50px" name="" value="{{ $product->off_price_started_at }}" />
 
                                               </div>
                                               <div class="input-group mt-3">
                                                   <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem7') }}:</span></div>
                                                   <input type="hidden" class="expire-alt-field-product col h-50px" name="off_price_expired_at" />
-                                                  <input class="expire-field-example-product col h-50px" name="" />
+                                                  <input class="expire-field-example-product col h-50px" name="" value="{{ $product->off_price_expired_at }}" />
                                               </div>
 
                                             </div>

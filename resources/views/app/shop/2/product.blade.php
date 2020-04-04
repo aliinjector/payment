@@ -102,6 +102,8 @@
                             </ul>
                         </div>
                         <h3 class="tt-title m-4">{{ $product->title }}</h3>
+                        <span class="font-15">دسته بندی :</span><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$product->productCategory->id]) }}" class="font-14"> {{ $product->productCategory->name }}</a>
+                        </br>
                         @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
                             <div class="tt-price m-4"><span class="new-price"><del>{{ number_format($product->price) }}</del> {{ __('app-shop-2-product.tooman') }}</span></div>
                             <div class="tt-price m-4"><span class="new-price">{{ number_format($product->off_price) }} {{ __('app-shop-2-product.tooman') }}</span></div>

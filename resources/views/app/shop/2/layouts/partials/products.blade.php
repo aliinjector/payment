@@ -62,7 +62,7 @@
 										<div class="tt-row">
 
 											<ul class="tt-add-info">
-												<li><a href="#">{{ $product->productCategory->name }}</a></li>
+												<li><a  href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$product->productCategory->id]) }}">{{ $product->productCategory->name }}</a></li>
 											</ul>
 											<div class="tt-rating">
 												@for ($i = 1; $i <= (int)$product->avgRating; $i++)
