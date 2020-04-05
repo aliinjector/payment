@@ -51,19 +51,19 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>عنوان اپلیکیشن :</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" value="{{ $appInformation->title }}">
+                                    <input type="text" class="form-control inputfield" name="title" value="{{ old('title', $appInformation->title) }}">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>رنگ اول :</span></div>
-                                    <input type="color" class="form-control inputfield" id="favcolor" name="color_1" value="{{ $appInformation->color_1 }}"><br><br>
+                                    <input type="color" class="form-control inputfield" id="favcolor" name="color_1" value="{{ old('color_1', $appInformation->color_1) }}"><br><br>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>رنگ دوم :</span></div>
-                                    <input type="color" class="form-control inputfield" id="favcolor" name="color_2" value="{{ $appInformation->color_2 }}"><br><br>
+                                    <input type="color" class="form-control inputfield" id="favcolor" name="color_2" value="{{ old('color_2', $appInformation->color_2) }}"><br><br>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>رنگ سوم :</span></div>
-                                    <input type="color" class="form-control inputfield" id="favcolor" name="color_3" value="{{ $appInformation->color_3 }}"><br><br>
+                                    <input type="color" class="form-control inputfield" id="favcolor" name="color_3" value="{{ old('color_3', $appInformation->color_3) }}"><br><br>
                                 </div>
                             </div>
                             <!--end form-group-->

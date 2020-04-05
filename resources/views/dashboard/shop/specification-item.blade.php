@@ -78,12 +78,12 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>نام گزینه:</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $specificationItem->name }}">
+                                    <input type="text" class="form-control inputfield" name="name" value="{{ old('name', $specificationItem->name) }}">
                                 </div>
                                 <div class="input-group mt-3">
                                    <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                       class="fas fa-star required-star mr-1"></i>قیمت گزینه :</span></div>
-                                   <input value="{{ $specificationItem->price }}" type="text" class="form-control inputfield" name="price" placeholder="مثال : 1000" Lang="en">
+                                   <input value="{{ old('price', $specificationItem->price) }}" type="text" class="form-control inputfield" name="price" placeholder="مثال : 1000" Lang="en">
                                    <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span>
                                    </div>
                                 </div>

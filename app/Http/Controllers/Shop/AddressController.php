@@ -20,7 +20,6 @@ class AddressController extends Controller
     {
       $user_addresses = \auth()->user()->addresses;
       if(\Auth::user()->type == 'customer'){
-
         $shop = Shop::find(\auth()->user()->shop_id);
         return view("app.shop.account.account-address", compact('user_addresses', 'shop'));
       }
@@ -36,7 +35,8 @@ class AddressController extends Controller
      */
     public function create()
     {
-      return view("app.shop.account.account-address-create");
+      $shop = Shop::find(\auth()->user()->shop_id);
+      return view("app.shop.account.account-address-create", compact('shop'));
     }
 
     /**
@@ -77,8 +77,13 @@ class AddressController extends Controller
      */
     public function edit($id)
     {
-      $address = Address::find($id);
-      return view("app.shop.account.account-address-edit", compact('address'));
+      if(\auth::user()->type == 'customer'){
+        $shop = Shop::find(\auth()->user()->shop_id);
+      }
+      else{
+        $address = Address::find($id);
+        return view("app.shop.account.account-address-edit", compact('address'));
+      }
 
     }
 

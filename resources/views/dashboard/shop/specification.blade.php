@@ -81,7 +81,7 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>نام خصوصیت:</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $specification->name }}">
+                                    <input type="text" class="form-control inputfield" name="name" value="{{ old('name', $specification->name) }}">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>نحوه نمایش خصوصیت :</span>

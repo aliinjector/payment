@@ -70,7 +70,7 @@
                               <div class="form-group mb-0 col-12">
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="title" placeholder="مثال: کتاب آموزش زبان" value="{{ $product->title }}">
+                                      <input type="text" class="form-control inputfield" name="title"  value="{{ old('title', $product->title) }}">
                                       <input name="type" type="hidden" value="file">
 
                                   </div>
@@ -119,13 +119,13 @@
 
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت فایل :</span></div>
-                                      <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" value="{{ $product->price }}">
+                                      <input type="text" class="form-control inputfield" name="price"  value="{{ old('price', $product->price) }}">
                                       <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                   </div>
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت بعد از تخفیف:</span></div>
-                                      <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" value="{{ $product->off_price }}">
+                                      <input type="text" class="form-control inputfield" name="off_price"  value="{{ old('off_price', $product->off_price) }}">
                                       <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
                                   </div>
                                   <div class="form-group row">

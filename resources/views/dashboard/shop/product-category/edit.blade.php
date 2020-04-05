@@ -38,7 +38,7 @@
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                                   class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-category.editCategoryItem1') }} :</span></div>
-                                        <input type="text" class="form-control inputfield" name="name" value="{{ $category->name }}">
+                                        <input type="text" class="form-control inputfield" name="name" value="{{ old('name', $category->name) }}">
                                     </div>
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-category.editCategoryItem2') }}:</span></div>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات دسته بندی :</span></div>
-                                        <input type="text" class="form-control inputfield" name="description" value="{{ $category->description }}">
+                                        <input type="text" class="form-control inputfield" name="description" value="{{ old('description', $category->description) }}">
                                     </div>
 
                                     <div class="card mt-3 border">

@@ -26,19 +26,19 @@
                             {{ method_field('PATCH') }}
                             <div class="form-group">
                                 <label for="shopInputFirstName" class="control-label">شهر *</label>
-                                <input type="text" class="form-control" name="city" value="{{ $address->city }}">
+                                <input type="text" class="form-control" name="city" value="{{ old('city', $address->city) }}">
                             </div>
                             <div class="form-group">
                                 <label for="shopInputLastName" class="control-label">استان *</label>
-                                <input type="text" class="form-control" name="province" value="{{ $address->province }}">
+                                <input type="text" class="form-control" name="province" value="{{ old('province', $address->province) }}">
                             </div>
                             <div class="form-group">
                                 <label for="shopInputLastName" class="control-label">کد پستی *</label>
-                                <input type="text" class="form-control" name="zip_code" value="{{ $address->zip_code }}">
+                                <input type="text" class="form-control" name="zip_code" value="{{ old('zip_code', $address->zip_code) }}">
                             </div>
                             <div class="form-group">
                                 <label for="shopCompanyName" class="control-label">نشانی *</label>
-                                <input type="text" class="form-control" name="address" value="{{ $address->address }}">
+                                <input type="text" class="form-control" name="address" value="{{ old('address', $address->address) }}">
                             </div>
 
                             <div class="row tt-offset-21">

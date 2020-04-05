@@ -21,7 +21,8 @@ class UserPurchasesController extends Controller
           $purchases = \auth::user()->purchases()->orderBy('created_at', 'asc')->get();
           if(\auth::user()->shop_id != null){
             $shop_name = Shop::where('id', \auth::user()->shop_id)->get()->first()->english_name;
-            return view("app.shop.account.user-purchases", compact('purchases', 'shop_name'));
+            $shop = Shop::find(\auth()->user()->shop_id);
+            return view("app.shop.account.user-purchases", compact('purchases', 'shop_name','shop'));
           }
           else{
             return view("app.shop.account.user-purchases", compact('purchases'));
@@ -32,6 +33,7 @@ class UserPurchasesController extends Controller
 
 
       public function showPurchase($id){
+        $shop = Shop::find(\auth()->user()->shop_id);
         $purchase = \auth::user()->purchases()->where('id', $id)->get()->first();
         $specificationItems = collect();
         if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->shop->specifications != null){
@@ -47,7 +49,7 @@ class UserPurchasesController extends Controller
               }
         }
       }
-        return view("app.shop.account.purchase-show", compact('purchase','specificationItems'));
+        return view("app.shop.account.purchase-show", compact('purchase','specificationItems','shop'));
       }
 
 

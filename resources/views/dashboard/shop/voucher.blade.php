@@ -181,23 +181,23 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                               class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-voucher.editModalItem1') }}:</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $voucher->name }}">
+                                    <input type="text" class="form-control inputfield" name="name" value="{{ old('name', $voucher->name) }}">
                                     <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                                 </div>
 
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.editModalItem2') }}:</span></div>
-                                    <input type="text" class="form-control inputfield" name="description" value="{{ $voucher->description }}">
+                                    <input type="text" class="form-control inputfield" name="description" value="{{ old('description', $voucher->description) }}">
                                 </div>
 
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
-                                    <input type="number" class="form-control inputfield" name="uses" value="{{ $voucher->uses }}">
+                                    <input type="number" class="form-control inputfield" name="uses" value="{{ old('uses', $voucher->uses) }}">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                               class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-voucher.editModalItem4') }}:</span></div>
-                                    <input type="text" class="form-control inputfield" name="discount_amount" value="{{ $voucher->discount_amount }}">
+                                    <input type="text" class="form-control inputfield" name="discount_amount" value="{{ old('discount_amount', $voucher->discount_amount) }}">
                                     <div class="input-group-append">
                                         <label class="switch">
                                             <input type="checkbox" name="type" id="togBtn">

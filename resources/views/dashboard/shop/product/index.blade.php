@@ -772,7 +772,7 @@
                                                 <td class="sorting_1">
 
                                                     <p class="d-inline-block align-middle mb-0 mr-2"><a href="{{ route('product', ['shop'=>\Auth::user()->shop()->first()->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" target="_blank"
-                                                          class="d-inline-block align-middle mb-0 product-name">{{ limitString($product->title) }}</a>
+                                                          class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                                                 </td>
                                                 <td>{{ $product->productCategory()->first()->name }}</td>
                                                 <td>

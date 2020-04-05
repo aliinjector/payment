@@ -94,7 +94,7 @@
                                     <div class="form-group row">
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem3') }}</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="name" placeholder="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem3ex') }}" value="{{ old('title', $shopInformation->name) }}">
+                                            <input class="form-control" type="text" name="name" placeholder="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem3ex') }}" value="{{ old('name', $shopInformation->name) }}">
                                         </div>
                                     </div>
                                     <div class="form-group row  mb-0">
@@ -452,7 +452,7 @@
                                 <select class="form-control" name="special_offer">
                                     <option value="enable">{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem6Enable') }}</option>
                                     <option value="disable" @if(\Auth::user()->shop()->first()->special_offer == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimateGhalebeForooshgahItem6Disable') }}</option>
-                                    <input type="hidden" name="special_offer_text" value="{{ \Auth::user()->shop()->first()->special_offer_text }}">
+                                    <input type="hidden" name="special_offer_text" value="{{ old('special_offer_text', \Auth::user()->shop()->first()->special_offer_text) }}">
                                 </select>
                                 <div id="demo" class="collapse mt-2">
 
@@ -554,7 +554,7 @@
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
                                 <label for="example-tel-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem3') }}</label>
-                                <input class="form-control" type="text" name="phone" disabled value="{{ \Auth::user()->mobile }}" id="example-tel-input">
+                                <input class="form-control" type="text" name="phone" disabled value="{{ old('phone', \Auth::user()->mobile) }}" id="example-tel-input">
                                 <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-mobile-alt text-dark font-18"></i></span></div>
                             </div>
                         </div>

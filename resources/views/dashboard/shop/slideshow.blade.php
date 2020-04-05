@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">آدرس اسلاید :</span></div>
-                                    <input type="text" class="form-control inputfield" name="url" value="{{ $slideshow->url }}">
+                                    <input type="text" class="form-control inputfield" name="url" value="{{ old('url', $slideshow->url) }}">
                                 </div>
                                 <div class="card mt-3">
                                     <div class="card-body">

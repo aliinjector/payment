@@ -72,7 +72,7 @@
                                 <div class="form-group mb-0 col-12">
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان محصول :</span></div>
-                                        <input type="text" class="form-control inputfield" name="title" placeholder="مثال: جاروبرقی" value="{{ $product->title }}">
+                                        <input type="text" class="form-control inputfield" name="title"  value="{{ old('title', $product->title) }}">
                                         <input name="type" type="hidden" value="product">
                                     </div>
 
@@ -121,13 +121,13 @@
 
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">قیمت محصول :</span></div>
-                                        <input type="text" class="form-control inputfield" name="price" placeholder="مثال: 30000" Lang="en" value="{{ $product->price }}">
+                                        <input type="text" class="form-control inputfield" name="price"  Lang="en" value="{{ old('price', $product->price) }}">
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
 
                                     </div>
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> قیمت بعد از تخفیف :</span></div>
-                                        <input type="text" class="form-control inputfield" name="off_price" placeholder="مثال: 30000" Lang="en" value="{{ $product->off_price }}">
+                                        <input type="text" class="form-control inputfield" name="off_price" Lang="en" value="{{ old('off_price', $product->off_price) }}">
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"> تومان</span></div>
                                     </div>
                                     <div class="form-group row">
@@ -154,25 +154,25 @@
                                     </div>
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی در انبار :</span></div>
-                                        <input type="text" class="form-control inputfield" name="amount" placeholder="مثال: 3" value="{{ $product->amount }}">
+                                        <input type="text" class="form-control inputfield" name="amount"  value="{{ old('amount', $product->amount) }}">
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
                                     </div>
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">حداقل موجودی در انبار :</span></div>
-                                        <input type="text" class="form-control inputfield" name="min_amount" placeholder="مثال: 3" value="{{ $product->min_amount }}">
+                                        <input type="text" class="form-control inputfield" name="min_amount" value="{{ old('min_amount', $product->min_amount) }}">
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
                                     </div>
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">واحد شمارش:</span></div>
-                                        <input type="text" class="form-control inputfield" name="measure" placeholder="مثال: لیتر" value="{{ $product->measure }}">
+                                        <input type="text" class="form-control inputfield" name="measure"  value="{{ old('measure', $product->measure) }}">
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
 
                                     </div>
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">وزن محصول :</span></div>
-                                        <input type="text" class="form-control inputfield" name="weight" placeholder="مثال: 30" value="{{ $product->weight }}">
+                                        <input type="text" class="form-control inputfield" name="weight" value="{{ old('weight', $product->weight) }}">
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
 
                                     </div>
