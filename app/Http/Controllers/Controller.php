@@ -13,6 +13,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
 
+
     protected function watermark($file)
     {
         $imageSource = \Auth::user()->shop->watermark;
