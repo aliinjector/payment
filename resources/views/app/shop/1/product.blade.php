@@ -14,6 +14,14 @@
 .dropdown-menu .dropdown-item {
     padding: 3px 2px!important;
 }
+    .sl-next{
+        direction: ltr;
+    }
+
+.sl-prev{
+    direction: ltr;
+}
+
 </style>
 <div class="row">
     <div class="col-sm-12">

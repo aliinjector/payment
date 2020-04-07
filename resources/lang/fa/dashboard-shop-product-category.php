@@ -18,8 +18,8 @@ return array(
     "addCategoryTitle"         => "افزودن دسته بندی جدید",
     "addCategoryItem1"         => "عنوان دسته بندی",
     "addCategoryItem1ex"         => "مثال: ورزشی",
-    "addCategoryItem2"         => "شاخه دسته بندی",
-    "addCategoryItem2Main"         => "دسته بندی اصلی",
+    "addCategoryItem2"         => "دسته بندی پدر",
+    "addCategoryItem2Main"         => "افزودن بعنوان دسته بندی اصلی",
     "addCategoryItem3"         => "توضیحات دسته بندی ",
     "addCategoryItem3ex"         => "مثال: توضیحات مختصری درمورد دسته بندی ",
     "addCategoryItem4"         => "آیکون دسته بندی",
@@ -33,8 +33,8 @@ return array(
 
         "editCategoryTitle"         => "ویرایش دسته بندی",
         "editCategoryItem1"         => "عنوان دسته بندی",
-        "editCategoryItem2"         => "شاخه دسته بندی",
-        "editCategoryItem2Main"         => "دسته بندی اصلی",
+        "editCategoryItem2"         => "دسته بندی پدر",
+        "editCategoryItem2Main"         => "افزودن بعنوان دسته بندی اصلی",
         "editCategoryItem3"         => "توضیحات دسته بندی ",
         "editCategoryItemDelete"         => "حذف",
         "addCategoryItem4"         => "آیکون دسته بندی",
@@ -48,7 +48,7 @@ return array(
         "listCategoryItem1"         => "شناسه",
         "listCategoryItem2"         => "آیکون",
         "listCategoryItem3"         => "نام  دسته بندی",
-        "listCategoryItem4"         => "شناسهشاخه دسته بندی",
+        "listCategoryItem4"         => "شناسه شاخه دسته بندی",
         "listCategoryItem5"         => "توضیحات",
 
 );

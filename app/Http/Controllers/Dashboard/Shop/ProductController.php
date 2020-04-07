@@ -787,6 +787,32 @@ else{
         }
 
 
+    public function search(Request $request)
+    {
+        $title = $request->title;
+        if(request()->has('notification')){
+            $user = \auth()->user();
+            $user->notifications()->where('type', 'App\Notifications\MinAmountWarning')->update(['read_at' => now()]);
+        }
+
+        if(\Auth::user()->type == 'customer'){
+            return redirect()->back();
+        }else{
+            if (\Auth::user()->shop()->first()->ProductCategories()->get()->count() == 0) {
+                alert()->warning('هدایت به صفحه ساخت دسته بندی', 'لطفا ابتدا دسته بندی جدید ایجاد کنید');
+                return redirect()->route('product-category.index');
+            }
+            else{
+                $shop = \Auth::user()->shop()->first();
+                $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+                $brands = \Auth::user()->shop()->first()->brands()->get();
+                $colors = Color::all();
+                $products = \Auth::user()->shop()->first()->products()->get();
+                return view('dashboard.shop.product.index', compact('productCategories','products', 'brands', 'colors','shop', 'title'));
+            }
+        }
+    }
+
 
 
     }

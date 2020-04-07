@@ -258,7 +258,7 @@
                     @auth
                     <div class="dropdown search-icon d-flex align-items-center mx-5 my-4" @if($shop->logo == null) style="margin-left: 80px!important;" @endif>
                         <button class="btn bg-blue-omid text-white rounded dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          ناحیه کاربری
+                          اطلاعات کاربری {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName  }}
                         </button>
                         <div class="dropdown-menu p-3 position-absolute" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>{{ __('app-shop-1-layouts-master.alagheMandiHa') }} <span
