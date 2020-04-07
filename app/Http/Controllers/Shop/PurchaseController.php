@@ -39,6 +39,7 @@ class PurchaseController extends Controller
     $userVoucherName =  \Auth::user()->firstName .' '.   \Auth::user()->lastName . '-' . \Auth::user()->email;
     // code for this shop check
       if ($validVoucher == null) {
+          Session::put('voucher', false);
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
           return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
@@ -46,6 +47,7 @@ class PurchaseController extends Controller
 
         //first purchase chekc
         if(Voucher::where('code', $request->code)->get()->first()->first_purchase == 'enable' and \Auth::user()->purchases()->where('shop_id', $shop->id)->get()->count() != 0){
+          Session::put('voucher', false);
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
           return redirect()->back();
         }
@@ -56,6 +58,7 @@ class PurchaseController extends Controller
           if($voucher->disposable == 'enable'){
             $userVoucherUse = UserVoucher::where([['user_id', $userID], ['voucher_id', $voucher->id], ['shop_id', $shop->id]])->first();
             if($userVoucherUse){
+              Session::put('voucher', false);
               alert()->error('شما قبلا از این کد تخفیف استفاده کردید.', 'خطا');
               return redirect()->back();
             }
@@ -104,6 +107,7 @@ class PurchaseController extends Controller
              return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
           }
           else{
+            Session::put('voucher', false);
             alert()->error('شما قبلا از این کد تخفیف استفاده کردید.', 'خطا');
             return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
           }
@@ -117,6 +121,7 @@ class PurchaseController extends Controller
             }
           }
           if(collect($this->getVochersUsers($voucher->id))->contains($userVoucherName)){
+            $disableDiscountCartPrice = 0;
             $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
             if($voucher->type == 'number'){
               if((($total_price - $disableDiscountCartPrice)) == 0){
@@ -130,6 +135,7 @@ class PurchaseController extends Controller
                 }
           }
           else{
+
             if((($total_price - $disableDiscountCartPrice)) == 0){
               $discountedPrice = $total_price;
               $discountPrice = 0;
@@ -159,11 +165,13 @@ class PurchaseController extends Controller
             }
           }
           else{
+            Session::put('voucher', false);
             alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
             return redirect()->back();
           }
         }
       } else {
+          Session::put('voucher', false);
           alert()->error('کد تخفیف شما معتبر نیست.', 'خطا');
           return redirect()->back();
       }
@@ -187,11 +195,13 @@ class PurchaseController extends Controller
         $shopCategories = $shop->ProductCategories()->get();
         $template_folderName = $shop->template->folderName;
 
+        if(app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName() != 'purchase-list' and Session::get('voucher') != false){
         if(!$request->has('_token') or app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName() != 'user-cart'){
           foreach ($cart->cartproduct as $singleCartproduct) {
             DB::table('cart_product')->where([['id', '=', $singleCartproduct->id], ['cart_id', '=', $cart->id], ['product_id', '=', $singleCartproduct->product->id]])->update(['quantity' => 1, 'total_price' => $singleCartproduct->product->price]);
           }
         }
+      }
         else{
           foreach($request->except('_token') as $productIdAndCartProductId => $quantity){
           $productId = explode('-',$productIdAndCartProductId)[0];

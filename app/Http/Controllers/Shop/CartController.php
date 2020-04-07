@@ -113,6 +113,7 @@ class CartController extends \App\Http\Controllers\Controller {
         $userCartShopID = \Auth::user()->cart()->get()->first()->shop_id;
         $currentshopID = Shop::where('english_name' , $shopName)->get()->first()->id;
         if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()){
+
           $productPrice = $product->off_price;
         }else{
           $productPrice = $product->price;
@@ -146,6 +147,7 @@ class CartController extends \App\Http\Controllers\Controller {
                 DB::table('cart_product')->insert([
                   ['product_id' => $request->product_id,'quantity' => $request->quantity, 'cart_id' => \Auth::user()->cart()->get()->first()->id, 'color_id' => $request->color, 'total_price' => $productPrice, 'specification' => $specification, 'specification_price' => $specificationPrice]
                   , ]);
+
                 $total_price = 0;
                 foreach(\Auth::user()->cart()->get()->first()->cartProduct as $cartProduct){
                   $total_price += $cartProduct->total_price;

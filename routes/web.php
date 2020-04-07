@@ -226,6 +226,10 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::resource('/user-address', 'AddressController');
     Route::post('/user-address/delete', 'AddressController@destroy')->name('user-address.delete');
 
+
+    //User-Panel
+    Route::resource('/user-panel', 'UserPanelController');
+
     //Cart
     Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart');
     Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');

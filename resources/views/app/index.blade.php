@@ -178,7 +178,7 @@
                                             <div class="listing-item listing_carditem">
                                                 <article class="geodir-category-listing fl-wrap">
                                                     <div class="geodir-category-img">
-                                                        <a target="_blank" href="/{{ $shop->english_name }}"  class="geodir-category-img-wrap fl-wrap">
+                                                        <a target="_blank" href="/{{ $shop->english_name }}"  class="geodir-category-img-wrap fl-wrap" style="height:23vh">
                                                             <img style="height: 100%; max-height: 250px" src="{{ $shop->logo['original'] }}" alt="">
                                                         </a>
                                                         <div class="geodir_status_date gsd_open">{{ $shop->name }}</div>

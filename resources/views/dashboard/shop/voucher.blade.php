@@ -394,6 +394,21 @@
 <script src="/dashboard/assets/js/persian-date.js"></script>
 <script src="/dashboard/assets/js/persian-datepicker.js"></script>
 <script src="{{ asset('/dashboard/assets/js/admin-voucher.js') }}"></script>
+<script type="text/javascript">
+setTimeout(function() {
+  if ($(window).width() < 1480) {
+      $('table').removeClass('dataTable');
+  }
 
+},100);
+</script>
+<script type="text/javascript">
+setTimeout(function() {
+  if ($(window).width() < 1300) {
+      $('table').addClass('dataTable');
+  }
+
+},100);
+</script>
 
 @stop

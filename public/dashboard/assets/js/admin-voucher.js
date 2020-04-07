@@ -1,3 +1,4 @@
+
     $(window).resize(function() {
         if ($(window).width() < 1300) {
             $("body").addClass('enlarge-menu');

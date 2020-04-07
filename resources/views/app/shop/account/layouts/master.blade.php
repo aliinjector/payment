@@ -14,6 +14,8 @@
     <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
     <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('/app/shop/2/css/master.css') }}" />
 
@@ -237,12 +239,14 @@ padding-top: 35.5px;
                 <script src="/app/js/scriptse332.js?ver=161"></script>
                 <script src="/app/js/charts.js"></script>
                 <script src="{{url('stats/script.js')}}"></script>
-                <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
-                <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-                <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
-                <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
-                <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
-                <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
+                <script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+                <script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                      $('.dropify-clear').addClass('d-none');
+                  });
+                </script>
+
                 </html>
             </body>
 

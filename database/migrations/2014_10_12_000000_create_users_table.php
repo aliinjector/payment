@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('status')->default('active');
             $table->string('type')->default('user');
             $table->bigInteger('shop_id')->unsigned()->index()->nullable();
+            $table->string('avatar')->default('images/avatar.png');
             $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();

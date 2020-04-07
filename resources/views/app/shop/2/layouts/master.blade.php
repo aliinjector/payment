@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ __('app-shop-2-layouts-master.pageTitle') }}</title>
+    <title>{{ $shop->name }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="stylesheet" href="/app/shop/2/css/style.css">
     <link rel="stylesheet" href="/app/shop/2/css/alert.css">
@@ -270,7 +270,7 @@
                                                   @if(\Auth::user()->id == $shop->user_id)
                                                     <a href="{{ route('dashboard.index') }}"><i class="icon-f-94"></i>پنل مدیریت</a>
                                                   @else
-                                                    <a href="{{ route('user.purchased.list') }}"><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.panelKarbari') }}</a>
+                                                    <a href="{{ route('user-panel.index') }}"><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.panelKarbari') }}</a>
                                                   @endif
                                                 </li>
                                                 <li><a href="{{ route('user-address.index') }}"><i class="fa fa-address-card ml-2"></i>{{ __('app-shop-2-layouts-master.addressHa') }}</a></li>
