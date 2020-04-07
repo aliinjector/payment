@@ -24,7 +24,7 @@ return array(
     "etelaatForooshgahItem1"         => "نام",
     "etelaatForooshgahItem2"         => "نام خانوادگی",
     "etelaatForooshgahItem3"         => "نام فروشگاه",
-    "etelaatForooshgahItem3ex"         => "مثال: پایان پی",
+    "etelaatForooshgahItem3ex"         => "مثال: امید شاپ",
     "etelaatForooshgahItem4"         => "نام فروشگاه(لاتین)",
     "etelaatForooshgahItem4Desc"         => "این نام به عنوان آدرس اینترنتی شما انتخاب خواهد شد",
     "etelaatForooshgahItem5"         => "دسته بندی فروشگاه",

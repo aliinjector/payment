@@ -127,7 +127,7 @@
 {{--                            <div class="media"><i style="padding-left: 15px;" class="dripicons-cart card-eco-icon text-secondary align-self-center"></i>--}}
 {{--                                <div class="media-body align-self-center">--}}
 {{--                                    <div class="coin-bal">--}}
-{{--                                        <h3 class="m-0">کد پایان پی:</h3>--}}
+{{--                                        <h3 class="m-0">کد امید شاپ:</h3>--}}
 {{--                                        <p class="text-muted mb-0">{{ $wallet->key }}</p>--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - عضویت در سیستم</title>
+    <title>امید شاپ - عضویت در سیستم</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Ali Rahmani">
     <meta name="description" content="راهکار های نوین پرداخت پین پی">
@@ -30,7 +30,7 @@
                         </div>
                         <!--end auth-logo-box-->
                         <div class="text-center auth-logo-text">
-                            <h4 class="mt-0 mb-3 mt-5"> عضویت در سامانه پایان پی</h4>
+                            <h4 class="mt-0 mb-3 mt-5"> عضویت در سامانه امید شاپ</h4>
                             <p class="text-muted mb-0">پس از تکمیل فرم، برروی گزینه عضویت کلیک نمایید.</p>
                         </div>
                         <!--end auth-logo-text-->

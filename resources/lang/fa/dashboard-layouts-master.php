@@ -10,7 +10,7 @@ return array(
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    "pageTitle"         => "پایان پی - داشبورد اصلی",
+    "pageTitle"         => "امید شاپ - داشبورد اصلی",
     "headerelaan"         => "اعلان",
     "headerelaanTitle"         => "متن اعلان",
     "headerelaanDesc"         => "توضیحات اعلان",

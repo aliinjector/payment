@@ -214,7 +214,7 @@ class UserInformationController extends \App\Http\Controllers\Controller
             'password' => '8833',
             'to' => \Auth::user()->mobile,
             'from' => '10001010111',
-            'text' => "کد تایید: $code | پایان پی",
+            'text' => "کد تایید: $code | امید شاپ",
           ]
         ]);
 

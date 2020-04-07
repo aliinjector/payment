@@ -36776,9 +36776,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-
-__webpack_require__(/*! ./components/Stats */ "./resources/js/components/Stats.js");
+// require('./components/Stats');
 
 /***/ }),
 
@@ -36798,6 +36796,7 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
+  window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 } catch (e) {}
@@ -36836,17 +36835,6 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/components/Stats.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/Stats.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/alirahmani/Projects/payment/resources/js/components/Stats.js: Unexpected token, expected \";\" (33:26)\n\n\u001b[0m \u001b[90m 31 | \u001b[39m            \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstate\u001b[33m.\u001b[39mmonth\u001b[33m.\u001b[39mmap((month) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 32 | \u001b[39m                {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 33 | \u001b[39m                    \u001b[32m\"year\"\u001b[39m\u001b[33m:\u001b[39m month\u001b[33m.\u001b[39mday\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 34 | \u001b[39m                    \u001b[32m\"income\"\u001b[39m\u001b[33m:\u001b[39m month\u001b[33m.\u001b[39mtotal\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 | \u001b[39m                    \u001b[32m\"expenses\"\u001b[39m\u001b[33m:\u001b[39m \u001b[35m30.5\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 36 | \u001b[39m                }\u001b[33m,\u001b[39m\u001b[0m\n    at Object.raise (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:6325:17)\n    at Object.unexpected (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:7642:16)\n    at Object.semicolon (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:7624:40)\n    at Object.parseExpressionStatement (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:10364:10)\n    at Object.parseStatementContent (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9963:19)\n    at Object.parseStatement (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9829:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:10405:25)\n    at Object.parseBlockBody (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:10392:10)\n    at Object.parseBlock (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:10376:10)\n    at Object.parseStatementContent (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9905:21)\n    at Object.parseStatement (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9829:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:10405:25)\n    at Object.parseBlockBody (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:10392:10)\n    at Object.parseBlock (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:10376:10)\n    at Object.parseFunctionBody (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9424:24)\n    at Object.parseArrowExpression (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9365:10)\n    at Object.parseParenAndDistinguishExpression (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9002:12)\n    at Object.parseExprAtom (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8762:21)\n    at Object.parseExprAtom (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:3601:20)\n    at Object.parseExprSubscripts (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8412:23)\n    at Object.parseMaybeUnary (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8392:21)\n    at Object.parseExprOps (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8267:23)\n    at Object.parseMaybeConditional (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8240:23)\n    at Object.parseMaybeAssign (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8187:21)\n    at Object.parseExprListItem (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9491:18)\n    at Object.parseCallExpressionArguments (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8621:22)\n    at Object.parseSubscript (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8514:29)\n    at Object.parseSubscripts (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8433:19)\n    at Object.parseExprSubscripts (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8422:17)\n    at Object.parseMaybeUnary (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8392:21)\n    at Object.parseExprOps (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8267:23)\n    at Object.parseMaybeConditional (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8240:23)\n    at Object.parseMaybeAssign (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8187:21)\n    at Object.parseExprListItem (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9491:18)\n    at Object.parseExprList (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:9465:22)\n    at Object.parseExprAtom (/Users/alirahmani/Projects/payment/node_modules/@babel/parser/lib/index.js:8770:32)");
 
 /***/ }),
 

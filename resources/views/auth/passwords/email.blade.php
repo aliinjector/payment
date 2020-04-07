@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - فراموشی رمز عبور</title>
+    <title>امید شاپ - فراموشی رمز عبور</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Ali Rahmani">
     <meta name="description" content="راهکار های نوین پرداخت پین پی">
@@ -35,7 +35,7 @@
                         </div>
                         <!--end auth-logo-box-->
                         <div class="text-center auth-logo-text">
-                            <h4 class="mt-0 mb-3 mt-5">فراموشی رمز عبور پایان پی</h4>
+                            <h4 class="mt-0 mb-3 mt-5">فراموشی رمز عبور امید شاپ</h4>
                             <p class="text-muted mb-0">جهت یازیابی رمز عبور، لطفا آدرس ایمیل خودرا وارد نمایید:</p>
                         </div>
                         <!--end auth-logo-text-->
@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label for="useremail">آدرس ایمیل:</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-mail"></i> </span>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="مثال: ali@payanpay.ir">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="مثال: ali@OmidShop.ir">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

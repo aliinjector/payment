@@ -38,7 +38,7 @@ class SendRegisterSms implements ShouldQueue
         $parameters['password'] = "8833";
         $parameters['to'] = $this->user->mobile;
         $parameters['from'] = "10001010111";
-        $parameters['text'] ="باتشکر از عضویت شما در سیستم پایان پی، حساب کاربری شما ایجاد شد.";
+        $parameters['text'] ="باتشکر از عضویت شما در سیستم امید شاپ، حساب کاربری شما ایجاد شد.";
         $parameters['isflash'] = false;
 
         echo $sms_client->SendSimpleSMS2($parameters)->SendSimpleSMS2Result;
