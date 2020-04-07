@@ -229,14 +229,13 @@
                 <div id="carouselContentBrand" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner" role="listbox">
                         @foreach($brands as $brand)
-
-                        <a href="/{{ $shop->english_name }}/brand/{{ $brand->id }}">
                             <div class="carousel-item {{$loop->first ? 'active' : ''}} text-center p-4 ml-lg-n2">
-                                <img style="width: 250px" src="{{ $brand->icon['original'] }}" alt="">
-                                <h5>{{ $brand->name }}</h5>
+                                <a href="/{{ $shop->english_name }}/brand/{{ $brand->id }}">
+                                    <img style="width: 250px" src="{{ $brand->icon['original'] }}" alt="">
+                                    <h5>{{ $brand->name }}</h5>
+                                </a>
                             </div>
                             @endforeach
-                        </a>
                     </div>
                     <a class="carousel-control-prev bg-orange-omid rounded" href="#carouselContentBrand" role="button" data-slide="prev" style="width: 3%;opacity: 1;">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

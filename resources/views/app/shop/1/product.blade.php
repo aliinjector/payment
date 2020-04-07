@@ -14,6 +14,14 @@
 .dropdown-menu .dropdown-item {
     padding: 3px 2px!important;
 }
+    .sl-next{
+        direction: ltr;
+    }
+
+.sl-prev{
+    direction: ltr;
+}
+
 </style>
 <div class="row">
     <div class="col-sm-12">
@@ -87,6 +95,7 @@
                                             <span class="toggle-show"> {{ __('app-shop-1-product.more') }}</span>
                                         </div>
                         </div>
+
                         </ul>
                         @if ($product->type == "file")
                         <h6 class="text-muted font-13">{{ __('app-shop-1-product.hajmeFile') }} :</h6>

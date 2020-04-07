@@ -59,7 +59,7 @@
     <!--end col-->
 </div>
 </div>
-<h2 class="line-throw line-height-none"><span> @if(\Request::route()->getName() == 'category'){{ __('app-shop-1-category.mahsoolatDasteBandi') }} {{ $category->name }} @elseif(\Request::route()->getName() == 'tag') محصولات تگ {{ $tag->name }} @elseif (\Request::route()->getName() == 'search') نتیحه جستوجو  @else محصولات برند {{ $brand->name }} @endif</span></h2>
+<h2 class="line-throw line-height-none"><span> @if(\Request::route()->getName() == 'category'){{ __('app-shop-1-category.mahsoolatDasteBandi') }} {{ $category->name }} @elseif(\Request::route()->getName() == 'tag') محصولات تگ {{ $tag->name }} @elseif (\Request::route()->getName() == 'search') نتیحه جستجو  @else محصولات برند {{ $brand->name }} @endif</span></h2>
 <div class="row p-5">
 
     @if(\Request::route()->getName() != 'search')

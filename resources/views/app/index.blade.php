@@ -392,7 +392,7 @@
                                             <div class="geodir-category-content-title fl-wrap">
                                                 <div class="geodir-category-content-title-item">
                                                     <h3 class="title-sin_map">
-                                                        <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ $product->title }}</a>
+                                                        <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ str_limit($product->title, 70) }}</a>
                                                     </h3>
                                                 </div>
                                             </div>

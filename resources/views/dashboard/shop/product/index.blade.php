@@ -96,7 +96,6 @@
     });
 </script>
 <style media="screen">
-<style>
   .label-info {
       background-color: #5bc0de;
   }
@@ -113,7 +112,6 @@
       vertical-align: baseline;
       border-radius: .25em;
   }
-</style>
 </style>
 <div class="page-content">
     <div class="container-fluid">
@@ -899,6 +897,13 @@
                         language: 'fa',
                         uiColor: '#F3F6F7'
                     });
+
+
+                    @if(isset($title))
+                    $("#myInputTextField").val("{{ $title }}");
+                    $( "#myInputTextField" ).trigger( "keyup" );
+
+                    @endif
                 </script>
 
 

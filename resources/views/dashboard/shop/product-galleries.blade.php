@@ -76,7 +76,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-2 mb-4 header-title">تصاویر مربوط به {{ $product->title }}</h4>
+                        <h4 class="mt-2 mb-4 header-title">تصاویر مربوط به {{ $product->title }}
+                            <button id="openDz" class="btn btn-success text-white d-inline-block text-right mr-3 font-weight-bold rounded"> افزودن تصویر به گالری</button>
+                            <script>
+                                $( "#openDz" ).click(function() {
+                                    document.getElementsByClassName("dropzone")[0].click();
+                                });
+
+                            </script>
+                        </h4>
+
+
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
                             <div class="row">
