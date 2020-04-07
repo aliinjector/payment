@@ -188,7 +188,7 @@
                                                                 <div class="geodir-category-location"><a href="#">  آدرس: تهران - خیابان پاسداران<i class="fas fa-map-marker-alt"></i></a></div>
                                                             </div>
 
-                                                            <div class="listing_carditem_footer fl-wrap">
+                                                            <div style="margin-bottom: 10px;" class="listing_carditem_footer fl-wrap">
                                                                 <a class="listing-item-category-wrap" href="#">
                                                                     <span>دسته:‌ {{ $shop->shopCategory->name }}</span>
                                                                 </a>

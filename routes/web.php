@@ -99,7 +99,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
         //Products
         Route::resource('product-list', 'ProductController');
-        Route::post('products/search', 'ProductController@search')->name('products.search');
+        Route::post('products/search', 'ProductController@search')->name('dashboard.products.search');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product-list.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status');
