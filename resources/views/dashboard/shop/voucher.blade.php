@@ -283,7 +283,7 @@
                                 </div>
                                 <div class="table-responsive">
 
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+                                    <table id="datatable" class="table table-bordered dt-responsive  dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
 
                                         <thead>
                                             <tr role="row">
@@ -394,21 +394,5 @@
 <script src="/dashboard/assets/js/persian-date.js"></script>
 <script src="/dashboard/assets/js/persian-datepicker.js"></script>
 <script src="{{ asset('/dashboard/assets/js/admin-voucher.js') }}"></script>
-<script type="text/javascript">
-setTimeout(function() {
-  if ($(window).width() < 1480) {
-      $('table').removeClass('dataTable');
-  }
-
-},100);
-</script>
-<script type="text/javascript">
-setTimeout(function() {
-  if ($(window).width() < 1300) {
-      $('table').addClass('dataTable');
-  }
-
-},100);
-</script>
 
 @stop
