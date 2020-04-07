@@ -18,7 +18,7 @@
                 <div class="float-right">
                     <ol style="direction: ltr" class="breadcrumb">
                         <li class="breadcrumb-item"><a href="">پشتیبانی و تیکتینگ</a></li>
-                        <li class="breadcrumb-item active">داشبورد پایان پی</li>
+                        <li class="breadcrumb-item active">داشبورد امید شاپ</li>
                     </ol>
                 </div>
                 <h4 class="page-title">داشبورد اصلی</h4>

@@ -41,7 +41,7 @@ class ExpressionBuilder
     /**
      * Creates a conjunction of the given boolean expressions.
      *
-     * Example:
+     * Stat:
      *
      *     [php]
      *     // (u.type = ?) AND (u.role = ?)
@@ -60,7 +60,7 @@ class ExpressionBuilder
     /**
      * Creates a disjunction of the given boolean expressions.
      *
-     * Example:
+     * Stat:
      *
      *     [php]
      *     // (u.type = ?) OR (u.role = ?)
@@ -94,7 +94,7 @@ class ExpressionBuilder
      * Creates an equality comparison expression with the given arguments.
      *
      * First argument is considered the left expression and the second is the right expression.
-     * When converted to string, it will generated a <left expr> = <right expr>. Example:
+     * When converted to string, it will generated a <left expr> = <right expr>. Stat:
      *
      *     [php]
      *     // u.id = ?
@@ -113,7 +113,7 @@ class ExpressionBuilder
     /**
      * Creates a non equality comparison expression with the given arguments.
      * First argument is considered the left expression and the second is the right expression.
-     * When converted to string, it will generated a <left expr> <> <right expr>. Example:
+     * When converted to string, it will generated a <left expr> <> <right expr>. Stat:
      *
      *     [php]
      *     // u.id <> 1
@@ -132,7 +132,7 @@ class ExpressionBuilder
     /**
      * Creates a lower-than comparison expression with the given arguments.
      * First argument is considered the left expression and the second is the right expression.
-     * When converted to string, it will generated a <left expr> < <right expr>. Example:
+     * When converted to string, it will generated a <left expr> < <right expr>. Stat:
      *
      *     [php]
      *     // u.id < ?
@@ -151,7 +151,7 @@ class ExpressionBuilder
     /**
      * Creates a lower-than-equal comparison expression with the given arguments.
      * First argument is considered the left expression and the second is the right expression.
-     * When converted to string, it will generated a <left expr> <= <right expr>. Example:
+     * When converted to string, it will generated a <left expr> <= <right expr>. Stat:
      *
      *     [php]
      *     // u.id <= ?
@@ -170,7 +170,7 @@ class ExpressionBuilder
     /**
      * Creates a greater-than comparison expression with the given arguments.
      * First argument is considered the left expression and the second is the right expression.
-     * When converted to string, it will generated a <left expr> > <right expr>. Example:
+     * When converted to string, it will generated a <left expr> > <right expr>. Stat:
      *
      *     [php]
      *     // u.id > ?
@@ -189,7 +189,7 @@ class ExpressionBuilder
     /**
      * Creates a greater-than-equal comparison expression with the given arguments.
      * First argument is considered the left expression and the second is the right expression.
-     * When converted to string, it will generated a <left expr> >= <right expr>. Example:
+     * When converted to string, it will generated a <left expr> >= <right expr>. Stat:
      *
      *     [php]
      *     // u.id >= ?

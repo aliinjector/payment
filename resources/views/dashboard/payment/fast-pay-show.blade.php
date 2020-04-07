@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>{{ $FastPay->title }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta content="پایان پی - داشبورد اصلی" name="description">
+    <meta content="امید شاپ - داشبورد اصلی" name="description">
     <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">

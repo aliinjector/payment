@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>پایان پی - بازیابی رمز عبور</title>
+    <title>امید شاپ - بازیابی رمز عبور</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Ali Rahmani">
     <meta name="description" content="راهکار های نوین پرداخت پین پی">
@@ -35,7 +35,7 @@
                         </div>
                         <!--end auth-logo-box-->
                         <div class="text-center auth-logo-text">
-                            <h4 class="mt-0 mb-3 mt-5">بازیابی رمز عبور پایان پی</h4>
+                            <h4 class="mt-0 mb-3 mt-5">بازیابی رمز عبور امید شاپ</h4>
                             <p class="text-muted mb-0">جهت یازیابی رمز عبور، لطفا اطلاعات زیر را تکمیل نمایید:</p>
                         </div>
                         <!--end auth-logo-text-->

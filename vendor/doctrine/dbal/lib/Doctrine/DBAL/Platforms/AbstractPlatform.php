@@ -930,7 +930,7 @@ abstract class AbstractPlatform
     /**
      * Returns the SQL for a logical not.
      *
-     * Example:
+     * Stat:
      * <code>
      * $q = new Doctrine_Query();
      * $e = $q->expr;

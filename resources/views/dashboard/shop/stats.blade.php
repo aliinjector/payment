@@ -120,6 +120,94 @@
             <!--end col-->
         </div>
 
+        <div id="stat"></div>
+
+        <div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">نمودار <span style="color:#67b7dc">بازدید</span> / <span style="color:#fdd400">بازدیدکنندگان</span> ۳۰ روز اخیر</h4>
+                            <p class="text-muted mb-4 font-13">اعداد براساس بازدید ها و بازدیدکننده های وارد شده
+                                در فروشگاه شما میباشد.</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="month" style="width: 100%; height: 500px;" ></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">دستگاه بازدید کنندگان</h4>
+                            <p class="text-muted mb-4 font-13">پراکندگی بازدید کنندگان براساس دستگاه</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="platforms" style="width: 100%; height: 500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div  class="card">
+                        <div style="height: 615" class="card-body">
+                            <h4 class="mt-0 header-title">مرورگر بازدید کنندگان</h4>
+                            <p class="text-muted mb-4 font-13">پراکندگی بازدید کنندگان براساس دستگاه</p>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="browsers" style="width: 100%; height: 500px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">موتور های جستجوگر</h4>
+                            <p class="text-muted mb-4 font-13">مقدار ورودی بازدید براساس موتور های جستجوگر</p>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="mt-0 header-title">بربازدید ترین صفحات</h4>
+                            <p class="text-muted mb-4 font-13">پراکندگی بازدید براساس مقدار بازدید از هر
+                                صفحه/محصول</p>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
 
 
         <div class="row">
@@ -180,8 +268,139 @@
     <!-- Attachment Modal -->
     @endsection
     @section('pageScripts')
-      <script src="{{ asset('/dashboard/assets/js/admin-sats.js') }}"></script>
 
+        <script src="/dashboard/assets/amcharts/core.js"></script>
+        <script src="/dashboard/assets/amcharts/charts.js"></script>
+        <script src="/dashboard/assets/amcharts/animated.js"></script>
+
+        <script>
+            $(window).resize(function() {
+                if ($(window).width() < 1300) {
+                    $("body").addClass('enlarge-menu');
+
+                } else {
+                    $("body").removeClass('enlarge-menu');
+
+                }
+            }).resize();
+            $(window).resize(function() {
+                if ($(window).width() < 1070) {
+                    $(".icon-show").removeClass('d-none');
+
+                } else {
+                    $(".icon-show").addClass('d-none');
+
+                }
+            }).resize();
+            $(document).ready(function(){
+                $('#datatable_filter').parent().remove();
+                $('#datatable_wrapper').children(':first').find('.col-sm-12').removeClass('col-sm-12 col-md-6');
+
+            });
+            $(document).ready(function(){
+                $('input#myInputTextField').on("focus", function(){
+                    if ($(this).hasClass("searchActive")){
+                        $(this).removeClass("searchActive");
+                    }
+                    else{
+                        $('input#myInputTextField').addClass('searchActive');
+                    }
+                });
+            });
+            oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+
+
+
+            am4core.ready(function() {
+
+// Themes begin
+                am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+                var chart = am4core.create("month", am4charts.XYChart);
+
+// Export
+                chart.exporting.menu = new am4core.ExportMenu();
+
+// Data for both series
+                var data = [ {
+                    "year": "2009",
+                    "income": 23.5,
+                    "expenses": 21.1
+                }, {
+                    "year": "2010",
+                    "income": 26.2,
+                    "expenses": 30.5
+                }, {
+                    "year": "2011",
+                    "income": 30.1,
+                    "expenses": 34.9
+                }, {
+                    "year": "2012",
+                    "income": 29.5,
+                    "expenses": 31.1
+                }, {
+                    "year": "2013",
+                    "income": 30.6,
+                    "expenses": 28.2,
+                    "lineDash": "5,5",
+                }, {
+                    "year": "2014",
+                    "income": 34.1,
+                    "expenses": 32.9,
+                    "strokeWidth": 1,
+                    "columnDash": "5,5",
+                    "fillOpacity": 0.2,
+                    "additional": "(projection)"
+                } ];
+
+                /* Create axes */
+                var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+                categoryAxis.dataFields.category = "year";
+                categoryAxis.renderer.minGridDistance = 30;
+
+                /* Create value axis */
+                var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+                /* Create series */
+                var columnSeries = chart.series.push(new am4charts.ColumnSeries());
+                columnSeries.name = "Income";
+                columnSeries.dataFields.valueY = "income";
+                columnSeries.dataFields.categoryX = "year";
+
+                columnSeries.columns.template.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
+                columnSeries.columns.template.propertyFields.fillOpacity = "fillOpacity";
+                columnSeries.columns.template.propertyFields.stroke = "stroke";
+                columnSeries.columns.template.propertyFields.strokeWidth = "strokeWidth";
+                columnSeries.columns.template.propertyFields.strokeDasharray = "columnDash";
+                columnSeries.tooltip.label.textAlign = "middle";
+
+                var lineSeries = chart.series.push(new am4charts.LineSeries());
+                lineSeries.name = "Expenses";
+                lineSeries.dataFields.valueY = "expenses";
+                lineSeries.dataFields.categoryX = "year";
+
+                lineSeries.stroke = am4core.color("#fdd400");
+                lineSeries.strokeWidth = 3;
+                lineSeries.propertyFields.strokeDasharray = "lineDash";
+                lineSeries.tooltip.label.textAlign = "middle";
+
+                var bullet = lineSeries.bullets.push(new am4charts.Bullet());
+                bullet.fill = am4core.color("#fdd400"); // tooltips grab fill from parent by default
+                bullet.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
+                var circle = bullet.createChild(am4core.Circle);
+                circle.radius = 4;
+                circle.fill = am4core.color("#fff");
+                circle.strokeWidth = 3;
+
+                chart.data = data;
+
+            }); // end am4core.ready()
+
+
+
+        </script>
 
 
         @stop

@@ -20,7 +20,9 @@ class StatController extends Controller
     public function index()
     {
         $shop = \Auth::user()->shop()->first();
-        $stats = $shop->stats()->get();
+        $stats = $shop->stats()->orderBy('id', 'DESC')->limit(100)->get();
+        $month = $stats->select('day', \DB::raw('count(*) as total'))->groupBy('day')->limit(30)->get();
+        dd($month);
         return view('dashboard.shop.stats', compact('shop', 'stats'));
     }
 
@@ -40,8 +42,8 @@ class StatController extends Controller
 
 
         $ip = (isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR']);
-        $geoip->setIp('46.4.219.148');
-//        $geoip->setIp($ip);
+//        $geoip->setIp('46.4.219.148');
+        $geoip->setIp($ip);
         $country = visitor_country($geoip->getRaw()['countryCode']);
         $countryCode = ($geoip->getRaw()['countryCode']);
         $city = visitor_city($geoip->getRaw()['city']);
