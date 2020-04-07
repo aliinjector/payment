@@ -2865,7 +2865,7 @@ Dropzone.version = "5.4.0";
 // This is a map of options for your different dropzones. Add configurations
 // to this object for your different dropzone elemens.
 //
-// Example:
+// Stat:
 //
 //     Dropzone.options.myDropzoneElementId = { maxFilesize: 1 };
 //

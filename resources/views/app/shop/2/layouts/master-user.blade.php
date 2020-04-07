@@ -112,26 +112,26 @@
                 <ul>
                         <ul>
                                 <ul>
-                                    <li><a href="index.html">Home — Example 1 <span class="tt-badge tt-fatured">Popular</span></a></li>
-                                    <li><a href="index-02.html">Home — Example 2</a></li>
-                                    <li><a href="index-03.html">Home — Example 3</a></li>
-                                    <li><a href="index-04.html">Home — Example 4 <span class="tt-badge tt-fatured">Popular</span></a></li>
-                                    <li><a href="index-05.html">Home — Example 5</a></li>
-                                    <li><a href="index-06.html">Home — Example 6</a></li>
-                                    <li><a href="index-07.html">Home — Example 7</a></li>
-                                    <li><a href="index-08.html">Home — Example 8</a></li>
-                                    <li><a href="index-09.html">Home — Example 9</a></li>
-                                    <li><a href="index-10.html">Home — Example 10</a></li>
-                                    <li><a href="index-11.html">Home — Example 11</a></li>
-                                    <li><a href="index-12.html">Home — Example 12</a></li>
-                                    <li><a href="index-13.html">Home — Example 13</a></li>
-                                    <li><a href="index-14.html">Home — Example 14</a></li>
-                                    <li><a href="index-15.html">Home — Example 15</a></li>
-                                    <li><a href="index-16.html">Home — Example 16 <span class="tt-badge tt-fatured">Popular</span></a></li>
-                                    <li><a href="index-17.html">Home — Example 17</a></li>
-                                    <li><a href="index-18.html">Home — Example 18</a></li>
-                                    <li><a href="index-19.html">Home — Example 19 <span class="tt-badge tt-new">New</span></a></li>
-                                    <li><a href="index-20.html">Home — Example 20 <span class="tt-badge tt-new">New</span></a></li>
+                                    <li><a href="index.html">Home — Stat 1 <span class="tt-badge tt-fatured">Popular</span></a></li>
+                                    <li><a href="index-02.html">Home — Stat 2</a></li>
+                                    <li><a href="index-03.html">Home — Stat 3</a></li>
+                                    <li><a href="index-04.html">Home — Stat 4 <span class="tt-badge tt-fatured">Popular</span></a></li>
+                                    <li><a href="index-05.html">Home — Stat 5</a></li>
+                                    <li><a href="index-06.html">Home — Stat 6</a></li>
+                                    <li><a href="index-07.html">Home — Stat 7</a></li>
+                                    <li><a href="index-08.html">Home — Stat 8</a></li>
+                                    <li><a href="index-09.html">Home — Stat 9</a></li>
+                                    <li><a href="index-10.html">Home — Stat 10</a></li>
+                                    <li><a href="index-11.html">Home — Stat 11</a></li>
+                                    <li><a href="index-12.html">Home — Stat 12</a></li>
+                                    <li><a href="index-13.html">Home — Stat 13</a></li>
+                                    <li><a href="index-14.html">Home — Stat 14</a></li>
+                                    <li><a href="index-15.html">Home — Stat 15</a></li>
+                                    <li><a href="index-16.html">Home — Stat 16 <span class="tt-badge tt-fatured">Popular</span></a></li>
+                                    <li><a href="index-17.html">Home — Stat 17</a></li>
+                                    <li><a href="index-18.html">Home — Stat 18</a></li>
+                                    <li><a href="index-19.html">Home — Stat 19 <span class="tt-badge tt-new">New</span></a></li>
+                                    <li><a href="index-20.html">Home — Stat 20 <span class="tt-badge tt-new">New</span></a></li>
                                 </ul>
                             </li>
                             <li><a href="index.html">HOME SKINS <span class="tt-badge tt-sale">HOT</span></a>
@@ -178,10 +178,10 @@
                             </li>
                             <li><a href="product.html">PRODUCT PAGE STYLES</a>
                                 <ul>
-                                    <li><a href="product.html">Product Example 1</a></li>
-                                    <li><a href="product-02.html">Product Example 2</a></li>
-                                    <li><a href="product-03.html">Product Example 3</a></li>
-                                    <li><a href="product-04.html">Product Example 4</a></li>
+                                    <li><a href="product.html">Product Stat 1</a></li>
+                                    <li><a href="product-02.html">Product Stat 2</a></li>
+                                    <li><a href="product-03.html">Product Stat 3</a></li>
+                                    <li><a href="product-04.html">Product Stat 4</a></li>
                                     <li><a href="product-variable.html">Product Layout</a></li>
                                     <li><a href="product-three-columns.html">Three Columns</a></li>
                                 </ul>
@@ -252,7 +252,7 @@
                     </li>
                     <li><a href="about.html">PAGES</a>
                         <ul>
-                            <li><a href="about.html">About Example 1</a>
+                            <li><a href="about.html">About Stat 1</a>
                                 <ul>
                                     <li><a href="about.html">منو 1</a></li>
                                     <li><a href="about.html">منو 1</a>
@@ -289,9 +289,9 @@
                                     <li><a href="about.html">منو 1</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about-02.html">About Example 2</a></li>
-                            <li><a href="contact.html">Contacts Example 1</a></li>
-                            <li><a href="contact-02.html">Contacts Example 2</a></li>
+                            <li><a href="about-02.html">About Stat 2</a></li>
+                            <li><a href="contact.html">Contacts Stat 1</a></li>
+                            <li><a href="contact-02.html">Contacts Stat 2</a></li>
                             <li><a href="services.html">Services</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                             <li><a href="coming-soon.html">Coming Soon</a></li>

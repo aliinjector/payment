@@ -392,7 +392,7 @@ Author: Ali Rahmani
     </div>
     <!-- end page-wrapper -->
     <!-- jQuery  -->
-
+    <script src="/js/app.js" type="text/javascript"></script>
     <script src="/dashboard/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/dashboard/assets/js/metisMenu.min.js"></script>
     <script src="/dashboard/assets/js/waves.min.js"></script>
@@ -422,6 +422,7 @@ Author: Ali Rahmani
            oTable.search($(this).val()).draw();
        })
    </script>
+
     @toastr_js
     @toastr_render
     @include('sweet::alert')
