@@ -12,7 +12,7 @@ return array(
     */
     "pageTitle"         => "فروشگاه امید الکترونی",
     "safheAsliForooshgah"         => "صفحه اصلی فروشگاه",
-    "jostojoo"         => "جستوجو",
+    "jostojoo"         => "جستجو",
     "namMahsoolYaSazande"         => "نام محصول یا سازنده",
     "donbaleCheMigardid"         => "دنبال چه میگردید",
     "cart"         => "سبد خرید",

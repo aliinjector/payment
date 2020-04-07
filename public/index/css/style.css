@@ -4726,6 +4726,7 @@ section.gray-section .section-separator {
 .geodir-category-content-title {
 	padding:2px 20px 20px;
 	margin-bottom:10px;
+	min-height: 90px;
 	border-bottom:1px solid #eee;
 }
 .geodir-category-content-title-item {
@@ -4807,6 +4808,7 @@ section.gray-section .section-separator {
 }
 .geodir-category-text {
 	padding:0 20px;
+	min-height: 56px;
 }
 .geodir-opt-list li {
 	float:left;

@@ -13,7 +13,7 @@ return array(
     "pageTitle"         => "لیست سفارشات شما",
     "khorooj"         => "  خروج از حساب کاربری",
     "safheAsliForooshgah"         => "صفحه اصلی فروشگاه",
-    "jostojoo"         => "جستوجو",
+    "jostojoo"         => "جستجو",
     "namMahsoolYaSazande"         => "نام محصول یا سازنده",
     "donbaleCheMigardid"         => "دنبال چه میگردید",
     "cart"         => "سبد خرید",

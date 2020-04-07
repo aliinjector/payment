@@ -18,7 +18,7 @@ return array(
     "headertanzimaatVaProfileKarbari"         => " تنظیمات و پروفایل کاربری",
     "headerKifePooleMan"         => "کیف پول من",
     "headerKhoroojAzSystem"         => " خروج از سیستم",
-    "headerJostoJo"         => "جستوجو",
+    "headerJostoJo"         => "جستجو",
     "sideBarTitleDashboardAsli"         => "داشبورد اصلی",
     "sideBarTitlePardakhtYari"         => "پرداخت یاری",
     "sideBarTitleForooshgahSaz"         => "فروشگاه ساز",
