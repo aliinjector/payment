@@ -231,5 +231,7 @@ return array(
         'code' => 'کد تخفیف',
         'uses' => 'تعداد قابل استفاده',
         'payment_method' => 'روش پرداخت',
+        'new_password' => 'رمز عبور جدید',
+        'old_password' => 'رمز عبور قدیم',
           ),
 );

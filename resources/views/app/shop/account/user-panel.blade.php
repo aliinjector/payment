@@ -39,9 +39,11 @@
                                     <div class="icon-show row">
                                         <a href="{{ route('user-panel.edit', $user->id) }}" title="ویرایش اطلاعات" id="edit"><i class="fas fa-edit text-warning mx-1"></i>
                                         </a>
+                                        <a href="{{ route('user-panel.change-password') }}" title="تغییر رمز عبور" id="edit"><i class="fas fa-key text-danger mx-1"></i>
+                                        </a>
                                         <a href="{{ route('user-address.index') }}" title="آدرس ها" id="edit"><i class="fas fa-address-card mx-1"></i>
                                         </a>
-                                        <a href="{{ route('user.purchased.list') }}" title="لیست سفارشات" id="edit"><i class="fas fa-shopping-cart text-danger mx-1"></i>
+                                        <a href="{{ route('user.purchased.list') }}" title="لیست سفارشات" id="edit"><i class="fas fa-shopping-cart text-success mx-1"></i>
                                         </a>
                                     </div>
                                 </td>
@@ -59,6 +61,7 @@
 
     <div class="nk-ovm ovm-top ovm-h-60 bg-light"></div><!-- .nk-ovm -->
 </section>
+<script src="/app/shop/1/assets/js/sweetalert.min.js"></script>
 <link rel="stylesheet" href="/app/shop/2/css/rtl.css">
 <link rel="stylesheet" href="/app/shop/2/css/custom.css">
 @toastr_js
@@ -71,7 +74,6 @@
             $('.col-md-6').addClass("d-none")
             $('.pagination').addClass("d-none")
         }, 100);
-
     });
 </script>
 @endsection

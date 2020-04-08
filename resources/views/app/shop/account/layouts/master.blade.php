@@ -97,7 +97,7 @@ padding-top: 35.5px;
         <!-- Header @s -->
         <div class="header-main">
             <div class="header-container container">
-                <div class="header-wrap">
+                <div class="header-wrap" style="justify-content: space-around!important;">
                     <!-- Logo @s -->
                     <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".6">
                         <a href="/" class="logo-link">
@@ -123,30 +123,20 @@ padding-top: 35.5px;
                                     <a class="menu-link nav-link" href="{{ route('index') }}">{{ __('index.menu1') }}</a>
                                 </li>
 
-                                <li class="menu-item"> <a href="#about" class="menu-link nav-link">{{ __('index.menu2') }}م </a> </li>
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#services"> {{ __('index.menu3') }}</a>
+                                    <a class="menu-link nav-link" href="{{ route('user-panel.index') }}"> پنل کاربری</a>
                                 </li>
 
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" target="_blank" href="/shops">{{ __('index.menu4') }}</a>
+                                    <a class="menu-link nav-link" target="_blank" href="{{ route('user-address.index') }}">آدرس ها</a>
                                 </li>
 
                                 <li class="menu-item">
-                                    <a class="menu-link nav-link" target="_blank" href="/products">{{ __('index.menu5') }}</a>
+                                    <a class="menu-link nav-link" target="_blank" href="{{ route('user.purchased.list') }}">لیست سفارشات</a>
                                 </li>
 
-
-                                <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#faq">{{ __('index.menu6') }}</a>
-                                </li>
-
-
-                                <li class="menu-item">
-                                    <a class="menu-link nav-link" href="#contact">{{ __('index.menu7') }}</a>
-                                </li>
 
 
                             </ul>

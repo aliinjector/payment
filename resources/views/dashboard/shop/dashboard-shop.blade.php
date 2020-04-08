@@ -71,7 +71,7 @@
    <!--end col-->
    <div class="col-lg-4">
       <div class="card card-eco">
-         <a href="{{ route('purchase.status') }}">
+         <a href="{{ route('purchases.index') }}">
             <div class="card-body">
                <h4 class="title-text mt-0">{{ __('dashboard-shop-dashboard-shop.box2') }}</h4>
                <div class="d-flex justify-content-between">

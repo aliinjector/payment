@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Shop;
 use App\Http\Requests\UserPanelUpdateRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserPanelController extends Controller
 {
@@ -111,6 +114,49 @@ class UserPanelController extends Controller
       alert()->success('اطلاعات شما با موفقیت ویرایش شد.', 'انجام شد');
       return redirect()->route('user-panel.index');
     }
+
+
+
+    public function changePassword(){
+      if(\auth::user()->shop_id != null){
+        $shop_name = Shop::where('id', \auth::user()->shop_id)->get()->first()->english_name;
+        $shop = Shop::find(\auth()->user()->shop_id);
+        $user = \auth()->user();
+        return view("app.shop.account.change-password-index", compact('shop_name', 'shop', 'user'));
+      }
+      else{
+        $shop = \auth()->user()->shop;
+        $shop_name = $shop->english_name;
+        $user = \auth()->user();
+        return view("app.shop.account.change-password-index", compact('shop_name', 'shop', 'user'));
+      }
+
+      }
+
+
+    public function changePasswordStore(ChangePasswordRequest $request){
+          if (!(Hash::check($request->get('old_password'), \Auth::user()->password))) {
+              // The passwords not matches
+
+              return redirect()->back()->withErrors(['خطا', 'رمز عبور قدیم صحیح نمیباشد']);
+          }
+          //uncomment this if you need to validate that the new password is same as old one
+
+          if(strcmp($request->get('old_password'), $request->get('password')) == 0){
+              //Current password and new password are same
+              return redirect()->back()->withErrors(['خطا', 'رمز عبور قدیم و جدید یکسان میباشد']);
+          }
+
+          //Change Password
+          $user = \auth::user();
+          $user->password = Hash::make($request->get('password'));
+          $user->save();
+          alert()->success('اطلاعات شما با موفقیت ویرایش شد.', 'انجام شد');
+          return redirect()->route('user-panel.change-password');
+      }
+
+
+
 
     /**
      * Remove the specified resource from storage.

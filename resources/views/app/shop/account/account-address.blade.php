@@ -24,9 +24,10 @@
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
                                 </th>
-                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شهر
-                                </th>
+
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">استان
+                                </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شهر
                                 </th>
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">کد پستی
                                 </th>
@@ -43,8 +44,8 @@
                           @forelse ($user_addresses as $user_addresse)
                             <tr role="row" class="odd">
                               <td>{{ $id }}</td>
+                              <td>{{ $user_addresse->province }}</td>
                                 <td>{{ $user_addresse->city }}</td>
-                                <td>{{ $user_addresse->province }}</td>
                                 <td>{{ $user_addresse->zip_code }}</td>
                                 <td>{{ $user_addresse->address }}</td>
                                 <td>

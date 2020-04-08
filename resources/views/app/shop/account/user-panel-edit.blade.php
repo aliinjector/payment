@@ -44,7 +44,7 @@
                               <div class="card mt-3">
                                   <div class="card-body">
                                       <h4 class="mt-0 header-title">آواتار</h4>
-                                      <input type="file" id="input-file-now" name="avatar" class="dropify" data-default-file="{{ $user->avatar }}">
+                                      <input type="file" id="input-file-now" name="avatar" class="dropify" data-default-file="{{ asset($user->avatar) }}">
                                   </div>
                               </div>
                             </div>

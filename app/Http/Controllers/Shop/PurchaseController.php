@@ -293,7 +293,14 @@ class PurchaseController extends Controller
             $purchase->address = $request->address;
               }
               else{
-                $purchase->address = $request->new_address;
+                $address = new Address;
+                $address->city = $request->city;
+                $address->province = $request->province;
+                $address->zip_code = $request->zip_code;
+                $address->address = $request->new_address;
+                $address->user_id = \Auth::user()->id;
+                $address->save();
+                $purchase->address_id = $address->id;
               }
           $purchase->shipping = $request->shipping_way;
           $purchase->shipping_price = $shopShippingWayPrice;
@@ -311,15 +318,6 @@ class PurchaseController extends Controller
           $purchase->save();
 
           // add new address to user addresses
-          if ($request->new_address != null) {
-            $address = new Address;
-            $address->city = $request->city;
-            $address->province = $request->province;
-            $address->zip_code = $request->zip_code;
-            $address->address = $request->new_address;
-            $address->user_id = \Auth::user()->id;
-            $address->save();
-          }
 
           // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
           if($cart->voucher_status == 'used'){
@@ -346,7 +344,7 @@ class PurchaseController extends Controller
           }
           $details = [
                 'message' => 'یک سفارش جدید ثبت شد',
-                'url' => 'purchase.status'
+                'url' => 'purchases.index'
             ];
           $shopOwner->notify(new NewPurchaseForShopOwner($details));
 

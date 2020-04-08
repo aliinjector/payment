@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="items p-3">
-                                        <b class="mx-1">آدرس خریدار :</b> <span class="mr-5">{{ $purchase->address }}</span>
+                                        <b class="mx-1">آدرس خریدار :</b> <span class="mr-5">{{ $purchase->address->address }}</span>
                                         <b class="mx-1">ایمیل خریدار :</b> <span class="mr-5">{{ $purchase->user->email }}</span>
                                     </div>
                                 </div>

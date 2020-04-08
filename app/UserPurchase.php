@@ -28,4 +28,8 @@ class UserPurchase extends Model
   {
        return $this->belongsTo('App\User');
    }
+    public function address()
+  {
+       return $this->belongsTo('App\Address');
+   }
 }

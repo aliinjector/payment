@@ -206,7 +206,7 @@
                                                         <li>
                                                            @forelse(\auth::user()->addresses as $address)
                                                              <div class="mt-3 d-none address border-bottom p-2 radio radio-info">
-                                                                <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->address }}">
+                                                                <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->id }}">
                                                                 <label class="min-width-100-fix" for="{{ $address->id }}">{{ $address->address }}</label>
                                                              </div>
                                                            @empty

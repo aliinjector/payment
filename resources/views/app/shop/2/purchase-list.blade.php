@@ -196,7 +196,7 @@ h5:not([class^=tt-title]):not([class^=tt-collapse]):not([class^=tt-aside]) {
                                        <li>
                                          @forelse(\auth::user()->addresses as $address)
                                            <div class="mt-3 d-none address border-bottom p-2 radio radio-info">
-                                              <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->address }}" style="height:10px!important;width:18px!important">
+                                              <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->id }}" style="height:10px!important;width:18px!important">
                                               <label class="min-width-100-fix" for="{{ $address->id }}">{{ $address->address }}</label>
                                            </div>
                                          @empty

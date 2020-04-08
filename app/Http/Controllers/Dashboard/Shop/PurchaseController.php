@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Dashboard\Shop;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\ErrorLog;
-use App\UserPurchase;
 
-class DashboardShopController extends Controller
+
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,21 +15,15 @@ class DashboardShopController extends Controller
      */
     public function index()
     {
-        if(\Auth::user()->type == 'customer'){
-            return redirect()->back();
-        }else{
-        $shop = \Auth::user()->shop()->first();
-        $bestSellings = $shop->products()->orderBy('buyCount', 'DESC')->take(3)->get();
-        $shopPurchases = $shop->purchases()->get();
-        $sumPurchasesPrice = 0;
-        foreach($shopPurchases as $shopPurchase){
-            $sumPurchasesPrice += $shopPurchase->total_price;
-            }
-        return view('dashboard.shop.dashboard-shop', compact('shop','bestSellings' , 'sumPurchasesPrice'));
-            }
+      if(request()->has('notification')){
+        $user = \auth()->user();
+        $user->notifications()->where('type', 'App\Notifications\NewPurchaseForShopOwner')->update(['read_at' => now()]);
       }
-
-  
+        $shop = \Auth::user()->shop()->first();
+        $purchases = $shop->purchases;
+        $shopSpecifications = $shop->specifications;
+        return view('dashboard.shop.purchase.purchase-index', compact('purchases', 'shop', 'shopSpecifications'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -61,7 +54,9 @@ class DashboardShopController extends Controller
      */
     public function show($id)
     {
-        //
+      $shop = \Auth::user()->shop()->first();
+      $purchase = $shop->purchases()->where('id', $id)->get()->first();
+      return view('dashboard.shop.purchase.purchase-show', compact('purchase', 'shop'));
     }
 
     /**

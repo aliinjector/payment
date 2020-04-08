@@ -278,19 +278,20 @@ Author: Ali Rahmani
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="far fa-edit"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatForooshgah') }}</a></li>
                             <div class="collapse mr-4 {{ request()->is('*managment*') == 1 ? 'show' : '' }}" id="collapseExample">
                                 <li class="nav-item"><a class="nav-link" href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarTanzimaatForooshgah') }}</a></li>
-                                {{-- <li class="nav-item"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fa fa-question-circle"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarFAQ') }}</a></li> --}}
+                                <li class="nav-item"><a class="nav-link" href="{{ route('faq.index') }}"><i class="fa fa-question-circle"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarFAQ') }}</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('slideshow.index') }}"><i class="fa fa-clone"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarSlider') }}</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('feedback.index') }}"><i class="dripicons-calendar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarFeedback') }}</a></li>
                             </div>
 
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapsepurchases" aria-expanded="false" aria-controls="collapsepurchases"><i class="fa fa-clone"></i>مدیریت سفارشات</a></li>
                             <div class="collapse mr-4 {{ request()->is('*purchases-managment*') == 1 ? 'show' : '' }}" id="collapsepurchases">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('purchase.status') }}"><i class="fa fa-clipboard"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarVaziaatSefaareshaat') }} </a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('purchases.index') }}"><i class="fa fa-clipboard"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarVaziaatSefaareshaat') }} </a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('download-link-request-status.index') }}" style="font-size:12px;"><i class="far fa-arrow-alt-circle-down"></i>درخواست های لینک دانلود</a></li>
                             </div>
 
                             <li class="nav-item"><a class="nav-link" href="{{ route('stats.index') }}"><i class="fas fa-chart-bar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarAmaarBazdid') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatKarbaraan') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('user-panel.index') }}"><i class="far fa-clipboard"></i>پنل کاربری</a></li>
                         @endif
 
 
