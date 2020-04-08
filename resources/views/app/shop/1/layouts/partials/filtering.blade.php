@@ -3,7 +3,8 @@
     <div class="card e-co-product" style="max-width: 30rem;">
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">{{ __('app-shop-1-layouts-partials-filter.filterType') }}</h5>
         <div class="card-body d-flex justify-content-center text-primary">
-            <form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
+            <form
+            @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
             @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'id' => $tag->id ])}}"
             @else action="{{ route('brand', ['shop' => $shop->english_name,'id' => $brand->id ])}}"
             @endif id="submit" method="get">

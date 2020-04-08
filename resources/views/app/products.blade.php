@@ -119,7 +119,6 @@
                           </div>
                           <button class="main-search-button color2-bg">جستجو <i class="far fa-search"></i></button>
                         </div>
-                      </form>
                     </div>
                   </div>
                 </div>
@@ -164,112 +163,112 @@
                   <!-- list-main-wrap-opt-->
                   <div class="list-main-wrap-opt">
                     <!-- price-opt-->
-                    <div class="price-opt">
-                      <span class="price-opt-title">ترتیب براساس:</span>
-                      <div class="listsearch-input-item">
-                        <select data-placeholder="Popularity" class="chosen-select no-search-select" >
-                          <option>پربازدید ترین</option>
-                          <option>بالاترین امتیاز</option>
-                          <option>کمترین قیمت</option>
-                          <option>بالاترین قیمت</option>
-                        </select>
-                      </div>
-                    </div>
-                    <!-- price-opt end-->
-                    <!-- price-opt-->
-                    <div class="grid-opt">
-                      <ul class="no-list-style">
-                        <li class="grid-opt_act"><span class="two-col-grid act-grid-opt tolt" data-microtip-position="bottom" data-tooltip="Grid View"><i class="fal fa-th"></i></span></li>
-                        <li class="grid-opt_act"><span class="one-col-grid tolt" data-microtip-position="bottom" data-tooltip="List View"><i class="fal fa-list"></i></span></li>
-                      </ul>
-                    </div>
-                    <!-- price-opt end-->
-                  </div>
-                  <!-- list-main-wrap-opt end-->
-                </div>
-                <!-- list-main-wrap-header end-->
-                <!-- listing-item-container -->
-                <div class="listing-item-container init-grid-items fl-wrap nocolumn-lic">
-                  <!-- listing-item  -->
-                  @foreach ($products as $product)
-                    <div class="listing-item" style="">
-                      <article class="geodir-category-listing fl-wrap">
-                        <div class="geodir-category-img">
-                          <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
-                            <img style="height: 250px" src="{{ $product->image['original'] }}" alt="">
-                          </a>
-                          <div class="listing-avatar"><a href=""><img src="{{ $product->shop->user->avatar }}" alt=""></a>
-                            <span class="avatar-tooltip">مدیر فروشگاه:‌  <strong> {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</strong></span>
+                        <div class="price-opt">
+                          <span class="price-opt-title">ترتیب براساس:</span>
+                          <div class="listsearch-input-item">
+                            <select name="orderBy" class="chosen-select no-search-select" >
+                              <option id="higherView">پربازدید ترین</option>
+                              <option id="higherScore">بالاترین امتیاز</option>
+                              <option id="lowestPrice">کمترین قیمت</option>
+                              <option id="highestPrice">بالاترین قیمت</option>
+                            </select>
                           </div>
-                          <div class="geodir_status_date gsd_open">نام فروشگاه: {{ $product->shop->name }}</div>
-
                         </div>
-                        <div class="geodir-category-content fl-wrap title-sin_item">
-                          <div class="geodir-category-content-title fl-wrap">
-                            <div class="geodir-category-content-title-item">
-                              <h3 class="title-sin_map">
-                                <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ $product->title }}</a>
-                              </h3>
+                        <!-- price-opt end-->
+                        <!-- price-opt-->
+                        <div class="grid-opt">
+                          <ul class="no-list-style">
+                            <li class="grid-opt_act"><span class="two-col-grid act-grid-opt tolt" data-microtip-position="bottom" data-tooltip="Grid View"><i class="fal fa-th"></i></span></li>
+                            <li class="grid-opt_act"><span class="one-col-grid tolt" data-microtip-position="bottom" data-tooltip="List View"><i class="fal fa-list"></i></span></li>
+                          </ul>
+                        </div>
+                        <!-- price-opt end-->
+                      </div>
+                      <!-- list-main-wrap-opt end-->
+                    </div>
+                    <!-- list-main-wrap-header end-->
+                    <!-- listing-item-container -->
+                    <div class="listing-item-container init-grid-items fl-wrap nocolumn-lic">
+                      <!-- listing-item  -->
+                      @foreach ($products as $product)
+                        <div class="listing-item" style="">
+                          <article class="geodir-category-listing fl-wrap">
+                            <div class="geodir-category-img">
+                              <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
+                                <img style="height: 250px" src="{{ $product->image['original'] }}" alt="">
+                              </a>
+                              <div class="listing-avatar"><a href=""><img src="{{ $product->shop->user->avatar }}" alt=""></a>
+                                <span class="avatar-tooltip">مدیر فروشگاه:‌  <strong> {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</strong></span>
+                              </div>
+                              <div class="geodir_status_date gsd_open">نام فروشگاه: {{ $product->shop->name }}</div>
+
+                            </div>
+                            <div class="geodir-category-content fl-wrap title-sin_item">
+                              <div class="geodir-category-content-title fl-wrap">
+                                <div class="geodir-category-content-title-item">
+                                  <h3 class="title-sin_map">
+                                    <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ $product->title }}</a>
+                                  </h3>
+                                </div>
+                              </div>
+                              <div class="geodir-category-text fl-wrap">
+                                <p class="small-text">  {!! str_limit($product->description, 100) !!} </p>
+
+                              </div>
+                              <div class="geodir-category-footer fl-wrap">
+                                <a class="listing-item-category-wrap" href="#">
+                                  <div class="listing-item-category blue-bg"><i class="fa fa-user"></i></div>
+                                  <span>مدیر فروشگاه:‌ {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</span>
+                                </a>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      @endforeach
+
+
+                      <!-- listing-item end -->
+                        {{ $products->links() }}
+                    </div>
+                    <!-- listing-item-container end -->
+                  </div>
+
+
+
+                  <div class="col-md-3">
+                    <div class=" fl-wrap lws_mobile   tabs-act block_box">
+                      <div class="filter-sidebar-header fl-wrap" id="filters-column">
+                        <ul class="tabs-menu fl-wrap no-list-style">
+                          <li class="current"><a href="#filters-search"> <i style="float: right;" class="fal fa-sliders-h"></i> فیلتر نتایج </a></li>
+                        </ul>
+                      </div>
+                      <div class="scrl-content filter-sidebar    fs-viscon">
+                        <!--tabs -->
+                        <div class="tabs-container fl-wrap">
+                          <!--tab -->
+                          <div class="tab">
+                            <div id="filters-search" class="tab-content  first-tab ">
+                              <!-- listsearch-input-item-->
+                              {{--FILTER HERE--}}
+                              <!-- listsearch-input-item-->
+
+                              <div class="listsearch-input-item">
+                                <button class="header-search-button color-bg"><i class="far fa-search"></i><span>جستجو</span></button>
+                              </div>
+                              <!-- listsearch-input-item end-->
                             </div>
                           </div>
-                          <div class="geodir-category-text fl-wrap">
-                            <p class="small-text">  {!! str_limit($product->description, 100) !!} </p>
+                          <!--tab end-->
+                          <!--tab -->
 
-                          </div>
-                          <div class="geodir-category-footer fl-wrap">
-                            <a class="listing-item-category-wrap" href="#">
-                              <div class="listing-item-category blue-bg"><i class="fa fa-user"></i></div>
-                              <span>مدیر فروشگاه:‌ {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</span>
-                            </a>
-                          </div>
+                          <!--tab end-->
                         </div>
-                      </article>
-                    </div>
-                  @endforeach
-
-
-                  <!-- listing-item end -->
-                    {{ $products->links() }}
-                </div>
-                <!-- listing-item-container end -->
-              </div>
-
-
-
-              <div class="col-md-3">
-                <div class=" fl-wrap lws_mobile   tabs-act block_box">
-                  <div class="filter-sidebar-header fl-wrap" id="filters-column">
-                    <ul class="tabs-menu fl-wrap no-list-style">
-                      <li class="current"><a href="#filters-search"> <i style="float: right;" class="fal fa-sliders-h"></i> فیلتر نتایج </a></li>
-                    </ul>
-                  </div>
-                  <div class="scrl-content filter-sidebar    fs-viscon">
-                    <!--tabs -->
-                    <div class="tabs-container fl-wrap">
-                      <!--tab -->
-                      <div class="tab">
-                        <div id="filters-search" class="tab-content  first-tab ">
-                          <!-- listsearch-input-item-->
-                          {{--FILTER HERE--}}
-                          <!-- listsearch-input-item-->
-
-                          <div class="listsearch-input-item">
-                            <button class="header-search-button color-bg"><i class="far fa-search"></i><span>جستجو</span></button>
-                          </div>
-                          <!-- listsearch-input-item end-->
-                        </div>
+                        <!--tabs end-->
                       </div>
-                      <!--tab end-->
-                      <!--tab -->
-
-                      <!--tab end-->
                     </div>
-                    <!--tabs end-->
+                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#filters-column">مشاهده فیلتر <i class="fas fa-caret-up"></i></a>
                   </div>
-                </div>
-                <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#filters-column">مشاهده فیلتر <i class="fas fa-caret-up"></i></a>
-              </div>
-
+              </form>
             </div>
           </div>
         </div>

@@ -21,9 +21,13 @@ class StatController extends Controller
     {
         $shop = \Auth::user()->shop()->first();
         $stats = $shop->stats()->orderBy('id', 'DESC')->limit(100)->get();
-        $month = $stats->select('day', \DB::raw('count(*) as total'))->groupBy('day')->limit(30)->get();
-        dd($month);
-        return view('dashboard.shop.stats', compact('shop', 'stats'));
+        $monthlyVisits = \DB::table('stats')->where('shop_id', $shop->id)->select('day', \DB::raw('count(*) as total'))->groupBy('day')->limit(30)->get();
+        $monthlyVisitors = \DB::table('stats')->where('shop_id', $shop->id)->select('day', \DB::raw('count(DISTINCT `ip`) as total'))->groupBy('day')->limit(30)->get();
+        $devices = \DB::table('stats')->where('shop_id', $shop->id)->select('device', \DB::raw('count(*) as total'))->groupBy('device')->limit(10)->get();
+        $browsers = \DB::table('stats')->where('shop_id', $shop->id)->select('browserName', \DB::raw('count(*) as total'))->groupBy('browserName')->limit(10)->get();
+        $searchEngines = \DB::table('stats')->where('shop_id', $shop->id)->select('searchEngine', \DB::raw('count(*) as total'))->groupBy('searchEngine')->limit(10)->get();
+        $pages = \DB::table('stats')->where('shop_id', $shop->id)->select('page', \DB::raw('count(*) as total'))->groupBy('page')->limit(20)->get();
+        return view('dashboard.shop.stats', compact('shop', 'stats', 'monthlyVisits', 'monthlyVisitors', 'devices', 'browsers', 'searchEngines', 'pages'));
     }
 
     /**

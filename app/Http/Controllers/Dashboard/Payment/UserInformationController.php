@@ -53,7 +53,7 @@ class UserInformationController extends \App\Http\Controllers\Controller
             if(! $userInformation->email_date >= Carbon::now()->subMinutes(100)->toDateTimeString()){
                     return redirect()->route('verification.email');
             }
-            if(! $userInformation->sms_date <= Carbon::now()->subMinutes(100)->toDateTimeString()){
+            if(! $userInformation->email_date <= Carbon::now()->subMinutes(100)->toDateTimeString()){
                 alert()->warning('کد تایید ایمیل برای شما ارسال شده است.')->autoclose(5000);
             }
 

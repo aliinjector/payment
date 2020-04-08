@@ -42,6 +42,10 @@
             font-family: BYekan !important;
 
         }
+        #devices {
+            width: 100%;
+            height: 500px;
+        }
     </style>
 
 <div class="page-content">
@@ -127,7 +131,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">نمودار <span style="color:#67b7dc">بازدید</span> / <span style="color:#fdd400">بازدیدکنندگان</span> ۳۰ روز اخیر</h4>
+                            <h4 class="mt-0 header-title">نمودار <span>بازدید</span> ۳۰ روز اخیر</h4>
                             <p class="text-muted mb-4 font-13">اعداد براساس بازدید ها و بازدیدکننده های وارد شده
                                 در فروشگاه شما میباشد.</p>
                             <div class="row">
@@ -143,20 +147,20 @@
 
             <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title">دستگاه بازدید کنندگان</h4>
                             <p class="text-muted mb-4 font-13">پراکندگی بازدید کنندگان براساس دستگاه</p>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div id="platforms" style="width: 100%; height: 500px;"></div>
+                                    <div id="devices" style="width: 100%; height: 500px; direction: ltr"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div  class="card">
                         <div style="height: 615" class="card-body">
                             <h4 class="mt-0 header-title">مرورگر بازدید کنندگان</h4>
@@ -170,12 +174,7 @@
                     </div>
                 </div>
 
-            </div>
-
-
-            <div class="row">
-
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title">موتور های جستجوگر</h4>
@@ -188,7 +187,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="mt-0 header-title">بربازدید ترین صفحات</h4>
@@ -196,7 +201,26 @@
                                 صفحه/محصول</p>
                             <div class="row">
                                 <div class="col-md-12">
+                                    <div class="table-responsive">
 
+                                        <table id="ViewTable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+
+                                            <thead style="text-align: center">
+                                            <tr role="row">
+                                                <th  tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"  >صفحه/محصول</th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تعداد بازدید	</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody style="text-align: center" class="iranyekan">
+                                            @foreach($pages as $page)
+                                                <tr>
+                                                    <td><a target="_blank" href="{{ url($page->page) }}">{{ $page->page }}</a></td>
+                                                    <td>{{ $page->total }}</td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -226,7 +250,7 @@
                                     </div>
                                     <div class="table-responsive">
 
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+                                    <table id="lastTable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
 
                                         <thead style="text-align: center">
                                         <tr role="row">
@@ -237,20 +261,24 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">کشور</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">شهر</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ISP</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">دستگاه</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">صفحه</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">لینک دهنده</th>
                                         </tr>
                                         </thead>
                                         <tbody style="text-align: center" class="iranyekan">
                                         @foreach($stats as $stat)
                                             <tr>
-                                                <td>{{ jdate($stat->updated_at) }}</td>
+                                                <td style="direction: ltr; font-family: BYekan">{{ jdate($stat->updated_at) }}</td>
                                                 <td>{{ $stat->osName }}</td>
                                                 <td>{{ $stat->browserName }}</td>
                                                 <td>{{ $stat->ip }}</td>
                                                 <td>{{ $stat->country }}</td>
                                                 <td>{{ $stat->city }}</td>
                                                 <td>{{ $stat->isp }}</td>
-                                                <td>{{ $stat->ref }}</td>
+                                                <td>{{ $stat->device }}</td>
+                                                <td><a href="{{ url($stat->page) }}">{{ $stat->page }}</a></td>
+                                                <td><a href="{{ url($stat->ref) }}">{{ $stat->ref }}</a></td>
                                             </tr>
                                         @endforeach
                                         </tbody>
@@ -319,87 +347,171 @@
 
 // Create chart instance
                 var chart = am4core.create("month", am4charts.XYChart);
+                chart.rtl = true;
+                chart.scrollbarX = new am4core.Scrollbar();
 
-// Export
-                chart.exporting.menu = new am4core.ExportMenu();
 
-// Data for both series
-                var data = [ {
-                    "year": "2009",
-                    "income": 23.5,
-                    "expenses": 21.1
-                }, {
-                    "year": "2010",
-                    "income": 26.2,
-                    "expenses": 30.5
-                }, {
-                    "year": "2011",
-                    "income": 30.1,
-                    "expenses": 34.9
-                }, {
-                    "year": "2012",
-                    "income": 29.5,
-                    "expenses": 31.1
-                }, {
-                    "year": "2013",
-                    "income": 30.6,
-                    "expenses": 28.2,
-                    "lineDash": "5,5",
-                }, {
-                    "year": "2014",
-                    "income": 34.1,
-                    "expenses": 32.9,
-                    "strokeWidth": 1,
-                    "columnDash": "5,5",
-                    "fillOpacity": 0.2,
-                    "additional": "(projection)"
-                } ];
+// Add data
+                chart.data = [
+                    @foreach($monthlyVisits as $monthlyVisit)
+                    {
+                        "country": "{{ $monthlyVisit->day }}",
+                        "visits": {{ $monthlyVisit->total }}
+                    },
+                    @endforeach
+                    ];
 
-                /* Create axes */
+// Create axes
                 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-                categoryAxis.dataFields.category = "year";
+                categoryAxis.dataFields.category = "country";
+                categoryAxis.renderer.grid.template.location = 0;
                 categoryAxis.renderer.minGridDistance = 30;
+                categoryAxis.renderer.labels.template.horizontalCenter = "right";
+                categoryAxis.renderer.labels.template.verticalCenter = "middle";
+                categoryAxis.renderer.labels.template.rotation = 270;
+                categoryAxis.tooltip.disabled = true;
+                categoryAxis.renderer.minHeight = 110;
 
-                /* Create value axis */
                 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+                valueAxis.renderer.minWidth = 50;
 
-                /* Create series */
-                var columnSeries = chart.series.push(new am4charts.ColumnSeries());
-                columnSeries.name = "Income";
-                columnSeries.dataFields.valueY = "income";
-                columnSeries.dataFields.categoryX = "year";
+// Create series
+                var series = chart.series.push(new am4charts.ColumnSeries());
+                series.sequencedInterpolation = true;
+                series.dataFields.valueY = "visits";
+                series.dataFields.categoryX = "country";
+                series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
+                series.columns.template.strokeWidth = 0;
 
-                columnSeries.columns.template.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
-                columnSeries.columns.template.propertyFields.fillOpacity = "fillOpacity";
-                columnSeries.columns.template.propertyFields.stroke = "stroke";
-                columnSeries.columns.template.propertyFields.strokeWidth = "strokeWidth";
-                columnSeries.columns.template.propertyFields.strokeDasharray = "columnDash";
-                columnSeries.tooltip.label.textAlign = "middle";
+                series.tooltip.pointerOrientation = "vertical";
 
-                var lineSeries = chart.series.push(new am4charts.LineSeries());
-                lineSeries.name = "Expenses";
-                lineSeries.dataFields.valueY = "expenses";
-                lineSeries.dataFields.categoryX = "year";
+                series.columns.template.column.cornerRadiusTopLeft = 10;
+                series.columns.template.column.cornerRadiusTopRight = 10;
+                series.columns.template.column.fillOpacity = 0.8;
 
-                lineSeries.stroke = am4core.color("#fdd400");
-                lineSeries.strokeWidth = 3;
-                lineSeries.propertyFields.strokeDasharray = "lineDash";
-                lineSeries.tooltip.label.textAlign = "middle";
+// on hover, make corner radiuses bigger
+                var hoverState = series.columns.template.column.states.create("hover");
+                hoverState.properties.cornerRadiusTopLeft = 0;
+                hoverState.properties.cornerRadiusTopRight = 0;
+                hoverState.properties.fillOpacity = 1;
 
-                var bullet = lineSeries.bullets.push(new am4charts.Bullet());
-                bullet.fill = am4core.color("#fdd400"); // tooltips grab fill from parent by default
-                bullet.tooltipText = "[#fff font-size: 15px]{name} in {categoryX}:\n[/][#fff font-size: 20px]{valueY}[/] [#fff]{additional}[/]"
-                var circle = bullet.createChild(am4core.Circle);
-                circle.radius = 4;
-                circle.fill = am4core.color("#fff");
-                circle.strokeWidth = 3;
+                series.columns.template.adapter.add("fill", function(fill, target) {
+                    return chart.colors.getIndex(target.dataItem.index);
+                });
 
-                chart.data = data;
+// Cursor
+                chart.cursor = new am4charts.XYCursor();
 
             }); // end am4core.ready()
 
 
 
+
+
+
+            am4core.ready(function() {
+
+// Themes begin
+                am4core.useTheme(am4themes_animated);
+// Themes end
+
+                var chart = am4core.create("devices", am4charts.PieChart);
+                chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+                chart.data = [
+                        @foreach($devices as $device)
+                    {
+                        "country": "{{ $device->device }}",
+                        "value": {{ $device->total }}
+                    },
+                    @endforeach
+                ];
+
+
+                chart.radius = am4core.percent(70);
+                chart.innerRadius = am4core.percent(40);
+                chart.startAngle = 180;
+                chart.endAngle = 360;
+
+                var series = chart.series.push(new am4charts.PieSeries());
+                series.dataFields.value = "value";
+                series.dataFields.category = "country";
+
+                series.slices.template.cornerRadius = 10;
+                series.slices.template.innerCornerRadius = 7;
+                series.slices.template.draggable = true;
+                series.slices.template.inert = true;
+                series.alignLabels = false;
+
+                series.hiddenState.properties.startAngle = 90;
+                series.hiddenState.properties.endAngle = 90;
+
+                chart.legend = new am4charts.Legend();
+
+            }); // end am4core.ready()
+
+
+
+
+
+            am4core.ready(function() {
+
+// Themes begin
+                am4core.useTheme(am4themes_animated);
+// Themes end
+
+                var chart = am4core.create("browsers", am4charts.PieChart);
+                chart.rtl = true;
+                chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+                chart.data = [
+                        @foreach($browsers as $browser)
+                    {
+                        "country": "{{ $browser->browserName }}",
+                        "value": {{ $browser->total }}
+                    },
+                    @endforeach
+                ];
+
+
+                chart.radius = am4core.percent(70);
+                chart.innerRadius = am4core.percent(40);
+                chart.startAngle = 180;
+                chart.endAngle = 360;
+
+                var series = chart.series.push(new am4charts.PieSeries());
+                series.dataFields.value = "value";
+                series.dataFields.category = "country";
+
+                series.slices.template.cornerRadius = 10;
+                series.slices.template.innerCornerRadius = 7;
+                series.slices.template.draggable = true;
+                series.slices.template.inert = true;
+                series.alignLabels = false;
+
+                series.hiddenState.properties.startAngle = 90;
+                series.hiddenState.properties.endAngle = 90;
+
+                chart.legend = new am4charts.Legend();
+
+            }); // end am4core.ready()
+
+
+
+
+            $(document).ready(function() {
+                $("#datatable").DataTable(), $(document).ready(function() {
+
+                    $("#lastTable").DataTable({
+                        "order": [[ 0, "desc" ]]
+                    });
+
+
+                    $("#ViewTable").DataTable({
+                        "order": [[ 1, "desc" ]]
+                    });
+                })
+            })
         </script>
 
 
