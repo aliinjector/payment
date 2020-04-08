@@ -144,7 +144,7 @@
                 </div>
                 <form action="{{ route('purchase-list.store', ['shop'=>$shop->english_name, 'cartID'=>\Auth::user()->cart()->get()->first()->id]) }}" method="post" class="form-horizontal">
                     @csrf
-                        <div class="col-lg-6 mt-5 d-none-print">
+                        <div class="col-lg-12 col-sm-12 col-xl-6 mt-5 d-none-print">
                             <div class="total-payment">
                                 <h4 class="header-title">مجموع پرداختی</h4>
                                 <table class="table">
@@ -204,19 +204,33 @@
                                                             </span>
                                                         </li>
                                                         <li>
-                                                           @foreach (\auth::user()->addresses as $address)
-
-                                                           <div class="mt-3 d-none address border-bottom p-2 radio radio-info">
-                                                              <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->address }}">
-                                                              <label class="min-width-100-fix" for="{{ $address->id }}">{{ $address->address }}</label>
-                                                           </div>
-                                                           @endforeach
+                                                           @forelse(\auth::user()->addresses as $address)
+                                                             <div class="mt-3 d-none address border-bottom p-2 radio radio-info">
+                                                                <input type="radio" name="address" id="{{ $address->id }}" value="{{ $address->address }}">
+                                                                <label class="min-width-100-fix" for="{{ $address->id }}">{{ $address->address }}</label>
+                                                             </div>
+                                                           @empty
+                                                             <div class="mt-3 d-none address border-bottom p-2 radio radio-info">
+                                                            آدرسی وجود ندارد
+                                                             </div>
+                                                           @endforelse
                                                         </li>
                                                       @endif
 
                                                         <span class="btn btn-soft-primary font-weight-bolder d-none newAddress mt-3"><i class="fa fa-plus mr-2"></i> اضافه کردن آدرس
                                                         </span>
                                                         <li class="col-lg-12 address_input d-none">
+                                                          <label for="shopInputLastName" class="control-label">استان *</label>
+                                                          <input type="text" class="form-control" name="province" id="shopInputLastName" value="{{ old('province') }}">
+                                                          <label for="shopInputLastName" class="control-label mt-2">شهر *</label>
+                                                          <input type="text" class="form-control" name="city" id="shopInputLastName" value="{{ old('city') }}">
+                                                          <label for="shopInputLastName" class="control-label mt-2">کد پستی *</label>
+                                                          <input type="text" class="form-control" name="zip_code" id="shopInputLastName" value="{{ old('zip_code') }}">
+                                                        </li>
+                                                        <li class="col-lg-12 address_input d-none mt-2">
+                                                      آدرس *
+                                                        </li>
+                                                        <li class="col-lg-12 address_input d-none ">
                                                             <textarea class="form-control mt-3" name="new_address" id="" cols="90" rows="5" placeholder="در صورت تمایل به ارسال به آدرس جدید لطفا آدرس مورد نظر را در کادر زیر وارد کنید"></textarea>
                                                         </li>
                                                     </ul>

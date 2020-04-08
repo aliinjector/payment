@@ -23,12 +23,12 @@
                           <form action="{{ route('user-address.store') }}" id="submit" method="post">
                             @csrf
                                 <div class="form-group">
-                                    <label for="shopInputFirstName" class="control-label">شهر *</label>
-                                    <input type="text" class="form-control" name="city" id="shopInputFirstName" value="{{ old('city') }}">
-                                </div>
-                                <div class="form-group">
                                     <label for="shopInputLastName" class="control-label">استان *</label>
                                     <input type="text" class="form-control" name="province" id="shopInputLastName" value="{{ old('province') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="shopInputFirstName" class="control-label">شهر *</label>
+                                    <input type="text" class="form-control" name="city" id="shopInputFirstName" value="{{ old('city') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="shopInputLastName" class="control-label">کد پستی *</label>

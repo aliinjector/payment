@@ -166,15 +166,14 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::post('application/applicatio-request', 'ApplicationController@applicatioRequest')->name('application.applicatio-request');
 
 
-
-
         //Stats
         Route::resource('stats', 'StatController');
         Route::post('stats/add', 'StatController@add')->name('stats.add');
 
         //users
         Route::resource('users', 'UserController');
-        Route::get('users/purcheses/{user}', 'UserController@purcheses')->name('users.purcheses');
+        Route::get('users/purchase/{userID}/show/{id}', 'UserController@purcheseShow')->name('users.purchase.show');
+        Route::get('users/purchases/{user}', 'UserController@purchases')->name('users.purchases');
         Route::post('users/delete', 'UserController@destroy')->name('user.delete');
 
         //notification

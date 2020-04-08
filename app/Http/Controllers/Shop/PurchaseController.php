@@ -8,6 +8,7 @@ use App\Voucher;
 use App\UserPurchase;
 use App\UserVoucher;
 use App\Cart;
+use App\Address;
 use Illuminate\Http\Request;
 use Request as RequestFacade;
 use Illuminate\Support\Facades\DB;
@@ -248,6 +249,8 @@ class PurchaseController extends Controller
 
 
       public function purchaseSubmit($shopName, $cartID, PurchaseSubmitRequest $request) {
+
+
           $cart = \Auth::user()->cart()->get()->first();
           $shop = Shop::where('english_name', $shopName)->first();
           $shopOwner = $shop->user;
@@ -306,10 +309,21 @@ class PurchaseController extends Controller
               $purchase->total_price = $total_price;
             }
           $purchase->save();
+
+          // add new address to user addresses
+          if ($request->new_address != null) {
+            $address = new Address;
+            $address->city = $request->city;
+            $address->province = $request->province;
+            $address->zip_code = $request->zip_code;
+            $address->address = $request->new_address;
+            $address->user_id = \Auth::user()->id;
+            $address->save();
+          }
+
           // the only way that store data in pivot table to find that which user use which voucher in which shop is this if statement
           if($cart->voucher_status == 'used'){
             DB::transaction(function () use ($cart, $purchase, $shop) {
-
             DB::table('user_vouchers')->insert(['user_id' => \Auth::user()->id, 'voucher_id' => $cart->voucher_id, 'user_purchase_id' => $purchase->id, 'shop_id' => $shop->id]);
             DB::table('vouchers')->where('id', '=', $cart->voucher_id)->decrement('uses');
           });

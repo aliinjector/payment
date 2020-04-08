@@ -160,20 +160,22 @@
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem4') }}</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem5') }}</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem6') }}</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem7') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody style="text-align: center" class="iranyekan">
                                                 @foreach($users as $user)
-                                                <tr>
+                                                  <tr role="row" class="odd icon-hover hover-color">
                                                     <td>{{ $user->firstName }}</td>
                                                     <td>{{ $user->lastName }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->mobile }}</td>
                                                     <td>{{ $user->created_at }}</td>
-                                                    <td>{{ $user->created_at }}</td>
-                                                    <td>
-                                                        <a href="{{ route('users.purcheses', $user) }}">{{ __('dashboard-shop-users-index.ListKarbaranItem8') }}</a>
+                                                    <td>{{ $user->created_at }}
+                                                      <div class="d-none icon-show">
+                                                          
+                                                          <a href="{{ route('users.purchases', $user) }}" title="لیست سفارشات" id="edit"><i class="fas fa-shopping-cart text-danger mx-1"></i>
+                                                          </a>
+                                                      </div>
                                                     </td>
                                                 </tr>
                                                 @endforeach

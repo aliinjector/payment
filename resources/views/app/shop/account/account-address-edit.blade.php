@@ -24,13 +24,14 @@
                         <form action="{{ route('user-address.update', $address->id ) }}" id="submit" method="post">
                             @csrf
                             {{ method_field('PATCH') }}
-                            <div class="form-group">
-                                <label for="shopInputFirstName" class="control-label">شهر *</label>
-                                <input type="text" class="form-control" name="city" value="{{ old('city', $address->city) }}">
-                            </div>
+
                             <div class="form-group">
                                 <label for="shopInputLastName" class="control-label">استان *</label>
                                 <input type="text" class="form-control" name="province" value="{{ old('province', $address->province) }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="shopInputFirstName" class="control-label">شهر *</label>
+                                <input type="text" class="form-control" name="city" value="{{ old('city', $address->city) }}">
                             </div>
                             <div class="form-group">
                                 <label for="shopInputLastName" class="control-label">کد پستی *</label>

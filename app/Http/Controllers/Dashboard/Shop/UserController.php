@@ -20,22 +20,21 @@ class UserController extends Controller
 
     }
 
-    public function edit(User $user){
+
+    public function purchases(User $user){
       $shop = \Auth::user()->shop()->first();
-
-      return view('dashboard.shop.users.edit', compact('shop', 'user'));
-
+      $purchases = $user->purchases()->where('shop_id', $shop->id)->get();
+      return view('dashboard.shop.users.purchases', compact('shop', 'user', 'purchases'));
     }
 
 
-    public function update(){
 
-    }
+    public function purcheseShow($userID, $id){
 
-    public function purcheses(User $user){
-      $shop = \Auth::user()->shop()->first();
-      $purcheses = $user->purchases()->get();
-      return view('dashboard.shop.users.purcheses', compact('shop', 'user', 'purcheses'));
+    $user = User::find($userID);
+    $shop = \Auth::user()->shop()->first();
+    $purchase = $user->purchases()->where('id', $id)->get()->first();
+    return view('dashboard.shop.users.purchase-show', compact('purchase', 'shop'));
 
     }
 
