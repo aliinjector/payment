@@ -120,7 +120,7 @@ Author: Ali Rahmani
                 <button class="button-menu-mobile nav-link waves-effect waves-light"><i class="dripicons-menu nav-icon"></i></button>
             </li>
             <li class="hide-phone app-search">
-                <form action="{{ route('products.search') }}" method="post" role="search" class="">
+                <form action="{{ route('dashboard.products.search') }}" method="post" role="search" class="">
                     @csrf
                     <input type="text" name="title" placeholder="نام محصول ..." class="form-control">
                     <a href="javascript:;" class="myClass" onclick="$('#submitBtn').click();"><i style="padding-top: 10px" class="fas fa-search"></i></a>
