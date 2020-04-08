@@ -136,6 +136,10 @@ $(document).ready(function(){
 
 });
 $(document).ready(function(){
+  if($('input#myInputTextField').val() != ''){
+    $('input#myInputTextField').addClass('searchActive');
+
+  }
  $('input#myInputTextField').on("focus", function(){
    if ($(this).hasClass("searchActive")){
           $(this).removeClass("searchActive");
@@ -143,6 +147,8 @@ $(document).ready(function(){
       else{
      $('input#myInputTextField').addClass('searchActive');
    }
+
+
 });
 });
 oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said

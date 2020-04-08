@@ -8,6 +8,7 @@
                 <h1 class="">حساب کاربری</h1>
                 <div class="">
                     <div class="">
+                      @if($purchases->count() > 0)
                         <h3 class="">سوابق سفارشات</h3>
                         <div class="">
                             <table class="">
@@ -34,41 +35,53 @@
                                           </th>
                                       </tr>
                                   </thead>
-                                <tbody>
+                                  <tbody class="iranyekan">
                                     @php
                                     $id = 1;
                                     @endphp
-                                    @foreach ($purchases as $purchase)
-                                    <tr>
-                                        <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
-                                        <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
-                                        <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
-                                        <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else <span>
-                                                                   @if($purchase->shipping =="quick_way")
-                                                                     ارسال سریع
-                                                                   @elseif($purchase->shipping =="posting_way")
-                                                                     ارسال پستی
-                                                                   @else
-                                                                     دریافت حضوری
-                                                                   @endif
-                                                                 @endif</span></td>
-                                        <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else{{ $purchase->shipping_price }} @endif</td>
-                                        <td>{{ number_format($purchase->total_price + $purchase->shipping_price) }} تومان</td>
-                                        <td>{{ jdate($purchase->created_at) }}</td>
-                                        <td>
-                                            <a href="{{ route('user.purchased.list.show', $purchase->id) }}" title="مشاهده سفارش"3778><i class="far fa-eye text-primary font-15"></i></a>
-                                            <a href="{{ route('user.purchased.list.show.invoice', $purchase->id) }}" title="فاکتور"><i class="fas fa-file-invoice text-danger"></i></a>
+                                    @forelse ($purchases as $purchase)
+                                      <tr>
+                                          <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
+                                          <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
+                                          <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
+                                          <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else <span>
+                                                                     @if($purchase->shipping =="quick_way")
+                                                                       ارسال سریع
+                                                                     @elseif($purchase->shipping =="posting_way")
+                                                                       ارسال پستی
+                                                                     @else
+                                                                       دریافت حضوری
+                                                                     @endif
+                                                                   @endif</span></td>
+                                          <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else{{ $purchase->shipping_price }} @endif</td>
+                                          <td>{{ number_format($purchase->total_price + $purchase->shipping_price) }} تومان</td>
+                                          <td>{{ jdate($purchase->created_at) }}</td>
+                                          <td>
+                                              <a href="{{ route('user.purchased.list.show', $purchase->id) }}" title="مشاهده سفارش"3778><i class="far fa-eye text-primary font-15"></i></a>
+                                              <a href="{{ route('user.purchased.list.show.invoice', $purchase->id) }}" title="فاکتور"><i class="fas fa-file-invoice text-danger"></i></a>
 
-                                        </td>
-                                    </tr>
+                                          </td>
+                                      </tr>
+                                    @empty
+                                      <tr>
+                                          <td class="byekan">رکوردی پیدا نشد</td>
+                                        </tr>
+                                    @endforelse
+
                                     @php
                                     $id ++
                                     @endphp
-                                    @endforeach
 
                                     </tbody>
+
                                 </table>
                             </div>
+                          @else
+                            <div class="row justify-content-center p-5">
+                              <h4 class="text-danger">سفارشی ثبت نشده است!!!</h4>
+                            </div>
+                          @endif
+
                         </div>
                     </div>
                 </div>

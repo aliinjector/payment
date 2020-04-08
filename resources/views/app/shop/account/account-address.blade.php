@@ -4,6 +4,7 @@
     <div class="container-indent">
         <div class="container container-fluid-custom-mobile-padding">
             <div class="">
+
                 <h2 class="">آدرس های شما</h2>
                 <div class="d-flex justify-content-end py-4">
 
@@ -14,10 +15,11 @@
             </div>
 
             </a>
+            @if($user_addresses->count() > 0)
 
                     <div class="pb-5 table-responsive">
-                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
-                      aria-describedby="datatable_info">
+                      <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
+                        aria-describedby="datatable_info">
                         <thead>
                             <tr role="row">
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
@@ -38,7 +40,7 @@
                           @php
                             $id = 1;
                           @endphp
-                          @foreach ($user_addresses as $user_addresse)
+                          @forelse ($user_addresses as $user_addresse)
                             <tr role="row" class="odd">
                               <td>{{ $id }}</td>
                                 <td>{{ $user_addresse->city }}</td>
@@ -53,12 +55,21 @@
                                       </div>
                                 </td>
                             </tr>
-                          @endforeach
+                          @empty
+                            <tr>
+                                <td class="byekan">رکوردی پیدا نشد</td>
+                              </tr>
+                          @endforelse
                             @php
                               $id ++
                             @endphp
                         </tbody>
                     </table>
+                  @else
+                    <div class="row justify-content-center p-5">
+                      <h4 class="text-danger">آدرسی ثبت نشده است</h4>
+                    </div>
+                  @endif
                   </div>
                 </div>
             </div>
