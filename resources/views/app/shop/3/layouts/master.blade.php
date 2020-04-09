@@ -312,62 +312,6 @@
 
 		<!--  FOOTER START  -->
 		<footer class="footer_area">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6">
-						<div class="single_ftr">
-							<h4 class="sf_title">تماس باما</h4>
-							<ul>
-								<li>آدرس</li>
-								<li>تلفن1 <br> تلفن2</li>
-								<li>Contact@yourcompany.com</li>
-							</ul>
-						</div>
-					</div> <!--  End Col -->
-
-					<div class="col-md-3 col-sm-6">
-						<div class="single_ftr">
-							<h4 class="sf_title">سایر صفحات</h4>
-							<ul>
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Delivery Information</a></li>
-								<li><a href="#">Privacy Policy</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact Us</a></li>
-							</ul>
-						</div>
-					</div> <!--  End Col -->
-
-					<div class="col-md-3 col-sm-6">
-						<div class="single_ftr">
-							<h4 class="sf_title">آخرین دسته ها</h4>
-							<ul>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Site Map</a></li>
-								<li><a href="#">Wish List</a></li>
-								<li><a href="#">My Account</a></li>
-								<li><a href="#">Order History</a></li>
-							</ul>
-						</div>
-					</div> <!--  End Col -->
-
-					<div class="col-md-3 col-sm-6">
-						<div class="single_ftr">
-							<h4 class="sf_title">عضویت در خبرنامه</h4>
-							<div class="newsletter_form">
-								<p>جهت عضویت در سیستم خبرنامه، آدرس ایمیل خودرا در فرم زیر وارد نموده و برروی گزینه عضویت کلیک نمایید.</p>
-								<form method="post" class="form-inline">
-									<input name="EMAIL" id="email" placeholder="Enter Your Email" class="form-control" type="email">
-									<button type="submit" class="btn btn-default"><i class="fa fa-search" style="margin-right: -13px;"></i></button>
-								</form>
-							</div>
-						</div>
-					</div> <!--  End Col -->
-
-				</div>
-			</div>
-
-
 			<div class="ftr_btm_area">
 				<div class="container">
 					<div class="row">
@@ -383,18 +327,12 @@
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<p class="copyright_text text-center">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است.</p>
+
 						</div>
 
 						<div class="col-sm-4">
 							<div class="payment_mthd_icon text-right">
-								<ul>
-									<li><i class="fa fa-cc-paypal"></i></li>
-									<li><i class="fa fa-cc-visa"></i></li>
-									<li><i class="fa fa-cc-discover"></i></li>
-									<li><i class="fa fa-cc-mastercard"></i></li>
-									<li><i class="fa fa-cc-amex"></i></li>
-								</ul>
+								<a target="_blank" href="http://omidshop.net"><p class="copyright_text text-center">&copy; قدرت گرفته از فروشگاه ساز امید</p></a>
 							</div>
 						</div>
 					</div>

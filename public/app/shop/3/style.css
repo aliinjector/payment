@@ -1716,7 +1716,7 @@ input:focus, textarea:focus {
 /* -------- Footer Css -------- */
 
 .footer_area {
-	padding:60px 0 20px;
+	padding:5px 0 20px;
 	position: relative;
 	color: #fff;
 	z-index: 100;
