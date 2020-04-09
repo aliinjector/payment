@@ -67,7 +67,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-3">
-							<a class="logo" href="index-2.html"> <img alt="" src="img/omid.png"></a>
+							<a class="logo" href="{{ route('shop', $shop->english_name) }}"> <img alt="" src="{{ $shop->logo['200,100'] }}"></a>
+							<a  href="{{ route('shop', $shop->english_name) }}"><span>{{$shop->name}}</span></a>
 						</div><!--  End Col -->
 
 						<div class="col-xs-12 col-sm-12 col-md-9 text-right">
