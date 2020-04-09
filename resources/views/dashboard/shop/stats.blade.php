@@ -72,9 +72,9 @@
             <div class="col-lg-3">
                 <div class="card card-eco">
                         <div class="card-body">
-                            <h4 class="title-text mt-0">بازدید کل</h4>
+                            <h4 class="title-text mt-0">بازدید امروز</h4>
                             <div class="d-flex justify-content-between">
-                                <h3 class="font-weight-bold byekan">{{ $stats->count() }}</h3>
+                                <h3 class="font-weight-bold byekan">{{ $todayVisits }}</h3>
                             </div>
                         </div>
                     <!--end card-body-->
@@ -85,9 +85,9 @@
             <div class="col-lg-3">
                 <div class="card card-eco">
                         <div class="card-body">
-                            <h4 class="title-text mt-0">بازدید کننده کل</h4>
+                            <h4 class="title-text mt-0">بازدید کننده امروز</h4>
                             <div class="d-flex justify-content-between">
-                                <h3 class="font-weight-bold byekan">{{ $stats->count() }}</h3>
+                                <h3 class="font-weight-bold byekan">{{ $todayVisitors }}</h3>
                             </div>
                         </div>
                     <!--end card-body-->
@@ -99,9 +99,9 @@
             <div class="col-lg-3">
                 <div class="card card-eco">
                     <div class="card-body">
-                        <h4 class="title-text mt-0">بازدید امروز</h4>
+                        <h4 class="title-text mt-0">بازدید دیروز</h4>
                         <div class="d-flex justify-content-between">
-                            <h3 class="font-weight-bold byekan">{{ $stats->count() }}</h3>
+                            <h3 class="font-weight-bold byekan">{{ $yesterDayVisits }}</h3>
                         </div>
                     </div>
                     <!--end card-body-->
@@ -112,9 +112,9 @@
             <div class="col-lg-3">
                 <div class="card card-eco">
                     <div class="card-body">
-                        <h4 class="title-text mt-0">بازدیدکننده امروز</h4>
+                        <h4 class="title-text mt-0">بازدیدکننده دیروز</h4>
                         <div class="d-flex justify-content-between">
-                            <h3 class="font-weight-bold byekan">{{ $stats->count() }}  </h3>
+                            <h3 class="font-weight-bold byekan">{{ $yesterDayVisitors }}  </h3>
                         </div>
                     </div>
                     <!--end card-body-->
@@ -131,7 +131,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">نمودار <span>بازدید</span> ۳۰ روز اخیر</h4>
+                            <h4 class="mt-0 header-title">نمودار <span>بازدید</span> هفته اخیر اخیر</h4>
                             <p class="text-muted mb-4 font-13">اعداد براساس بازدید ها و بازدیدکننده های وارد شده
                                 در فروشگاه شما میباشد.</p>
                             <div class="row">
@@ -181,7 +181,7 @@
                             <p class="text-muted mb-4 font-13">مقدار ورودی بازدید براساس موتور های جستجوگر</p>
                             <div class="row">
                                 <div class="col-md-12">
-
+                                    <div id="searchEngines" style="width: 100%; height: 500px;"></div>
                                 </div>
                             </div>
                         </div>
@@ -495,6 +495,55 @@
                 chart.legend = new am4charts.Legend();
 
             }); // end am4core.ready()
+
+
+
+
+
+
+
+            am4core.ready(function() {
+
+// Themes begin
+                am4core.useTheme(am4themes_animated);
+// Themes end
+
+                var chart = am4core.create("searchEngines", am4charts.PieChart);
+                chart.rtl = true;
+                chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+                chart.data = [
+                        @foreach($searchEngines as $searchEngine)
+                    {
+                        "country": "{{ $searchEngine->searchEngine == 'Nothing' ? 'مستقیم' : $searchEngine->searchEngine}}",
+                        "value": {{ $searchEngine->total }}
+                    },
+                    @endforeach
+                ];
+
+
+                chart.radius = am4core.percent(70);
+                chart.innerRadius = am4core.percent(40);
+                chart.startAngle = 180;
+                chart.endAngle = 360;
+
+                var series = chart.series.push(new am4charts.PieSeries());
+                series.dataFields.value = "value";
+                series.dataFields.category = "country";
+
+                series.slices.template.cornerRadius = 10;
+                series.slices.template.innerCornerRadius = 7;
+                series.slices.template.draggable = true;
+                series.slices.template.inert = true;
+                series.alignLabels = false;
+
+                series.hiddenState.properties.startAngle = 90;
+                series.hiddenState.properties.endAngle = 90;
+
+                chart.legend = new am4charts.Legend();
+
+            }); // end am4core.ready()
+
 
 
 
