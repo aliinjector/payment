@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\CartProduct;
 use App\UserPurchase;
 use Illuminate\Support\Facades\DB;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 
 
@@ -25,6 +26,9 @@ class PurchaseController extends Controller
         $shop = \Auth::user()->shop()->first();
         $purchases = $shop->purchases;
         $shopSpecifications = $shop->specifications;
+        SEOTools::setTitle($shop->name . ' | سفارشات');
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.purchase.purchase-index', compact('purchases', 'shop', 'shopSpecifications'));
     }
 
@@ -59,6 +63,9 @@ class PurchaseController extends Controller
     {
       $shop = \Auth::user()->shop()->first();
       $purchase = $shop->purchases()->where('id', $id)->get()->first();
+      SEOTools::setTitle($shop->name . ' | سفارش شماره ' . $purchase->id);
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.purchase.purchase-show', compact('purchase', 'shop'));
     }
 

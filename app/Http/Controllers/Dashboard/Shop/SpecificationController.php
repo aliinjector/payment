@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Specification;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Requests\SpecificationRequest;
 
 
@@ -19,6 +20,9 @@ class SpecificationController extends Controller
     {
       $shop = \Auth::user()->shop()->first();
       $specifications = \Auth::user()->shop()->first()->specifications;
+      SEOTools::setTitle($shop->name . ' | خصوصیات محصولات');
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.specification' , compact('specifications' , 'shop'));
     }
 

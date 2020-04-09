@@ -7,6 +7,7 @@ use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Jenssegers\Agent\Agent;
 use PulkitJalan\GeoIP\GeoIP;
 
@@ -33,6 +34,9 @@ class StatController extends Controller
         $browsers = \DB::table('stats')->where('shop_id', $shop->id)->select('browserName', \DB::raw('count(*) as total'))->groupBy('browserName')->limit(10)->get();
         $searchEngines = \DB::table('stats')->where('shop_id', $shop->id)->select('searchEngine', \DB::raw('count(*) as total'))->groupBy('searchEngine')->limit(10)->get();
         $pages = \DB::table('stats')->where('shop_id', $shop->id)->select('page', \DB::raw('count(*) as total'))->groupBy('page')->limit(20)->get();
+        SEOTools::setTitle($shop->name . ' | آمار بازدید');
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.stats', compact('shop', 'stats', 'monthlyVisits', 'monthlyVisitors', 'devices', 'browsers', 'searchEngines', 'pages', 'todayVisits', 'todayVisitors', 'yesterDayVisits', 'yesterDayVisitors'));
     }
 

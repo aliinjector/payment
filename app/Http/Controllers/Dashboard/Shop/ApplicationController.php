@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Ticket;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\DB;
 use App\Shop;
 
@@ -21,6 +22,9 @@ class ApplicationController extends Controller
       $appInformation = \Auth::user()->shop->application;
 
       $shop = \Auth::user()->shop()->first();
+      SEOTools::setTitle($shop->name . ' | اپلیکیشن');
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.application' , compact('shop', 'appInformation'));
     }
 

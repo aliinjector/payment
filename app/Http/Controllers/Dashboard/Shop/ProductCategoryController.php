@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\ErrorLog;
 use App\Http\Controllers\Controller;
 use App\ProductCategory;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Requests\ProductCategoryRequest;
 
 
@@ -25,6 +26,9 @@ class ProductCategoryController extends Controller
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
       $parentCategories = \Auth::user()->shop()->first()->ProductCategories()->get()->where('parent_id', null);
+      SEOTools::setTitle($shop->name . ' | دسته بندی ها');
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.product-category.index', compact('categoires' , 'shop','parentCategories'));
             }
     }
@@ -116,6 +120,9 @@ class ProductCategoryController extends Controller
       $shop = \Auth::user()->shop()->first();
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
       $parentCategories = \Auth::user()->shop()->first()->ProductCategories()->get()->where('parent_id', null);
+      SEOTools::setTitle($shop->name . ' | ویرایش دسته بندی ' . $category->name );
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.product-category.edit', compact('categoires', 'shop', 'parentCategories', 'category'));
     }
 

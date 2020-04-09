@@ -6,6 +6,7 @@ use App\Comment;
 use App\Shop;
 use App\ErrorLog;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 
 class CommentsController extends \App\Http\Controllers\Controller
@@ -18,6 +19,9 @@ class CommentsController extends \App\Http\Controllers\Controller
       }
         $shop = \Auth::user()->shop()->first();
         $comments = $shop->comments;
+        SEOTools::setTitle($shop->name . ' | نظرات');
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.product-comments', compact('comments' , 'shop'));
     }
 

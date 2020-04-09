@@ -14,6 +14,7 @@ use App\Dashboard;
 use App\ProductCategory;
 use App\Feature;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,9 @@ class ProductController extends Controller
               $brands = \Auth::user()->shop()->first()->brands()->get();
               $colors = Color::all();
               $products = \Auth::user()->shop()->first()->products()->get();
+              SEOTools::setTitle($shop->name . ' | محصولات');
+              SEOTools::setDescription($shop->name);
+              SEOTools::opengraph()->addProperty('type', 'website');
               return view('dashboard.shop.product.index', compact('productCategories','products', 'brands', 'colors','shop'));
               }
             }
@@ -393,6 +397,9 @@ else{
             return redirect()->back();
         }else{
               $shop = \Auth::user()->shop()->first();
+              SEOTools::setTitle($shop->name . ' | نمایش محصول');
+              SEOTools::setDescription($shop->name);
+              SEOTools::opengraph()->addProperty('type', 'website');
               return view('dashboard.shop.product.show-physical', compact('product','shop'));
             }
     }
@@ -405,6 +412,9 @@ else{
             return redirect()->back();
         }else{
               $shop = \Auth::user()->shop()->first();
+              SEOTools::setTitle($shop->name . ' | نمایش محصول');
+              SEOTools::setDescription($shop->name);
+              SEOTools::opengraph()->addProperty('type', 'website');
               return view('dashboard.shop.product.show-file', compact('product','shop'));
             }
     }
@@ -417,6 +427,9 @@ else{
             return redirect()->back();
         }else{
               $shop = \Auth::user()->shop()->first();
+              SEOTools::setTitle($shop->name . ' | نمایش محصول');
+              SEOTools::setDescription($shop->name);
+              SEOTools::opengraph()->addProperty('type', 'website');
               return view('dashboard.shop.product.show-service', compact('product','shop'));
             }
     }
@@ -436,6 +449,9 @@ else{
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
+      SEOTools::setTitle($shop->name . ' | ویرایش محصول ' . $product->title);
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.product.edit-physical', compact('product','productCategories','brands','colors','tags','shop'));
     }
 
@@ -453,6 +469,9 @@ else{
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
+      SEOTools::setTitle($shop->name . ' | ویرایش محصول ' . $product->title);
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.product.edit-file', compact('product','productCategories','brands','colors','tags','shop'));
     }
 
@@ -471,6 +490,9 @@ else{
       $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
       $brands = \Auth::user()->shop()->first()->brands()->get();
       $colors = Color::all();
+      SEOTools::setTitle($shop->name . ' | ویرایش محصول ' . $product->title);
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.product.edit-service', compact('product','productCategories','brands','colors','tags','shop'));
     }
 
@@ -808,6 +830,9 @@ else{
                 $brands = \Auth::user()->shop()->first()->brands()->get();
                 $colors = Color::all();
                 $products = \Auth::user()->shop()->first()->products()->get();
+                SEOTools::setTitle($shop->name . ' | نتیجه جتسجو ');
+                SEOTools::setDescription($shop->name);
+                SEOTools::opengraph()->addProperty('type', 'website');
                 return view('dashboard.shop.product.index', compact('productCategories','products', 'brands', 'colors','shop', 'title'));
             }
         }

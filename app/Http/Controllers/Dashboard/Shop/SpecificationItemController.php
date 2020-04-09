@@ -6,6 +6,7 @@ use App\SpecificationItem;
 use App\Specification;
 use App\Http\Requests\SpecificationItemRequest;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 
 class SpecificationItemController extends Controller
@@ -24,6 +25,9 @@ class SpecificationItemController extends Controller
         $shop = \Auth::user()->shop()->first();
         $specification = Specification::find($id);
         $specificationItems = $specification->items;
+        SEOTools::setTitle($shop->name . ' | خصوصیت ' . $specification->name);
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.specification-item' , compact('specification' , 'shop','specificationItems'));
       }
     /**

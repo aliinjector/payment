@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\UserPurchase;
 
 class DashboardShopController extends Controller
@@ -26,11 +27,14 @@ class DashboardShopController extends Controller
         foreach($shopPurchases as $shopPurchase){
             $sumPurchasesPrice += $shopPurchase->total_price;
             }
+            SEOTools::setTitle($shop->name . ' | داشبورد');
+            SEOTools::setDescription($shop->name);
+            SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.dashboard-shop', compact('shop','bestSellings' , 'sumPurchasesPrice'));
             }
       }
 
-  
+
 
     /**
      * Show the form for creating a new resource.

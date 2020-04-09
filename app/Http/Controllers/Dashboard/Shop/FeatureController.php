@@ -7,6 +7,7 @@ use App\ProductCategory;
 use App\Shop;
 use Illuminate\Http\Request;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Requests\FeatureRequest;
 use App\Http\Controllers\Controller;
 
@@ -28,6 +29,9 @@ class FeatureController extends Controller
               $shop = \Auth::user()->shop()->first();
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
               $categoryFeatures = $category->features;
+              SEOTools::setTitle($shop->name . ' | ویژگی های دسته بندی');
+              SEOTools::setDescription($shop->name);
+              SEOTools::opengraph()->addProperty('type', 'website');
               return view('dashboard.shop.feature.index', compact('shop', 'productCategories','category','categoryFeatures'));
 
             }

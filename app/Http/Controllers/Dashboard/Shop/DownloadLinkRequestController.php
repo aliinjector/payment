@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ProductDownloadStatus;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\DB;
 
 class DownloadLinkRequestController extends Controller
@@ -26,6 +27,9 @@ class DownloadLinkRequestController extends Controller
         }
       $shop = \Auth::user()->shop()->first();
       $requests = $shop->donwloadLinkRequests;
+      SEOTools::setTitle($shop->name . ' | لینک های دانلود');
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.download-link-request', compact('requests', 'shop'));
           }
     }

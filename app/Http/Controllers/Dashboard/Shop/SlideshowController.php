@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use App\Slideshow;
 use App\ErrorLog;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SlideShowRequest;
 
@@ -25,6 +26,9 @@ class SlideshowController extends Controller
       foreach($slideshows as $slideshow){
         $slideshowIds[] = $slideshow->id;
       }
+      SEOTools::setTitle($shop->name . ' | اسلایدر');
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.slideshow', compact('slideshows' , 'shop','slideshowIds'));
 
     }

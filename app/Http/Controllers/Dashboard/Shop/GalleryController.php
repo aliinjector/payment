@@ -6,6 +6,7 @@ use App\Gallery;
 use App\Product;
 use Illuminate\Http\Request;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 
 class GalleryController extends \App\Http\Controllers\Controller
@@ -18,6 +19,9 @@ class GalleryController extends \App\Http\Controllers\Controller
     public function index(Product $product)
     {
         $galleries = $product->galleries;
+        SEOTools::setTitle($shop->name . ' | گالری');
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.product-galleries', compact('product', 'galleries'));
     }
 

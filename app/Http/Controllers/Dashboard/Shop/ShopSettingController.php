@@ -11,6 +11,7 @@ use App\ErrorLog;
 use App\Http\Controllers\Controller;
 use App\Shop;
 use App\Application;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Template;
 use App\Invoice;
 use App\ShopCategory;
@@ -33,10 +34,14 @@ class ShopSettingController extends Controller
             if(\Auth::user()->type == 'customer'){
                 return redirect()->back();
             }
+          $shop = \Auth::user()->shop()->first();
           $shopCategories = ShopCategory::all();
           $shopInformation = \Auth::user()->shop()->first();
           $shopContactInformation = $shopInformation->shopContact()->first();
           $categories = ShopCategory::all();
+          SEOTools::setTitle($shop->name . ' | تنظیمات فروشگاه');
+          SEOTools::setDescription($shop->name);
+          SEOTools::opengraph()->addProperty('type', 'website');
           return view('dashboard.shop.shop-setting', compact('categories','shopInformation','shopContactInformation','shopCategories', 'templates'));
         }
 

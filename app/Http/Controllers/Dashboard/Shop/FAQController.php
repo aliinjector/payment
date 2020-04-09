@@ -6,6 +6,7 @@ use App\FAQ;
 use Illuminate\Http\Request;
 use App\Http\Requests\FAQRequest;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 
 class FAQController extends Controller
@@ -19,8 +20,10 @@ class FAQController extends Controller
     {
       $shop = \Auth::user()->shop()->first();
       $faqs = \Auth::user()->shop()->first()->faqs;
+      SEOTools::setTitle($shop->name . ' | سوالات متداول');
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.faq', compact('faqs' , 'shop'));
-
     }
 
     /**

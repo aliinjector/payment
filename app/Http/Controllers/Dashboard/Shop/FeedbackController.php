@@ -6,6 +6,7 @@ use App\Feedback;
 use Illuminate\Http\Request;
 use App\Http\Requests\FeedbackRequest;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 
 
@@ -20,6 +21,9 @@ class FeedbackController extends Controller
     {
         $shop = \Auth::user()->shop()->first();
         $feedbacks = \Auth::user()->shop()->first()->feedbacks;
+        SEOTools::setTitle($shop->name . ' | بازخورد مشتریان');
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.feedback' , compact('feedbacks' , 'shop'));
     }
 

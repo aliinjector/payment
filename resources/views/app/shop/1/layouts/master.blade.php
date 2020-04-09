@@ -6,7 +6,6 @@
     {!! SEO::generate() !!}
     <meta charset="utf-8">
     @if (\Request::route()->getName() == 'user.purchased.list')
-    <title>لیست سفارشات شما</title>
     @else
     <meta name="viewport" content="width=device-width,initial-scale=1">
     @endif

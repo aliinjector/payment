@@ -7,6 +7,7 @@ use App\Http\Requests\VoucherRequest;
 use App\Http\Controllers\Controller;
 use App\ErrorLog;
 use App\Product;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Shop;
 use App\Voucher;
 use App\UserVoucher;
@@ -29,6 +30,9 @@ class VoucherController extends Controller
         foreach($shop->users as $user){
           $usersFullName[] = $user->firstName .' '.  $user->lastName . '-' .$user->email;
         }
+        SEOTools::setTitle($shop->name . ' | کدهای تخفیف');
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.voucher', compact('vouchers','shop' , 'usersFullName'));
     }
 
@@ -183,7 +187,12 @@ class VoucherController extends Controller
 
 
     public function voucherReport(){
+      
+      $shop = \Auth::user()->shop()->first();
       $vouchersReports = \Auth::user()->shop()->first()->userVoucher()->withTrashed()->get();
+      SEOTools::setTitle($shop->name . ' | گزارشات کدهای تخفیف');
+      SEOTools::setDescription($shop->name);
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.voucher-report' , compact('vouchersReports'));
     }
 

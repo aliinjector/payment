@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\ErrorLog;
+use Artesaos\SEOTools\Facades\SEOTools;
+
 use App\User;
 class UserController extends Controller
 {
@@ -15,7 +17,9 @@ class UserController extends Controller
       }
       $shop = \Auth::user()->shop()->first();
       $users = $shop->users()->get();
-
+        SEOTools::setTitle($shop->name . ' | کاربران');
+          SEOTools::setDescription($shop->name);
+          SEOTools::opengraph()->addProperty('type', 'website');
       return view('dashboard.shop.users.index', compact('shop', 'users'));
 
     }

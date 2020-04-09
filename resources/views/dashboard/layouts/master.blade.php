@@ -9,6 +9,8 @@ Author: Ali Rahmani
 <html lang="fa">
 
 <head>
+  {!! SEO::generate() !!}
+
     <script src="/dashboard/assets/js/jquery.min.js"></script>
     <script src="/dashboard/assets/js/jquery.form-xeditable.init.js"></script>
     <script src="/dashboard/assets/js/bootstrap-editable.min.js"></script>
@@ -265,12 +267,12 @@ Author: Ali Rahmani
                             @endif
                         @else
                             <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.index') }}"><i class="dripicons-view-thumb"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarDashboard') }}</a></li>
-                            <li class="nav-item"><a class="nav-link {{ request()->is('*galleries*') == 1 ? 'active' : '' }}" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarListKalaha') }}</a></li>
+                            <li class="nav-item"><a class="nav-link {{ request()->is('*galleries*') == 1 ? 'active' : '' }} {{ request()->is('*product-list*') == 1 ? 'active' : '' }}" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarListKalaha') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('product-comments.index') }}"><i class="fa fa-comments"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarNazaraat') }}</a></li>
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"><i class="far fa-edit"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatDasteBandiha') }}</a></li>
                             <div class="collapse mr-4 {{ request()->is('*categrory-managment*') == 1 ? 'show' : '' }}" id="collapseCategory">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('product-category.index') }}"><i class="fa fa-copy"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarEzafeKardaneDasteBandi') }}</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('specification.index') }}"><i class="fa fa-list-alt"></i>خصوصیات محصولات</a></li>
+                                <li class="nav-item"><a class="nav-link {{ request()->is('*categrory-managment/product-category*') == 1 ? 'active' : '' }}" href="{{ route('product-category.index') }}"><i class="fa fa-copy"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarEzafeKardaneDasteBandi') }}</a></li>
+                                <li class="nav-item"><a class="nav-link {{ request()->is('*categrory-managment/specification*') == 1 ? 'active' : '' }}" href="{{ route('specification.index') }}"><i class="fa fa-list-alt"></i>خصوصیات محصولات</a></li>
                             </div>
                             <li class="nav-item"><a class="nav-link" href="{{ route('brand.index') }}"><i class="fa fa-calendar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarBrand') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('vouchers.index') }}"><i class="mdi mdi-gift"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarCodeTakhfif') }}</a></li>
@@ -285,7 +287,7 @@ Author: Ali Rahmani
 
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapsepurchases" aria-expanded="false" aria-controls="collapsepurchases"><i class="fa fa-clone"></i>مدیریت سفارشات</a></li>
                             <div class="collapse mr-4 {{ request()->is('*purchases-managment*') == 1 ? 'show' : '' }}" id="collapsepurchases">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('purchases.index') }}"><i class="fa fa-clipboard"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarVaziaatSefaareshaat') }} </a></li>
+                                <li class="nav-item"><a class="nav-link {{ request()->is('*purchases-managment/purchases*') == 1 ? 'active' : '' }}" href="{{ route('purchases.index') }}"><i class="fa fa-clipboard"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarVaziaatSefaareshaat') }} </a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('download-link-request-status.index') }}" style="font-size:12px;"><i class="far fa-arrow-alt-circle-down"></i>درخواست های لینک دانلود</a></li>
                             </div>
 

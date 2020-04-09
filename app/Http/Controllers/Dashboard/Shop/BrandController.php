@@ -22,6 +22,9 @@ class BrandController extends Controller
     {
         $shop = \Auth::user()->shop()->first();
         $brands = \Auth::user()->shop()->first()->brands;
+        SEOTools::setTitle($shop->name . ' | برندها');
+        SEOTools::setDescription($shop->name);
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view('dashboard.shop.brand' , compact('brands' , 'shop'));
     }
 
