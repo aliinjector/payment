@@ -235,7 +235,7 @@
                                     <h5>{{ $brand->name }}</h5>
                                 </a>
                             </div>
-                            @endforeach
+                        @endforeach
                     </div>
                     <a class="carousel-control-prev bg-orange-omid rounded" href="#carouselContentBrand" role="button" data-slide="prev" style="width: 3%;opacity: 1;">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

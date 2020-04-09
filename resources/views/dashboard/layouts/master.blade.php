@@ -17,7 +17,7 @@ Author: Ali Rahmani
     <meta charset="utf-8">
     <title>{{ __('dashboard-layouts-master.pageTitle') }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta content="پایان پی - داشبورد اصلی" name="description">
+    <meta content="امید شاپ - داشبورد اصلی" name="description">
     <meta name="author" content="Setareh Nooran Co. Ali Rahmani">
     <!-- App favicon -->
     <link href="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
@@ -229,7 +229,7 @@ Author: Ali Rahmani
                     </div>
                     <ul class="nav">
                         <li class="nav-item "><a style="color: red" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('*verification/sms*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و احراز هویت</a></li>
-                        <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
+                        <li style="display: none" class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
                         <li class="nav-item"><a target="_blank" class="nav-link" href="/docs"><i class="mdi mdi-code-tags-check"></i>مستندات و آموزش</a></li>
@@ -266,7 +266,7 @@ Author: Ali Rahmani
                                 <li class="nav-item"><a class="nav-link " href="{{ route('shop-setting.index') }}"><i class="dripicons-jewel"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarIjadForooshgah') }}</a></li>
                             @endif
                         @else
-                            <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.index') }}"><i class="dripicons-view-thumb"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarDashboard') }}</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.index') }}"><i class="dripicons-view-thumb"></i>داشبورد گزارشات فروشگاه</a></li>
                             <li class="nav-item"><a class="nav-link {{ request()->is('*galleries*') == 1 ? 'active' : '' }} {{ request()->is('*product-list*') == 1 ? 'active' : '' }}" href="{{ route('product-list.index') }}"><i class="dripicons-user-id"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarListKalaha') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('product-comments.index') }}"><i class="fa fa-comments"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarNazaraat') }}</a></li>
                             <li class="nav-item"><a class="nav-link icon-hover" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="false" aria-controls="collapseCategory"><i class="far fa-edit"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatDasteBandiha') }}</a></li>

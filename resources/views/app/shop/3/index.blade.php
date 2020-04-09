@@ -12,9 +12,9 @@
 					<div class="single-slide-item-tablecell">
 						<div class="slider_content text-right slider-animated-3">
 							<a href="{{ $slideshow->url }}">
-							<h4 class="animated">{!! $slideshow->title !!}</h4>
-							<h1 class="animated">{!! $slideshow->description !!}</h1>
-              </a>
+								<h4 class="animated">{!! $slideshow->title !!}</h4>
+								<h1 class="animated">{!! $slideshow->description !!}</h1>
+            			    </a>
 						</div>
 					</div>
 				</div>

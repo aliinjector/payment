@@ -107,9 +107,7 @@
    <div class="col-lg-8">
       <div class="card">
          <div class="card-body" style="position: relative;">
-            <div id="crm_dash_2" class="apex-charts" style="min-height: 380px;">
-               <div id="foroosh"></div>
-            </div>
+               <div style="font-family: BYekan!important;" id="foroosh"></div>
             <div class="resize-triggers">
                <div class="expand-trigger">
                   <div style="width: 1027px; height: 406px;"></div>
@@ -562,11 +560,11 @@
 
 @endsection
 @section('pageScripts')
-   <script src="https://code.highcharts.com/highcharts.js"></script>
-   <script src="https://code.highcharts.com/modules/series-label.js"></script>
-   <script src="https://code.highcharts.com/modules/exporting.js"></script>
-   <script src="https://code.highcharts.com/modules/export-data.js"></script>
-   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+   <script src="/dashboard/assets/highcharts/highcharts.js"></script>
+   <script src="/dashboard/assets/highcharts/series-label.js"></script>
+   <script src="/dashboard/assets/highcharts/exporting.js"></script>
+   <script src="/dashboard/assets/highcharts/export-data.js"></script>
+   <script src="/dashboard/assets/highcharts/accessibility.js"></script>
 
    <script>
       Highcharts.chart('foroosh', {
@@ -575,45 +573,44 @@
             text: 'نمودار وضعیت کلی فروشگاه'
          },
 
-         subtitle: {
-            text: ''
-         },
-
          yAxis: {
             title: {
                text: 'تعداد فروش'
-            }
+            },
          },
 
-         xAxis: {
-            accessibility: {
-               rangeDescription: ''
-            }
-         },
 
          legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle'
+            verticalAlign: 'middle',
+            style: {
+               fontSize: '13px',
+               fontFamily: 'BYekan',
+               direction: 'rtl',
+               textShadow: false, //bug fixed IE9 and EDGE
+            },
+            useHTML: true,
+
          },
 
          plotOptions: {
             series: {
                label: {
-                  connectorAllowed: false
+                  connectorAllowed: false,
                },
                pointStart: 2010
             }
          },
 
          series: [{
-            name: 'تعداد کابران جدید',
+            name: 'Visits',
             data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
          }, {
-            name: 'تعداد فروش',
+            name: 'Purchuses',
             data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
          }, {
-            name: 'مقدار فروش',
+            name: 'Amoutn Of Sell',
             data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
          }],
 
@@ -626,8 +623,9 @@
                   legend: {
                      layout: 'horizontal',
                      align: 'center',
-                     verticalAlign: 'bottom'
-                  }
+                     verticalAlign: 'bottom',
+
+                  },
                }
             }]
          }
