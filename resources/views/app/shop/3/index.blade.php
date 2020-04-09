@@ -29,7 +29,7 @@
 					<div class="col-lg-4 col-md-6 col-sm-12">
 						<a href="#">
 							<div class="single_promo">
-								<img src="img/promo/1.jpg" alt="">
+								<img src="/app/shop/3/img/promo/1.jpg" alt="">
 								<div class="box-content">
 									<h3 class="title">Men</h3>
 									<span class="post">2018 Collection</span>
@@ -41,7 +41,7 @@
 					<div class="col-lg-4 col-md-6 col-sm-12">
 						<a href="#">
 							<div class="single_promo">
-								<img src="img/promo/2.jpg" alt="">
+								<img src="/app/shop/3/img/promo/2.jpg" alt="">
 								<div class="box-content">
 									<h3 class="title">Shoe</h3>
 									<span class="post">2018 Collection</span>
@@ -51,7 +51,7 @@
 
 						<a href="#">
 							<div class="single_promo">
-								<img src="img/promo/4.jpg" alt="">
+								<img src="/app/shop/3/img/promo/4.jpg" alt="">
 								<div class="box-content">
 									<h3 class="title">Watch</h3>
 									<span class="post">2018 Collection</span>
@@ -64,7 +64,7 @@
 					<div class="col-lg-4 col-md-6 col-sm-12">
 						<a href="#">
 							<div class="single_promo">
-								<img src="img/promo/3.jpg" alt="">
+								<img src="/app/shop/3/img/promo/3.jpg" alt="">
 								<div class="box-content">
 									<h3 class="title">Women</h3>
 									<span class="post">2018 Collection</span>
@@ -85,29 +85,20 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="section_title">
-							<h2>دسته بندی <span>محصولات</span></h2>
+							<h2>آخرین <span>محصولات</span></h2>
 							<div class="divider"></div>
 						</div>
 					</div>
 				</div>
 
 				<div class="text-center">
-					<div class="product_filter">
-						<ul>
-							<li class=" active filter" data-filter="all">آخرین محصولات</li>
-							<li class="filter" data-filter=".sale">پرفروش ترین ها</li>
-							<li class="filter" data-filter=".bslr">پربازدید ترین ها</li>
-							<li class="filter" data-filter=".ftrd">محصولات دارای تخفیف</li>
-						</ul>
-					</div>
 
 					<div class="product_item">
 						<div class="row">
 							<div class="col-lg-3 col-md-4 col-sm-6 mix sale">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/1.jpg" alt=""/>
-										<div class="new_badge">New</div>
+										<img src="/app/shop/3/img/product/1.jpg" alt=""/>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
 											<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -134,7 +125,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6  mix ftrd">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/2.jpg" alt=""/>
+										<img src="/app/shop/3/img/product/2.jpg" alt=""/>
 										<div class="new_badge">New</div>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
@@ -160,7 +151,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6  mix">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/3.jpg" alt=""/>
+										<img src="/app/shop/3/img/product/3.jpg" alt=""/>
 										<div class="new_badge">New</div>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
@@ -186,7 +177,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6  mix sale bslr">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/4.jpg" alt=""/>
+										<img src="/app/shop/3/img/product/4.jpg" alt=""/>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
 											<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -211,7 +202,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6  mix ftrd">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/5.jpg" alt=""/>
+										<img src="/app/shop/3/img/product/5.jpg" alt=""/>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
 											<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -236,7 +227,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6 mix sale bslr">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/6.jpg" alt=""/>
+										<img src="/app/shop/3/img/product/6.jpg" alt=""/>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
 											<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -261,7 +252,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6 mix sale bslr">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/7.jpg" alt=""/>
+										<img src="/app/shop/3/img/product/7.jpg" alt=""/>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
 											<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -286,7 +277,7 @@
 							<div class="col-lg-3 col-md-4 col-sm-6 mix sale bslr">
 								<div class="single_product">
 									<div class="product_image">
-										<img src="img/product/8.jpg" alt=""/>
+										<img src="/app/shop/3/img/product/8.jpg" alt=""/>
 										<div class="box-content">
 											<a href="#"><i class="fa fa-heart-o"></i></a>
 											<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -321,7 +312,7 @@
 				<div class="row">
 					<div class="col-md-5">
 						<div class="special_img text-left">
-							<img src="img/special.png" width="370" alt="" class="img-responsive">
+							<img src="/app/shop/3/img/special.png" width="370" alt="" class="img-responsive">
 							<span class="off_baudge text-center">30% <br /> Off</span>
 						</div>
 					</div>
@@ -344,7 +335,7 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="section_title">
-							<h2>محصولات <span> ویژه</span></h2>
+							<h2>پربازدید ترین  <span> محصولات</span></h2>
 							<div class="divider"></div>
 						</div>
 					</div>
@@ -354,7 +345,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="img/product/1.jpg" alt=""/>
+								<img src="/app/shop/3/img/product/1.jpg" alt=""/>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -372,32 +363,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="img/product/2.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="img/product/3.jpg" alt=""/>
+								<img src="/app/shop/3/img/product/2.jpg" alt=""/>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -422,7 +388,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="img/product/4.jpg" alt=""/>
+								<img src="/app/shop/3/img/product/3.jpg" alt=""/>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -447,7 +413,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="img/product/5.jpg" alt=""/>
+								<img src="/app/shop/3/img/product/4.jpg" alt=""/>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -472,7 +438,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="img/product/6.jpg" alt=""/>
+								<img src="/app/shop/3/img/product/5.jpg" alt=""/>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -497,7 +463,7 @@
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="img/product/7.jpg" alt=""/>
+								<img src="/app/shop/3/img/product/6.jpg" alt=""/>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -522,7 +488,32 @@
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="img/product/8.jpg" alt=""/>
+								<img src="/app/shop/3/img/product/7.jpg" alt=""/>
+								<div class="box-content">
+									<a href="#"><i class="fa fa-heart-o"></i></a>
+									<a href="#"><i class="fa fa-cart-plus"></i></a>
+									<a href="#"><i class="fa fa-search"></i></a>
+								</div>
+							</div>
+
+							<div class="product_btm_text">
+								<h4><a href="#">Product Title</a></h4>
+								<div class="p_rating">
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<span class="price">$123.00</span>
+							</div>
+						</div>
+					</div> <!-- End Col -->
+
+					<div class="col-lg-3 col-md-4 col-sm-6">
+						<div class="single_product">
+							<div class="product_image">
+								<img src="/app/shop/3/img/product/8.jpg" alt=""/>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -549,14 +540,22 @@
 		<!-- End Featured Products Area -->
 
 		<!-- Testimonials Area -->
-		<section id="testimonials" class="testimonials_area section_padding" style="background: url(img/testimonial-bg.jpg); background-size: cover; background-attachment: fixed;">
+		<section id="testimonials" class="testimonials_area section_padding" style="background: url(/app/shop/3/img/testimonial-bg.jpg); background-size: cover; background-attachment: fixed;">
 			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="section_title">
+							<h2>بازخورد <span>مشتریان</span></h2>
+							<div class="divider"></div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-md-12">
 						<div id="testimonial-slider" class="owl-carousel">
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/testimonial/1.jpg" alt="">
+									<img src="/app/shop/3/img/testimonial/1.jpg" alt="">
 								</div>
 								<div class="testimonial-content">
 									<p class="description">
@@ -571,7 +570,7 @@
 
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/testimonial/2.jpg" alt="">
+									<img src="/app/shop/3/img/testimonial/2.jpg" alt="">
 								</div>
 								<div class="testimonial-content">
 									<p class="description">
@@ -587,7 +586,7 @@
 
 							<div class="testimonial">
 								<div class="pic">
-									<img src="img/testimonial/3.jpg" alt="">
+									<img src="/app/shop/3/img/testimonial/3.jpg" alt="">
 								</div>
 								<div class="testimonial-content">
 									<p class="description">
@@ -604,93 +603,6 @@
 				</div>
 			</div>
 		</section> <!-- End STestimonials Area -->
-
-        <!--  Blog -->
-        <section id="blog_area" class="section_padding">
-            <div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<div class="section_title">
-							<h2>بازخورد <span>مشتریان</span></h2>
-							<div class="divider"></div>
-						</div>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="single_blog">
-							<div class="single_blog_img">
-								<img src="img/blog/1.jpg" alt="">
-								<div class="blog_date text-center">
-									<div class="bd_day"> 25</div>
-									<div class="bd_month">Aug</div>
-								</div>
-							</div>
-
-							<div class="blog_content">
-								<h4 class="post_title"><a href="#">Integer euismod dui non auctor</a> </h4>
-								<ul class="post-bar">
-									<li><i class="fa fa-user"></i> Admin</li>
-									<li><i class="fa fa-comments-o"></i> <a href="#">2 comments</a></li>
-									<li><i class="fa fa-heart-o"></i> <a href="#">4 like</a></li>
-								</ul>
-								<p>Proin in blandit lacus. Nam pellentesque tortor eget dui feugiat venenatis ....</p>
-							</div>
-						</div>
-					</div> <!--  End Col -->
-
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="single_blog">
-							<div class="single_blog_img">
-								<img src="img/blog/2.jpg" alt="">
-								<div class="blog_date text-center">
-									<div class="bd_day"> 25</div>
-									<div class="bd_month">Aug</div>
-								</div>
-							</div>
-
-							<div class="blog_content">
-								<h4 class="post_title"><a href="#">Integer tempor urna a condimentum</a> </h4>
-								<ul class="post-bar">
-									<li><i class="fa fa-user"></i> Admin</li>
-									<li><i class="fa fa-comments-o"></i> <a href="#">2 comments</a></li>
-									<li><i class="fa fa-heart-o"></i> <a href="#">4 like</a></li>
-								</ul>
-
-								<p>Proin in blandit lacus. Nam pellentesque tortor eget dui feugiat venenatis ....</p>
-							</div>
-						</div>
-					</div> <!--  End Col -->
-
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="single_blog">
-							<div class="single_blog_img">
-								<img src="img/blog/3.jpg" alt="">
-								<div class="blog_date text-center">
-									<div class="bd_day"> 25</div>
-									<div class="bd_month">Aug</div>
-								</div>
-							</div>
-
-							<div class="blog_content">
-
-								<h4 class="post_title"><a href="#">Vivamus velit est iaculis id tempus</a> </h4>
-								<ul class="post-bar">
-									<li><i class="fa fa-user"></i> Admin</li>
-									<li><i class="fa fa-comments-o"></i> <a href="#">2 comments</a></li>
-									<li><i class="fa fa-heart-o"></i> <a href="#">4 like</a></li>
-								</ul>
-								<p>Proin in blandit lacus. Nam pellentesque tortor eget dui feugiat venenatis ....</p>
-							</div>
-						</div>
-					</div> <!--  End Col -->
-
-				</div>
-            </div>
-        </section>
-        <!--  Blog end -->
-
 
         <!--  Process -->
 		<section class="process_area section_padding gradient_section">
@@ -755,15 +667,15 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<div class="brand_slide owl-carousel">
-							<div class="item text-center"> <a href="#"><img src="img/brand/1.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/2.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/3.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/4.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/5.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/6.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/7.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/8.png" alt="" class="img-responsive" /></a> </div>
-							<div class="item text-center"> <a href="#"><img src="img/brand/9.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/1.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/2.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/3.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/4.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/5.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/6.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/7.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/8.png" alt="" class="img-responsive" /></a> </div>
+							<div class="item text-center"> <a href="#"><img src="/app/shop/3/img/brand/9.png" alt="" class="img-responsive" /></a> </div>
 						</div>
 					</div>
 				</div>

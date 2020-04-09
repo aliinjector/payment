@@ -12,6 +12,7 @@ class UserPurchase extends Model
 {
   use SoftDeletes, CascadeSoftDeletes;
     protected $dates = ['deleted_at'];
+    protected $guarded = ['id'];
     public function product()
   {
        return $this->belongsTo('App\Product');

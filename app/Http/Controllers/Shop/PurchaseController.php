@@ -290,7 +290,7 @@ class PurchaseController extends Controller
           $purchase->shop_id = $shop->id;
           // check if user send new address or select address from his addresses
           if ($request->new_address == null) {
-            $purchase->address = $request->address;
+            $purchase->address_id = $request->address;
               }
               else{
                 $address = new Address;
