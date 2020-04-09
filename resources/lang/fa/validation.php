@@ -85,6 +85,7 @@ return array(
     "expire_code"      => "اعتبار کد ارسالی به پایان رسیده است",
     "used"             => "این کد قبلا مورد استفاده قرار گرفته است",
     "exists_phone"     => "چنین شماره ای در سیستم ثبت نشده است",
+    'recaptcha' => ' :attribute اشتباه است',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -96,6 +97,7 @@ return array(
     |
     */
     'custom' => [
+        'recaptcha' => ':attribute را وارد نمایید.',
         'g-recaptcha-response' => [
             'required' => 'لطفا کپچا را کلیک کنید',
             'captcha' => 'لطفا کپچا را وارد کنید',
@@ -233,5 +235,8 @@ return array(
         'payment_method' => 'روش پرداخت',
         'new_password' => 'رمز عبور جدید',
         'old_password' => 'رمز عبور قدیم',
+        'g-recaptcha-response' => 'کد امنیتی',
+
+
           ),
 );

@@ -2,13 +2,9 @@
 
 namespace Illuminate\Foundation\Auth;
 
-use App\Shop;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use Jenssegers\Agent\Agent;
-use PulkitJalan\GeoIP\GeoIP;
 
 trait AuthenticatesUsers
 {
@@ -70,6 +66,7 @@ trait AuthenticatesUsers
     {
         $request->validate([
             $this->username() => 'required|string',
+            'g-recaptcha-response' => 'recaptcha',
             'password' => 'required|string',
         ]);
     }
@@ -123,61 +120,7 @@ trait AuthenticatesUsers
      */
     protected function authenticated(Request $request, $user)
     {
-        $agent = new Agent();
-        $geoip = new GeoIP();
-
-
-        $ip = (isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR']);
-//        $geoip->setIp('46.4.219.148');
-        $geoip->setIp($ip);
-        $country = visitor_country($geoip->getRaw()['countryCode']);
-        $countryCode = ($geoip->getRaw()['countryCode']);
-        $city = visitor_city($geoip->getRaw()['city']);
-        $isp = visitor_isp($geoip->getRaw()['isp']);
-
-        $user_id = \Auth::user()->id;
-        $shop = Shop::where('user_id', $user_id)->first();
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-
-        $today = jdate()->forge('today')->format('Y/m/d');
-        $date = jdate('d');
-        $month_number = jdate('F');
-        $year_number = jdate('Y');
-        $day_name = jdate('l');
-        $dateTime = "$day_name";
-        $timestamp = time();
-        $weekDay = jdate()->forge('now')->format('%A');
-        $hour = jdate()->forge('now')->getHour();
-
-        $osName = visitor_os($agent->platform());
-        $osVersion = $agent->version($agent->platform());
-        $device = $agent->device();
-
-        $browserName = visitor_browser($agent->browser());
-        $browserVersion = $agent->version($agent->browser());
-        $userAagent = $_SERVER['HTTP_USER_AGENT'];
-
-        $stat = User::find(\Auth::user()->id)->first()->stats()->create([
-            'shop_id' => $shop->id,
-            'osName' => $osName,
-            'osVersion' => $osVersion,
-            'browserName' => $browserName,
-            'browserVersion' => $browserVersion,
-            'userAgent' => $userAagent,
-            'dateTime' => $dateTime,
-            'day' => $today,
-            'ip' => $ip,
-            'timestamp' => $timestamp,
-            'device' => $device,
-            'country' => $country,
-            'countryCode' => $countryCode,
-            'city' => $city,
-            'isp' => $isp,
-            'weekDay' => $weekDay,
-            'hour' => $hour,
-        ]);
-
-
+        //
     }
 
     /**

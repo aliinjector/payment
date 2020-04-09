@@ -8,13 +8,6 @@ use PulkitJalan\GeoIP\Console\UpdateCommand;
 class GeoIPServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
      * Boot the service provider.
      */
     public function boot()
@@ -29,7 +22,7 @@ class GeoIPServiceProvider extends ServiceProvider
 
         if (function_exists('config_path')) {
             $this->publishes([
-                __DIR__.'/config/config.php' => config_path('geoip.php'),
+                __DIR__.'/../config/geoip.php' => config_path('geoip.php'),
             ], 'config');
         }
     }
@@ -39,7 +32,7 @@ class GeoIPServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'geoip');
+        $this->mergeConfigFrom(__DIR__.'/../config/geoip.php', 'geoip');
 
         $this->registerGeoIP();
 

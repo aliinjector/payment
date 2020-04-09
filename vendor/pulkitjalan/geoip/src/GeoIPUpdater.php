@@ -2,9 +2,12 @@
 
 namespace PulkitJalan\GeoIP;
 
+use PharData;
 use Exception;
 use Illuminate\Support\Arr;
 use GuzzleHttp\Client as GuzzleClient;
+use PulkitJalan\GeoIP\Exceptions\InvalidDatabaseException;
+use PulkitJalan\GeoIP\Exceptions\InvalidCredentialsException;
 
 class GeoIPUpdater
 {
@@ -25,7 +28,7 @@ class GeoIPUpdater
     {
         $this->config = $config;
 
-        $this->guzzle = $guzzle ?: new GuzzleClient();
+        $this->guzzle = $guzzle ?? new GuzzleClient();
     }
 
     /**
@@ -35,11 +38,15 @@ class GeoIPUpdater
      */
     public function update()
     {
-        if (Arr::get($this->config, 'maxmind.database', false)) {
-            return $this->updateMaxmindDatabase();
+        if (! Arr::get($this->config, 'maxmind_database.database', false)) {
+            throw new InvalidDatabaseException();
         }
 
-        return false;
+        if (! Arr::get($this->config, 'maxmind_database.license_key', false)) {
+            throw new InvalidCredentialsException();
+        }
+
+        return $this->updateMaxmindDatabase();
     }
 
     /**
@@ -49,18 +56,43 @@ class GeoIPUpdater
      */
     protected function updateMaxmindDatabase()
     {
-        $maxmindDatabaseUrl = Arr::get($this->config, 'maxmind.download', 'http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz');
+        $maxmindDatabaseUrl = Arr::get($this->config, 'maxmind_database.download', 'https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-City&suffix=tar.gz&license_key=');
 
-        $database = Arr::get($this->config, 'maxmind.database', false);
+        $maxmindDatabaseUrl = $maxmindDatabaseUrl.Arr::get($this->config, 'maxmind_database.license_key');
+
+        $database = Arr::get($this->config, 'maxmind_database.database', false);
 
         if (! file_exists($dir = pathinfo($database, PATHINFO_DIRNAME))) {
             mkdir($dir, 0777, true);
         }
 
-        try {
-            $file = $this->guzzle->get($maxmindDatabaseUrl)->getBody();
+        $tempDir = pathinfo($database, PATHINFO_DIRNAME);
 
-            file_put_contents($database, gzdecode($file));
+        try {
+            // Download database temp dir
+            $tempFile = $tempDir.'/geoip';
+            $this->guzzle->get($maxmindDatabaseUrl, ['save_to' => $tempFile.'.tar.gz']);
+
+            $p = new PharData($tempFile.'.tar.gz');
+            $p->decompress();
+
+            // Extract from the tar
+            $phar = new PharData($tempFile.'.tar');
+            $phar->extractTo($tempDir);
+
+            $dir = head(glob("$tempDir/GeoLite2-City_*"));
+
+            @unlink($database);
+            @unlink($tempFile.'.tar');
+
+            // Save database to final location
+            rename($dir.'/GeoLite2-City.mmdb', $database);
+
+            // Delete temp file
+            @unlink($tempFile);
+
+            array_map('unlink', glob("$dir/*.*"));
+            @rmdir($dir);
         } catch (Exception $e) {
             return false;
         }

@@ -76,7 +76,7 @@ class UserInformationController extends \App\Http\Controllers\Controller
         $userInformation->placeOfIssue = $request->placeOfIssue;
         $userInformation->birthDate = $request->birthDate;
         $userInformation->zipCode = $request->zipCode;
-        $userInformation->status = 2;
+        $userInformation->status = 4;
         $userInformation->save();
 
         alert()->success('حساب کاربری شما در مرحله انتظار تایید قرار گرفت.', 'اطلاعات بروز شد');
@@ -87,14 +87,14 @@ class UserInformationController extends \App\Http\Controllers\Controller
     public function melliUpload(Request $request)
     {
         $request->validate([
-            'melliCardPic' => 'required|mimes:jpg,png',
+            'melliCardPic' => 'required|mimes:jpg,png,PNG,JPEG,jpeg',
         ]);
 
         $melliCardPic = $this->uploadFile($request->file('melliCardPic'), false, false);
 
         $userInformation = UserInformation::where('user_id', \Auth::user()->id)->first();
         $userInformation->melliCardPic = $melliCardPic;
-        $userInformation->status = 2;
+        $userInformation->status = 4;
         $userInformation->save();
 
         alert()->success('حساب کاربری شما در مرحله انتظار تایید قرار گرفت.', 'اطلاعات بروز شد');
@@ -107,14 +107,14 @@ class UserInformationController extends \App\Http\Controllers\Controller
     public function ShensnamehUpload(Request $request)
     {
         $request->validate([
-            'shenasnamehPic' => 'required|mimes:jpg,png',
+            'shenasnamehPic' => 'required|mimes:jpg,png,PNG,JPEG,jpeg',
         ]);
 
         $shenasnamehPic = $this->uploadFile($request->file('shenasnamehPic'), false, false);
 
         $userInformation = UserInformation::where('user_id', \Auth::user()->id)->first();
         $userInformation->shenasnamehPic = $shenasnamehPic;
-        $userInformation->status = 2;
+        $userInformation->status = 4;
         $userInformation->save();
 
         alert()->success('حساب کاربری شما در مرحله انتظار تایید قرار گرفت.', 'اطلاعات بروز شد');

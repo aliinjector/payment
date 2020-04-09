@@ -15,6 +15,9 @@
     <link href="/dashboard/assets//css/icons.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets//css/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets//css/style.css" rel="stylesheet" type="text/css">
+
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+
 </head>
 
 <body class="account-body accountbg">
@@ -36,6 +39,18 @@
                         <!--end auth-logo-text-->
                             <form class="form-horizontal auth-form my-4" method="POST" action="{{ route('login') }}">
                                 @csrf
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+
                                 <div class="form-group">
                                 <label for="username">{{ __('login.email') }}</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
@@ -70,6 +85,12 @@
                             </div>
                             <!--end form-group-->
                             <div class="form-group mb-0 row">
+
+
+                                <div style="margin: auto" class="col-md-10">
+                                    {!! htmlFormSnippet() !!}
+                                </div>
+
                                 <div class="col-12 mt-2">
                                     <button class="btn btn-primary btn-round btn-block waves-effect waves-light iranyekan" type="submit">{{ __('login.lgoinBtn') }} <i class="fas fa-sign-in-alt ml-1"></i></button>
                                 </div>

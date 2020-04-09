@@ -3,11 +3,12 @@ GeoIP
 
 > Geoip Wrapper with Laravel Support
 
+[![Latest Stable Version](https://poser.pugx.org/pulkitjalan/geoip/v/stable?format=flat-square)](https://packagist.org/packages/pulkitjalan/geoip)
+[![MIT License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://www.opensource.org/licenses/MIT)
 [![Build Status](http://img.shields.io/travis/pulkitjalan/geoip/master.svg?style=flat-square)](https://travis-ci.org/pulkitjalan/geoip)
-[![Scrutinizer Code Quality](http://img.shields.io/scrutinizer/g/pulkitjalan/geoip/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/pulkitjalan/geoip/)
+[![Quality Score](http://img.shields.io/scrutinizer/g/pulkitjalan/geoip/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/pulkitjalan/geoip/)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/pulkitjalan/geoip/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/pulkitjalan/geoip/code-structure/master)
-[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](http://www.opensource.org/licenses/MIT)
-[![Latest Version](http://img.shields.io/packagist/v/pulkitjalan/geoip.svg?style=flat-square)](https://packagist.org/packages/pulkitjalan/geoip)
+[![StyleCI](https://styleci.io/repos/28853821/shield)](https://styleci.io/repos/28853821)
 [![Total Downloads](https://img.shields.io/packagist/dt/pulkitjalan/geoip.svg?style=flat-square)](https://packagist.org/packages/pulkitjalan/geoip)
 
 ## Supported Drivers ([Services](#services))
@@ -97,25 +98,29 @@ $config = [
 ];
 ```
 
-#### Maxmind
+#### Maxmind Database
 
-Maxmind support the database type and also web api type.
+To use Maxmind database as the driver you can set the options in your config.
 
 Database Example:
 ```php
 $config = [
-    'driver' => 'maxmind',
-    'maxmind' => [
+    'driver' => 'maxmind_database',
+    'maxmind_database' => [
         'database' => '/path/to/database.mmdb',
     ],
 ];
 ```
 
+#### Maxmind Api
+
+To use Maxmind api as the driver you can set the options in your config.
+
 Web API Example:
 ```php
 $config = [
-    'driver' => 'maxmind',
-    'maxmind' => [
+    'driver' => 'maxmind_api',
+    'maxmind_api' => [
         'user_id' => 'YOUR MAXMIND USER ID',
         'license_key' => 'YOUR MAXMIND LICENSE KEY'
     ],
@@ -124,7 +129,7 @@ $config = [
 
 #### Telize
 
-To use the telize as the driver set the config, and your api key.
+To use telize as the driver set the config, and your api key.
 
 Example:
 ```php
@@ -263,7 +268,7 @@ GeoIP::getRaw(); // different drivers will return different data types
 
 ### Update Database
 
-There is an update command available to help with updating and installing a local geoip database. The following will download and install/update the database file to `/path/to/database.mmdb`.
+There is an update command available to help with updating and installing a local geoip database. The following will download and install/update the database file to `/path/to/database.mmdb`. [As of 30th December 2019, Maxmind requires users to create an account and use a license key to download the databases](https://blog.maxmind.com/2019/12/18/significant-changes-to-accessing-and-using-geolite2-databases/).
 
 ```php
 <?php
@@ -271,14 +276,14 @@ There is an update command available to help with updating and installing a loca
 use PulkitJalan\GeoIP\GeoIPUpdater
 
 $config = [
-    'driver' => 'maxmind',
-    'maxmind' => [
+    'driver' => 'maxmind_database',
+    'maxmind_database' => [
         'database' => '/path/to/database.mmdb',
+        'license_key' => 'YOUR MAXMIND LICENSE KEY'
     ],
 ];
 
-$geoipUpdater = new GeoIPUpdater($config);
-$geoipUpdater->update();
+(new GeoIPUpdater($config))->update();
 ```
 
 ### Laravel
@@ -297,7 +302,7 @@ IP-API is a free (or paid) service that can also be used instead of the database
 
 #### Maxmind
 
-You can use the free database from maxmind or their web api service. You can download the free database service [here](http://dev.maxmind.com/geoip/geoip2/geolite2/) or enter your `user id` and `license key` in the config.
+You can use the free database from maxmind (license_key required) or their web api service. You can signup and get a free license code [here](https://www.maxmind.com/en/geolite2/signup).
 
 #### Telize
 

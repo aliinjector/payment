@@ -119,7 +119,8 @@
 
                     <div class="form-actions text-center  pt-3  ">
                         <button style="font-family: iranyekan!important;" type="submit" class="btn btn-success">
-                            <i class="fa fa-check-square-o"></i> ارسال کد تایید ایمیل
+                            <i class="fa fa-check-square-o"></i>
+                            {{ isset(\Auth::user()->userInformation->email_code) ? "تایید کد" :  'ارسال کد تایید' }}
                         </button>
                     </div>
                 </div>
@@ -276,7 +277,7 @@
             <!--end col-->
         </div>
 
-        <div class="row {{  $userInformation->status == 3 ? "" : 'comming-soon' }}">
+        <div class="row {{  $userInformation->status == 4 ? "" : 'comming-soon' }}">
             <div class="col-xl-6">
                 <form method="post" enctype="multipart/form-data" action="{{ route('ShensnamehUpload') }}">
                     @csrf
@@ -298,7 +299,7 @@
                 </form>
             </div>
             <!--end col-->
-            <div class="col-xl-6 {{  $userInformation->status == 3 ? "" : 'comming-soon' }}">
+            <div class="col-xl-6 {{  $userInformation->status == 4 ? "" : 'comming-soon' }}">
                 <form method="post" enctype="multipart/form-data" action="{{ route('melliUpload') }}">
                     @csrf
                     <div class="card">
@@ -321,13 +322,13 @@
       </div>
 
 
-    <div class="row {{  $userInformation->status == 3 ? "" : 'comming-soon' }}">
+    <div style="display: none" class="row {{  $userInformation->status == 4 ? "" : 'comming-soon' }}">
         <div class="col-xl-12">
             <form method="post" enctype="multipart/form-data" action="{{ route('ShensnamehUpload') }}">
                 @csrf
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">مرحله آخر: تصویر شناسنامه</h4>
+                        <h4 class="mt-0 header-title">مرحله آخر: تصویر سلفی</h4>
                         <p class="text-muted mb-3">لطفا تصویر سلفی خود را با شناسنامه و کارت ملی ضمیمه نمایید.
                             <a href="">مشاهده فیلم آموزشی</a>
                         </p>
