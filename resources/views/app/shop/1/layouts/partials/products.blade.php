@@ -52,14 +52,14 @@
           <!--end page-title-box-->
       </div>
         <div class="page-title-box">
-            <h4 class="page-title iranyekan">{{ __('app-shop-1-category.forooshgah') }} {{ substr($shop->name, 0, 100) }}</h4>
+            <h4 class="page-title iranyekan">فروشگاه {{ substr($shop->name, 0, 100) }}</h4>
         </div>
         <!--end page-title-box-->
     </div>
     <!--end col-->
 </div>
 </div>
-<h2 class="line-throw line-height-none"><span> @if(\Request::route()->getName() == 'category'){{ __('app-shop-1-category.mahsoolatDasteBandi') }} {{ $category->name }} @elseif(\Request::route()->getName() == 'tag') محصولات تگ {{ $tag->name }} @elseif (\Request::route()->getName() == 'search') نتیحه جستجو  @else محصولات برند {{ $brand->name }} @endif</span></h2>
+<h2 class="line-throw line-height-none"><span> @if(\Request::route()->getName() == 'category')محصولات دسته بندی {{ $category->name }} @elseif(\Request::route()->getName() == 'tag') محصولات تگ {{ $tag->name }} @elseif (\Request::route()->getName() == 'search') نتیحه جستجو  @else محصولات برند {{ $brand->name }} @endif</span></h2>
 <div class="row p-5">
 
     @if(\Request::route()->getName() != 'search')
@@ -89,12 +89,12 @@
 
                             <div class="d-flex justify-content-between my-2 byekan">
                                 @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
-                                    <p class="product-price mb-5 byekan">{{ number_format($product->off_price) }} <span class="text-dark">{{ __('app-shop-1-category.tooman') }}</span> <span class="ml-2 byekan"></span>
+                                    <p class="product-price mb-5 byekan">{{ number_format($product->off_price) }} <span class="text-dark">تومان</span> <span class="ml-2 byekan"></span>
                                       <br />
-                                      <span class="ml-2"><del class="byekan font-16">{{ number_format($product->price) }} <span class="text-dark">{{ __('app-shop-1-category.tooman') }}</span></del></span>
+                                      <span class="ml-2"><del class="byekan font-16">{{ number_format($product->price) }} <span class="text-dark">تومان</span></del></span>
                                     </p>
                                     @else
-                                    <p class="product-price mb-5 byekan min-width-se" style="width: 200px;z-index:100000">{{ number_format($product->price) }} <span class="text-dark">{{ __('app-shop-1-category.tooman') }} </span><span class="ml-2 byekan"></span>
+                                    <p class="product-price mb-5 byekan min-width-se" style="width: 200px;z-index:100000">{{ number_format($product->price) }} <span class="text-dark">تومان </span><span class="ml-2 byekan"></span>
                                         @endif
                             </div>
                             {{-- <ul class="tt-options-swatch options-middle">
@@ -138,7 +138,7 @@
                 </div>
                 @endforeach
                 @else
-                <h5 class="byekan text-danger" style="font-size: 30px!important">{{ __('app-shop-1-category.noProduct') }} !!</h5>
+                <h5 class="byekan text-danger" style="font-size: 30px!important">متاسفانه محصولی در این بخش وجود ندارد !!</h5>
                 @endif
                 <div class="col-lg-12 d-flex justify-content-center">
                     {!! $productsPaginate->render() !!}
