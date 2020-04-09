@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\ProductDownloadStatus;
 use App\UserPurchase;
 use App\Shop;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Product;
 use App\Notifications\NewDownloadLinkRequest;
 use App\Http\Requests\UserPurchasesRequest;
@@ -22,9 +23,15 @@ class UserPurchasesController extends Controller
           if(\auth::user()->shop_id != null){
             $shop_name = Shop::where('id', \auth::user()->shop_id)->get()->first()->english_name;
             $shop = Shop::find(\auth()->user()->shop_id);
+            SEOTools::setTitle('لیست سفارشات');
+            SEOTools::setDescription('لیست سفارشات');
+            SEOTools::opengraph()->addProperty('type', 'website');
             return view("app.shop.account.user-purchases", compact('purchases', 'shop_name','shop'));
           }
           else{
+            SEOTools::setTitle('لیست سفارشات');
+            SEOTools::setDescription('لیست سفارشات');
+            SEOTools::opengraph()->addProperty('type', 'website');
             return view("app.shop.account.user-purchases", compact('purchases'));
           }
       }
@@ -49,6 +56,9 @@ class UserPurchasesController extends Controller
               }
         }
       }
+      SEOTools::setTitle('سفارش شما');
+      SEOTools::setDescription('سفارش شما');
+      SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.purchase-show", compact('purchase','specificationItems','shop'));
       }
 
@@ -76,6 +86,9 @@ class UserPurchasesController extends Controller
               }
         }
       }
+      SEOTools::setTitle('فاکتور');
+      SEOTools::setDescription('فاکتور');
+      SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.invoice", compact('purchase','products','shop','purchase','shopCategories','specificationItems'));
 
           }

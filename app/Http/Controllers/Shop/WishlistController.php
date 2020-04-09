@@ -7,6 +7,7 @@ use App\Shop;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Requests\WishlistRequest;
 
 
@@ -27,7 +28,9 @@ class WishlistController extends Controller
       else
       $wishlistProducts = [];
       $template_folderName = $shop->template->folderName;
-
+          SEOTools::setTitle($shop->name . ' | لیست علاقه مندی ها');
+          SEOTools::setDescription($shop->name);
+          SEOTools::opengraph()->addProperty('type', 'website');
       return view("app.shop.$template_folderName.wishlist", compact('shop', 'shopCategories', 'wishlistProducts'));
 
     }

@@ -7,6 +7,7 @@ use App\Shop;
 use App\Http\Requests\UserPanelUpdateRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -23,12 +24,18 @@ class UserPanelController extends Controller
         $shop_name = Shop::where('id', \auth::user()->shop_id)->get()->first()->english_name;
         $shop = Shop::find(\auth()->user()->shop_id);
         $user = \auth()->user();
+        SEOTools::setTitle('پنل کاربری');
+        SEOTools::setDescription('پنل کاربری');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.user-panel", compact('shop_name', 'shop', 'user'));
       }
       else{
         $shop = \auth()->user()->shop;
         $shop_name = $shop->english_name;
         $user = \auth()->user();
+        SEOTools::setTitle('پنل کاربری');
+        SEOTools::setDescription('پنل کاربری');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.user-panel", compact('shop_name', 'shop', 'user'));
       }
     }
@@ -77,12 +84,18 @@ class UserPanelController extends Controller
         $shop_name = Shop::where('id', \auth::user()->shop_id)->get()->first()->english_name;
         $shop = Shop::find(\auth()->user()->shop_id);
         $user = \auth()->user();
+        SEOTools::setTitle('ویرایش اطلاعات');
+        SEOTools::setDescription('ویرایش اطلاعات');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.user-panel-edit", compact('shop_name', 'shop', 'user'));
       }
       else{
         $shop = \auth()->user()->shop;
         $shop_name = $shop->english_name;
         $user = \auth()->user();
+        SEOTools::setTitle('ویرایش اطلاعات');
+        SEOTools::setDescription('ویرایش اطلاعات');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.user-panel-edit", compact('shop_name', 'shop', 'user'));
       }
     }
@@ -122,12 +135,18 @@ class UserPanelController extends Controller
         $shop_name = Shop::where('id', \auth::user()->shop_id)->get()->first()->english_name;
         $shop = Shop::find(\auth()->user()->shop_id);
         $user = \auth()->user();
+        SEOTools::setTitle('ویرایش رمزعبور');
+        SEOTools::setDescription('ویرایش رمزعبور');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.change-password-index", compact('shop_name', 'shop', 'user'));
       }
       else{
         $shop = \auth()->user()->shop;
         $shop_name = $shop->english_name;
         $user = \auth()->user();
+        SEOTools::setTitle('ویرایش رمزعبور');
+        SEOTools::setDescription('ویرایش رمزعبور');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.change-password-index", compact('shop_name', 'shop', 'user'));
       }
 

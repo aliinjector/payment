@@ -6,6 +6,7 @@ use App\Address;
 use App\Shop;
 use Illuminate\Http\Request;
 use App\Http\Requests\AddressRequest;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Controllers\Controller;
 
 
@@ -21,9 +22,15 @@ class AddressController extends Controller
       $user_addresses = \auth()->user()->addresses;
       if(\Auth::user()->type == 'customer'){
         $shop = Shop::find(\auth()->user()->shop_id);
+        SEOTools::setTitle('لیست ادرس ها');
+        SEOTools::setDescription('لیست ادرس ها');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.account-address", compact('user_addresses', 'shop'));
       }
       else{
+        SEOTools::setTitle('لیست ادرس ها');
+        SEOTools::setDescription('لیست ادرس ها');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.account-address", compact('user_addresses'));
       }
     }
@@ -36,6 +43,9 @@ class AddressController extends Controller
     public function create()
     {
       $shop = Shop::find(\auth()->user()->shop_id);
+      SEOTools::setTitle('افزودن آدرس جدید');
+      SEOTools::setDescription('افزودن آدرس جدید');
+      SEOTools::opengraph()->addProperty('type', 'website');
       return view("app.shop.account.account-address-create", compact('shop'));
     }
 
@@ -82,6 +92,9 @@ class AddressController extends Controller
       }
       else{
         $address = Address::find($id);
+        SEOTools::setTitle('ویرایش آدرس ' . $address->address);
+        SEOTools::setDescription('لیست ادرس ها');
+        SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.account.account-address-edit", compact('address'));
       }
 

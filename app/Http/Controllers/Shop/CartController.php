@@ -9,6 +9,7 @@ use App\CartProduct;
 use App\Http\Requests\CartRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\Session;
 use Request as RequestFacade;
 use App\SpecificationItem;
@@ -81,8 +82,14 @@ class CartController extends \App\Http\Controllers\Controller {
           $specificationItem = $specificationItems->unique('id');
 
             $products = \Auth::user()->cart()->get()->first()->products();
+            SEOTools::setTitle($shop->name . ' | سبد خرید');
+            SEOTools::setDescription($shop->name);
+            SEOTools::opengraph()->addProperty('type', 'website');
             return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories', 'products','cart','specificationItems'));
         } else {
+          SEOTools::setTitle($shop->name . ' | سبد خرید');
+          SEOTools::setDescription($shop->name);
+          SEOTools::opengraph()->addProperty('type', 'website');
             return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories'));
         }
     }

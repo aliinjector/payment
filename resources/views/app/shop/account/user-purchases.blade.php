@@ -62,16 +62,15 @@
 
                                           </td>
                                       </tr>
+                                      @php
+                                      $id ++
+                                      @endphp
                                     @empty
                                       <tr>
                                           <td class="byekan">رکوردی پیدا نشد</td>
                                         </tr>
+
                                     @endforelse
-
-                                    @php
-                                    $id ++
-                                    @endphp
-
                                     </tbody>
 
                                 </table>
