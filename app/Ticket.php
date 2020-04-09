@@ -10,6 +10,7 @@ class Ticket extends Model
   use SoftDeletes, CascadeSoftDeletes;
 
     protected $guarded = ['id'];
+    protected $cascadeDeletes = ['answers', 'buzzes'];
     protected $dates = ['deleted_at'];
 
     public function user()

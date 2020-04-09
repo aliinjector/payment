@@ -9,7 +9,7 @@ use Iatstuti\Database\Support\CascadeSoftDeletes;
 class User extends Authenticatable
 {
   use SoftDeletes, CascadeSoftDeletes, Notifiable;
-  protected $cascadeDeletes = ['addresses', 'userInformation', 'wishlist', 'comments','compare', 'shop', 'purchases', 'cart'];
+  protected $cascadeDeletes = ['addresses', 'userInformation', 'wishlist', 'comments','compare', 'shop', 'purchases', 'cart', 'stats'];
 
   protected $dates = ['deleted_at'];
     use HasApiTokens, Notifiable;

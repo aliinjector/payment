@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Shop extends Model
 {
     use SoftDeletes, CascadeSoftDeletes;
-    protected $cascadeDeletes = ['ProductCategories' , 'products', 'slideshows', 'purchases', 'vouchers', 'brands', 'feedbacks', 'tags', 'subscribers', 'invoice', 'donwloadLinkRequests', 'stats', 'compares', 'wishlists', 'faqs','shopContact'];
+    protected $cascadeDeletes = ['ProductCategories' , 'products', 'slideshows', 'purchases', 'vouchers', 'brands', 'feedbacks', 'tags', 'subscribers', 'invoice', 'donwloadLinkRequests', 'stats', 'compares', 'wishlists', 'faqs','shopContact','carts', 'tickets', 'comments', 'specifications'];
     protected $dates = ['deleted_at'];
     protected $guarded = ['id'];
     protected $casts = [

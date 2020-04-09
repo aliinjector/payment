@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class ProductCategory extends Model
 {
     use SoftDeletes, CascadeSoftDeletes;
-    protected $cascadeDeletes = ['products'];
+    protected $cascadeDeletes = ['products', 'children', 'features'];
 
   protected $dates = ['deleted_at'];
   protected $guarded = ['id'];
