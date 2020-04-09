@@ -1267,7 +1267,7 @@ input:focus, textarea:focus {
 	font-size: 22px;
 	font-weight: 700;
 	margin-bottom: 10px;
-	letter-spacing: 6px;
+	letter-spacing: 0px;
 }
 .section_title span {
 	color: #33d286;
@@ -1330,7 +1330,7 @@ input:focus, textarea:focus {
 	font-size: 13px;
 	border: 1px solid transparent;
 	transition: .5s;
-	letter-spacing: 1px;
+	letter-spacing: 0px;
 	border-radius: 20px;
 	margin:0px;
 	color:#777;

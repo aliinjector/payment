@@ -5,7 +5,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>قالب شماره 3</title>
+
+	{!! SEO::generate() !!}
+
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,500,600,700,800" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Handlee" rel="stylesheet">
 	<link rel="stylesheet" href="/app/shop/3/css/animate.css" />
@@ -20,19 +22,20 @@
 </head>
 	<body class="omid-rtl">
 
-		<!--  Preloader  -->
+	<!--  Preloader  -->
 
-		<div class="preloader">
-			<div class="status-mes">
-				<div class="bigSqr">
-					<div class="square first"></div>
-					<div class="square second"></div>
-					<div class="square third"></div>
-					<div class="square fourth"></div>
-				</div>
-				<div class="text_loading text-center">loading</div>
+	<div class="preloader">
+		<div class="status-mes">
+			<div class="bigSqr">
+				<div class="square first"></div>
+				<div class="square second"></div>
+				<div class="square third"></div>
+				<div class="square fourth"></div>
 			</div>
+			<div class="text_loading text-center">درحال بارگذاری ... </div>
 		</div>
+	</div>
+
 
 		<!--  Start Header  -->
 		<header id="header_area">
@@ -67,7 +70,8 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-12 col-md-3">
-							<a class="logo" href="index-2.html"> <img alt="" src="img/omid.png"></a>
+							<a class="logo" href="{{ route('shop', $shop->english_name) }}"> <img alt="" src="{{ $shop->logo['200,100'] }}"></a>
+							<a href="{{ route('shop', $shop->english_name) }}"><span class="mr-3">{{ $shop->name }}</span></a>
 						</div><!--  End Col -->
 
 						<div class="col-xs-12 col-sm-12 col-md-9 text-right">
@@ -263,7 +267,7 @@
 													<!-- Product List -->
 													<div class="mc-pro-list fix">
 														<div class="mc-sin-pro fix">
-															<a href="#" class="mc-pro-image float-left"><img src="img/mini-cart/1.jpg" alt="" /></a>
+															<a href="#" class="mc-pro-image float-left"><img src="/app/shop/3/img/mini-cart/1.jpg" alt="" /></a>
 															<div class="mc-pro-details fix">
 																<a href="#">This is Product Name</a>
 																<span>1x$25.00</span>
@@ -271,7 +275,7 @@
 															</div>
 														</div>
 														<div class="mc-sin-pro fix">
-															<a href="#" class="mc-pro-image float-left"><img src="img/mini-cart/2.jpg" alt="" /></a>
+															<a href="#" class="mc-pro-image float-left"><img src="/app/shop/3/img/mini-cart/2.jpg" alt="" /></a>
 															<div class="mc-pro-details fix">
 																<a href="#">This is Product Name</a>
 																<span>1x$25.00</span>
@@ -408,7 +412,6 @@
 		<script src="/app/shop/3/js/wow.min.js"></script>
 		<script src="/app/shop/3/js/venobox.min.js"></script>
 		<script src="/app/shop/3/js/owl.carousel.min.js"></script>
-		<script src="/app/shop/3/js/simplePlayer.js"></script>
 		<script src="/app/shop/3/js/main.js"></script>
 	</body>
 
