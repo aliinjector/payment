@@ -95,6 +95,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
         //Purchases
         Route::resource('purchases', 'PurchaseController');
+        Route::post('purchases/{purchaseID}/delete/{id}', 'PurchaseController@destroy')->name('purchases.delete');
 
       });
 

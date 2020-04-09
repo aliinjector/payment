@@ -58,8 +58,6 @@
                                                           </th>
                                                           <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">قیمت جمع کالا
                                                           </th>
-                                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">خریدار
-                                                          </th>
 
                                                       </tr>
                                                     </thead>
@@ -70,7 +68,7 @@
 
                                                       @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $product)
 
-                                                        <tr role="row" class="odd">
+                                                        <tr role="row" class="odd icon-hover hover-color">
                                                           <td>{{ $id }}</td>
                                                             <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
                                                             <td>{{ number_format($product->total_price / $product->quantity ) }} تومان</td>
@@ -95,13 +93,12 @@
                                                         <td>{{ number_format($product->specification_price) }}</td>
                                                         <td>{{ number_format($product->total_price + $product->specification_price)}} تومان
 
-                                                        </td>
-                                                        <td>
-                                                          <a href="{{ route('purchases.show', ['id' => $purchase->id]) }}">
-                                                              <button class="btn btn-dropbox">
-                                                                اطلاعات خریدار
-                                                              </button>
-                                                          </a>
+
+
+                                                          <div class="d-none icon-show">
+                                                              <a href="" id="removeCartProduct" title="حذف" data-name="{{ $product->product->title }}" data-purchaseid="{{ $purchase->id }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+
+                                                          </div>
                                                         </td>
                                                         </tr>
                                                         @php
@@ -125,5 +122,35 @@
     @endsection
     @section('pageScripts')
       <script src="{{ asset('/dashboard/assets/js/admin-users-index.js') }}"></script>
+      <script type="text/javascript">
+      $(document).on('click', '#removeCartProduct', function(e) {
+          e.preventDefault();
+          var id = $(this).data('id');
+          var name = $(this).data('name');
+          var purchaseid = $(this).data('purchaseid');
+          swal(` ${'حذف محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+                  dangerMode: true,
+                  icon: "warning",
+                  buttons: ["انصراف", "حذف"],
+              }).then(function(isConfirm) {
+                  if (isConfirm) {
+                      $.ajax({
+                          type: "post",
+                          url: "/admin-panel/shop/purchases-managment/purchases/{{ $purchase->id }}/delete/"+id,
+                          data: {
+                              id: id,
+                              purchaseid: purchaseid,
+                              "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                          },
+                          success: function(data) {
+                            window.location.reload()
+                          }
+                      });
+                  } else {
+                      toastr.warning('لغو شد.', '', []);
+                  }
+              });
+      });
+      </script>
 
 @stop

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Dashboard\Shop;
 
 use Illuminate\Http\Request;
+use App\CartProduct;
+use App\UserPurchase;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 
@@ -88,8 +91,26 @@ class PurchaseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+     public function destroy(Request $request)
+     {
+       $cartProduct = CartProduct::find($request->id);
+       $purchase = UserPurchase::find($request->purchaseid);
+       if ($purchase->shop->user_id !== \Auth::user()->id) {
+               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+               return redirect()->back();
+             }
+
+             DB::transaction(function () use ($purchase, $cartProduct) {
+                    $cartProduct->delete();
+                    $newTotalPrice = $purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct->sum('total_price');
+                    $purchase->update([
+                      'total_price' => $newTotalPrice
+                    ]);
+                    alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+                    return redirect()->back();
+           });
+
+
     }
+
 }

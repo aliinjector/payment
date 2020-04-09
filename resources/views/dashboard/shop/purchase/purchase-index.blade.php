@@ -115,7 +115,9 @@
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">روش پرداخت</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">روش ارسال</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">وضعیت سفارش</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">هزینه ارسال</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">جمع کل</th>
+                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">مبلغ کل سفارش</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ ثبت سفارش</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">عملیات</th>
                                                 </tr>
@@ -146,8 +148,12 @@
                                                     <td> <span class="@if($purchase->status == 0) text-red @else text-green @endif">@if($purchase->status == 0) پرداخت نشده
                                     @else پرداخت شده
                                     @endif</span></td>
+                                    <td>{{ $purchase->shipping_price }}</td>
                                                     <td>
                                                       {{ number_format($purchase->total_price) }}
+                                                    </td>
+                                                    <td>
+                                                      {{ number_format($purchase->total_price + $purchase->shipping_price) }}
                                                     </td>
                                                     <td>{{ jdate($purchase->created_at) }}</td>
                                                     <td>

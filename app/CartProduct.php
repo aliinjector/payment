@@ -28,4 +28,8 @@ class CartProduct extends Model
   {
       return $this->belongsTo('App\Color');
   }
+  public function cart()
+  {
+      return $this->belongsTo('App\Cart');
+  }
 }
