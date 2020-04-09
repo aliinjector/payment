@@ -122,7 +122,7 @@ Author: Ali Rahmani
             <li class="hide-phone app-search">
                 <form action="{{ route('dashboard.products.search') }}" method="post" role="search" class="">
                     @csrf
-                    <input type="text" name="title" placeholder="نام محصول ..." class="form-control">
+                    <input type="text" name="title" placeholder="نام محصول ..." value="{{ isset($title) ? $title : '' }}" class="form-control">
                     <a href="javascript:;" class="myClass" onclick="$('#submitBtn').click();"><i style="padding-top: 10px" class="fas fa-search"></i></a>
                     <button type="submit" id="submitBtn" style="display:none;" data-validate="contact-form">Hidden Button</button>
 
