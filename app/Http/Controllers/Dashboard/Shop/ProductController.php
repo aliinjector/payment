@@ -48,7 +48,7 @@ class ProductController extends Controller
           }
           else{
               $shop = \Auth::user()->shop()->first();
-              $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+              $productCategories = \Auth::user()->shop()->first()->ProductCategories()->get();
               $brands = \Auth::user()->shop()->first()->brands()->get();
               $colors = Color::all();
               $products = \Auth::user()->shop()->first()->products()->get();

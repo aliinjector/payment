@@ -142,7 +142,7 @@ class CategoryController extends Controller
               if ($subCategory->children()->exists()) {
                   foreach ($subCategory->children()->get() as $subSubCategory) {
                       $allSubCategories[] = $subSubCategory;
-                  }
+
                   if ($subSubCategory->children()->exists()) {
                       foreach ($subSubCategory->children()->get() as $subSubSubCategory) {
                           $allSubCategories[] = $subSubSubCategory;
@@ -154,6 +154,7 @@ class CategoryController extends Controller
                       }
                   }
               }
+                }
           }
         }
           return $allSubCategories;

@@ -28,6 +28,13 @@
     .toast-message {
         font-size: 20px;
     }
+    .border-btn-blue{
+      border-bottom: 1px solid #2879FE!important;
+      padding: 10px!important;
+    }
+    .color-btn-blue{
+        color: #2879FE!important;
+    }
     </style>
 </head>
 
@@ -359,11 +366,11 @@
 
                                           @else
 
-
+                                            @inject('CategoryCTLR', 'App\Http\Controllers\Shop\CategoryController')
                                             @foreach ($shopCategories->where('parent_id' , null)->take($shop->menu_show_count) as $shopCategory)
                                             <div class="dropdown mx-3" style="top:30px!important">
                                                 <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id, 'name' => $shopCategory->name]) }}" class="font-weight-bold iranyekan">
-                                                    <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal" style="color:
+                                                    <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal @if(Request::is('*/category/'.$shopCategory->id.'/*')) border-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($shopCategory->id)->contains('id', explode('/',url()->current())[5]))  border-btn-blue @endif" style="color:
                                        #465f73!important;background-color:transparent;font-size: 17px!important;">
                                                         {{ $shopCategory->name }}
                                                     </button>
@@ -374,28 +381,28 @@
                                        width: 21%!important;z-index: 10000;">
                                                             @foreach ($shopCategory->children()->get() as $subCategory)
                                                             @if (!$subCategory->children()->exists())
-                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}" class="font-weight-bold iranyekan" style="color: #465f73!important; font-size:16px">
-                                                                <li class="dropdown-item dropdown-submenu mx-2">{{ $subCategory->name }}
+                                                            <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}" class="font-weight-bold iranyekan" style="color: #465f73; font-size:16px">
+                                                                <li class="dropdown-item dropdown-submenu mx-2 @if(Request::is('*/category/'.$subCategory->id.'/*')) color-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($subCategory->id)->contains('id', explode('/',url()->current())[5])) color-btn-blue @endif">{{ $subCategory->name }}
                                                                 </li>
                                                             </a>
                                                             @else
                                                             <li class="dropdown-submenu mx-2">
-                                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}" class="dropdown-item pointer-crouser font-weight-bold iranyekan" style="color: #465f73!important; font-size:16px"
+                                                                <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}" class="dropdown-item pointer-crouser font-weight-bold iranyekan @if(Request::is('*/category/'.$subCategory->id.'/*')) color-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($subCategory->id)->contains('id', explode('/',url()->current())[5])) color-btn-blue @endif" style="color: #465f73; font-size:16px"
                                                                   tabindex="-1">{{ $subCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                                                 <ul class="dropdown-menu multi-level font-16 mr-4" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;width: 140%!important;">
                                                                     @foreach ($subCategory->children()->get() as $subSubCategory)
                                                                     @if (!$subSubCategory->children()->exists())
-                                                                    <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id, 'name' => $subSubCategory->name]) }}" style="color: #465f73!important; font-size:16px" class="font-weight-bold iranyekan mr-2">
-                                                                        <li class="dropdown-item dropdown-submenu mx-2">{{ $subSubCategory->name }}</li>
+                                                                    <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id, 'name' => $subSubCategory->name]) }}" style="color: #465f73; font-size:16px" class="font-weight-bold iranyekan mr-2">
+                                                                        <li class="dropdown-item dropdown-submenu mx-2 @if(Request::is('*/category/'.$subSubCategory->id.'/*')) color-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($subSubCategory->id)->contains('id', explode('/',url()->current())[5])) color-btn-blue @endif">{{ $subSubCategory->name }}</li>
                                                                     </a>
                                                                     @else
                                                                     <li class="dropdown-submenu mx-3">
-                                                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id, 'name' => $subSubCategory->name]) }}" class="dropdown-item pointer-crouser font-weight-bold iranyekan" style="color: #465f73!important;font-size:16px"
+                                                                        <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id, 'name' => $subSubCategory->name]) }}" class="dropdown-item pointer-crouser font-weight-bold iranyekan @if(Request::is('*/category/'.$subSubCategory->id.'/*')) color-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($subSubCategory->id)->contains('id', explode('/',url()->current())[5])) color-btn-blue @endif" style="color: #465f73;font-size:16px"
                                                                           tabindex="-1">{{ $subSubCategory->name }}<i class="fa fa-angle-left light-dark-text-color font-12 mr-1"></i></a>
                                                                         <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;width: 140%!important;right: 160px!important;">
                                                                             @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                                                                            <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id, 'name' => $subSubSubCategory->name]) }}" style="color: #465f73!important;font-size:16px; display:block" class="font-weight-bold iranyekan">
-                                                                                <li class="dropdown-item mx-3">{{ $subSubSubCategory->name }}</li>
+                                                                            <a tabindex="-1" href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id, 'name' => $subSubSubCategory->name]) }}" style="color: #465f73;font-size:16px; display:block" class="font-weight-bold iranyekan">
+                                                                                <li class="dropdown-item mx-3 @if(Request::is('*/category/'.$subSubSubCategory->id.'/*')) color-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($subSubSubCategory->id)->contains('id', explode('/',url()->current())[5])) color-btn-blue @endif">{{ $subSubSubCategory->name }}</li>
                                                                             </a>
                                                                             @endforeach
                                                                         </ul>
