@@ -15,7 +15,7 @@
 
         <li class="active"><a href="#">{{ $category->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
         @foreach($subCategories as $subCategory)
-        <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}">{{ $subCategory->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
+        <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}">{{ $subCategory->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
         @endforeach
       </ul>
     </div>
@@ -29,7 +29,7 @@
         @foreach($shop->productCategories as $categorySingle)
         <li>
           <div class="d-flex justify-content-between p-3">
-              <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$categorySingle->id]) }}">{{ $categorySingle->name }}</a>
+              <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$categorySingle->id, 'name' => $categorySingle->name ]) }}">{{ $categorySingle->name }}</a>
               @if($shop->cat_image_status == 'enable')<img src="{{ $categorySingle->icon != null ? $categorySingle->icon['45,45'] : '' }}" alt=""> @endif
           </div>
         </li>
@@ -41,7 +41,7 @@
   <div class="tt-collapse">
     <h3 class="tt-collapse-title">{{ __('app-shop-2-category.filterGheymat') }}</h3>
     <div class="tt-collapse-content">
-      <form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
+      <form @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id, 'name' => $category->name ])}}"
       @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'id' => $tag->id ])}}"
       @else action="{{ route('brand', ['shop' => $shop->english_name,'id' => $brand->id ])}}"
       @endif id="submit" method="get">

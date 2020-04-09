@@ -265,7 +265,7 @@ Route::namespace('Shop')->group(function () {
   //shop
     Route::get('/{shop}', 'ShopController@index')->name('shop');
     Route::get('/{shop}/product/{id}/{slug?}', 'ProductContoller@show')->name('product');
-    Route::get('/{shop}/category/{categroyId}', 'CategoryController@index')->name('category');
+    Route::get('/{shop}/category/{categroyId}/{name?}', 'CategoryController@index')->name('category');
     Route::get('/{shop}/tag/{id}', 'TagController@tagProducts')->name('tag');
     Route::get('/{shop}/brand/{id}', 'BrandController@brandProduct')->name('brand');
     Route::post('/{shop}/search/', 'SearchController@index')->name('search');

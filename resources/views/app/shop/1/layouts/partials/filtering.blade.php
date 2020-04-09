@@ -4,7 +4,7 @@
         <h5 class="text-dark pr-3 border-btm font-weight-500 m-4">فیلتر بر اساس نوع کالا</h5>
         <div class="card-body d-flex justify-content-center text-primary">
             <form
-            @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id ])}}"
+            @if(isset($category)) action="{{ route('category', ['shop' => $shop->english_name,'categroyId' => $category->id, 'name' => $category->name ])}}"
             @elseif(isset($tag)) action="{{ route('tag', ['shop' => $shop->english_name,   'id' => $tag->id ])}}"
             @else action="{{ route('brand', ['shop' => $shop->english_name,'id' => $brand->id ])}}"
             @endif id="submit" method="get">
@@ -84,7 +84,7 @@
                       class="list-group collapse border-0  @if( Request::is('*/category/'.$category->id)) show @elseif($category->children()->exists() and $CategoryCTLR->getAllSubCategories($category->id)->where('id' , (int)Request::segment(3))->count() != 0) show @endif"
                     id="item-{{$category->id}}">
                     @foreach ($category->children()->get() as $subCategory)
-                    <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id]) }}"
+                    <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}"
                         @else href="#item-{{$category->id}}-{{$subCategory->id}}"
                         @endif class="border-0 iranyekan dark-text-color p-2" @if($shop->menu_show != 'nestead_box') data-toggle="collapse"
                             @endif>
@@ -96,7 +96,7 @@
                       class="list-group collapse border-0 @if($CategoryCTLR->getAllSubCategories($subCategory->id)->where('id' , (int)Request::segment(3))->count() != 0) show @elseif($shop->menu_show == 'nestead_box') show @endif"
                     id="item-{{$category->id}}-{{$subCategory->id}}">
                     @foreach ($subCategory->children()->get() as $subSubCategory)
-                    <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id]) }}"
+                    <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubCategory->id, 'name' => $subSubCategory->name]) }}"
                         @else href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}"
                         @endif class="border-0 iranyekan dark-text-color p-2 mr-5" @if($shop->menu_show != 'nestead_box') data-toggle="collapse"
                             @endif ><i class="fa fa-angle-down light-dark-text-color font-12 mr-2"></i>{{ $subSubCategory->name}}
@@ -106,7 +106,7 @@
                                   class="list-group collapse border-0 @if($CategoryCTLR->getAllSubCategories($subSubCategory->id)->where('id' , (int)Request::segment(3))->count() != 0) show @elseif($shop->menu_show == 'nestead_box') show @endif"
                                 id="item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}">
                                 @foreach ($subSubCategory->children()->get() as $subSubSubCategory)
-                                <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id]) }}"
+                                <a @if($shop->menu_show == 'nestead_box') href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subSubSubCategory->id, 'name' => $subSubSubCategory->name]) }}"
                                     @else href="#item-{{$category->id}}-{{$subCategory->id}}-{{$subSubCategory->id}}-{{$subSubSubCategory->id}}"
                                     @endif class="border-0 iranyekan dark-text-color p-2 mr-5 pr-4" @if($shop->menu_show != 'nestead_box') data-toggle="collapse" @endif>{{ $subSubSubCategory->name}}
                                             @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt="">
