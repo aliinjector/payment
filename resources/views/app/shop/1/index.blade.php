@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-sm-9">
         <div class="page-title-box">
-            <h4 class="page-title iranyekan">{{ __('app-shop-1-index.frooshgah') }} {{ $shop->name }}</h4>
+            <h4 class="page-title iranyekan">فروشگاه {{ $shop->name }}</h4>
             <p class="text-muted mb-3 mt-1">{{ $shop->description }}</p>
         </div>
         <!--end page-title-box-->
@@ -19,11 +19,11 @@
                 </div>
                 <!--end of col-->
                 <div class="col">
-                    <input class="form-control form-control-lg form-control-borderless" name="queryy" type="search" placeholder="{{ __('app-shop-1-index.searchPlaceholder') }}...">
+                    <input class="form-control form-control-lg form-control-borderless" name="queryy" type="search" placeholder="نام محصول ویا سازنده...">
                 </div>
                 <!--end of col-->
                 <div class="col-auto">
-                    <button class="btn bg-blue-omid text-white rounded" type="submit">{{ __('app-shop-1-index.jostojoo') }}</button>
+                    <button class="btn bg-blue-omid text-white rounded" type="submit">جستجو</button>
                 </div>
                 <!--end of col-->
             </div>
@@ -65,7 +65,7 @@
         <span class="sr-only">بعدی</span>
     </a>
 </div>
-<h2 class="line-throw my-5"><span>{{ __('app-shop-1-index.akharinMahsoolat') }} </span></h2>
+<h2 class="line-throw my-5"><span>آخرین محصولات </span></h2>
 <div class="row p-5">
 
     @forelse ($lastProducts as $lastProduct)
@@ -75,11 +75,11 @@
             <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}" class="product-title">{{ $lastProduct->title }}</a>
                 <div class="d-flex justify-content-between my-2 byekan">
                     @if($lastProduct->off_price != null and $lastProduct->off_price_started_at < now() and $lastProduct->off_price_expired_at > now())
-                            <p class="product-price byekan">{{ number_format($lastProduct->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProduct->price) }}
-                                        {{ __('app-shop-1-index.tooman') }}</del></span>
+                            <p class="product-price byekan">{{ number_format($lastProduct->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProduct->price) }}
+                                        تومان}}</del></span>
                             </p>
                             @else
-                            <p class="product-price byekan">{{ number_format($lastProduct->price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span>
+                            <p class="product-price byekan">{{ number_format($lastProduct->price) }} تومان <span class="ml-2 byekan"></span>
                                 @endif
                 </div>
                 <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $lastProduct->id }}">
@@ -117,7 +117,7 @@
     @empty
     <div class="align-items-center justify-content-center row w-100 text-danger my-5">
         <h4>
-            {{ __('app-shop-1-index.noProduct') }}
+            هیچ محصولی در این فروشگاه وجود ندارد
         </h4>
     </div>
     @endforelse
@@ -128,7 +128,7 @@
 @includeWhen($shop->special_offer == 'enable','app.shop.1.layouts.partials.special_offer', ['special_text' => $shop->special_offer_text])
 
 
-<h2 class="my-5 line-throw"><span>{{ __('app-shop-1-index.porFrooshTarinHa') }}</span></h2>
+<h2 class="my-5 line-throw"><span>پرفروش ترین محصولات</span></h2>
 <div class="row p-5">
 
       @forelse ($bestSellings as $bestSelling)
@@ -138,11 +138,11 @@
             <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}" class="product-title"></a> {{ $bestSelling->title }} </a>
                 <div class="d-flex justify-content-between my-2">
                     @if($bestSelling->off_price != null and $bestSelling->off_price_started_at < now() and $bestSelling->off_price_expired_at > now())
-                        <p class="product-price byekan">{{ number_format($bestSelling->off_price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling->price) }}
+                        <p class="product-price byekan">{{ number_format($bestSelling->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($bestSelling->price) }}
                                     {{ __('app-shop-1-index.tooman') }}</del></span>
                         </p>
                         @else
-                        <p class="product-price byekan">{{ number_format($bestSelling->price) }} {{ __('app-shop-1-index.tooman') }} <span class="ml-2 byekan"></span>
+                        <p class="product-price byekan">{{ number_format($bestSelling->price) }} تومان <span class="ml-2 byekan"></span>
                             @endif
                 </div>
                 <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $bestSelling->id }}">
@@ -190,7 +190,7 @@
     <!--end col-->
 </div>
 @if($feedbacks->count() >= 1)
-    <h2 class="my-5 line-throw"><span>{{ __('app-shop-1-index.feedback') }} </span></h2>
+    <h2 class="my-5 line-throw"><span>بازخورد مشتریان </span></h2>
     <div class="row mt-5 mb-4">
         <div class="col-12">
             <div id="carouselContent" class="carousel slide" data-ride="carousel">

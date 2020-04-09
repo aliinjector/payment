@@ -6,7 +6,7 @@
     {!! SEO::generate() !!}
     <meta charset="utf-8">
     @if (\Request::route()->getName() == 'user.purchased.list')
-    <title>{{ __('app-shop-1-layouts-master.pageTitle') }}</title>
+    <title>لیست سفارشات شما</title>
     @else
     <meta name="viewport" content="width=device-width,initial-scale=1">
     @endif
@@ -110,7 +110,7 @@
                             <li class="breadcrumb-item active mb-3 ml-lg-4">
                                 <a href="{{ route('logout') }}">
                                     <button class="btn-sm small btn-primary rounded">
-                                        {{ __('app-shop-1-layouts-master.khorooj') }}
+                                        خروج از حساب کاربری
                                     </button>
                                 </a>
                             </li>
@@ -130,7 +130,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto mr-2">
                     <li class="nav-item">
-                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">{{ __('app-shop-1-layouts-master.safheAsli') }}</a>
+                        <a class="nav-link iranyekan f-em1-5 mr-4 menu-shop" href="{{ route('shop',$shop->english_name) }}" tabindex="-1" aria-disabled="true">صفحه اصلی</a>
                     </li>
 
 
@@ -244,12 +244,12 @@
                     @guest
                     <div class="search-icon d-flex align-items-center mx-3 ">
                         <a href="{{ route('register', ['shop' => $shop->english_name]) }}" style="font-size:13px;">
-                            <button type="button" class="btn bg-blue-omid text-white rounded">{{ __('app-shop-1-layouts-master.ozviat') }}</button>
+                            <button type="button" class="btn bg-blue-omid text-white rounded">عضویت</button>
                         </a>
                     </div>
                     <div class="search-icon d-flex align-items-center ml-5 mt-2 ">
                         <a href="{{ route('login') }}" style="font-size:13px;">
-                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 mt-lg-n2 px-sm-4 mr-sm-3 rounded text-white">{{ __('app-shop-1-layouts-master.vorood') }}</button>
+                            <button type="button" class="bg-orange-omid btn mt-lg-0 mt-sm-2 px-3 mt-lg-n2 px-sm-4 mr-sm-3 rounded text-white">ورود</button>
                         </a>
                     </div>
                     @endguest
@@ -259,20 +259,20 @@
                           اطلاعات کاربری {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName  }}
                         </button>
                         <div class="dropdown-menu p-3 position-absolute" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>{{ __('app-shop-1-layouts-master.alagheMandiHa') }} <span
+                            <a class="dropdown-item" href="{{ route('wishlist' , ['shop' => $shop->english_name]) }}"><i class="fas fa-heart p-2"></i>علاقه مندی ها <span
                                   class="circle-bg byekan font-14">{{ \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->count() != 0 ?  \Auth::user()->wishlist()->get()->where('shop_id', $shop->id)->first()->products()->count() : 0 }} </span></a>
                             <a class="dropdown-item" href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}"><i class="fas fa-shopping-cart p-2"></i>سبد خرید<span
                                   class="circle-bg byekan font-14 m-2">{{ \Auth::user()->cart()->get()->count()  != 0 ?  \Auth::user()->cart()->get()->first()->cartProduct()->count() : 0 }} </span></a>
                             @if(\Auth::user()->id == $shop->user_id)
                                 <a class="dropdown-item" href="{{ route('dashboard.index') }}"><i class="fas fa-user p-2"></i>پنل مدیریت</a>
                                 @else
-                                <a class="dropdown-item" href="{{ route('user-panel.index') }}"><i class="fas fa-user p-2"></i>{{ __('app-shop-1-layouts-master.panelKarbari') }}</a>
+                                <a class="dropdown-item" href="{{ route('user-panel.index') }}"><i class="fas fa-user p-2"></i>پنل کاربری</a>
                                 @endif
-                                <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>{{ __('app-shop-1-layouts-master.addressHa') }}</a>
-                                <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>{{ __('app-shop-1-layouts-master.listSefaareshaat') }}</a>
-                                <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>{{ __('app-shop-1-layouts-master.moghayese') }} <span
+                                <a class="dropdown-item" href="{{ route('user-address.index') }}"><i class="fas fa-address-card p-2"></i>آدرس ها</a>
+                                <a class="dropdown-item" href="{{ route('user.purchased.list') }}"><i class="fas fa-shopping-cart p-2"></i>لیست سفارشات</a>
+                                <a class="dropdown-item" href="{{ route('compare', ['shop'=>$shop->english_name]) }}"><i class="fas fa-chart-bar p-2"></i>مقایسه <span
                                       class="circle-bg byekan font-14">{{ \Auth::user()->compare()->get()->where('shop_id', $shop->id)->count() != 0 ?  \Auth::user()->compare()->get()->where('shop_id', $shop->id)->first()->products()->count() : 0 }}</span></a>
-                                <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>{{ __('app-shop-1-layouts-master.khorooj') }}</a>
+                                <a class="dropdown-item text-danger" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt p-2"></i>خروج</a>
                         </div>
                     </div>
                     @endauth
