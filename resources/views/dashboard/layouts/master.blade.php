@@ -13,7 +13,6 @@ Author: Ali Rahmani
 
     <script src="/dashboard/assets/js/jquery.min.js"></script>
     <script src="/dashboard/assets/js/jquery.form-xeditable.init.js"></script>
-    <script src="/dashboard/assets/js/bootstrap-editable.min.js"></script>
     <meta charset="utf-8">
     <title>{{ __('dashboard-layouts-master.pageTitle') }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -32,10 +31,13 @@ Author: Ali Rahmani
     <link href="/dashboard/assets/css/custom.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/css/persian-datepicker.css" rel="stylesheet" type="text/css">
     <link href="/app/css/toastr.min.css" rel="stylesheet" type="text/css">
+    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
+    {{--datatables css--}}
     <link href="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css">
-    <link href="/dashboard/assets/css/dropify.min.css" rel="stylesheet" type="text/css">
+
 
     @toastr_css
     {{--ا--}}
@@ -407,23 +409,24 @@ Author: Ali Rahmani
 <script src="/dashboard/assets/plugins/moment/moment.js"></script>
 <script src="/dashboard/assets/js/bootstrap-editable.min.js"></script>
 <script src="/dashboard/assets/js/jquery.form-xeditable.init.js"></script>
-<script src="/dashboard/assets/plugins/apexcharts/apexcharts.min.js"></script>
-<script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
-<script src="/dashboard/assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="/dashboard/assets/pages/jquery.eco_dashboard.init.js"></script>
 <script src="/dashboard/assets/js/jquery.form-wizard.init.js"></script>
 <script src="/dashboard/assets/js/jquery.steps.min.js"></script>
 <!-- App js -->
 <script src="/dashboard/assets/js/app.js"></script>
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
+<script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
+<script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+
+{{--datatables js--}}
 <script src="/dashboard/assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/dataTables.buttons.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/dataTables.responsive.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
 <script src="/dashboard/assets/plugins/datatables/jquery.datatable.init.js"></script>
-<script src="/dashboard/assets/plugins/dropify/js/dropify.min.js"></script>
-<script src="/dashboard/assets/pages/jquery.form-upload.init.js"></script>
+
+
+
 <script>
     $('#myInputTextField').keyup(function() {
         oTable.search($(this).val()).draw();

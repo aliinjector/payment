@@ -8,11 +8,11 @@
                 <h1 class="">حساب کاربری</h1>
                 <div class="">
                     <div class="">
-                      @if($purchases->count() > 0)
+                      @if($ppurchase-indexurchases->count() > 0)
                         <h3 class="">سوابق سفارشات</h3>
                         <div class="">
                             <table class="">
-                              <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
+                              <table id="datatable" class="table table-bordered dt-responsive dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
                                 aria-describedby="datatable_info">
                                   <thead>
                                       <tr role="row">

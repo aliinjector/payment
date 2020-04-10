@@ -83,7 +83,7 @@
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </div>
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
+                                    <table id="datatable" class="table table-bordered dt-responsive dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid"
                                       aria-describedby="datatable_info">
                                         <thead>
                                             <tr role="row">
