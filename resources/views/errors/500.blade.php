@@ -12,14 +12,33 @@
 	<link type="text/css" rel="stylesheet" href="/errors/css/style.css" />
 	<link href="/dashboard/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<style>
+
+		@font-face {
+			font-family: BYekan;
+			font-style: normal;
+			font-weight: bold;
+			src: url('/index/fonts/BYekan.eot');
+			src: url('/index/fonts/BYekan.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+			url('/index/fonts/BYekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+			url('/index/fonts/BYekan.ttf') format('truetype');
+		}
+
+
 		h2, a {
-			font-family: iranyekan !important;
+			font-family: BYekan !important;
 			font-size: 20px;
 			color: white;
 		}
 		a:hover {
 			text-decoration:none!important;
 		}
+
+		body {
+			font-family: 'BYekan';
+		}
+
+
+
 	</style>
 </head>
 

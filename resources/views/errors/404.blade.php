@@ -4,14 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>صفحه مورد نظر یافت نشد</title>
+
     <style>
         @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+
+        @font-face {
+            font-family: BYekan;
+            font-style: normal;
+            font-weight: bold;
+            src: url('/index/fonts/BYekan.eot');
+            src: url('/index/fonts/BYekan.eot?#iefix') format('embedded-opentype'),  /* IE6-8 */
+            url('/index/fonts/BYekan.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+            url('/index/fonts/BYekan.ttf') format('truetype');
+        }
+
+
         body {
             width: 100%;
             height: 100%;
             background: #48A9E6;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'BYekan', sans-serif;
             font-weight: 300;
             margin: 0;
             padding: 0;
@@ -273,13 +286,33 @@
                 right: 4%;
                 opacity: 0.5;
             }
+
+
+
         }
+        .button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .button2 {background-color: #4CAF50;} /* Blue */
     </style>
 </head>
 
 <body>
     <section id="not-found">
-        <div id="title">!!!مشکلی پیش آمده &bull;  صفحه مورد نظر پیدا نشد</div>
+
+
+        <div id="title">!!!مشکلی پیش آمده &bull;
+            صفحه مورد نظر پیدا نشد
+            <br><br><a href="{{ \URL::previous() }}"><button class="button button2">بازگشت</button></a>
+
+        </div>
         <div class="circles">
             <p>404<br>
                 <small>صفحه پیدا نشد</small>
