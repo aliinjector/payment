@@ -100,7 +100,7 @@ class WishlistController extends Controller
 
     public function deleteFromWishlist(Request $request){
       $shop = Shop::where('english_name', $request->shop)->get()->first();
-      Wishlist::find($request->wishlist)->products()->detach($request->id);
+      \Auth::user()->wishlist()->get()->where('id', $request->wishlist)->first()->products()->detach($request->id);
       toastr()->success('حذف شد.', '');
 
     }

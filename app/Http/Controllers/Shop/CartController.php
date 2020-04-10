@@ -175,8 +175,11 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function removeFromCart(Request $request){
+        if (\Auth::user()->cart->user_id !== \Auth::user()->id) {
+                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                  return redirect()->back();
+        }
       DB::transaction(function () use ($request) {
-
       CartProduct::where([
         ['product_id', '=', $request->id],
         ['id', '=', $request->cartProductId],

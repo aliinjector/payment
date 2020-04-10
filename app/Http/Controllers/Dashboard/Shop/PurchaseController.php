@@ -106,6 +106,10 @@ class PurchaseController extends Controller
                alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
                return redirect()->back();
              }
+       if ($cartProduct->cart()->withTrashed()->get()->first()->shop->user_id !== \Auth::user()->id) {
+               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+               return redirect()->back();
+             }
 
              DB::transaction(function () use ($purchase, $cartProduct) {
                     $cartProduct->delete();

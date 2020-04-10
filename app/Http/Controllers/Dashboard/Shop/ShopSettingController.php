@@ -256,7 +256,7 @@ class ShopSettingController extends Controller
     }
 
     public function destroyImage(Request $request){
-      $shop = Shop::find($request->id);
+      $shop = \Auth::user()->shop()->first();
       if($request->type == 'icon'){
         $shop->update([
             'icon' => null

@@ -94,8 +94,9 @@ class CommentsController extends \App\Http\Controllers\Controller
      */
     public function destroy(Comment $comment, Request $request)
     {
-        Comment::find($request->id)->delete();
-        Comment::where('parent_id', $request->id)->delete();
+        $shop = \Auth::user()->shop()->first();
+        $shop->comments->where('id', $request->id)->first()->delete();
+        $shop->comments->where('parent_id', $request->id)->first()->delete();
         alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
         return redirect()->back();
     }

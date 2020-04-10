@@ -111,7 +111,7 @@ class ApplicationController extends Controller
 
 
         public function changeStatus(Request $request){
-            $shop = Shop::where('english_name', $request->shop)->get()->first();
+          $shop = \Auth::user()->shop()->first();
 
             $application = $shop->application;
             if($application->sell == "disable")

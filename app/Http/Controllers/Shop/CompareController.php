@@ -120,7 +120,7 @@ class CompareController extends Controller
 
     public function deleteFromCompare(Request $request){
       $shop = Shop::where('english_name', $request->shop)->get()->first();
-      Compare::find($request->compare)->products()->detach($request->id);
+      \Auth::user()->compare()->get()->where('id', $request->compare)->first()->products()->detach($request->id);
       toastr()->success('حذف شد.', '');
     }
 

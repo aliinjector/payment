@@ -79,6 +79,10 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+         if(Auth::user()->shop()->first()->ProductCategories()->where('id',$request->productCat_id)->get()->first() == null){
+           alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+           return redirect()->back();
+         }
          if($request->off_price == null){
            $request->merge(['off_price_started_at' => null]);
            $request->merge(['off_price_expired_at' => null]);
@@ -440,7 +444,7 @@ else{
     public function editPhysical($id)
     {
       $shop = \Auth::user()->shop()->first();
-      $product = Product::find($id);
+      $product = $shop->products->where('id', $id)->first();
       $tags = [];
       foreach($product->tags as $tag){
         $tags[] = $tag->name;
@@ -460,7 +464,7 @@ else{
     public function editFile($id)
     {
       $shop = \Auth::user()->shop()->first();
-      $product = Product::find($id);
+      $product = $shop->products->where('id', $id)->first();
       $tags = [];
       foreach($product->tags as $tag){
         $tags[] = $tag->name;
@@ -481,7 +485,7 @@ else{
     public function editService($id)
     {
       $shop = \Auth::user()->shop()->first();
-      $product = Product::find($id);
+      $product = $shop->products->where('id', $id)->first();
       $tags = [];
       foreach($product->tags as $tag){
         $tags[] = $tag->name;
@@ -698,7 +702,9 @@ else{
 
 
     public function changeStatus(Request $request){
-      $product = Product::find($request->id);
+
+      $shop = \Auth::user()->shop()->first();
+      $product = $shop->products->where('id', $request->id)->first();
       if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
           alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
           return redirect()->back();

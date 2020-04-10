@@ -91,7 +91,7 @@ class AddressController extends Controller
         $shop = Shop::find(\auth()->user()->shop_id);
       }
       else{
-        $address = Address::find($id);
+        $address = \auth()->user()->addresses->where('id', $id)->first();
         SEOTools::setTitle('ویرایش آدرس ' . $address->address);
         SEOTools::setDescription('لیست ادرس ها');
         SEOTools::opengraph()->addProperty('type', 'website');

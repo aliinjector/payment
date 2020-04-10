@@ -19,7 +19,7 @@ class FAQController extends Controller
     public function index()
     {
       $shop = \Auth::user()->shop()->first();
-      $faqs = \Auth::user()->shop()->first()->faqs;
+      $faqs = $shop->faqs;
       SEOTools::setTitle($shop->name . ' | سوالات متداول');
       SEOTools::setDescription($shop->name);
       SEOTools::opengraph()->addProperty('type', 'website');
