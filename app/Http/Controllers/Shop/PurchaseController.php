@@ -288,6 +288,7 @@ class PurchaseController extends Controller
           $purchase->cart_id = $cart->id;
           $purchase->user_id = \Auth::user()->id;
           $purchase->shop_id = $shop->id;
+          $purchase->date = \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d');
           // check if user send new address or select address from his addresses
           if ($request->new_address == null) {
             $purchase->address_id = $request->address;

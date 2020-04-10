@@ -28,8 +28,8 @@ class StatController extends Controller
         $yesterDayVisitors = $shop->stats()->distinct('ip')->where('created_at', '>=', \Carbon\Carbon::yesterday()->toDateString())->count('ip');
 
         $stats = $shop->stats()->orderBy('id', 'DESC')->limit(100)->get();
-        $monthlyVisits = \DB::table('stats')->where('shop_id', $shop->id)->select('day', \DB::raw('count(*) as total'))->groupBy('day')->limit(100)->get();
-        $monthlyVisitors = \DB::table('stats')->where('shop_id', $shop->id)->select('day', \DB::raw('count(DISTINCT `ip`) as total'))->groupBy('day')->limit(7)->get();
+        $monthlyVisits = \DB::table('stats')->where('shop_id', $shop->id)->select('day', \DB::raw('count(*) as total'))->groupBy('day')->limit(30)->get();
+        $monthlyVisitors = \DB::table('stats')->where('shop_id', $shop->id)->select('day', \DB::raw('count(DISTINCT `ip`) as total'))->groupBy('day')->limit(30)->get();
         $devices = \DB::table('stats')->where('shop_id', $shop->id)->select('device', \DB::raw('count(*) as total'))->groupBy('device')->limit(10)->get();
         $browsers = \DB::table('stats')->where('shop_id', $shop->id)->select('browserName', \DB::raw('count(*) as total'))->groupBy('browserName')->limit(10)->get();
         $searchEngines = \DB::table('stats')->where('shop_id', $shop->id)->select('searchEngine', \DB::raw('count(*) as total'))->groupBy('searchEngine')->limit(10)->get();
@@ -56,8 +56,13 @@ class StatController extends Controller
 
 
         $ip = (isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR']);
-//        $geoip->setIp('46.4.219.148');
-        $geoip->setIp($ip);
+
+        if($_SERVER['REMOTE_ADDR'] != '127.0.0.1'){
+            $geoip->setIp($ip);
+        }else{
+             $geoip->setIp('46.4.219.148');
+        }
+
         $country = visitor_country($geoip->getRaw()['countryCode']);
         $countryCode = ($geoip->getRaw()['countryCode']);
         $city = visitor_city($geoip->getRaw()['city']);
