@@ -73,22 +73,25 @@
         <div class="card e-co-product">
             <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}"><img src="{{ asset($lastProduct->image['250,250'] ? $lastProduct->image['250,250'] : '/images/no-image.png') }}" alt="" class="img-fluid"></a>
             <div class="card-body product-info"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}" class="product-title">{{ $lastProduct->title }}</a>
+
+
                 <div class="d-flex justify-content-between my-2 byekan">
-                    @if($lastProduct->off_price != null and $lastProduct->off_price_started_at < now() and $lastProduct->off_price_expired_at > now())
-                            <p class="product-price byekan">{{ number_format($lastProduct->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProduct->price) }}
-                                        تومان}}</del></span>
-                            </p>
-                            @else
-                            <p class="product-price byekan">{{ number_format($lastProduct->price) }} تومان <span class="ml-2 byekan"></span>
-                                @endif
+                      @if($lastProduct->off_price != null and $lastProduct->off_price_started_at < now() and $lastProduct->off_price_expired_at > now())
+                            <p class="product-price byekan">{{ number_format($lastProduct->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProduct->price) }}تومان</del></span></p>
+                      @else
+                             <p class="product-price byekan">{{ number_format($lastProduct->price) }} تومان <span class="ml-2 byekan"></span></p>
+                      @endif
                 </div>
+
+
                 <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $lastProduct->id }}">
                     @csrf
                     <input type="hidden" name="productID" value="{{ $lastProduct->id }}">
 
-                    <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $lastProduct->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i
-                          style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
+                    <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $lastProduct->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
                 </form>
+
+
                 <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="wishlistForm{{ $lastProduct->id }}">
                     @csrf
                     <input type="hidden" name="productID" value="{{ $lastProduct->id }}">
@@ -96,21 +99,17 @@
                     <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $lastProduct->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i
                           style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
                 </form>
+
+
                 @if(\Auth::user())
-                {{-- <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
-                @csrf
-                <input type="hidden" name="product_id" value="{{$lastProducts[0]->id}}">
-                <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
-                    @if($lastProducts[0]->type == 'file'){{ __('app-shop-1-index.daryafteFile') }}
-                        @else {{ __('app-shop-1-index.addToCart') }}
-                        @endif</button>
-                        </form> --}}
                         <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
                             <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}" class="text-white">
                                 مشاهده محصول
                             </a>
                         </button>
-                        @endif
+                @endif
+
+
             </div>
         </div>
     </div>
@@ -235,7 +234,7 @@
                                     <h5>{{ $brand->name }}</h5>
                                 </a>
                             </div>
-                            @endforeach
+                        @endforeach
                     </div>
                     <a class="carousel-control-prev bg-orange-omid rounded" href="#carouselContentBrand" role="button" data-slide="prev" style="width: 3%;opacity: 1;">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

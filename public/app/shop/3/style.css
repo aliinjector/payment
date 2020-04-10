@@ -1347,7 +1347,7 @@ input:focus, textarea:focus {
 	margin-bottom: 30px;
 	border: 1px solid rgba(0,0,0,0.02);
 	padding-bottom: 20px;
-	background: #fff;
+	background: #edfbf4;
 	transition: .5s;
 }
 .single_product:hover{
@@ -1716,7 +1716,7 @@ input:focus, textarea:focus {
 /* -------- Footer Css -------- */
 
 .footer_area {
-	padding:60px 0 20px;
+	padding:5px 0 20px;
 	position: relative;
 	color: #fff;
 	z-index: 100;

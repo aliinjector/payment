@@ -2,25 +2,28 @@
 
 @section('content')
 
+<section id="slider_area" class="text-center">
+	<div class="slider_active owl-carousel">
 
-
- 				@foreach($slideshows as $slideshow)
-				<div class="single_slide" style="background-image: url({{ $slideshow->image['original'] }}); background-size: cover; background-position: center ;">
-					<div class="container">
-						<div class="single-slide-item-table">
-							<div class="single-slide-item-tablecell">
-								<div class="slider_content text-right slider-animated-3">
-									<h1 class="animated"><a href="{{ $slideshow->url }}" >{!! $slideshow->title !!}</a></h1>
-									<h4 class="animated">{!! $slideshow->description !!}</h4>
-								</div>
-							</div>
+		  @foreach($slideshows as $slideshow)
+		<div class="single_slide" style="background-image: url({{ $slideshow->image['original'] }}); background-size: cover; background-position: center ;">
+			<div class="container">
+				<div class="single-slide-item-table">
+					<div class="single-slide-item-tablecell">
+						<div class="slider_content text-right slider-animated-3">
+							<a href="{{ $slideshow->url }}">
+								<h4 class="animated">{!! $slideshow->title !!}</h4>
+								<h1 class="animated">{!! $slideshow->description !!}</h1>
+            			    </a>
 						</div>
 					</div>
 				</div>
-					@endforeach
 			</div>
-		</section>
-		<!-- End Slider Area -->
+		</div>
+		 @endforeach
+	</div>
+</section>
+
 
 		<!--  Promo ITEM STRAT  -->
 		<section id="promo_area" class="section_padding">
@@ -85,7 +88,7 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="section_title">
-							<h2>آخرین <span>محصولات</span></h2>
+							<h2>پرفروش ترین <span>محصولات</span></h2>
 							<div class="divider"></div>
 						</div>
 					</div>
@@ -306,28 +309,6 @@
 		</section>
 		<!-- End product Area -->
 
-		<!-- Special Offer Area -->
-		<div class="special_offer_area gray_section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-5">
-						<div class="special_img text-left">
-							<img src="/app/shop/3/img/special.png" width="370" alt="" class="img-responsive">
-							<span class="off_baudge text-center">30% <br /> Off</span>
-						</div>
-					</div>
-
-					<div class="col-md-7 text-left">
-						<div class="special_info">
-							<h3>Men Collection 2018</h3>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy Lorem Ipsum</p>
-							<a href="#" class="btn main_btn">Shop Now</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div> <!-- End Special Offer Area -->
 
 		<!-- Start Featured product Area -->
 		<section id="featured_product" class="featured_product_area section_padding">
@@ -335,206 +316,39 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="section_title">
-							<h2>پربازدید ترین  <span> محصولات</span></h2>
+							<h2>آخرین<span> محصولات</span></h2>
 							<div class="divider"></div>
 						</div>
 					</div>
 				</div>
 
 				<div class="row text-center">
+						@forelse ($lastProducts as $lastProduct)
 					<div class="col-lg-3 col-md-4 col-sm-6">
 						<div class="single_product">
 							<div class="product_image">
-								<img src="/app/shop/3/img/product/1.jpg" alt=""/>
+								<a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}"><img src="{{ asset($lastProduct->image['250,250'] ? $lastProduct->image['250,250'] : '/images/no-image.png') }}" alt=""/></a>
 								<div class="box-content">
 									<a href="#"><i class="fa fa-heart-o"></i></a>
 									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
+									<a href="#"><i class="fa fa-balance-scale"></i></a>
 								</div>
 							</div>
 
 							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<span class="price">$123.00</span>
+								<h4><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}">{{ $lastProduct->title }}</a></h4>
+								<span class="price">{{ number_format($lastProduct->price) }}		تومان</span>
 							</div>
 						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="/app/shop/3/img/product/2.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="/app/shop/3/img/product/3.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="/app/shop/3/img/product/4.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="/app/shop/3/img/product/5.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="/app/shop/3/img/product/6.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="/app/shop/3/img/product/7.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
-
-					<div class="col-lg-3 col-md-4 col-sm-6">
-						<div class="single_product">
-							<div class="product_image">
-								<img src="/app/shop/3/img/product/8.jpg" alt=""/>
-								<div class="box-content">
-									<a href="#"><i class="fa fa-heart-o"></i></a>
-									<a href="#"><i class="fa fa-cart-plus"></i></a>
-									<a href="#"><i class="fa fa-search"></i></a>
-								</div>
-							</div>
-
-							<div class="product_btm_text">
-								<h4><a href="#">Product Title</a></h4>
-								<div class="p_rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<span class="price">$123.00</span>
-							</div>
-						</div>
-					</div> <!-- End Col -->
 				</div>
+				@empty
+				<div class="align-items-center justify-content-center row w-100 text-danger my-5">
+						<h4>
+								هیچ محصولی در این فروشگاه وجود ندارد
+						</h4>
+				</div>
+				@endforelse
+
 			</div>
 		</section>
 		<!-- End Featured Products Area -->
