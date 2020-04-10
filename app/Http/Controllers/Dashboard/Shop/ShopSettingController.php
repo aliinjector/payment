@@ -100,12 +100,12 @@ class ShopSettingController extends Controller
         if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
           //check for unique name for shop
             $request->validate([
-              'english_name' => 'required|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/'
+              'english_name' => 'required|regex:/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}$/'
         ]);
         }
         else{
             $request->validate([
-                  'english_name' => 'required|unique:shops|regex:/^[a-zA-Z0-9]+-?[a-zA-Z0-9]+-?[a-zA-Z0-9]+$/'
+                  'english_name' => 'required|unique:shops|regex:/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}$/'
             ]);
         }
         if(!isset($request->quick_way) and !isset($request->posting_way) and !isset($request->person_way)){

@@ -95,7 +95,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
         //Purchases
         Route::resource('purchases', 'PurchaseController');
-        Route::post('purchases/{purchaseID}/delete/{id}', 'PurchaseController@destroy')->name('purchases.delete');
+        Route::post('purchases/{purchaseID}/delete/{id}', 'PurchaseController@destroy')->name('purchases.delete')->where(['purchaseID' => '[0-9]+', 'id' => '[0-9]+']);
 
       });
 
@@ -104,15 +104,15 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::post('products/search', 'ProductController@search')->name('dashboard.products.search');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product-list.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
-        Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status');
+        Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status')->where(['id' => '[0-9]+']);
         Route::post('product-list/image/delete', 'ProductController@destroyImage')->name('product-list.image.delete');
         Route::post('product-list/file/delete', 'ProductController@destroyFile')->name('product-list.file.delete');
-        Route::get('product-list/{id}/edit-physical', 'ProductController@editPhysical')->name('product-list.edit-physical');
-        Route::get('product-list/{id}/edit-file', 'ProductController@editFile')->name('product-list.edit-file');
-        Route::get('product-list/{id}/edit-service', 'ProductController@editService')->name('product-list.edit-service');
-        Route::get('product-list/{product}/show-physical', 'ProductController@showPhysical')->name('product-list.show-physical');
-        Route::get('product-list/{product}/show-file', 'ProductController@showFile')->name('product-list.show-file');
-        Route::get('product-list/{product}/show-service', 'ProductController@showService')->name('product-list.show-service');
+        Route::get('product-list/{id}/edit-physical', 'ProductController@editPhysical')->name('product-list.edit-physical')->where(['id' => '[0-9]+']);
+        Route::get('product-list/{id}/edit-file', 'ProductController@editFile')->name('product-list.edit-file')->where(['id' => '[0-9]+']);
+        Route::get('product-list/{id}/edit-service', 'ProductController@editService')->name('product-list.edit-service')->where(['id' => '[0-9]+']);
+        Route::get('product-list/{product}/show-physical', 'ProductController@showPhysical')->name('product-list.show-physical')->where(['product' => '[0-9]+']);
+        Route::get('product-list/{product}/show-file', 'ProductController@showFile')->name('product-list.show-file')->where(['product' => '[0-9]+']);
+        Route::get('product-list/{product}/show-service', 'ProductController@showService')->name('product-list.show-service')->where(['product' => '[0-9]+']);
         Route::post('product-list/getFeatures', 'ProductController@getFeatures')->name('product-list.getFeatures');
 
         Route::prefix('categrory-managment')->group(function () {
@@ -133,7 +133,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
         //SpecificationItem
         Route::resource('specification-item', 'SpecificationItemController');
-        Route::get('specification-item/main/{id}', 'SpecificationItemController@main')->name('specification-item.main');
+        Route::get('specification-item/main/{id}', 'SpecificationItemController@main')->name('specification-item.main')->where(['id' => '[0-9]+']);
         Route::put('specification-item/main/change-status/{id}', 'SpecificationItemController@changeStatus')->name('specification-item.change-status');
         Route::post('specification-item/main/delete', 'SpecificationItemController@destroy')->name('specification-item.delete');
       });
@@ -143,19 +143,19 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('vouchers/voucher-report', 'VoucherController@voucherReport')->name('vouchers.voucher-report');
         Route::resource('vouchers', 'VoucherController');
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('vouchers.delete');
-        Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('vouchers.change-status');
+        Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('vouchers.change-status')->where(['id' => '[0-9]+']);
 
         //Gallery
         Route::post('image/delete','GalleryController@fileDestroy');
-        Route::get('galleries/{product}', 'GalleryController@index')->name('galleries.index');
+        Route::get('galleries/{product}', 'GalleryController@index')->name('galleries.index')->where(['product' => '[0-9]+']);
         Route::get('image/upload','GalleryController@fileCreate');
-        Route::post('image/upload/store/{product}','GalleryController@fileStore');
+        Route::post('image/upload/store/{product}','GalleryController@fileStore')->where(['product' => '[0-9]+']);
 
         //Comment
         Route::resource('product-comments', 'CommentsController');
         Route::get('comment/notApproved', 'CommentsController@notApproved')->name('comment.notApproved');
         Route::post('comment/delete', 'CommentsController@destroy');
-        Route::get('comment/approve/{id}/{commentable}', 'CommentsController@approve')->name('comment.approve');
+        Route::get('comment/approve/{id}/{commentable}', 'CommentsController@approve')->name('comment.approve')->where(['id' => '[0-9]+']);
 
         //Brand
         Route::resource('brand', 'BrandController');
@@ -164,7 +164,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
         //application
         Route::resource('application', 'ApplicationController');
-        Route::put('application/change-status/{id}', 'ApplicationController@changeStatus');
+        Route::put('application/change-status/{id}', 'ApplicationController@changeStatus')->where(['id' => '[0-9]+']);
         Route::post('application/applicatio-request', 'ApplicationController@applicatioRequest')->name('application.applicatio-request');
 
 
@@ -174,8 +174,8 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
         //users
         Route::resource('users', 'UserController');
-        Route::get('users/purchase/{userID}/show/{id}', 'UserController@purcheseShow')->name('users.purchase.show');
-        Route::get('users/purchases/{user}', 'UserController@purchases')->name('users.purchases');
+        Route::get('users/purchase/{userID}/show/{id}', 'UserController@purcheseShow')->name('users.purchase.show')->where(['userID' => '[0-9]+', 'id' => '[0-9]+']);
+        Route::get('users/purchases/{user}', 'UserController@purchases')->name('users.purchases')->where(['id' => '[0-9]+']);
         Route::post('users/delete', 'UserController@destroy')->name('user.delete');
 
         //notification
@@ -197,9 +197,9 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
           //Shop-Setting
           Route::resource('shop-setting', 'ShopSettingController');
-          Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update');
-          Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact');
-          Route::put('shop-setting/update-template/{id}', 'ShopSettingController@updateTemplate')->name('shop.setting.update-template');
+          Route::put('shop-setting/setting-update/{id}', 'ShopSettingController@updateSetting')->name('shop-setting.setting-update')->where(['id' => '[0-9]+']);
+          Route::put('shop-setting/update-contact/{id}', 'ShopSettingController@updateContact')->name('shop.setting.update-contact')->where(['id' => '[0-9]+']);
+          Route::put('shop-setting/update-template/{id}', 'ShopSettingController@updateTemplate')->name('shop.setting.update-template')->where(['id' => '[0-9]+']);
           Route::post('shop-setting/image/delete', 'ShopSettingController@destroyImage')->name('shop-setting.image.delete');
 
 
@@ -214,15 +214,15 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
 Route::namespace('Shop')->middleware('auth')->group(function () {
     //Purchase List
-    Route::post('/{shop}/purchase-list/voucher', 'PurchaseController@approved')->name('approved');
-    Route::post('/{shop}/purchase-list/{cartID}/store', 'PurchaseController@purchaseSubmit')->name('purchase-list.store');
-    Route::match(['get', 'post'],'/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list')->middleware('PreventDirectAccessToPreOrder');
-    Route::post('/{shop}/purchase-list/getShippingPrice/calculate', 'PurchaseController@getShippingPrice')->name('purchase-list.getShippingPrice');
+    Route::post('/{shop}/purchase-list/voucher', 'PurchaseController@approved')->name('approved')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::post('/{shop}/purchase-list/{cartID}/store', 'PurchaseController@purchaseSubmit')->name('purchase-list.store')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'cartID' => '[0-9]+']);
+    Route::match(['get', 'post'],'/{shop}/purchase-list/{userID}', 'PurchaseController@purchaseList')->name('purchase-list')->middleware('PreventDirectAccessToPreOrder')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'userID' => '[0-9]+']);
+    Route::post('/{shop}/purchase-list/getShippingPrice/calculate', 'PurchaseController@getShippingPrice')->name('purchase-list.getShippingPrice')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
 
     //User-pruchased List
     Route::get('/user-purchased-list', 'UserPurchasesController@userPurchaseList')->name('user.purchased.list');
-    Route::get('/user-purchased-list/show/{id}', 'UserPurchasesController@showPurchase')->name('user.purchased.list.show');
-    Route::get('/user-purchased-list/invoice/{id}', 'UserPurchasesController@showInvoice')->name('user.purchased.list.show.invoice');
+    Route::get('/user-purchased-list/show/{id}', 'UserPurchasesController@showPurchase')->name('user.purchased.list.show')->where(['id' => '[0-9]+']);
+    Route::get('/user-purchased-list/invoice/{id}', 'UserPurchasesController@showInvoice')->name('user.purchased.list.show.invoice')->where(['id' => '[0-9]+']);
 
     //Address
     Route::resource('/user-address', 'AddressController');
@@ -235,26 +235,26 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
     Route::resource('/user-panel', 'UserPanelController');
 
     //Cart
-    Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart');
-    Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add');
-    Route::post('/{shop}/user-cart/remove', 'CartController@removeFromCart')->name('user-cart.remove');
+    Route::get('/{shop}/user-cart', 'CartController@show')->name('user-cart')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::post('/{shop}/user-cart/{userID}/add', 'CartController@addToCart')->name('user-cart.add')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'userID' => '[0-9]+']);
+    Route::post('/{shop}/user-cart/remove', 'CartController@removeFromCart')->name('user-cart.remove')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
 
     //File-Download
-    Route::get('/{shop}/{id}/{purchaseId}/file-download', 'ShopController@downlaodFile')->name('file-download');
-    Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link');
+    Route::get('/{shop}/{id}/{purchaseId}/file-download', 'ShopController@downlaodFile')->name('file-download')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+', 'purchaseId' => '[0-9]+']);
+    Route::get('/{shop}/file-download/{id}', 'ShopController@downlaodLink')->name('download.link')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+']);
 
     //Rating
-    Route::patch('/{shop}/{id}/rate', 'RatingController@updateRate')->name('rate');
+    Route::patch('/{shop}/{id}/rate', 'RatingController@updateRate')->name('rate')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+']);
 
     //Compare
-    Route::get('/{shop}/compare', 'CompareController@index')->name('compare');
-    Route::post('/{shop}/compare/store', 'CompareController@store')->name('compare.store');
-    Route::post('{shop}/compare/remove', 'CompareController@deleteFromCompare')->name('compare.remove');
+    Route::get('/{shop}/compare', 'CompareController@index')->name('compare')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::post('/{shop}/compare/store', 'CompareController@store')->name('compare.store')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::post('{shop}/compare/remove', 'CompareController@deleteFromCompare')->name('compare.remove')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
 
     //Wishlist
-    Route::post('/{shop}/wishlist/store', 'WishlistController@store')->name('wishlist.store');
-    Route::get('/{shop}/wishlist', 'WishlistController@index')->name('wishlist');
-    Route::post('{shop}/wishlist/remove', 'WishlistController@deleteFromWishlist')->name('wishlist.remove');
+    Route::post('/{shop}/wishlist/store', 'WishlistController@store')->name('wishlist.store')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::get('/{shop}/wishlist', 'WishlistController@index')->name('wishlist')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::post('{shop}/wishlist/remove', 'WishlistController@deleteFromWishlist')->name('wishlist.remove')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
 
     //download link request
     Route::post('/download-link-request/send', 'UserPurchasesController@downloadLinkRequest')->name('downloadLinkRequest');
@@ -263,25 +263,25 @@ Route::namespace('Shop')->middleware('auth')->group(function () {
 
 Route::namespace('Shop')->group(function () {
   //shop
-    Route::get('/{shop}', 'ShopController@index')->name('shop');
-    Route::get('/{shop}/product/{id}/{slug?}', 'ProductContoller@show')->name('product');
-    Route::get('/{shop}/category/{categroyId}/{name?}', 'CategoryController@index')->name('category');
-    Route::get('/{shop}/tag/{id}', 'TagController@tagProducts')->name('tag');
-    Route::get('/{shop}/brand/{id}', 'BrandController@brandProduct')->name('brand');
-    Route::post('/{shop}/search/', 'SearchController@index')->name('search');
-    Route::get('/{shop}/faq/', 'ShopController@showFaq')->name('faq.show');
+    Route::get('/{shop}', 'ShopController@index')->name('shop')->where('shop', '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}');
+    Route::get('/{shop}/product/{id}/{slug?}', 'ProductContoller@show')->name('product')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+', 'slug' => '[ا-یa-zA-Z0-9]+(?:-[ا-یa-zA-Z0-9]+){0,20}']);
+    Route::get('/{shop}/category/{categroyId}/{name?}', 'CategoryController@index')->name('category')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'categroyId' => '[0-9]+', 'name' => '[ا-یa-zA-Z0-9 ]+(?:-[ا-یa-zA-Z0-9 ]+){0,20}']);
+    Route::get('/{shop}/tag/{id}', 'TagController@tagProducts')->name('tag')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+']);
+    Route::get('/{shop}/brand/{id}', 'BrandController@brandProduct')->name('brand')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+']);
+    Route::post('/{shop}/search/', 'SearchController@index')->name('search')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::get('/{shop}/faq/', 'ShopController@showFaq')->name('faq.show')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
     //Comment
     Route::post('comment', 'CommentController@comment')->middleware('auth');
     Route::post('/comment/answer', 'CommentController@answer')->middleware('auth');
 
-    Route::get('/{shop}/register', 'ShopController@registerShow')->name('template.register.show');
-    Route::post('/{shop}/register', 'ShopController@register')->name('template.register');
-    Route::get('/{shop}/login', 'ShopController@login')->name('template.login.show');
+    Route::get('/{shop}/register', 'ShopController@registerShow')->name('template.register.show')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::post('/{shop}/register', 'ShopController@register')->name('template.register')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
+    Route::get('/{shop}/login', 'ShopController@login')->name('template.login.show')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
 
 
-    Route::get('/{shop}/contact', 'ShopController@contact')->name('template.contact');
+    Route::get('/{shop}/contact', 'ShopController@contact')->name('template.contact')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
 
-    Route::post('/{shop}/subscribe', 'SubscribersController@subscribe')->name('subscribe');
+    Route::post('/{shop}/subscribe', 'SubscribersController@subscribe')->name('subscribe')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);
 
 });
 

@@ -18,6 +18,7 @@ class GalleryController extends \App\Http\Controllers\Controller
      */
     public function index(Product $product)
     {
+        $shop = \Auth::user()->shop()->first();
         $galleries = $product->galleries;
         SEOTools::setTitle($shop->name . ' | گالری');
         SEOTools::setDescription($shop->name);
