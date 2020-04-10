@@ -1264,7 +1264,6 @@ input:focus, textarea:focus {
 
 .section_title h2 {
 	text-transform: uppercase;
-	font-size: 22px;
 	font-weight: 700;
 	margin-bottom: 10px;
 	letter-spacing: 0px;
@@ -1345,7 +1344,7 @@ input:focus, textarea:focus {
     text-align: center;
     overflow: hidden;
 	margin-bottom: 30px;
-	border: 1px solid rgba(0,0,0,0.02);
+	border: 1px solid #33d286;
 	padding-bottom: 20px;
 	background: #edfbf4;
 	transition: .5s;
