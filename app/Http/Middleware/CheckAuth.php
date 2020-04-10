@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Shop;
 use Closure;
 
 class CheckAuth
@@ -16,7 +17,12 @@ class CheckAuth
     public function handle($request, Closure $next)
     {
         if(strstr($request->route()->getPrefix(),"admin-panel") && \Auth::user()->type != 'user'){
-            return redirect()->route('logout');
+            if(\Auth::user()->type == 'customer' && \Auth::user()->shop_id != null){
+                $shop = Shop::where('id', \Auth::user()->shop_id)->first();
+                return redirect()->route('shop', $shop->english_name);
+            }else{
+                return redirect()->route('logout');
+            }
         }
 
         if (\Auth::check() && strstr($request->route()->getPrefix(),"admin-panel") && isset(\Auth::user()->userInformation)) {
