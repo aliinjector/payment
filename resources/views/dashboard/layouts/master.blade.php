@@ -65,6 +65,9 @@ Author: Ali Rahmani
         .notification-list {
             height: 69px!important;
         }
+        tspan{
+            font-family: BYekan;
+        }
     </style>
 </head>
 
@@ -110,8 +113,7 @@ Author: Ali Rahmani
             <li class="dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false"><img src="/dashboard/assets/images/users/noavatar.png"
                                                                                                                                                                                      alt="profile-user" class="rounded-circle"> <span class="ml-1 nav-user-name hidden-sm"> {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }} <i class="mdi mdi-chevron-down"></i></span></a>
-                <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('setting.index') }}"><i class="dripicons-user text-muted mr-2"></i> {{ __('dashboard-layouts-master.headertanzimaatVaProfileKarbari') }}</a> <a class="dropdown-item" href="{{ route('wallet.index') }}"><i
-                                class="dripicons-wallet text-muted mr-2"></i> {{ __('dashboard-layouts-master.headerKifePooleMan') }}</a>
+                <div class="dropdown-menu"><a class="dropdown-item" href="{{ route('setting.index') }}"><i class="dripicons-user text-muted mr-2"></i> پروفایل</a>
                     <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('logout') }}"><i class="dripicons-exit text-muted mr-2"></i> {{ __('dashboard-layouts-master.headerKhoroojAzSystem') }}</a>
                 </div>
             </li>

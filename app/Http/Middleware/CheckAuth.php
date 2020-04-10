@@ -15,6 +15,9 @@ class CheckAuth
      */
     public function handle($request, Closure $next)
     {
+        if(strstr($request->route()->getPrefix(),"admin-panel") && \Auth::user()->type != 'user'){
+            return redirect()->route('logout');
+        }
 
         if (\Auth::check() && strstr($request->route()->getPrefix(),"admin-panel") && isset(\Auth::user()->userInformation)) {
             if (\Auth::user()->userInformation->status <= 4) {

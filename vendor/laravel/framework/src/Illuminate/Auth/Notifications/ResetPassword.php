@@ -57,11 +57,10 @@ class ResetPassword extends Notification
         }
 
         return (new MailMessage)
-            ->subject(Lang::getFromJson('Reset Password Notification'))
-            ->line(Lang::getFromJson('You are receiving this email because we received a password reset request for your account.'))
-            ->action(Lang::getFromJson('Reset Password'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
-            ->line(Lang::getFromJson('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
-            ->line(Lang::getFromJson('If you did not request a password reset, no further action is required.'));
+            ->subject(Lang::getFromJson('تغییر رمز عبور امیدشاپ'))
+            ->line(Lang::getFromJson('شما در وبسایت امیدشاپ درخواست تغییر رمز عبور خودرا ثبت نموده اید.'))
+            ->action(Lang::getFromJson('تغییر رمز عبور'), url(config('app.url').route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false)))
+            ->line(Lang::getFromJson('اگر شما درخواست بازیابی رمز را ارسال نکرده اید، این پیام را نادیده بگیرید.'));
     }
 
     /**

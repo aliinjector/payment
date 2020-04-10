@@ -567,42 +567,42 @@
    <script src="/dashboard/assets/highcharts/accessibility.js"></script>
 
    <script>
-      Highcharts.chart('foroosh', {
 
+      Highcharts.chart('foroosh', {
+         chart: {
+            type: 'line'
+         },
          title: {
             text: 'نمودار وضعیت کلی فروشگاه'
          },
 
-         yAxis: {
-            title: {
-               text: 'تعداد فروش'
-            },
+         xAxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
          },
 
+         yAxis: {
+            title: {
+               text: 'تعداد / مقدار'
+            }
+         },
 
          legend: {
             layout: 'vertical',
             align: 'right',
-            verticalAlign: 'middle',
-            style: {
-               fontSize: '13px',
-               fontFamily: 'BYekan',
-               direction: 'rtl',
-               textShadow: false, //bug fixed IE9 and EDGE
-            },
-            useHTML: true,
-
+            verticalAlign: 'middle'
          },
+
+
 
          plotOptions: {
-            series: {
-               label: {
-                  connectorAllowed: false,
+
+            line: {
+               dataLabels: {
+                  enabled: true,
+                  connectorAllowed: false
                },
-               pointStart: 2010
             }
          },
-
          series: [{
             name: 'Visits',
             data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
@@ -623,13 +623,14 @@
                   legend: {
                      layout: 'horizontal',
                      align: 'center',
-                     verticalAlign: 'bottom',
-
-                  },
+                     verticalAlign: 'bottom'
+                  }
                }
             }]
          }
-
       });
+
+
+
    </script>
 @stop
