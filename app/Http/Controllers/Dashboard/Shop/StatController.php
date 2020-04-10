@@ -24,8 +24,8 @@ class StatController extends Controller
 
         $todayVisits = $shop->stats()->where('created_at', '>=', \Carbon\Carbon::today()->toDateString())->count('id');
         $todayVisitors = $shop->stats()->distinct('ip')->where('created_at', '>=', \Carbon\Carbon::today()->toDateString())->count('ip');
-        $yesterDayVisits = $shop->stats()->where('created_at', '>=', \Carbon\Carbon::yesterday()->toDateString())->count('id');
-        $yesterDayVisitors = $shop->stats()->distinct('ip')->where('created_at', '>=', \Carbon\Carbon::yesterday()->toDateString())->count('ip');
+        $yesterDayVisits = $shop->stats()->where('updated_at', '>=', \Carbon\Carbon::yesterday()->toDateString())->where('updated_at', '<', \Carbon\Carbon::today()->toDateString())->count('id');
+        $yesterDayVisitors = $shop->stats()->distinct('ip')->where('updated_at', '>=', \Carbon\Carbon::yesterday()->toDateString())->where('updated_at', '<', \Carbon\Carbon::today()->toDateString())->count('ip');
 
         $stats = $shop->stats()->orderBy('id', 'DESC')->limit(100)->get();
         $monthlyVisits = \DB::table('stats')->where('shop_id', $shop->id)->select('day', \DB::raw('count(*) as total'))->groupBy('day')->limit(30)->get();

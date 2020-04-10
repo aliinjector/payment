@@ -203,7 +203,7 @@
                                 <div class="col-md-12">
                                     <div class="table-responsive">
 
-                                        <table id="ViewTable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+                                        <table id="ViewTable" class="table table-bordered dt-responsive dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
 
                                             <thead style="text-align: center">
                                             <tr role="row">
@@ -250,7 +250,7 @@
                                     </div>
                                     <div class="table-responsive">
 
-                                    <table id="lastTable" class="table table-bordered dt-responsive nowrap dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+                                    <table id="lastTable" class="table table-bordered dt-responsive dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
 
                                         <thead style="text-align: center">
                                         <tr role="row">
