@@ -143,7 +143,7 @@ class QueryBuilder
 
     /**
      * Gets an ExpressionBuilder used for object-oriented construction of query expressions.
-     * This producer method is intended for convenient inline usage. Stat:
+     * This producer method is intended for convenient inline usage. Example:
      *
      * <code>
      *     $qb = $conn->createQueryBuilder()
@@ -1254,7 +1254,7 @@ class QueryBuilder
      *
      * For more information see {@link http://php.net/pdostatement-bindparam}
      *
-     * Stat:
+     * Example:
      * <code>
      * $value = 2;
      * $q->eq( 'id', $q->bindValue( $value ) );
@@ -1288,7 +1288,7 @@ class QueryBuilder
      * statement , otherwise they get bound in the wrong order which can lead to serious
      * bugs in your code.
      *
-     * Stat:
+     * Example:
      * <code>
      *  $qb = $conn->createQueryBuilder();
      *  $qb->select('u.*')
