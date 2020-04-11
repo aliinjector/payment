@@ -11,7 +11,7 @@ return array(
     |
     */
     "accepted"         => ":attribute باید پذیرفته شده باشد.",
-    "active_url"       => "آدرس :attribute معتبر نیست",
+    "active_url"       => " :attribute وارد شده فعال نیست",
     "after"            => ":attribute باید تاریخی بعد از :date باشد.",
     "alpha"            => ":attribute باید شامل حروف الفبا باشد.",
     "alpha_dash"       => ":attribute باید شامل حروف الفبا و عدد و خظ تیره(-) باشد.",

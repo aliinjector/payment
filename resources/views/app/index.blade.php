@@ -175,29 +175,29 @@
                                     <div class="swiper-slide">
                                         <div class="listing-slider-item fl-wrap">
                                             <!-- listing-item  -->
-                                            <div class="listing-item listing_carditem">
-                                                <article class="geodir-category-listing fl-wrap">
-                                                    <div class="geodir-category-img">
-                                                        <a target="_blank" href="/{{ $shop->english_name }}"  class="geodir-category-img-wrap fl-wrap" style="height:23vh">
-                                                            <img style="height: 100%; max-height: 250px" src="{{ $shop->logo['original'] }}" alt="">
-                                                        </a>
-                                                        <div class="geodir_status_date gsd_open">{{ $shop->name }}</div>
-                                                        <div class="geodir-category-opt">
-                                                            <div class="geodir-category-opt_title">
-                                                                <h4><a target="_blank" href="/{{ $shop->english_name }}">{{ $shop->name }}</a></h4>
-                                                                <div class="geodir-category-location"><a href="#">  آدرس: تهران - خیابان پاسداران<i class="fas fa-map-marker-alt"></i></a></div>
-                                                            </div>
+                                                <a target="_blank" href="/{{ $shop->english_name }}"><div class="listing-item listing_carditem">
+                                                    <article class="geodir-category-listing fl-wrap">
+                                                        <div class="geodir-category-img">
+                                                            <a target="_blank" href="/{{ $shop->english_name }}"  class="geodir-category-img-wrap fl-wrap" style="height:30vh">
+                                                                <img style="height: 100%; max-height: 250px" src="{{ $shop->logo['original'] }}" alt="">
+                                                            </a>
+                                                            <div class="geodir_status_date gsd_open"><a target="_blank" href="/{{ $shop->english_name }}"> فروشگاه {{ $shop->name }}  </a></div>
+                                                            <div class="geodir-category-opt">
+                                                                <div class="geodir-category-opt_title">
+                                                                    <div class="geodir-category-location"><a target="_blank" href="/{{ $shop->english_name }}">  آدرس: تهران - خیابان پاسداران<i class="fas fa-map-marker-alt"></i></a></div>
+                                                                </div>
 
-                                                            <div style="margin-bottom: 10px;" class="listing_carditem_footer fl-wrap">
-                                                                <a class="listing-item-category-wrap" href="#">
-                                                                    <span>دسته:‌ {{ $shop->shopCategory->name }}</span>
-                                                                </a>
+                                                                <div style="margin-bottom: 10px;" class="listing_carditem_footer fl-wrap">
+                                                                    <a class="listing-item-category-wrap" target="_blank" href="/{{ $shop->english_name }}">
+                                                                        <span>دسته:‌ {{ $shop->shopCategory->name }}</span>
+                                                                    </a>
 
-                                                                <div  class="post-author"><span style="direction: rtl;color: white;">مدیر فروشگاه: {{ isset($shop->user) ? $shop->user->firstName . ' ' . $shop->user->lastName : '' }}</span></div>
+                                                                    <div  class="post-author"><span style="direction: rtl;color: white;">مدیر فروشگاه: {{ isset($shop->user) ? $shop->user->firstName . ' ' . $shop->user->lastName : '' }}</span></div>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </article>
+                                                    </article>
+                                                </a>
                                             </div>
                                             <!-- listing-item end -->
                                         </div>
@@ -307,7 +307,7 @@
             <!--  section  -->
             <!--section end-->
             <section class="parallax-section small-par" data-scrollax-parent="true">
-                <div class="bg par-elem "  data-bg="images/bg/22.jpg" data-scrollax="properties: { translateY: '30%' }"></div>
+                <div class="bg par-elem "  data-bg="" data-scrollax="properties: { translateY: '30%' }"></div>
                 <div class="overlay  op7"></div>
                 <div class="container">
                     <div class=" single-facts single-facts_2 fl-wrap">
@@ -392,12 +392,12 @@
                                             <div class="geodir-category-content-title fl-wrap">
                                                 <div class="geodir-category-content-title-item">
                                                     <h3 class="title-sin_map">
-                                                        <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ str_limit($product->title, 70) }}</a>
+                                                        <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ str_limit($product->title, 60) }}</a>
                                                     </h3>
                                                 </div>
                                             </div>
                                             <div class="geodir-category-text fl-wrap">
-                                                <p class="small-text">   {!! str_limit($product->description, 100) !!} </p>
+                                                <p class="small-text">   {!! str_limit($product->description, 70) !!} </p>
 
                                             </div>
                                             <div class="geodir-category-footer fl-wrap">
