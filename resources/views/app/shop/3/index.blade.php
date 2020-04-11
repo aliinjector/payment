@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<@extends('app.shop.3.layouts.master')
+=======
 @extends('app.shop.3.layouts.master')
+>>>>>>> f0285826215f4266f9e088de63fea474c63ea5a2
 
 @section('content')
 
