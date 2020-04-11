@@ -57,10 +57,17 @@ class AddressController extends Controller
      */
     public function store(AddressRequest $request)
     {
+      if($request->zip_code != null){
+        $request->merge(['zip_code' => $this->fa_num_to_en($request->zip_code)]);
+      }
+
+      $request->validate([
+        'zip_code' => 'required|digits:10',
+  ]);
       $address = new Address;
       $address->city = $request->city;
       $address->province = $request->province;
-      $address->zip_code = $request->zip_code;
+      $address->zip_code = $this->fa_num_to_en($request->zip_code);
       $address->address = $request->address;
       $address->user_id = \Auth::user()->id;
       $address->save();

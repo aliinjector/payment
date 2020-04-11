@@ -267,7 +267,7 @@ Route::namespace('Shop')->group(function () {
   //shop
     Route::get('/{shop}', 'ShopController@index')->name('shop')->where('shop', '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}');
     Route::get('/{shop}/product/{id}/{slug?}', 'ProductContoller@show')->name('product')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+', 'slug' => '[ا-یa-zA-Z0-9]+(?:-[ا-یa-zA-Z0-9]+){0,20}']);
-    Route::get('/{shop}/category/{categroyId}/{name?}', 'CategoryController@index')->name('category')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'categroyId' => '[0-9]+', 'name' => '[ا-یa-zA-Z0-9 ]+(?:-[ا-یa-zA-Z0-9 ]+){0,15}']);
+    Route::get('/{shop}/category/{categroyId}/{name?}', 'CategoryController@index')->name('category')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'categroyId' => '[0-9]+', 'name' => '[ا-یa-zA-Z0-9۰-۹ ]+(?:-[ا-یa-zA-Z0-9۰-۹ ]+){0,15}']);
     Route::get('/{shop}/tag/{id}', 'TagController@tagProducts')->name('tag')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+']);
     Route::get('/{shop}/brand/{id}', 'BrandController@brandProduct')->name('brand')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}', 'id' => '[0-9]+']);
     Route::post('/{shop}/search/', 'SearchController@index')->name('search')->where(['shop' => '[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}']);

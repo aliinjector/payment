@@ -4,6 +4,51 @@
     <div class="container-fluid">
         <!-- Page-Title -->
         <div class="row my-4">
+          <div class="col-lg-4">
+             <div class="card card-eco">
+                <a href="{{ route('product-list.index') }}">
+                <div class="card-body">
+                   <h4 class="title-text mt-0">هزینه ارسال</h4>
+                   <div class="d-flex justify-content-between">
+                      <h3 class="font-weight-bold byekan">{{ $purchase->shipping_price }}</h3>
+                      <i class="fa fa-truck card-eco-icon text-primary align-self-center"></i>
+                   </div>
+                </div>
+                </a>
+                <!--end card-body-->
+             </div>
+             <!--end card-->
+          </div>
+          <div class="col-lg-4">
+             <div class="card card-eco">
+                <a href="{{ route('product-list.index') }}">
+                <div class="card-body">
+                   <h4 class="title-text mt-0">جمع کل</h4>
+                   <div class="d-flex justify-content-between">
+                      <h3 class="font-weight-bold byekan">{{ number_format($purchase->total_price) }}</h3>
+                      <i class="fa fa-file card-eco-icon text-pink align-self-center"></i>
+                   </div>
+                </div>
+                </a>
+                <!--end card-body-->
+             </div>
+             <!--end card-->
+          </div>
+          <div class="col-lg-4">
+             <div class="card card-eco">
+                <a href="{{ route('product-list.index') }}">
+                <div class="card-body">
+                   <h4 class="title-text mt-0">جمع مبلغ سفارش</h4>
+                   <div class="d-flex justify-content-between">
+                      <h3 class="font-weight-bold byekan">{{ number_format($purchase->total_price + $purchase->shipping_price) }}</h3>
+                      <i class="fa fa-clone card-eco-icon text-success align-self-center"></i>
+                   </div>
+                </div>
+                </a>
+                <!--end card-body-->
+             </div>
+             <!--end card-->
+          </div>
             <div class="col-sm-12">
                 <div class="page-title-box">
                     <div class="float-right">
