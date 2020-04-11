@@ -36,7 +36,7 @@ class ShopContactRequest extends FormRequest
               'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
               'tel' => 'nullable|string|min:3|not_in:0|max:30',
               'address' => 'max:250',
-              'shop_email' => 'string', 'email', 'max:255',
+              'shop_email' => 'nullable', 'email', 'max:255',
               'telegram_url' => 'max:220',
               'instagram_url' => 'max:220',
               'facebook_url' => 'max:220',
@@ -46,7 +46,8 @@ class ShopContactRequest extends FormRequest
               'gap_url' => 'max:220',
               'wispi_url' => 'max:220',
               'bale_url' => 'max:220',
-
+              'lat' => 'min:1|max:220',
+              'lng' => 'min:1|max:220',
         ];
     }
 }

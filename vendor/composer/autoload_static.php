@@ -814,6 +814,7 @@ class ComposerStaticInit3347388d595112eed4f2778da6e83304
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\AddressRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AddressRequest.php',
         'App\\Http\\Requests\\AnswerRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AnswerRequest.php',
+        'App\\Http\\Requests\\ApplicationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ApplicationRequest.php',
         'App\\Http\\Requests\\BrandRequest' => __DIR__ . '/../..' . '/app/Http/Requests/BrandRequest.php',
         'App\\Http\\Requests\\CardRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CardRequest.php',
         'App\\Http\\Requests\\CartRequest' => __DIR__ . '/../..' . '/app/Http/Requests/CartRequest.php',

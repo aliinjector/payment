@@ -170,6 +170,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\AddressRequest' => $baseDir . '/app/Http/Requests/AddressRequest.php',
     'App\\Http\\Requests\\AnswerRequest' => $baseDir . '/app/Http/Requests/AnswerRequest.php',
+    'App\\Http\\Requests\\ApplicationRequest' => $baseDir . '/app/Http/Requests/ApplicationRequest.php',
     'App\\Http\\Requests\\BrandRequest' => $baseDir . '/app/Http/Requests/BrandRequest.php',
     'App\\Http\\Requests\\CardRequest' => $baseDir . '/app/Http/Requests/CardRequest.php',
     'App\\Http\\Requests\\CartRequest' => $baseDir . '/app/Http/Requests/CartRequest.php',
