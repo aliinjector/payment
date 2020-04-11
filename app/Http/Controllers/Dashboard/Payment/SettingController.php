@@ -45,9 +45,10 @@ class SettingController extends \App\Http\Controllers\Controller
      * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function show(Setting $setting)
+    public function userPanelshow()
     {
-        //
+      return view('dashboard.setting-user-panel');
+
     }
 
     /**

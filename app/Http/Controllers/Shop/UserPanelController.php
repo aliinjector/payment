@@ -125,7 +125,7 @@ class UserPanelController extends Controller
       ]);
 
       alert()->success('اطلاعات شما با موفقیت ویرایش شد.', 'انجام شد');
-      return redirect()->route('user-panel.index');
+      return redirect()->back();
     }
 
 

@@ -39,6 +39,7 @@
                                         <li class="mt-2"><i class="dripicons-location text-info font-18 mt-2 mr-2"></i><b>شهر: </b>{{ \Auth::user()->userInformation->city }}</li>
                                     </ul>
                                     <a href="{{ route('UserInformation.index') }}"><button type="submit" class="btn btn-info btn-sm">تغییر اطلاعات هویتی</button></a>
+                                    <a href="{{ route('setting.user-panel') }}"><button type="submit" class="btn btn-danger btn-sm">تغییر اطلاعات کاربری</button></a>
                                 </div>
                                 <!--end col-->
                             </div>
@@ -80,6 +81,44 @@
 
                             <div class="form-group">
                                 <label for="setPassword">تایید رمز عبور </label>
+                                <input type="password" class="form-control" name="new-password_confirmation" id="new-password_confirmation">
+                            </div>
+                            <!--end form-group-->
+                    </div>
+                    <!--end card-body-->
+                </div>
+                <!--end card-->
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        @include('dashboard.layouts.errors')
+
+                        <form method="POST" action="{{ route('setting.update', \Auth::user()->id ) }}">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                            <!--end form-group-->
+                            <div class="form-group">
+                                <label for="setEmail">آدرس ایمیل</label>
+                                <input type="email" class="form-control" value="{{ \Auth::user()->email }}" id="setEmail" disabled>
+                            </div>
+                            <!--end form-group-->
+                            <div class="form-group">
+                                <label for="setPassword">نام</label>
+                                <input type="password" class="form-control" name="current-password" id="current-password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="setPassword">نام خانوادگی</label>
+                                <input type="password" class="form-control" name="new-password" id="new-password">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="setPassword">ایمیل </label>
+                                <input type="password" class="form-control" name="new-password_confirmation" id="new-password_confirmation">
+                            </div>
+                            <div class="form-group">
+                                <label for="setPassword">شماره موبایل </label>
                                 <input type="password" class="form-control" name="new-password_confirmation" id="new-password_confirmation">
                             </div>
                             <!--end form-group-->

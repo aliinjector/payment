@@ -65,6 +65,8 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::resource('ticket', 'TicketController');
         Route::post('ticket/answer', 'TicketController@answer')->name('ticket.answer');
         Route::get('ticket/buzz/{ticket}', 'TicketController@buzz')->name('ticket.buzz');
+        Route::get('setting/user-panel', 'SettingController@userPanelShow')->name('setting.user-panel');
+        Route::post('setting/user-panel/store', 'SettingController@userPanelStore')->name('setting.user-panel.store');
         Route::resource('setting', 'SettingController');
         Route::resource('card', 'CardController');
         Route::get('card/delete/{id}', 'CardController@destroy')->name('card.delete');

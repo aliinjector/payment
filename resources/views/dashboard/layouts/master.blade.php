@@ -246,7 +246,7 @@ Author: Ali Rahmani
                         @endif
                         <li style="display: none" class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
-                        <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
+                        <li class="nav-item "><a class="nav-link {{ request()->is('admin-panel/payment/setting/user-panel*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
                         <li class="nav-item"><a target="_blank" class="nav-link" href="/docs"><i class="mdi mdi-code-tags-check"></i>مستندات و آموزش</a></li>
                     </ul>
                 </div>
@@ -297,7 +297,7 @@ Author: Ali Rahmani
 
                             <li class="nav-item"><a class="nav-link" href="{{ route('stats.index') }}"><i class="fas fa-chart-bar"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarAmaarBazdid') }}</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('users.index') }}"><i class="fas fa-user"></i>{{ __('dashboard-layouts-master.forooshgahSazSideBarModiriatKarbaraan') }}</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('user-panel.index') }}"><i class="far fa-clipboard"></i>پنل کاربری</a></li>
+                            {{-- <li class="nav-item"><a class="nav-link" href="{{ route('user-panel.index') }}"><i class="far fa-clipboard"></i>پنل کاربری</a></li> --}}
                         @endif
 
 

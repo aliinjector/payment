@@ -39,7 +39,7 @@
                             <p class="text-muted mb-0">جهت یازیابی رمز عبور، لطفا اطلاعات زیر را تکمیل نمایید:</p>
                         </div>
                         <!--end auth-logo-text-->
-                        <form class="form-horizontal auth-form my-4" method="POST" action="{{ route('password.update') }}">
+                        <form class="form-horizontal auth-form my-4" method="POST" action="{{ route('user-panel.change-password.store', $user->id ) }}">
                             @csrf
                             <input type="hidden" name="token" value="{{ $token }}">
 
@@ -121,4 +121,3 @@
 </body>
 
 </html>
-
