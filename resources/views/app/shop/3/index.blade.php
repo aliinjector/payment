@@ -1,4 +1,4 @@
-<!-- @extends('app.shop.3.layouts.master')
+<@extends('app.shop.3.layouts.master')
 
 @section('content')
 

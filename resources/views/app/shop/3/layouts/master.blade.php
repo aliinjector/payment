@@ -45,8 +45,8 @@
 						<div class="col-xs-12 col-sm-6">
 							<div class="hdr_tp_left">
 								<div class="call_area">
-									<span class="single_con_add"><i class="fa fa-phone"></i> +0123456789</span>
-									<span class="single_con_add"><i class="fa fa-envelope"></i> example@gmail.com</span>
+									<span class="single_con_add"><i class="fa fa-phone"></i> {{ $shop->shopContact->tel}}</span>
+									<span class="single_con_add"><i class="fa fa-envelope"></i> {{ $shop->shopContact->shop_email}}</span>
 								</div>
 							</div>
 						</div>
