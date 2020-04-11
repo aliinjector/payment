@@ -713,7 +713,7 @@
         </div>
         <!-- end page title end breadcrumb -->
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">{{ __('dashboard-shop-product-index.ListMahsoolatTitle') }}</h4>
@@ -724,8 +724,6 @@
                                 <i class="fa fa-search"></i>
                             </button>
                         </div>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                            <div class="row">
 
                                 <div class="table-responsive">
                                     <table id="datatable" class="table table-bordered dt-responsive dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
@@ -835,13 +833,11 @@
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-5">
                                     <div class="dataTables_info" id="datatable_info" role="status" aria-live="polite"></div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <!-- end col -->

@@ -95,7 +95,6 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title">لیست سفارشات فروشگاه</h4>
                         <p class="text-muted mb-4 font-13">در این بخش میتوانید لیست تمامی سفارشات فروشگاه خود را ملاحظه کنید </p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="searchBox bg-dark" style="margin-top: -15px;">
@@ -178,7 +177,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -84,7 +84,7 @@ Author: Ali Rahmani
 <!-- Top Bar Start -->
 <div class="topbar">
     <!-- LOGO -->
-    <div class="topbar-left"><a href="/" class="logo"><span><img src="/dashboard/assets/images/logo-sm.png" alt="logo-small" class="logo-sm"> </span><span><img src="/dashboard/assets/images/logo-dark.png" alt="logo-large"
+    <div class="topbar-left"><a href="/admin-panel/shop/dashboard" class="logo"><span><img src="/dashboard/assets/images/logo-sm.png" alt="logo-small" class="logo-sm"> </span><span><img src="/dashboard/assets/images/logo-dark.png" alt="logo-large"
                                                                                                                                                                 class="logo-lg"></span></a></div>
     <!--end logo-->
     <!-- Navbar -->
@@ -153,9 +153,17 @@ Author: Ali Rahmani
             <nav class="nav">
 
 
+                <a href="#PayanPayShopMaker" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="{{ __('dashboard-layouts-master.sideBarTitleForooshgahSaz') }}">
+                    <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path
+                                d="M169.6 377.6c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6s41.601-18.718 41.601-41.6c-.001-22.884-18.72-41.601-41.601-41.601zM48 51.2v41.6h41.6l74.883 151.682-31.308 50.954c-3.118 5.2-5.2 12.482-5.2 19.765 0 27.85 19.025 41.6 44.825 41.6H416v-40H177.893c-3.118 0-5.2-2.082-5.2-5.2 0-1.036 2.207-5.2 2.207-5.2l20.782-32.8h154.954c15.601 0 29.128-8.317 36.4-21.836l74.882-128.8c1.237-2.461 2.082-6.246 2.082-10.399 0-11.446-9.364-19.765-20.8-19.765H135.364L115.6 51.2H48zm326.399 326.4c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6S416 442.082 416 419.2c0-22.883-18.719-41.6-41.601-41.6z">
+                        </path>
+                    </svg>
+                </a>
+
                 <a href="#PayanPayDashboard"
                    class="nav-link {{ request()->is('*verification/sms*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }} "
-                   data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="{{ __('dashboard-layouts-master.sideBarTitleDashboardAsli') }}">
+                   data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="پروفایل و تنظیمات">
                     <i style="color: #86a3f7;font-size: 25px" class="  {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('*verification/sms*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/UserInformation*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/index*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/ticket*') == 1 ? 'menu-active' : '' }} {{ request()->is('dashboard/setting*') == 1 ? 'menu-active' : '' }} mdi mdi-desktop-mac-dashboard"></i>
                 </a>
 
@@ -167,13 +175,7 @@ Author: Ali Rahmani
                 </a>
 
 
-                <a href="#PayanPayShopMaker" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="{{ __('dashboard-layouts-master.sideBarTitleForooshgahSaz') }}">
-                    <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path
-                                d="M169.6 377.6c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6s41.601-18.718 41.601-41.6c-.001-22.884-18.72-41.601-41.601-41.601zM48 51.2v41.6h41.6l74.883 151.682-31.308 50.954c-3.118 5.2-5.2 12.482-5.2 19.765 0 27.85 19.025 41.6 44.825 41.6H416v-40H177.893c-3.118 0-5.2-2.082-5.2-5.2 0-1.036 2.207-5.2 2.207-5.2l20.782-32.8h154.954c15.601 0 29.128-8.317 36.4-21.836l74.882-128.8c1.237-2.461 2.082-6.246 2.082-10.399 0-11.446-9.364-19.765-20.8-19.765H135.364L115.6 51.2H48zm326.399 326.4c-22.882 0-41.6 18.718-41.6 41.601 0 22.882 18.718 41.6 41.6 41.6S416 442.082 416 419.2c0-22.883-18.719-41.6-41.601-41.6z">
-                        </path>
-                    </svg>
-                </a>
+
 
 
                 <a style="display: none" href="#PayanPayBashgah" class="nav-link" data-toggle="tooltip-custom" data-placement="top" title="" data-original-title="{{ __('dashboard-layouts-master.sideBarTitleBashgahMoshtarian') }}">
@@ -236,10 +238,12 @@ Author: Ali Rahmani
             <div class="menu-body slimscroll">
                 <div id="PayanPayDashboard" class="main-icon-menu-pane">
                     <div class="title-box">
-                        <h6 class="menu-title">داشبورد اصلی</h6>
+                        <h6 class="menu-title">پروفایل و تنظیمات</h6>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item "><a style="color: red" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('*verification/sms*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و احراز هویت</a></li>
+                        @if(\Auth::user()->userInformation->status !== 5)
+                            <li class="nav-item "><a style="color: red" class="nav-link {{ request()->is('dashboard/UserInformation*') == 1 ? 'active' : '' }} {{ request()->is('*verification/sms*') == 1 ? 'active' : '' }}" href="{{ route('UserInformation.index') }}"><i class="dripicons-meter"></i>تکمیل اطلاعات و احراز هویت</a></li>
+                        @endif
                         <li style="display: none" class="nav-item "><a class="nav-link {{ request()->is('dashboard/index*') == 1 ? 'active' : '' }}" href="{{ route('index.index') }}"><i class="dripicons-user-group"></i>داشبورد گزارشات کلی</a></li>
                         <li class="nav-item"><a class="nav-link  {{ request()->is('dashboard/ticket*') == 1 ? 'active' : '' }}" href="{{ route('ticket.index') }}"><i class="dripicons-document"></i>پشتیبانی و تیکتینگ</a></li>
                         <li class="nav-item "><a class="nav-link {{ request()->is('dashboard/setting*') == 1 ? 'active' : '' }}" href="{{ route('setting.index') }}"><i class="dripicons-document"></i>تنظیمات و پروفایل کاربری</a></li>
@@ -255,11 +259,10 @@ Author: Ali Rahmani
                 <div id="PayanPayShopMaker" class="main-icon-menu-pane {{ request()->is('*shop*') == 1 ? 'active' : '' }} {{ request()->is('*payment*') == 1 ? 'active' : '' }}">
                     <div class="title-box">
 
-                        <h6 class="menu-title">{{ __('dashboard-layouts-master.forooshgahSazSideBarPageTitle') }}</h6>
                     </div>
                     @if (\Auth::user()->shop()->count() != 0)
-                        <li class="nav-item bg-light p-2 pr-4 mb-2 mt-2"><a class="nav-link" target="_blank" href="{{ route('shop', \Auth::user()->shop()->first()->english_name) }}"><i class="fa fa-eye"></i> {{ __('dashboard-layouts-master.forooshgahSazSideBarShow') }} </a></li>
-                        <li class="nav-item bg-primary p-2 pr-4 mb-2 mt-2 rounded"><a class="nav-link text-white iranyekan font-weight-bolder" href="{{ request()->is('*application*') != 1 ? route('application.index') : '#' }}"><i class="fas fa-arrow-alt-circle-down	text-white"></i> درخواست اپلیکیشن </a></li>
+                        <li class="nav-item bg-light p-2 pr-4 mb-2 mt-2"><a class="nav-link" target="_blank" href="{{ route('shop', \Auth::user()->shop()->first()->english_name) }}"><i class="fa fa-eye"></i> مشاهده فروشگاه </a></li>
+                        <li style="display: none" class="nav-item bg-primary p-2 pr-4 mb-2 mt-2 rounded"><a class="nav-link text-white iranyekan font-weight-bolder" href="{{ request()->is('*application*') != 1 ? route('application.index') : '#' }}"><i class="fas fa-arrow-alt-circle-down	text-white"></i> درخواست اپلیکیشن </a></li>
                     @endif
                     <ul class="nav">
                         @if (\Auth::user()->shop()->count() == 0)

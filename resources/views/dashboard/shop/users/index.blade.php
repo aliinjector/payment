@@ -140,9 +140,8 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title">{{ __('dashboard-shop-users-index.ListKarbaranTitle') }}</h4>
                         <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-users-index.ListKarbaranDesc') }}</p>
-                        <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
-                                <div style="margin: auto" class="col-sm-12">
+                                <div class="col-sm-12">
                                     <div class="searchBox bg-dark"  style="margin-top: -15px;">
                                         <input type="text" id="myInputTextField" class="searchInput">
                                         <button class="searchButton" href="#">
@@ -172,7 +171,7 @@
                                                     <td>{{ $user->created_at }}</td>
                                                     <td>{{ $user->created_at }}
                                                       <div class="d-none icon-show">
-                                                          
+
                                                           <a href="{{ route('users.purchases', $user) }}" title="لیست سفارشات" id="edit"><i class="fas fa-shopping-cart text-danger mx-1"></i>
                                                           </a>
                                                       </div>
@@ -184,7 +183,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
