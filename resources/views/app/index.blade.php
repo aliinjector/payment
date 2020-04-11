@@ -415,7 +415,6 @@
 
 
                     </div>
-                    <a href="" class="btn  dec_btn  color2-bg">مشاهده آخرین محصولات<i class="fal fa-arrow-alt-right"></i></a>
                 </div>
             </section>
             <!--section end-->

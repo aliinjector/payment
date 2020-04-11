@@ -14,7 +14,7 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         if(request()->getHost() === 'omidshop.net' OR request()->getHost() === '127.0.0.1' OR request()->getHost() === 'localhost'){
-            $products = Product::orderBy('id', 'DESC')->limit(6)->get();
+            $products = Product::orderBy('id', 'DESC')->limit(8)->get();
             $shops = Shop::orderBy('id', 'ASC')->limit(10)->get();
             return view('app.index', compact('products', 'shops'));
         }else{
@@ -60,8 +60,8 @@ class IndexController extends Controller
         $orderBy = 'desc';
         $perPage = 20;
         $keyword = null;
-        $minPrice = 0;
-        $maxPrice = 9999999999;
+        $minPrice = Product::all()->min('price');
+        $maxPrice = Product::all()->max('price');;
 
         if ($request->has('orderBy')) $orderBy = $request->orderBy;
         if ($request->has('q')) $keyword = $request->keyword;
@@ -70,12 +70,11 @@ class IndexController extends Controller
         if ($request->has('minprice')) $minPrice = $request->minprice;
         if ($request->has('maxprice')) $maxPrice = $request->maxprice;
 
-//dd($maxPrice);
-//        $products = Product::search($q)->orderBy($sortBy, $orderBy)->paginate(20)->appends(request()->except('page', '_token'));
+        // $products = Product::search($q)->orderBy($sortBy, $orderBy)->paginate(20)->appends(request()->except('page', '_token'));
         $products = Product::where('title', 'like', '%' . $request->keyword . '%')->where('status', 'enable')->where('price', '>' , $minPrice)->where('price', '<' , $maxPrice)->orderBy($sortBy, $orderBy)->paginate($perPage)->appends(request()->except('page', '_token'));
 
-        $minPriceProduct = $products->min('price');
-        $maxPriceProduct = $products->max('price');
+        $minPriceProduct = $minPrice;
+        $maxPriceProduct = $maxPrice;
 
         return view('app.products', compact('products', 'orderBy', 'sortBy', 'keyword', 'perPage', 'minPriceProduct', 'maxPriceProduct'));
     }
