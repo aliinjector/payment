@@ -40,7 +40,7 @@ class ShopSettingRequest extends FormRequest
             'online_payment' => 'in:on',
             'online_payment' => 'in:on',
             'cash_payment' => 'in:on',
-            'url' => 'nullable|regex:/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/',
+            'url' => 'nullable|regex:/^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/|max:200',
             'quick_way_price' => 'numeric|min:0|max:99999999999999999',
             'posting_way_price' => 'numeric|min:0|max:99999999999999999',
             // 'person_way_price' => 'numeric|min:0|max:99999999999999999',
