@@ -31,6 +31,9 @@ class CartRequest extends FormRequest
     {
         return [
           'total_price' => 'numeric',
+          'product_id' => 'min:1|max:100000',
+          'color' => 'min:1|max:100000',
+          'specification' => 'min:1|max:100000',
         ];
     }
 }

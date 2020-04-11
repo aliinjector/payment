@@ -35,6 +35,9 @@ class ProductUpdateRequest extends FormRequest
        if ($request->type == 'product') {
          return [
            'title' => 'required|max:100',
+           'value' => 'max:4000',
+           'productCat_id' => 'required|numeric|min:1|max:10000000000',
+           'brand_id' => 'max:100000000',
            'description' => 'required|min:10|max:4000',
            'amount' => ['required',
            'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:999999','min:0'
@@ -56,14 +59,20 @@ class ProductUpdateRequest extends FormRequest
            'money_back' => 'in:on',
            'support' => 'in:on',
            'secure_payment' => 'in:on',
-           'color' => 'max:200',
-           'tags' => 'max:200',
+           'discount_status' => 'in:on',
+           'color' => 'max:400',
+           'specifications' => 'max:400',
+           'tags' => 'max:500',
            'facility' => 'max:300',
+           'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
          ];
        }
    else if($request->type == 'file'){
    return [
      'title' => 'required|max:100',
+     'value' => 'max:4000',
+     'productCat_id' => 'required|numeric|min:1|max:10000000000',
+     'brand_id' => 'max:100000000',
      'description' => 'required|min:10|max:4000',
      'price' => ['required',
      'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
@@ -75,13 +84,20 @@ class ProductUpdateRequest extends FormRequest
      'money_back' => 'in:on',
      'support' => 'in:on',
      'secure_payment' => 'in:on',
-     'tags' => 'max:200',
+     'tags' => 'max:500',
      'facility' => 'max:300',
+     'specifications' => 'max:400',
+     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+     'attachment' => 'required|mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp,rar|max:50000',
+
    ];
    }
    else{
    return [
      'title' => 'required|max:100',
+     'value' => 'max:4000',
+     'productCat_id' => 'required|numeric|min:1|max:10000000000',
+     'brand_id' => 'max:100000000',
      'description' => 'required|min:10|max:4000',
      'fast_sending' => 'in:on',
      'money_back' => 'in:on',
@@ -93,8 +109,10 @@ class ProductUpdateRequest extends FormRequest
      'off_price' => ['nullable','lt:price',
      'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
    ],
-     'tags' => 'max:200',
+     'tags' => 'max:500',
      'facility' => 'max:300',
+     'specifications' => 'max:400',
+     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
      ];
    }
 

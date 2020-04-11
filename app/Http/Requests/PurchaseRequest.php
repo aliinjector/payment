@@ -33,7 +33,7 @@ class PurchaseRequest extends FormRequest
     public function rules()
     {
             return [
-              'code' => 'required|min:1|max:40|string'
+              'code' => 'required|min:1|max:100|string'
             ];
 
           }

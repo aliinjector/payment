@@ -100,6 +100,10 @@ class PurchaseController extends Controller
      */
      public function destroy(Request $request)
      {
+       $request->validate([
+         'id' => 'required|numeric|min:1|max:10000000000',
+         'purchaseid' => 'required|numeric|min:1|max:10000000000'
+   ]);
        $cartProduct = CartProduct::find($request->id);
        $purchase = UserPurchase::find($request->purchaseid);
        if ($purchase->shop->user_id !== \Auth::user()->id) {

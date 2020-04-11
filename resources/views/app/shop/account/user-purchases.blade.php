@@ -8,7 +8,7 @@
                 <h1 class="">حساب کاربری</h1>
                 <div class="">
                     <div class="">
-                      @if($ppurchase-indexurchases->count() > 0)
+                      @if($purchases->count() > 0)
                         <h3 class="">سوابق سفارشات</h3>
                         <div class="">
                             <table class="">

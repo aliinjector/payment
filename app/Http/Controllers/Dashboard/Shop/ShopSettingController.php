@@ -99,6 +99,7 @@ class ShopSettingController extends Controller
     {
         if (\Auth::user()->shop()->first()->english_name == $request->english_name) {
           //check for unique name for shop
+
             $request->validate([
               'english_name' => 'required|regex:/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}$/'
         ]);
@@ -108,6 +109,9 @@ class ShopSettingController extends Controller
                   'english_name' => 'required|unique:shops|regex:/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}$/'
             ]);
         }
+        $request->validate([
+          'category_id' => 'required|numeric|min:1|max:10000000000',
+    ]);
         if(!isset($request->quick_way) and !isset($request->posting_way) and !isset($request->person_way)){
           return redirect()->back()->withErrors(['باید حداقل یک روش ارسال انتخاب شود']);
          }
@@ -237,6 +241,9 @@ class ShopSettingController extends Controller
 
 
     public function updateTemplate(ShopThemeRequest $request){
+      $request->validate([
+        'template_id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $shop = \Auth::user()->shop()->first()->update([
         'template_id' => $request->template_id,
       ]);
@@ -256,6 +263,9 @@ class ShopSettingController extends Controller
     }
 
     public function destroyImage(Request $request){
+      $request->validate([
+        'type' => 'required|in:icon,logo',
+  ]);
       $shop = \Auth::user()->shop()->first();
       if($request->type == 'icon'){
         $shop->update([

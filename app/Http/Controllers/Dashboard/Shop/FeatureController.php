@@ -25,6 +25,9 @@ class FeatureController extends Controller
           return redirect()->back();
       }
       else{
+        $request->validate([
+          'cat_id' => 'required|numeric|min:1|max:10000000000',
+    ]);
               $category = ProductCategory::find($request->cat_id);
               $shop = \Auth::user()->shop()->first();
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
@@ -56,6 +59,9 @@ class FeatureController extends Controller
      */
     public function store(FeatureRequest $request)
     {
+      $request->validate([
+        'productCat_id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       if($request->file('icon') == null){
         $icon = null;
       }
@@ -112,6 +118,9 @@ class FeatureController extends Controller
      */
     public function edit(Request $request, $productCategoryFeatureid)
     {
+      $request->validate([
+        'cat_id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $shop = \Auth::user()->shop()->first();
       $category = ProductCategory::find($request->cat_id);
       $productCategoryFeature = \Auth::user()->shop()->first()->ProductCategories()->where('id', $request->cat_id)->get()->first()->features->find($productCategoryFeatureid);
@@ -127,6 +136,9 @@ class FeatureController extends Controller
      */
     public function update(FeatureRequest $request, $productCategoryFeatureid)
     {
+      $request->validate([
+        'cat_id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       if($request->file('icon') == null){
         $icon = null;
       }
@@ -150,6 +162,9 @@ class FeatureController extends Controller
      */
     public function destroy(Feature $feature, Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $feature = Feature::find($request->id);
       if ($feature->productCategory->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

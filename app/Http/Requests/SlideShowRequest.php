@@ -34,7 +34,7 @@ class SlideShowRequest extends FormRequest
         return [
             'title' => 'max:150',
             'description' => 'max:250',
-            'url' => 'max:150|url',
+            'url' => 'max:200|url',
             'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }

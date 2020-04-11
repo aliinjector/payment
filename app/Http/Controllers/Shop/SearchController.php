@@ -14,6 +14,9 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class SearchController extends Controller
 {
     public function index(Request $request, $shop){
+      $request->validate([
+        'queryy' => 'required|min:1|max:100',
+  ]);
 
         $shop = Shop::where('english_name', $shop)->first();
         $products = Product::search($request->queryy)->where('shop_id', $shop->id)->get();

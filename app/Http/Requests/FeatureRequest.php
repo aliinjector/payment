@@ -34,7 +34,7 @@ class FeatureRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|min:1|max:100',
             'icon' => 'mimes:jpeg,png,jpg,gif|max:2048',
         ];
     }

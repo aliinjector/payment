@@ -32,7 +32,7 @@ class AddressRequest extends FormRequest
           'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
           'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
             'zip_code' => 'required|digits:10',
-            'address' => 'required|min:1|max:220',
+            'address' => 'required|min:1|max:400',
         ];
     }
 }

@@ -39,7 +39,7 @@ class VoucherRequest extends FormRequest
           'code' => 'unique:vouchers|min:1|max:50',
           'first_purchase' => 'in:on',
           'disposable' => 'in:on',
-          'users' => 'max:170',
+          'users' => 'max:500',
           'discount_amount' => ['required',
           'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
         ],

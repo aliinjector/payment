@@ -97,6 +97,9 @@ class DownloadLinkRequestController extends Controller
      */
     public function destroy(Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $downloadLinkRequest = ProductDownloadStatus::find($request->id);
       if ($downloadLinkRequest->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
@@ -110,6 +113,9 @@ class DownloadLinkRequestController extends Controller
 
 
     public function acceptRequest(Request $request){
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $downloadLinkRequest = ProductDownloadStatus::find($request->id);
       if ($downloadLinkRequest->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

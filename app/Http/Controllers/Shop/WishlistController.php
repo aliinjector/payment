@@ -99,6 +99,11 @@ class WishlistController extends Controller
 
 
     public function deleteFromWishlist(Request $request){
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000000',
+        'shop' => 'required|min:0|max:1000000000',
+        'wishlist' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $shop = Shop::where('english_name', $request->shop)->get()->first();
       \Auth::user()->wishlist()->get()->where('id', $request->wishlist)->first()->products()->detach($request->id);
       toastr()->success('حذف شد.', '');

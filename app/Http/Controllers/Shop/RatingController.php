@@ -12,6 +12,12 @@ class RatingController extends Controller
 {
 
       public function updateRate(Request $request) {
+        $request->validate([
+          'id' => 'required|numeric|min:1|max:10000000000000',
+          'rate' => 'required|min:0|max:5',
+          'shop' => 'required|min:1|max:10000000000',
+          'slug' => 'required|min:1|max:10000000000000',
+    ]);
           $user = \auth::user();
           $product = Product::find($request->id);
           if (Rating::where([['author_id', $user->id], ['ratingable_id', $product->id]])->get()->count() == 0) {

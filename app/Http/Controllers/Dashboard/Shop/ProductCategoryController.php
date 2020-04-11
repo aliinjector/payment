@@ -165,6 +165,9 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $productCategory , Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $productCategory = ProductCategory::find($request->id);
       if ($productCategory->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
@@ -176,6 +179,9 @@ class ProductCategoryController extends Controller
            }
 
      public function destroyIcon(Request $request){
+       $request->validate([
+         'id' => 'required|numeric|min:1|max:10000000000',
+   ]);
        $productCategory = ProductCategory::find($request->id);
        if ($productCategory->shop->user_id !== \Auth::user()->id) {
                alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

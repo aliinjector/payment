@@ -119,7 +119,10 @@ class SpecificationController extends Controller
      */
     public function destroy(Specification $specification, Request $request)
     {
-      {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
+
         $specification = Specification::find($request->id);
         if ($specification->shop->user_id !== \Auth::user()->id) {
                 alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
@@ -128,6 +131,6 @@ class SpecificationController extends Controller
                  $specification->delete();
                  alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                  return redirect()->back();
-      }
+
     }
 }

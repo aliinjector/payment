@@ -175,6 +175,12 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function removeFromCart(Request $request){
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+        'cartProductId' => 'required|numeric|min:1|max:10000000000',
+        'cart' => 'required|numeric|min:1|max:10000000000',
+        'color' => 'nullable|numeric|min:1|max:10000000000'
+  ]);
         if (\Auth::user()->cart->user_id !== \Auth::user()->id) {
                   alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
                   return redirect()->back();

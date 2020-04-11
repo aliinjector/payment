@@ -135,6 +135,9 @@ class AddressController extends Controller
      */
     public function destroy(Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+    ]);
       $address = Address::find($request->id);
       if ($address->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

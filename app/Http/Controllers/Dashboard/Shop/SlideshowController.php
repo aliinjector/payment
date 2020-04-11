@@ -142,6 +142,9 @@ class SlideshowController extends Controller
      */
     public function destroy(Slideshow $slideshow, Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $slideshow = Slideshow::find($request->id);
       if ($slideshow->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

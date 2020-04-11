@@ -122,6 +122,9 @@ class FAQController extends Controller
      */
     public function destroy(Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $faq = FAQ::find($request->id);
       if ($faq->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

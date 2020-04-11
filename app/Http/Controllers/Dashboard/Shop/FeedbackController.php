@@ -108,6 +108,9 @@ class FeedbackController extends Controller
      */
     public function destroy(Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $feedback = Feedback::find($request->id);
 
       if ($feedback->shop->user_id !== \Auth::user()->id) {

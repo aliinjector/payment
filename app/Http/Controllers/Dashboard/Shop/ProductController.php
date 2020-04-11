@@ -702,7 +702,10 @@ else{
 
 
     public function changeStatus(Request $request){
-
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+        'shop' => 'required|min:1|max:10000000000',
+  ]);
       $shop = \Auth::user()->shop()->first();
       $product = $shop->products->where('id', $request->id)->first();
       if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
@@ -727,6 +730,9 @@ else{
 
 
     public function getFeatures(Request $request){
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $features = collect();
       if($this->getAllParentCategories($request->id)->count() == 0){
         $features[] = ProductCategory::find($request->id)->features;
@@ -748,6 +754,9 @@ else{
      */
      public function destroy(Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
     $product = Product::where('id' , $request->id)->get()->first();
              if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
@@ -760,7 +769,9 @@ else{
 
 
       public function destroyImage(Request $request){
-
+        $request->validate([
+          'id' => 'required|numeric|min:1|max:10000000000',
+    ]);
         $product = Product::find($request->id);
         if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
             alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
@@ -778,7 +789,14 @@ else{
 
 
       public function destroyFile(Request $request){
+        $request->validate([
+          'id' => 'required|numeric|min:1|max:10000000000',
+    ]);
         $product = Product::find($request->id);
+        if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
+            alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+            return redirect()->back();
+        }
         if($product->type == 'file'){
           Storage::delete($product->attachment);
           $product->update([
@@ -817,6 +835,9 @@ else{
 
     public function search(Request $request)
     {
+      $request->validate([
+        'title' => 'required|min:1|max:1000',
+  ]);
         $title = $request->title;
         if(request()->has('notification')){
             $user = \auth()->user();

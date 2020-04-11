@@ -48,6 +48,9 @@ class SpecificationItemController extends Controller
      */
     public function store(SpecificationItemRequest $request)
     {
+      $request->validate([
+        'specification_id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       switch ($request->input('action')) {
         //save and close modal
           case 'justSave':
@@ -104,6 +107,9 @@ class SpecificationItemController extends Controller
      */
     public function update(SpecificationItemRequest $request, specificationItem $specificationItem)
     {
+      $request->validate([
+        'specification_id' => 'required|numeric|min:1|max:10000000000',
+  ]);
         $specificationItem = \Auth::user()->shop()->first()->specifications()->where('id',$request->specificationId)->get()->first()->items()->where('id', $specificationItem->id)->update([
             'name' => $request->name,
             'price' => $this->fa_num_to_en($request->price),
@@ -117,7 +123,9 @@ class SpecificationItemController extends Controller
 
 
     public function changeStatus(Request $request){
-
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+    ]);
         $specificationItem = SpecificationItem::find($request->id);
         if($specificationItem->status == 'disable')
             $specificationItem->status = 'enable';
@@ -137,6 +145,9 @@ class SpecificationItemController extends Controller
      */
     public function destroy(specificationItem $specificationItem, Request $request)
     {
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+    ]);
       $specificationItem = SpecificationItem::find($request->id);
       if ($specificationItem->specification->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

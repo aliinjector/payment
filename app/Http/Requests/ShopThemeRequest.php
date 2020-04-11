@@ -39,10 +39,9 @@ class ShopThemeRequest extends FormRequest
           'buyCount_show' => 'in:enable,disable',
           'special_offer' => 'in:enable,disable',
           'watermark' => 'mimes:jpeg,png,jpg,gif|max:2048',
-          'special_offer_text' => 'min:1|max:70',
+          'special_offer_text' => 'min:1|max:150',
           'template_id' => 'numeric|min:1|max:50',
-
-
+          'slide_category' => 'max:100',
         ];
     }
 }

@@ -55,7 +55,10 @@ class IndexController extends Controller
 
     public function productsSearch(Request $request)
     {
-
+      $request->validate([
+        'keyword' => 'required|min:1|max:1000',
+        'orderBy' => 'nullable|min:1|max:100'
+    ]);
       $products = Product::where('title', 'like', '%' . $request->keyword . '%')->get();
       $request->orderBy == 'پربازدید ترین' ? $products = $products->sortByDesc('viewCount')->forPage(10)->appends(request()->except('page', '_token')) : '';
       dd($products);

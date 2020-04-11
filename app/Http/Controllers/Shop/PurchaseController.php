@@ -182,6 +182,7 @@ class PurchaseController extends Controller
 
 
       public function purchaseList($shop, Request $request) {
+
         if(\Session::get('checkDirectAccess') != \auth::user()->id . \auth::user()->cart->id . \auth::user()->cart->created_at->timestamp){
           \abort('403');
         }
@@ -208,7 +209,7 @@ class PurchaseController extends Controller
           foreach($request->except('_token') as $productIdAndCartProductId => $quantity){
           $productId = explode('-',$productIdAndCartProductId)[0];
           $cartProductId = explode('-',$productIdAndCartProductId)[1];
-            $product = Product::find($productId);
+            $product = Product::findOrFail($productId);
             if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()){
               $productPrice = $product->off_price;
             }
@@ -222,7 +223,7 @@ class PurchaseController extends Controller
 
               if($singleCartProduct->specification != null){
                 foreach(\json_decode($singleCartProduct->specification) as $specificationItem){
-                  $specificationItem = SpecificationItem::find($specificationItem);
+                  $specificationItem = SpecificationItem::findOrFail($specificationItem);
                   $specificationPrice += $specificationItem->price;
                 }
               }
@@ -276,10 +277,10 @@ class PurchaseController extends Controller
 
           if (!isset($request->address)) {
 
-              $request->validate(['new_address' => 'required|max:250', 'shipping_way' => 'required']);
+              $request->validate(['new_address' => 'required|max:250', 'shipping_way' => 'required|max:250']);
           } else {
 
-              $request->validate(['address' => 'required|max:250', 'shipping_way' => 'required']);
+              $request->validate(['address' => 'required|max:250', 'shipping_way' => 'required|max:250']);
           }
         }
         $shipping = $request->shipping_way;
@@ -369,6 +370,10 @@ class PurchaseController extends Controller
 
 
           public function getShippingPrice(Request $request){
+            $request->validate([
+              'type' => 'required|in:posting_way_price,person_way_price,quick_way_price',
+              'shop' => 'required|min:1|max:10000000000',
+        ]);
             $typePrice = $request->type;
             $shippingPrice = Shop::where('english_name', $request->shop)->get()->first()->$typePrice;
             return response()->json($shippingPrice);

@@ -134,6 +134,9 @@ class BrandController extends Controller
      */
      public function destroy(Brand $brand , Request $request)
      {
+       $request->validate([
+         'id' => 'required|numeric|min:1|max:10000000000',
+   ]);
        $brand = Brand::find($request->id);
        if ($brand->shop->user_id !== \Auth::user()->id) {
                alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
@@ -146,6 +149,9 @@ class BrandController extends Controller
 
 
     public function destroyIcon(Request $request){
+      $request->validate([
+        'id' => 'required|numeric|min:1|max:10000000000',
+  ]);
       $brand = Brand::find($request->id);
       if ($brand->shop->user_id !== \Auth::user()->id) {
               alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');

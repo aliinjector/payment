@@ -13,9 +13,9 @@ class SendEmailController extends Controller
     {
 
      $this->validate($request, [
-      'name'     =>  'required',
-      'email'  =>  'required|email',
-      'message' =>  'required'
+      'name'     =>  'required|min:1|max:10000',
+      'email'  =>  'required|email|min:1|max:100000',
+      'message' =>  'required|min:1|max:1000000000000'
      ]);
 
         $data = array(
