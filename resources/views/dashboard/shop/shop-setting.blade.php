@@ -62,13 +62,13 @@
                                     <div class="form-group row">
                                         <label for="example-text-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem1') }}</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="firstName" disabled value="{{ \Auth::user()->firstName }}" id="example-text-input">
+                                            <input class="form-control" type="text" name="firstName" disabled value="{{ old('firstName', \Auth::user()->firstName) }}" id="example-text-input">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem2') }}</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="text" name="lastName" disabled value="{{ \Auth::user()->lastName }}">
+                                            <input class="form-control" type="text" name="lastName" disabled value="{{ old('lastName', \Auth::user()->lastName) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -188,7 +188,7 @@
                                               </div>
                                               <div class="row">
                                                   <div id="quick_way_price" class="collapse mt-2 ml-2">
-                                                      <input class="form-control border-custom" type="number" name="quick_way_price" value="{{ $shopInformation->quick_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
+                                                      <input class="form-control border-custom" type="number" name="quick_way_price" value="{{ old('quick_way_price', $shopInformation->quick_way_price) }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
                                                   </div>
                                                 </div>
 
@@ -223,7 +223,7 @@
                                                 <button type="button" class="btn btn-outline-pink btn-sm mt-2" data-toggle="collapse" data-target="#posting_way_price">تعیین مبلغ (تومان) </button>
                                               </div>
                                                   <div id="posting_way_price" class="collapse mt-2">
-                                                      <input class="form-control border-custom" type="number" name="posting_way_price" value="{{ $shopInformation->posting_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
+                                                      <input class="form-control border-custom" type="number" name="posting_way_price" value="{{ old('posting_way_price', $shopInformation->posting_way_price) }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
                                                   </div>
 
                                             </div>
@@ -257,7 +257,7 @@
 
                                               </div>
                                                   <div id="person_way_price" class="collapse mt-2">
-                                                      <input class="form-control border-custom" type="number" name="person_way_price" value="{{ $shopInformation->person_way_price }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
+                                                      <input class="form-control border-custom" type="number" name="person_way_price" value="{{ old('person_way_price', $shopInformation->person_way_price) }}" style="position: relative;left: 9px;width: 116px;height: 32px;">
                                                   </div>
 
                                             </div>
@@ -405,7 +405,7 @@
                         <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">تعداد دسته بندی های منو</label>
                             <div class="col-sm-10">
-                              <input class="form-control" type="number" name="menu_show_count" id="example-password-input" value="{{ \Auth::user()->shop()->first()->menu_show_count }}">
+                              <input class="form-control" type="number" name="menu_show_count" id="example-password-input" value="{{ old('menu_show_count', \Auth::user()->shop()->first()->menu_show_count) }}">
                             </div>
                         </div>
 
@@ -826,7 +826,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->economic_code == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="economic_code_number" class="collapse mt-2">
-                                    <input class="form-control border-custom" type="text" name="economic_code_number" value="{{ \Auth::user()->shop()->first()->invoice->economic_code_number }}">
+                                    <input class="form-control border-custom" type="text" name="economic_code_number" value="{{ old('economic_code_number', \Auth::user()->shop()->first()->invoice->economic_code_number) }}">
                                 </div>
 
                             </div>
@@ -841,7 +841,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->registration_number == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="registration_number‌_number" class="collapse mt-2">
-                                    <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ \Auth::user()->shop()->first()->invoice->registration_number‌_number }}">
+                                    <input class="form-control border-custom" type="text" name="registration_number‌_number" value="{{ old('registration_number‌_number', \Auth::user()->shop()->first()->invoice->registration_number‌_number) }}">
                                 </div>
                             </div>
                         </div>
@@ -864,7 +864,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->description_status == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="description" class="collapse mt-2">
-                                    <input class="form-control border-custom" type="text" name="description" value="{{ \Auth::user()->shop()->first()->invoice->description }}">
+                                    <input class="form-control border-custom" type="text" name="description" value="{{ old('description', \Auth::user()->shop()->first()->invoice->description) }}">
                                 </div>
 
                             </div>
@@ -879,7 +879,7 @@
                                     <option value="disable" @if(\Auth::user()->shop()->first()->invoice->motto == 'disable') selected @endif>{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItemDisable') }}</option>
                                 </select>
                                 <div id="motto_text" class="collapse mt-2">
-                                    <input class="form-control border-custom" type="text" name="motto_text" value="{{ \Auth::user()->shop()->first()->invoice->motto_text }}">
+                                    <input class="form-control border-custom" type="text" name="motto_text" value="{{ old('motto_text', \Auth::user()->shop()->first()->invoice->motto_text) }}">
                                 </div>
 
                             </div>

@@ -36,11 +36,11 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان اسلاید :</span></div>
-                                    <textarea class="form-control" id="title" name="title"></textarea>
+                                    <textarea class="form-control" id="title" name="title">{{ old('title') }}</textarea>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات اسلاید :</span></div>
-                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                    <textarea class="form-control" id="description" name="description">{{ old('title') }}</textarea>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">آدرس صفحه اسلاید :</span></div>
@@ -84,11 +84,11 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">عنوان اسلاید :</span></div>
-                                    <textarea class="form-control" id="titleEdit{{ $slideshow->id }}" name="title">{{ $slideshow->title }}</textarea>
+                                    <textarea class="form-control" id="titleEdit{{ $slideshow->id }}" name="title">{{ old('title', $slideshow->title) }}</textarea>
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات اسلاید :</span></div>
-                                    <textarea class="form-control" id="descriptionEdit{{ $slideshow->id }}" name="description">{{ $slideshow->description }}</textarea>
+                                    <textarea class="form-control" id="descriptionEdit{{ $slideshow->id }}" name="description">{{ old('description', $slideshow->description) }}</textarea>
 
                                 </div>
                                 <div class="input-group mt-3">

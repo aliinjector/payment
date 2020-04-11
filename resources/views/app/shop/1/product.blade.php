@@ -71,7 +71,7 @@
 
                             <div class="">
                               @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
-                              <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجودی</span>
+                              <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجود</span>
                               @else
                               <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
                               @endif

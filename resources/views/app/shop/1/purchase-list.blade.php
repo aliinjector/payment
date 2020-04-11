@@ -231,7 +231,7 @@
                                                       آدرس *
                                                         </li>
                                                         <li class="col-lg-12 address_input d-none ">
-                                                            <textarea class="form-control mt-3" name="new_address" id="" cols="90" rows="5" placeholder="در صورت تمایل به ارسال به آدرس جدید لطفا آدرس مورد نظر را در کادر زیر وارد کنید"></textarea>
+                                                            <textarea class="form-control mt-3" name="new_address" id="" cols="90" rows="5" placeholder="در صورت تمایل به ارسال به آدرس جدید لطفا آدرس مورد نظر را در کادر زیر وارد کنید">{{ old('new_address') }}</textarea>
                                                         </li>
                                                     </ul>
                                                 </td>

@@ -81,17 +81,17 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>عنوان سوال :</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" value="{{ $faq->title }}">
+                                    <input type="text" class="form-control inputfield" name="title" value="{{ old('name', $faq->->title) }}">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>متن سوال :</span></div>
-                                    <input type="text" class="form-control inputfield" name="question" value="{{ $faq->question }}">
+                                    <input type="text" class="form-control inputfield" name="question" value="{{ old('name', $faq->->question) }}">
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>پاسخ :</span></div>
-                                    <input type="text" class="form-control inputfield" name="answer" value="{{ $faq->answer }}">
+                                    <input type="text" class="form-control inputfield" name="answer" value="{{ old('name', $faq->->answer) }}">
                                 </div>
                             </div>
                     </div>
