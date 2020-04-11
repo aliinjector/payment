@@ -23,6 +23,7 @@ class DashboardShopController extends Controller
         } else {
             $shop = \Auth::user()->shop()->first();
             $bestSellings = $shop->products()->orderBy('buyCount', 'DESC')->take(3)->get();
+            $bestViews = $shop->products()->orderBy('viewCount', 'DESC')->take(3)->get();
             $shopPurchases = $shop->purchases()->get();
             $sumPurchasesPrice = 0;
             foreach ($shopPurchases as $shopPurchase) {
@@ -45,7 +46,7 @@ class DashboardShopController extends Controller
 //            $addedToCart = \DB::table('cart_product')->where('shop_id', $shop->id)->get();
             $visitorsCount = Stat::where('shop_id', $shop->id)->distinct('ip')->count('ip');
 
-            return view('dashboard.shop.dashboard-shop', compact('shop', 'bestSellings', 'sumPurchasesPrice', 'weeklyVisits', 'weeklyVisitors', 'purchases', 'purchasesSabtShode', 'purchasesPardakhtShode', 'visitorsCount'));
+            return view('dashboard.shop.dashboard-shop', compact('shop','bestViews', 'bestSellings', 'sumPurchasesPrice', 'weeklyVisits', 'weeklyVisitors', 'purchases', 'purchasesSabtShode', 'purchasesPardakhtShode', 'visitorsCount'));
         }
     }
 
