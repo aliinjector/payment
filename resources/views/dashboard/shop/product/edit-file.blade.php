@@ -77,7 +77,7 @@
 
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">توضیحات فایل :</span></div>
-                                      <textarea class="form-control" id="description" name="description">{{ $product->description }}</textarea>
+                                      <textarea class="form-control" id="description" name="description">{{ old('description', $product->description) }}</textarea>
                                   </div>
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">دسته بندی محصول :</span></div>

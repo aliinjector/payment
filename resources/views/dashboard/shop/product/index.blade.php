@@ -206,7 +206,7 @@
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>
                                                     {{ __('dashboard-shop-product-index.addMahsoolFizikiItem2') }} :</span>
                                             </div>
-                                            <textarea class="form-control" id="description" name="description"></textarea>
+                                            <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
                                         </div>
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>
@@ -400,7 +400,7 @@
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>
                                                     {{ __('dashboard-shop-product-index.addMahsoolFileItem2') }} :</span>
                                             </div>
-                                            <textarea class="form-control" id="description2" name="description"></textarea>
+                                            <textarea class="form-control" id="description2" name="description">{{ old('description') }}</textarea>
 
                                         </div>
                                         <div class="input-group mt-3">
@@ -563,7 +563,7 @@
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>
                                                     {{ __('dashboard-shop-product-index.addMahsoolServiceItem2') }}:</span>
                                             </div>
-                                            <textarea class="form-control" id="description3" name="description"></textarea>
+                                            <textarea class="form-control" id="description3" name="description">{{ old('description') }}</textarea>
 
                                         </div>
                                         <div class="input-group mt-3">
