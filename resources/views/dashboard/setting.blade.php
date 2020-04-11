@@ -24,7 +24,7 @@
                             <div class="row">
                                 <div class="col-lg-4 mb-3 mb-lg-0 align-self-center">
                                     <div class="met-profile-main">
-                                        <div class="met-profile-main-pic"><img style="width: 100px;" src="/dashboard/assets/images/users/noavatar.png" alt="" class="rounded-circle"> <span class="fro-profile_main-pic-change"><i class="fas fa-camera"></i></span></div>
+                                        <div class="met-profile-main-pic"><img style="width: 100px;" src="{{ asset(\Auth::user()->avatar) }}" alt="" class="rounded-circle"> <span class="fro-profile_main-pic-change"><i class="fas fa-camera"></i></span></div>
                                         <div class="met-profile_user-detail">
                                             <h5 class="met-user-name"> {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }} </h5>
                                             <p class="mb-0 met-user-name-post">عضو از تاریخ :  {{ jdate(\Auth::user()->created_at) }}</p>
@@ -89,44 +89,7 @@
                 </div>
                 <!--end card-->
             </div>
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        @include('dashboard.layouts.errors')
-
-                        <form method="POST" action="{{ route('setting.update', \Auth::user()->id ) }}">
-                        {{ csrf_field() }}
-                        {{ method_field('PATCH') }}
-                            <!--end form-group-->
-                            <div class="form-group">
-                                <label for="setEmail">آدرس ایمیل</label>
-                                <input type="email" class="form-control" value="{{ \Auth::user()->email }}" id="setEmail" disabled>
-                            </div>
-                            <!--end form-group-->
-                            <div class="form-group">
-                                <label for="setPassword">نام</label>
-                                <input type="password" class="form-control" name="current-password" id="current-password">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="setPassword">نام خانوادگی</label>
-                                <input type="password" class="form-control" name="new-password" id="new-password">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="setPassword">ایمیل </label>
-                                <input type="password" class="form-control" name="new-password_confirmation" id="new-password_confirmation">
-                            </div>
-                            <div class="form-group">
-                                <label for="setPassword">شماره موبایل </label>
-                                <input type="password" class="form-control" name="new-password_confirmation" id="new-password_confirmation">
-                            </div>
-                            <!--end form-group-->
-                    </div>
-                    <!--end card-body-->
-                </div>
-                <!--end card-->
-            </div>
+          
             <!--end col-->
 
             <!--end col-->

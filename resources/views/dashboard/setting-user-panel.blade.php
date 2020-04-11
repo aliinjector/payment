@@ -24,7 +24,7 @@
                             <div class="row">
                                 <div class="col-lg-4 mb-3 mb-lg-0 align-self-center">
                                     <div class="met-profile-main">
-                                        <div class="met-profile-main-pic"><img style="width: 100px;" src="/dashboard/assets/images/users/noavatar.png" alt="" class="rounded-circle"></div>
+                                        <div class="met-profile-main-pic"><img style="width: 100px;" src="{{ asset(\Auth::user()->avatar) }}" alt="" class="rounded-circle"></div>
                                         <div class="met-profile_user-detail">
                                             <h5 class="met-user-name"> {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }} </h5>
                                             <p class="mb-0 met-user-name-post">عضو از تاریخ :  {{ jdate(\Auth::user()->created_at) }}</p>
