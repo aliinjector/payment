@@ -139,7 +139,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="mt-0 header-title">تنظیمات دامین فروشگاه</h3>
-                            <p class="text-muted mb-3">در این بخش میتوانید دامین خود را ثبت نمایید.</p><br>
+                            <p class="text-muted mb-3">درصورت نیاز، میتوانید دامین خود را ثبت نمایید. پس از تکمیل این قیمت میبایسب nameserver دامین خودرا به ns1.omidshop.net و ns2.omidshop.net تغییر دهید تا دامنه برروی سیستم امیدشاپ متصل شود. لازم به ذکر است که دامنه اینترنتی خودرا باید بدون www و بدون http ویا https وارد نمایید. مثال: google.com </p><br>
                             <div class="row">
                                 <div class="col-lg-12">
 
@@ -147,6 +147,7 @@
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دامین فروشگاه</label>
                                         <div class="col-sm-10">
                                             <input class="form-control" type="text" name="url" placeholder="مثال : omidshop.net" value="{{ old('url', $shopInformation->url) }}">
+                                            <p class="text-danger mt-2">دامنه اینترنتی خودرا بدون www و بدون http ویا https وارد نمایید. مثال: google.com</p><br>
                                         </div>
                                     </div>
 

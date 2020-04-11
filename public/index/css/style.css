@@ -3940,8 +3940,8 @@ section.gray-section .section-separator {
 	float:left;
 }
 .price-opt-title {
-	float:left;
-	padding-right:14px;
+	float:right;
+	padding-left:14px;
 	position:relative;
 	top:14px;
 	font-size:12px;

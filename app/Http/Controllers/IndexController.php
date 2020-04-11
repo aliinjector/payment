@@ -55,14 +55,29 @@ class IndexController extends Controller
 
     public function productsSearch(Request $request)
     {
-      $request->validate([
-        'keyword' => 'required|min:1|max:1000',
-        'orderBy' => 'nullable|min:1|max:100'
-    ]);
-      $products = Product::where('title', 'like', '%' . $request->keyword . '%')->get();
-      $request->orderBy == 'پربازدید ترین' ? $products = $products->sortByDesc('viewCount')->forPage(10)->appends(request()->except('page', '_token')) : '';
-      dd($products);
-      return view('app.products', compact('products'));
+
+        $sortBy = 'id';
+        $orderBy = 'desc';
+        $perPage = 20;
+        $keyword = null;
+        $minPrice = 0;
+        $maxPrice = 9999999999;
+
+        if ($request->has('orderBy')) $orderBy = $request->orderBy;
+        if ($request->has('q')) $keyword = $request->keyword;
+        if ($request->has('perPage')) $perPage = $request->perPage;
+        if ($request->has('sortBy')) $sortBy = $request->sortBy;
+        if ($request->has('minprice')) $minPrice = $request->minprice;
+        if ($request->has('maxprice')) $maxPrice = $request->maxprice;
+
+//dd($maxPrice);
+//        $products = Product::search($q)->orderBy($sortBy, $orderBy)->paginate(20)->appends(request()->except('page', '_token'));
+        $products = Product::where('title', 'like', '%' . $request->keyword . '%')->where('status', 'enable')->where('price', '>' , $minPrice)->where('price', '<' , $maxPrice)->orderBy($sortBy, $orderBy)->paginate($perPage)->appends(request()->except('page', '_token'));
+
+        $minPriceProduct = $products->min('price');
+        $maxPriceProduct = $products->max('price');
+
+        return view('app.products', compact('products', 'orderBy', 'sortBy', 'keyword', 'perPage', 'minPriceProduct', 'maxPriceProduct'));
     }
 
 

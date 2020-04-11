@@ -106,7 +106,7 @@
                 <div class="tab">
                   <div id="tab-inpt1" class="tab-content first-tab">
                     <div class="main-search-input-wrap fl-wrap">
-                      <form method="post" action="{{ route('products.search') }}">
+                      <form method="post" id="searchForm" action="{{ route('products.search') }}">
                         @csrf
                         <div class="main-search-input fl-wrap">
                           <div class="main-search-input-item">
@@ -134,7 +134,7 @@
           </div>
         </div>
         <div class="header-sec-link">
-          <a href="#sec1" class="custom-scroll-link"><i class="fal fa-angle-double-down"></i></a>
+          <a href="#sec1" id="productss" class="custom-scroll-link"><i class="fal fa-angle-double-down"></i></a>
         </div>
       </section>
       <!--  section  end-->
@@ -147,8 +147,6 @@
           <div class="mob-nav-content-btn  color2-bg show-list-wrap-search ntm fl-wrap"><i class="fal fa-filter"></i>  Filters</div>
           <div class="fl-wrap">
             <div class="row">
-
-
               <div class="col-md-9">
                 <!-- list-main-wrap-header-->
                 <div class="list-main-wrap-header fl-wrap block_box no-vis-shadow">
@@ -163,25 +161,28 @@
                   <!-- list-main-wrap-opt-->
                   <div class="list-main-wrap-opt">
                     <!-- price-opt-->
+
+                    <div class="grid-opt">
+                      <ul class="no-list-style">
+                        <li class="grid-opt_act"><span class="two-col-grid act-grid-opt tolt" data-microtip-position="bottom" data-tooltip="Grid View"><i class="fal fa-th"></i></span></li>
+                        <li class="grid-opt_act"><span class="one-col-grid tolt" data-microtip-position="bottom" data-tooltip="List View"><i class="fal fa-list"></i></span></li>
+                      </ul>
+                    </div>
+
+
                         <div class="price-opt">
-                          <span class="price-opt-title">ترتیب براساس:</span>
+                          <span class="price-opt-title">:ترتیب براساس</span>
                           <div class="listsearch-input-item">
-                            <select name="orderBy" class="chosen-select no-search-select" >
-                              <option id="higherView">پربازدید ترین</option>
-                              <option id="higherScore">بالاترین امتیاز</option>
-                              <option id="lowestPrice">کمترین قیمت</option>
-                              <option id="highestPrice">بالاترین قیمت</option>
+                            <select onchange="document.getElementById('searchForm').submit();" name="sortBy" class="chosen-select no-search-select" value="{{ $sortBy }}">
+                              @foreach(['id' => 'جدید ترین', 'viewCount' => 'پربازدید ترین', 'buyCount' => 'پرفروش ترین'] as $col => $value)
+                                <option @if($col == $sortBy) selected @endif value="{{$col}}">{{ $value }}</option>
+                              @endforeach
                             </select>
                           </div>
                         </div>
                         <!-- price-opt end-->
                         <!-- price-opt-->
-                        <div class="grid-opt">
-                          <ul class="no-list-style">
-                            <li class="grid-opt_act"><span class="two-col-grid act-grid-opt tolt" data-microtip-position="bottom" data-tooltip="Grid View"><i class="fal fa-th"></i></span></li>
-                            <li class="grid-opt_act"><span class="one-col-grid tolt" data-microtip-position="bottom" data-tooltip="List View"><i class="fal fa-list"></i></span></li>
-                          </ul>
-                        </div>
+
                         <!-- price-opt end-->
                       </div>
                       <!-- list-main-wrap-opt end-->
@@ -197,28 +198,34 @@
                               <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
                                 <img style="height: 250px" src="{{ $product->image['original'] }}" alt="">
                               </a>
-                              <div class="listing-avatar"><a href=""><img src="{{ $product->shop->user->avatar }}" alt=""></a>
-                                <span class="avatar-tooltip">مدیر فروشگاه:‌  <strong> {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</strong></span>
+                              <div class="geodir_status_date gsd_open">
+                                <a target="_blank" href="/{{ $product->shop->english_name }}"> فروشگاه {{ $product->shop->name }}  </a>
                               </div>
-                              <div class="geodir_status_date gsd_open">نام فروشگاه: {{ $product->shop->name }}</div>
-
                             </div>
                             <div class="geodir-category-content fl-wrap title-sin_item">
                               <div class="geodir-category-content-title fl-wrap">
                                 <div class="geodir-category-content-title-item">
                                   <h3 class="title-sin_map">
-                                    <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ $product->title }}</a>
+                                    <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ str_limit($product->title, 60) }}</a>
                                   </h3>
                                 </div>
                               </div>
                               <div class="geodir-category-text fl-wrap">
-                                <p class="small-text">  {!! str_limit($product->description, 100) !!} </p>
+                                <p class="small-text">  {!! str_limit($product->description, 70) !!} </p>
 
                               </div>
                               <div class="geodir-category-footer fl-wrap">
-                                <a class="listing-item-category-wrap" href="#">
-                                  <div class="listing-item-category blue-bg"><i class="fa fa-user"></i></div>
-                                  <span>مدیر فروشگاه:‌ {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</span>
+                                <a class="listing-item-category-wrap" target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">
+                                  <div class="listing-item-category blue-bg"><i class="fa fa-money-bill-alt"></i></div>
+                                  <span>
+                                    @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
+                                      <p class="product-price byekan">{{ number_format($product->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProduct->price) }}تومان</del></span></p>
+                                    @else
+                                      <p class="product-price byekan">{{ number_format($product->price) }} تومان <span class="ml-2 byekan"></span></p>
+                                    @endif
+
+
+                                  </span>
                                 </a>
                               </div>
                             </div>
@@ -239,7 +246,7 @@
                     <div class=" fl-wrap lws_mobile   tabs-act block_box">
                       <div class="filter-sidebar-header fl-wrap" id="filters-column">
                         <ul class="tabs-menu fl-wrap no-list-style">
-                          <li class="current"><a href="#filters-search"> <i style="float: right;" class="fal fa-sliders-h"></i> فیلتر نتایج </a></li>
+                          <li class="current"><a href="#filters-search"> <i style="float: right;" class="fal fa-sliders-h"></i> فیلتر قیمت </a></li>
                         </ul>
                       </div>
                       <div class="scrl-content filter-sidebar    fs-viscon">
@@ -248,13 +255,14 @@
                           <!--tab -->
                           <div class="tab">
                             <div id="filters-search" class="tab-content  first-tab ">
-                              <!-- listsearch-input-item-->
-                              {{--FILTER HERE--}}
-                              <!-- listsearch-input-item-->
 
-                              <div class="listsearch-input-item">
-                                <button class="header-search-button color-bg"><i class="far fa-search"></i><span>جستجو</span></button>
-                              </div>
+                              <span style="direction: rtl">قیمت مورد نظرخودرا انتخاب نمایید </span>
+
+                              <input type="text" id="available-price-1" class="w-100 p-4 font-14 byekan" style="border:0; color:#15939D !important; font-weight:bold;width: 200px;">
+                              <input type="hidden" id="available-price-min"  name="minprice" value="@if(request()->minprice == null) {{ $minPriceProduct }} @else {{ request()->minprice }} @endif">
+                              <input type="hidden" id="available-price-max"  name="maxprice" value="@if(request()->maxprice == null) {{ $maxPriceProduct }} @else {{ request()->maxprice }} @endif">
+
+                              <div style="margin-bottom: 50px;    margin-top: 20px;" id="mySlider"></div>
                               <!-- listsearch-input-item end-->
                             </div>
                           </div>
@@ -319,19 +327,78 @@
   </footer>
   <!--footer end -->
 
-  <a class="to-top"><i class="fas fa-caret-up"></i></a>
+  <a style="width: 140px" class="to-top">تغییر جستجو</a>
 </div>
 <!---start GOFTINO code--->
 <script type="text/javascript">
   !function(){var a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/Hqa6DI",l=localStorage.getItem("goftino");g.type="text/javascript",g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);}"complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();
 </script>
+
+
+
+<script src="/index/js/jquery.min.js"></script>
+<script src="/app/shop/1/assets/js/jquery-ui.js"></script>
+<link rel="stylesheet" href="/app/shop/1/assets/css/jquery-ui.css" />
+<script src="/app/shop/1/assets/js/jquery.ui.slider-rtl.js"></script>
+
+
+
+  <script>
+    $(document).ready(function() {
+      $("#mySlider").slider({isRTL: true, range: true,
+        min: {{ $minPriceProduct }},
+        max: {{ $maxPriceProduct }},
+        values: [@if(request()->minprice != null){{request()->minprice}} @else {{ $minPriceProduct }} @endif, @if(request()->maxprice != null){{request()->maxprice}} @else {{ $maxPriceProduct }} @endif],
+        slide: function(event, ui) {
+          if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
+            $("#available-price-1").val(" از " + min + " تومان " + " - " + " تا " + max + " تومان ");
+            $("#available-price-min").val(min);
+            $("#available-price-max").val(max);
+          }
+          else{
+            $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+            $("#available-price-min").val(ui.values[0]);
+            $("#available-price-max").val(ui.values[1]);
+          }
+        }
+      });
+      if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
+        $("#available-price-1").val(" از " + min + " تومان " + " - " + " تا " + max + " تومان ");
+      }
+      else{
+        $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0).toLocaleString('en') + " تومان " +
+                " - " + " تا " + $("#mySlider").slider("values", 1).toLocaleString('en') + " تومان ");
+      }
+    });
+
+
+
+
+    $('#available-price-min').click(function() {
+      $('.available-price-min').attr('checked', true);
+      setTimeout("$('#searchForm').submit()", 80);
+    });
+    $('#mySlider').click(function() {
+      $('.available-price-max').attr('checked', true);
+      setTimeout("$('#searchForm').submit()", 80);
+    });
+
+    $(document).ready(function () {
+      document.getElementById('sec1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+
+  </script>
+
+
+
+
+
 <!---end GOFTINO code--->
 <!-- Main end -->
 <!--=============== scripts  ===============-->
-<script src="/index/js/jquery.min.js"></script>
 <script src="/index/js/plugins.js"></script>
 <script src="/index/js/scripts.js"></script>
-<script src="/index/js/map-single.js"></script>
 </body>
 
 </html>
