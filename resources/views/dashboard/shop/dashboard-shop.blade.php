@@ -121,7 +121,7 @@
    <div class="col-lg-4">
       <div class="card carousel-bg-img" style="height: 440px;">
          <div class="card-body dash-info-carousel">
-            <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.mahsoolateMahboob') }}</h4>
+            <h4 class="mt-0 header-title">پرفروش ترین  ها</h4>
             <div id="carousel_2" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
                   @php $i=0 @endphp
@@ -186,7 +186,7 @@
       <div class="col-lg-4">
          <div class="card carousel-bg-img" style="height: 469px;">
             <div class="card-body dash-info-carousel">
-               <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.mahsoolateMahboob') }}</h4>
+               <h4 class="mt-0 header-title">پربازدید ترین ها</h4>
                <div id="carousel_2" class="carousel slide" data-ride="carousel">
                   <div class="carousel-inner">
                      @php $i=0 @endphp

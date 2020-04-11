@@ -755,8 +755,7 @@
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">
                                                     موجودی
                                                 </th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">{{ __('dashboard-shop-product-index.ListMahsoolatTableItem8') }}
-                                                </th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody class="byekan">
