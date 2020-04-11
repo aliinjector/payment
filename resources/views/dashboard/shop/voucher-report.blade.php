@@ -15,6 +15,8 @@
             </div>
         </div>
         <div class="row">
+          @include('dashboard.layouts.errors')
+
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">

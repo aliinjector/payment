@@ -37,6 +37,8 @@
 </style>
 @section('content')
 <div class="row">
+  @include('dashboard.layouts.errors')
+
    <div class="col-sm-12">
       <div class="page-title-box">
          <div class="float-right">
@@ -117,7 +119,7 @@
    <!--end col-->
 
    <div class="col-lg-4">
-      <div class="card carousel-bg-img" style="height: 300px;">
+      <div class="card carousel-bg-img" style="height: 440px;">
          <div class="card-body dash-info-carousel">
             <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.mahsoolateMahboob') }}</h4>
             <div id="carousel_2" class="carousel slide" data-ride="carousel">
@@ -125,14 +127,25 @@
                   @php $i=0 @endphp
                   @foreach($bestSellings as $bestSelling)
                      <div class="carousel-item {{ $i==0 ? 'active' : '' }}">
-                        <div class="media">
-                           <img src="{{ asset($bestSelling->image['400,400'] ? $bestSelling->image['400,400'] : '/images/no-image.png') }}"  height="170" width="190" class="mr-2" alt="...">
-                           <div class="media-body align-self-center">
-                              <span class="badge badge-primary mb-2 byekan w-50 f-10">{{ $bestSelling->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
-                              <h4 class="mt-0">{{ $bestSelling->title }}</h4>
-                              <p class="text-muted mb-0">{{ number_format($bestSelling->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
-                           </div>
+                        <div class="media row justify-content-center">
+                          <div class="row justify-content-center">
+                            <img src="{{ asset($bestSelling->image['400,400'] ? $bestSelling->image['400,400'] : '/images/no-image.png') }}"  height="170" width="190" class="mr-2" alt="...">
+                          </div>
                         </div>
+                        <div class="row">
+                          <div class="media-body align-self-center">
+                            <div class="row justify-content-center mt-4">
+                              <span class="badge badge-primary mb-2 byekan w-50 f-19">{{ $bestSelling->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
+                            </div>
+                            <div class="row justify-content-center mt-4">
+                              <h4 class="mt-0">{{ $bestSelling->title }}</h4>
+                            </div>
+                          <div class="row justify-content-center">
+                            <p class="text-muted mb-0">{{ number_format($bestSelling->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
+                          </div>
+                          </div>
+                        </div>
+
                      </div>
                      @php $i++ @endphp
                   @endforeach
@@ -170,6 +183,45 @@
 
 
 
+      <div class="col-lg-4">
+         <div class="card carousel-bg-img" style="height: 469px;">
+            <div class="card-body dash-info-carousel">
+               <h4 class="mt-0 header-title">{{ __('dashboard-shop-dashboard-shop.mahsoolateMahboob') }}</h4>
+               <div id="carousel_2" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                     @php $i=0 @endphp
+                     @foreach($bestSellings as $bestSelling)
+                        <div class="carousel-item {{ $i==0 ? 'active' : '' }}">
+                           <div class="media row justify-content-center">
+                             <div class="row justify-content-center">
+                               <img src="{{ asset($bestSelling->image['400,400'] ? $bestSelling->image['400,400'] : '/images/no-image.png') }}"  height="170" width="190" class="mr-2 mt-5" alt="...">
+                             </div>
+                           </div>
+                           <div class="row">
+                             <div class="media-body align-self-center">
+                               <div class="row justify-content-center mt-4">
+                                 <span class="badge badge-primary mb-2 byekan w-50 f-19">{{ $bestSelling->buyCount }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobForoosh') }}</span>
+                               </div>
+                               <div class="row justify-content-center mt-4">
+                                 <h4 class="mt-0">{{ $bestSelling->title }}</h4>
+                               </div>
+                             <div class="row justify-content-center">
+                               <p class="text-muted mb-0">{{ number_format($bestSelling->price) }} {{ __('dashboard-shop-dashboard-shop.mahsoolateMahboobCurrency') }}</p>
+                             </div>
+                             </div>
+                           </div>
+
+                        </div>
+                        @php $i++ @endphp
+                     @endforeach
+                  </div>
+                  <a class="carousel-control-prev" href="#carousel_2" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a><a class="carousel-control-next" href="#carousel_2" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a>
+               </div>
+            </div>
+            <!--end card-body-->
+         </div>
+         <!--end card-->
+      </div>
    <!--end col-->
 
    <!--end col-->
