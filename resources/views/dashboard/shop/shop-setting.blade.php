@@ -89,8 +89,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
 
-
-
                                     <div class="form-group row">
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem3') }}</label>
                                         <div class="col-sm-10">
@@ -125,6 +123,33 @@
                                             <input class="form-control" type="text" name="description" placeholder="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem6ex') }}" value="{{ old('description', $shopInformation->description) }}">
                                         </div>
                                     </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                        <!--end card-body-->
+                    </div>
+                    <!--end card-->
+                </div>
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="mt-0 header-title">تنظیمات دامین فروشگاه</h3>
+                            <p class="text-muted mb-3">در این بخش میتوانید دامین خود را ثبت نمایید.</p><br>
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <div class="form-group row">
+                                        <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">دامین فروشگاه</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" name="url" placeholder="مثال : omidshop.net" value="{{ old('url', $shopInformation->url) }}">
+                                        </div>
+                                    </div>
+
 
                                 </div>
 

@@ -237,6 +237,7 @@ return array(
         'old_password' => 'رمز عبور قدیم',
         'g-recaptcha-response' => 'کد امنیتی',
         'parent_id' => 'کد ریشه اصلی',
+        'url' => 'دامین فروشگاه',
 
 
           ),

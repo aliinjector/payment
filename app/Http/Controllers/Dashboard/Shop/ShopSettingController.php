@@ -172,6 +172,7 @@ class ShopSettingController extends Controller
         'cash_payment' => $request->cash_payment,
         'online_payment' => $request->online_payment,
         'description' => $request->description,
+        'url' => $request->url,
         'category_id' => $request->category_id,
         'icon' => $icon,
         'logo' => $logo,
