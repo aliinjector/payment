@@ -71,6 +71,10 @@ class VoucherController extends Controller
 
     public function store(VoucherRequest $request)
     {
+     if ((int)$request->shop_id !== \Auth::user()->shop->id) {
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+           return redirect()->back();
+               }
       $request->validate([
         'shop_id' => 'required|numeric|min:1|max:10000000000',
     ]);
@@ -139,7 +143,10 @@ class VoucherController extends Controller
      */
     public function update(VoucherRequest $request, $id)
     {
-
+      if ((int)$request->shop_id !== \Auth::user()->shop->id) {
+           alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+            return redirect()->back();
+                }
       if($request->type != "on")
       $request->type = 'percentage';
       else
