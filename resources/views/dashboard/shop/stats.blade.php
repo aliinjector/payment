@@ -242,12 +242,7 @@
                         <p class="text-muted mb-4 font-13">لیست تمامی بازدید های سایت شما</p>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <div class="searchBox bg-dark"  style="margin-top: -15px;">
-                                        <input type="text" id="myInputTextField" class="searchInput">
-                                        <button class="searchButton" href="#">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </div>
+
                                     <div class="table-responsive">
 
                                     <table id="lastTable" class="table table-bordered dt-responsive dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">

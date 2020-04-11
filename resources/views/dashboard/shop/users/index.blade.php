@@ -142,7 +142,7 @@
                         <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-users-index.ListKarbaranDesc') }}</p>
                         <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div style="margin: auto" class="col-sm-12">
                                     <div class="searchBox bg-dark"  style="margin-top: -15px;">
                                         <input type="text" id="myInputTextField" class="searchInput">
                                         <button class="searchButton" href="#">

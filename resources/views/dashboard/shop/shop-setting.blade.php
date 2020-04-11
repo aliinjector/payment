@@ -169,7 +169,7 @@
                             <h3 class="mt-0 header-title">تنظیمات ثبت سفارش</h3>
                             <p class="text-muted mb-3">در این بخش میتوانید روش های ارسال کالا توسط فروشگاه خود را انتخاب کنید همچنین میتوانید روش های پرداختی را میتوانید فعال و یا غیر فعال کنید . توجه داشته باشید که با فعال کردن هر آیتم هنگام سفارش کاربر میتواند یکی از روش ها را انتخاب کند.</p><br>
                             <div class="row col-12 mt-4">
-                                <div class="col-5 border-left p-3 m-4">
+                                <div class="col-3 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-purple" style="align-self: start;"><i class="fa fa-shipping-fast"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
@@ -202,7 +202,7 @@
 
                                 </div>
                                 <!--end col-->
-                                <div class="col-5 border-left p-3 m-4">
+                                <div class="col-3 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-success" style="align-self: start;"><i class="fa fa-truck"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
@@ -236,7 +236,7 @@
 
                                 </div>
                                 <!--end col-->
-                                <div class="col-5 border-left p-3 m-4">
+                                <div class="col-3 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-danger" style="align-self: start;"><i class="fas fa-people-carry"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
@@ -268,7 +268,7 @@
                                     </div>
                                     <!--end media-->
                                 </div>
-                                <div class="col-5 border-left p-3 m-4">
+                                <div class="col-3 border-left p-3 m-4">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-blue" style="align-self: start;"><i class="far fa-credit-card"></i></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">
@@ -290,7 +290,7 @@
                                     </div>
                                     <!--end media-->
                                 </div>
-                                <div class="col-5 m-4 p-3">
+                                <div class="col-3 m-4 p-3">
                                     <div class="media setting-card"><span class="sett-card-icon set-icon-lightpurple" style="align-self: start;"><i class="fas fa-money-bill-alt"></i></span>
                                         <div class="media-body align-self-center">
                                             <div class="setting-detail">

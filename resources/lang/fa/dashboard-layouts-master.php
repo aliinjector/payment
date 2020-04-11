@@ -49,7 +49,7 @@ return array(
     "forooshgahSazSideBarVaziaatSefaareshaat"         => "وضعیت سفارشات",
     "forooshgahSazSideBarAmaarBazdid"         => "آمار بازدید",
     "forooshgahSazSideBarModiriatKarbaraan"         => "مدیریت کاربران",
-    "footerRightCopyRighr"         => "۱۳۹۸ - کلیه حقوق محفوظ است",
+    "footerRightCopyRighr"         => "۱۳۹۸-۱۳۹۹ - کلیه حقوق محفوظ است",
     "leftDevelopeTeam"         => "طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران",
 
 

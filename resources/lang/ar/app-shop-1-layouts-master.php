@@ -39,7 +39,7 @@ return array(
     "ozviatDarKhabarNameDesc"         => "أدخل عنوان البريد الإلكتروني",
     "saayerSafahaat"         => "صفحات اخرى",
     "email"         => "عنوان البريد الإلكتروني",
-    "copyRight"         => "۱۳۹۸ -جميع الحقوق محفوظة.",
+    "copyRight"         => "۱۳۹۸-۱۳۹۹ -جميع الحقوق محفوظة.",
     "developer"         => "OmidShop",
 
 

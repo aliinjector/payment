@@ -89,7 +89,7 @@
 <!--end row-->
 </div>
 <!-- container -->
-<footer class="footer text-center text-sm-left pt-0">&copy; ۱۳۹۸ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
+<footer class="footer text-center text-sm-left pt-0">&copy; ۱۳۹۸-۱۳۹۹ - کلیه حقوق محفوظ است. <span class="text-muted d-none d-sm-inline-block float-right">طراحی و توسعه در دپارتمان فناوری اطلاعات شرکت فناور ستاره نوران</span></footer>
 <!--end footer-->
 </div>
 <!-- end page content -->

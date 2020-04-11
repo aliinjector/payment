@@ -70,6 +70,13 @@ Author: Ali Rahmani
         tspan{
             font-family: BYekan;
         }
+        .dataTables_wrapper{
+            text-align: center!important;
+        }
+        td,th{
+            vertical-align: middle!important;
+            width: auto!important;
+        }
     </style>
 </head>
 
@@ -404,7 +411,7 @@ Author: Ali Rahmani
         <!--end row-->
         </div>
         <!-- container -->
-        <footer class="footer text-center text-sm-left">&copy; {{ __('dashboard-layouts-master.footerRightCopyRighr') }}. <span class="text-muted d-none d-sm-inline-block float-right">{{ __('dashboard-layouts-master.leftDevelopeTeam') }} </span></footer>
+        <footer class="footer text-center text-sm-left"> {{ __('dashboard-layouts-master.footerRightCopyRighr') }}  &copy; <span class="text-muted d-none d-sm-inline-block float-right"> {{ __('dashboard-layouts-master.leftDevelopeTeam') }} </span></footer>
         <!--end footer-->
     </div>
     <!-- end page content -->

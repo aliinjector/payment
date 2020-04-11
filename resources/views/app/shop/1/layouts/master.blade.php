@@ -316,7 +316,7 @@
                 </div>
                 <div class="pt-3 text-white">
 
-                    &copy; ۱۳۹۸ - کلیه حقوق محفوظ است.
+                    &copy; ۱۳۹۸-۱۳۹۹ - کلیه حقوق محفوظ است.
                     <a target="_blank" href="https://omidshop.net">
                         <span class="text-white d-none d-sm-inline-block float-right">قدرت گرفته از سیستم فروشگاه ساز امید</span>
                     </a>
