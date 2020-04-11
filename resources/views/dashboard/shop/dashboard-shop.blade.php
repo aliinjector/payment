@@ -89,21 +89,21 @@
    <!--end col-->
    <!--end col-->
    <div class="col-lg-4">
+        <a href="{{ route('purchases.index') }}" target="_blank">
       <div class="card card-eco">
          <div class="card-body">
             <h4 class="title-text mt-0"></h4>
-             <a href="{{ route('purchases.index') }}" target="_blank">
+
             {{ __('dashboard-shop-dashboard-shop.box3') }} </h4>
-          </a>
             <div class="d-flex justify-content-between">
-               <a href="{{ route('purchases.index') }}" target="_blank">
                  <h3 class="font-weight-bold byekan">{{ number_format($sumPurchasesPrice) }} تومان</h3>
-               </a>
                <i class="dripicons-wallet card-eco-icon text-success align-self-center"></i>
             </div>
          </div>
          <!--end card-body-->
       </div>
+    </a>
+
       <!--end card-->
    </div>
    <!--end col-->
