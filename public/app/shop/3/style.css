@@ -2398,7 +2398,7 @@ input:focus, textarea:focus {
 	border: 1px solid #ddd;
 	margin-bottom: 30px;
 	padding: 22px 23px;
-	text-align: left;
+	text-align: right;
 }
 .caa_pdngbtm {
 	padding-bottom: 113px;

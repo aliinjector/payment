@@ -52,7 +52,7 @@
 						<div class="col-xs-12 col-sm-6">
 							<ul class="hdr_tp_right text-right">
 
-								<li class="lan_area"><a href="#"><i class="fa fa-lock"></i></i> ورود</a>
+								<li class="lan_area"><a href="/app/shop/3/login"><i class="fa fa-lock"></i></i> ورود</a>
 
 								</li>
 								<li class="currency_area"><a href="#"><i class="fa fa-gg ml-1"></i>عضویت</a>
