@@ -33,7 +33,7 @@ class FeedbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:150' ,
+            'fullName' => 'required|max:150' ,
              'feedback' => 'required|max:150',
         ];
     }

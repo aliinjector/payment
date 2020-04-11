@@ -37,9 +37,8 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>عنوان بازخورد :</span></div>
-                                    <input type="text" class="form-control inputfield" value="{{ old('title') }}" name="title" placeholder="مثال: گارانتی بازگشت وجه">
-                                    <input type="hidden" value="{{ $shop->id }}" class="form-control" name="shop_id">
-                                    <input type="hidden" value="{{ \Auth::user()->id }}" class="form-control" name="user_id">
+                                    <input type="text" class="form-control inputfield" value="{{ old('fullName') }}" name="fullName" placeholder="مثال : نیما احمدی">
+
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
@@ -78,9 +77,8 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>عنوان بازخورد:</span></div>
-                                    <input type="text" class="form-control inputfield" name="title" value="{{ old('title', $feedback->title) }}">
-                                    <input type="hidden" value="{{ $shop->id }}" class="form-control" name="shop_id">
-                                    <input type="hidden" value="{{ \Auth::user()->id }}" class="form-control" name="user_id">
+                                    <input type="text" class="form-control inputfield" name="fullName" value="{{ old('fullName', $feedback->fullName) }}">
+
                                 </div>
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
@@ -134,13 +132,13 @@
                                             @foreach($feedbacks as $feedback)
                                             <tr role="row" class="odd icon-hover hover-color">
                                                 <td style="width:5%">{{ $id }}</td>
-                                                <td>{{ $feedback->title }}</td>
+                                                <td>{{ $feedback->fullName }}</td>
                                                 <td class="d-flex justify-content-between">
                                                     {{ $feedback->feedback}}
                                                     <div class="d-none icon-show">
                                                         <a href="{{ $feedback->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $feedback->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
-                                                        <a href="" id="removeCat" data-name="{{ $feedback->title }}" title="حذف" data-id="{{ $feedback->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                        <a href="" id="removeCat" data-name="{{ $feedback->fullName }}" title="حذف" data-id="{{ $feedback->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

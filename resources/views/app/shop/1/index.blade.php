@@ -197,7 +197,7 @@
                     @foreach($feedbacks as $feedback)
 
                     <div class="carousel-item {{$loop->first ? 'active' : ''}} text-center p-4 ml-lg-n2">
-                        <h3>{{ $feedback->title }}</h3>
+                        <h3>{{ $feedback->fullName }}</h3>
                         <h5>{{ $feedback->feedback }}</h5>
                     </div>
                     @endforeach
