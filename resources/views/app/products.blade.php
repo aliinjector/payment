@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="fa">
 
+
 <head>
   <!--=============== basic  ===============-->
   <meta charset="UTF-8">
@@ -257,10 +258,9 @@
                             <div id="filters-search" class="tab-content  first-tab ">
 
                               <span style="direction: rtl">قیمت مورد نظرخودرا انتخاب نمایید </span>
-
                               <input type="text" id="available-price-1" class="w-100 p-4 font-14 byekan" style="border:0; color:#15939D !important; font-weight:bold;width: 200px;">
-                              <input type="hidden" id="available-price-min"  name="minprice" value="@if(request()->minprice == null) {{ $minPriceProduct }} @else {{ request()->minprice }} @endif">
-                              <input type="hidden" id="available-price-max"  name="maxprice" value="@if(request()->maxprice == null) {{ $maxPriceProduct }} @else {{ request()->maxprice }} @endif">
+                              <input type="hidden" id="available-price-min"  name="minprice" value="{{ isset(request()->minprice) ? request()->minprice :  $minPriceProduct}}">
+                              <input type="hidden" id="available-price-max"  name="maxprice" value="{{ isset(request()->maxprice) ? request()->maxprice :  $maxPriceProduct}}">
 
                               <div style="margin-bottom: 50px;    margin-top: 20px;" id="mySlider"></div>
                               <!-- listsearch-input-item end-->
@@ -274,7 +274,7 @@
                         <!--tabs end-->
                       </div>
                     </div>
-                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#filters-column">مشاهده فیلتر <i class="fas fa-caret-up"></i></a>
+                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#filters-column">مشاهده فیلتر قیمت <i class="fas fa-caret-up"></i></a>
                   </div>
               </form>
             </div>
