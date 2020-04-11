@@ -137,11 +137,12 @@
                                                 </th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">عکس
                                                 </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">آدرس اسلاید</th>
                                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">عنوان
                                                   اسلاید
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">توضیحات</th>
-                                                <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">آدرس اسلاید</th>
+
                                             </tr>
                                         </thead>
                                         <tbody class="iranyekan">
@@ -154,10 +155,12 @@
                                                 <td>
                                                   <img src="{{ $slideshow->image['80,80'] }}" class="rounded" alt="">
                                                 </td>
-                                                <td>{{ $slideshow->title }}</td>
-                                                <td>{{ $slideshow->description }}</td>
-                                                <td class="d-flex justify-content-between">
+                                                <td>
                                                     {{ $slideshow->url }}
+                                                </td>
+                                                <td>{{ $slideshow->title }}</td>
+                                                <td class="d-flex justify-content-between">
+                                                  {{ $slideshow->description }}
                                                     <div class="d-none icon-show">
                                                         <a href="{{ $slideshow->id }}" id="editSlide" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>

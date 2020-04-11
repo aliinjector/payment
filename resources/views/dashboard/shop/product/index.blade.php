@@ -755,7 +755,7 @@
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">
                                                     موجودی
                                                 </th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody class="byekan">
@@ -807,13 +807,8 @@
                                                     <td>-</td>
                                                     @endif
 
-                                                    <td @if($product->amount <= $product->min_amount and $product->type == 'product') class="text-danger amount-warning" @endif >{{ $product->amount != null ? $product->amount : '-' }}</td>
+                                                    <td @if($product->amount <= $product->min_amount and $product->type == 'product') class="text-danger amount-warning" @endif >{{ $product->amount != null ? $product->amount : '-' }}
 
-                                                    <td>
-                                                        @if ($product->type == 'service') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem2') }}
-                                                        @elseif($product->type == 'file') {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem3') }}
-                                                            @else {{ __('dashboard-shop-product-index.ListMahsoolatTableTypeItem1') }}
-                                                            @endif
                                                             <div class="d-none icon-show">
                                                                 @if($product->type == 'product')
                                                                     <a href="{{ route('product-list.edit-physical', $product->id ) }}" title="ویرایش" id="editProduct"><i class="far fa-edit text-info mr-1 button font-15"></i>
