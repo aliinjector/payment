@@ -9,16 +9,8 @@
 <div id="page_item_area">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 text-left">
-        <h3>Account</h3>
-      </div>
-
-      <div class="col-sm-6 text-right">
-        <ul class="p_items">
-          <li><a href="#">home</a></li>
-          <li><a href="#">category</a></li>
-          <li><span>Login</span></li>
-        </ul>
+      <div class="col-sm-12 text-center">
+        <h3>حساب کاربری</h3>
       </div>
     </div>
   </div>
@@ -41,7 +33,7 @@
                 <div class="input-area"><input type="email" /></div>
               </div>
               <button class="btn btn-default acc_btn" type="submit" id="acc_Create">
-                <span> <i class="fa fa-user btn_icon"></i>ایجاد یک حساب کاربری</span>
+                <span> <i class="fa fa-user btn_icon ml-2"></i>ایجاد یک حساب کاربری</span>
               </button>
             </div>
           </div>
@@ -64,7 +56,7 @@
                 <a href="#" title="Recover your forgotten password" rel="">رمز عبور خود را فراموش کرده اید؟</a>
               </p>
               <button type="submit" id="acc_Login" class="btn btn-default acc_btn">
-                <span> <i class="fa fa-lock btn_icon"></i>ورود</span>
+                <span> <i class="fa fa-lock btn_icon ml-2"></i>ورود</span>
               </button>
             </div>
           </div>

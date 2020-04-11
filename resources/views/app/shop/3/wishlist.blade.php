@@ -6,7 +6,7 @@
 <div id="page_item_area">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 text-right">
+      <div class="col-sm-12 text-center">
       <h3>لیست علاقه مندی ها</h3>
       </div>
     </div>
@@ -21,6 +21,7 @@
       <table class="table cart-table cart_prdct_table text-center">
         <thead>
           <tr>
+              <th class="border-bottom-0">تصویر محصول</th>
               <th class="border-bottom-0">{{ __('app-shop-1-cart.cartTableItem1') }}</th>
               <th class="border-bottom-0">{{ __('app-shop-1-cart.cartTableItem2') }}</th>
               <th class="border-bottom-0">{{ __('app-shop-1-cart.cartTableItem3') }}</th>
@@ -30,8 +31,8 @@
         <tbody class="">
                 @foreach ($wishlistProducts as $product)
                 <tr>
-                    <td><img src="{{ asset($product->image['80,80'] ? $product->image['80,80'] : '/images/no-image.png') }}" alt="" height="52">
-                        <p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" target="_blank"
+                    <td><img src="{{ asset($product->image['80,80'] ? $product->image['80,80'] : '/images/no-image.png') }}" alt="" height="52"></td>
+                          <td><p class="d-inline-block align-middle mb-0"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" target="_blank"
                               class="d-inline-block align-middle mb-0 product-name">{{ $product->title }}</a>
                             <br></p>
                     </td>
