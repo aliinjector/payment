@@ -44,7 +44,7 @@
                                     @forelse ($purchases as $purchase)
                                       <tr>
                                           <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
-                                          <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
+                                          <td>@if($purchase->status == 'notPaid') پرداخت نشده @elseif($purchase->status == 'paid') پرداخت شده @elseif($purchase->status == 'processing') درحال پردازش @elseif($purchase->status == 'shipped') ارسال شده @else دریافت شده @endif</td>
                                           <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
                                           <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else <span>
                                                                      @if($purchase->shipping =="quick_way")
