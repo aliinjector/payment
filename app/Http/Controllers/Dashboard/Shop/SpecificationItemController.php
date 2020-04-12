@@ -108,7 +108,7 @@ class SpecificationItemController extends Controller
     public function update(SpecificationItemRequest $request, specificationItem $specificationItem)
     {
       $request->validate([
-        'specification_id' => 'required|numeric|min:1|max:10000000000',
+        'specificationId' => 'required|numeric|min:1|max:10000000000',
   ]);
         $specificationItem = \Auth::user()->shop()->first()->specifications()->where('id',$request->specificationId)->get()->first()->items()->where('id', $specificationItem->id)->update([
             'name' => $request->name,

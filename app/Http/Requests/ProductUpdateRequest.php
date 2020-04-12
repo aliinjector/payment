@@ -64,7 +64,7 @@ class ProductUpdateRequest extends FormRequest
            'specifications' => 'max:400',
            'tags' => 'max:500',
            'facility' => 'max:300',
-           'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+           'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
          ];
        }
    else if($request->type == 'file'){
@@ -87,8 +87,8 @@ class ProductUpdateRequest extends FormRequest
      'tags' => 'max:500',
      'facility' => 'max:300',
      'specifications' => 'max:400',
-     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
-     'attachment' => 'required|mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp,rar|max:50000',
+     'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
+     'attachment' => 'mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp,rar|max:50000',
 
    ];
    }
@@ -112,7 +112,7 @@ class ProductUpdateRequest extends FormRequest
      'tags' => 'max:500',
      'facility' => 'max:300',
      'specifications' => 'max:400',
-     'image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+     'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
      ];
    }
 
