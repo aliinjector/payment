@@ -397,9 +397,14 @@
 
                                             </div>
                                             <div class="geodir-category-footer fl-wrap">
-                                                <a class="listing-item-category-wrap"  target="_blank" href="/{{ $product->shop->english_name }}">
-                                                    <div class="listing-item-category blue-bg"><i class="fa fa-user"></i></div>
-                                                    <span>مدیر فروشگاه:‌ {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</span>
+                                                <a class="listing-item-category-wrap" target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">
+                                                    <div class="listing-item-category blue-bg"><i class="fa fa-money-bill-alt"></i></div>
+                                                    @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
+                                                        <span>{{ number_format($product->off_price) }} :قیمت</span><span>تومان </span>
+                                                        <span style="text-decoration: line-through;" class="ml-2"><del>{{ number_format($product->price) }}</del></span>
+                                                    @else
+                                                        <span>{{ number_format($product->price) }} :قیمت</span><span>تومان</span>
+                                                    @endif
                                                 </a>
                                             </div>
                                         </div>

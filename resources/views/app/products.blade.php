@@ -33,6 +33,15 @@
     font-family: BYekan;
   }
 </style>
+
+@php
+  $keyword = isset($keyword) ? $keyword : \Request::get('keyword');
+  $sortBy = isset($sortBy) ? $sortBy : \Request::get('sortBy');
+  $minPriceProduct = isset($minPriceProduct) ? $minPriceProduct : \Request::get('minprice');
+  $maxPriceProduct = isset($maxPriceProduct) ? $maxPriceProduct : \Request::get('maxprice');
+@endphp
+
+
 <!--loader-->
 <div class="loader-wrap">
   <div class="loader-inner">
@@ -113,9 +122,9 @@
                           <div class="main-search-input-item">
                             <label><i class="fal fa-keyboard"></i></label>
                             <input type="text" name="keyword" placeholder="به دنبال چه محصول/خدمتی میگردید؟"
-                             @if(isset(request()->keyword))
-                               value="{{request()->keyword}}"
-                            @endif
+                                   @if(isset(request()->keyword))
+                                   value="{{request()->keyword}}"
+                                    @endif
                             />
                           </div>
                           <button class="main-search-button color2-bg">جستجو <i class="far fa-search"></i></button>
@@ -142,7 +151,7 @@
       <section class="gray-bg small-padding no-top-padding-sec" id="sec1">
         <div class="container">
           <div class="breadcrumbs inline-breadcrumbs fl-wrap block-breadcrumbs">
-           <span> جستجوی محصولات امیدشاپ</span>
+            <span> جستجوی محصولات امیدشاپ</span>
           </div>
 
           <div class="mob-nav-content-btn  color2-bg show-list-wrap-search ntm fl-wrap"><i class="fal fa-filter"></i>  Filters</div>
@@ -171,107 +180,107 @@
                     </div>
 
 
-                        <div class="price-opt">
-                          <span class="price-opt-title">:ترتیب براساس</span>
-                          <div class="listsearch-input-item">
-                            <select onchange="document.getElementById('searchForm').submit();" name="sortBy" class="chosen-select no-search-select" value="{{ $sortBy }}">
-                              @foreach(['id' => 'جدید ترین', 'viewCount' => 'پربازدید ترین', 'buyCount' => 'پرفروش ترین'] as $col => $value)
-                                <option @if($col == $sortBy) selected @endif value="{{$col}}">{{ $value }}</option>
-                              @endforeach
-                            </select>
+                    <div class="price-opt">
+                      <span class="price-opt-title">:ترتیب براساس</span>
+                      <div class="listsearch-input-item">
+                        <select onchange="document.getElementById('searchForm').submit();" name="sortBy" class="chosen-select no-search-select" value="{{ $sortBy }}">
+                          @foreach(['id' => 'جدید ترین', 'viewCount' => 'پربازدید ترین', 'buyCount' => 'پرفروش ترین'] as $col => $value)
+                            <option @if($col == $sortBy) selected @endif value="{{$col}}">{{ $value }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <!-- price-opt end-->
+                    <!-- price-opt-->
+
+                    <!-- price-opt end-->
+                  </div>
+                  <!-- list-main-wrap-opt end-->
+                </div>
+                <!-- list-main-wrap-header end-->
+                <!-- listing-item-container -->
+                <div class="listing-item-container init-grid-items fl-wrap nocolumn-lic">
+                  <!-- listing-item  -->
+                  @foreach ($products as $product)
+                    <div class="listing-item" style="">
+                      <article class="geodir-category-listing fl-wrap">
+                        <div class="geodir-category-img">
+                          <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
+                            <img style="height: 250px" src="{{ $product->image['original'] }}" alt="">
+                          </a>
+                          <div class="geodir_status_date gsd_open">
+                            <a target="_blank" href="/{{ $product->shop->english_name }}"> فروشگاه {{ $product->shop->name }}  </a>
                           </div>
                         </div>
-                        <!-- price-opt end-->
-                        <!-- price-opt-->
-
-                        <!-- price-opt end-->
-                      </div>
-                      <!-- list-main-wrap-opt end-->
-                    </div>
-                    <!-- list-main-wrap-header end-->
-                    <!-- listing-item-container -->
-                    <div class="listing-item-container init-grid-items fl-wrap nocolumn-lic">
-                      <!-- listing-item  -->
-                      @foreach ($products as $product)
-                        <div class="listing-item" style="">
-                          <article class="geodir-category-listing fl-wrap">
-                            <div class="geodir-category-img">
-                              <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
-                                <img style="height: 250px" src="{{ $product->image['original'] }}" alt="">
-                              </a>
-                              <div class="geodir_status_date gsd_open">
-                                <a target="_blank" href="/{{ $product->shop->english_name }}"> فروشگاه {{ $product->shop->name }}  </a>
-                              </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                              <div class="geodir-category-content-title fl-wrap">
-                                <div class="geodir-category-content-title-item">
-                                  <h3 class="title-sin_map">
-                                    <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ str_limit($product->title, 60) }}</a>
-                                  </h3>
-                                </div>
-                              </div>
-                              <div class="geodir-category-text fl-wrap">
-                                <p class="small-text">  {!! str_limit($product->description, 70) !!} </p>
-
-                              </div>
-                              <div class="geodir-category-footer fl-wrap">
-                                <a class="listing-item-category-wrap" target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">
-                                  <div class="listing-item-category blue-bg"><i class="fa fa-money-bill-alt"></i></div>
-                                    @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
-                                      <span class="">{{ number_format($product->off_price) }} تومان <span class="ml-2 byekan"></span><span style="text-decoration: line-through;" class="ml-2"><del>{{ number_format($product->price) }}تومان</del></span></span>
-                                    @else
-                                      <span class="">{{ number_format($product->price) }} تومان <span class="ml-2 byekan"></span></span>
-                                    @endif
-                                </a>
-                              </div>
-                            </div>
-                          </article>
-                        </div>
-                      @endforeach
-
-
-                      <!-- listing-item end -->
-                        {{ $products->links() }}
-                    </div>
-                    <!-- listing-item-container end -->
-                  </div>
-
-
-
-                  <div class="col-md-3">
-                    <div class=" fl-wrap lws_mobile   tabs-act block_box">
-                      <div class="filter-sidebar-header fl-wrap" id="filters-column">
-                        <ul class="tabs-menu fl-wrap no-list-style">
-                          <li class="current"><a href="#filters-search"> <i style="float: right;" class="fal fa-sliders-h"></i> فیلتر قیمت </a></li>
-                        </ul>
-                      </div>
-                      <div class="scrl-content filter-sidebar    fs-viscon">
-                        <!--tabs -->
-                        <div class="tabs-container fl-wrap">
-                          <!--tab -->
-                          <div class="tab">
-                            <div id="filters-search" class="tab-content  first-tab ">
-
-                              <span style="direction: rtl">قیمت مورد نظرخودرا انتخاب نمایید </span>
-                              <input type="text" id="available-price-1" class="w-100 p-4 font-14 byekan" style="border:0; color:#15939D !important; font-weight:bold;width: 200px;">
-                              <input type="hidden" id="available-price-min"  name="minprice" value="{{ isset(request()->minprice) ? request()->minprice :  $minPriceProduct}}">
-                              <input type="hidden" id="available-price-max"  name="maxprice" value="{{ isset(request()->maxprice) ? request()->maxprice :  $maxPriceProduct}}">
-
-                              <div style="margin-bottom: 50px;    margin-top: 20px;" id="mySlider"></div>
-                              <!-- listsearch-input-item end-->
+                        <div class="geodir-category-content fl-wrap title-sin_item">
+                          <div class="geodir-category-content-title fl-wrap">
+                            <div class="geodir-category-content-title-item">
+                              <h3 class="title-sin_map">
+                                <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">{{ str_limit($product->title, 60) }}</a>
+                              </h3>
                             </div>
                           </div>
-                          <!--tab end-->
-                          <!--tab -->
+                          <div class="geodir-category-text fl-wrap">
+                            <p class="small-text">  {!! str_limit($product->description, 70) !!} </p>
 
-                          <!--tab end-->
+                          </div>
+                          <div class="geodir-category-footer fl-wrap">
+                            <a class="listing-item-category-wrap" target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">
+                              <div class="listing-item-category blue-bg"><i class="fa fa-money-bill-alt"></i></div>
+                              @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
+                                <span class="">{{ number_format($product->off_price) }} تومان <span class="ml-2 byekan"></span><span style="text-decoration: line-through;" class="ml-2"><del>{{ number_format($product->price) }}تومان</del></span></span>
+                              @else
+                                <span class="">{{ number_format($product->price) }} تومان <span class="ml-2 byekan"></span></span>
+                              @endif
+                            </a>
+                          </div>
                         </div>
-                        <!--tabs end-->
-                      </div>
+                      </article>
                     </div>
-                    <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#filters-column">مشاهده فیلتر قیمت <i class="fas fa-caret-up"></i></a>
+                  @endforeach
+
+
+                <!-- listing-item end -->
+                  {{ $products->links() }}
+                </div>
+                <!-- listing-item-container end -->
+              </div>
+
+
+
+              <div class="col-md-3">
+                <div class=" fl-wrap lws_mobile   tabs-act block_box">
+                  <div class="filter-sidebar-header fl-wrap" id="filters-column">
+                    <ul class="tabs-menu fl-wrap no-list-style">
+                      <li class="current"><a href="#filters-search"> <i style="float: right;" class="fal fa-sliders-h"></i> فیلتر قیمت </a></li>
+                    </ul>
                   </div>
+                  <div class="scrl-content filter-sidebar    fs-viscon">
+                    <!--tabs -->
+                    <div class="tabs-container fl-wrap">
+                      <!--tab -->
+                      <div class="tab">
+                        <div id="filters-search" class="tab-content  first-tab ">
+
+                          <span style="direction: rtl">قیمت مورد نظرخودرا انتخاب نمایید </span>
+                          <input type="text" id="available-price-1" class="w-100 p-4 font-14 byekan" style="border:0; color:#15939D !important; font-weight:bold;width: 200px;">
+                          <input type="hidden" id="available-price-min"  name="minprice" value="{{ $minPriceProduct }}">
+                          <input type="hidden" id="available-price-max"  name="maxprice" value="{{ $maxPriceProduct }}">
+
+                          <div style="margin-bottom: 50px;    margin-top: 20px;" id="mySlider"></div>
+                          <!-- listsearch-input-item end-->
+                        </div>
+                      </div>
+                      <!--tab end-->
+                      <!--tab -->
+
+                      <!--tab end-->
+                    </div>
+                    <!--tabs end-->
+                  </div>
+                </div>
+                <a class="back-tofilters color2-bg custom-scroll-link fl-wrap" href="#filters-column">مشاهده فیلتر قیمت <i class="fas fa-caret-up"></i></a>
+              </div>
               </form>
             </div>
           </div>
@@ -316,52 +325,45 @@
 
 
 
-  <script>
-    $(document).ready(function() {
-      $("#mySlider").slider({isRTL: true, range: true,
-        min: {{ $minPriceProduct }},
-        max: {{ $maxPriceProduct }},
-        values: [@if(request()->minprice != null){{request()->minprice}} @else {{ $minPriceProduct }} @endif, @if(request()->maxprice != null){{request()->maxprice}} @else {{ $maxPriceProduct }} @endif],
-        slide: function(event, ui) {
-          if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
-            $("#available-price-1").val(" از " + min + " تومان " + " - " + " تا " + max + " تومان ");
-            $("#available-price-min").val(min);
-            $("#available-price-max").val(max);
-          }
-          else{
-            $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
-            $("#available-price-min").val(ui.values[0]);
-            $("#available-price-max").val(ui.values[1]);
-          }
+<script>
+  $(document).ready(function() {
+    $("#mySlider").slider({isRTL: true, range: true,
+      min: {{ $minPriceProduct }},
+      max: {{ $maxPriceProduct }},
+      values: [ {{ $minPriceProduct }}, {{ $maxPriceProduct }} ],
+      slide: function(event, ui) {
+        if(isNaN(ui.values[0]) == true || isNaN(ui.values[1]) == true){
+          $("#available-price-1").val(" از " + min + " تومان " + " - " + " تا " + max + " تومان ");
+          $("#available-price-min").val(min);
+          $("#available-price-max").val(max);
         }
-      });
-      if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
-        $("#available-price-1").val(" از " + min + " تومان " + " - " + " تا " + max + " تومان ");
-      }
-      else{
-        $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0).toLocaleString('en') + " تومان " +
-                " - " + " تا " + $("#mySlider").slider("values", 1).toLocaleString('en') + " تومان ");
+        else{
+          $("#available-price-1").val(" از " +  ui.values[0]  + " تومان " + " - " + " تا " + ui.values[1] + " تومان ");
+          $("#available-price-min").val(ui.values[0]);
+          $("#available-price-max").val(ui.values[1]);
+        }
       }
     });
-
-
-
-
-    $('#available-price-min').click(function() {
-      $('.available-price-min').attr('checked', true);
-      setTimeout("$('#searchForm').submit()", 80);
-    });
-    $('#mySlider').click(function() {
-      $('.available-price-max').attr('checked', true);
-      setTimeout("$('#searchForm').submit()", 80);
-    });
-
-    $(document).ready(function () {
-      document.getElementById('sec1').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-
-
-  </script>
+    if(isNaN($("#mySlider").slider("values", 0)) == true || isNaN($("#mySlider").slider("values", 1)) == true){
+      $("#available-price-1").val(" از " + min + " تومان " + " - " + " تا " + max + " تومان ");
+    }
+    else{
+      $("#available-price-1").val(" از "+ $("#mySlider").slider("values", 0).toLocaleString('en') + " تومان " +
+              " - " + " تا " + $("#mySlider").slider("values", 1).toLocaleString('en') + " تومان ");
+    }
+  });
+  $('#available-price-min').click(function() {
+    $('.available-price-min').attr('checked', true);
+    setTimeout("$('#searchForm').submit()", 80);
+  });
+  $('#mySlider').click(function() {
+    $('.available-price-max').attr('checked', true);
+    setTimeout("$('#searchForm').submit()", 80);
+  });
+  $(document).ready(function () {
+    document.getElementById('sec1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+</script>
 
 
 
