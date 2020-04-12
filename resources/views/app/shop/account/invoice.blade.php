@@ -136,7 +136,7 @@
                                             @else
                                             <td></td>
                                             @endif
-                                            <td> {{ number_format($product->total_price) }} </td>
+                                            <td> {{ number_format($product->total_price - $purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price) }} </td>
                                     </tr>
                                     @endforeach
                                     <!--end tr-->
@@ -145,6 +145,9 @@
                                         <th colspan="4" class="border-0">
                                             <div class="">
                                                 <b> هزینه ارسال : </b>{{ number_format($purchase->shipping_price) }} تومان<br />
+                                            </div>
+                                            <div class="">
+                                                <b> مبلغ تخفیف : </b>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price == null) 0  @else{{ $purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price }} @endif تومان<br />
                                             </div>
                                             @if($shop->invoice->description_status == "enable")
                                                 <div class="mt-3">
@@ -159,7 +162,7 @@
                                         </th>
                                         <td class="border-0 font-14"><b>جمع کل</b></td>
                                         <td>
-                                            {{ number_format($purchase->total_price) }}
+                                            {{ number_format($purchase->total_price + $purchase->shipping_price) }}
                                         </td>
                                     </tr>
                                     <!--end tr-->

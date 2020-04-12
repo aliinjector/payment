@@ -51,6 +51,12 @@
                                       <input type="text" class="form-control inputfield" readonly value="{{ $product->productCategory->name }}">
 
                                   </div>
+                                  @foreach($product->features as $feature)
+                                  <div class="input-group mt-3 old">
+                                      <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ $feature->name }} :</span></div>
+                                      <input type="text" class="form-control inputfield" readonly name="value[{{ $feature->id }}]" value="{{ $feature->pivot->value }}">
+                                  </div>
+                                @endforeach
 
                                   <div class="input-group mt-3">
                                       <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light inputfield min-width-140" id="basic-addon7">برند محصول :</span></div>

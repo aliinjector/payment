@@ -25,14 +25,10 @@ class UserInformationRequest extends FormRequest
     {
         return [
             'fatherName' => 'required|regex:/^[\pL\s\-]+$/u|min:1|max:24',
-            'tel' => 'required|min:1|max:20',
             'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
             'address' => 'required|min:1|max:220',
-            'nationalCode' => 'required|digits:10',
-            'shenasnamehCode' => 'required|digits:10',
             'placeOfIssue' => 'required|min:1|max:50|regex:/^[\pL\s\-]+$/u',
             'birthDate' => 'required|min:1|max:20',
-            'zipCode' => 'required|digits:10',
         ];
     }
 }

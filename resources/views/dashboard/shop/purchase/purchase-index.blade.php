@@ -141,9 +141,19 @@
                                                         __
                                                       @endif
                                                     </span></td>
-                                                    <td> <span class="@if($purchase->status == 0) text-red @else text-green @endif">@if($purchase->status == 0) پرداخت نشده
-                                    @else پرداخت شده
-                                    @endif</span></td>
+                                                    <td>
+                                                      <form action="{{ route('purchases.change-status', ['id' => $purchase->id, 'shop' => $shop->english_name]) }}" method="post">
+                                                        @csrf
+                                                        {{ method_field('put') }}
+                                                      <select name="status" class="form-control inputfield font-15" onchange="javascript:this.form.submit()">
+                                                        <option value="notPaid" @if($purchase->status == 'notPaid') selected @endif>پرداخت نشده</option>
+                                                        <option value="paid" @if($purchase->status == 'paid') selected @endif>پرداخت شده</option>
+                                                        <option value="processing" @if($purchase->status == 'processing') selected @endif>درحال پردازش</option>
+                                                        <option value="shipped" @if($purchase->status == 'shipped') selected @endif>ارسال شده</option>
+                                                        <option value="delivered" @if($purchase->status == 'delivered') selected @endif>دریافت شده</option>
+                                                      </select>
+                                                    </form>
+                                                  </td>
 
                                                     <td>{{ jdate($purchase->created_at) }}</td>
                                                     <td>

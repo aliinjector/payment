@@ -16,6 +16,8 @@
         <!--end col-->
     </div>
         <!-- end page title end breadcrumb -->
+        @include('dashboard.layouts.errors')
+
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -24,7 +26,7 @@
                             <div class="row">
                                 <div class="col-lg-4 mb-3 mb-lg-0 align-self-center">
                                     <div class="met-profile-main">
-                                        <div class="met-profile-main-pic"><img style="width: 100px;" src="{{ asset(\Auth::user()->avatar) }}" alt="" class="rounded-circle"> <span class="fro-profile_main-pic-change"><i class="fas fa-camera"></i></span></div>
+                                        <div class="met-profile-main-pic"><img style="width: 100px;" src="{{ asset(\Auth::user()->avatar) }}" alt="" class="rounded-circle"></div>
                                         <div class="met-profile_user-detail">
                                             <h5 class="met-user-name"> {{ \Auth::user()->firstName . ' ' . \Auth::user()->lastName }} </h5>
                                             <p class="mb-0 met-user-name-post">عضو از تاریخ :  {{ jdate(\Auth::user()->created_at) }}</p>
@@ -39,7 +41,7 @@
                                         <li class="mt-2"><i class="dripicons-location text-info font-18 mt-2 mr-2"></i><b>شهر: </b>{{ \Auth::user()->userInformation->city }}</li>
                                     </ul>
                                     <a href="{{ route('UserInformation.index') }}"><button type="submit" class="btn btn-info btn-sm">تغییر اطلاعات هویتی</button></a>
-                                    <a href="{{ route('setting.user-panel') }}"><button type="submit" class="btn btn-danger btn-sm">تغییر اطلاعات کاربری</button></a>
+                                    {{-- <a href="{{ route('setting.user-panel') }}"><button type="submit" class="btn btn-danger btn-sm">تغییر اطلاعات کاربری</button></a> --}}
                                 </div>
                                 <!--end col-->
                             </div>
@@ -57,8 +59,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="card">
-                    <div class="card-body">
-                        @include('dashboard.layouts.errors')
+                    <div class="card-body" style="height: 715px;">
 
                         <form method="POST" action="{{ route('setting.update', \Auth::user()->id ) }}">
                         {{ csrf_field() }}
@@ -83,52 +84,65 @@
                                 <label for="setPassword">تایید رمز عبور </label>
                                 <input type="password" class="form-control" name="new-password_confirmation" id="new-password_confirmation">
                             </div>
+                            <center><button type="submit" name="password" class="btn btn-success" style="margin-top: 263px;">ثبت تنظیمات</button></center>
+
                             <!--end form-group-->
                     </div>
                     <!--end card-body-->
                 </div>
                 <!--end card-->
             </div>
-          
+          </form>
+
             <!--end col-->
 
             <!--end col-->
-            <div style="display: none" class="col-lg-6">
+            <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 mb-3 header-title">تنظیمات اعلان ها (Notifications)</h4>
-                        <div class="text-center"><img src="../assets/images/widgets/notify.svg" alt="" class="mb-3" height="115"></div>
-                            <div class="custom-control custom-switch switch-success mb-2">
-                                <input type="checkbox" class="custom-control-input" id="1" checked="checked">
-                                <label class="custom-control-label" for="1">دریافت ایمیل هنگام پرداخت</label>
-                            </div>
-                            <div class="custom-control custom-switch switch-success mb-2">
-                                <input type="checkbox" class="custom-control-input" id="2" checked="checked">
-                                <label class="custom-control-label" for="2">دریافت پیامک هنگام پرداخت</label>
-                            </div>
-                            <div class="custom-control custom-switch switch-success mb-2">
-                                <input type="checkbox" class="custom-control-input" id="3">
-                                <label class="custom-control-label" for="3">دریافت ایمیل هنگام تسویه حساب</label>
-                            </div>
-                            <div class="custom-control custom-switch switch-success mb-2">
-                                <input type="checkbox" class="custom-control-input" id="4">
-                                <label class="custom-control-label" for="4">دریافت پیامک هنگام تسویه حساب</label>
+
+                        <form method="POST" action="{{ route('user-panel.update', \Auth::user()->id ) }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        {{ method_field('PATCH') }}
+                            <!--end form-group-->
+
+                            <!--end form-group-->
+                            <div class="form-group">
+                                <label for="setPassword">نام</label>
+                                <input type="text" class="form-control" name="firstName" id="current-password" value={{ old('firstName',  \Auth::user()->firstName ) }}>
                             </div>
 
-                            <div class="custom-control custom-switch switch-success">
-                                <input type="checkbox" class="custom-control-input" id="5" checked="checked">
-                                <label class="custom-control-label" for="5">ارسال ایمیل لینک پرداخت فاکتور برای مشتری</label>
+                            <div class="form-group">
+                                <label for="setPassword">نام خانوادگی</label>
+                                <input type="text" class="form-control" name="lastName" id="new-password" value={{ old('lastName',  \Auth::user()->lastName) }}>
                             </div>
-                        <!--end form-->
+                            <div class="form-group">
+                                <label for="setEmail">آدرس ایمیل</label>
+                                <input type="email" class="form-control" name="email" value="{{ old('email',  \Auth::user()->email) }}" id="setEmail">
+                            </div>
+                            <div class="form-group">
+                                <label for="setPassword">شماره موبایل </label>
+                                <input type="text" class="form-control" name="mobile" id="new-password_confirmation" value={{ old('mobile',  \Auth::user()->mobile ) }}>
+                            </div>
+                            <div class="form-group">
+                              <div class="card mt-3">
+                                  <div class="card-body">
+                                      <h4 class="mt-0 header-title">آواتار</h4>
+                                      <input type="file" id="input-file-now" name="avatar" class="dropify" data-default-file="{{ asset(\Auth::user()->avatar) }}">
+                                  </div>
+                                  <center><button type="submit" name="update" class="btn btn-success">ثبت تنظیمات</button></center>
+
+                              </div>
+                            </div>
+                            <!--end form-group-->
                     </div>
                     <!--end card-body-->
                 </div>
+
                 <!--end card-->
             </div>
-            <!--end col-->
         </div>
 
-    <center><button type="submit" class="btn btn-success">ثبت تنظیمات</button></center>
 
     </form>
     <!--end form-->
@@ -229,4 +243,12 @@
 
 
 @section('pageScripts')
+  <script type="text/javascript">
+
+
+      $(document).ready(function(){
+        $('.dropify-clear').addClass('d-none');
+    });
+
+  </script>
 @stop

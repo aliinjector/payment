@@ -22,7 +22,7 @@ img.slide-image {
 
 /* Slideshow container */
 .slideshow-container {
-    max-width: 1000px;
+    /* max-width: 1000px; */
     position: relative;
     margin: auto;
 }

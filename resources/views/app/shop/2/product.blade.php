@@ -433,25 +433,32 @@
         </div>
     </div>
 
-                <h3 class="tt-title-small pt-5">محصولات مشابه</h3>
+                <h3 class="tt-title-small p-4">محصولات مشابه</h3>
             </div>
             <div class="row">
                 @foreach($offeredProducts as $product)
                   <div class="col-sm-6 col-lg-4 py-3">
-                    <div class="card p-5">
+                    <div class="card">
+                      <div class="row h-50 justify-content-center mt-5">
+
                       <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now()) class="crd-img-off" @else class="crd-img" @endif >
                       <img class="card-img-top" src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="Card image cap" style="width:220px">
                       </a>
-                      <div class="card-body p-5">
-                        <h5 class="card-title">{{ $product->title }}</h5>
+                    </div>
+                    <div class="row  justify-content-center">
+
+                      <div class="card-body">
+                        <h5 class="card-title  mt-3">{{ $product->title }}</h5>
                         @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
-                          <p class="card-text"><del>{{ number_format($product->price) }}</del> تومان</p>
-                        <p class="card-text pb-2">{{ number_format($product->off_price) }}  تومان</p>
+                          <p class="card-text" style="font-size:13px"><del>{{ number_format($product->price) }}</del> تومان</p>
+                        <p class="card-text m-0 mb-2" style="font-size:20px">{{ number_format($product->off_price) }}  تومان</p>
                             @else
-                              <p class="card-text py-2">{{ $product->price }} تومان</p>
+                              <p class="card-text py-2 pr-4" style="font-size:20px">{{ $product->price }} تومان</p>
                             @endif
                         <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="btn btn-primary">مشاهده محصول</a>
                       </div>
+                    </div>
+
                     </div>
                   </div>
                 @endforeach

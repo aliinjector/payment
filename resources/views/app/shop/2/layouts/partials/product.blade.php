@@ -1,4 +1,4 @@
-<div class="tt-product thumbprod-center border p-2 image-box-card">
+<div class="tt-product thumbprod-center border p-2 image-box-card" style="min-height:500px;">
     <div class="tt-image-box" style="height: 30vh!important;">
         <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="wishlistForm{{ $product->id }}">
             @csrf

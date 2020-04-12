@@ -167,7 +167,7 @@
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">واحد شمارش:</span></div>
                                         <input type="text" class="form-control inputfield" name="measure"  value="{{ old('measure', $product->measure) }}">
-                                        <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">عدد</span></div>
+                                        <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8"></span></div>
 
                                     </div>
                                     <div class="input-group mt-3">

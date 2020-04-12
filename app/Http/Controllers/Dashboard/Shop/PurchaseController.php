@@ -106,6 +106,21 @@ class PurchaseController extends Controller
         //
     }
 
+
+    public function changeStatus(Request $request){
+      $request->validate([
+        'id' => 'numeric|min:1|max:10000000000',
+        'status' => 'required|in:notPaid,paid,shipped,processing,delivered'
+  ]);
+      $shop = \Auth::user()->shop()->first();
+        $purchase = $shop->purchases->where('id', $request->id)->first();
+        $purchase->status = $request->status;
+        $purchase->save();
+        alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+        return redirect()->back();
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
