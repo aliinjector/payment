@@ -14,20 +14,17 @@
         <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
           <div class="row justify-content-between">
               <div class="m-2 pt-4">تاریخ ثبت سفارش : {{ jdate($purchase->created_at) }} </div>
+                @if($shop->invoice->logo == "enable")
               <img src="{{ asset($shop->logo['200,100']) ? $shop->logo['200,100'] : '' }}" class="logo-sm mr-2">
+            @endif
+            @if($shop->invoice->number == "enable")
               <div class="m-2 pt-4">شماره فاکتور :  {{ $shop->english_name . '_' . $shop->invoice->id  }} </div>
+            @endif
+
           </div>
             @include('dashboard.layouts.errors')
             <div class="card-body invoice-head">
                 <div class="row justify-content-around p-2 d-none printable">
-                    @if($shop->invoice->logo == "enable")
-                        <img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="35">
-                        @endif
-                        @if($shop->invoice->number == "enable")
-                            <div class="row">
-                                <b class="mx-1">شماره : </b> 23443
-                            </div>
-                            @endif
                             @if($shop->invoice->date == "enable")
                                 <div class="row">
                                     <b class="mx-1">تاریخ : </b> 1399/3/3

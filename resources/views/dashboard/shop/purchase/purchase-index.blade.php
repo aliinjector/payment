@@ -52,7 +52,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>استان :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address()->withTrashed()->get()->first()->province }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name"  @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->province }}" @endif readonly>
                                 </div>
 
                             </div>
@@ -60,7 +60,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>شهر :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address()->withTrashed()->get()->first()->city }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->city }}" @endif readonly>
                                 </div>
 
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>کد پستی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address()->withTrashed()->get()->first()->zip_code }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->zip_code }}" @endif readonly>
                                 </div>
 
                             </div>
@@ -76,7 +76,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>آدرس :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address()->withTrashed()->get()->first()->address }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->address }}" @endif readonly>
                                 </div>
 
                             </div>

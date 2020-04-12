@@ -63,10 +63,24 @@ class PurchaseController extends Controller
     {
       $shop = \Auth::user()->shop()->first();
       $purchase = $shop->purchases()->where('id', $id)->get()->first();
+      $specificationItems = collect();
+      if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->shop->specifications != null){
+      foreach($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->shop->specifications()->withTrashed()->get() as $specification){
+        foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $cartProduct) {
+          if($cartProduct->specification != null){
+        foreach ($cartProduct->specification as $itemId) {
+          foreach ($specification->items()->withTrashed()->get()->where('id', $itemId) as $item) {
+            $specificationItems[] = $item;
+          }
+              }
+            }
+            }
+      }
+    }
       SEOTools::setTitle($shop->name . ' | سفارش شماره ' . $purchase->id);
       SEOTools::setDescription($shop->name);
       SEOTools::opengraph()->addProperty('type', 'website');
-      return view('dashboard.shop.purchase.purchase-show', compact('purchase', 'shop'));
+      return view('dashboard.shop.purchase.purchase-show', compact('purchase', 'shop', 'specificationItems'));
     }
 
     /**
