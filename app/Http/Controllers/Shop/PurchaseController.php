@@ -296,6 +296,24 @@ class PurchaseController extends Controller
             $purchase->address_id = $request->address;
               }
               else{
+                if($request->zip_code != null){
+                  $request->merge(['zip_code' => $this->fa_num_to_en($request->zip_code)]);
+                }
+                if($request->type == 'product'){
+                $request->validate([
+                  'zip_code' => 'required_without:address|digits:10|nullable',
+            ]);
+            }
+            elseif($request->type == 'service'){
+              $request->validate([
+                'zip_code' => 'nullable|digits:10',
+            ]);
+            }
+            else{
+              $request->validate([
+                'zip_code' => 'nullable|digits:10',
+            ]);
+            }
                 $address = new Address;
                 $address->city = $request->city;
                 $address->province = $request->province;
