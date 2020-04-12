@@ -42,7 +42,7 @@
                                         </div>
                                         <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">آیکون ویژگی</label>
                                         <div class="col-sm-10 mt-2">
-                                            <input type="file" id="input-file-now" name="icon[]" class="dropify" data-default-file="{{ $productCategoryFeature->icon['original'] }}">
+                                            <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ $productCategoryFeature->icon['original'] }}">
                                         </div>
 
                                     </div>
