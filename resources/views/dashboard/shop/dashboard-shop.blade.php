@@ -10,6 +10,7 @@
       font-family: Verdana, sans-serif;
       border-collapse: collapse;
       border: 1px solid #EBEBEB;
+      border: 1px solid #EBEBEB;
       margin: 10px auto;
       text-align: center;
       width: 100%;
@@ -426,19 +427,26 @@
 
             line: {
                dataLabels: {
-                  enabled: true,
+                   format: '\u202B', // \u202B is RLE char for RTL support
+                   y: -5, //Optional
+                   style: {
+                       fontSize: '13px',
+                       fontFamily: 'tahoma',
+                       textShadow: false, //bug fixed IE9 and EDGE
+                   },
+                   enabled: true,
                   connectorAllowed: false
                },
             }
          },
          series: [{
-            name: 'Visits',
+            name: 'بازدید',
             data: [ {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first()->total : 0}} , {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first()->total : 0 }}]
          }, {
-            name: 'Visitors',
+            name: 'بازدیدکننده',
             data: [ {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first()->total : 0}} , {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first()->total : 0 }}]
          }, {
-            name: 'Purchuses',
+            name: 'سفارش',
             data: [ {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->count() }} , {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->count() }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->count() }}]
          }],
 
@@ -451,7 +459,7 @@
                   legend: {
                      layout: 'horizontal',
                      align: 'center',
-                     verticalAlign: 'bottom'
+                     verticalAlign: 'middle'
                   }
                }
             }]
