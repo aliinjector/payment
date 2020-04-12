@@ -158,7 +158,6 @@
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem3') }}</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem4') }}</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem5') }}</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">{{ __('dashboard-shop-users-index.ListKarbaranItem6') }}</th>
                                                 </tr>
                                             </thead>
                                             <tbody style="text-align: center" class="iranyekan">
@@ -168,8 +167,7 @@
                                                     <td>{{ $user->lastName }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->mobile }}</td>
-                                                    <td>{{ $user->created_at }}</td>
-                                                    <td>{{ $user->created_at }}
+                                                    <td style="direction: ltr; font-family: BYekan ">{{ jdate($user->created_at) }}
                                                       <div class="d-none icon-show">
 
                                                           <a href="{{ route('users.purchases', $user) }}" title="لیست سفارشات" id="edit"><i class="fas fa-shopping-cart text-danger mx-1"></i>

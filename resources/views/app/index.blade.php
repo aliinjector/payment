@@ -34,8 +34,8 @@
         <div class="nav-holder main-menu">
             <nav>
                 <ul class="no-list-style">
-                    <li><a href="">تماس</a></li>
-                    <li><a href="">قوانین و شرایط استفاده</a></li>
+                    <li><a >تماس</a></li>
+                    <li><a >قوانین و شرایط استفاده</a></li>
                     <li><a href="#products">آخرین محصولات</a></li>
                     <li><a href="#shops">آخرین فروشگاه ها</a></li>
                     <li><a href="#search">جستجوی محصول</a></li>
@@ -316,10 +316,10 @@
                             <div class="inline-facts">
                                 <div class="milestone-counter">
                                     <div class="stats animaper">
-                                        <div class="num" data-content="0" data-num="16422">16422</div>
+                                        <div class="num" data-content="0" data-num="{{ \DB::table('stats')->count() }}">16422</div>
                                     </div>
                                 </div>
-                                <h6>محصول فروخته شده</h6>
+                                <h6>مشاهده محصول ثبت شده</h6>
                             </div>
                         </div>
                         <!-- inline-facts end -->
@@ -328,10 +328,10 @@
                             <div class="inline-facts">
                                 <div class="milestone-counter">
                                     <div class="stats animaper">
-                                        <div class="num" data-content="0" data-num="23422">23422</div>
+                                        <div class="num" data-content="0" data-num="{{ \DB::table('cart_product')->count() }}">{{ \DB::table('cart_product')->count() }}</div>
                                     </div>
                                 </div>
-                                <h6>محصول ثبت شده</h6>
+                                <h6>محصول سفارش داده شده</h6>
                             </div>
                         </div>
                         <!-- inline-facts end -->
@@ -340,10 +340,10 @@
                             <div class="inline-facts">
                                 <div class="milestone-counter">
                                     <div class="stats animaper">
-                                        <div class="num" data-content="0" data-num="611">611</div>
+                                        <div class="num" data-content="0" data-num="{{ \DB::table('products')->where('status','enable')->count() }}">{{ \DB::table('products')->where('status','enable')->count() }}</div>
                                     </div>
                                 </div>
-                                <h6>اپلیکیشن موبایل فعال</h6>
+                                <h6>محصول فعال</h6>
                             </div>
                         </div>
                         <!-- inline-facts end -->
@@ -352,7 +352,7 @@
                             <div class="inline-facts">
                                 <div class="milestone-counter">
                                     <div class="stats animaper">
-                                        <div class="num" data-content="0" data-num="722">722</div>
+                                        <div class="num" data-content="0" data-num="{{ $shops->count() }}">{{ $shops->count() }}</div>
                                     </div>
                                 </div>
                                 <h6>فروشگاه فعال</h6>
@@ -383,11 +383,7 @@
                                             <a target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}" class="geodir-category-img-wrap fl-wrap">
                                                 <img style="height: 250px;" src="{{ $product->image['original'] }}" alt="">
                                             </a>
-                                            <div class="listing-avatar"><a href=""><img src="{{ $product->shop->user->avatar }}" alt=""></a>
-                                                <span class="avatar-tooltip">مدیر فروشگاه:‌  <strong> {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</strong></span>
-                                            </div>
-                                            <div class="geodir_status_date gsd_open">نام فروشگاه: {{ $product->shop->name }}</div>
-                                        </div>
+                                            <div class="geodir_status_date gsd_open"><a target="_blank" href="/{{ $product->shop->english_name }}"> فروشگاه {{ $product->shop->name }}  </a></div>                                        </div>
                                         <div class="geodir-category-content fl-wrap title-sin_item">
                                             <div class="geodir-category-content-title fl-wrap">
                                                 <div class="geodir-category-content-title-item">
@@ -401,7 +397,7 @@
 
                                             </div>
                                             <div class="geodir-category-footer fl-wrap">
-                                                <a class="listing-item-category-wrap" href="#">
+                                                <a class="listing-item-category-wrap"  target="_blank" href="/{{ $product->shop->english_name }}">
                                                     <div class="listing-item-category blue-bg"><i class="fa fa-user"></i></div>
                                                     <span>مدیر فروشگاه:‌ {{ $product->shop->user->firstName . ' ' . $product->shop->user->lastName }}</span>
                                                 </a>
@@ -754,30 +750,7 @@
     <!--footer -->
     <footer class="main-footer fl-wrap">
         <!-- footer-header-->
-        <div class="footer-header fl-wrap grad ient-dark">
-            <div class="container">
-                <div class="row">
 
-                    <div class="col-md-7">
-                        <div class="subscribe-widget">
-                            <div class="subcribe-form">
-                                <form id="subscribe">
-                                    <input style="direction: rtl" class="enteremail fl-wrap" name="email" id="subscribe-email" placeholder="آدرس ایمیل خود را وارد نمایید" spellcheck="false" type="text">
-                                    <button type="submit" id="subscribe-button" class="subscribe-button"><i class="fal fa-envelope"></i></button>
-                                    <label for="subscribe-email" class="subscribe-message"></label>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5">
-                        <div style="text-align: right" class="subscribe-header">
-                            <h3>عضویت در خبرنامه امیدشاپ</h3>
-                            <p style="direction: rtl" >با عضویت در سامانه خبرنامه فروشگاه ساز امید، از آخرین امکانات و بروزرسانی ها باخبر شوید.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- footer-header end-->
         <!--footer-inner-->
 

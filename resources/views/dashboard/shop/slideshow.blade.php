@@ -133,14 +133,10 @@
 
                                         <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه
-                                                </th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">عکس
-                                                </th>
-                                                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">آدرس اسلاید</th>
-                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">عنوان
-                                                  اسلاید
-                                                </th>
+                                                <th style="vertical-align: middle!important;" class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شناسه</th>
+                                                <th style="vertical-align: middle!important;" class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">عکس</th>
+                                                <th style="vertical-align: middle!important;" class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">آدرس اسلاید</th>
+                                                <th style="vertical-align: middle!important;" class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending" style="width: 15px;">عنوان اسلاید</th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 205px;">توضیحات</th>
 
                                             </tr>
@@ -151,15 +147,15 @@
                                           @endphp
                                             @foreach($slideshows as $slideshow)
                                             <tr role="row" class="odd icon-hover hover-color">
-                                                <td>{{ $id }}</td>
-                                                <td>
+                                                <td style="vertical-align: middle!important;">{{ $id }}</td>
+                                                <td style="vertical-align: middle!important;">
                                                   <img src="{{ $slideshow->image['80,80'] }}" class="rounded" alt="">
                                                 </td>
-                                                <td>
+                                                <td style="vertical-align: middle!important;">
                                                     {{ $slideshow->url }}
                                                 </td>
-                                                <td>{{ $slideshow->title }}</td>
-                                                <td class="d-flex justify-content-between">
+                                                <td style="vertical-align: middle!important;">{{ $slideshow->title }}</td>
+                                                <td style="vertical-align: middle!important;" class="d-flex justify-content-between">
                                                   {{ $slideshow->description }}
                                                     <div class="d-none icon-show">
                                                         <a href="{{ $slideshow->id }}" id="editSlide" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>

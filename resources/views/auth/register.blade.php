@@ -7,7 +7,7 @@
     <title>{{ __('register.title') }}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Ali Rahmani">
-    <meta name="description" content="راهکار های نوین پرداخت پین پی">
+    <meta name="description" content="فروشگاه ساز امید">
     <!-- App favicon -->
     <link rel="shortcut icon" href="/dashboard/assets//images/favicon.ico">
     <!-- App css -->
@@ -27,9 +27,6 @@
             <div class="card auth-card shadow-lg">
                 <div class="card-body">
                     <div class="px-3">
-                        <div class="auth-logo-box">
-                            <a href="/" class="logo logo-admin"><img src="/dashboard/assets//images/logo-sm.png" height="55" alt="logo" class="auth-logo"></a>
-                        </div>
                         <!--end auth-logo-box-->
                         <div class="text-center auth-logo-text">
                             <h4 class="mt-0 mb-3 mt-5"> {{ __('register.h4') }}</h4>

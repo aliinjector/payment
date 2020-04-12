@@ -349,6 +349,8 @@
 		<script src="/app/shop/3/js/venobox.min.js"></script>
 		<script src="/app/shop/3/js/owl.carousel.min.js"></script>
 		<script src="/app/shop/3/js/main.js"></script>
+	    <script src="{{url('stats/script.js')}}"></script>
+
 	</body>
 
 

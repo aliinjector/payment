@@ -49,8 +49,8 @@
     <div class="nav-holder main-menu">
       <nav>
         <ul class="no-list-style">
-          <li><a href="">تماس</a></li>
-          <li><a href="">قوانین و شرایط استفاده</a></li>
+          <li><a>تماس</a></li>
+          <li><a>قوانین و شرایط استفاده</a></li>
           <li><a href="/#products">آخرین محصولات</a></li>
           <li><a href="/#shops">آخرین فروشگاه ها</a></li>
           <li><a href="/#search">جستجوی محصول</a></li>
@@ -218,15 +218,11 @@
                               <div class="geodir-category-footer fl-wrap">
                                 <a class="listing-item-category-wrap" target="_blank" href="{{ $product->shop->english_name . '/' . 'product'. '/' . $product->id . '/' . $product->slug }}">
                                   <div class="listing-item-category blue-bg"><i class="fa fa-money-bill-alt"></i></div>
-                                  <span>
                                     @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
-                                      <p class="product-price byekan">{{ number_format($product->off_price) }} تومان <span class="ml-2 byekan"></span><span class="ml-2"><del>{{ number_format($lastProduct->price) }}تومان</del></span></p>
+                                      <span class="">{{ number_format($product->off_price) }} تومان <span class="ml-2 byekan"></span><span style="text-decoration: line-through;" class="ml-2"><del>{{ number_format($product->price) }}تومان</del></span></span>
                                     @else
-                                      <p class="product-price byekan">{{ number_format($product->price) }} تومان <span class="ml-2 byekan"></span></p>
+                                      <span class="">{{ number_format($product->price) }} تومان <span class="ml-2 byekan"></span></span>
                                     @endif
-
-
-                                  </span>
                                 </a>
                               </div>
                             </div>
@@ -289,30 +285,7 @@
   <!--footer -->
   <footer class="main-footer fl-wrap">
     <!-- footer-header-->
-    <div class="footer-header fl-wrap grad ient-dark">
-      <div class="container">
-        <div class="row">
 
-          <div class="col-md-7">
-            <div class="subscribe-widget">
-              <div class="subcribe-form">
-                <form id="subscribe">
-                  <input style="direction: rtl" class="enteremail fl-wrap" name="email" id="subscribe-email" placeholder="آدرس ایمیل خود را وارد نمایید" spellcheck="false" type="text">
-                  <button type="submit" id="subscribe-button" class="subscribe-button"><i class="fal fa-envelope"></i></button>
-                  <label for="subscribe-email" class="subscribe-message"></label>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-5">
-            <div style="text-align: right" class="subscribe-header">
-              <h3>عضویت در خبرنامه امیدشاپ</h3>
-              <p style="direction: rtl" >با عضویت در سامانه خبرنامه فروشگاه ساز امید، از آخرین امکانات و بروزرسانی ها باخبر شوید.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- footer-header end-->
     <!--footer-inner-->
 

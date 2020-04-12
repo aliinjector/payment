@@ -180,7 +180,6 @@ return [
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
-        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
     ],
 
     /*
@@ -233,7 +232,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
-        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class,
 
     ],
 

@@ -7,7 +7,7 @@
     <title>امید شاپ - عضویت در سیستم</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="author" content="Ali Rahmani">
-    <meta name="description" content="راهکار های نوین پرداخت پین پی">
+    <meta name="description" content="فروشگاه ساز امید">
     <!-- App favicon -->
     <link rel="shortcut icon" href="/dashboard/assets//images/favicon.ico">
     <!-- App css -->

@@ -252,7 +252,7 @@
                                         {{ $feedback->feedback }}
                                     </p>
                                     <h3 class="testimonial-title">{{ $feedback->title }}</h3>
-                                    <small class="post">{{ $feedback->user->firstName. '' . $feedback->user->lastName}}</small>
+                                    <small class="post">{{ $feedback->fullName}}</small>
                                 </div>
                             </div>
                         @endforeach
