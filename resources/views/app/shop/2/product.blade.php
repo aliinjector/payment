@@ -1,10 +1,13 @@
 @extends('app.shop.2.layouts.master')
 @section('headerScripts')
-<link rel="stylesheet" href="/app/shop/2/assets/css/bootstrap-select.css" />
-<link rel="stylesheet" href="/app/shop/2/assets/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="/app/shop/2/css/theme-2-bootstrap-select.css" />
+<link rel="stylesheet" href="/app/shop/2/css/theme-2-bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="/app/shop/1/assets/css/custom.css" rel="stylesheet" type="text/css">
 @endsection
 @section('content')
+
+
+
 <style media="screen">
     .h-50-vh {
         height: 50vh !important;
@@ -38,6 +41,9 @@
 }
 .dropdown-toggle::after {
     display: none!important;
+}
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 400px;
 }
 </style>
 <div id="tt-pageContent">
@@ -136,12 +142,15 @@
                                                 @endif</button>
                                     </div>
                                 </div>
-                                <div class="mt-4 mb-3 d-flex">
+                                <div class="mt-2 mb-3">
                                     @foreach($product->specifications as $specification)
-                                        <div class="">
-                                            <label class="p-3">
-                                                {{ $specification->name }} :
-                                            </label>
+                                      <div class="row">
+                                        <label class="p-4">
+                                            {{ $specification->name }} :
+                                        </label>
+                                      </div>
+                                        <div class="row">
+
                                             <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }} name="specification[]" title="موردی انتخاب نشده است">
                                                 @foreach($specification->items->where('status', 'enable') as $item)
                                                     <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>

@@ -134,7 +134,7 @@
                      <div class="carousel-item {{ $i==0 ? 'active' : '' }}">
                         <div class="media row justify-content-center">
                           <div class="row justify-content-center">
-                            <img src="{{ asset($bestSelling->image['400,400'] ? $bestSelling->image['400,400'] : '/images/no-image.png') }}"  height="170" width="190" class="mr-2" alt="...">
+                            <img src="{{ asset($bestSelling->image['400,400'] ? $bestSelling->image['400,400'] : '/images/no-image.png') }}"  height="170" width="190" class="mr-2 mt-5" alt="...">
                           </div>
                         </div>
                         <div class="row">

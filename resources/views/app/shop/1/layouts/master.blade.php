@@ -300,9 +300,9 @@
                 <div class="border-bottom">
                     <ul class="list-group">
                         <li class="list-group-item border-0 text-white iranyekan font-15" style="background-color: transparent">
-                            {{-- <a href="{{ route('faq.show', ['shopName' => $shop->english_name]) }}" class="text-white">
+                            <a href="{{ route('faq.show', ['shopName' => $shop->english_name]) }}" class="text-white">
                                 سوالات متداول
-                            </a> --}}
+                            </a>
 
                         </li>
                         <li class="list-group-item border-0 text-white iranyekan font-15" style="background-color: transparent">

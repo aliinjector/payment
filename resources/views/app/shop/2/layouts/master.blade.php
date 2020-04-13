@@ -475,7 +475,7 @@
                                     <li><a href="{{ route('wishlist', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a></li>
                                     <li><a href="{{ route('login') }}">{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
                                     <li><a href="{{ route('template.contact', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.darbareMaVaTamas') }}</a></li>
-                                    {{-- <li><a href="{{ route('faq.show', $shop->english_name) }}">سواالات متداول</a></li> --}}
+                                    <li><a href="{{ route('faq.show', $shop->english_name) }}">سواالات متداول</a></li>
                                 </ul>
                             </div>
                         </div>
