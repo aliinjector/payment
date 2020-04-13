@@ -120,7 +120,7 @@ class UserPanelController extends Controller
       'firstName' => $request->firstName,
       'lastName' => $request->lastName,
       'email' => $request->email,
-      'mobile' => $request->mobile,
+      'mobile' => $this->fa_num_to_en($request->mobile),
       'avatar' => $avatar
       ]);
 

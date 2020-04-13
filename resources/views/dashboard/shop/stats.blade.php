@@ -196,7 +196,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="mt-0 header-title">بربازدید ترین صفحات</h4>
+                            <h4 class="mt-0 header-title">پربازدید ترین صفحات</h4>
                             <p class="text-muted mb-4 font-13">پراکندگی بازدید براساس مقدار بازدید از هر
                                 صفحه/محصول</p>
                             <div class="row">

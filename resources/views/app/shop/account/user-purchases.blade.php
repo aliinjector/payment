@@ -27,6 +27,8 @@
                                           </th>
                                           <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">هزینه ارسال
                                           </th>
+                                          <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">میزان تخفیف
+                                          </th>
                                           <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">مبلغ کل
                                           </th>
                                           <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">تاریخ ثبت
@@ -42,7 +44,7 @@
                                     @forelse ($purchases as $purchase)
                                       <tr>
                                           <td class="byekan"><a href="{{ route('user.purchased.list.show', $purchase->id) }}">{{ $id }}</a></td>
-                                          <td>{{ $purchase->status == 0 ? "انجام نشده" : "تکمیل شده" }}</td>
+                                          <td>@if($purchase->status == 'notPaid') پرداخت نشده @elseif($purchase->status == 'paid') پرداخت شده @elseif($purchase->status == 'processing') درحال پردازش @elseif($purchase->status == 'shipped') ارسال شده @else دریافت شده @endif</td>
                                           <td>{{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}</td>
                                           <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else <span>
                                                                      @if($purchase->shipping =="quick_way")
@@ -54,6 +56,7 @@
                                                                      @endif
                                                                    @endif</span></td>
                                           <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->products[0]->type == 'file') -  @else{{ $purchase->shipping_price }} @endif</td>
+                                          <td>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price == null) -  @else{{ $purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price }} @endif</td>
                                           <td>{{ number_format($purchase->total_price + $purchase->shipping_price) }} تومان</td>
                                           <td>{{ jdate($purchase->created_at) }}</td>
                                           <td>

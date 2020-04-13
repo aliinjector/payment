@@ -30,8 +30,7 @@ class AddressRequest extends FormRequest
     {
         return [
           'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-          'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-            'zip_code' => 'required|digits:10',
+            'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
             'address' => 'required|min:1|max:400',
         ];
     }

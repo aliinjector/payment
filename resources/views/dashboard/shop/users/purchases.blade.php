@@ -25,9 +25,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="mt-0 header-title">{{ __('dashboard-shop-users-index.ListKarbaranTitle') }}</h4>
-                                <p class="text-muted mb-4 font-13">{{ __('dashboard-shop-users-index.ListKarbaranDesc') }}</p>
-                                <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                <h4 class="mt-0 header-title">لیست سفارشات کاربر </h4>
+                                <p class="text-muted mb-4 font-13">در این صفحه لیست سفارشات کاربر مورد نظر قابل مشاهده میباشد</p>
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="searchBox bg-dark"  style="margin-top: -15px;">
@@ -53,7 +52,7 @@
                                                         @foreach($purchases as $purchase)
                                                           <tr role="row" class="odd icon-hover hover-color">
                                                             <td>{{ $id }}</td>
-                                                            <td>{{ jdate($purchase->created_at) }}</td>
+                                                            <td style="direction: ltr; font-family: BYekan">{{ jdate($purchase->created_at) }}</td>
                                                             <td>
                                                                 <a href="{{ route('users.purchase.show', ['userID' => $purchase->user->id, 'id' => $purchase->id]) }}">
                                                               <button class="btn btn-outline-danger">
@@ -71,7 +70,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
                     </div>

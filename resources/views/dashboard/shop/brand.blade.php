@@ -142,7 +142,7 @@
                                                       <a href="{{ $brand->id }}" id="editBrand" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $brand->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                       </a>
                                                       <a href="" id="removeBrand" title="حذف" data-name="{{ $brand->name }}" data-id="{{ $brand->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
-                                                      <a href="{{ route('brand', ['shop'=>$shop->english_name, 'categroyId'=>$brand->id]) }}"><i class="fa fa-eye text-success mr-1 button font-15"></i>
+                                                      <a href="{{ route('brand', ['shop'=>$shop->english_name, 'categroyId'=>$brand->id]) }}" target="_blank"><i class="fa fa-eye text-success mr-1 button font-15"></i>
                                                       </a>
                                                   </div>
                                                 </td>

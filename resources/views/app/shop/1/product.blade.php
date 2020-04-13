@@ -21,6 +21,9 @@
 .sl-prev{
     direction: ltr;
 }
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
+    width: 300px!important;
+}
 
 </style>
 <div class="row">
@@ -151,21 +154,24 @@
                                 @else
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
                                     @csrf
-                                    <div class="mb-3">
+                                    <div class="mb-1">
                                       @foreach($product->specifications as $specification)
-                                        <label class="p-3">
-                                          {{ $specification->name }} :
-                                        </label>
-                                    <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification[]" title="موردی انتخاب نشده است">
-                                      @foreach($specification->items as $item)
-                                         <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
-                                       @endforeach
-                                     </select>
-
+                                        <div class="row">
+                                          <label class="py-1 mt-2">
+                                            {{ $specification->name }} :
+                                          </label>
+                                        </div>
+                                        <div class="row">
+                                        <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification[]" title="موردی انتخاب نشده است">
+                                        @foreach($specification->items->where('status', 'enable') as $item)
+                                           <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
+                                         @endforeach
+                                        </select>
+                                        </div>
                                    @endforeach
                                    </div>
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" data-col="true" class="text-white btn bg-blue-omid iranyekan rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
+                                    <button type="submit" data-col="true" class="text-white btn bg-blue-omid iranyekan mt-2 rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
                                     @endif
 
                                 </form>

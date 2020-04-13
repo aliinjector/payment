@@ -12,11 +12,7 @@
 <h2 class="line-throw"><span>مقایسه محصولات </span></h2>
 @if($compareProducts->count() != null)
 
-    <section style="direction: rtl" class="cd-products-comparison-table ">
-        <header>
-            <div class="actions">
-            </div>
-        </header>
+    <section style="direction: rtl">
 
         <div class="cd-products-table" style="overflow:initial!important;">
             <div class="features">

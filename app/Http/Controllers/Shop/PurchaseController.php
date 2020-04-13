@@ -17,9 +17,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\SpecificationItem;
 use Illuminate\Support\Facades\Session;
-use Artesaos\SEOTools\Facades\SEOTools;
 use App\Notifications\NewPurchaseForShopOwner;
 use App\Notifications\MinAmountWarning;
+use Artesaos\SEOTools\Facades\SEOTools;
 use App\Http\Requests\PurchaseRequest;
 use App\Http\Requests\PurchaseSubmitRequest;
 
@@ -243,6 +243,9 @@ class PurchaseController extends Controller
           'voucher_id' => null,
           'total_off_price' => null,
           ]);
+          SEOTools::setTitle('پیش فاکتور');
+          SEOTools::setDescription('پیش فاکتور');
+          SEOTools::opengraph()->addProperty('type', 'website');
         return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'cart'));
       }
 
@@ -296,6 +299,24 @@ class PurchaseController extends Controller
             $purchase->address_id = $request->address;
               }
               else{
+                if($request->zip_code != null){
+                  $request->merge(['zip_code' => $this->fa_num_to_en($request->zip_code)]);
+                }
+                if($request->type == 'product'){
+                $request->validate([
+                  'zip_code' => 'required_without:address|digits:10|nullable',
+            ]);
+            }
+            elseif($request->type == 'service'){
+              $request->validate([
+                'zip_code' => 'nullable|digits:10',
+            ]);
+            }
+            else{
+              $request->validate([
+                'zip_code' => 'nullable|digits:10',
+            ]);
+            }
                 $address = new Address;
                 $address->city = $request->city;
                 $address->province = $request->province;
@@ -352,9 +373,6 @@ class PurchaseController extends Controller
           $shopOwner->notify(new NewPurchaseForShopOwner($details));
 
           toastr()->success('خرید شما با موفقیت ثبت شد', 'انجام شد');
-          SEOTools::setTitle($shop->name);
-          SEOTools::setDescription($shop->description);
-          SEOTools::opengraph()->addProperty('type', 'website');
           return redirect()->route('user.purchased.list');
       }
 

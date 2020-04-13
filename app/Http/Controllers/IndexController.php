@@ -62,7 +62,6 @@ class IndexController extends Controller
         $keyword = null;
         $minPrice = Product::all()->min('price');
         $maxPrice = Product::all()->max('price');;
-
         if ($request->has('orderBy')) $orderBy = $request->orderBy;
         if ($request->has('q')) $keyword = $request->keyword;
         if ($request->has('perPage')) $perPage = $request->perPage;
@@ -71,7 +70,7 @@ class IndexController extends Controller
         if ($request->has('maxprice')) $maxPrice = $request->maxprice;
 
         // $products = Product::search($q)->orderBy($sortBy, $orderBy)->paginate(20)->appends(request()->except('page', '_token'));
-        $products = Product::where('title', 'like', '%' . $request->keyword . '%')->where('status', 'enable')->where('price', '>' , $minPrice)->where('price', '<' , $maxPrice)->orderBy($sortBy, $orderBy)->paginate($perPage)->appends(request()->except('page', '_token'));
+        $products = Product::where('title', 'like', '%' . $request->keyword . '%')->where('status', 'enable')->where('price', '>' , $minPrice)->where('price', '<' , $maxPrice)->orderBy($sortBy, $orderBy)->paginate($perPage)->appends([request()->except('page', '_token') , 'sortBy' => $sortBy, 'orderBy' => $orderBy, 'perPage' => $perPage, 'minprice' => $minPrice, 'maxprice' => $maxPrice, 'keyword' => $keyword]);
 
         $minPriceProduct = $minPrice;
         $maxPriceProduct = $maxPrice;

@@ -149,7 +149,7 @@
                     <div class="row">
                         <div class="tt-logo-container">
                             <!-- mobile logo -->
-                            <a class="tt-logo tt-logo-alignment" href="/{{ $shop->english_name }}"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""></a>
+                            <a class="tt-logo tt-logo-alignment" href="/{{ $shop->english_name }}"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt="" style="width:13vw;max-height:50px"></a>
                             <!-- /mobile logo -->
                         </div>
                     </div>
@@ -159,9 +159,9 @@
             <div class="tt-desktop-header">
                 <div class="container">
                     <div class="tt-header-holder">
-                        <div class="tt-obj-logo obj-aligment-center">
+                        <div class="tt-obj-logo obj-aligment-center" style="padding: 25px">
                             <!-- logo -->
-                            <a class="tt-logo tt-logo-alignment" href="/{{ $shop->english_name }}"><img class="tt-retina" src="{{ $shop->logo['original'] }}" alt=""><span style="padding: 10px">{{ $shop->name }}</span></a>
+
                             <!-- /logo -->
                         </div>
                         <div class="tt-obj-options obj-move-right tt-position-absolute">
@@ -287,8 +287,8 @@
                                                 <li><a href="{{ route('logout') }}"><i class="icon-f-77"></i>{{ __('app-shop-2-layouts-master.khorooj') }}</a></li>
                                                 @endauth
                                                 @guest()
-                                                <li><a href="{{ route('template.login.show', $shop->english_name) }}"><i class="icon-f-76"></i>{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
-                                                <li><a href="{{ route('template.register.show', $shop->english_name) }}"><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.ozviat') }}</a></li>
+                                                <li><a href="{{ route('login') }}"><i class="icon-f-76"></i>{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
+                                                <li><a href="{{ route('register', ['shop' => $shop->english_name]) }}"><i class="icon-f-94"></i>{{ __('app-shop-2-layouts-master.ozviat') }}</a></li>
                                                 @endguest
                                             </ul>
                                         </div>
@@ -297,6 +297,7 @@
                             </div>
                             @auth()
                             <p class="mt-0">{{ Auth::user()->firstName}} {{ __('app-shop-2-layouts-master.welcome') }}</p>
+                          <span style="    font-size: 15px;">{{ $shop->name }}</span>
                             @endauth
                             <!-- /tt-account -->
                             <!-- tt-langue and tt-currency -->
@@ -313,7 +314,9 @@
                                 <div class="tt-desctop-menu tt-menu-small">
                                     <nav>
                                       <ul class="pb-4 font-wight-bold">
+                                        <li class="dropdown"><a class="" href="/{{ $shop->english_name }}"><img class="rounded" src="{{ $shop->logo['original'] }}" alt="" style="width:5vw"></a></li>
                                           <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
+
                                       @if($shop->menu_show == "mega_menu")
                                           <div class="dropdown mx-3 hover-opacity">
                                               <a href="">
@@ -332,7 +335,7 @@
                                                   <li class="dropdown-submenu py-3" style="position: static;">
                                                       <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}" class="dropdown-item pointer-crouser" style="width: 113%;font-size: 17px;font-weight: 500;" tabindex="-1"
                                                         class="li-color">{{ $subCategory->name }}</a>
-                                                      <ul class="dropdown-menu font-16" style="width: 992px!important;min-height: 50vh!important;background-color: #FFFFFF;border-radius: 8px;margin-top: 12%;right:100%!important">
+                                                      <ul class="dropdown-menu font-16" style="width: 992px!important;min-height: 50vh!important;background-color: #FFFFFF;border-radius: 8px;margin-top: 12%;right:200px!important">
                                                           <div class="row">
                                                               @foreach ($subCategory->children()->get() as $subSubCategory)
                                                               <div class="col-lg-3">
@@ -370,7 +373,7 @@
 
                                             @inject('CategoryCTLR', 'App\Http\Controllers\Shop\CategoryController')
                                             @foreach ($shopCategories->where('parent_id' , null)->take($shop->menu_show_count) as $shopCategory)
-                                            <div class="dropdown mx-3" style="top:30px!important">
+                                            <div class="dropdown mx-3" style="top:95px!important">
                                                 <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id, 'name' => $shopCategory->name]) }}" class="font-weight-bold iranyekan">
                                                     <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal @if(Request::is('*/category/'.$shopCategory->id.'/*')) border-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($shopCategory->id)->contains('id', explode('/',url()->current())[5]))  border-btn-blue @endif" style="color:
                                        #465f73!important;background-color:transparent;font-size: 17px!important;">
@@ -379,7 +382,7 @@
                                                 </a>
                                                 @if($shop->menu_show == "nestead_menu")
                                                     @if($shopCategory->children()->exists())
-                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:30px!important;
+                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:66px!important;
                                        width: 21%!important;z-index: 10000;">
                                                             @foreach ($shopCategory->children()->get() as $subCategory)
                                                             @if (!$subCategory->children()->exists())
@@ -470,9 +473,9 @@
                             <div class="tt-collapse-content">
                                 <ul class="tt-list">
                                     <li><a href="{{ route('wishlist', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.alagheMandiHa') }}</a></li>
-                                    <li><a href="{{ route('login', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
+                                    <li><a href="{{ route('login') }}">{{ __('app-shop-2-layouts-master.vorood') }}</a></li>
                                     <li><a href="{{ route('template.contact', $shop->english_name) }}">{{ __('app-shop-2-layouts-master.darbareMaVaTamas') }}</a></li>
-                                    {{-- <li><a href="{{ route('faq.show', $shop->english_name) }}">سواالات متداول</a></li> --}}
+                                    <li><a href="{{ route('faq.show', $shop->english_name) }}">سواالات متداول</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -603,7 +606,7 @@
 </body>
 @toastr_js
 @toastr_render
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="/app/shop/1/assets/js/jquery.min.js"></script>
 <script src="/app/shop/2/js/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="/app/shop/2/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="/app/shop/2/js/bootstrap-select.min.js"></script>
@@ -617,7 +620,6 @@
 
 @include('sweet::alert')
 @yield('footerScripts')
-<script src="{{url('stats/script.js')}}"></script>
 <script>
     $(document).on('click', '#removeProduct', function(e) {
         e.preventDefault();
@@ -685,4 +687,8 @@ if ($("#color-selection").length > 0){
 });
 
 </script>
+
+<script src="{{url('stats/script.js')}}"></script>
+
+
 </html>

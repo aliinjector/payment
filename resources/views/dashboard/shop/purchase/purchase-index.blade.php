@@ -52,7 +52,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>استان :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address->province }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name"  @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->province }}" @endif readonly>
                                 </div>
 
                             </div>
@@ -60,7 +60,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>شهر :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address->city }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->city }}" @endif readonly>
                                 </div>
 
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>کد پستی :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address->zip_code }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->zip_code }}" @endif readonly>
                                 </div>
 
                             </div>
@@ -76,7 +76,7 @@
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                        class="fas fa-star required-star mr-1"></i>آدرس :</span></div>
-                                    <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->address->address }}" readonly>
+                                    <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->address }}" @endif readonly>
                                 </div>
 
                             </div>
@@ -114,9 +114,6 @@
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">روش پرداخت</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">روش ارسال</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">وضعیت سفارش</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">هزینه ارسال</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">جمع کل</th>
-                                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">مبلغ کل سفارش</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ ثبت سفارش</th>
                                                     <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">عملیات</th>
                                                 </tr>
@@ -144,27 +141,27 @@
                                                         __
                                                       @endif
                                                     </span></td>
-                                                    <td> <span class="@if($purchase->status == 0) text-red @else text-green @endif">@if($purchase->status == 0) پرداخت نشده
-                                    @else پرداخت شده
-                                    @endif</span></td>
-                                    <td>{{ $purchase->shipping_price }}</td>
                                                     <td>
-                                                      {{ number_format($purchase->total_price) }}
-                                                    </td>
-                                                    <td>
-                                                      {{ number_format($purchase->total_price + $purchase->shipping_price) }}
-                                                    </td>
+                                                      <form action="{{ route('purchases.change-status', ['id' => $purchase->id, 'shop' => $shop->english_name]) }}" method="post">
+                                                        @csrf
+                                                        {{ method_field('put') }}
+                                                      <select name="status" class="form-control inputfield font-15" onchange="javascript:this.form.submit()">
+                                                        <option value="notPaid" @if($purchase->status == 'notPaid') selected @endif>پرداخت نشده</option>
+                                                        <option value="paid" @if($purchase->status == 'paid') selected @endif>پرداخت شده</option>
+                                                        <option value="processing" @if($purchase->status == 'processing') selected @endif>درحال پردازش</option>
+                                                        <option value="shipped" @if($purchase->status == 'shipped') selected @endif>ارسال شده</option>
+                                                        <option value="delivered" @if($purchase->status == 'delivered') selected @endif>دریافت شده</option>
+                                                      </select>
+                                                    </form>
+                                                  </td>
+
                                                     <td>{{ jdate($purchase->created_at) }}</td>
                                                     <td>
                                                         <a href="{{ route('purchases.show', ['id' => $purchase->id]) }}">
-                                                            <button class="btn btn-primary">
-                                                                مشاهده جزئیات
-                                                            </button>
+                                                            <i class="fa fa-eye"></i>
                                                         </a>
                                                         <a href="{{ route('purchases.show', ['id' => $purchase->id]) }}" data-toggle="modal" data-target="#ShowAddressModal{{ $purchase->id }}">
-                                                            <button class="btn btn-dropbox">
-                                                              اطلاعات خریدار
-                                                            </button>
+                                                                <i class="dripicons-user-id"></i>
                                                         </a>
                                                     </td>
                                                 </tr>

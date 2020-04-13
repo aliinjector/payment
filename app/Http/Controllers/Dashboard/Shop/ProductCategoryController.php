@@ -118,7 +118,7 @@ class ProductCategoryController extends Controller
     {
       $category = ProductCategory::find($id);
       $shop = \Auth::user()->shop()->first();
-      $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
+      $categoires = \Auth::user()->shop()->first()->ProductCategories()->get()->whereNotIn('id', $category->id);
       $parentCategories = \Auth::user()->shop()->first()->ProductCategories()->get()->where('parent_id', null);
       SEOTools::setTitle($shop->name . ' | ویرایش دسته بندی ' . $category->name );
       SEOTools::setDescription($shop->name);
@@ -135,6 +135,11 @@ class ProductCategoryController extends Controller
      */
     public function update(ProductCategoryRequest $request, $id)
     {
+      if($this->getAllSubCategories($id)->contains('id', $request->parent_id)){
+        return redirect()->back()->withErrors(['خطا' => 'دسته بندی شاخه نمیتواند دسته بندی فرزند باشد']);
+
+      }
+
       //check if icon is null or not
       if($request->file('icon') == null){
         $image = \Auth::user()->shop()->first()->ProductCategories()->where('id',$id)->get()->first()->icon;
@@ -195,4 +200,35 @@ class ProductCategoryController extends Controller
            'icon' => null
        ]);
      }
+
+
+
+     public static function getAllSubCategories($cat_id) {
+         $allSubCategories = collect();
+         if (ProductCategory::find($cat_id)->children()->exists()) {
+         foreach (ProductCategory::find($cat_id)->children()->get() as $subCategory) {
+             $allSubCategories[] = $subCategory;
+             if ($subCategory->children()->exists()) {
+                 foreach ($subCategory->children()->get() as $subSubCategory) {
+                     $allSubCategories[] = $subSubCategory;
+
+                 if ($subSubCategory->children()->exists()) {
+                     foreach ($subSubCategory->children()->get() as $subSubSubCategory) {
+                         $allSubCategories[] = $subSubSubCategory;
+                         if ($subSubSubCategory->children()->exists()) {
+                             foreach ($subSubSubCategory->children()->get() as $subSubSubSubCategory) {
+                                 $allSubCategories[] = $subSubSubSubCategory;
+                             }
+                         }
+                     }
+                 }
+             }
+               }
+         }
+       }
+         return $allSubCategories;
+     }
+
+
+
 }

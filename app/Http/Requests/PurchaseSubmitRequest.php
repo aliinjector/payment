@@ -36,7 +36,7 @@ class PurchaseSubmitRequest extends FormRequest
         'new_address' => 'required_without:address|min:1|max:120|string|nullable',
         'city' => 'required_without:address|min:1|max:20|regex:/^[\pL\s\-]+$/u|nullable',
         'province' => 'required_without:address|min:1|max:20|regex:/^[\pL\s\-]+$/u|nullable',
-        'zip_code' => 'required_without:address|digits:10|nullable',
+        // 'zip_code' => 'required_without:address|digits:10|nullable',
         'address' => 'min:1|max:400|string'
       ];
     }
@@ -47,7 +47,7 @@ class PurchaseSubmitRequest extends FormRequest
       'new_address' => 'nullable|min:1|max:120|string|nullable',
       'city' => 'nullable|min:1|max:20|regex:/^[\pL\s\-]+$/u',
       'province' => 'nullable|min:1|max:40|regex:/^[\pL\s\-]+$/u',
-      'zip_code' => 'nullable|digits:10',
+      // 'zip_code' => 'nullable|digits:10',
       'address' => 'nullable|min:1|max:400|string'
     ];
   }
@@ -58,7 +58,7 @@ class PurchaseSubmitRequest extends FormRequest
       'new_address' => 'nullable|min:1|max:120|string|nullable',
       'city' => 'nullable|min:1|max:20|regex:/^[\pL\s\-]+$/u',
       'province' => 'nullable|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-      'zip_code' => 'nullable|digits:10',
+      // 'zip_code' => 'nullable|digits:10',
       'address' => 'nullable|min:1|max:400|string'
     ];
   }

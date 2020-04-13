@@ -14,20 +14,17 @@
         <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
           <div class="row justify-content-between">
               <div class="m-2 pt-4">تاریخ ثبت سفارش : {{ jdate($purchase->created_at) }} </div>
+                @if($shop->invoice->logo == "enable")
               <img src="{{ asset($shop->logo['200,100']) ? $shop->logo['200,100'] : '' }}" class="logo-sm mr-2">
+            @endif
+            @if($shop->invoice->number == "enable")
               <div class="m-2 pt-4">شماره فاکتور :  {{ $shop->english_name . '_' . $shop->invoice->id  }} </div>
+            @endif
+
           </div>
             @include('dashboard.layouts.errors')
             <div class="card-body invoice-head">
                 <div class="row justify-content-around p-2 d-none printable">
-                    @if($shop->invoice->logo == "enable")
-                        <img src="{{ $shop->logo['200,100'] }}" alt="logo-small" class="logo-sm mr-2" height="35">
-                        @endif
-                        @if($shop->invoice->number == "enable")
-                            <div class="row">
-                                <b class="mx-1">شماره : </b> 23443
-                            </div>
-                            @endif
                             @if($shop->invoice->date == "enable")
                                 <div class="row">
                                     <b class="mx-1">تاریخ : </b> 1399/3/3
@@ -139,7 +136,7 @@
                                             @else
                                             <td></td>
                                             @endif
-                                            <td> {{ number_format($product->total_price) }} </td>
+                                            <td> {{ number_format($product->total_price - $purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price) }} </td>
                                     </tr>
                                     @endforeach
                                     <!--end tr-->
@@ -148,6 +145,9 @@
                                         <th colspan="4" class="border-0">
                                             <div class="">
                                                 <b> هزینه ارسال : </b>{{ number_format($purchase->shipping_price) }} تومان<br />
+                                            </div>
+                                            <div class="">
+                                                <b> مبلغ تخفیف : </b>@if($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price == null) 0  @else{{ $purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->total_off_price }} @endif تومان<br />
                                             </div>
                                             @if($shop->invoice->description_status == "enable")
                                                 <div class="mt-3">
@@ -162,7 +162,7 @@
                                         </th>
                                         <td class="border-0 font-14"><b>جمع کل</b></td>
                                         <td>
-                                            {{ number_format($purchase->total_price) }}
+                                            {{ number_format($purchase->total_price + $purchase->shipping_price) }}
                                         </td>
                                     </tr>
                                     <!--end tr-->

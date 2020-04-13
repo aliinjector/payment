@@ -36,7 +36,7 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
-                                       class="fas fa-star required-star mr-1"></i>عنوان بازخورد :</span></div>
+                                       class="fas fa-star required-star mr-1"></i> نام و نام خانوادگی :</span></div>
                                     <input type="text" class="form-control inputfield" value="{{ old('fullName') }}" name="fullName" placeholder="مثال : نیما احمدی">
 
                                 </div>
@@ -76,7 +76,7 @@
                             <div class="form-group mb-0">
                                 <div class="input-group mt-3">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
-                                       class="fas fa-star required-star mr-1"></i>عنوان بازخورد:</span></div>
+                                       class="fas fa-star required-star mr-1"></i>نام و نام خانوادگی:</span></div>
                                     <input type="text" class="form-control inputfield" name="fullName" value="{{ old('fullName', $feedback->fullName) }}">
 
                                 </div>

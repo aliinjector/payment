@@ -10,6 +10,7 @@
       font-family: Verdana, sans-serif;
       border-collapse: collapse;
       border: 1px solid #EBEBEB;
+      border: 1px solid #EBEBEB;
       margin: 10px auto;
       text-align: center;
       width: 100%;
@@ -133,7 +134,7 @@
                      <div class="carousel-item {{ $i==0 ? 'active' : '' }}">
                         <div class="media row justify-content-center">
                           <div class="row justify-content-center">
-                            <img src="{{ asset($bestSelling->image['400,400'] ? $bestSelling->image['400,400'] : '/images/no-image.png') }}"  height="170" width="190" class="mr-2" alt="...">
+                            <img src="{{ asset($bestSelling->image['400,400'] ? $bestSelling->image['400,400'] : '/images/no-image.png') }}"  height="170" width="190" class="mr-2 mt-5" alt="...">
                           </div>
                         </div>
                         <div class="row">
@@ -231,100 +232,166 @@
    <!--end col-->
 </div>
 
-
-
-<!--end row-->
-<div style="" class="row">
-   <div class="col-12">
-      <div class="card">
-         <div class="card-body order-list">
-            <h4 class="header-title mt-0 mb-3">لیست سفارشات</h4>
-            <div class="table-responsive">
-               <table class="table table-hover mb-0">
-                  <thead class="thead-light">
-                     <tr>
-                        <th class="border-top-0">Product</th>
-                        <th class="border-top-0">Pro Name</th>
-                        <th class="border-top-0">Country</th>
-                        <th class="border-top-0">Order Date/Time</th>
-                        <th class="border-top-0">Pcs.</th>
-                        <th class="border-top-0">Amount ($)</th>
-                        <th class="border-top-0">Status</th>
-                     </tr>
-                     <!--end tr-->
-                  </thead>
-                  <tbody>
-                     <tr>
-                        <td><img class="" src="/dashboard/assets/images/products/img-1.png" alt="user"></td>
-                        <td>Beg</td>
-                        <td><img src="/dashboard/assets/images/flags/us_flag.jpg" alt="" class="img-flag thumb-xxs rounded-circle"></td>
-                        <td>3/03/2019 4:29 PM</td>
-                        <td>200</td>
-                        <td>$750</td>
-                        <td><span class="badge badge-boxed badge-soft-success">Shipped</span></td>
-                     </tr>
-                     <!--end tr-->
-                     <tr>
-                        <td><img class="" src="/dashboard/assets/images/products/img-2.png" alt="user"></td>
-                        <td>Watch</td>
-                        <td><img src="/dashboard/assets/images/flags/french_flag.jpg" alt="" class="img-flag thumb-xxs rounded-circle"></td>
-                        <td>13/03/2019 1:09 PM</td>
-                        <td>180</td>
-                        <td>$970</td>
-                        <td><span class="badge badge-boxed badge-soft-danger">Delivered</span></td>
-                     </tr>
-                     <!--end tr-->
-                     <tr>
-                        <td><img class="" src="/dashboard/assets/images/products/img-3.png" alt="user"></td>
-                        <td>Headphone</td>
-                        <td><img src="/dashboard/assets/images/flags/spain_flag.jpg" alt="" class="img-flag thumb-xxs rounded-circle"></td>
-                        <td>22/03/2019 12:09 PM</td>
-                        <td>30</td>
-                        <td>$2800</td>
-                        <td><span class="badge badge-boxed badge-soft-warning">Pending</span></td>
-                     </tr>
-                     <!--end tr-->
-                     <tr>
-                        <td><img class="" src="/dashboard/assets/images/products/img-4.png" alt="user"></td>
-                        <td>Purse</td>
-                        <td><img src="/dashboard/assets/images/flags/russia_flag.jpg" alt="" class="img-flag thumb-xxs rounded-circle"></td>
-                        <td>14/03/2019 8:27 PM</td>
-                        <td>100</td>
-                        <td>$520</td>
-                        <td><span class="badge badge-boxed badge-soft-success">Shipped</span></td>
-                     </tr>
-                     <!--end tr-->
-                     <tr>
-                        <td><img class="" src="/dashboard/assets/images/products/img-5.png" alt="user"></td>
-                        <td>Shoe</td>
-                        <td><img src="/dashboard/assets/images/flags/italy_flag.jpg" alt="" class="img-flag thumb-xxs rounded-circle"></td>
-                        <td>18/03/2019 5:09 PM</td>
-                        <td>100</td>
-                        <td>$1150</td>
-                        <td><span class="badge badge-boxed badge-soft-warning">Pending</span></td>
-                     </tr>
-                     <!--end tr-->
-                     <tr>
-                        <td><img class="" src="/dashboard/assets/images/products/img-6.png" alt="user"></td>
-                        <td>Boll</td>
-                        <td><img src="/dashboard/assets/images/flags/us_flag.jpg" alt="" class="img-flag thumb-xxs rounded-circle"></td>
-                        <td>30/03/2019 4:29 PM</td>
-                        <td>140</td>
-                        <td>$ 650</td>
-                        <td><span class="badge badge-boxed badge-soft-success">Shipped</span></td>
-                     </tr>
-                     <!--end tr-->
-                  </tbody>
-               </table>
-               <!--end table-->
+@foreach($lastPurchases as $purchase)
+<div class="modal fade bd-example-modal-xl" id="ShowAddressModal{{ $purchase->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">اطلاعات خریدار</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <!--end /div-->
-         </div>
-         <!--end card-body-->
-      </div>
-      <!--end card-->
-   </div>
-   <!--end col-->
+            <div class="modal-body modal-scroll" style="background-color:#fbfcfd">
+
+                    <div class="form-group mb-0">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                               class="fas fa-star required-star mr-1"></i>نام و نام خانوادگی:</span></div>
+                            <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->user()->withTrashed()->get()->first()->firstName . ' ' . $purchase->user()->withTrashed()->get()->first()->lastName }}" readonly>
+                        </div>
+
+                    </div>
+                    <div class="form-group mb-0">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                               class="fas fa-star required-star mr-1"></i>تلفن :</span></div>
+                            <input type="text" class="form-control inputfield" name="name" value="{{ $purchase->user()->withTrashed()->get()->first()->mobile }}" readonly>
+                        </div>
+
+                    </div>
+                    <div class="form-group mb-0">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                               class="fas fa-star required-star mr-1"></i>استان :</span></div>
+                            <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->province }}" @endif readonly>
+                        </div>
+
+                    </div>
+                    <div class="form-group mb-0">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                               class="fas fa-star required-star mr-1"></i>شهر :</span></div>
+                            <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->city }}" @endif readonly>
+                        </div>
+
+                    </div>
+                    <div class="form-group mb-0">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                               class="fas fa-star required-star mr-1"></i>کد پستی :</span></div>
+                            <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->zip_code }}" @endif readonly>
+                        </div>
+
+                    </div>
+                    <div class="form-group mb-0">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                               class="fas fa-star required-star mr-1"></i>آدرس :</span></div>
+                            <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->address }}" @endif readonly>
+                        </div>
+
+                    </div>
+                    <!--end form-group-->
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-danger rounded" data-dismiss="modal">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+<!--end row-->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title">لیست سفارشات فروشگاه</h4>
+                <p class="text-muted mb-4 font-13">در این بخش میتوانید لیست تمامی سفارشات فروشگاه خود را ملاحظه کنید </p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="searchBox bg-dark" style="margin-top: -15px;">
+                                <input type="text" id="myInputTextField" class="searchInput">
+                                <button class="searchButton" href="#">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+
+                                <table id="datatable" class="table table-bordered dt-responsive dataTable no-footer font-16" style="border-collapse: collapse; border-spacing: 0px; width: 100%;" role="grid">
+                                    <thead style="text-align: center">
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ردیف</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">نام خانوادگی</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">روش پرداخت</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">روش ارسال</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">وضعیت سفارش</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">تاریخ ثبت سفارش</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">عملیات</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody style="text-align: center" class="iranyekan">
+                                        @php
+                                        $id = 1;
+                                        @endphp
+                                        @foreach($lastPurchases as $purchase)
+                                        <tr role="row" class="odd icon-hover hover-color">
+                                            <td>{{ $id }}</td>
+                                            <td>{{ $purchase->user->firstName }}</td>
+                                            <td>{{ $purchase->user->lastName }}</td>
+                                            <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">
+                                                    {{ $purchase->payment_method == "online_payment" ? "پرداخت آنلاین" : "پرداخت نقدی ( حضوری )" }}
+                                                </span></td>
+                                                <td><span class="badge badge-pill badge-soft-primary font-15 font-weight-bolder p-3 show4">
+                                              @if($purchase->shipping =="quick_way")
+                                                ارسال سریع
+                                              @elseif($purchase->shipping =="posting_way")
+                                                ارسال پستی
+                                              @elseif($purchase->shipping =="person_way")
+                                                دریافت حضوری
+                                              @else
+                                                __
+                                              @endif
+                                            </span></td>
+
+                            <td>
+                              <form action="{{ route('purchases.change-status', ['id' => $purchase->id, 'shop' => $shop->english_name]) }}" method="post">
+                                @csrf
+                                {{ method_field('put') }}
+                              <select name="status" class="form-control inputfield font-15" onchange="javascript:this.form.submit()">
+                                <option value="notPaid" @if($purchase->status == 'notPaid') selected @endif>پرداخت نشده</option>
+                                <option value="paid" @if($purchase->status == 'paid') selected @endif>پرداخت شده</option>
+                                <option value="processing" @if($purchase->status == 'processing') selected @endif>درحال پردازش</option>
+                                <option value="shipped" @if($purchase->status == 'shipped') selected @endif>ارسال شده</option>
+                                <option value="delivered" @if($purchase->status == 'delivered') selected @endif>دریافت شده</option>
+                              </select>
+                            </form>
+                          </td>
+
+                                            <td>{{ jdate($purchase->created_at) }}</td>
+                                            <td>
+                                                <a href="{{ route('purchases.show', ['id' => $purchase->id]) }}">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="{{ route('purchases.show', ['id' => $purchase->id]) }}" data-toggle="modal" data-target="#ShowAddressModal{{ $purchase->id }}">
+                                                        <i class="dripicons-user-id"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        @php
+                                        $id ++
+                                        @endphp
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
 </div>
 
 
@@ -336,6 +403,8 @@
    <script src="/dashboard/assets/highcharts/export-data.js"></script>
    <script src="/dashboard/assets/highcharts/funnel.js"></script>
    <script src="/dashboard/assets/highcharts/accessibility.js"></script>
+   <script src="{{ asset('/dashboard/assets/js/admin-users-index.js') }}"></script>
+
 
    <script>
 
@@ -369,19 +438,26 @@
 
             line: {
                dataLabels: {
-                  enabled: true,
+                   format: '\u202B', // \u202B is RLE char for RTL support
+                   y: -5, //Optional
+                   style: {
+                       fontSize: '13px',
+                       fontFamily: 'tahoma',
+                       textShadow: false, //bug fixed IE9 and EDGE
+                   },
+                   enabled: true,
                   connectorAllowed: false
                },
             }
          },
          series: [{
-            name: 'Visits',
+            name: 'بازدید',
             data: [ {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first()->total : 0}} , {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first() ? $weeklyVisits->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first()->total : 0 }}]
          }, {
-            name: 'Visitors',
+            name: 'بازدیدکننده',
             data: [ {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->first()->total : 0}} , {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->first()->total : 0 }}, {{ $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first() ? $weeklyVisitors->where('day', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->first()->total : 0 }}]
          }, {
-            name: 'Purchuses',
+            name: 'سفارش',
             data: [ {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 6 days')->format('%Y/%m/%d'))->count() }} , {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 5 days')->format('%Y/%m/%d'))->count() }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 4 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 3 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 2 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('now - 1 days')->format('%Y/%m/%d'))->count()  }}, {{ $purchases->where('date', \Morilog\Jalali\Jalalian::forge('today')->format('%Y/%m/%d'))->count() }}]
          }],
 
@@ -394,7 +470,7 @@
                   legend: {
                      layout: 'horizontal',
                      align: 'center',
-                     verticalAlign: 'bottom'
+                     verticalAlign: 'middle'
                   }
                }
             }]

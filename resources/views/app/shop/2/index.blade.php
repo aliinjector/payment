@@ -7,38 +7,39 @@
 @endsection
 
 @section('content')
+  @if($slideshows->count() > 0)
+      <br><br><br>
+      <div class="slideshow-container">
+
+          @foreach($slideshows as $slideshow)
+
+          <div class="mySlides fade">
+              <a href="{{ $slideshow->url }}">
+                  <div class="text2">{!! $slideshow->title !!}</div>
+                  <img class="d-block w-100 slide-image" src="{{ $slideshow->image['original'] }}" alt="{{ $slideshow->title }}" style=" height: 45vh;">
+                  <div class="text">{!! $slideshow->description !!}</div>
+              </a>
+          </div>
+
+          @endforeach
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+      </div>
+      <br>
+
+      <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+
+
+      <br><br><br>
+      @endif
+
 <div id="tt-pageContent">
-    @if($slideshows->count() > 0)
-        <br><br><br>
-        <div class="slideshow-container">
-
-            @foreach($slideshows as $slideshow)
-
-            <div class="mySlides fade">
-                <a href="{{ $slideshow->url }}">
-                    <div class="text2">{!! $slideshow->title !!}</div>
-                    <img class="d-block w-100 slide-image" src="{{ $slideshow->image['original'] }}" alt="{{ $slideshow->title }}" style=" height: 34vh;">
-                    <div class="text">{!! $slideshow->description !!}</div>
-                </a>
-            </div>
-
-            @endforeach
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        </div>
-        <br>
-
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-        </div>
-
-
-        <br><br><br>
-        @endif
 
 
 

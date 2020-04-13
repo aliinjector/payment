@@ -29,6 +29,8 @@ class DashboardShopController extends Controller
             foreach ($shopPurchases as $shopPurchase) {
                 $sumPurchasesPrice += $shopPurchase->total_price;
             }
+            $lastPurchases = $shop->purchases;
+
             SEOTools::setTitle($shop->name . ' | داشبورد');
             SEOTools::setDescription($shop->name);
             SEOTools::opengraph()->addProperty('type', 'website');
@@ -46,7 +48,7 @@ class DashboardShopController extends Controller
 //            $addedToCart = \DB::table('cart_product')->where('shop_id', $shop->id)->get();
             $visitorsCount = Stat::where('shop_id', $shop->id)->distinct('ip')->count('ip');
 
-            return view('dashboard.shop.dashboard-shop', compact('shop','bestViews', 'bestSellings', 'sumPurchasesPrice', 'weeklyVisits', 'weeklyVisitors', 'purchases', 'purchasesSabtShode', 'purchasesPardakhtShode', 'visitorsCount'));
+            return view('dashboard.shop.dashboard-shop', compact('shop','bestViews', 'bestSellings','lastPurchases',  'sumPurchasesPrice', 'weeklyVisits', 'weeklyVisitors', 'purchases', 'purchasesSabtShode', 'purchasesPardakhtShode', 'visitorsCount'));
         }
     }
 

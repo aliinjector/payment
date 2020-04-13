@@ -66,6 +66,20 @@ class UserInformationController extends \App\Http\Controllers\Controller
     public function store(UserInformationRequest $request)
     {
 
+      if($request->zipCode != null and $request->tel != null and $request->nationalCode != null and $request->shenasnamehCode != null){
+
+        $request->merge(['zipCode' => $this->fa_num_to_en($request->zipCode)]);
+        $request->merge(['tel' => $this->fa_num_to_en($request->tel)]);
+        $request->merge(['nationalCode' => $this->fa_num_to_en($request->nationalCode)]);
+        $request->merge(['shenasnamehCode' => $this->fa_num_to_en($request->shenasnamehCode)]);
+      }
+
+      $request->validate([
+        'zipCode' => 'required|digits:10',
+        'tel' => 'required|min:1|max:20',
+        'nationalCode' => 'required|digits:10',
+        'shenasnamehCode' => 'required|digits:10',
+      ]);
         $userInformation = UserInformation::where('user_id', \Auth::user()->id)->first();
         $userInformation->fatherName = $request->fatherName;
         $userInformation->city = $request->city;

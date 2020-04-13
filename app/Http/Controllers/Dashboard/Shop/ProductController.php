@@ -694,6 +694,8 @@ else{
 
 
             \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->tags()->sync($tagIds);
+            \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->colors()->sync($colorIds);
+            $product->specifications()->sync($sepecificationIds);
         }
         alert()->success('محصول شما باموفقیت ویرایش شد.', 'ثبت شد');
         return redirect()->route('product-list.index');
