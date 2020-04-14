@@ -32,16 +32,16 @@ class ShopThemeRequest extends FormRequest
     {
         return [
           'menu_show' => 'in:nestead_menu,nestead_box,mega_menu',
-          'menu_show_count' => 'numeric|min:1|max:10',
+          'menu_show_count' => 'numeric|min:1|max:10|regex:/^[0-9]+$/u',
           'cat_image_status' => 'in:enable,disable',
           'watermark_status' => 'in:enable,disable',
           'VAT' => 'in:enable,disable',
           'buyCount_show' => 'in:enable,disable',
           'special_offer' => 'in:enable,disable',
           'watermark' => 'mimes:jpeg,png,jpg,gif|max:2048',
-          'special_offer_text' => 'min:1|max:150',
-          'template_id' => 'numeric|min:1|max:50',
-          'slide_category' => 'max:100',
+          'special_offer_text' => 'nullable|min:1|max:150|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+          'template_id' => 'numeric|min:1|max:50|regex:/^[0-9]+$/u',
+          'slide_category' => 'nullable|max:100|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
         ];
     }
 }

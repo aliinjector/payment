@@ -34,8 +34,8 @@ class UserPurchasesRequest extends FormRequest
     public function rules()
     {
         return [
-          'user_purchase_id' =>  'required|numeric|min:0|max:10000000000000000',
-          'product_id' =>  'required|numeric|min:0|max:10000000000000000',
+          'user_purchase_id' =>  'required|numeric|min:0|max:10000000000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+          'product_id' =>  'required|numeric|min:0|max:10000000000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
 
         ];
     }

@@ -13,10 +13,10 @@ class RatingController extends Controller
 
       public function updateRate(Request $request) {
         $request->validate([
-          'id' => 'required|numeric|min:1|max:10000000000000',
-          'rate' => 'required|min:0|max:5',
-          'shop' => 'required|min:1|max:10000000000',
-          'slug' => 'required|min:1|max:10000000000000',
+          'id' => 'required|numeric|min:1|max:10000000000000|regex:/^[0-9]+$/u',
+          'rate' => 'required|min:0|max:5|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
+          'shop' => 'required|min:1|max:10000000000|regex:/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}$/',
+          'slug' => 'required|min:1|max:10000000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.-_ ]+$/u',
     ]);
           $user = \auth::user();
           $product = Product::find($request->id);

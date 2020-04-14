@@ -123,7 +123,7 @@ class FAQController extends Controller
     public function destroy(Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $faq = FAQ::find($request->id);
       if ($faq->shop->user_id !== \Auth::user()->id) {

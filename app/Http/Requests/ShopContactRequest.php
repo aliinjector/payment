@@ -31,23 +31,24 @@ class ShopContactRequest extends FormRequest
      */
     public function rules()
     {
+      // dd(request()->all());
         return [
               'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
               'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-              'tel' => 'nullable|string|min:3|not_in:0|max:30',
-              'address' => 'max:250',
+              'tel' => 'nullable|string|min:3|not_in:0|max:30|regex:/^[0-9\-۰-۹]+$/u',
+              'address' => 'nullable|max:250|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
               'shop_email' => 'nullable', 'email', 'max:255',
-              'telegram_url' => 'max:220',
-              'instagram_url' => 'max:220',
-              'facebook_url' => 'max:220',
-              'soroush_url' => 'max:220',
-              'bisphone_url' => 'max:220',
-              'Igap_url' => 'max:220',
-              'gap_url' => 'max:220',
-              'wispi_url' => 'max:220',
-              'bale_url' => 'max:220',
-              'lat' => 'min:1|max:220',
-              'lng' => 'min:1|max:220',
+              'telegram_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'instagram_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'facebook_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'soroush_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'bisphone_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'Igap_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'gap_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'wispi_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'bale_url' => 'nullable|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي?:\/\/.@%_+~#=* ]+$/u',
+              'lat' => 'nullable|min:1|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
+              'lng' => 'nullable|min:1|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
         ];
     }
 }

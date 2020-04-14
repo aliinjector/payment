@@ -120,9 +120,9 @@ class CompareController extends Controller
 
     public function deleteFromCompare(Request $request){
       $request->validate([
-        'shop' => 'required|min:1|max:400',
-        'compare' => 'required|numeric|min:1|max:10000000000',
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'shop' => 'required|min:1|max:400|regex:/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}$/',
+        'compare' => 'required|numeric|min:1|max:10000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
   ]);
       $shop = Shop::where('english_name', $request->shop)->get()->first();
       \Auth::user()->compare()->get()->where('id', $request->compare)->first()->products()->detach($request->id);

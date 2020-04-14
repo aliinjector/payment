@@ -33,7 +33,7 @@ class PurchaseRequest extends FormRequest
     public function rules()
     {
             return [
-              'code' => 'required|min:1|max:100|string'
+              'code' => 'required|min:1|max:100|string|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي ]+$/u'
             ];
 
           }

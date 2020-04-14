@@ -76,7 +76,7 @@ class VoucherController extends Controller
            return redirect()->back();
                }
       $request->validate([
-        'shop_id' => 'required|numeric|min:1|max:10000000000',
+        'shop_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
@@ -185,7 +185,7 @@ class VoucherController extends Controller
 
     public function changeStatus(Request $request){
       $request->validate([
-        'id' => 'numeric|min:1|max:10000000000',
+        'id' => 'numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
         $voucher = Voucher::find($request->id);
         if($voucher->status == 0)
@@ -220,7 +220,7 @@ class VoucherController extends Controller
     public function destroy(Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
         $voucher = Voucher::where('id' , $request->id)->get()->first();
                  if ($voucher->shop()->get()->first()->user_id !== \Auth::user()->id) {

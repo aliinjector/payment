@@ -705,8 +705,8 @@ else{
 
     public function changeStatus(Request $request){
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
-        'shop' => 'required|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/[0-9]+$/u',
+        'shop' => 'required|min:1|max:10000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
   ]);
       $shop = \Auth::user()->shop()->first();
       $product = $shop->products->where('id', $request->id)->first();
@@ -733,7 +733,7 @@ else{
 
     public function getFeatures(Request $request){
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $features = collect();
       if($this->getAllParentCategories($request->id)->count() == 0){
@@ -757,7 +757,7 @@ else{
      public function destroy(Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
     $product = Product::where('id' , $request->id)->get()->first();
              if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
@@ -772,7 +772,7 @@ else{
 
       public function destroyImage(Request $request){
         $request->validate([
-          'id' => 'required|numeric|min:1|max:10000000000',
+          'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
         $product = Product::find($request->id);
         if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
@@ -792,7 +792,7 @@ else{
 
       public function destroyFile(Request $request){
         $request->validate([
-          'id' => 'required|numeric|min:1|max:10000000000',
+          'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
         $product = Product::find($request->id);
         if ($product->shop()->get()->first()->user_id !== \Auth::user()->id) {
@@ -838,7 +838,7 @@ else{
     public function search(Request $request)
     {
       $request->validate([
-        'title' => 'required|min:1|max:1000',
+        'title' => 'required|min:1|max:1000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
   ]);
         $title = $request->title;
         if(request()->has('notification')){

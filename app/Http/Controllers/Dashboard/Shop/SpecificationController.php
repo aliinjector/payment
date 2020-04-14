@@ -120,7 +120,7 @@ class SpecificationController extends Controller
     public function destroy(Specification $specification, Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
 
         $specification = Specification::find($request->id);

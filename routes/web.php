@@ -97,7 +97,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
 
         //Purchases
         Route::resource('purchases', 'PurchaseController');
-        Route::resource('purchases', 'PurchaseController');
+        Route::post('purchases/{purchaseID}/delete/{id}', 'PurchaseController@destroy')->name('purchases.delete')->where(['purchaseID' => '[0-9]+', 'id' => '[0-9]+']);
         Route::put('purchases/change-status/{id}', 'PurchaseController@changeStatus')->name('purchases.change-status')->where(['id' => '[0-9]+']);
 
       });

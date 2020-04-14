@@ -33,8 +33,8 @@ class FeedbackRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullName' => 'required|max:150' ,
-             'feedback' => 'required|max:150',
+            'fullName' => 'required|max:150|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u' ,
+             'feedback' => 'required|max:150|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
         ];
     }
 }

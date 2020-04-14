@@ -105,7 +105,7 @@ class CommentsController extends \App\Http\Controllers\Controller
     public function comment(Request $request)
     {
         $this->validate($request, [
-            'comment' => 'required|min:3|max:1000'
+            'comment' => 'required|min:3|max:1000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u'
         ]);
         Comment::create(array_merge([
             'user_id' => auth()->user()->id,
@@ -119,7 +119,7 @@ class CommentsController extends \App\Http\Controllers\Controller
     public function answer(Request $request)
     {
         $this->validate($request, [
-            'comment' => 'required|min:3|max:1000'
+            'comment' => 'required|min:3|max:1000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u'
         ]);
         Comment::create(array_merge([
             'user_id' => auth()->user()->id,

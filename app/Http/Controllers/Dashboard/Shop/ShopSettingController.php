@@ -110,7 +110,7 @@ class ShopSettingController extends Controller
             ]);
         }
         $request->validate([
-          'category_id' => 'required|numeric|min:1|max:10000000000',
+          'category_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
         if(!isset($request->quick_way) and !isset($request->posting_way) and !isset($request->person_way)){
           return redirect()->back()->withErrors(['باید حداقل یک روش ارسال انتخاب شود']);
@@ -243,7 +243,7 @@ class ShopSettingController extends Controller
 
     public function updateTemplate(ShopThemeRequest $request){
       $request->validate([
-        'template_id' => 'required|numeric|min:1|max:10000000000',
+        'template_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $shop = \Auth::user()->shop()->first()->update([
         'template_id' => $request->template_id,

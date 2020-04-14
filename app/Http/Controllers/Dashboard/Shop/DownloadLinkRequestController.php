@@ -98,7 +98,7 @@ class DownloadLinkRequestController extends Controller
     public function destroy(Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $downloadLinkRequest = ProductDownloadStatus::find($request->id);
       if ($downloadLinkRequest->shop->user_id !== \Auth::user()->id) {
@@ -114,7 +114,7 @@ class DownloadLinkRequestController extends Controller
 
     public function acceptRequest(Request $request){
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $downloadLinkRequest = ProductDownloadStatus::find($request->id);
       if ($downloadLinkRequest->shop->user_id !== \Auth::user()->id) {

@@ -29,9 +29,9 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-          'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
+            'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
             'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-            'address' => 'required|min:1|max:400',
+            'address' => 'required|min:1|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
         ];
     }
 }

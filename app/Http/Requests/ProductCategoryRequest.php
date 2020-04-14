@@ -31,10 +31,10 @@ class ProductCategoryRequest extends FormRequest
     public function rules()
     {
       return [
-          'name' => 'required|max:60|regex:/[ا-یa-zA-Z0-9 ]+(?:-[ا-یa-zA-Z0-9 ]+){0,15}/',
+          'name' => 'required|max:60|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
           'icon' => 'mimes:jpeg,png,jpg,gif|max:2048',
-          'parent_id' => 'required|min:1|max:10000000000',
-          'description' => 'max:500',
+          'parent_id' => 'required|min:1|max:10000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي ]+$/u',
+          'description' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
       ];
     }
 }

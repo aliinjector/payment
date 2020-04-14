@@ -26,7 +26,7 @@ class UserInformationRequest extends FormRequest
         return [
             'fatherName' => 'required|regex:/^[\pL\s\-]+$/u|min:1|max:24',
             'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-            'address' => 'required|min:1|max:220',
+            'address' => 'required|min:1|max:220|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
             'placeOfIssue' => 'required|min:1|max:50|regex:/^[\pL\s\-]+$/u',
             'birthDate' => 'required|min:1|max:20',
         ];

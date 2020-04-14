@@ -45,10 +45,10 @@ class InvoiceRequest extends FormRequest
             'vat' => 'in:enable,disable',
             'description_status' => 'in:enable,disable',
             'motto' => 'in:enable,disable',
-            'economic_code_number' => 'max:50',
-            'registration_number‌_number' => 'max:50',
-            'description' => 'max:70',
-            'motto_text' => 'max:50',
+            'economic_code_number' => 'nullable|max:50|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي ]+$/u',
+            'registration_number‌_number' => 'nullable|max:50|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي ]+$/u',
+            'description' => 'nullable|max:70|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+            'motto_text' => 'nullable|max:50|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
         ];
     }
 }

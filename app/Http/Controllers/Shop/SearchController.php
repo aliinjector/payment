@@ -15,7 +15,7 @@ class SearchController extends Controller
 {
     public function index(Request $request, $shop){
       $request->validate([
-        'queryy' => 'required|min:1|max:100',
+        'queryy' => 'required|min:1|max:100|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.-_ ]+$/u',
   ]);
 
         $shop = Shop::where('english_name', $shop)->first();

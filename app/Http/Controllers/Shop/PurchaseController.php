@@ -390,8 +390,12 @@ class PurchaseController extends Controller
           public function getShippingPrice(Request $request){
             $request->validate([
               'type' => 'required|in:posting_way_price,person_way_price,quick_way_price',
-              'shop' => 'required|min:1|max:10000000000',
+              'shop' => 'required|min:1|max:10000000000|regex:/^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+){0,2}$/',
         ]);
+        if($request->shop != explode('/',$request->url())[3]){
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+          return redirect()->back();
+        }
             $typePrice = $request->type;
             $shippingPrice = Shop::where('english_name', $request->shop)->get()->first()->$typePrice;
             return response()->json($shippingPrice);

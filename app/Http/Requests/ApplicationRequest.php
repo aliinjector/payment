@@ -32,10 +32,10 @@ class ApplicationRequest extends FormRequest
     public function rules()
     {
       return [
-          'title' => 'required|min:1|max:150',
-          'color_1' => 'required|max:150',
-          'color_2' => 'required|max:150',
-          'color_3' => 'required|max:150',
+          'title' => 'required|min:1|max:150|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي ]+$/u',
+          'color_1' => 'required|max:150|regex:/^[ا-یa-zA-Z0-9# ]+$/u',
+          'color_2' => 'required|max:150|regex:/^[ا-یa-zA-Z0-9# ]+$/u',
+          'color_3' => 'required|max:150|regex:/^[ا-یa-zA-Z0-9# ]+$/u',
           'icon' => 'mimes:jpeg,png,jpg,gif|max:2048',
       ];
     }

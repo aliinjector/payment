@@ -26,7 +26,7 @@ class FeatureController extends Controller
       }
       else{
         $request->validate([
-          'cat_id' => 'required|numeric|min:1|max:10000000000',
+          'cat_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
               $category = ProductCategory::find($request->cat_id);
               $shop = \Auth::user()->shop()->first();
@@ -60,7 +60,7 @@ class FeatureController extends Controller
     public function store(FeatureRequest $request)
     {
       $request->validate([
-        'productCat_id' => 'required|numeric|min:1|max:10000000000',
+        'productCat_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       if($request->file('icon') == null){
         $icon = null;
@@ -82,7 +82,7 @@ class FeatureController extends Controller
               break;
           //save and open new modal
           case 'saveAndContinue':
-                  $request->validate(['name' => 'required']);
+                  $request->validate(['name' => 'required|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u']);
                   $feature = new Feature;
                   $feature->name = $request->name;
                   $feature->productCat_id = $request->productCat_id;
@@ -119,7 +119,7 @@ class FeatureController extends Controller
     public function edit(Request $request, $productCategoryFeatureid)
     {
       $request->validate([
-        'cat_id' => 'required|numeric|min:1|max:10000000000',
+        'cat_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $shop = \Auth::user()->shop()->first();
       $category = ProductCategory::find($request->cat_id);
@@ -137,7 +137,7 @@ class FeatureController extends Controller
     public function update(FeatureRequest $request, $productCategoryFeatureid)
     {
       $request->validate([
-        'cat_id' => 'required|numeric|min:1|max:10000000000',
+        'cat_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       if($request->file('icon') == null){
         $icon = null;
@@ -163,7 +163,7 @@ class FeatureController extends Controller
     public function destroy(Feature $feature, Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $feature = Feature::find($request->id);
       if ($feature->productCategory->shop->user_id !== \Auth::user()->id) {

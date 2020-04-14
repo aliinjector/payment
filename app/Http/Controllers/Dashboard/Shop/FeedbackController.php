@@ -109,7 +109,7 @@ class FeedbackController extends Controller
     public function destroy(Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $feedback = Feedback::find($request->id);
 

@@ -143,7 +143,7 @@ class SlideshowController extends Controller
     public function destroy(Slideshow $slideshow, Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $slideshow = Slideshow::find($request->id);
       if ($slideshow->shop->user_id !== \Auth::user()->id) {

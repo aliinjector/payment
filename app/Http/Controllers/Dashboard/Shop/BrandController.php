@@ -135,7 +135,7 @@ class BrandController extends Controller
      public function destroy(Brand $brand , Request $request)
      {
        $request->validate([
-         'id' => 'required|numeric|min:1|max:10000000000',
+         'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
    ]);
        $brand = Brand::find($request->id);
        if ($brand->shop->user_id !== \Auth::user()->id) {
@@ -150,7 +150,7 @@ class BrandController extends Controller
 
     public function destroyIcon(Request $request){
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
   ]);
       $brand = Brand::find($request->id);
       if ($brand->shop->user_id !== \Auth::user()->id) {

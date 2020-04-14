@@ -32,14 +32,14 @@ class VoucherRequest extends FormRequest
     public function rules()
     {
         return [
-          'name' => 'required|max:50',
+          'name' => 'required|max:50|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
           'uses' => 'required|integer|gt:0',
-          'description' => 'max:70',
+          'description' => 'nullable|max:70|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
           'type' => 'in:on',
           'code' => 'unique:vouchers|min:1|max:50',
           'first_purchase' => 'in:on',
           'disposable' => 'in:on',
-          'users' => 'max:500',
+          'users.*' => 'nullable|max:500',
           'discount_amount' => ['required',
           'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
         ],

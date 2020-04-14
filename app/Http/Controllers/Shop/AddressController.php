@@ -150,7 +150,7 @@ class AddressController extends Controller
     public function destroy(Request $request)
     {
       $request->validate([
-        'id' => 'required|numeric|min:1|max:10000000000',
+        'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
     ]);
       $address = Address::find($request->id);
       if ($address->user_id !== \Auth::user()->id) {

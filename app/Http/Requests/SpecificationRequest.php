@@ -32,7 +32,7 @@ class SpecificationRequest extends FormRequest
     public function rules()
     {
         return [
-          'name' => 'required|max:150',
+          'name' => 'required|max:150|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
           'type' => 'in:checkbox,radio',
 
         ];

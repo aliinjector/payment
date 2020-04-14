@@ -35,7 +35,7 @@ class WishlistRequest extends FormRequest
     public function rules()
     {
         return [
-          'productID' =>  'required|numeric|min:0|max:10000000000000000',
+          'productID' =>  'required|numeric|min:0|max:10000000000000000|regex:/^[0-9]+$/u',
         ];
     }
 }

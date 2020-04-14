@@ -109,7 +109,7 @@ class PurchaseController extends Controller
 
     public function changeStatus(Request $request){
       $request->validate([
-        'id' => 'numeric|min:1|max:10000000000',
+        'id' => 'numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
         'status' => 'required|in:notPaid,paid,shipped,processing,delivered'
   ]);
       $shop = \Auth::user()->shop()->first();
@@ -130,8 +130,8 @@ class PurchaseController extends Controller
      public function destroy(Request $request)
      {
        $request->validate([
-         'id' => 'required|numeric|min:1|max:10000000000',
-         'purchaseid' => 'required|numeric|min:1|max:10000000000'
+         'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+         'purchaseid' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u'
    ]);
        $cartProduct = CartProduct::find($request->id);
        $purchase = UserPurchase::find($request->purchaseid);
