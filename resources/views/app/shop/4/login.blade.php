@@ -12,7 +12,7 @@
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">login-Register</li>
+                                    <li class="breadcrumb-item active" aria-current="page">حساب کاربری</li>
                                 </ul>
                             </nav>
                         </div>
@@ -30,27 +30,27 @@
                         <!-- Login Content Start -->
                         <div class="col-lg-6">
                             <div class="login-reg-form-wrap">
-                                <h5>Sign In</h5>
+                                <h5>ورود</h5>
                                 <form action="#" method="post">
                                     <div class="single-input-item">
-                                        <input type="email" placeholder="Email or Username" required />
+                                        <input type="email" placeholder="ایمیل یا نام کاربری" required />
                                     </div>
                                     <div class="single-input-item">
-                                        <input type="password" placeholder="Enter your Password" required />
+                                        <input type="password" placeholder="رمز ورود خود را وارد کنید" required />
                                     </div>
                                     <div class="single-input-item">
                                         <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                             <div class="remember-meta">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="rememberMe">
-                                                    <label class="custom-control-label" for="rememberMe">Remember Me</label>
+                                                    <label class="custom-control-label" for="rememberMe">مرا به خاطر بسپار</label>
                                                 </div>
                                             </div>
-                                            <a href="#" class="forget-pwd">Forget Password?</a>
+                                            <a href="#" class="forget-pwd">فراموشی رمز عبور؟</a>
                                         </div>
                                     </div>
                                     <div class="single-input-item">
-                                        <button class="btn btn-sqr">Login</button>
+                                        <button class="btn btn-sqr">وارد شدن</button>
                                     </div>
                                 </form>
                             </div>
@@ -60,23 +60,23 @@
                         <!-- Register Content Start -->
                         <div class="col-lg-6">
                             <div class="login-reg-form-wrap sign-up-form">
-                                <h5>Singup Form</h5>
+                                <h5>فرم ثبت نام</h5>
                                 <form action="#" method="post">
                                     <div class="single-input-item">
-                                        <input type="text" placeholder="Full Name" required />
+                                        <input type="text" placeholder="نام و نام خانوادگی" required />
                                     </div>
                                     <div class="single-input-item">
-                                        <input type="email" placeholder="Enter your Email" required />
+                                        <input type="email" placeholder="ایمیل خود را وارد کنید" required />
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div class="single-input-item">
-                                                <input type="password" placeholder="Enter your Password" required />
+                                                <input type="password" placeholder="رمز ورود خود را وارد کنید" required />
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="single-input-item">
-                                                <input type="password" placeholder="Repeat your Password" required />
+                                                <input type="password" placeholder="رمزعبور خود را تکرار کنید" required />
                                             </div>
                                         </div>
                                     </div>
@@ -85,14 +85,14 @@
                                             <div class="remember-meta">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="subnewsletter">
-                                                    <label class="custom-control-label" for="subnewsletter">Subscribe
-                                                        Our Newsletter</label>
+                                                    <label class="custom-control-label" for="subnewsletter">اشتراک در
+                                                        خبرنامه ما</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="single-input-item">
-                                        <button class="btn btn-sqr">Register</button>
+                                        <button class="btn btn-sqr">ثبت نام</button>
                                     </div>
                                 </form>
                             </div>
