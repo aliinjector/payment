@@ -40,7 +40,7 @@
     <header class="header-area header-wide">
         <!-- main header start -->
         <div class="main-header d-none d-lg-block">
-        
+
 
             <!-- header middle area start -->
             <div class="header-main-area sticky">
@@ -50,8 +50,9 @@
                         <!-- start logo area -->
                         <div class="col-lg-2">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img src="assets/img/logo/logo.png" alt="Brand Logo">
+                              <a href="{{ route('shop', $shop->english_name) }}">
+                                    <img src="{{ $shop->logo['200,100'] }}" alt="Logo">
+                                    <a href="{{ route('shop', $shop->english_name) }}"><span class="mr-3">{{ $shop->name }}</span></a>
                                 </a>
                             </div>
                         </div>

@@ -25,6 +25,82 @@
     width: 300px!important;
 }
 
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left:0 !important;
+    padding: 0;
+}
+ul.social-network li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.social-network a.icoRss:hover {
+    background-color: #F56505;
+}
+.social-network a.icoFacebook:hover {
+    background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+    background-color:#33ccff;
+}
+.social-network a.icoGoogle:hover {
+    background-color:#BD3518;
+}
+.social-network a.icoVimeo:hover {
+    background-color:#0590B8;
+}
+.social-network a.icoLinkedin:hover {
+    background-color:#007bb7;
+}
+.social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+    color:#fff;
+}
+a.socialIcon:hover, .socialHoverClass {
+    color:#44BCDD;
+}
+
+.social-circle li a {
+    display:inline-block;
+    position:relative;
+    margin:0 auto 0 auto;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    border-radius:50%;
+    text-align:center;
+    width: 50px;
+    height: 50px;
+    font-size:20px;
+    background-color: #D3D3D3;
+}
+.social-circle li i {
+    margin:0;
+    line-height:50px;
+    text-align: center;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -ms--transform: rotate(360deg);
+    transform: rotate(360deg);
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    transition: all 0.2s;
+}
+.social-circle i {
+    color: #fff;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -o-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
+}
+
 </style>
 <div class="row">
     <div class="col-sm-12">
@@ -80,6 +156,7 @@
                               @endif
                             </div>
                          </div>
+
                             @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
                                 <h2 class="pro-price">{{ number_format($product->off_price) }} تومان</h2>
                                 <span><del>{{ number_format($product->price) }} تومان</del></span>
@@ -142,8 +219,10 @@
 
                           <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
                         </form>
-                        <div class="quantity mt-3">
 
+
+
+                        <div class="quantity mt-3">
                             @auth
                             @if($product->type == 'file')
                                 <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
@@ -183,6 +262,14 @@
                                 @endguest
 
                         </div>
+                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />                                <span style="padding-top: 16px;font-weight: 500;color: #50649c; font-size: 15px;">به اشتراک گذاری شبکه های اجتماعی: </span>
+                                <ul class="social-network social-circle">
+                                    <li><a href="whatsapp://send?text={{  url()->current()  }}" data-action="share/whatsapp/share" target="_blank" class="icoRss" title="Rss"><i class="fa fa-whatsapp"></i></a></li>
+                                    <li><a href="tg://msg_url?url={{ url()->current() }}&text='فروشگاه ساز امید'" class="icoTwitter" title="Rss"><i class="fa fa-telegram"></i></a></li>
+                                </ul>
+                            </div>
+
+
                     </div>
                 </div>
 
