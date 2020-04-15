@@ -217,7 +217,7 @@
                                                               @if($cart->cartProduct != null)
                                                             @foreach ($cart->cartProduct as $cartProduct)
                                                             <div class="tt-item border-bottom p-3">
-                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$cartProduct->product->slug,'id'=>$cartProduct->product->id]) }}" target="_blank">
+                                                                <a href="{{ route('product', ['shop'=>$cartProduct->cart->shop->english_name, 'slug'=>$cartProduct->product->slug,'id'=>$cartProduct->product->id]) }}" target="_blank">
                                                                     <div class="tt-item-img"><img src="{{ asset($cartProduct->product->image['80,80'] ? $cartProduct->product->image['80,80'] : '/images/no-image.png') }}" data-src="{{ asset($cartProduct->product->image['80,80'] ? $cartProduct->product->image['80,80'] : '/images/no-image.png') }}" alt=""></div>
                                                                     <div class="tt-item-descriptions">
                                                                         <h2 class="tt-title">{{ $cartProduct->product->title }}</h2>
@@ -241,7 +241,7 @@
 
                                                     </div>
                                                     <div class="tt-cart-btn">
-                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="color: white;"><button type="submit" class="btn btn-blue">مشاهده سبد خرید</a></button></div>
+                                                        <div class="tt-item"><a href="{{ route('user-cart' , ['shop' => $shop->english_name]) }}" style="color: white;"><button type="submit" class="btn @if(\Request::route()->getName() == 'purchase-list') btn-primary @endif ">مشاهده سبد خرید</a></button></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,17 +310,18 @@
                     <div class="tt-header-holder">
                         <div class="tt-obj-menu obj-aligment-center">
                             <!-- tt-menu -->
-                            <div class="collapse navbar-collapse">
+
+                            <div class="@if(\Request::route()->getName() != 'purchase-list') collapse @endif navbar-collapse">
                                 <div class="tt-desctop-menu tt-menu-small">
                                     <nav>
                                       <ul class="pb-4 font-wight-bold">
-                                        <li class="dropdown"><a class="" href="/{{ $shop->english_name }}"><img class="rounded" src="{{ $shop->logo['original'] }}" alt="" style="width:5vw"></a></li>
-                                          <li class="dropdown"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
+                                        <li class="@if(\Request::route()->getName() != 'purchase-list') dropdown @endif"><a class="" href="/{{ $shop->english_name }}"><img class="rounded" src="{{ $shop->logo['original'] }}" alt="" style="width:5vw"></a></li>
+                                          <li class="@if(\Request::route()->getName() != 'purchase-list') dropdown @endif"><a class="iranyekan" href="/{{ $shop->english_name }}" style="font-size: 17px!important;">{{ __('app-shop-2-layouts-master.safheAsli') }}</a></li>
 
                                       @if($shop->menu_show == "mega_menu")
-                                          <div class="dropdown mx-3 hover-opacity">
+                                          <div class="@if(\Request::route()->getName() != 'purchase-list') dropdown @endif mx-3 hover-opacity">
                                               <a href="">
-                                                  <button class="btn btn-primary-outline dropdown-toggle iranyekan f-em1-5 font-weight-normal text-white">
+                                                  <button class="btn btn-primary-outline @if(\Request::route()->getName() != 'purchase-list') dropdown-toggle @endif iranyekan f-em1-5 font-weight-normal text-white">
                                                   دسته بندی کالا ها
                                                   </button>
                                               </a>
@@ -373,9 +374,9 @@
 
                                             @inject('CategoryCTLR', 'App\Http\Controllers\Shop\CategoryController')
                                             @foreach ($shopCategories->where('parent_id' , null)->take($shop->menu_show_count) as $shopCategory)
-                                            <div class="dropdown mx-3" style="top:95px!important">
+                                            <div class="@if(\Request::route()->getName() != 'purchase-list') dropdown @endif mx-3" style="top:95px!important">
                                                 <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$shopCategory->id, 'name' => $shopCategory->name]) }}" class="font-weight-bold iranyekan">
-                                                    <button class="btn dropdown-toggle iranyekan f-em1-5 font-weight-normal @if(Request::is('*/category/'.$shopCategory->id.'/*')) border-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($shopCategory->id)->contains('id', explode('/',url()->current())[5]))  border-btn-blue @endif" style="color:
+                                                    <button class="btn @if(\Request::route()->getName() != 'purchase-list') dropdown-toggle @endif iranyekan f-em1-5 font-weight-normal @if(Request::is('*/category/'.$shopCategory->id.'/*')) border-btn-blue @endif @if(Route::currentRouteName() == 'category' and $CategoryCTLR->getAllSubCategories($shopCategory->id)->contains('id', explode('/',url()->current())[5]))  border-btn-blue @endif" style="color:
                                        #465f73!important;background-color:transparent;font-size: 17px!important;">
                                                         {{ $shopCategory->name }}
                                                     </button>

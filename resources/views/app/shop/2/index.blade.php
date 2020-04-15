@@ -216,7 +216,7 @@
 
             @foreach($brands as $brand)
             <div>
-                <a href="{{ route('brand', ['shop' => $shop->english_name, 'id' => $brand->id]) }}"><img src="{{ $brand->icon['120,50'] }}" alt=""></a>
+                <a href="{{ route('brand', ['shop' => $shop->english_name, 'id' => $brand->id]) }}"><img src="{{ $brand->icon['400,400'] }}" alt="" style="height:105px;width:350px"></a>
             </div>
             @endforeach
 
@@ -261,6 +261,19 @@
         slides[slideIndex - 1].style.display = "block";
         dots[slideIndex - 1].className += " active";
     }
+</script>
+<script type="text/javascript">
+$( ".tt-product" ).mouseleave(function() {
+  $(".tt-product").css("min-height", "500px");
+});
+$(window).ready(function(){
+  setInterval(function(){
+    $(".tt-product").css("min-height", "500px");
+  }, 10);
+
+});
+
+
 </script>
 
 @endsection
