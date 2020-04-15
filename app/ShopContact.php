@@ -13,4 +13,8 @@ class ShopContact extends Model
      {
          return $this->belongsTo('App\Shop');
      }
+      public function province()
+     {
+         return $this->belongsTo('App\Province');
+     }
 }

@@ -382,7 +382,7 @@
                                                 </a>
                                                 @if($shop->menu_show == "nestead_menu")
                                                     @if($shopCategory->children()->exists())
-                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:66px!important;
+                                                        <ul class="dropdown-menu multi-level font-16" role="menu" aria-labelledby="dropdownMenu" style="top:54!important;
                                        width: 21%!important;z-index: 10000;">
                                                             @foreach ($shopCategory->children()->get() as $subCategory)
                                                             @if (!$subCategory->children()->exists())

@@ -87,7 +87,7 @@
             return redirect(URL::temporarySignedRoute('download.link', now()->addMinutes(1), ['shop' => $shop, 'id' => $id]));
           }
           else{
-            toastr()->error(' شما قبلا این فایل را دانلود کرده اید.', 'خطا');
+            toastr()->error('شما قبلا این فایل را دانلود کرده اید.');
             return redirect()->back();
           }
         } else {

@@ -28,7 +28,6 @@ class PurchaseSubmitRequest extends FormRequest
      */
     public function rules()
     {
-
     if(request()->type == 'product'){
       return [
         'shipping_way' => 'in:quick_way,posting_way,person_way',

@@ -682,8 +682,13 @@
                         <div class="form-group">
                             <div class="col-sm-12 input-group">
                                 <label for="example-week-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4') }}</label>
-                                <input class="form-control" type="text" name="province" placeholder="{{ __('dashboard-shop-shop-setting.etelaateTamaseForooshgahItem4ex') }}" id="example-week-input" value="{{ old('province', $shopContactInformation->province) }}">
-                                <div class="input-group-append"><span class="input-group-text bg-ligh text-white font-weight-bold" id="basic-addon8"> <i class="fas fa-map text-dark font-18"></i></span></div>
+                                <div class="col-sm-10 border">
+                                    <select class="selectpicker form-control" id="exampleFormControlSelect2" name="province_id"  data-live-search="true" title="موردی انتخاب نشده است">
+                                        @foreach($provinces as $province)
+                                        <option {{ $province->id == $shopContactInformation->province_id ? 'selected' : ''}} value="{{ $province->id }}">{{ $province->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
 

@@ -13,9 +13,32 @@
     <div class="tt-collapse-content">
       <ul class="tt-list-row">
 
-        <li class="active"><a href="#">{{ $category->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
+        <li class="active">
+          <div class="d-flex justify-content-between p-3">
+            <div class="">
+              <a href="#">{{ $category->name }} @if($shop->cat_image_status == 'enable')
+            </div>
+            <div class="">
+              <img src="{{ $category->icon['250,250'] }}" alt="" style="width:60px" class="rounded">
+            </div>
+          @endif
+          </a>
+        </div>
+
+        </li>
         @foreach($subCategories as $subCategory)
-        <li><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}">{{ $subCategory->name }} @if($shop->cat_image_status == 'enable')<img src="{{ $category->icon['45,45'] }}" alt=""> @endif</a></li>
+        <li>
+          <div class="d-flex justify-content-between p-3">
+            <div class="">
+          <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$subCategory->id, 'name' => $subCategory->name]) }}">{{ $subCategory->name }} @if($shop->cat_image_status == 'enable')
+        </div>
+        <div class="">
+          <img src="{{ $subCategory->icon['250,250'] }}" alt="" style="width:60px" class="rounded">
+        </div>
+      @endif
+      </a>
+    </div>
+          </li>
         @endforeach
       </ul>
     </div>
@@ -30,7 +53,7 @@
         <li>
           <div class="d-flex justify-content-between p-3">
               <a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$categorySingle->id, 'name' => $categorySingle->name ]) }}">{{ $categorySingle->name }}</a>
-              @if($shop->cat_image_status == 'enable')<img src="{{ $categorySingle->icon != null ? $categorySingle->icon['45,45'] : '' }}" alt=""> @endif
+              @if($shop->cat_image_status == 'enable')<img src="{{ $categorySingle->icon != null ? $categorySingle->icon['250,250'] : '' }}" alt="" style="width:60px"> @endif
           </div>
         </li>
         @endforeach

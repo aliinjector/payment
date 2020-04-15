@@ -106,7 +106,7 @@ class UserPurchasesController extends Controller
                 'url' => 'download-link-request-status.index'
             ];
           $shopOwner->notify(new NewDownloadLinkRequest($details));
-          toastr()->success('درخواست شما با موفقیت ارسال شد و پس از بررسی توسط مدیر فروشگاه لینک جدید در همین صفحه قابل دسترسی میباشد', 'انجام شد');
+          toastr()->success('درخواست شما با موفقیت ارسال شد و پس از بررسی توسط مدیر فروشگاه لینک جدید در همین صفحه قابل دسترسی میباشد');
           return redirect()->back();
 }
 

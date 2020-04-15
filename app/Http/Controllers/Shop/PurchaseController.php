@@ -103,9 +103,8 @@ class PurchaseController extends Controller
               'voucher_status' => 'used',
               'voucher_id' => $voucher->id,
               ]);
-
              alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-             return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+             return redirect()->back();
           }
           else{
             Session::put('voucher', 'false'.\auth::user()->id);
@@ -158,11 +157,11 @@ class PurchaseController extends Controller
                 'voucher_id' => $voucher->id,
                 ]);
                alert()->success('کد تخفیف شما باموفقیت اعمال شد.', 'ثبت شد');
-               return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+               return redirect()->back();
             }
             else{
               alert()->error('شما قبلا از این کد تخفیف استفاده کردید.', 'خطا');
-              return view("app.shop.$template_folderName..purchase-list", compact('shop', 'shopCategories', 'cart'));
+              return view("app.shop.$template_folderName.purchase-list", compact('shop', 'shopCategories', 'cart'));
             }
           }
           else{
@@ -182,7 +181,6 @@ class PurchaseController extends Controller
 
 
       public function purchaseList($shop, Request $request) {
-
         if(\Session::get('checkDirectAccess') != \auth::user()->id . \auth::user()->cart->id . \auth::user()->cart->created_at->timestamp){
           \abort('403');
         }
@@ -236,13 +234,14 @@ class PurchaseController extends Controller
         foreach($cart->cartProduct as $cartProduct){
           $total_price += $cartProduct->total_price + $cartProduct->specification_price;
         }
-
+        if(app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName() != 'purchase-list'){
         $cartUpdate = $cart->update([
           'total_price' => $total_price,
           'voucher_status' => 'unused',
           'voucher_id' => null,
           'total_off_price' => null,
           ]);
+          }
           SEOTools::setTitle('پیش فاکتور');
           SEOTools::setDescription('پیش فاکتور');
           SEOTools::opengraph()->addProperty('type', 'website');

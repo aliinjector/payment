@@ -31,10 +31,9 @@ class ShopContactRequest extends FormRequest
      */
     public function rules()
     {
-      // dd(request()->all());
         return [
               'city' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
-              'province' => 'required|min:1|max:20|regex:/^[\pL\s\-]+$/u',
+              'province_id' => 'nullable|min:1|max:100|regex:/^[0-9]+$/u',
               'tel' => 'nullable|string|min:3|not_in:0|max:30|regex:/^[0-9\-۰-۹]+$/u',
               'address' => 'nullable|max:250|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
               'shop_email' => 'nullable', 'email', 'max:255',

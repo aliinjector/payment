@@ -14,6 +14,7 @@ use App\Application;
 use Artesaos\SEOTools\Facades\SEOTools;
 use App\Template;
 use App\Invoice;
+use App\Province;
 use App\ShopCategory;
 use App\ShopContact;
 use App\Events\NewShop;
@@ -39,10 +40,11 @@ class ShopSettingController extends Controller
           $shopInformation = \Auth::user()->shop()->first();
           $shopContactInformation = $shopInformation->shopContact()->first();
           $categories = ShopCategory::all();
+          $provinces = Province::orderBy('order')->get();
           SEOTools::setTitle($shop->name . ' | تنظیمات فروشگاه');
           SEOTools::setDescription($shop->name);
           SEOTools::opengraph()->addProperty('type', 'website');
-          return view('dashboard.shop.shop-setting', compact('categories','shopInformation','shopContactInformation','shopCategories', 'templates'));
+          return view('dashboard.shop.shop-setting', compact('categories', 'provinces','shopInformation','shopContactInformation','shopCategories', 'templates'));
         }
 
     /**
@@ -185,12 +187,13 @@ class ShopSettingController extends Controller
 
 
     public function updateContact(ShopContactRequest $request){
+      
       $shop = \Auth::user()->shop()->first()->shopContact()->get()->first()->update([
         'tel' => $this->fa_num_to_en($request->tel),
         'shop_email' => $request->shop_email,
         'address' => $request->address,
         'city' => $request->city,
-        'province' => $request->province,
+        'province_id' => $request->province_id,
         'telegram_url' => $request->telegram_url,
         'instagram_url' => $request->instagram_url,
         'facebook_url' => $request->facebook_url,
