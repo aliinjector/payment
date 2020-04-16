@@ -7,15 +7,9 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 text-left">
-        <h3>Contact</h3>
+        <h3>تماس باما</h3>
       </div>
 
-      <div class="col-sm-6 text-right">
-        <ul class="p_items">
-          <li><a href="#">home</a></li>
-          <li><span>Contact</span></li>
-        </ul>
-      </div>
     </div>
   </div>
 </div>

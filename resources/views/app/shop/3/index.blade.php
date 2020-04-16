@@ -103,6 +103,7 @@
                             <div class="col-lg-3 col-md-4 col-sm-6 mix sale">
                                 <div class="single_product">
                                     <div class="product_image">
+                                      <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}">
                                         <img src="{{ asset($bestSelling->image['250,250'] ? $bestSelling->image['250,250'] : '/images/no-image.png') }}"
                                              alt=""/>
                                         <div class="box-content">
