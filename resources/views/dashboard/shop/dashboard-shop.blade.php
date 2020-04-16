@@ -282,7 +282,13 @@
                                class="fas fa-star required-star mr-1"></i>کد پستی :</span></div>
                             <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->zip_code }}" @endif readonly>
                         </div>
-
+                    </div>
+                    <div class="form-group mb-0">
+                        <div class="input-group mt-3">
+                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
+                               class="fas fa-star required-star mr-1"></i>شماره تماس :</span></div>
+                            <input type="text" class="form-control inputfield" name="name" @if($purchase->address()->withTrashed()->get()->first() != null) value="{{ $purchase->address()->withTrashed()->get()->first()->tel }}" @endif readonly>
+                        </div>
                     </div>
                     <div class="form-group mb-0">
                         <div class="input-group mt-3">
