@@ -140,7 +140,7 @@
                     class="icon-handbag"></i></a>
                   </form>
 
-                  <a href="#" class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="icon-shuffle"></i></a>
+                  <a href="#" class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="icon-eye"></i></a>
                 </div>
               </div>
               <div class="product-content">
@@ -209,17 +209,71 @@
       <!-- product-warpper start -->
       <div class="product-warpper">
         <div class="product-slider row">
+            @forelse ($lastProducts as $lastProduct)
           <div class="col">
             <!-- single-product-wrap start -->
             <div class="single-product-wrap">
               <div class="product-image">
-                <a href="product-details.html"><img src="assets/images/product/9.jpg" alt=""></a>
+                <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}"><img src="{{ asset($lastProduct->image['250,250'] ? $lastProduct->image['250,250'] : '/images/no-image.png') }}" alt=""></a>
                 <div class="product-action">
-                  <a href="#" class="wishlist"><i class="icon-heart"></i></a>
-                  <a href="#" class="add-to-cart"><i class="icon-handbag"></i></a>
-                  <a href="#" class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="icon-shuffle"></i></a>
+
+                                    <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}"
+                                      method="post" id="wishlistForm{{ $lastProduct->id }}"
+                                      style="display:inline;">
+                                      @csrf
+                                      <input type="hidden" name="productID" value="{{ $lastProduct->id }}">
+
+                                      <a href="javascript:{}"class="wishlist" title="افزودن به علاقه مندی ها"
+                                      onclick="document.getElementById('wishlistForm{{ $lastProduct->id }}').submit();"
+                                      data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}"
+                                      data-tposition="left"><i class="icon-heart"></i></a>
+                                    </form>
+
+
+                                    @if(\Auth::user())
+
+                                    <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}">
+                                      <i class="icon-eye"></i>
+                                    </a>
+
+                                    @endif
+
+
+
+                                    <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}"
+                                      method="post" id="compareForm{{ $lastProduct->id }}"
+                                      style="display:inline;">
+                                      @csrf
+                                      <input type="hidden" name="productID" value="{{ $lastProduct->id }}">
+
+                                      <a href="javascript:{}" class="add-to-cart"
+                                      onclick="document.getElementById('compareForm{{ $lastProduct->id }}').submit();"
+                                      data-tooltip="{{ __('app-shop-3-category.afzoodanBeMoghayese') }}"
+                                      data-tposition="left"><i
+                                      class="icon-handbag"></i></a>
+                                    </form>
+
+
+                                                    @if(\Auth::user())
+                                                            <button type="submit" class="btn btn-cart btn-sm waves-effect waves-light iranyekan"><i class="mdi mdi-cart mr-1"></i>
+                                                                <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}" class="text-white">
+                                                                    مشاهده محصول
+                                                                </a>
+                                                            </button>
+                                                    @endif
+
+
                 </div>
               </div>
+
+              @empty
+              <div class="align-items-center justify-content-center row w-100 text-danger my-5">
+                  <h4>
+                      هیچ محصولی در این فروشگاه وجود ندارد
+                  </h4>
+              </div>
+              @endforelse
+
               <div class="product-content">
                 <h3><a href="product-details.html">Products Name 009</a></h3>
                 <div class="price-box">
