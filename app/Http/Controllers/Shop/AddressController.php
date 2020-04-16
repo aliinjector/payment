@@ -60,14 +60,19 @@ class AddressController extends Controller
       if($request->zip_code != null){
         $request->merge(['zip_code' => $this->fa_num_to_en($request->zip_code)]);
       }
+      if($request->tel != null){
+        $request->merge(['tel' => $this->fa_num_to_en($request->tel)]);
+      }
 
       $request->validate([
         'zip_code' => 'required|digits:10',
+        'tel' => 'required|regex:/^[0-9]+$/u|min:2|max:20',
   ]);
       $address = new Address;
       $address->city = $request->city;
       $address->province = $request->province;
       $address->zip_code = $this->fa_num_to_en($request->zip_code);
+      $address->tel = $this->fa_num_to_en($request->tel);
       $address->address = $request->address;
       $address->user_id = \Auth::user()->id;
       $address->save();
@@ -119,9 +124,13 @@ class AddressController extends Controller
       if($request->zip_code != null){
         $request->merge(['zip_code' => $this->fa_num_to_en($request->zip_code)]);
       }
+      if($request->tel != null){
+        $request->merge(['tel' => $this->fa_num_to_en($request->tel)]);
+      }
 
       $request->validate([
         'zip_code' => 'required|digits:10',
+        'tel' => 'required|regex:/^[0-9]+$/u|min:2|max:20',
   ]);
       if (!\Auth::user()->addresses()->find($id)->get()){
           alert()->error('خطا', 'خطا');
@@ -133,6 +142,7 @@ class AddressController extends Controller
       'city' => $request->city,
       'province' => $request->province,
       'zip_code' => $request->zip_code,
+      'tel' => $request->tel,
       'address' => $request->address,
       ]);
 

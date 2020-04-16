@@ -226,6 +226,8 @@
                                                           <input type="text" class="form-control" name="city" id="shopInputLastName" value="{{ old('city') }}">
                                                           <label for="shopInputLastName" class="control-label mt-2">کد پستی *</label>
                                                           <input type="text" class="form-control" name="zip_code" id="shopInputLastName" value="{{ old('zip_code') }}">
+                                                          <label for="shopInputLastName" class="control-label mt-2">شماره تماس *</label>
+                                                          <input type="text" class="form-control" name="tel" id="shopInputLastName" value="{{ old('tel') }}">
                                                         </li>
                                                         <li class="col-lg-12 address_input d-none mt-2">
                                                       آدرس *

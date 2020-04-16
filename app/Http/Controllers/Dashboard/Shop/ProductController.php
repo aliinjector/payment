@@ -740,6 +740,7 @@ else{
         $features[] = ProductCategory::find($request->id)->features;
       }
       else{
+        $features[] = ProductCategory::find($request->id)->features;
         foreach($this->getAllParentCategories($request->id) as $category){
           $features[] = ProductCategory::find($category->id)->features;
       }

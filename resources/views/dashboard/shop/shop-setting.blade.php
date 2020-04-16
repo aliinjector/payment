@@ -327,6 +327,8 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem10') }}</h4>
                             <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem10Desc') }}.</p>
+                            <p class="text-danger my-1">حداقل ابعاد : 250 × 250</p>
+                            <p class="text-danger">حداکثر ابعاد : 400 × 400</p>
                             <a class="mr-2 font-15" href="" id="icon-delete" title="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem10Delete') }}" data-type="icon" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
                                   class="far fa-trash-alt text-danger font-18 pl-2"></i>{{ __('dashboard-shop-shop-setting.etelaatForooshgahDelete') }}</a>
                             <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->icon['original'] }}">
@@ -341,6 +343,8 @@
                         <div class="card-body">
                             <h4 class="mt-0 header-title">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem11') }}</h4>
                             <p class="text-muted mb-3">{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem11Desc') }}.</p>
+                            <p class="text-danger my-1">حداقل ابعاد : 350 × 350</p>
+                            <p class="text-danger">حداکثر ابعاد : 800 × 800</p>
                             <a class="mr-2 font-15" href="" id="icon-delete" title="{{ __('dashboard-shop-shop-setting.etelaatForooshgahItem11Delete') }}" data-type="logo" data-name="{{ \Auth::user()->shop()->first()->english_name }}" data-id="{{ \Auth::user()->shop()->first()->id }}"><i
                                   class="far fa-trash-alt text-danger font-18 pl-2"></i>{{ __('dashboard-shop-shop-setting.etelaatForooshgahDelete') }}</a>
                             <input type="file" id="input-file-now" name="logo" class="dropify" data-default-file="{{ \Auth::user()->shop()->first()->logo['original'] }}">

@@ -31,6 +31,7 @@ class ShopSettingRequest extends FormRequest
      */
     public function rules()
     {
+      // dd(request()->all());
       return [
             'name' => 'required|min:1|max:50|regex:/^[\pL\s\-]+$/u',
             'description' => 'required|min:1|max:200|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,، ]+$/u',
@@ -44,8 +45,8 @@ class ShopSettingRequest extends FormRequest
             'quick_way_price' => 'numeric|min:0|max:99999999999999999|regex:/^[0-9]+$/u',
             'posting_way_price' => 'numeric|min:0|max:99999999999999999|regex:/^[0-9]+$/u',
             // 'person_way_price' => 'numeric|min:0|max:99999999999999999',
-            'logo' => 'mimes:jpeg,png,jpg,gif|max:2048',
-            'icon' => 'mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=350,min_height=350,max_width=800,max_height=800',
+            'icon' => 'mimes:jpeg,png,jpg,gif|max:2048|dimensions:min_width=250,min_height=250,max_width=400,max_height=400',
 
       ];
 

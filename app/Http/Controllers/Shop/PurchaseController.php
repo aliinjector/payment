@@ -301,25 +301,32 @@ class PurchaseController extends Controller
                 if($request->zip_code != null){
                   $request->merge(['zip_code' => $this->fa_num_to_en($request->zip_code)]);
                 }
+                if($request->tel != null){
+                  $request->merge(['tel' => $this->fa_num_to_en($request->tel)]);
+                }
                 if($request->type == 'product'){
                 $request->validate([
                   'zip_code' => 'required_without:address|digits:10|nullable',
+                  'tel' => 'required_without:address|regex:/^[0-9]+$/u|min:2|max:20',
             ]);
             }
             elseif($request->type == 'service'){
               $request->validate([
                 'zip_code' => 'nullable|digits:10',
+                'tel' => 'nullable|regex:/^[0-9]+$/u|min:2|max:20',
             ]);
             }
             else{
               $request->validate([
                 'zip_code' => 'nullable|digits:10',
+                'tel' => 'nullable|regex:/^[0-9]+$/u|min:2|max:20',
             ]);
             }
                 $address = new Address;
                 $address->city = $request->city;
                 $address->province = $request->province;
                 $address->zip_code = $request->zip_code;
+                $address->tel = $request->tel;
                 $address->address = $request->new_address;
                 $address->user_id = \Auth::user()->id;
                 $address->save();
@@ -371,7 +378,7 @@ class PurchaseController extends Controller
             ];
           $shopOwner->notify(new NewPurchaseForShopOwner($details));
 
-          toastr()->success('خرید شما با موفقیت ثبت شد', 'انجام شد');
+          toastr()->success('خرید شما با موفقیت ثبت شد');
           return redirect()->route('user.purchased.list');
       }
 

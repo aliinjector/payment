@@ -31,6 +31,8 @@
                                 </th>
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">کد پستی
                                 </th>
+                                <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">شماره تماس
+                                </th>
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">نشانی
                                 </th>
                                 <th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Product Name: activate to sort column descending">عملیات
@@ -47,6 +49,7 @@
                               <td>{{ $user_addresse->province }}</td>
                                 <td>{{ $user_addresse->city }}</td>
                                 <td>{{ $user_addresse->zip_code }}</td>
+                                <td>{{ $user_addresse->tel }}</td>
                                 <td>{{ $user_addresse->address }}</td>
                                 <td>
                                       <div class="icon-show row">

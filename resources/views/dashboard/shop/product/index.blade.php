@@ -213,7 +213,7 @@
                                                     {{ __('dashboard-shop-product-index.addMahsoolFizikiItem3') }} :</span>
                                             </div>
                                             <select class="form-control inputfield selectPhysical" name="productCat_id">
-                                                <option style="font-family: iranyekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem3Select') }}
+                                                <option style="font-family: iranyekan!important;" value="">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem3Select') }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: iranyekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
@@ -356,6 +356,8 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-product-index.addMahsoolFizikiItem14') }}</h4>
+                                                <p class="text-danger my-1">حداقل ابعاد : 300px × 300px</p>
+                                                <p class="text-danger">حداکثر ابعاد : 1000px × 1000px</p>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
                                         </div>
@@ -408,7 +410,7 @@
                                                     {{ __('dashboard-shop-product-index.addMahsoolFileItem3') }} :</span>
                                             </div>
                                             <select class="form-control inputfield selectFile" name="productCat_id">
-                                                <option style="font-family: iranyekan!important;" value="null">{{ __('dashboard-shop-product-index.addMahsoolFileItem3Select') }}
+                                                <option style="font-family: iranyekan!important;" value="">{{ __('dashboard-shop-product-index.addMahsoolFileItem3Select') }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
                                                 <option style="font-family: iranyekan!important;" data-id="{{ $productCategory->id }}" value="{{ $productCategory->id }}">
@@ -511,6 +513,8 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolFileItem10') }}</h4>
+                                                <p class="text-danger my-1">حداقل ابعاد : 300px × 300px</p>
+                                                <p class="text-danger">حداکثر ابعاد : 1000px × 1000px</p>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
                                         </div>
@@ -571,7 +575,7 @@
                                                     {{ __('dashboard-shop-product-index.addMahsoolServiceItem3') }}ل :</span>
                                             </div>
                                             <select class="form-control inputfield selectService" name="productCat_id">
-                                                <option style="font-family: iranyekan!important;" value="null">
+                                                <option style="font-family: iranyekan!important;" value="">
                                                     {{ __('dashboard-shop-product-index.addMahsoolServiceItem3Select') }}
                                                 </option>
                                                 @foreach($productCategories as $productCategory)
@@ -688,6 +692,8 @@
                                         <div class="card mt-3">
                                             <div class="card-body">
                                                 <h4 class="mt-0 header-title"><i class="fas fa-star required-star mr-1"></i> {{ __('dashboard-shop-product-index.addMahsoolServiceItem10') }}</h4>
+                                                <p class="text-danger my-1">حداقل ابعاد : 300px × 300px</p>
+                                                <p class="text-danger">حداکثر ابعاد : 1000px × 1000px</p>
                                                 <input type="file" id="input-file-now" name="image" class="dropify">
                                             </div>
                                         </div>

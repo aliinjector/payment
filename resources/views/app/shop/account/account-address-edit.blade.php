@@ -38,6 +38,10 @@
                                 <input type="text" class="form-control" name="zip_code" value="{{ old('zip_code', $address->zip_code) }}">
                             </div>
                             <div class="form-group">
+                                <label for="shopInputLastName" class="control-label">شماره تماس *</label>
+                                <input type="text" class="form-control" name="tel" value="{{ old('tel', $address->tel) }}">
+                            </div>
+                            <div class="form-group">
                                 <label for="shopCompanyName" class="control-label">نشانی *</label>
                                 <input type="text" class="form-control" name="address" value="{{ old('address', $address->address) }}">
                             </div>

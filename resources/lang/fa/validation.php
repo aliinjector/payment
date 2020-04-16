@@ -56,6 +56,7 @@ return array(
     'array'   => 'The :attribute must have :value items or more.',
 ],
     "mimes"            => ":attribute باید یکی از فرمت های :values باشد.",
+    "dimensions"            => "ابعاد :attribute مناسبت نیست",
     "min"              => array(
         "numeric" => ":attribute نباید کوچکتر از :min باشد.",
         "file"    => ":attribute نباید کوچکتر از :min کیلوبایت باشد.",

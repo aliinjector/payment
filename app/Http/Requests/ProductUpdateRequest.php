@@ -36,7 +36,7 @@ class ProductUpdateRequest extends FormRequest
          return [
            'title' => 'required|max:100|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
            'value.*' => 'nullable|max:4000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-           'productCat_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+           'productCat_id' => 'bail|required|min:1|max:10000000000|regex:/^[0-9]+$/u',
            'brand_id' => 'nullable|max:100000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
            'description' => 'required|min:10|max:4000',
            'amount' => ['required',
@@ -64,14 +64,14 @@ class ProductUpdateRequest extends FormRequest
            'specifications.*' => 'nullable|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
            'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
            'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-           'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
+           'image' => 'mimes:jpeg,png,jpg,gif|max:4048|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
          ];
        }
    else if($request->type == 'file'){
    return [
      'title' => 'required|max:100|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'value.*' => 'nullable|max:4000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-     'productCat_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+     'productCat_id' => 'bail|required|min:1|max:10000000000|regex:/^[0-9]+$/u',
      'brand_id' => 'nullable|max:100000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'description' => 'required|min:10|max:4000',
      'price' => ['required',
@@ -87,7 +87,7 @@ class ProductUpdateRequest extends FormRequest
      'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'specifications.*' => 'nullable|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-     'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
+     'image' => 'mimes:jpeg,png,jpg,gif|max:4048|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
      'attachment' => 'mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp,rar|max:50000',
 
    ];
@@ -96,7 +96,7 @@ class ProductUpdateRequest extends FormRequest
    return [
      'title' => 'required|max:100|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'value.*' => 'nullable|max:4000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-     'productCat_id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+     'productCat_id' => 'bail|required|min:1|max:10000000000|regex:/^[0-9]+$/u',
      'brand_id' => 'nullable|max:100000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'description' => 'required|min:10|max:4000',
      'fast_sending' => 'in:on',
@@ -112,7 +112,7 @@ class ProductUpdateRequest extends FormRequest
      'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'specifications.*' => 'nullable|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-     'image' => 'mimes:jpeg,png,jpg,gif|max:2048',
+     'image' => 'mimes:jpeg,png,jpg,gif|max:4048|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
      ];
    }
 

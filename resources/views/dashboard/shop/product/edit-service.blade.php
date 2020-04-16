@@ -222,6 +222,8 @@
                                   <div class="card mt-3 border">
                                       <div class="card-body">
                                           <h4 class="mt-0 header-title">تصویر خدمت</h4>
+                                          <p class="text-danger my-1">حداقل ابعاد : 300px × 300px</p>
+                                          <p class="text-danger">حداکثر ابعاد : 1000px × 1000px</p>
                                           <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $product->name }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
 
                                           <input type="file" id="input-file-now" name="image" class="dropify" data-default-file="{{ $product->image['original'] }}">
