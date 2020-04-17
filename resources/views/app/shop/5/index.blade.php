@@ -120,7 +120,7 @@
                   @if(\Auth::user())
 
                   <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}">
-                    <i class="icon-eye"></i>
+                    
                   </a>
 
                   @endif
