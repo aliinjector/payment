@@ -46,8 +46,8 @@
                                     <th class="cart-product-name">محصول</th>
                                     <th class="plantmore-product-price">قیمت واحد کالا</th>
                                     <th class="plantmore-product-stock-status">میزان تخفیف</th>
-                                    <th class="plantmore-product-add-cart plantmore-product-remove">سبد خرید</th>
-                                    <th class="plantmore-product-add-cart plantmore-product-remove">حذف</th>
+                                    <th class="plantmore-product-add-cart">سبد خرید</th>
+                                    <th class="plantmore-product-remove">حذف</th>
 
                                 </tr>
                             </thead>

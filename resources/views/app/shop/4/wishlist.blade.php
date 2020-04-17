@@ -15,8 +15,8 @@
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">wishlist</li>
+                                    <li class="breadcrumb-item"><a href="shop.html">صفحه اصلی</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">لیست علاقه مندی ها</li>
                                 </ul>
                             </nav>
                         </div>
@@ -33,59 +33,43 @@
                 <div class="section-bg-color">
                     <div class="row">
                         <div class="col-lg-12">
+                            @if(isset($wishlistProducts))
                             <!-- Wishlist Table Area -->
                             <div class="cart-table table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="pro-thumbnail">Thumbnail</th>
-                                            <th class="pro-title">Product</th>
-                                            <th class="pro-price">Price</th>
-                                            <th class="pro-quantity">Stock Status</th>
-                                            <th class="pro-subtotal">Add to Cart</th>
-                                            <th class="pro-remove">Remove</th>
+                                            <th class="pro-thumbnail">تصویر محصول</th>
+                                            <th class="pro-title">محصول</th>
+                                            <th class="pro-price">قیمت واحد کالا</th>
+                                            <th class="pro-quantity">میزان تخفیف</th>
+                                            <th class="pro-subtotal">سبد خرید</th>
+                                            <th class="pro-remove">حذف</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($wishlistProducts as $product)
                                         <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-5.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                            <td class="pro-price"><span>$295.00</span></td>
-                                            <td class="pro-quantity"><span class="text-success">In Stock</span></td>
-                                            <td class="pro-subtotal"><a href="cart.html" class="btn btn-sqr">Add to
-                                                    Cart</a></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class="pro-thumbnail"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}"><img class="img-fluid" src="{{ asset($product->image['80,80'] ? $product->image['80,80'] : '/images/no-image.png') }}"  alt="Product" /></a></td>
+                                            <td class="pro-title"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}">{{ $product->title }}</a></td>
+                                            <td class="pro-price"><span>{{ number_format($product->price) }} {{ __('app-shop-1-cart.tooman') }} </span></td>
+                                            <td class="pro-quantity"><span class="text-success">@if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
+                                               {{ number_format($product->price-$product->off_price)}}
+                                            @else
+                                              0
+                                                @endif</span></td>
+                                            <td class="pro-subtotal"><a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}" class="btn btn-sqr">اضافه کردن محصول به سبد خرید</a></td>
+                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o ml-1" style="color:#c29958;"></i>{{ __('app-shop-account-wishlist.hazf') }}</a></td>
                                         </tr>
-                                        <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-6.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Perfect Diamond Jewellery</a></td>
-                                            <td class="pro-price"><span>$275.00</span></td>
-                                            <td class="pro-quantity"><span class="text-success">In Stock</span></td>
-                                            <td class="pro-subtotal"><a href="cart.html" class="btn btn-sqr">Add to
-                                                    Cart</a></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-7.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Handmade Golden Necklace</a></td>
-                                            <td class="pro-price"><span>$295.00</span></td>
-                                            <td class="pro-quantity"><span class="text-danger">Stock Out</span></td>
-                                            <td class="pro-subtotal"><a href="cart.html" class="btn btn-sqr disabled">Add
-                                                    to Cart</a></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-8.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                            <td class="pro-price"><span>$110.00</span></td>
-                                            <td class="pro-quantity"><span class="text-success">In Stock</span></td>
-                                            <td class="pro-subtotal"><a href="cart.html" class="btn btn-sqr">Add to
-                                                    Cart</a></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                        </tr>
+                                      @endforeach
                                     </tbody>
                                 </table>
                             </div>
+                            @else
+
+                            <h4 class="d-flex justify-content-center p-4">محصولی در لیست شما وجود ندارد</h4>
+
+                            @endif
                         </div>
                     </div>
                 </div>
