@@ -151,7 +151,12 @@
                                                             <a href="{{ $specification->id }}" id="editBrand" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $specification->id }}"><i
                                                                   class="far fa-edit text-info mr-1 button font-15"></i>
                                                             </a>
-                                                            <a href="" id="removeSpecification" title="حذف" data-name="{{ $specification->name }}" data-id="{{ $specification->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+
+                                                            @if($specification->deleted_at != null)
+                                                                  <a href="" id="restoreSpecification" title="بازگردانی" data-name="{{ $specification->name }}" data-id="{{ $specification->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                            @else
+                                                              <a href="" id="removeSpecification" title="حذف" data-name="{{ $specification->name }}" data-id="{{ $specification->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                             @endif
                                                             <a href="{{ route('specification-item.main', ['id' => $specification->id]) }}" title="گزینه ها"><i class="fa fa-tasks text-success mr-1 button font-17"></i>
                                                             </a>
                                                         </div>

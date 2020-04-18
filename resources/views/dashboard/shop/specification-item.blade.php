@@ -172,7 +172,12 @@
                                                             <a href="{{ $specificationItem->id }}" id="editBrand" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $specificationItem->id }}"><i
                                                                   class="far fa-edit text-info mr-1 button font-15"></i>
                                                             </a>
+
+                                                            @if($specificationItem->deleted_at != null)
+                                                                  <a href="" id="restoreSpecificationItem" title="بازگردانی" data-name="{{ $specificationItem->name }}" data-id="{{ $specificationItem->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                            @else
                                                             <a href="" id="removeItem" title="حذف" data-name="{{ $specificationItem->name }}" data-id="{{ $specificationItem->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                             @endif
                                                         </div>
                                                     </td>
                                                 </tr>

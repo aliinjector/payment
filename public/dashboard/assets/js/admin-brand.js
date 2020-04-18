@@ -47,6 +47,37 @@ $( document ).ready(function() {
                }
            });
    });
+
+   $(document).on('click', '#restoreBrand', function(e) {
+   e.preventDefault();
+   var id = $(this).data('id');
+   var name = $(this).data('name');
+   swal(` ${'بازگردانی برند:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+           dangerMode: true,
+           icon: "warning",
+           buttons: ["انصراف", "حذف"],
+       })
+       .then(function(isConfirm) {
+           if (isConfirm) {
+               $.ajax({
+                   type: "post",
+                   url: "/admin-panel/shop/brand/restore",
+                   data: {
+                       id: id,
+                       "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                   },
+                   success: function(data) {
+                     var url = "/admin-panel/shop/brand";
+                     location.href = url;
+                       }
+               });
+           } else {
+               toastr.warning('لغو شد.', '', []);
+           }
+       });
+ });
+
+
     $(document).on('click', '#icon-delete', function(e) {
         e.preventDefault();
         var id = $(this).data('id');

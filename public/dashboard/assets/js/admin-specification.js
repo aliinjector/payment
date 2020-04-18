@@ -48,6 +48,38 @@ $( document ).ready(function() {
            });
    });
 
+   $(document).on('click', '#restoreSpecification', function(e) {
+   e.preventDefault();
+   var id = $(this).data('id');
+   var name = $(this).data('name');
+   swal(` ${'بازگردانی خصوصیت:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+           dangerMode: true,
+           icon: "warning",
+           buttons: ["انصراف", "حذف"],
+       })
+       .then(function(isConfirm) {
+           if (isConfirm) {
+               $.ajax({
+                   type: "post",
+                   url:  "/admin-panel/shop/categrory-managment/specification/restore",
+                   data: {
+                       id: id,
+                       "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                   },
+                   success: function(data) {
+                     window.location.reload()
+                   }
+               });
+           } else {
+               toastr.warning('لغو شد.', '', []);
+           }
+       });
+ });
+
+
+
+
+
     $(document).ready(function(){
       $('#datatable_filter').parent().remove();
       $('#datatable_wrapper').children(':first').find('.col-sm-12').removeClass('col-sm-12 col-md-6');

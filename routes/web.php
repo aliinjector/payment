@@ -136,12 +136,15 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Specification
         Route::resource('specification', 'SpecificationController');
         Route::post('specification/delete', 'SpecificationController@destroy')->name('specification.delete');
+        Route::post('specification/restore', 'SpecificationController@restore');
 
         //SpecificationItem
         Route::resource('specification-item', 'SpecificationItemController');
         Route::get('specification-item/main/{id}', 'SpecificationItemController@main')->name('specification-item.main')->where(['id' => '[0-9]+']);
         Route::put('specification-item/main/change-status/{id}', 'SpecificationItemController@changeStatus')->name('specification-item.change-status');
         Route::post('specification-item/main/delete', 'SpecificationItemController@destroy')->name('specification-item.delete');
+        Route::post('specification-item/main/restore', 'SpecificationItemController@restore');
+
       });
 
 
@@ -149,6 +152,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('vouchers/voucher-report', 'VoucherController@voucherReport')->name('vouchers.voucher-report');
         Route::resource('vouchers', 'VoucherController');
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('vouchers.delete');
+        Route::post('vouchers/restore', 'VoucherController@restore');
         Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('vouchers.change-status')->where(['id' => '[0-9]+']);
 
         //Gallery
@@ -167,6 +171,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Brand
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
+        Route::post('brand/restore', 'BrandController@restore');
         Route::post('brand/icon/delete', 'BrandController@destroyIcon')->name('brand.icon.delete');
 
         //application

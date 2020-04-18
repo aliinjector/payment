@@ -141,7 +141,11 @@
                                                   <div class="d-none icon-show">
                                                       <a href="{{ $brand->id }}" id="editBrand" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $brand->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                       </a>
+                                                      @if($brand->deleted_at != null)
+                                                            <a href="" id="restoreBrand" title="بازگردانی" data-name="{{ $brand->name }}" data-id="{{ $brand->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                      @else
                                                       <a href="" id="removeBrand" title="حذف" data-name="{{ $brand->name }}" data-id="{{ $brand->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                       @endif
                                                       <a href="{{ route('brand', ['shop'=>$shop->english_name, 'categroyId'=>$brand->id]) }}" target="_blank"><i class="fa fa-eye text-success mr-1 button font-15"></i>
                                                       </a>
                                                   </div>
