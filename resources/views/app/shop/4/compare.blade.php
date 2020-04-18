@@ -6,13 +6,14 @@
         <div class="breadcrumb-area">
             <div class="container">
                 <div class="row">
+                    {{-- {{ dd($compareProducts) }} --}}
                     <div class="col-12">
                         <div class="breadcrumb-wrap">
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">compare</li>
+                                    <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
+
+                                    <li class="breadcrumb-item active" aria-current="page">مقایسه محصولات</li>
                                 </ul>
                             </nav>
                         </div>

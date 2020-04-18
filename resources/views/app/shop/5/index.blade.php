@@ -120,7 +120,7 @@
                   @if(\Auth::user())
 
                   <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$bestSelling->slug, 'id' => $bestSelling->id]) }}">
-                    
+
                   </a>
 
                   @endif
@@ -200,8 +200,7 @@
           <!-- section-title start -->
           <div class="section-title">
             <h2>آخرین محصولات</h2>
-            <p> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
-          </div>
+                    </div>
           <!-- section-title end -->
         </div>
       </div>
@@ -233,7 +232,7 @@
                                     @if(\Auth::user())
 
                                     <a href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$lastProduct->slug, 'id' => $lastProduct->id]) }}">
-                                      <i class="icon-eye"></i>
+                                      <i class="add-to-cart icon-eye"></i>
                                     </a>
 
                                     @endif
@@ -442,34 +441,34 @@
   </div>
   <!-- testimonial-area start -->
   <div class="testimonial-area testimonial-bg overlay section-ptb">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-md-2 col-md-8 col-sm-12">
-          <div class="testimonial-slider">
-            <div class="testimonial-inner text-center">
-              <div class="test-cont">
-                <img src="assets/images/icon/2.png" alt="">
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form. There are many variations of passages.</p>
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-8 offset-md-2 col-md-8 col-sm-12">
+                  <div class="testimonial-slider">
+                      <div class="testimonial-inner text-center">
+                          <div class="test-cont">
+                              <img src="assets/images/icon/2.png" alt="">
+                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form. There are many variations of passages.</p>
+                          </div>
+                          <div class="test-author">
+                              <h4>Michelle Mitchell</h4>
+                              <p>ui ux - Designer</p>
+                          </div>
+                      </div>
+                      <div class="testimonial-inner text-center">
+                          <div class="test-cont">
+                              <img src="assets/images/icon/2.png" alt="">
+                              <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form. There are many variations of passages.</p>
+                          </div>
+                          <div class="test-author">
+                              <h4>Michelle Mitchell</h4>
+                              <p>ui ux - Designer</p>
+                          </div>
+                      </div>
+                  </div>
               </div>
-              <div class="test-author">
-                <h4>Michelle Mitchell</h4>
-                <p>ui ux - Designer</p>
-              </div>
-            </div>
-            <div class="testimonial-inner text-center">
-              <div class="test-cont">
-                <img src="assets/images/icon/2.png" alt="">
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form. There are many variations of passages.</p>
-              </div>
-              <div class="test-author">
-                <h4>Michelle Mitchell</h4>
-                <p>ui ux - Designer</p>
-              </div>
-            </div>
           </div>
-        </div>
       </div>
-    </div>
   </div>
   <!-- testimonial-area end -->
 
@@ -550,6 +549,7 @@
       </div>
     </div>
   </div>
+
   <!-- our-brand-area end -->
 
   @endsection

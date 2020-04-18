@@ -1,565 +1,342 @@
-@extends('app.shop.1.layouts.master')
+@extends('app.shop.5.layouts.master')
 @section('content')
-  <link rel="stylesheet" href="/app/shop/1/assets/css/bootstrap-select.css" />
-<link href='/app/shop/1/assets/css/simplelightbox.min.css' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ asset('/app/shop/1/assets/css/category.css') }}" />
-<style>
-.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 20%;
-}
-.green-text{
-      color: #15939D!important;
-      font-size : 12px!important;
-}
-.dropdown-menu .dropdown-item {
-    padding: 3px 2px!important;
-}
-    .sl-next{
-        direction: ltr;
-    }
 
-.sl-prev{
-    direction: ltr;
-}
-.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
-    width: 300px!important;
-}
+<!-- main-search start -->
+<div class="main-search-active">
+    <div class="sidebar-search-icon">
+        <button class="search-close"><span class="icon-close"></span></button>
+    </div>
+    <div class="sidebar-search-input">
+        <form>
+            <div class="form-search">
+                <input id="search" class="input-text" value="" placeholder="Search entire store here ..." type="search">
+                <button class="search-btn" type="button">
+                    <i class="icon-magnifier"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- main-search start -->
 
-ul.social-network {
-    list-style: none;
-    display: inline;
-    margin-left:0 !important;
-    padding: 0;
-}
-ul.social-network li {
-    display: inline;
-    margin: 0 5px;
-}
-
-.social-network a.icoRss:hover {
-    background-color: #F56505;
-}
-.social-network a.icoFacebook:hover {
-    background-color:#3B5998;
-}
-.social-network a.icoTwitter:hover {
-    background-color:#33ccff;
-}
-.social-network a.icoGoogle:hover {
-    background-color:#BD3518;
-}
-.social-network a.icoVimeo:hover {
-    background-color:#0590B8;
-}
-.social-network a.icoLinkedin:hover {
-    background-color:#007bb7;
-}
-.social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
-.social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
-    color:#fff;
-}
-a.socialIcon:hover, .socialHoverClass {
-    color:#44BCDD;
-}
-
-.social-circle li a {
-    display:inline-block;
-    position:relative;
-    margin:0 auto 0 auto;
-    -moz-border-radius:50%;
-    -webkit-border-radius:50%;
-    border-radius:50%;
-    text-align:center;
-    width: 50px;
-    height: 50px;
-    font-size:20px;
-    background-color: #D3D3D3;
-}
-.social-circle li i {
-    margin:0;
-    line-height:50px;
-    text-align: center;
-}
-
-.social-circle li a:hover i, .triggeredHover {
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -ms--transform: rotate(360deg);
-    transform: rotate(360deg);
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    -ms-transition: all 0.2s;
-    transition: all 0.2s;
-}
-.social-circle i {
-    color: #fff;
-    -webkit-transition: all 0.8s;
-    -moz-transition: all 0.8s;
-    -o-transition: all 0.8s;
-    -ms-transition: all 0.8s;
-    transition: all 0.8s;
-}
-
-</style>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="page-title-box">
-            <div>
-              @if($errors->any())
-              <div class="alert alert-danger p-5">
-                 <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
-                 <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                 </ul>
-              </div>
-              @endif
+<!-- breadcrumb-area start -->
+<div class="breadcrumb-area section-ptb">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="breadcrumb-title">مشاهده محصول</h2>
+                <!-- breadcrumb-list start -->
+                <ul class="breadcrumb-list">
+                    <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
+                    <li class="breadcrumb-item active">جزئیات محصول</li>
+                </ul>
+                <!-- breadcrumb-list end -->
             </div>
         </div>
-        <!--end page-title-box-->
     </div>
-    <!--end col-->
 </div>
-<!-- end page title end breadcrumb -->
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-6"><img src="{{ asset($product->image['400,400'] ? $product->image['400,400'] : '/images/no-image.png') }}" alt="" class="col-8 d-block img-thumbnail" style="max-height: 40em;">
-                        <div class="gallery mt-4 mr-4">
+<!-- breadcrumb-area end -->
+
+<!-- main-content-wrap start -->
+<div class="main-content-wrap section-ptb product-details-page">
+    <div class="container">
+      <div class="row">
+          <div class="col-12">
+            <div class="col-lg-6"><img src="{{ asset($product->image['400,400'] ? $product->image['400,400'] : '/images/no-image.png') }}" alt="" class="col-8 d-block img-thumbnail" style="max-height: 40em;">
+  </div>
+ </div>
+</div>
+
+        <div class="row">
+            <div class="col-xl-6 col-lg-7 col-md-6">
+                <div class="product-details-images">
+                    <div class="product_details_container">
+                        <!-- product_big_images start -->
+                        <div class="product_big_images_gallery">
                             @foreach ($galleries as $gallery)
-                            <a href="/{{ $gallery->filename }}"><img width="100px" class="img-thumbnail" src="/{{ $gallery->filename }}" alt="" title="" /></a>
+                            <div class="single-product-gallery">
+                                <a href="{{ $gallery->filename }}" class="img-poppu">
+                                    <img src="{{ $gallery->filename }}" alt="#">
+                                </a>
+                            </div>
                             @endforeach
                         </div>
+                        <!-- product_big_images end -->
                     </div>
-                    <!--end col-->
-                    <div class="col-lg-6 align-self-center">
-                        <div class="single-pro-detail">
-                            <h3 class="pro-title iranyekan pb-5">{{ $product->title }}
-                                <div class="custom-border mt-4"></div>
-                            <span class="font-15">دسته بندی :</span><a href="{{ route('category', ['shop'=>$shop->english_name, 'categroyId'=>$product->productCategory->id, 'name' => $product->productCategory->name]) }}" class="font-14"> {{ $product->productCategory->name }}</a>
-                            </br>
-                            @if($product->brand)
-                              <span class="font-15">برند :</span><a href="{{ route('brand', ['shop'=>$shop->english_name, 'brandId'=>$product->brand->id]) }}" class="font-14"> {{ $product->brand->name }}</a>
-                            @endif
-                            </h3>
-                            <div class="">
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-5 col-md-6">
+                <!-- product_details_info start -->
+                <div class="product_details_info">
+                    <h2>{{ $product->title }}</h2>
+                    <!-- pro_rating start -->
+                    <div class="pro_rating d-flex">
+                        <ul class="product-rating d-flex">
+                            <li><span class="icon-star"></span></li>
+                            <li><span class="icon-star"></span></li>
+                            <li><span class="icon-star"></span></li>
+                            <li><span class="icon-star"></span></li>
+                            <li><span class="icon-star"></span></li>
+                        </ul>
 
-                            <div class="">
-                              @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
-                              <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجود</span>
-                              @else
-                              <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
-                              @endif
-                            </div>
-                         </div>
+                    </div>
+                    <!-- pro_rating end -->
 
-                            @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
-                                <h2 class="pro-price">{{ number_format($product->off_price) }} تومان</h2>
-                                <span><del>{{ number_format($product->price) }} تومان</del></span>
-                                @else
-                                <h2 class="pro-price">{{ number_format($product->price) }}تومان </h2>
-                                @endif
-                                <h6 class="text-muted font-13">ویژگی ها :</h6>
-                                <ul class="list-unstyled pro-features border-0 iranyekan">
-                                       <div class="wrapper">
-                                         @foreach ($product->facilities as $facility)
+                    <!-- pro_dtl_prize start -->
 
-                                        <li class="ty-compact-list">{{ $facility->name }} </li>
-                                      @endforeach
+                    @if($product->off_price != null and $product->off_price_started_at < now() and $product->off_price_expired_at > now())
+                        <h2 class="pro_dtl_prize">{{ number_format($product->off_price) }} تومان</h2>
+                        <span><del>{{ number_format($product->price) }} تومان</del></span>
+                        @else
+                        <h2 class="old_prize">{{ number_format($product->price) }}تومان </h2>
+                        @endif
 
-                                        <div class="show-more mr-1 mt-4" style="line-height: 2;"><i class="fas fa-plus"></i>
-                                            <span class="toggle-show"> موارد بیشتر</span>
-                                        </div>
+                    <!-- pro_dtl_prize end -->
+                    <!-- pro_dtl_color start-->
+
+                    @if($product->colors->count() != 0)
+                    <div class="pro_dtl_color">
+                        <h2 class="title_2">انتخاب رنگ</h2>
+                        <ul class="pro_choose_color">
+                      @php
+                      $i = 0;
+                       @endphp
+                       @foreach($product->colors as $color)
+                         <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
+                          <a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
+                       </li>
+                       @php
+                       $i ++;
+                        @endphp
+                       @endforeach
+                    </ul>
+                  @endif
+
+                    <!-- pro_dtl_color end-->
+                    <!-- pro_dtl_size start -->
+                    <div class="pro_dtl_size">
+                        <h2 class="title_2">سایز</h2>
+                        <ul class="pro_choose_size">
+                            <li><a href="#">S</a></li>
+                            <li><a href="#">M</a></li>
+                            <li><a href="#">XL</a></li>
+                            <li><a href="#">XXL</a></li>
+                        </ul>
+                    </div>
+                    <!-- pro_dtl_size end -->
+                    <!-- product-quantity-action start -->
+                    <div class="product-quantity-action">
+                        <div class="prodict-statas"><span class="ml-2">تعداد:</span></div>
+                        <div class="product-quantity">
+                            <form action="#">
+                                <div class="product-quantity">
+                                    <div class="cart-plus-minus">
+                                        <input value="1" type="number">
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
+                    <!-- product-quantity-action end -->
+                    <!-- pro_dtl_btn start -->
+                    <ul class="pro_dtl_btn">
+                        <li>
 
-                        </ul>
-                        @if ($product->type == "file")
-                        <h6 class="text-muted font-13">حجم فایل :</h6>
-                        <ul class="list-unstyled pro-features border-0 iranyekan">
-                            <li>{{ round($product->file_size / 1048576,2)}} مگابایت</li>
-                        </ul>
-                        @endif
-                        @if ($product->type == "product")
-                          @if($product->weight != null)
-                        <h6 class="text-muted font-13">وزن محصول :</h6>
-                        <ul class="list-unstyled pro-features border-0 iranyekan">
-                            <li>{{ $product->weight }} گرم</li>
+                        						@if(\Auth::user())
 
-                        </ul>
-                      @endif
-                        @if($product->colors->count() != 0)
-                        <ul class="tt-options-swatch options-middle">
-                          @php
-                          $i = 0;
-                           @endphp
-                           @foreach($product->colors as $color)
-                             <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
-                              <a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
-                           </li>
-                           @php
-                           $i ++;
-                            @endphp
-                           @endforeach
-                        </ul>
-                      @endif
-                        @endif
+                        						<a class="buy_now_btn" href="{{ route('product', ['shop'=>$shop->english_name, 'slug'=>$product->slug, 'id' => $product->id]) }}">
+                        						افزودن به سبد خرید</a>
+
+                        						@endif
+</li>
+                        <li>
+
+
+                        <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="wishlistForm{{ $product->id }}">
+                            @csrf
+                            <input type="hidden" name="productID" value="{{ $product->id }}">
+
+                          <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #Ffffff;font-size: 20px;margin-top: 5px;"class="ion-heart"></i></a>
+                        </form></li>
+                        <li>
                         <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $product->id }}">
                             @csrf
                             <input type="hidden" name="productID" value="{{ $product->id }}">
 
                             <a href="javascript:{}" onclick="document.getElementById('compareForm{{ $product->id }}').submit();"  data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #15939D;float: left;font-size: 18px;margin-top: 6px;" class="fa fa-balance-scale"></i></a>
-                        </form>
-                        <form action="{{ route('wishlist.store', ['shop'=>$shop->english_name]) }}" method="post" id="wishlistForm{{ $product->id }}">
-                            @csrf
-                            <input type="hidden" name="productID" value="{{ $product->id }}">
-
-                          <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #F68712;float: left;font-size: 18px;margin-top: 6px;" class="fas fa-heart m-2"></i></a>
-                        </form>
-
-
-
-                        <div class="quantity mt-3">
-                            @auth
-                            @if($product->type == 'file')
-                                <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
-                                    @csrf
-                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" data-col="true" class="btn btn-primary iranyekan rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> دریافت فایل </button>
-                                </form>
-                                @else
-                                <form action="{{ route('user-cart.add', ['shop'=>$shop->english_name, 'userID'=> \Auth::user()->id]) }}" method="post">
-                                    @csrf
-                                    <div class="mb-1">
-                                      @foreach($product->specifications as $specification)
-                                        <div class="row">
-                                          <label class="py-1 mt-2">
-                                            {{ $specification->name }} :
-                                          </label>
-                                        </div>
-                                        <div class="row">
-                                        <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification[]" title="موردی انتخاب نشده است">
-                                        @foreach($specification->items->where('status', 'enable') as $item)
-                                           <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
-                                         @endforeach
-                                        </select>
-                                        </div>
-                                   @endforeach
-                                   </div>
-                                    <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" data-col="true" class="text-white btn bg-blue-omid iranyekan mt-2 rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
-                                    @endif
-
-                                </form>
-                                @endauth
-                                @guest
-                                <a href="{{ route('register') }}">
-                                    <button type="button" class="btn btn-primary iranyekan rounded"><i class="mdi mdi-cart mr-1"></i> برای خرید ابتدا ثبت نام کنید </button>
-                                </a>
-                                @endguest
-
-                        </div>
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />                                <span style="padding-top: 16px;font-weight: 500;color: #50649c; font-size: 15px;">به اشتراک گذاری شبکه های اجتماعی: </span>
-                                <ul class="social-network social-circle">
-                                    <li><a href="whatsapp://send?text={{  url()->current()  }}" data-action="share/whatsapp/share" target="_blank" class="icoRss" title="Rss"><i class="fa fa-whatsapp"></i></a></li>
-                                    <li><a href="tg://msg_url?url={{ url()->current() }}&text='فروشگاه ساز امید'" class="icoTwitter" title="Rss"><i class="fa fa-telegram"></i></a></li>
+                        </form></li>
+                    </ul>
+                    <!-- pro_dtl_btn end -->
+                    <!-- pro_social_share start -->
+                    <div class="pro_social_share d-flex">
+                        <h2 class="title_2 ml-2">اشتراک گذاری:</h2>
+                        <ul class="pro_social_link">
+                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                            <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
+                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                            <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- pro_social_share end -->
+                </div>
+                <!-- product_details_info end -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="product-details-tab mt--60">
+                    <ul role="tablist" class="mb--50 nav">
+                        <li class="active" role="presentation">
+                            <a data-toggle="tab" role="tab" href="#description" class="active">Description</a>
+                        </li>
+                        <li role="presentation">
+                            <a data-toggle="tab" role="tab" href="#sheet">Data sheet</a>
+                        </li>
+                        <li role="presentation">
+                            <a data-toggle="tab" role="tab" href="#reviews">نظرات</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="product_details_tab_content tab-content">
+                    <!-- Start Single Content -->
+                    <div class="product_tab_content tab-pane active" id="description" role="tabpanel">
+                        <div class="product_description_wrap">
+                            <div class="product_desc mb--30">
+                                <h2 class="title_3">Details</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis noexercit ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id.</p>
+                            </div>
+                            <div class="pro_feature">
+                                <h2 class="title_3">Features</h2>
+                                <ul class="feature_list">
+                                    <li><a href="#"><i class="ion-ios-play-outline"></i>Duis aute irure dolor in reprehenderit in voluptate velit esse</a></li>
+                                    <li><a href="#"><i class="ion-ios-play-outline"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
+                                    <li><a href="#"><i class="ion-ios-play-outline"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
+                                    <li><a href="#"><i class="ion-ios-play-outline"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
                                 </ul>
                             </div>
-
-
-                    </div>
-                </div>
-
-
-
-                <!--end col-->
-            </div>
-            <!--end row-->
-        </div>
-        <!--end card-body-->
-    </div>
-    <!--end card-->
-</div>
-<!--end col-->
-</div>
-<!-- end row -->
-</div>
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    @if ($product->fast_sending == 'on')
-                    <div class="col-lg-3">
-                        <div class="pro-order-box min-height-160 border bg-orange-rock"><i class="mdi mdi-truck-fast text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">ارسال سریع</h4>
-                            <p class="text-white mb-0">امکان ارسال در سریع ترین زمان ممکن پس از ثبت سفارش در سامان.</p>
                         </div>
                     </div>
-                    @endif
-                    <!--end col-->
-                    @if ($product->money_back == 'on')
-                    <div class="col-lg-3">
-                        <div class="pro-order-box min-height-160 border bg-red-rock"><i class="mdi mdi-refresh text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">تضمین بازگشت وجه</h4>
-                            <p class="text-white mb-0">درصورت عدم رضایت از محصول وجه دریافتی بازگشت داده میشود.</p>
-                        </div>
-                    </div>
-                    @endif
-
-                    <!--end col-->
-                    @if ($product->support == 'on')
-                    <div class="col-lg-3">
-                        <div class="pro-order-box min-height-160 border bg-green-rock"><i class="mdi mdi-headset text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">پشتیبانی 24 ساعته</h4>
-                            <p class="mb-0 text-white">تیم پشتیبانی مجموعه به صورت 24 ساعته آماده پاسخگویی به سوالات شما میباشند.</p>
-                        </div>
-                    </div>
-                    @endif
-
-                    <!--end col-->
-                    @if ($product->secure_payment == 'on')
-                    <div class="col-lg-3">
-                        <div class="pro-order-box mb-0 min-height-160 border bg-blue-rock"><i class="mdi mdi-wallet text-white"></i>
-                            <h4 class="header-title text-white font-weight-bold">پرداخت امن</h4>
-                            <p class="text-white mb-0">امکان پرداخت امن در سامانه و تجربه پرداخت امن.</p>
-                        </div>
-                    </div>
-                    @endif
-                    <!--end col-->
-                </div>
-                <!--end row-->
-            </div>
-            <!--end card-body-->
-        </div>
-        <!--end card-->
-    </div>
-    <!--end col-->
-</div>
-<div class="row">
-    <div class="col-md-9">
-        <div class="card bg-newsletters">
-            <div class="card-body bg-green-rock rounded">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="newsletters-text">
-                            <h4>ثبت نام در خبرنامه</h4>
-                            <p class="text-white mb-0">برای دریافت آخرین اخبار سامانه میتوانید در خبرنامه ثبت نام کنید.</p>
-                        </div>
-                    </div>
-                    <!--end col-->
-                    <div class="col-md-6 align-self-center">
-                        <div class="newsletters-input">
-                          <form class="form-inline form-default" method="post" novalidate="novalidate" action="{{ route('subscribe', $shop->id) }}">
-                            @csrf
-                                <input type="email" name="email" placeholder="ایمیل خود را وارد کنید" required="" style="direction: ltr">
-                                <button type="submit" class="btn btn-blue rounded">دنبال کردن</button>
-                            </form>
-                        </div>
-                    </div>
-                    <!--end col-->
-                </div>
-                <!--end row-->
-            </div>
-            <!--end card-body-->
-        </div>
-        <!--end card-->
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-3 align-self-center"><img src="{{ asset($product->image['250,250'] ? $product->image['250,250'] : '/images/no-image.png') }}" alt="" height="250" class="d-block mx-auto col-12"></div>
-                    <div class="col-lg-9">
-                        <h5 class="mt-3">توضیحات :</h5>
-                        <p class="text-muted mb-4" style="line-height:30px"> {!! $product->description  !!}</p>
-                        <ul class="list-unstyled mb-4">
-                            @for ($i=1; $i
-                            <= 10; $i++) @if ($product->{"feature_{$i}"})
-                            <li class="mb-2 font-13 text-muted"><i class="mdi mdi-checkbox-marked-circle-outline text-success mr-2"></i>{{ $product->{"feature_{$i}"} }}.</li>
-                            @endif
-                            @endfor
-                        </ul>
-
-                        <!--end row-->
-                    </div>
-                    <!--end col-->
-                </div>
-                <!--end row-->
-            </div>
-            <!--end card-body-->
-        </div>
-        <!--end card-->
-    </div>
-    <!--end col-->
-    <div class="col-md-3">
-        <div class="card">
-            <div class="card-body">
-                <div class="review-box text-center align-item-center" style="direction:ltr">
-                    @auth
-                    @if(collect($userProducts)->where('id' ,$product->id)->count() > 0)
-                        <h5 style="color: #f1646c;" class="p-3">{{ $productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0 ? "شما مجاز به ثبت امتیاز نمیباشید"  : "امتیاز خود را به این کالا ثبت کنید " }}</h5>
-                        <form class="" action="{{route('rate' , ['shop'=>$shop->english_name, 'id'=>$product->id])}}" method="post">
-                            @csrf {{ method_field('PATCH') }}
-                            @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
-                                @else
-                                  <select id="combostar">
-                                     <option value="1">1</option>
-                                     <option value="2">2</option>
-                                     <option value="3">3</option>
-                                     <option value="4">4</option>
-                                     <option value="5">5</option>
-                                  </select>
-                                @endif
-                                <input id="starcount" type="hidden" name="rate" value="">
-                                <input type="hidden" name="id" value="{{ $product->id }}">
-                                <input type="hidden" name="slug" value="{{ $product->slug }}">
-                                <input type="hidden" name="shop" value="{{ $shop->english_name }}">
-                                <br>
-                                @if($productRates->where('author_id' ,\auth::user()->id)->where('ratingable_id' , $product->id)->count() > 0)
-                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded comming-soon">شما قبلا امتیاز ثبت کرده اید </button>
-                                    @else
-                                    <button type="submit" class="btn bg-orange-omid mt-3 text-white rounded">ثبت امتیاز</button>
-                                    @endif
-                        </form>
-                        @endif
-                        @endauth
-                        <br>
-                        @if($shop->buyCount_show == 'enable')
-                        <h4 class="header-title pt-4">مجموع فروش</h4>
-                        <div class="review-box text-center align-item-center p-3">
-                           <h1 class="byekan">{{ $product->buyCount }}</h1>
-                           @endif
-                            <ul class="list-inline mb-0 product-review">
-                                <li class="list-inline-item"><small class="text-muted font-14">مجموع آرا ({{ $productRates->count() }})</small></li>
-                                <li class="list-inline-item"><small class="text-muted font-14">متوسط آرا ({{ (int)$product->avgRating }})</small></li>
-                            </ul>
-                            <ul class="list-inline mb-0 product-review">
-
-                                @for ($i = 1; $i
-                                <= (int)$product->avgRating; $i++)
-                                    <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i></li>
-                                    @endfor
+                    <!-- End Single Content -->
+                    <!-- Start Single Content -->
+                    <div class="product_tab_content tab-pane" id="sheet" role="tabpanel">
+                        <div class="pro_feature">
+                            <h2 class="title_3">Data sheet</h2>
+                            <ul class="feature_list">
+                                <li><a href="#"><i class="ion-ios-play-outline"></i>Duis aute irure dolor in reprehenderit in voluptate velit esse</a></li>
+                                <li><a href="#"><i class="ion-ios-play-outline"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
+                                <li><a href="#"><i class="ion-ios-play-outline"></i>Irure dolor in reprehenderit in voluptate velit esse</a></li>
+                                <li><a href="#"><i class="ion-ios-play-outline"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
+                                <li><a href="#"><i class="ion-ios-play-outline"></i>Sed do eiusmod tempor incididunt ut labore et </a></li>
+                                <li><a href="#"><i class="ion-ios-play-outline"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
+                                <li><a href="#"><i class="ion-ios-play-outline"></i>Nisi ut aliquip ex ea commodo consequat.</a></li>
                             </ul>
                         </div>
+                    </div>
+                    <!-- End Single Content -->
+                    <!-- Start Single Content -->
+                    <div class="product_tab_content tab-pane" id="reviews" role="tabpanel">
+                        <div class="review_address_inner">
+                            <!-- Start Single Review -->
+                            <div class="pro_review">
+                                <div class="review_thumb">
+                                    <img alt="review images" src="assets/images/review/1.jpg">
+                                </div>
+                                <div class="review_details">
+                                    <div class="review_info">
+                                        <h4><a href="#">Gerald Barnes</a></h4>
+                                        <ul class="product-rating d-flex">
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                        </ul>
+                                        <div class="rating_send">
+                                            <a href="#"><i class="ion-reply"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="review_date">
+                                        <span>27 Jun, 2018 at 3:30pm</span>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
+                                </div>
+                            </div>
+                            <!-- End Single Review -->
+                            <!-- Start Single Review -->
+                            <div class="pro_review ans">
+                                <div class="review_thumb">
+                                    <img alt="review images" src="assets/images/review/2.jpg">
+                                </div>
+                                <div class="review_details">
+                                    <div class="review_info">
+                                        <h4><a href="#">Gerald Barnes</a></h4>
+                                        <ul class="product-rating d-flex">
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                            <li><span class="icon-star"></span></li>
+                                        </ul>
+                                        <div class="rating_send">
+                                            <a href="#"><i class="ion-reply"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="review_date">
+                                        <span>27 Jun, 2018 at 4:32pm</span>
+                                    </div>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer accumsan egestas elese ifend. Phasellus a felis at estei to bibendum feugiat ut eget eni Praesent et messages in con sectetur posuere dolor non.</p>
+                                </div>
+                            </div>
+                            <!-- End Single Review -->
+                        </div>
+                        <!-- Start RAting Area -->
+                        <div class="rating_wrap">
+                            <h2 class="rating-title">نظر خود را ثبت کنید</h2>
+                            <div class="rating_list">
+                                <ul class="product-rating d-flex">
+                                    <li><span class="icon-star"></span></li>
+                                    <li><span class="icon-star"></span></li>
+                                    <li><span class="icon-star"></span></li>
+                                    <li><span class="icon-star"></span></li>
+                                    <li><span class="icon-star"></span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- End RAting Area -->
+                        <div class="comments-area comments-reply-area">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="#" class="comment-form-area">
+                                        <div class="comment-input">
+                                            <p class="comment-form-author">
+                                                <label>نام و نام خانوادگی<span class="required">*</span></label>
+                                                <input type="text" required="required" name="Name">
+                                            </p>
+                                            <p class="comment-form-email">
+                                                <label>آدرس ایمیل<span class="required">*</span></label>
+                                                <input type="text" required="required" name="email">
+                                            </p>
+                                        </div>
+                                        <p class="comment-form-comment">
+                                            <label>نظر خود را یادداشت کنید</label>
+                                            <textarea class="comment-notes" required="required"></textarea>
+                                        </p>
+                                        <div class="comment-form-submit">
+                                            <input type="submit" value="ارسال نظر" class="comment-submit">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Content -->
                 </div>
-                @if ($productRates->count() > 0)
-                <ul class="list-unstyled mt-3 font-15 p-1">
-                    <li class="mb-2"><span class="text-info">5 ستاره </span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 5)->count() }}</small>
-                        <div class="progress mt-2" style="height:5px;">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width:{{$productRates->where('rating' , 5)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="80" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                        </div>
-                    </li>
-                    <li class="mb-2"><span class="text-info">4 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 4)->count() }}</small>
-                        <div class="progress mt-2" style="height:5px;">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 4)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="18" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                        </div>
-                    </li>
-                    <li class="mb-2"><span class="text-info">3 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 3)->count() }}</small>
-                        <div class="progress mt-2" style="height:5px;">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 3)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="10" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                        </div>
-                    </li>
-                    <li class="mb-2"><span class="text-info">2 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 2)->count() }}</small>
-                        <div class="progress mt-2" style="height:5px;">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 2)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="1" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                        </div>
-                    </li>
-                    <li><span class="text-info">1 ستاره</span> <small class="float-right text-muted ml-3 font-14">{{ $productRates->where('rating' , 1)->count() }}</small>
-                        <div class="progress mt-2" style="height:5px;">
-                            <div class="progress-bar bg-secondary" role="progressbar" style="width: {{$productRates->where('rating' , 1)->count() * 100 / $productRates->count() }}%; border-radius:5px;" aria-valuenow="0" aria-valuemin="0"
-                              aria-valuemax="100"></div>
-                        </div>
-                    </li>
-                </ul>
-                @endif
-                <h4 class="mb-3 mt-3 p-4">برچسب ها :</h4>
-                <ul class="tags iranyekan">
-                    @foreach ($product->tags()->get() as $tag)
-                      @if($tag->name != "")
-                        <li><a href="{{ route('tag', ['shop'=>$shop->english_name, 'id'=>$tag->id]) }}" class="tag iranyekan ">{{ $tag->name }}</a></li>
-                      @endif
-                    @endforeach
-                </ul>
-
-
             </div>
-            <!--end card-body-->
         </div>
-
-
-        <!--end card-->
     </div>
-
-
-    <!--end col-->
 </div>
-
-
-@include('app.shop.1.layouts.partials.offers')
-@include('app.shop.1.layouts.partials.comments')
-
-
-<!-- container -->
-</div>
-</div>
+<!-- main-content-wrap end -->
 
 @endsection
-@section('pageScripts')
-  <script src="/app/shop/1/assets/js/jquery.combostars.js"></script>
-  <script src="{{ asset('/app/shop/1/assets/js/product.js') }}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script type="text/javascript" src="/app/shop/1/assets/js/simple-lightbox.min.js"></script>
-  <script type="text/javascript">
-  $(window).on("load", function() {
-  $(".bootstrap-select").children("button.dropdown-toggle").addClass("bg-orange-omid");
-  $(".bootstrap-select").children("button.dropdown-toggle").addClass("text-light");
-  $(".filter-option-inner-inner").addClass("iranyekan");
-  $(".bootstrap-select").children(".dropdown-menu").css('background-color','white');
-  $(".bootstrap-select").children(".dropdown-menu").children("div.inner").children("ul.dropdown-menu").css('background-color','white');
-  $(".filter-option").css('text-align','center');
-});
-  </script>
-  <script type="text/javascript">
-  $(window).ready(function(){
-    setInterval(function(){
-      $(".text").addClass("green-text")
-    }, 100);
-
-  });
-  </script>
-  <script type="text/javascript">
-  $(document).ready(function() {
-$('li.color-sel').click(function() {
-  $(this).siblings("li").removeClass('active');
-  $(this).addClass('active');
-});
-});
-  </script>
-
-  <script>
-  if ($("#color-selection").length == 0){
-  if ($("li.color-select").hasClass("active")) {
-    var colorId = $("li.color-select > a").data('color');
-   $("button.btn-add-to-cart").filter("[data-col='true']").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
-  }
-  }
-
-  //when the Add Field button is clicked
-  $('.options-color').on('click', function() {
-    var colorId = $(this).data('color');
-  //Append a new row of code to the "#items" div
-  if ($("#color-selection").length > 0){
-    $("#color-selection").remove();
-  }
-    $("button.btn-add-to-cart").append('<input type="hidden" id="color-selection" name="color" value="'+colorId+'">');
-  });
-
-  </script>
-@include('sweet::alert')
-@stop

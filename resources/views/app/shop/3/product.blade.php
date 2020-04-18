@@ -58,12 +58,23 @@
 						<a href="#">xxl</a>
 					</div>
 					<div class="pd_clr_qntty_dtls fix">
+
+					  @if($product->colors->count() != 0)
 						<div class="pd_clr">
-							<h4>color:</h4>
-							<a href="#" class="active" style="background: #ffac9a;">color 1</a>
-							<a href="#" style="background: #ddd;">color 2</a>
-							<a href="#" style="background: #000000;">color 3</a>
+							<h4>انتخاب رنگ:</h4>
+							@php
+							$i = 0;
+							 @endphp
+							 @foreach($product->colors as $color)
+								 <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
+									<a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
+							 </li>
+							 @php
+							 $i ++;
+								@endphp
+							 @endforeach
 						</div>
+						    @endif
 						<div class="pd_qntty_area">
 							<h4>quantity:</h4>
 							<div class="pd_qty fix">

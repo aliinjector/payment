@@ -11,9 +11,9 @@
                         <div class="breadcrumb-wrap">
                             <nav aria-label="breadcrumb">
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html"><i class="fa fa-home"></i></a></li>
-                                    <li class="breadcrumb-item"><a href="shop.html">shop</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">cart</li>
+                                    <li class="breadcrumb-item"><a href="/"><i class="fa fa-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="/user-cart">سبد خرید</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">لیست محصولات سبد خرید</li>
                                 </ul>
                             </nav>
                         </div>
@@ -24,6 +24,7 @@
         <!-- breadcrumb area end -->
 
         <!-- cart main wrapper start -->
+            @if(isset($products))
         <div class="cart-main-wrapper section-padding">
             <div class="container">
                 <div class="section-bg-color">
@@ -34,62 +35,48 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th class="pro-thumbnail">Thumbnail</th>
-                                            <th class="pro-title">Product</th>
-                                            <th class="pro-price">Price</th>
-                                            <th class="pro-quantity">Quantity</th>
-                                            <th class="pro-subtotal">Total</th>
-                                            <th class="pro-remove">Remove</th>
+                                            <th class="pro-thumbnail">تصویر محصول</th>
+                                            <th class="pro-title">محصول</th>
+                                            <th class="pro-price">قیمت واحد کالا</th>
+                                            <th class="pro-quantity">تعداد</th>
+                                            <th class="pro-subtotal">میزان تخفیف</th>
+                                            <th class="pro-remove">حذف</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                      <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
+                                          @csrf
+                                          @foreach ($cart->cartProduct as $cartProduct)
                                         <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-1.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                            <td class="pro-price"><span>$295.00</span></td>
+                                            <td class="pro-thumbnail"><a href="{{ route('product', ['shop'=>$cartProduct->product->shop->english_name, 'slug'=>$cartProduct->product->slug, 'id' => $cartProduct->product->id]) }}"><img class="img-fluid" src="{{ asset($cartProduct->product->image['80,80'] ? $cartProduct->product->image['80,80'] : '/images/no-image.png') }}" alt="Product" /></a></td>
+                                            <td class="pro-title"><a href="{{ route('product', ['shop'=>$cartProduct->product->shop->english_name, 'slug'=>$cartProduct->product->slug, 'id' => $cartProduct->product->id]) }}">{{ $cartProduct->product->title }}</a></td>
+                                            <td class="pro-price"><span>{{ number_format($cartProduct->product->price) }} تومان </span></td>
                                             <td class="pro-quantity">
                                                 <div class="pro-qty"><input type="text" value="1"></div>
+                                                <select class="form-control p-1" style="width: 65px;" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
+                                            @for ($i=1; $i < $cartProduct->product->amount; $i++)
+
+                                                    <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
+                                                        {{ $i }}
+                                                      </option>
                                             </td>
-                                            <td class="pro-subtotal"><span>$295.00</span></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+                                            <td class="pro-subtotal"><span>
+                                              @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($cartProduct->product->off_price != null and $cartProduct->product->off_price_started_at < now() and $cartProduct->product->off_price_expired_at > now())
+                      													{{ number_format($cartProduct->product->price-$cartProduct->product->off_price)}}
+                      												@else
+                      													0
+                      														@endif</span></td>
+                                                  <td>
+                                                      <a class="pro-remove" href="" class="text-danger" id="removeProduct" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}"  data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}" data-cartp="{{ $cartProduct->id }}"><i class="fa fa-trash"></i><i class="fa fa-trash-o"></i></a>
+                                                  </td>
                                         </tr>
-                                        <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-2.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Perfect Diamond Jewelry</a></td>
-                                            <td class="pro-price"><span>$275.00</span></td>
-                                            <td class="pro-quantity">
-                                                <div class="pro-qty"><input type="text" value="2"></div>
-                                            </td>
-                                            <td class="pro-subtotal"><span>$550.00</span></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-3.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Handmade Golden Necklace</a></td>
-                                            <td class="pro-price"><span>$295.00</span></td>
-                                            <td class="pro-quantity">
-                                                <div class="pro-qty">
-                                                    <input type="text" value="1" />
-                                                </div>
-                                            </td>
-                                            <td class="pro-subtotal"><span>$295.00</span></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="assets/img/product/product-4.jpg" alt="Product" /></a></td>
-                                            <td class="pro-title"><a href="#">Diamond Exclusive Ornament</a></td>
-                                            <td class="pro-price"><span>$110.00</span></td>
-                                            <td class="pro-quantity">
-                                                <div class="pro-qty">
-                                                    <input type="text" value="3" />
-                                                </div>
-                                            </td>
-                                            <td class="pro-subtotal"><span>$110.00</span></td>
-                                            <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                        </tr>
+
+                                    	  @endforeach
+                                        
                                     </tbody>
                                 </table>
                             </div>
+
                             <!-- Cart Update Option -->
                             <div class="cart-update-option d-block d-md-flex justify-content-between">
                                 <div class="apply-coupon-wrapper">
