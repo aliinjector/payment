@@ -160,6 +160,8 @@
                 <div class="container">
                     <div class="tt-header-holder">
                         <div class="tt-obj-logo obj-aligment-center" style="padding: 25px">
+                          <span style="    font-size: 15px;">{{ $shop->name }}</span>
+
                             <!-- logo -->
 
                             <!-- /logo -->
@@ -257,6 +259,7 @@
                                 <div class="tt-account tt-dropdown-obj">
                                     <button class="tt-dropdown-toggle" data-tooltip="{{ __('app-shop-2-layouts-master.hesabKarbari') }}" data-tposition="bottom"><i class="icon-f-94"></i></button>
                                     <div class="tt-dropdown-menu">
+
                                         <div class="tt-mobile-add">
                                             <button class="tt-close">{{ __('app-shop-2-layouts-master.bastan') }}</button>
                                         </div>
@@ -297,7 +300,6 @@
                             </div>
                             @auth()
                             <p class="mt-0">{{ Auth::user()->firstName}} {{ __('app-shop-2-layouts-master.welcome') }}</p>
-                          <span style="    font-size: 15px;">{{ $shop->name }}</span>
                             @endauth
                             <!-- /tt-account -->
                             <!-- tt-langue and tt-currency -->

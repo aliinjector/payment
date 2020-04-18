@@ -225,7 +225,7 @@
 
         <div class="row mt-5 mb-4">
             <div class="col-12">
-                <div id="carouselContentBrand" class="carousel slide" data-ride="carousel">
+                <div id="carouselContentBrand" class="carousel slide" data-ride="carousel" style="height: 300px;">
                     <div class="carousel-inner" role="listbox">
                         @foreach($brands as $brand)
                             <div class="carousel-item {{$loop->first ? 'active' : ''}} text-center p-4 ml-lg-n2">
