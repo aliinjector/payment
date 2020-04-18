@@ -98,6 +98,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Purchases
         Route::resource('purchases', 'PurchaseController');
         Route::post('purchases/{purchaseID}/delete/{id}', 'PurchaseController@destroy')->name('purchases.delete')->where(['purchaseID' => '[0-9]+', 'id' => '[0-9]+']);
+        Route::post('purchases/{purchaseID}/restore/{id}', 'PurchaseController@restore')->name('purchases.restore')->where(['purchaseID' => '[0-9]+', 'id' => '[0-9]+']);
         Route::put('purchases/change-status/{id}', 'PurchaseController@changeStatus')->name('purchases.change-status')->where(['id' => '[0-9]+']);
 
       });
@@ -198,14 +199,19 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
           //Slideshow
           Route::resource('slideshow', 'SlideshowController');
           Route::post('slideshow/delete', 'SlideshowController@destroy')->name('slideshow.delete');
+          Route::post('slideshow/restore', 'SlideshowController@restore');
+
 
           //Feedback
           Route::resource('feedback', 'FeedbackController');
           Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
+          Route::post('feedback/restore', 'FeedbackController@restore');
 
           //FAQ
           Route::resource('faq', 'FAQController');
           Route::post('faq/delete', 'FAQController@destroy')->name('faq.delete');
+          Route::post('faq/restore', 'FAQController@restore');
+
 
           //Shop-Setting
           Route::resource('shop-setting', 'ShopSettingController');

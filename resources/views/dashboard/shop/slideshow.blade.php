@@ -160,7 +160,12 @@
                                                     <div class="d-none icon-show">
                                                         <a href="{{ $slideshow->id }}" id="editSlide" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $slideshow->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
+
+                                                        @if($slideshow->deleted_at != null)
+                                                              <a href="" id="restoreSlideshow" title="بازگردانی" data-id="{{ $slideshow->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                        @else
                                                         <a href="" id="removeSlide" title="حذف" data-name="{{ $slideshow->title }}" data-id="{{ $slideshow->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                         @endif
                                                     </div>
                                                 </td>
                                             </tr>

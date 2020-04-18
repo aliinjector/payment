@@ -52,7 +52,7 @@ $(window).resize(function() {
     e.preventDefault();
     var id = $(this).data('id');
     var name = $(this).data('name');
-    swal(` ${'بازگردانی برند:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+    swal(` ${'بازگردانی کدتخفیف:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
             dangerMode: true,
             icon: "warning",
             buttons: ["انصراف", "حذف"],

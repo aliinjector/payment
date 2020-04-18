@@ -20,6 +20,9 @@ class FeedbackController extends Controller
     public function index()
     {
         $shop = \Auth::user()->shop()->first();
+        if(\Auth::user()->is_superAdmin == 1)
+        $feedbacks = \Auth::user()->shop()->first()->feedbacks()->withTrashed()->get();
+        else
         $feedbacks = \Auth::user()->shop()->first()->feedbacks;
         SEOTools::setTitle($shop->name . ' | بازخورد مشتریان');
         SEOTools::setDescription($shop->name);
@@ -121,4 +124,24 @@ class FeedbackController extends Controller
                alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                return redirect()->back();
    }
+
+
+   public function restore(Request $request){
+
+     $request->validate([
+   'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+     ]);
+     $feedback = Feedback::withTrashed()->find($request->id);
+     if (\Auth::user()->is_superAdmin != 1) {
+         alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+         return redirect()->back();
+         }
+          $feedback->restore();
+          alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+          return redirect()->back();
+        }
+
+
+
+
     }

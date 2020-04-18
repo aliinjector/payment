@@ -147,7 +147,12 @@
                                                     <div class="d-none icon-show">
                                                         <a href="{{ $faq->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $faq->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
+
+                                                        @if($faq->deleted_at != null)
+                                                              <a href="" id="restoreFaq" title="بازگردانی" data-name="{{ $faq->name }}" data-id="{{ $faq->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                        @else
                                                         <a href="" id="removeCat" title="حذف" data-name="{{ $faq->title }}" data-id="{{ $faq->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                         @endif
                                                     </div>
                                                 </td>
                                             </tr>

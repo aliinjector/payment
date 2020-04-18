@@ -49,6 +49,35 @@ $(window).resize(function() {
             });
     });
 
+    $(document).on('click', '#restoreFaq', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var name = $(this).data('name');
+    swal(` ${'بازگردانی سوال متداول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+            dangerMode: true,
+            icon: "warning",
+            buttons: ["انصراف", "حذف"],
+        })
+        .then(function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type: "post",
+                    url: "/admin-panel/shop/managment/faq/restore",
+                    data: {
+                        id: id,
+                        "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                    },
+                    success: function(data) {
+                      var url = "/admin-panel/shop/managment/faq";
+                      location.href = url;
+                  }
+                });
+            } else {
+                toastr.warning('لغو شد.', '', []);
+            }
+        });
+  });
+
     $(document).ready(function(){
       $('#datatable_filter').parent().remove();
       $('#datatable_wrapper').children(':first').find('.col-sm-12').removeClass('col-sm-12 col-md-6');
