@@ -105,7 +105,13 @@
                                                   <a href="{{ route('feature.edit', ['productCategoryFeatureid'=>$categoryFeature->id , 'cat_id' => $category->id]) }}"><i
                                                      class="far fa-edit text-info mr-1 button font-18" title="ویرایش"></i>
                                                   </a>
-                                                  <a href="" title="حذف" id="removeFeature" data-name="{{ $categoryFeature->name }}" data-id="{{ $categoryFeature->id }}"><i class="fa-trash-alt far text-danger"></i></a>
+
+                                                  @if($categoryFeature->deleted_at != null)
+                                                         <a href="" title="بازگردانی" id="restoreFeature" data-name="{{ $categoryFeature->name }}" data-id="{{ $categoryFeature->id }}"><i
+                                                            class="fas fa-undo text-success font-18"></i></a>
+                                                  @else
+                                                    <a href="" title="حذف" id="removeFeature" data-name="{{ $categoryFeature->name }}" data-id="{{ $categoryFeature->id }}"><i class="fa-trash-alt far text-danger"></i></a>
+                                                   @endif
                                                   </div>
                                                 </td>
                                             </tr>
