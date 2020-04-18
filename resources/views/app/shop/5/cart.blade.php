@@ -24,13 +24,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 class="breadcrumb-title">Cart page</h2>
-                <!-- breadcrumb-list start -->
-                <ul class="breadcrumb-list">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Cart page</li>
-                </ul>
-                <!-- breadcrumb-list end -->
+                <h2 class="breadcrumb-title">لیست محصولات سبد خرید</h2>
             </div>
         </div>
     </div>
@@ -38,6 +32,7 @@
 <!-- breadcrumb-area end -->
 
 <!-- main-content-wrap start -->
+  @if(isset($products))
 <div class="main-content-wrap section-ptb cart-page">
     <div class="container">
         <div class="row">
@@ -47,75 +42,54 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="plantmore-product-thumbnail">Images</th>
-                                    <th class="cart-product-name">Product</th>
-                                    <th class="plantmore-product-price">Unit Price</th>
-                                    <th class="plantmore-product-quantity">Quantity</th>
-                                    <th class="plantmore-product-subtotal">Total</th>
-                                    <th class="plantmore-product-remove">Remove</th>
+                                    <th class="plantmore-product-thumbnail">تصویر محصول</th>
+                                    <th class="cart-product-name">محصول</th>
+                                    <th class="plantmore-product-price">قیمت واحد کالا</th>
+                                    <th class="plantmore-product-quantity">میزان تخفیف</th>
+                                    <th class="plantmore-product-subtotal">تعداد</th>
+                                    <th class="plantmore-product-remove">حذف</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="plantmore-product-thumbnail"><a href="#"><img src="assets/images/cart/1.jpg" alt=""></a></td>
-                                    <td class="plantmore-product-name"><a href="#">Compete Track Tote</a></td>
-                                    <td class="plantmore-product-price"><span class="amount">$70.00</span></td>
-                                    <td class="plantmore-product-quantity">
-                                        <input value="1" type="number">
+                              <form action="{{ route('purchase-list',['shop'=>$shop->english_name, 'userID' => \Auth::user()->id]) }}" method="post">
+                                  @csrf
+                                  @foreach ($cart->cartProduct as $cartProduct)
+                                  <tr>
+                                    <td class="plantmore-product-thumbnail"><a href="{{ route('product', ['shop'=>$cartProduct->product->shop->english_name, 'slug'=>$cartProduct->product->slug, 'id' => $cartProduct->product->id]) }}"><img src="{{ asset($cartProduct->product->image['80,80'] ? $cartProduct->product->image['80,80'] : '/images/no-image.png') }}" alt=""></a></td>
+                                    <td class="plantmore-product-name"><a href="{{ route('product', ['shop'=>$cartProduct->product->shop->english_name, 'slug'=>$cartProduct->product->slug, 'id' => $cartProduct->product->id]) }}">{{ $cartProduct->product->title }}</a>  <br><span>{{ !$cartProduct->color ? '' : $cartProduct->color->name}}</span></td>
+                                    <td class="plantmore-product-price"><span class="amount">{{ number_format($cartProduct->product->price) }} تومان </span></td>
+                                    <td>
+                                        @if(isset($discountedPrice)){{ number_format($voucherDiscount) }} @elseif($cartProduct->product->off_price != null and $cartProduct->product->off_price_started_at < now() and $cartProduct->product->off_price_expired_at > now())
+                                          {{ number_format($cartProduct->product->price-$cartProduct->product->off_price)}}
+                                        @else
+                                          0
+                                            @endif
                                     </td>
-                                    <td class="product-subtotal"><span class="amount">$70.00</span></td>
-                                    <td class="plantmore-product-remove"><a href="#"><i class="ion-close"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td class="plantmore-product-thumbnail"><a href="#"><img src="assets/images/cart/2.jpg" alt=""></a></td>
-                                    <td class="plantmore-product-name"><a href="#">Vestibulum suscipit</a></td>
-                                    <td class="plantmore-product-price"><span class="amount">$60.50</span></td>
                                     <td class="plantmore-product-quantity">
-                                        <input value="1" type="number">
+
+                                        <select class="form-control p-1" style="width: 65px;" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
+                                        @for ($i=1; $i < $cartProduct->product->amount; $i++)
+
+                                            <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
+                                                {{ $i }}
+                                              </option>
+
+                                              @endfor
+
+                                        </select>
+
                                     </td>
-                                    <td class="product-subtotal"><span class="amount">$60.50</span></td>
-                                    <td class="plantmore-product-remove"><a href="#"><i class="ion-close"></i></a></td>
+
+
+                                        <td>
+                                        <a href="" class="text-danger amount" id="removeProduct" data-color="{{  !$cartProduct->color ? null : $cartProduct->color->id }}"  data-cart="{{ \Auth::user()->cart()->get()->first()->id }}" data-id="{{ $cartProduct->product->id }}" data-cartp="{{ $cartProduct->id }}"><i class="ion-close font-18"></i></a>
+                                      </td>
+
                                 </tr>
-                                <tr>
-                                    <td class="plantmore-product-thumbnail"><a href="#"><img src="assets/images/cart/3.jpg" alt=""></a></td>
-                                    <td class="plantmore-product-name"><a href="#">suscip dictum magna</a></td>
-                                    <td class="plantmore-product-price"><span class="amount">$40.50</span></td>
-                                    <td class="plantmore-product-quantity">
-                                        <input value="1" type="number">
-                                    </td>
-                                    <td class="product-subtotal"><span class="amount">$40.50</span></td>
-                                    <td class="plantmore-product-remove"><a href="#"><i class="ion-close"></i></a></td>
-                                </tr>
+                              @endforeach
                             </tbody>
                         </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="coupon-all">
-
-                               <div class="coupon2">
-                                    <input class="submit btn" name="update_cart" value="Update cart" type="submit">
-                                    <a href="shop.html" class="btn continue-btn">Continue Shopping</a>
-                                </div>
-
-                                <div class="coupon">
-                                    <h3>Coupon</h3>
-                                    <p>Enter your coupon code if you have one.</p>
-                                    <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                    <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 ml-auto">
-                            <div class="cart-page-total">
-                                <h2>Cart totals</h2>
-                                <ul>
-                                    <li>Subtotal <span>$170.00</span></li>
-                                    <li>Total <span>$170.00</span></li>
-                                </ul>
-                                <a href="#" class="proceed-checkout-btn">Proceed to checkout</a>
-                            </div>
-                        </div>
                     </div>
                 </form>
             </div>
@@ -123,4 +97,10 @@
     </div>
 </div>
 <!-- main-content-wrap end -->
+@else
+
+<h4 class="d-flex justify-content-center p-4">محصولی در سبد خرید شما وجود ندارد</h4>
+
+@endif
+
 @endsection

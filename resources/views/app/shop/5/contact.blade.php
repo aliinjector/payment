@@ -24,13 +24,7 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="breadcrumb-title">Contact US</h2>
-                    <!-- breadcrumb-list start -->
-                    <ul class="breadcrumb-list">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Contact US</li>
-                    </ul>
-                    <!-- breadcrumb-list end -->
+                    <h2 class="breadcrumb-title">تماس باما</h2>
                 </div>
             </div>
         </div>
@@ -43,28 +37,27 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="contact-info-wrapper">
-                        <h2>Get in Touch</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum earum eveniet dolorum suscipit nesciunt incidunt animi repudiandae ab at, tenetur distinctio voluptate vel illo similique.</p>
+                      <h3>اطلاعات تماس</h3>
                         <ul class="contact-info-list">
-                            <li> <strong>Address:</strong>  House 09, Road 32, mohammadpur, Dhaka 1212</li>
-                            <li><strong>Phone:</strong>  +966 11 11 146</li>
-                            <li><strong>Email:</strong> <a href="#"> yoursite@demo.com</a></li>
+                            <li> <strong>  آدرس: </strong>{{ $shop->shopContact->address }}</li>
+                            <li><strong> شماره تماس: </strong> {{ $shop->shopContact->tel}}</li>
+                            <li><strong>  ایمیل: </strong> <a href="#">{{ $shop->shopContact->shop_email}}</a></li>
                         </ul>
                         <div class="contact-form-warp">
                             <form id="contact-form" action="https://demo.hasthemes.com/fusta/mail.php" method="post">
                                 <div class="row">
                                     <div class="col-lg-10">
-                                        <input type="text" name="name" placeholder="Your Name*">
+                                        <input type="text" name="name" placeholder="* نام و نام خانوادگی">
                                     </div>
                                     <div class="col-lg-10">
-                                        <input type="email" name="email" placeholder="Mail Address*">
+                                        <input type="email" name="email" placeholder="* آدرس ایمیل">
                                     </div>
                                     <div class="col-lg-10">
-                                        <textarea name="message" placeholder="Your Massage*"></textarea>
+                                        <textarea name="message" placeholder="* متن پیام"></textarea>
                                     </div>
                                 </div>
                                 <div class="contact-submit-btn">
-                                    <button type="submit" class="submit-btn">Send Email</button>
+                                    <button type="submit" class="submit-btn">ارسال پیام</button>
                                     <p class="form-messege"></p>
                                 </div>
                             </form>
