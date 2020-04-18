@@ -159,6 +159,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::resource('product-comments', 'CommentsController');
         Route::get('comment/notApproved', 'CommentsController@notApproved')->name('comment.notApproved');
         Route::post('comment/delete', 'CommentsController@destroy');
+        Route::post('comment/restore', 'CommentsController@restore');
         Route::get('comment/approve/{id}/{commentable}', 'CommentsController@approve')->name('comment.approve')->where(['id' => '[0-9]+']);
 
         //Brand
