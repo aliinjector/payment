@@ -21,6 +21,9 @@ class BrandController extends Controller
     public function index()
     {
         $shop = \Auth::user()->shop()->first();
+        if(\Auth::user()->is_superAdmin == 1)
+        $brands = \Auth::user()->shop()->first()->brands()->withTrashed()->get();
+        else
         $brands = \Auth::user()->shop()->first()->brands;
         SEOTools::setTitle($shop->name . ' | برندها');
         SEOTools::setDescription($shop->name);
@@ -165,6 +168,21 @@ class BrandController extends Controller
           'icon' => null
       ]);
     }
+
+    public function restore(Request $request){
+
+      $request->validate([
+    'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+      ]);
+      $brand = Brand::withTrashed()->find($request->id);
+      if (\Auth::user()->is_superAdmin != 1) {
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+          return redirect()->back();
+          }
+           $brand->restore();
+           alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+           return redirect()->back();
+         }
 
 
 

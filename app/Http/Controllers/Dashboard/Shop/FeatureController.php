@@ -31,6 +31,9 @@ class FeatureController extends Controller
               $category = ProductCategory::find($request->cat_id);
               $shop = \Auth::user()->shop()->first();
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->doesntHave('children')->get();
+              if(\Auth::user()->is_superAdmin == 1)
+              $categoryFeatures = $category->features()->withTrashed()->get();
+              else
               $categoryFeatures = $category->features;
               SEOTools::setTitle($shop->name . ' | ویژگی های دسته بندی');
               SEOTools::setDescription($shop->name);
@@ -174,4 +177,23 @@ class FeatureController extends Controller
                alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                return redirect()->back();
     }
+
+
+    public function restore(Request $request){
+
+      $request->validate([
+    'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+      ]);
+      $feature = Feature::withTrashed()->find($request->id);
+      if (\Auth::user()->is_superAdmin != 1) {
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+          return redirect()->back();
+          }
+           $feature->restore();
+           alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+           return redirect()->back();
+         }
+
+
+
 }

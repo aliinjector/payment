@@ -825,9 +825,13 @@
                                                                         </a>
                                                                         @endif
                                                                         </a>
-                                                                        <a href="" title="حذف" id="removerProduct" data-id="{{ $product->id }}" data-name="{{ $product->title }}">
-                                                                            <i class="far fa-trash-alt text-danger font-15"></i></a>
-                                                                        <a href="{{ route('galleries.index', $product->id ) }}" title="گالری"><i class="fa fa-image text-info mr-1 button font-15 text-green"></i></a>
+                                                                            @if($product->deleted_at != null)
+                                                                            <a href="" title="بازگردانی محصول" data-id="{{ $product->id }}" data-name="{{ $product->title }}" id="restoreProduct"><i class="fas fa-undo p-1 text-success"></i>
+                                                                            @else
+                                                                              <a href="" title="حذف" id="removerProduct" data-id="{{ $product->id }}" data-name="{{ $product->title }}">
+                                                                                  <i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                                            @endif
+                                                                        <a href="{{ route('galleries.index', $product->id ) }}" title="گالری"><i class="fa fa-image mr-1 button font-15 text-warning"></i></a>
                                                                         <a @if($product->type == 'product') href="{{ route('product-list.show-physical', $product->id ) }}" @elseif($product->type == 'file') href="{{ route('product-list.show-file', $product->id ) }}" @else href="{{ route('product-list.show-service', $product->id ) }}"  @endif title="مشاهده جزئیات محصول"><i class="fas fa-eye text-blue"></i></a>
                                                             </div>
                                                     </td>

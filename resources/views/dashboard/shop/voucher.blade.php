@@ -357,7 +357,12 @@
                                                         <a href="{{ $voucher->id }}" title="ویرایش" id="editVoucher" data-toggle="modal" data-target="#UpdateVoucherModal{{ $voucher->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
 
+
+                                                        @if($voucher->deleted_at != null)
+                                                              <a href="" id="restoreVoucher" title="بازگردانی" data-name="{{ $voucher->name }}" data-id="{{ $voucher->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                        @else
                                                         <a href="" id="removeVoucher" title="حذف" data-id="{{ $voucher->id }}" data-name="{{ $voucher->description }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                         @endif
                                                     </div>
                                                 </td>
 

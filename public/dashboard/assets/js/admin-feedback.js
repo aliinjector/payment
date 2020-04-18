@@ -23,8 +23,7 @@ $(window).resize(function() {
     $(document).on('click', '#removeCat', function(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        var name = $(this).data('name');
-        swal(` ${'حذف دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+        swal('آیا اطمینان دارید؟', {
                 dangerMode: true,
                 icon: "warning",
                 buttons: ["انصراف", "حذف"],
@@ -48,6 +47,35 @@ $(window).resize(function() {
                 }
             });
     });
+
+    $(document).on('click', '#restoreFeedback', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    swal('آیا اطمینان دارید؟', {
+            dangerMode: true,
+            icon: "warning",
+            buttons: ["انصراف", "حذف"],
+        })
+        .then(function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type: "post",
+                    url: "/admin-panel/shop/managment/feedback/restore",
+                    data: {
+                        id: id,
+                        "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                    },
+                    success: function(data) {
+                      var url =  "/admin-panel/shop/managment/feedback";
+                      location.href = url;
+                  }
+                });
+            } else {
+                toastr.warning('لغو شد.', '', []);
+            }
+        });
+  });
+
 
     $(document).ready(function(){
       $('#datatable_filter').parent().remove();

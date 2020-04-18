@@ -47,6 +47,38 @@ $(window).resize(function() {
             });
     });
 
+
+    $(document).on('click', '#restoreVoucher', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    var name = $(this).data('name');
+    swal(` ${'بازگردانی کدتخفیف:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+            dangerMode: true,
+            icon: "warning",
+            buttons: ["انصراف", "حذف"],
+        })
+        .then(function(isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    type: "post",
+                    url: "vouchers/restore",
+                    data: {
+                        id: id,
+                        "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                    },
+                    success: function(data) {
+                      var url = "/admin-panel/shop/vouchers";
+                      location.href = url;
+                  }
+                });
+            } else {
+                toastr.warning('لغو شد.', '', []);
+            }
+        });
+  });
+
+
+
     $(".change").click(function() {
         var id = $(this).data("id");
         $.ajax({

@@ -157,4 +157,36 @@ class PurchaseController extends Controller
 
     }
 
+
+    public function restore(Request $request){
+
+      $request->validate([
+    'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+      ]);
+      $cartProduct = CartProduct::withTrashed()->where('id', $request->id)->get()->first();
+      $purchase = UserPurchase::withTrashed()->where('id', $request->purchaseid)->get()->first();
+      if (\Auth::user()->is_superAdmin != 1) {
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+          return redirect()->back();
+          }
+          if ($cartProduct->cart()->withTrashed()->get()->first()->shop->user_id !== \Auth::user()->id) {
+                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                  return redirect()->back();
+                }
+
+           DB::transaction(function () use ($purchase, $cartProduct) {
+                  $cartProduct->restore();
+                  $newTotalPrice = $purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct->sum('total_price');
+                  $purchase->update([
+                    'total_price' => $newTotalPrice
+                  ]);
+                  alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+                  return redirect()->back();
+         });
+
+           alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+           return redirect()->back();
+         }
+
+
 }

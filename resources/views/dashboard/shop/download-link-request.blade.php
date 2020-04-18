@@ -69,8 +69,12 @@
                                                   <td>{{ $request->created_at }}
                                                   <div style="display:inline-flex!important">
                                                       <a href="" id="acceptRequest" data-name="{{ $request->product->title }}" data-id="{{ $request->id }}" class="p-3" title="ارسال لینک دانلود جدید"><i style="color: #03c9a9;" class="fa fa-check"></i></a>
-                                                      <a href="" data-id="{{ $request->id }}" data-name="{{ $request->product->title }}" id="rejectRequest" class="p-3" title="رد درخواست"><i style="color: #db0a5b" class="fa fa-times"></i>
-                                                      </a>
+                                                      @if($request->deleted_at != null)
+                                                            <a href="" id="restoreStatus" title="بازگردانی" data-id="{{ $request->id }}" data-name="{{ $request->product->title }}"><i class="fas fa-undo text-success pt-3"></i></a>
+                                                      @else
+                                                        <a href="" data-id="{{ $request->id }}" data-name="{{ $request->product->title }}" id="rejectRequest" class="p-3" title="رد درخواست"><i style="color: #db0a5b" class="fa fa-times"></i>
+                                                        </a>
+                                                       @endif
                                                   </div>
                                                 </td>
                                             </tr>

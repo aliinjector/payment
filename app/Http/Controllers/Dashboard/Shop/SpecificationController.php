@@ -19,6 +19,9 @@ class SpecificationController extends Controller
     public function index()
     {
       $shop = \Auth::user()->shop()->first();
+      if(\Auth::user()->is_superAdmin == 1)
+      $specifications = \Auth::user()->shop()->first()->specifications()->withTrashed()->get();
+      else
       $specifications = \Auth::user()->shop()->first()->specifications;
       SEOTools::setTitle($shop->name . ' | خصوصیات محصولات');
       SEOTools::setDescription($shop->name);
@@ -133,4 +136,23 @@ class SpecificationController extends Controller
                  return redirect()->back();
 
     }
+
+
+    public function restore(Request $request){
+
+      $request->validate([
+    'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+      ]);
+      $specification = Specification::withTrashed()->find($request->id);
+      if (\Auth::user()->is_superAdmin != 1) {
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+          return redirect()->back();
+          }
+           $specification->restore();
+           alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+           return redirect()->back();
+         }
+
+
+
 }

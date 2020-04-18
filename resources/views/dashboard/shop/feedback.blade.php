@@ -138,7 +138,12 @@
                                                     <div class="d-none icon-show">
                                                         <a href="{{ $feedback->id }}" id="editCat" title="ویرایش" data-toggle="modal" data-target="#UpdateProductCategoryModal{{ $feedback->id }}"><i class="far fa-edit text-info mr-1 button font-15"></i>
                                                         </a>
+
+                                                        @if($feedback->deleted_at != null)
+                                                              <a href="" id="restoreFeedback" title="بازگردانی" data-id="{{ $feedback->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                        @else
                                                         <a href="" id="removeCat" data-name="{{ $feedback->fullName }}" title="حذف" data-id="{{ $feedback->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                         @endif
                                                     </div>
                                                 </td>
                                             </tr>

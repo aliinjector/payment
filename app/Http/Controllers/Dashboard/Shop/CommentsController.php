@@ -18,6 +18,9 @@ class CommentsController extends \App\Http\Controllers\Controller
         $user->notifications()->where('type', 'App\Notifications\NewComment')->update(['read_at' => now()]);
       }
         $shop = \Auth::user()->shop()->first();
+        if(\Auth::user()->is_superAdmin == 1)
+        $comments = $shop->comments()->withTrashed()->get();
+        else
         $comments = $shop->comments;
         SEOTools::setTitle($shop->name . ' | نظرات');
         SEOTools::setDescription($shop->name);
@@ -127,6 +130,22 @@ class CommentsController extends \App\Http\Controllers\Controller
         alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
         return redirect()->back();
     }
+
+
+    public function restore(Request $request){
+
+      $request->validate([
+    'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+      ]);
+      $comment = Comment::withTrashed()->find($request->id);
+      if (\Auth::user()->is_superAdmin != 1) {
+          alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+          return redirect()->back();
+          }
+           $comment->restore();
+           alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+           return redirect()->back();
+         }
 
 
 }

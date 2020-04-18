@@ -94,10 +94,12 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::resource('download-link-request-status', 'DownloadLinkRequestController');
         Route::post('download-link-request-status/approved', 'DownloadLinkRequestController@acceptRequest');
         Route::post('download-link-request-status/delete', 'DownloadLinkRequestController@destroy')->name('product-list.file.delete');
+        Route::post('download-link-request-status/restore', 'DownloadLinkRequestController@restore')->name('product-list.file.restore');
 
         //Purchases
         Route::resource('purchases', 'PurchaseController');
         Route::post('purchases/{purchaseID}/delete/{id}', 'PurchaseController@destroy')->name('purchases.delete')->where(['purchaseID' => '[0-9]+', 'id' => '[0-9]+']);
+        Route::post('purchases/{purchaseID}/restore/{id}', 'PurchaseController@restore')->name('purchases.restore')->where(['purchaseID' => '[0-9]+', 'id' => '[0-9]+']);
         Route::put('purchases/change-status/{id}', 'PurchaseController@changeStatus')->name('purchases.change-status')->where(['id' => '[0-9]+']);
 
       });
@@ -107,6 +109,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::post('products/search', 'ProductController@search')->name('dashboard.products.search');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product-list.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
+        Route::post('product-list/restore', 'ProductController@restore')->name('Product-list.restore');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status')->where(['id' => '[0-9]+']);
         Route::post('product-list/image/delete', 'ProductController@destroyImage')->name('product-list.image.delete');
         Route::post('product-list/file/delete', 'ProductController@destroyFile')->name('product-list.file.delete');
@@ -123,22 +126,27 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         //Product-Category
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy')->name('product-category.delete');
+        Route::post('product-category/restore', 'ProductCategoryController@restore');
         Route::post('product-category/icon/delete', 'ProductCategoryController@destroyIcon')->name('product-category.icon.delete');
 
         //Feature
         Route::resource('feature', 'FeatureController');
         Route::post('feature/delete', 'FeatureController@destroy')->name('feature.delete');
+        Route::post('feature/restore', 'FeatureController@restore');
 
 
         //Specification
         Route::resource('specification', 'SpecificationController');
         Route::post('specification/delete', 'SpecificationController@destroy')->name('specification.delete');
+        Route::post('specification/restore', 'SpecificationController@restore');
 
         //SpecificationItem
         Route::resource('specification-item', 'SpecificationItemController');
         Route::get('specification-item/main/{id}', 'SpecificationItemController@main')->name('specification-item.main')->where(['id' => '[0-9]+']);
         Route::put('specification-item/main/change-status/{id}', 'SpecificationItemController@changeStatus')->name('specification-item.change-status');
         Route::post('specification-item/main/delete', 'SpecificationItemController@destroy')->name('specification-item.delete');
+        Route::post('specification-item/main/restore', 'SpecificationItemController@restore');
+
       });
 
 
@@ -146,6 +154,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('vouchers/voucher-report', 'VoucherController@voucherReport')->name('vouchers.voucher-report');
         Route::resource('vouchers', 'VoucherController');
         Route::post('vouchers/delete', 'VoucherController@destroy')->name('vouchers.delete');
+        Route::post('vouchers/restore', 'VoucherController@restore');
         Route::post('vouchers/change-status/{id}', 'VoucherController@changeStatus')->name('vouchers.change-status')->where(['id' => '[0-9]+']);
 
         //Gallery
@@ -158,11 +167,13 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::resource('product-comments', 'CommentsController');
         Route::get('comment/notApproved', 'CommentsController@notApproved')->name('comment.notApproved');
         Route::post('comment/delete', 'CommentsController@destroy');
+        Route::post('comment/restore', 'CommentsController@restore');
         Route::get('comment/approve/{id}/{commentable}', 'CommentsController@approve')->name('comment.approve')->where(['id' => '[0-9]+']);
 
         //Brand
         Route::resource('brand', 'BrandController');
         Route::post('brand/delete', 'BrandController@destroy')->name('brand.delete');
+        Route::post('brand/restore', 'BrandController@restore');
         Route::post('brand/icon/delete', 'BrandController@destroyIcon')->name('brand.icon.delete');
 
         //application
@@ -189,14 +200,19 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
           //Slideshow
           Route::resource('slideshow', 'SlideshowController');
           Route::post('slideshow/delete', 'SlideshowController@destroy')->name('slideshow.delete');
+          Route::post('slideshow/restore', 'SlideshowController@restore');
+
 
           //Feedback
           Route::resource('feedback', 'FeedbackController');
           Route::post('feedback/delete', 'FeedbackController@destroy')->name('feedback.delete');
+          Route::post('feedback/restore', 'FeedbackController@restore');
 
           //FAQ
           Route::resource('faq', 'FAQController');
           Route::post('faq/delete', 'FAQController@destroy')->name('faq.delete');
+          Route::post('faq/restore', 'FAQController@restore');
+
 
           //Shop-Setting
           Route::resource('shop-setting', 'ShopSettingController');

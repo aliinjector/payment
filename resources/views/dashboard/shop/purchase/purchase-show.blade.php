@@ -104,53 +104,106 @@
 
                                                       </tr>
                                                     </thead>
-                                                    <tbody class="iranyekan">
-                                                      @php
-                                                        $id = 1;
-                                                      @endphp
-
-                                                      @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $product)
-
-                                                        <tr role="row" class="odd icon-hover hover-color">
-                                                          <td>{{ $id }}</td>
-                                                            <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
-                                                            <td>{{ number_format($product->total_price / $product->quantity ) }} تومان</td>
-                                                            <td>{{ $product->quantity }}</td>
-                                                            @if($product->color)
-                                                            <td>{{ $product->color->name }}</td>
-                                                            @else
-                                                              <td>-</td>
-                                                          @endif
-                                                          @if ($product->specification != null)
-                                                            <td>
-                                                          @foreach($product->specification as $specificationId)
-                                                            @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
-
-                                                            {{ $specificationItem->specification()->withTrashed()->get()->first()->name }} :  {{ $specificationItem->name }} <br>
-                                                            @endforeach
-                                                          @endforeach
-                                                        </td>
-                                                      @else
-                                                        <td>-</td>
-                                                        @endif
-                                                        <td>{{ number_format($product->specification_price) }}</td>
-                                                        <td>{{ number_format($product->total_price + $product->specification_price)}} تومان
-
-
-
-                                                          <div class="d-none icon-show">
-                                                              <a href="" id="removeCartProduct" title="حذف" data-name="{{ $product->product->title }}" data-purchaseid="{{ $purchase->id }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
-
-                                                          </div>
-                                                        </td>
-                                                        </tr>
+                                                    @if(\Auth::user()->is_superAdmin == 1)
+                                                      <tbody class="iranyekan">
                                                         @php
-                                                          $id ++
+                                                          $id = 1;
                                                         @endphp
-                                                      @endforeach
+                                                        @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct()->withTrashed()->get() as $product)
+                                                          <tr role="row" class="odd icon-hover hover-color">
+                                                            <td>{{ $id }}</td>
+                                                              <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
+                                                              <td>{{ number_format($product->total_price / $product->quantity ) }} تومان</td>
+                                                              <td>{{ $product->quantity }}</td>
+                                                              @if($product->color)
+                                                              <td>{{ $product->color->name }}</td>
+                                                              @else
+                                                                <td>-</td>
+                                                            @endif
+                                                            @if ($product->specification != null)
+                                                              <td>
+                                                            @foreach($product->specification as $specificationId)
+                                                              @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
 
-                                                    </tbody>
+                                                              {{ $specificationItem->specification()->withTrashed()->get()->first()->name }} :  {{ $specificationItem->name }} <br>
+                                                              @endforeach
+                                                            @endforeach
+                                                          </td>
+                                                        @else
+                                                          <td>-</td>
+                                                          @endif
+                                                          <td>{{ number_format($product->specification_price) }}</td>
+                                                          <td>{{ number_format($product->total_price + $product->specification_price)}} تومان
+
+
+
+
+                                                    <div class="d-none icon-show">
+
+                                                    @if($product->deleted_at != null)
+                                                    <a href="" id="restoreCartProduct" title="بازگردانی" data-id="{{ $product->id }}" data-name="{{ $product->product->title }}" data-purchaseid="{{ $purchase->id }}" data-id="{{ $product->id }}"><i class="fas fa-undo text-success font-15"></i></a>
+                                                      @else
+                                                            <a href="" id="removeCartProduct" title="حذف" data-name="{{ $product->product->title }}" data-purchaseid="{{ $purchase->id }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+                                                   @endif
+                                                            </div>
+                                                          </td>
+                                                          </tr>
+                                                          @php
+                                                            $id ++
+                                                          @endphp
+                                                        @endforeach
+
+                                                      </tbody>
+                                                    @else
+                                                      <tbody class="iranyekan">
+                                                        @php
+                                                          $id = 1;
+                                                        @endphp
+
+                                                        @foreach ($purchase->cart()->withTrashed()->where('status' , 1)->get()->first()->cartProduct as $product)
+
+                                                          <tr role="row" class="odd icon-hover hover-color">
+                                                            <td>{{ $id }}</td>
+                                                              <td><a href="{{ route('product', ['shop'=>$purchase->shop->english_name, 'slug'=>$product->product()->withTrashed()->get()->first()->slug, 'id'=>$product->product()->withTrashed()->get()->first()->id]) }}">{{ $product->product()->withTrashed()->get()->first()->title }}</a></td>
+                                                              <td>{{ number_format($product->total_price / $product->quantity ) }} تومان</td>
+                                                              <td>{{ $product->quantity }}</td>
+                                                              @if($product->color)
+                                                              <td>{{ $product->color->name }}</td>
+                                                              @else
+                                                                <td>-</td>
+                                                            @endif
+                                                            @if ($product->specification != null)
+                                                              <td>
+                                                            @foreach($product->specification as $specificationId)
+                                                              @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
+
+                                                              {{ $specificationItem->specification()->withTrashed()->get()->first()->name }} :  {{ $specificationItem->name }} <br>
+                                                              @endforeach
+                                                            @endforeach
+                                                          </td>
+                                                        @else
+                                                          <td>-</td>
+                                                          @endif
+                                                          <td>{{ number_format($product->specification_price) }}</td>
+                                                          <td>{{ number_format($product->total_price + $product->specification_price)}} تومان
+
+
+
+                                                            <div class="d-none icon-show">
+                                                                <a href="" id="removeCartProduct" title="حذف" data-name="{{ $product->product->title }}" data-purchaseid="{{ $purchase->id }}" data-id="{{ $product->id }}"><i class="far fa-trash-alt text-danger font-15"></i></a>
+
+                                                            </div>
+                                                          </td>
+                                                          </tr>
+                                                          @php
+                                                            $id ++
+                                                          @endphp
+                                                        @endforeach
+
+                                                      </tbody>
+                                                    @endif
                                                   </table>
+
                                             </div>
                                         </div>
                                     </div>
@@ -193,6 +246,39 @@
                   }
               });
       });
+      </script>
+      <script type="text/javascript">
+      $(document).on('click', '#restoreCartProduct', function(e) {
+      e.preventDefault();
+      var id = $(this).data('id');
+      var name = $(this).data('name');
+      var purchaseid = $(this).data('purchaseid');
+
+      swal(` ${'بازگردانی محصول:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+              dangerMode: true,
+              icon: "warning",
+              buttons: ["انصراف", "حذف"],
+          })
+          .then(function(isConfirm) {
+              if (isConfirm) {
+                  $.ajax({
+                      type: "post",
+                      url: "/admin-panel/shop/purchases-managment/purchases/{{ $purchase->id }}/restore/"+id,
+                      data: {
+                          id: id,
+                          purchaseid: purchaseid,
+                          "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                      },
+                      success: function(data) {
+                        window.location.reload()
+
+                    }
+                  });
+              } else {
+                  toastr.warning('لغو شد.', '', []);
+              }
+          });
+    });
       </script>
 
 @stop

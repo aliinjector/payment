@@ -21,6 +21,9 @@ class SlideshowController extends Controller
     public function index()
     {
       $shop = \Auth::user()->shop()->first();
+      if(\Auth::user()->is_superAdmin == 1)
+      $slideshows = \Auth::user()->shop()->first()->slideshows()->withTrashed()->get();
+      else
       $slideshows = \Auth::user()->shop()->first()->slideshows()->get();
       $slideshowIds = collect();
       foreach($slideshows as $slideshow){
@@ -154,4 +157,20 @@ class SlideshowController extends Controller
                alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
                return redirect()->back();
            }
+
+
+           public function restore(Request $request){
+
+             $request->validate([
+           'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+             ]);
+             $slideshow = Slideshow::withTrashed()->find($request->id);
+             if (\Auth::user()->is_superAdmin != 1) {
+                 alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+                 return redirect()->back();
+                 }
+                  $slideshow->restore();
+                  alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+                  return redirect()->back();
+                }
     }
