@@ -169,7 +169,6 @@
                                                     <td>{{ $user->mobile }}</td>
                                                     <td style="direction: ltr; font-family: BYekan ">{{ jdate($user->created_at) }}
                                                       <div class="d-none icon-show">
-
                                                           <a href="{{ route('users.purchases', $user) }}" title="لیست سفارشات" id="edit"><i class="fas fa-shopping-cart text-danger mx-1"></i>
                                                           </a>
                                                       </div>
