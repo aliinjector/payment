@@ -52,6 +52,9 @@ class ProductController extends Controller
               $productCategories = \Auth::user()->shop()->first()->ProductCategories()->get();
               $brands = \Auth::user()->shop()->first()->brands()->get();
               $colors = Color::all();
+              if(\Auth::user()->is_superAdmin == 1)
+              $products = \Auth::user()->shop()->first()->products()->withTrashed()->get();
+              else
               $products = \Auth::user()->shop()->first()->products()->get();
               SEOTools::setTitle($shop->name . ' | محصولات');
               SEOTools::setDescription($shop->name);
@@ -808,6 +811,23 @@ else{
           }
         }
 
+
+
+
+      public function restore(Request $request){
+
+    $request->validate([
+      'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+]);
+    $product = Product::withTrashed()->find($request->id);
+    if (\Auth::user()->is_superAdmin != 1) {
+            alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+            return redirect()->back();
+          }
+             $product->restore();
+             alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+             return redirect()->back();
+ }
 
 
         public static function getAllParentCategories($cat_id) {

@@ -8,6 +8,7 @@ use Ghanem\Rating\Traits\Ratingable as Rating;
 use Illuminate\Database\Eloquent\Model;
  use Laravel\Scout\Searchable;
 
+
 class Product extends Model
 {
    // use SoftDeletes, Rating, CascadeSoftDeletes, Sluggable, Searchable;
@@ -27,6 +28,7 @@ public function sluggable()
            ]
        ];
    }
+
 
 
   public function productCategory()

@@ -107,6 +107,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::post('products/search', 'ProductController@search')->name('dashboard.products.search');
         Route::post('product-list/storeProduct', 'ProductController@storeProduct')->name('Product-list.storeProduct');
         Route::post('product-list/delete', 'ProductController@destroy')->name('Product-list.delete');
+        Route::post('product-list/restore', 'ProductController@restore')->name('Product-list.restore');
         Route::put('product-list/change-status/{id}', 'ProductController@changeStatus')->name('Product-list.change-status')->where(['id' => '[0-9]+']);
         Route::post('product-list/image/delete', 'ProductController@destroyImage')->name('product-list.image.delete');
         Route::post('product-list/file/delete', 'ProductController@destroyFile')->name('product-list.file.delete');
