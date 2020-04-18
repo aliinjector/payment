@@ -24,7 +24,13 @@ class ProductCategoryController extends Controller
             return redirect()->back();
         }else{
       $shop = \Auth::user()->shop()->first();
+      if(\Auth::user()->is_superAdmin == 1)
+      $categoires = \Auth::user()->shop()->first()->ProductCategories()->withTrashed()->get();
+      else
       $categoires = \Auth::user()->shop()->first()->ProductCategories()->get();
+      if(\Auth::user()->is_superAdmin == 1)
+      $parentCategories = \Auth::user()->shop()->first()->ProductCategories()->withTrashed()->get()->where('parent_id', null);
+      else
       $parentCategories = \Auth::user()->shop()->first()->ProductCategories()->get()->where('parent_id', null);
       SEOTools::setTitle($shop->name . ' | دسته بندی ها');
       SEOTools::setDescription($shop->name);
@@ -200,6 +206,22 @@ class ProductCategoryController extends Controller
            'icon' => null
        ]);
      }
+
+
+     public function restore(Request $request){
+
+       $request->validate([
+     'id' => 'required|numeric|min:1|max:10000000000|regex:/^[0-9]+$/u',
+       ]);
+       $productCategory = ProductCategory::withTrashed()->find($request->id);
+       if (\Auth::user()->is_superAdmin != 1) {
+           alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
+           return redirect()->back();
+           }
+            $productCategory->restore();
+            alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+            return redirect()->back();
+          }
 
 
 

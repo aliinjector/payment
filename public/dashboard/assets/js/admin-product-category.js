@@ -51,6 +51,40 @@
                }
            });
    });
+
+
+   $(document).on('click', '#restoreCat', function(e) {
+   e.preventDefault();
+   var id = $(this).data('id');
+   var name = $(this).data('name');
+   swal(` ${'بازگردانی دسته بندی:'} ${name} | ${'آیا اطمینان دارید؟'}`, {
+           dangerMode: true,
+           icon: "warning",
+           buttons: ["انصراف", "حذف"],
+       })
+       .then(function(isConfirm) {
+           if (isConfirm) {
+               $.ajax({
+                   type: "post",
+                   url:  "/admin-panel/shop/categrory-managment/product-category/restore",
+                   data: {
+                       id: id,
+                       "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                   },
+                   success: function(data) {
+                     var url = "/admin-panel/shop/categrory-managment/product-category";
+                       location.href = url;
+                   }
+               });
+           } else {
+               toastr.warning('لغو شد.', '', []);
+           }
+       });
+ });
+
+
+
+
    $(document).on('click', '#icon-delete', function(e) {
        e.preventDefault();
        var id = $(this).data('id');
