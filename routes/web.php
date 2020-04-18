@@ -94,6 +94,7 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::resource('download-link-request-status', 'DownloadLinkRequestController');
         Route::post('download-link-request-status/approved', 'DownloadLinkRequestController@acceptRequest');
         Route::post('download-link-request-status/delete', 'DownloadLinkRequestController@destroy')->name('product-list.file.delete');
+        Route::post('download-link-request-status/restore', 'DownloadLinkRequestController@restore')->name('product-list.file.restore');
 
         //Purchases
         Route::resource('purchases', 'PurchaseController');
