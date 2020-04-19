@@ -498,6 +498,38 @@
 
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">
+                              رنگ شماره ۱ فروشگاه
+                            </label>
+                            <div class="col-sm-10">
+                              <input type="color" class="form-control inputfield" name="color_1" value="{{ old('color_1', $shopInformation->color_1) }}"><br><br>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">
+                              رنگ شماره ۲ فروشگاه
+                            </label>
+                            <div class="col-sm-10">
+                              <input type="color" class="form-control inputfield"  name="color_2" value="{{ old('color_2', $shopInformation->color_2) }}"><br><br>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">
+                              رنگ شماره ۳ فروشگاه
+                            </label>
+                            <div class="col-sm-10">
+                              <input type="color" class="form-control inputfield" name="color_3" value="{{ old('color_3', $shopInformation->color_3) }}"><br><br>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">
+                              رنگ شماره ۴ فروشگاه
+                            </label>
+                            <div class="col-sm-10">
+                              <input type="color" class="form-control inputfield" name="color_4" value="{{ old('color_4', $shopInformation->color_4) }}"><br><br>
+                            </div>
+                        </div>
                     </div>
                     <!--end card-->
                 </div>
@@ -1039,5 +1071,13 @@
     $(this).parent().parent().toggleClass("outline")
 
 });
+  </script>
+  <script type="text/javascript">
+  $( document ).ready(function() {
+  setTimeout(function(){
+         $('button').removeClass('btn-light');
+ }, 1000);
+});
+
   </script>
 @stop

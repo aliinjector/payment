@@ -160,7 +160,6 @@ class ShopSettingController extends Controller
      else{
      $logo = $this->uploadFile($request->file('logo'), false, true);
      }
-
       $shop = \Auth::user()->shop()->first()->update([
         'name' => $request->name,
         'english_name' => $request->english_name,
@@ -187,7 +186,7 @@ class ShopSettingController extends Controller
 
 
     public function updateContact(ShopContactRequest $request){
-      
+
       $shop = \Auth::user()->shop()->first()->shopContact()->get()->first()->update([
         'tel' => $this->fa_num_to_en($request->tel),
         'shop_email' => $request->shop_email,
@@ -235,6 +234,10 @@ class ShopSettingController extends Controller
         'watermark' => $watermark,
         'special_offer' => $request->special_offer,
         'special_offer_text' => $request->special_offer_text,
+        'color_1' => $request->color_1,
+        'color_2' => $request->color_2,
+        'color_3' => $request->color_3,
+        'color_4' => $request->color_4,
         'VAT' => $request->VAT,
       ]);
       alert()->success('تغییرات شما باموفقیت اضافه شد.', 'ثبت شد');

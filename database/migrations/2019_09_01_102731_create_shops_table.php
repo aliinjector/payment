@@ -44,6 +44,10 @@ class CreateShopsTable extends Migration
             $table->enum('watermark_status',['enable', 'disable'])->default('disable');
             $table->enum('buyCount_show',['enable', 'disable'])->default('disable');
             $table->string('description');
+            $table->text('color_1')->nullable();
+            $table->text('color_2')->nullable();
+            $table->text('color_3')->nullable();
+            $table->text('color_4')->nullable();
             $table->unsignedInteger('template_id')->default(1);
             $table->timestamps();
             $table->softDeletes();

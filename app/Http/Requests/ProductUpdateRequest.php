@@ -45,12 +45,12 @@ class ProductUpdateRequest extends FormRequest
          'min_amount' => ['required',
          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:999999','min:0'
        ],
-           'measure' => 'required|max:50',
+       'measure' => 'required|max:50|regex:/^[ا-یa-zA-Zء-ي., ]+$/u',
            'price' => ['required',
-           'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+           'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
          ],
          'off_price' => ['nullable','lt:price',
-         'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+         'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
        ],
          'weight' => ['nullable',
          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999','min:0'
@@ -75,10 +75,10 @@ class ProductUpdateRequest extends FormRequest
      'brand_id' => 'nullable|max:100000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'description' => 'required|min:10|max:4000',
      'price' => ['required',
-     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
    ],
      'off_price' => ['nullable','lt:price',
-     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
    ],
      'fast_sending' => 'in:on',
      'money_back' => 'in:on',
@@ -104,10 +104,10 @@ class ProductUpdateRequest extends FormRequest
      'support' => 'in:on',
      'secure_payment' => 'in:on',
      'price' => ['required',
-     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
    ],
      'off_price' => ['nullable','lt:price',
-     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+     'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
    ],
      'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',

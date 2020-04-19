@@ -44,12 +44,12 @@ class ProductRequest extends FormRequest
           'min_amount' => ['required',
           'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:999999','min:0'
         ],
-          'measure' => 'required|max:50',
+          'measure' => 'required|max:50|regex:/^[ا-یa-zA-Zء-ي., ]+$/u',
           'price' => ['required',
-          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
         ],
           'off_price' => ['nullable','lt:price',
-          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+          'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
         ],
           'weight' => ['nullable',
           'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999','min:0'
@@ -74,10 +74,10 @@ else if($request->type == 'file'){
     'brand_id' => 'nullable|max:100000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
     'description' => 'required|min:10|max:4000',
     'price' => ['required',
-    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
   ],
     'off_price' => ['nullable','lt:price',
-    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
   ],
     'fast_sending' => 'in:on',
     'money_back' => 'in:on',
@@ -104,10 +104,10 @@ else{
     'secure_payment' => 'in:on',
     'discount_status' => 'in:on',
     'price' => ['required',
-    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
   ],
     'off_price' => ['nullable','lt:price',
-    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:99999999999999999','min:0'
+    'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
   ],
     'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
     'image' => 'required|mimes:jpeg,png,jpg,gif|max:4048|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
