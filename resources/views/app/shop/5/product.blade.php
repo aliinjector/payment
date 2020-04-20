@@ -156,7 +156,7 @@
                             @csrf
                             <input type="hidden" name="productID" value="{{ $product->id }}">
 
-                          <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #Ffffff;font-size: 20px;margin-top: 5px;"class="ion-heart"></i></a>
+                          <a href="javascript:{}" title="افزودن به علاقه مندی ها" onclick="document.getElementById('wishlistForm{{ $product->id }}').submit();" data-tooltip="{{ __('app-shop-2-category.afzoodanBeMoghayese') }}" data-tposition="left"><i style="color: #e97730;font-size: 20px;margin-top: 5px;"class="ion-heart"></i></a>
                         </form></li>
                         <li>
                         <form action="{{ route('compare.store', ['shop'=>$shop->english_name]) }}" method="post" id="compareForm{{ $product->id }}">
