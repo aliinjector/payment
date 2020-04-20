@@ -65,7 +65,7 @@
 
                                     <div class="card mt-3 border">
                                         <div class="card-body">
-                                            <h4 class="mt-0 header-title">تصویر خدمت</h4>
+                                            <h4 class="mt-0 header-title">تصویر دسته بندی</h4>
                                             <a class="mr-2 font-15" href="" id="icon-delete" title="حذف آیکون" data-name="{{ $category->name }}" data-id="{{ $category->id }}"><i class="far fa-trash-alt text-danger font-18 pl-2"></i>حذف</a>
 
                                             <input type="file" id="input-file-now" name="icon" class="dropify" data-default-file="{{ $category->icon['original'] }}">

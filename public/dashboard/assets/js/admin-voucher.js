@@ -124,14 +124,45 @@ $(document).ready(function(){
         $('.show-tick').addClass("p-1");
         $('.show-tick').addClass("border");
     });
-    oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+    oTable = $('#datatable').DataTable({
+        "language": {
+            "infoFiltered": "(فیلتر شده از مجموع _MAX_ رکورد)"
+        }
+    } );
 
     $('#togBtn').on('change', function() {
       if($('#placeToggle').attr("placeholder") != "مثال  10000"){
         $('#placeToggle').attr("placeholder", "مثال  10000");
+        $('#limit').remove();
       }
       else{
         $('#placeToggle').attr("placeholder", "مثال  10 ( نیازی به علامت % نیست)");
+        var a = '<div class="input-group mt-3" id="limit">' +
+               '<div class="input-group-prepend min-width-180">' +
+               '<span class="input-group-text bg-light min-width-140" id="basic-addon7">سقف تخفیف :' +
+               '</span>' +
+               '</div>' +
+              '<input type="text" class="form-control inputfield" id="placeToggle" name="discount_limit" placeholder="مثال : 20000">' +
+           '</div>';
+         $("#beforeLimit").append(a);
+      }
+});
+
+
+    $('#togBtnUpdate').on('change', function() {
+      if ($('#togBtnUpdate').is(':checked')) {
+        $('#limitUpdate').remove();
+}
+      else{
+        var a = '<div class="input-group mt-3" id="limitUpdate">' +
+               '<div class="input-group-prepend min-width-180">' +
+               '<span class="input-group-text bg-light min-width-140" id="basic-addon7">سقف تخفیف :' +
+               '</span>' +
+               '</div>' +
+              '<input type="text" class="form-control inputfield" id="placeToggle" name="discount_limit" placeholder="مثال : 20000">' +
+           '</div>';
+         $("#beforeLimitUpdate").append(a);
+        $("#togBtnUpdate").setAttribute("checked", "checked");
 
       }
 });

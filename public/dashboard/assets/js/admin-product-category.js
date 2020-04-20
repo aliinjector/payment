@@ -125,4 +125,8 @@
            }
        });
    });
-   oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
+   oTable = $('#datatable').DataTable({
+       "language": {
+           "infoFiltered": "(فیلتر شده از مجموع _MAX_ رکورد)"
+       }
+   } );

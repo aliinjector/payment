@@ -64,6 +64,7 @@ class PurchaseController extends Controller
               return redirect()->back();
             }
           }
+
           //approved voucher and decrease price
           $disableDiscountCartPrice = 0;
           foreach ($cart->cartProduct as $cartProduct) {
@@ -72,6 +73,7 @@ class PurchaseController extends Controller
           }
           }
           $voucherDiscountAmount = Voucher::where('code', $request->code)->get()->first()->discount_amount;
+          $voucherDiscountLimit = Voucher::where('code', $request->code)->get()->first()->discount_limit;
           if($voucher->type == 'number'){
           if((($total_price - $disableDiscountCartPrice)) == 0){
             $discountedPrice = $total_price;
@@ -88,8 +90,18 @@ class PurchaseController extends Controller
             $discountPrice = 0;
             }
             else{
-              $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
-              $discountPrice = $total_price - $discountedPrice;
+              if($voucherDiscountLimit != 0){
+                $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+                $discountPrice = $total_price - $discountedPrice;
+                if($discountPrice > $voucherDiscountLimit){
+                  $discountPrice = $voucherDiscountLimit;
+                  $discountedPrice = $total_price - $voucherDiscountLimit;
+                }
+              }
+              else{
+                $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+                $discountPrice = $total_price - $discountedPrice;
+              }
             }
         }
           if($discountedPrice < 0){
@@ -141,9 +153,19 @@ class PurchaseController extends Controller
               $discountPrice = 0;
               }
               else{
+                if($voucherDiscountLimit != 0){
+                  $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
+                  $discountPrice = $total_price - $discountedPrice;
+                  if($discountPrice > $voucherDiscountLimit){
+                    $discountPrice = $voucherDiscountLimit;
+                    $discountedPrice = $total_price - $voucherDiscountLimit;
+                  }
+                }
+                else{
                 $discountedPrice = (($total_price - $disableDiscountCartPrice) - (($total_price - $disableDiscountCartPrice) * $voucherDiscountAmount / 100)) + $disableDiscountCartPrice;
                 $discountPrice = $total_price - $discountedPrice;
               }
+            }
           }
             if($discountedPrice < 0){
               $discountedPrice = 0;

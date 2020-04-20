@@ -74,6 +74,7 @@ class VoucherController extends Controller
 
     public function store(VoucherRequest $request)
     {
+
      if ((int)$request->shop_id !== \Auth::user()->shop->id) {
           alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
            return redirect()->back();
@@ -97,6 +98,14 @@ class VoucherController extends Controller
         $request->disposable = 'disable';
         else
         $request->disposable = 'enable';
+
+        if(!$request->has('discount_limit'))
+        $discount_limit = null;
+        elseif($request->discount_limit == null)
+        $discount_limit = $this->fa_num_to_en(0);
+        else
+        $discount_limit = $this->fa_num_to_en($request->discount_limit);
+
         $voucher = \Auth::user()->shop()->first()->vouchers()->create([
             'name' => $request->name,
             'shop_id' => $request->shop_id,
@@ -105,6 +114,7 @@ class VoucherController extends Controller
             'type' => $request->type,
             'uses' => $request->uses,
             'discount_amount' => $this->fa_num_to_en($request->discount_amount),
+            'discount_limit' => $discount_limit,
             'users' => $request->users,
             'first_purchase' => $request->first_purchase,
             'disposable' => $request->disposable,
@@ -163,6 +173,13 @@ class VoucherController extends Controller
       else
       $request->disposable = 'enable';
 
+      if(!$request->has('discount_limit'))
+      $discount_limit = null;
+      elseif($request->discount_limit == null)
+      $discount_limit = $this->fa_num_to_en(0);
+      else
+      $discount_limit = $this->fa_num_to_en($request->discount_limit);
+
         $realTimestampStart = substr($request->starts_at,0,10);
         $realTimestampExpire = substr($request->expires_at,0,10);
         $voucher = \Auth::user()->shop()->first()->vouchers()->where('id',$id)->get()->first()->update([
@@ -171,7 +188,8 @@ class VoucherController extends Controller
             'description' => $request->description,
             'uses' => $request->uses,
             'type' => $request->type,
-            'discount_amount' => $request->discount_amount,
+            'discount_amount' => $this->fa_num_to_en($request->discount_amount),
+            'discount_limit' => $discount_limit,
             'users' => $request->users,
             'first_purchase' => $request->first_purchase,
             'disposable' => $request->disposable,

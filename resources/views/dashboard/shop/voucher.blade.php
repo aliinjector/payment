@@ -100,7 +100,7 @@
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" value="{{ old('uses') }}" placeholder="{{ __('dashboard-shop-voucher.addModalItem3ex') }}">
                                 </div>
-                                <div class="input-group mt-3">
+                                <div class="input-group mt-3" id="beforeLimit">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                               class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-voucher.addModalItem4') }}:</span></div>
                                     <input type="text" class="form-control inputfield" id="placeToggle" value="{{ old('discount_amount') }}" name="discount_amount" placeholder="مثال : 10 ( نیازی به علامت % نیست)">
@@ -108,12 +108,19 @@
                                         <label class="switch">
                                             <input type="checkbox" name="type" id="togBtn">
                                             <div class="slider round">
-                                                <!--ADDED HTML --><span class="on iranyekan">عددی</span><span class="off iranyekan">درصدی</span>
-                                                <!--END-->
+                                              <span class="on iranyekan">عددی</span><span class="off iranyekan">درصدی</span>
+
                                             </div>
                                         </label></div>
 
                                 </div>
+                                <div class="input-group mt-3" id="limit">
+                                       <div class="input-group-prepend min-width-180">
+                                       <span class="input-group-text bg-light min-width-140" id="basic-addon7">سقف تخفیف :
+                                       </span>
+                                       </div>
+                                      <input type="text" class="form-control inputfield" id="placeToggle" name="discount_limit" placeholder="مثال : 20000">
+                                   </div>
 
                                 <div class="input-group mt-3 d-none users-voucher">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem5') }}:</span></div>
@@ -194,20 +201,28 @@
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i class="fas fa-star required-star mr-1"></i>تعداد قابل استفاده :</span></div>
                                     <input type="number" class="form-control inputfield" name="uses" value="{{ old('uses', $voucher->uses) }}">
                                 </div>
-                                <div class="input-group mt-3">
+                                <div class="input-group mt-3" id="beforeLimitUpdate">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"><i
                                               class="fas fa-star required-star mr-1"></i>{{ __('dashboard-shop-voucher.editModalItem4') }}:</span></div>
                                     <input type="text" class="form-control inputfield" name="discount_amount" value="{{ old('discount_amount', $voucher->discount_amount) }}">
                                     <div class="input-group-append">
                                         <label class="switch">
-                                            <input type="checkbox" name="type" id="togBtn">
+                                            <input type="checkbox" name="type" id="togBtnUpdate" {{ $voucher->type == 'number' ? 'checked' : '' }}>
                                             <div class="slider round">
-                                                <!--ADDED HTML --><span class="on iranyekan">عددی</span><span class="off iranyekan">درصدی</span>
-                                                <!--END-->
+                                            <span class="on iranyekan">عددی</span><span class="off iranyekan">درصدی</span>
+
                                             </div>
                                         </label></div>
                                 </div>
-
+                                @if($voucher->type != 'number')
+                                <div class="input-group mt-3" id="limitUpdate">
+                                       <div class="input-group-prepend min-width-180">
+                                       <span class="input-group-text bg-light min-width-140" id="basic-addon7">سقف تخفیف :
+                                       </span>
+                                       </div>
+                                      <input type="text" class="form-control inputfield" id="placeToggle" name="discount_limit" value="{{ old('discount_limit', $voucher->discount_limit) }}" placeholder="مثال : 20000">
+                                   </div>
+                                 @endif
                                 <div class="input-group mt-3 users-voucher">
                                     <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-voucher.addModalItem5') }}:</span></div>
                                     <select multiple="multiple" class="selectpicker form-control" id="exampleFormControlSelect2" name="users[]" multiple data-live-search="true" title="موردی انتخاب نشده است">
@@ -295,7 +310,7 @@
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 55px;">
                                                     {{ __('dashboard-shop-voucher.listCodeTakhfifItem3') }} </th>
-                                                {{-- <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">توضیحات </th> --}}
+
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">
                                                     {{ __('dashboard-shop-voucher.listCodeTakhfifItem4') }}</th>
                                                 <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 115px;">

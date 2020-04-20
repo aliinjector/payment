@@ -16,6 +16,32 @@
     <link href="/dashboard/assets//css/metisMenu.min.css" rel="stylesheet" type="text/css">
     <link href="/dashboard/assets//css/style.css" rel="stylesheet" type="text/css">
     {!! ReCaptcha::htmlScriptTagJsApi() !!}
+    <style media="screen">
+    ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:     #dbdbdb!important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+ color:    #dbdbdb!important;
+ opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+ color:    #dbdbdb!important;
+ opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color:    #dbdbdb!important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+ color:     #dbdbdb!important;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+ color:    #dbdbdb!important;
+}
+input{
+   border:1px solid #bdc1c9!important;
+}
+    </style>
 
 </head>
 
@@ -49,7 +75,7 @@
                             <div class="form-group">
                                 <label for="username">{{ __('register.firstName') }}</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
-                                    <input type="text" class="form-control @error('firstName') is-invalid @enderror" name="firstName" value="{{old('firstName')}}" id="firstName" placeholder="مثال: علی">
+                                    <input type="text" class="form-control @error('firstName') is-invalid @enderror" name="firstName" value="{{old('firstName')}}" id="firstName" placeholder=" علی">
                                     @error('firstName')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -62,7 +88,7 @@
                             <div class="form-group">
                                 <label for="username">{{ __('register.lastName') }}</label>
                                 <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-user"></i> </span>
-                                    <input type="text" class="form-control @error('lastName') is-invalid @enderror" name="lastName" id="lastName"  value="{{old('lastName')}}" placeholder="مثال: رحمانی">
+                                    <input type="text" class="form-control @error('lastName') is-invalid @enderror" name="lastName" id="lastName"  value="{{old('lastName')}}" placeholder=" رحمانی">
                                     @error('lastName')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -115,7 +141,7 @@
                                 <div class="form-group">
                                     <label for="mo_number">{{ __('register.mobile') }}</label>
                                     <div class="input-group mb-3"><span class="auth-form-icon"><i class="dripicons-phone"></i> </span>
-                                        <input type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}"  id="mobile" placeholder="مثال: 09202020222">
+                                        <input type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}"  id="mobile" placeholder=" 09202020222">
                                         @error('mobile')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

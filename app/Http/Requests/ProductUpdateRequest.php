@@ -63,7 +63,7 @@ class ProductUpdateRequest extends FormRequest
            'color.*' => 'nullable|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
            'specifications.*' => 'nullable|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
            'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-           'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+           'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,:() ]+$/u',
            'image' => 'mimes:jpeg,png,jpg,gif|max:4048|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
          ];
        }
@@ -85,7 +85,7 @@ class ProductUpdateRequest extends FormRequest
      'support' => 'in:on',
      'secure_payment' => 'in:on',
      'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-     'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+     'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,:() ]+$/u',
      'specifications.*' => 'nullable|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'image' => 'mimes:jpeg,png,jpg,gif|max:4048|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
      'attachment' => 'mimes:doc,docx,pdf,zip,mp4,avi,webm,3gp,rar|max:50000',
@@ -110,7 +110,7 @@ class ProductUpdateRequest extends FormRequest
      'regex:/^([0-9]+$)|^([۰-۹]+$)/','max:9999999999999','min:0'
    ],
      'tags' => 'nullable|max:500|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
-     'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
+     'facility.*' => 'nullable|max:300|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي.,:() ]+$/u',
      'specifications.*' => 'nullable|max:400|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u',
      'image' => 'mimes:jpeg,png,jpg,gif|max:4048|dimensions:min_width=300,min_height=300,max_width=1000,max_height=1000',
      ];
