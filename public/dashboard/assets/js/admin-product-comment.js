@@ -53,10 +53,17 @@ $(document).ready(function() {
                            id: id,
                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                        },
+
                        success: function(data) {
+                     swal('عملیات با موفقیت انجام شد', {
+                             icon: "success",
+                             buttons: ['ادامه'],
+                         })
+                         setTimeout(function(){
                            var url = "/admin-panel/shop/product-comments";
                            location.href = url;
-                       }
+                         }, 1000);
+                   }
                    });
                } else {
                    toastr.warning('لغو شد.', '', []);
@@ -109,8 +116,4 @@ $(document).ready(function(){
       }
 });
 });
-oTable = $('#datatable').DataTable({
-    "language": {
-        "infoFiltered": "(فیلتر شده از مجموع _MAX_ رکورد)"
-    }
-} );
+oTable = $('#datatable').DataTable();

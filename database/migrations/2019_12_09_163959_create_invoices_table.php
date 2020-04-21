@@ -19,6 +19,7 @@ class CreateInvoicesTable extends Migration
           $table->enum('sign',['enable', 'disable'])->default('disable');
           $table->enum('logo',['enable', 'disable'])->default('disable');
           $table->enum('date',['enable', 'disable'])->default('disable');
+          $table->enum('date_show',['persian_number', 'english_number', 'persian_date', 'english_date'])->default('persian_number');
           $table->enum('number',['enable', 'disable'])->default('disable');
           $table->enum('custom_info',['enable', 'disable'])->default('disable');
           $table->enum('seller_info',['enable', 'disable'])->default('disable');

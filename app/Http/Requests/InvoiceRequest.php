@@ -35,6 +35,7 @@ class InvoiceRequest extends FormRequest
             'sign' => 'in:enable,disable',
             'logo' => 'in:enable,disable',
             'date' => 'in:enable,disable',
+            'date_show' => 'in:persian_number,persian_date,english_number,english_date',
             'number' => 'in:enable,disable',
             'custom_info' => 'in:enable,disable',
             'seller_info' => 'in:enable,disable',

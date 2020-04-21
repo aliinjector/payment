@@ -99,7 +99,9 @@ class CommentsController extends \App\Http\Controllers\Controller
     {
         $shop = \Auth::user()->shop()->first();
         $shop->comments->where('id', $request->id)->first()->delete();
-        $shop->comments->where('parent_id', $request->id)->first()->delete();
+        if($shop->comments->where('parent_id', $request->id)->first() != null){
+          $shop->comments->where('parent_id', $request->id)->first()->delete();
+        }
         alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
         return redirect()->back();
     }

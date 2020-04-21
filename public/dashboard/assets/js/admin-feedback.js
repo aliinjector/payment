@@ -16,7 +16,6 @@ $(window).resize(function() {
 
     }
 }).resize();
-    oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object, as @Lionel said
     $('#myInputTextField').keyup(function() {
         oTable.search($(this).val()).draw();
     })
@@ -37,10 +36,17 @@ $(window).resize(function() {
                             id: id,
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
+
                         success: function(data) {
+                      swal('عملیات با موفقیت انجام شد', {
+                              icon: "success",
+                              buttons: ['ادامه'],
+                          })
+                          setTimeout(function(){
                             var url =  "/admin-panel/shop/managment/feedback";
                             location.href = url;
-                        }
+                          }, 1000);
+                    }
                     });
                 } else {
                     toastr.warning('لغو شد.', '', []);
@@ -66,9 +72,15 @@ $(window).resize(function() {
                         "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                     },
                     success: function(data) {
-                      var url =  "/admin-panel/shop/managment/feedback";
-                      location.href = url;
-                  }
+                  swal('عملیات با موفقیت انجام شد', {
+                          icon: "success",
+                          buttons: ['ادامه'],
+                      })
+                      setTimeout(function(){
+                        var url =  "/admin-panel/shop/managment/feedback";
+                        location.href = url;
+                      }, 1000);
+                }
                 });
             } else {
                 toastr.warning('لغو شد.', '', []);

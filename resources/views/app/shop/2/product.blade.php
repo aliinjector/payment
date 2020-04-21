@@ -144,6 +144,8 @@
                                 </div>
                                 <div class="mt-2 mb-3">
                                     @foreach($product->specifications as $specification)
+                                      @if($specification->items->count() > 0)
+
                                       <div class="row">
                                         <label class="p-4">
                                             {{ $specification->name }} :
@@ -162,6 +164,7 @@
 
                                             </select>
                                         </div>
+                                      @endif
 
                                         @endforeach
                                 </div>

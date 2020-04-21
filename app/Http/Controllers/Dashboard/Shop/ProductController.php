@@ -768,7 +768,16 @@ else{
                  alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
                  return redirect()->back();
              }
-             $ProductCategory = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
+             $shop = \Auth::user()->shop()->first();
+             foreach($shop->carts as $cart){
+               foreach($cart->cartProduct as $cartProduct){
+                 $deletedProduct = $cartProduct->product()->where('id', $request->id)->get()->first();
+                 if($deletedProduct){
+                   $cartProduct->where('product_id', $deletedProduct->id)->delete();
+                 }
+               }
+             }
+             $product = \Auth::user()->shop()->first()->products()->where('id' , $request->id)->first()->delete();
              alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
               return redirect()->back();
           }

@@ -37,10 +37,16 @@ $( document ).ready(function() {
                            id: id,
                            "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                        },
+
                        success: function(data) {
-                         window.location.reload()
-                           location.href = url;
-                       }
+                     swal('عملیات با موفقیت انجام شد', {
+                             icon: "success",
+                             buttons: ['ادامه'],
+                         })
+                         setTimeout(function(){
+                           window.location.reload()
+                         }, 1000);
+                   }
                    });
                } else {
                    toastr.warning('لغو شد.', '', []);
@@ -66,9 +72,16 @@ $( document ).ready(function() {
                        id: id,
                        "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                    },
+                  
                    success: function(data) {
-                     window.location.reload()
-                   }
+                 swal('عملیات با موفقیت انجام شد', {
+                         icon: "success",
+                         buttons: ['ادامه'],
+                     })
+                     setTimeout(function(){
+                       window.location.reload()
+                     }, 1000);
+               }
                });
            } else {
                toastr.warning('لغو شد.', '', []);

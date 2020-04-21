@@ -235,6 +235,7 @@ a.socialIcon:hover, .socialHoverClass {
                                     @csrf
                                     <div class="mb-1">
                                       @foreach($product->specifications as $specification)
+                                        @if($specification->items->count() > 0)
                                         <div class="row">
                                           <label class="py-1 mt-2">
                                             {{ $specification->name }} :
@@ -251,6 +252,8 @@ a.socialIcon:hover, .socialHoverClass {
                                          @endforeach
                                         </select>
                                         </div>
+                                      @endif
+
                                    @endforeach
                                    </div>
                                     <input type="hidden" name="product_id" value="{{$product->id}}">

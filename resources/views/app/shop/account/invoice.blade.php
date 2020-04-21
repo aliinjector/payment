@@ -13,23 +13,31 @@
     <div id="tt-pageContent" class="d-flex justify-content-center">
         <div class="card col-lg-8 mb-5 mr-16 mt-5 col-md-8 col-sm-12 print-big">
           <div class="row justify-content-between">
+            @if($shop->invoice->date == "enable")
+              @if($shop->invoice->date_show == "persian_number")
               <div class="m-2 pt-4">تاریخ ثبت سفارش : {{ jdate($purchase->created_at) }} </div>
+            @elseif($shop->invoice->date_show == "persian_date")
+              <div class="m-2 pt-4">تاریخ ثبت سفارش : {{ jdate($purchase->created_at)->format('%A, %d %B %y') }} </div>
+            @elseif ($shop->invoice->date_show == "english_number")
+              <div class="m-2 pt-4">تاریخ ثبت سفارش : {{ $purchase->created_at }} </div>
+            @else
+              <div class="m-2 pt-4">تاریخ ثبت سفارش : {{ date('F, Y, d', strtotime($purchase->created_at)) }} </div>
+            @endif
+            @endif
+
                 @if($shop->invoice->logo == "enable")
               <img src="{{ asset($shop->logo['200,100']) ? $shop->logo['200,100'] : '' }}" class="logo-sm mr-2">
             @endif
             @if($shop->invoice->number == "enable")
-              <div class="m-2 pt-4">شماره فاکتور :  {{ $shop->english_name . '_' . $shop->invoice->id  }} </div>
+              <div class="m-2 pt-4">شماره فاکتور :  {{ $shop->english_name . '_' . $purchase->id  }} </div>
             @endif
 
           </div>
             @include('dashboard.layouts.errors')
             <div class="card-body invoice-head">
                 <div class="row justify-content-around p-2 d-none printable">
-                            @if($shop->invoice->date == "enable")
-                                <div class="row">
-                                    <b class="mx-1">تاریخ : </b> 1399/3/3
-                                </div>
-                                @endif
+
+
                 </div>
                 @if($shop->invoice->seller_info == "enable")
                     <div class="row border">

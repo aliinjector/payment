@@ -812,6 +812,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">نوع تاریخ</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="date_show">
+                                    <option value="persian_number" @if(\Auth::user()->shop()->first()->invoice->date_show == 'persian_number') selected @endif>تاریخ عددی شمسی</option>
+                                    <option value="persian_date" @if(\Auth::user()->shop()->first()->invoice->date_show == 'persian_date') selected @endif>تاریخ حروفی شمسی</option>
+                                    <option value="english_number" @if(\Auth::user()->shop()->first()->invoice->date_show == 'english_number') selected @endif>تاریخ عددی میلادی</option>
+                                    <option value="english_date" @if(\Auth::user()->shop()->first()->invoice->date_show == 'english_date') selected @endif>تاریخ حروفی میلادی</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label style="text-align: center" for="example-email-input" class="col-sm-2 col-form-label text-center">{{ __('dashboard-shop-shop-setting.tanzimaateFactoreForooshgahItem4') }}</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="number">

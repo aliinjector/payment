@@ -2,7 +2,6 @@
           console.log('hi');
             $(".dropify-clear").remove();
         });
-        oTable = $('#datatable').DataTable(); //pay attention to capital D, which is mandatory to retrieve "api" datatables' object,
         $('#myInputTextField').keyup(function() {
             oTable.search($(this).val()).draw();
         });
@@ -24,9 +23,16 @@
                                 id: id,
                                 "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                             },
+
                             success: function(data) {
-                              window.location.reload()
-                            }
+                          swal('عملیات با موفقیت انجام شد', {
+                                  icon: "success",
+                                  buttons: ['ادامه'],
+                              })
+                              setTimeout(function(){
+                                window.location.reload()
+                              }, 1000);
+                        }
                         });
                     } else {
                         toastr.warning('لغو شد.', '', []);
@@ -52,9 +58,16 @@
                             id: id,
                             "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
                         },
+                      
                         success: function(data) {
-                          window.location.reload()
-                        }
+                      swal('عملیات با موفقیت انجام شد', {
+                              icon: "success",
+                              buttons: ['ادامه'],
+                          })
+                          setTimeout(function(){
+                            window.location.reload()
+                          }, 1000);
+                    }
                     });
                 } else {
                     toastr.warning('لغو شد.', '', []);

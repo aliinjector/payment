@@ -101,8 +101,12 @@ class CartController extends \App\Http\Controllers\Controller {
       if($product->type == 'product' && $product->amount < 1){
         return redirect()->back()->withErrors(['کالای مورد نظر موجود نمیباشد']);
       }
-      if($product->specifications()->where('type', 'radio')->count() != 0 and !isset($request->specification)){
-        return redirect()->back()->withErrors(['باید خصوصیت تک انتخابی کالا انتخاب شود']);
+      foreach($product->specifications()->where('type', 'radio')->get() as $radioSpecification){
+        if($radioSpecification->items->count() > 0){
+            if($product->specifications()->where('type', 'radio')->count() != 0 and !isset($request->specification)){
+              return redirect()->back()->withErrors(['باید خصوصیت تک انتخابی کالا انتخاب شود']);
+          }
+        }
       }
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
