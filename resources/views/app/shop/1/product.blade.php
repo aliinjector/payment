@@ -149,11 +149,15 @@ a.socialIcon:hover, .socialHoverClass {
                             <div class="">
 
                             <div class="">
+                              @if($product->type == 'product' and $product->colors->count() != 0)
+                              @else
                               @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
                               <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجود</span>
                               @else
                               <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
                               @endif
+                            @endif
+
                             </div>
                          </div>
 
@@ -197,12 +201,14 @@ a.socialIcon:hover, .socialHoverClass {
                           $i = 0;
                            @endphp
                            @foreach($product->colors as $color)
+                             @if($color->pivot->amount != null and $color->pivot->amount > 0)
                              <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
                               <a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
                            </li>
                            @php
                            $i ++;
                             @endphp
+                          @endif
                            @endforeach
                         </ul>
                       @endif

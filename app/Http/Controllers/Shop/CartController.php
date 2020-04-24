@@ -53,12 +53,19 @@ class CartController extends \App\Http\Controllers\Controller {
         $cart = \Auth::user()->cart()->get()->first();
         if(isset($cart->products)){
           foreach($cart->products as $product){
-            if($product->type == 'product' && $product->amount < 1){
+            if($product->type == 'product' && $product->amount != null and $product->amount < 1){
               CartProduct::where('product_id', '=', $product->id)->delete();
             }
             if($product->status == 'disable'){
               CartProduct::where('product_id', '=', $product->id)->delete();
             }
+            if($product->amount == null and $product->type = "product"){
+            foreach($cart->cartProduct as $cartProductSingle){
+                  if($cartProductSingle->product->colors->where('id', $cartProductSingle->color->id)->first()->pivot->amount <= 0){
+                    CartProduct::where('product_id', '=', $product->id)->delete();
+                  }
+            }
+          }
           }
         }
         if($cart){
@@ -96,10 +103,17 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
 
+
+
     public function addToCart($shopName, $userID, CartRequest $request) {
       $product = Product::where('id', $request->product_id)->get()->first();
-      if($product->type == 'product' && $product->amount < 1){
+      if($product->type == 'product' && $product->amount != null and $product->amount < 0){
         return redirect()->back()->withErrors(['کالای مورد نظر موجود نمیباشد']);
+      }
+      if($product->type == 'product' && $product->amount == null){
+          if($product->colors->where('id', $request->color)->first()->pivot->amount <= 0){
+            return redirect()->back()->withErrors(['کالای مورد نظر موجود نمیباشد']);
+        }
       }
       foreach($product->specifications()->where('type', 'radio')->get() as $radioSpecification){
         if($radioSpecification->items->count() > 0){

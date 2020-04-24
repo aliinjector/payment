@@ -62,7 +62,13 @@
                                       </td>
                                       <td>
                                           <select class="form-control p-1" style="width: 65px;" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
-
+                                            @if($cartProduct->product->type == 'product' && $cartProduct->product->amount == null)
+                                              @for ($i=1; $i < $cartProduct->product->colors->where('id', $cartProduct->color->id)->first()->pivot->amount; $i++)
+                                                <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
+                                                    {{ $i }}
+                                                  </option>
+                                          @endfor
+                                    @else
                                             @for ($i=1; $i < $cartProduct->product->amount; $i++)
 
                                                     <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
@@ -70,6 +76,8 @@
                                                       </option>
 
                                                       @endfor
+                                                    @endif
+
                                           </select>
 
                                       </td>

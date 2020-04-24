@@ -66,11 +66,11 @@ public function sluggable()
  }
  public function colors()
  {
-     return $this->belongsToMany('App\Color');
+     return $this->belongsToMany('App\Color')->withPivot('amount');;
  }
  public function features()
  {
-     return $this->belongsToMany('App\Feature')->withPivot('value');;
+     return $this->belongsToMany('App\Feature')->withPivot('value');
  }
  public function carts()
  {

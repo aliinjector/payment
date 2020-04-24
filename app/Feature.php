@@ -26,11 +26,4 @@ class Feature extends Model
     {
         return $this->belongsToMany('App\Product');
     }
-
-    public function values()
-    {
-        return $this->belongsTo('App\Value');
-    }
-
-
 }

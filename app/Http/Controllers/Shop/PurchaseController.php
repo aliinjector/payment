@@ -286,8 +286,15 @@ class PurchaseController extends Controller
             $productIds[] = $cartProduct->product_id;
           }
           foreach($productIds as $productId){
-            if (Product::find($productId)->type == 'product' && Product::find($productId)->amount < 1 || Product::find($productId)->status == 'disable'){
+            if (Product::find($productId)->type == 'product' && Product::find($productId)->amount != null and Product::find($productId)->amount < 1 || Product::find($productId)->status == 'disable'){
                 return redirect()->route('user-cart', ['shop' => $shop->english_name])->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' موجود نمیباشد. لطفا از سبد خرید خود حذف نمایید.');
+            }
+            elseif(Product::find($productId)->type == 'product' && Product::find($productId)->amount == null){
+                        foreach($cart->cartProduct as $cartProductSingle){
+                              if($cartProductSingle->product->colors->where('id', $cartProductSingle->color->id)->first()->pivot->amount <= 0){
+                                  return redirect()->route('user-cart', ['shop' => $shop->english_name])->withErrors('با عرض پوزش محصول  ' . Product::find($productId)->title . ' موجود نمیباشد. لطفا از سبد خرید خود حذف نمایید.');
+                              }
+                            }
             }
             }
           foreach($productIds as $productId){
@@ -385,8 +392,16 @@ class PurchaseController extends Controller
 
           foreach($productIds as $productId){
             Product::find($productId)->increment('buyCount');
-            Product::find($productId)->decrement('amount');
-            if(Product::find($productId)->type == 'product' and Product::find($productId)->amount <= Product::find($productId)->min_amount){
+            if(Product::find($productId)->amount == null and Product::find($productId)->type = "product"){
+            foreach($cart->cartProduct as $cartProductSingle){
+                  $cartProductSingle->product->colors->where('id', $cartProductSingle->color->id)->first()->pivot->update(['amount' => DB::raw('amount - ' .$cartProductSingle->quantity)]);
+            }
+            }else{
+              foreach($cart->cartProduct as $cartProductSingle){
+                Product::find($productId)->decrement('amount', Product::find($productId)->cartProduct->where('cart_id', $cart->id)->first()->quantity);
+              }
+            }
+            if(Product::find($productId)->type == 'product' and Product::find($productId)->amount != null and Product::find($productId)->amount <= Product::find($productId)->min_amount){
             $details = [
                   'message' => ' موجودی کالای ' . Product::find($productId)->title . ' درحال اتمام میباشد ',
                   'url' => 'product-list.index'

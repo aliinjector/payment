@@ -104,7 +104,15 @@
                         <div class="tt-add-info">
                             <ul>
                                 <li><span>کدکالا:</span> {{ $product->id }}</li>
-                                <li style="display:none"><span>موجودی:</span> 40 عدد</li>
+                                @if($product->type == 'product' and $product->colors->count() != 0)
+                                @else
+                                    @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
+                                <li><span>وضعیت : </span> موجود </li>
+                              @else
+                                <li><span>وضعیت : </span> ناموجود </li>
+                              @endif
+                            @endif
+
                             </ul>
                         </div>
                         <h3 class="tt-title m-4">{{ $product->title }}</h3>
@@ -131,8 +139,8 @@
                                 <div class="tt-wrapper m-4">
                                     <div class="tt-row-custom-01">
                                         <div class="col-item">
-                                            <div class="tt-input-counter style-01"><span class="minus-btn"></span>
-                                                <input name="quantity" type="text" value="1" size="5"> <span class="plus-btn"></span>
+                                            <div class="tt-input-counter style-01">
+                                                <input name="quantity" type="hidden" value="1" >
                                             </div>
                                         </div>
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -201,6 +209,7 @@
                                         $i = 0;
                                         @endphp
                                         @foreach($product->colors as $color)
+                                          @if($color->pivot->amount != null and $color->pivot->amount > 0)
                                             <li class="color-select {{ $i == 0 ? 'active' : '' }}">
                                                 <a class="options-color tt-border tt-color-bg-08" href="#" data-color="{{ $color->id }}" style="background-color:#{{ $color->code }}">
                                                 </a>
@@ -208,6 +217,7 @@
                                             @php
                                             $i ++;
                                             @endphp
+                                            @endif
                                             @endforeach
                                     </ul>
                                     <ul>

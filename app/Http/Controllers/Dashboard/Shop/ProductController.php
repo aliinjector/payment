@@ -82,6 +82,7 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
+
          if(Auth::user()->shop()->first()->ProductCategories()->where('id',$request->productCat_id)->get()->first() == null){
            alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
            return redirect()->back();
@@ -154,11 +155,21 @@ class ProductController extends Controller
        $request->discount_status = 'enable';
 
       //check amount of product and change fa number to en
+      if($request->color_amount == 'on' and $request->get('color_amount_number')){
+        $request->merge(['amount' => null]);
+      }
+      else{
       if($request->amount != null){
         $request->amount = $this->fa_num_to_en($request->amount);
       }
+      }
+      if($request->color_amount == 'on' and $request->get('color_amount_number')){
+        $request->merge(['min_amount' => null]);
+      }
+      else{
       if($request->min_amount != null){
         $request->min_amount = $this->fa_num_to_en($request->min_amount);
+      }
       }
       if($request->measure != null){
         $request->measure = $this->fa_num_to_en($request->measure);
@@ -229,7 +240,8 @@ class ProductController extends Controller
         $product->tags()->sync($tagIds);
 
         // get all colors of product
-        if($request->get('color')){
+        if($request->get('color') and !$request->get('color_amount_number')){
+
           foreach($request->get('color') as $colorName)
           {
               $color = Color::firstOrCreate(['id'=>$colorName]);
@@ -240,6 +252,24 @@ class ProductController extends Controller
           }
           $product->colors()->sync($colorIds);
         }
+
+
+        //get all color and color Amount of product
+        if($request->get('color') and $request->get('color_amount_number')){
+
+            foreach($request->get('color_amount_number') as $colorId=>$colorAmount)
+            {
+              $color = Color::find($colorId);
+              if($color){
+                $colorIds[$color->id] = ['amount'=>$colorAmount];
+              }
+            }
+
+            $product->colors()->sync($colorIds);
+        }
+
+
+
 
         if($request->get('specifications')){
           foreach($request->get('specifications') as $specificationName)
@@ -750,6 +780,7 @@ else{
       }
   return response()->json($features);
     }
+
 
 
     /**
