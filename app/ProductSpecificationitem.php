@@ -21,7 +21,7 @@ class ProductSpecificationitem extends Model
   }
   public function specificationItem()
   {
-      return $this->belongsTo('App\Color');
+      return $this->belongsTo('App\SpecificationItem');
   }
 
 

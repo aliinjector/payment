@@ -99,6 +99,13 @@ Author: Ali Rahmani
                 <div class="dropdown-menu dropdown-lg">
                     <!-- item-->
                     <h6 class="dropdown-item-text BYekan">{{ __('dashboard-layouts-master.headerelaan') }} ({{ \auth()->user()->notifications->where('read_at', null)->count() }})</h6>
+                    @if(\auth()->user()->notifications->where('read_at', null)->count() < 0)
+                    <form action="{{ route('notification.read-all') }}" method="post" id="readall">
+                    @csrf
+                    @method('PUT')
+                    <!-- All--><a href="javascript:$('#readall').submit();" class="dropdown-item text-center text-primary"><i class="fas fa-check-double ml-1"></i>خوانده شده</a>
+                    </form>
+                  @endif
                     @foreach (\auth()->user()->notifications->where('read_at', null) as $notification)
                         <div class="slimscroll notification-list border">
                             <!-- item-->
@@ -112,11 +119,7 @@ Author: Ali Rahmani
 
                         </div>
                     @endforeach
-                    <form action="{{ route('notification.read-all') }}" method="post" id="readall">
-                    @csrf
-                    @method('PUT')
-                    <!-- All--><a href="javascript:$('#readall').submit();" class="dropdown-item text-center text-primary"><i class="fas fa-check-double ml-1"></i>خوانده شده</a>
-                    </form>
+
                 </div>
             </li>
             <li class="dropdown">

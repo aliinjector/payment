@@ -106,6 +106,14 @@
 
                                             @endforelse
                                         </div>
+                                        @if($product->color_amount_status == "enable")
+                                          @foreach ($product->colors as $color)
+                                        <div class="input-group mt-3">
+                                            <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی رنگ {{ $color->name }} :</span></div>
+                                              <input type="text" class="form-control inputfield" readonly value="{{ $color->pivot->amount }}">
+                                        </div>
+                                      @endforeach
+                                      @endif
                                         <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> خصوصیات انتخابی :</span></div>
                                             @forelse ($product->specifications as $selectedSpecification)
@@ -115,6 +123,16 @@
 
                                             @endforelse
                                         </div>
+                                        @if($product->specification_amount_status == "enable")
+                                          @foreach ($product->specifications as $selectedSpecification)
+                                            @foreach ($selectedSpecification->items as $item)
+                                              <div class="input-group mt-3">
+                                                  <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی خصوصیت {{ $item->name }} :</span></div>
+                                                    <input type="text" class="form-control inputfield" readonly value="{{ $item->productSpecificationItems->where('product_id', $product->id)->first()->amount}}">
+                                              </div>
+                                            @endforeach
+                                      @endforeach
+                                      @endif
 
                                           <div class="input-group mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>
