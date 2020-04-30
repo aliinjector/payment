@@ -10,19 +10,19 @@
   </style>
 @endsection
 @section('content')
+  <div>
+      @if($errors->any())
+          <div class="alert alert-danger p-5">
+              <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
+              <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
+  </div>
   <div class="row p-5">
-    <div>
-        @if($errors->any())
-            <div class="alert alert-danger p-5">
-                <p><strong>متاسفانه خطایی پیش آمده:</strong></p>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-    </div>
       <div class="col-lg-12">
           <div class="card">
               @if(isset($products))
@@ -63,20 +63,75 @@
                                       <td>
                                           <select class="form-control p-1" style="width: 65px;" autocomplete="off" tabindex="-1" name="{{ $cartProduct->product->id }}-{{ $cartProduct->id }}">
                                             @if($cartProduct->product->type == 'product' && $cartProduct->product->amount == null)
-                                              @for ($i=1; $i < $cartProduct->product->colors->where('id', $cartProduct->color->id)->first()->pivot->amount; $i++)
+                                              @if($cartProduct->product->color_amount_status == 'enable' and $cartProduct->product->specification_amount_status == 'disable')
+                                              @for ($i=1; $i <= $cartProduct->product->colors->where('id', $cartProduct->color->id)->first()->pivot->amount / $cart->cartProduct->count(); $i++)
                                                 <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
                                                     {{ $i }}
                                                   </option>
-                                          @endfor
-                                    @else
-                                            @for ($i=1; $i < $cartProduct->product->amount; $i++)
 
+                                                  @endfor
+                                              @elseif($cartProduct->product->specification_amount_status == 'enable' and $cartProduct->product->color_amount_status == 'disable')
+                                                @php
+                                                $minAmount = $specificationItems->where('id', $cartProduct->specification[0])->unique('id')->first()->productSpecificationItems->where('product_id', $cartProduct->product->id)->first()->amount;
+                                                @endphp
+                                                @foreach($cartProduct->specification as $specificationId)
+                                                  @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
+                                                   @php
+                                                   if($specificationItem->productSpecificationItems->where('product_id', $cartProduct->product->id)->first()->amount < $minAmount)
+                                                     $minAmount = $specificationItem->productSpecificationItems->where('product_id', $cartProduct->product->id)->first()->amount;
+                                                   @endphp
+                                                     <br>
+                                                  @endforeach
+                                                @endforeach
+                                              @for ($i=1; $i <= $minAmount / $cart->cartProduct->count(); $i++)
+                                                <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
+                                                    {{ $i }}
+                                                  </option>
+                                                  @endfor
+                                                @elseif ($cartProduct->product->specification_amount_status == 'enable' and $cartProduct->product->color_amount_status == 'enable')
+                                                  @php
+                                                  $colorMinAmount = $cartProduct->product->colors->where('id', $cartProduct->color->id)->first()->pivot->amount;
+                                                  $specificationMinAmount = $specificationItems->where('id', $cartProduct->specification[0])->unique('id')->first()->productSpecificationItems->where('product_id', $cartProduct->product->id)->first()->amount;
+                                                  @endphp
+                                                  @foreach($cartProduct->specification as $specificationId)
+                                                    @foreach($specificationItems->where('id', $specificationId)->unique('id') as $specificationItem)
+                                                     @php
+                                                     if($specificationItem->productSpecificationItems->where('product_id', $cartProduct->product->id)->first()->amount < $specificationMinAmount)
+                                                       $specificationMinAmount = $specificationItem->productSpecificationItems->where('product_id', $cartProduct->product->id)->first()->amount;
+                                                     @endphp
+                                                    @endforeach
+                                                  @endforeach
+                                                  @php
+                                                  if($colorMinAmount < $specificationMinAmount){
+                                                  $theMostMinAmount = $colorMinAmount;
+                                                  $theMostMinAmount = $theMostMinAmount / $cart->cartProduct->count();
+                                                  if($theMostMinAmount < 1){
+                                                    $theMostMinAmount = 1;
+                                                  }
+                                                  }
+                                                  else{
+                                                  $theMostMinAmount = $specificationMinAmount;
+                                                  $theMostMinAmount = $theMostMinAmount;
+                                                  if($theMostMinAmount < 1){
+                                                    $theMostMinAmount = 1;
+                                                  }
+                                                  }
+                                                  @endphp
+                                                  @for ($i=1; $i <= $theMostMinAmount; $i++)
                                                     <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
                                                         {{ $i }}
                                                       </option>
 
                                                       @endfor
-                                                    @endif
+                                            @endif
+                                          @else
+                                            @for ($i=1; $i <= $cartProduct->product->amount / $cart->cartProduct->count(); $i++)
+                                              <option @if($cartProduct->product->carts()->where('user_id' , \auth::user()->id)->first()->cartProduct->where('product_id' , $cartProduct->product->id)->first()->quantity == $i) selected @endif value="{{ $i }}">
+                                                  {{ $i }}
+                                                </option>
+
+                                                @endfor
+                                              @endif
 
                                           </select>
 

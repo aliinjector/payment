@@ -82,7 +82,6 @@ class ProductController extends Controller
      */
      public function storeProduct(ProductRequest $request)
        {
-
          if(Auth::user()->shop()->first()->ProductCategories()->where('id',$request->productCat_id)->get()->first() == null){
            alert()->error('شما مجوز مورد نظر را ندارید.', 'انجام نشد');
            return redirect()->back();
@@ -155,7 +154,7 @@ class ProductController extends Controller
        $request->discount_status = 'enable';
 
       //check amount of product and change fa number to en
-      if($request->color_amount == 'on' and $request->get('color_amount_number')){
+      if($request->color_amount == 'on' and $request->get('color_amount_number') or ($request->specification_amount == 'on' and $request->get('specification_amount_number'))){
         $request->merge(['amount' => null]);
       }
       else{
@@ -217,6 +216,19 @@ class ProductController extends Controller
     }
   }
 
+
+  if($request->specification_amount = 'on' and $request->get('specification_amount_number')){
+    foreach($request->specification_amount_number as $specification_amount_number_id => $specification_amount_number){
+      DB::table('product_specificationItem')->insertOrIgnore([
+    ['product_id' => $product->id, 'specification_item_id' => $specification_amount_number_id, 'amount' => $specification_amount_number]
+  ]);
+    }
+    $product->update([
+      'specification_amount_status' => 'enable'
+    ]);
+  }
+
+
   //add tags and colors and features and specifications to the product
     if($product)
     {
@@ -266,6 +278,9 @@ class ProductController extends Controller
             }
 
             $product->colors()->sync($colorIds);
+            $product->update([
+              'color_amount_status' => 'enable'
+            ]);
         }
 
 
@@ -779,6 +794,22 @@ else{
       }
       }
   return response()->json($features);
+    }
+
+
+
+
+
+    public function getSpecificationItems(Request $request){
+      $request->validate([
+        'selected_specificationIds.*' => 'required|min:1|max:10000000000|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي. ]+$/u',
+  ]);
+      $items = [];
+      foreach ($request->selected_specificationIds as $specificationId) {
+        $items[] = Specification::find($specificationId)->items;
+      }
+
+  return response()->json($items);
     }
 
 

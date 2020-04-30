@@ -160,7 +160,7 @@
                 <div class="container">
                     <div class="tt-header-holder">
                         <div class="tt-obj-logo obj-aligment-center" style="padding: 25px">
-                          <span style="    font-size: 15px;">{{ $shop->name }}</span>
+                          <span style="    font-size: 15px;"><a href="/{{ $shop->english_name }}">{{ $shop->name }}</a></span>
 
                             <!-- logo -->
 

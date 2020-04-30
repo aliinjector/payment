@@ -300,7 +300,7 @@
                                         </div>
                                         <div class="input-group color-dot mt-3">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10') }} :</span></div>
-                                            <select class="selectpicker"  multiple data-live-search="true" name="color[]" title="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10ex') }}">
+                                            <select class="selectpicker selectpicker-color"  multiple data-live-search="true" name="color[]" title="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10ex') }}">
                                                 @foreach($colors as $color)
                                                 <option class="" style="background:linear-gradient(#{{ $color->code }} , #{{ $color->code }})bottom right/ 15% 2px;background-repeat:no-repeat;" value="{{ $color->id }}">{{ $color->name }}</option>
                                                 @endforeach
@@ -308,19 +308,21 @@
                                             <div class="custom-control custom-switch switch-blue mr-5 py-3">
                                                 <input type="checkbox" class="custom-control-input" id="color_amount" name="color_amount">
                                                 <label class="custom-control-label iranyekan font-15" for="color_amount">اختصاص موجودی به رنگ ها</label>
+                                                <h6 class="text-danger my-1">با اختصاص موجودی به رنگ ها موجودی اصلی کالا محاسبه نخواهد شد. </h6>
+
                                             </div>
                                         </div>
-                                        <div class="input-group mt-3">
+                                        <div class="input-group mt-3 specification-dot">
                                             <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">خصوصیات انتخابی :</span></div>
-                                            <select class="selectpicker" multiple data-live-search="true" name="specifications[]" title="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10ex') }}">
+                                            <select class="selectpicker selectpicker-specification" multiple data-live-search="true" name="specifications[]" title="{{ __('dashboard-shop-product-index.addMahsoolFizikiItem10ex') }}">
                                                 @foreach($shop->specifications as $specification)
                                                     <option class="" value="{{ $specification->id }}">{{ $specification->name }}</option>
                                                     @endforeach
                                             </select>
                                             <div class="custom-control custom-switch switch-blue mr-5 py-3">
-                                                <input type="checkbox" class="custom-control-input" id="s_amount" name="discount_status">
-                                                <label class="custom-control-label iranyekan font-15" for="s_amount">اختصاص موجودی به خصوصیت ها</label>
-                                                <h6 class="text-danger my-1">با اختصاص موجودی به رنگ ها موجودی اصلی کالا محاسبه نخواهد شد. </h6>
+                                                <input type="checkbox" class="custom-control-input" id="specification_amount" name="specification_amount">
+                                                <label class="custom-control-label iranyekan font-15" for="specification_amount">اختصاص موجودی به خصوصیت ها</label>
+                                                <h6 class="text-danger my-1">با اختصاص موجودی به خصوصیت ها موجودی اصلی کالا محاسبه نخواهد شد. </h6>
                                             </div>
                                         </div>
                                         <div class="facility">
@@ -914,8 +916,12 @@
 
                     @endif
                 </script>
+
+
+                {{-- color amount --}}
+
                 <script type="text/javascript">
-                $(document).on('change', '.selectpicker', function(e) {
+                $(document).on('change', '.selectpicker-color', function(e) {
                   $('.color-amount-values').remove();
                   $('#color_amount').prop('checked', false); // Unchecks it
                 });
@@ -927,8 +933,7 @@
             }
             else{
                     e.preventDefault();
-                    selected_colors = $('.selectpicker option:selected').toArray().map(item => ({'text':item.text, 'value':item.value}));
-
+                    selected_colors = $('.selectpicker-color option:selected').toArray().map(item => ({'text':item.text, 'value':item.value}));
                           $(".color-amount-values").remove();
                           selected_colors.forEach(mysw);
                           function mysw(key, value) {
@@ -946,6 +951,58 @@
                                     '</div>';
                                 $(".color-dot").append(a);
                         }
+
+                    }
+                });
+                </script>
+
+
+                {{-- specification amount --}}
+                <script type="text/javascript">
+                $(document).on('change', '.selectpicker-specification', function(e) {
+                  $('.specification-amount-values').remove();
+                  $('#specification_amount').prop('checked', false); // Unchecks it
+                });
+                </script>
+
+                <script type="text/javascript">
+                $(document).on('change', '#specification_amount', function(e) {
+                  if (!$('#specification_amount').is(':checked')) {
+                    $('.specification-amount-values').remove();
+            }
+            else{
+                e.preventDefault();
+              selected_specificationIds = $('.selectpicker-specification option:selected').toArray().map(item => item.value);
+              $.ajax({
+                  type: "post",
+                  url: window.location.origin +'/admin-panel/shop/product-list/getSpecificationItems',
+                  data: {
+                      selected_specificationIds: selected_specificationIds,
+                      "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                  },
+                  success: function(data) {
+                    data.forEach(myFunction);
+                    function myFunction(key, value) {
+                    key.forEach(mysw);
+                    function mysw(key, value) {
+                      var a = '<div class="form-group mb-0 col-12 specification-amount-values">' +
+                          '<div class="input-group mt-3">' +
+                          '<div class="input-group-prepend min-width-180">'+
+                          '<span class="input-group-text bg-light min-width-140" id="basic-addon7">'+
+                          '<i class="fas fa-star required-star mr-1">'+
+                          '</i>'+
+                          key.name+':'+
+                          '</span>'+
+                          '</div>' +
+                              '<input type="number" class="form-control inputfield" name="specification_amount_number['+key.id+']">' +
+                              '</div>' +
+                              '</div>';
+                          $(".specification-dot").append(a);
+                  }
+                }
+                }
+              });
+
 
                     }
                 });

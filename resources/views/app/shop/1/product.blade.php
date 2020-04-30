@@ -103,6 +103,9 @@ a.socialIcon:hover, .socialHoverClass {
 
 </style>
 <div class="row">
+  @php
+  $check = 0;
+  @endphp
     <div class="col-sm-12">
         <div class="page-title-box">
             <div>
@@ -147,15 +150,15 @@ a.socialIcon:hover, .socialHoverClass {
                             @endif
                             </h3>
                             <div class="">
-
                             <div class="">
-                              @if($product->type == 'product' and $product->colors->count() != 0)
-                              @else
+
+                              @if($product->type == "product" and ($product->color_amount_status == 'disable' or $product->specification_amount_status == 'disable'))
                               @if ($product->amount != 0 || $product->type == 'service' || $product->type == 'file')
                               <span class="bg-soft-success rounded-pill px-3 py-1 font-weight-bold">موجود</span>
                               @else
                               <span class="bg-soft-pink rounded-pill px-3 py-1 font-weight-bold">ناموجود</span>
                               @endif
+
                             @endif
 
                             </div>
@@ -201,6 +204,7 @@ a.socialIcon:hover, .socialHoverClass {
                           $i = 0;
                            @endphp
                            @foreach($product->colors as $color)
+                             @if($product->color_amount_status == 'enable')
                              @if($color->pivot->amount != null and $color->pivot->amount > 0)
                              <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
                               <a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
@@ -209,6 +213,14 @@ a.socialIcon:hover, .socialHoverClass {
                            $i ++;
                             @endphp
                           @endif
+                        @else
+                          <li class="color-sel color-select {{ $i == 0 ? 'active' : '' }}">
+                           <a class="options-color tt-border tt-color-bg-08" style="background-color:#{{ $color->code }}" data-color="{{ $color->id }}"></a>
+                        </li>
+                        @php
+                        $i ++;
+                         @endphp
+                        @endif
                            @endforeach
                         </ul>
                       @endif
@@ -250,20 +262,42 @@ a.socialIcon:hover, .socialHoverClass {
                                         <div class="row">
                                         <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }}  name="specification[]" title="موردی انتخاب نشده است">
                                         @foreach($specification->items->where('status', 'enable') as $item)
+                                          @if($product->specification_amount_status == 'enable')
+                                          @if($item->productSpecificationItems->where('product_id', $product->id)->first()->amount > 0)
                                           @if($specification->type == 'checkbox')
                                            <option  value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
                                          @else
-                                           <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
+                                           <option @if($loop->last or $loop->first)  selected @endif value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
                                          @endif
+                                       @endif
+                                     @else
+                                       @if($specification->type == 'checkbox')
+                                        <option  value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
+                                      @else
+                                        <option @if($loop->last or $loop->first)  selected @endif value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
+                                      @endif
+                                     @endif
                                          @endforeach
                                         </select>
                                         </div>
                                       @endif
-
                                    @endforeach
                                    </div>
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
-                                    <button type="submit" data-col="true" class="text-white btn bg-blue-omid iranyekan mt-2 rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید </button>
+                                    @foreach($product->colors as $color)
+                                      @if($product->color_amount_status == 'enable' and $product->color_amount_status == 'enable')
+                                      @if($color->pivot->amount !== null and $color->pivot->amount <= 0)
+                                        @php
+                                        $check = 1;
+                                        @endphp
+                                  @endif
+                                @endif
+                              @endforeach
+                              @if($check == 1)
+                                  <button data-col="true" class="text-white btn bg-danger comming-soon iranyekan mt-5 rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> محصول موجود نمیباشد </button>
+                                @else
+                                      <button data-col="true" class="text-white btn bg-blue-omid iranyekan mt-5 rounded btn-add-to-cart"><i class="mdi mdi-cart mr-1"></i> اضافه به سبد خرید</button>
+                                @endif
                                     @endif
 
                                 </form>

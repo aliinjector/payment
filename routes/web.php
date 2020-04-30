@@ -120,12 +120,13 @@ Route::namespace('Dashboard')->prefix('admin-panel')->middleware('auth')->group(
         Route::get('product-list/{product}/show-file', 'ProductController@showFile')->name('product-list.show-file')->where(['product' => '[0-9]+']);
         Route::get('product-list/{product}/show-service', 'ProductController@showService')->name('product-list.show-service')->where(['product' => '[0-9]+']);
         Route::post('product-list/getFeatures', 'ProductController@getFeatures')->name('product-list.getFeatures');
+        Route::post('product-list/getSpecificationItems', 'ProductController@getSpecificationItems')->name('product-list.getSpecificationItems');
 
 
 
 
         Route::prefix('categrory-managment')->group(function () {
-          
+
         //Product-Category
         Route::resource('product-category', 'ProductCategoryController');
         Route::post('product-category/delete', 'ProductCategoryController@destroy')->name('product-category.delete');

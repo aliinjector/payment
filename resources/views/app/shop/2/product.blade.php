@@ -60,6 +60,9 @@
             @endif
     </div>
     <div class="container-indent">
+      @php
+      $check = 0;
+      @endphp
         <!-- mobile product slider  -->
         <div class="tt-mobile-product-layout visible-xs">
             <div class="tt-mobile-product-slider arrow-location-center slick-animated-show-js">
@@ -144,10 +147,24 @@
                                             </div>
                                         </div>
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        @foreach($product->colors as $color)
+                                          @if($product->color_amount_status == 'enable' and $product->color_amount_status == 'enable')
+                                          @if($color->pivot->amount !== null and $color->pivot->amount <= 0)
+                                            @php
+                                            $check = 1;
+                                            @endphp
+                                      @endif
+                                    @endif
+                                  @endforeach
+                                    @if($check == 1)
+                                      <button  class="btn btn-danger comming-soon iranyekan mt-1"><i class="icon-f-39"></i>
+                                        محصول موجود نمیباشد
+                                        @else
                                         <button type="submit" class="btn iranyekan mt-1"><i class="icon-f-39"></i>
                                             @if($product->type == 'file')دریافت فایل
                                                 @else اضافه به سبد خرید
                                                 @endif</button>
+                                              @endif
                                     </div>
                                 </div>
                                 <div class="mt-2 mb-3">
@@ -163,18 +180,26 @@
 
                                             <select class="selectpicker" {{ $specification->type == 'checkbox' ? 'multiple' : '' }} name="specification[]" title="موردی انتخاب نشده است">
                                                 @foreach($specification->items->where('status', 'enable') as $item)
+                                                  @if($product->specification_amount_status == 'enable')
+                                                  @if($item->productSpecificationItems->where('product_id', $product->id)->first()->amount > 0)
                                                     @if($specification->type == 'checkbox')
                                                       <option  value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
                                                    @else
                                                      <option {{ $loop->first ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
                                                    @endif
-                                                 @endforeach
-
-                                            </select>
-                                        </div>
-                                      @endif
-
-                                        @endforeach
+                                                 @endif
+                                               @else
+                                                 @if($specification->type == 'checkbox')
+                                                  <option  value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
+                                                @else
+                                                  <option @if($loop->last or $loop->first)  selected @endif value="{{ $item->id }}">{{ $item->name }} <span>+ ( {{ $item->price }} تومان )</span></option>
+                                                @endif
+                                               @endif
+                                                   @endforeach
+                                                  </select>
+                                                  </div>
+                                                @endif
+                                             @endforeach
                                 </div>
                             </form>
                             @endauth

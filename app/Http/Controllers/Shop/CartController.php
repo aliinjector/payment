@@ -49,6 +49,9 @@ class CartController extends \App\Http\Controllers\Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($shopName) {
+      try
+{
+
         $shop = Shop::where('english_name', $shopName)->first();
         $cart = \Auth::user()->cart()->get()->first();
         if(isset($cart->products)){
@@ -59,12 +62,14 @@ class CartController extends \App\Http\Controllers\Controller {
             if($product->status == 'disable'){
               CartProduct::where('product_id', '=', $product->id)->delete();
             }
+            if($product->color_amount_status == 'enable'){
             if($product->amount == null and $product->type = "product"){
             foreach($cart->cartProduct as $cartProductSingle){
                   if($cartProductSingle->product->colors->where('id', $cartProductSingle->color->id)->first()->pivot->amount <= 0){
                     CartProduct::where('product_id', '=', $product->id)->delete();
                   }
             }
+          }
           }
           }
         }
@@ -99,6 +104,15 @@ class CartController extends \App\Http\Controllers\Controller {
           SEOTools::opengraph()->addProperty('type', 'website');
             return view("app.shop.$template_folderName.cart", compact('shop', 'shopCategories'));
         }
+      }
+
+
+      catch(\Exception $e)
+      {
+        Cart::where('id', \Auth::user()->cart()->get()->first()->id)->get()->first()->delete();
+        return redirect()->back()->withErrors(['با عرض پوزش محصولات سبد خرید شما به دلیل مشکلات محصول حذف شد. لطفا دوباره تلاش نمایید.']);
+      }
+
     }
 
 
@@ -106,22 +120,40 @@ class CartController extends \App\Http\Controllers\Controller {
 
 
     public function addToCart($shopName, $userID, CartRequest $request) {
+
       $product = Product::where('id', $request->product_id)->get()->first();
       if($product->type == 'product' && $product->amount != null and $product->amount < 0){
         return redirect()->back()->withErrors(['کالای مورد نظر موجود نمیباشد']);
       }
-      if($product->type == 'product' && $product->amount == null){
-          if($product->colors->where('id', $request->color)->first()->pivot->amount <= 0){
-            return redirect()->back()->withErrors(['کالای مورد نظر موجود نمیباشد']);
+      if($product->color_amount_status == 'enable'){
+        if($product->type == 'product' && $product->amount == null and $product->color_amount_status == 'enable'){
+            if($product->colors->where('id', $request->color)->first()->pivot->amount <= 0){
+              return redirect()->back()->withErrors(['کالای مورد نظر موجود نمیباشد']);
+          }
         }
       }
       foreach($product->specifications()->where('type', 'radio')->get() as $radioSpecification){
         if($radioSpecification->items->count() > 0){
+          foreach($request->specification as $specificationSingle){
+            if($specificationSingle == null){
+              return redirect()->back()->withErrors(['کالای مورد نظر با خصوصیت انتخابی موجود نمیباشد.']);
+            }
+          }
             if($product->specifications()->where('type', 'radio')->count() != 0 and !isset($request->specification)){
               return redirect()->back()->withErrors(['باید خصوصیت تک انتخابی کالا انتخاب شود']);
           }
         }
       }
+      if($product->specification_amount_status == 'enable'){
+        foreach($product->specifications as $specificationSingleOrg){
+          foreach($request->specification as $specificationRequest){
+          foreach($specificationSingleOrg->items->where('id', $specificationRequest) as $singleItem){
+            if($singleItem->productSpecificationItems->where('product_id', $product->id)->first()->amount <= 0)
+            return redirect()->back()->withErrors(['کالای مورد نظر با خصوصیت انتخابی موجود نمیباشد.']);
+          }
+        }
+      }
+    }
         if (\Auth::user()->cart()->count() == 0) {
             $cart = new Cart;
             $cart->user_id = \Auth::user()->id;

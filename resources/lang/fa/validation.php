@@ -244,6 +244,10 @@ return array(
         'value.*' => 'ویژگی های دسته بندی',
         'color.*' => 'رنگ',
         'specifications.*' => 'خصوصیت',
+        'color_amount_number.*' => 'موجودی رنگ',
+        'specification_amount_number.*' => 'موجودی خصوصیت',
+        'specification_amount' => 'محاسبه موجودی بر اساس خصوصیت',
+        'on' => 'فعال',
 
           ),
 );
