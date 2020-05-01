@@ -67,6 +67,7 @@ return array(
     "numeric"          => ":attribute باید شامل عدد باشد.",
     "regex"            => ":attribute یک فرمت معتبر نیست",
     "required"         => "فیلد :attribute الزامی است",
+    "required_unless"    => ":attribute الزامی است زمانی که :other فعال نباشد.",
     "required_if"      => "فیلد :attribute هنگامی که :other برابر با :value است، الزامیست.",
     "required_with"    => ":attribute الزامی است زمانی که :values موجود است.",
     "required_with_all"=> ":attribute الزامی است زمانی که :values موجود است.",
@@ -248,6 +249,7 @@ return array(
         'specification_amount_number.*' => 'موجودی خصوصیت',
         'specification_amount' => 'محاسبه موجودی بر اساس خصوصیت',
         'on' => 'فعال',
+        'color_amount' => 'موجودی رنگ',
 
           ),
 );

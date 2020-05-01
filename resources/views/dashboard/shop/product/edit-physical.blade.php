@@ -176,10 +176,10 @@
                                         <div class="input-group-append"><span class="input-group-text bg-light text-dark font-weight-bold iranyekan" id="basic-addon8">گرم</span></div>
 
                                     </div>
-                                    <div class="input-group mt-3">
+                                    <div class="input-group color-dot mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">رنگ محصول :</span></div>
 
-                                        <select class="selectpicker" multiple data-live-search="true" name="color[]" title="موردی انتخاب نشده است">
+                                        <select class="selectpicker selectpicker-color" multiple data-live-search="true" name="color[]" title="موردی انتخاب نشده است">
                                             @foreach($colors as $color)
                                             <option style="background:linear-gradient(#{{ $color->code }} , #{{ $color->code }})bottom right/ 15% 2px;background-repeat:no-repeat;"  @if($product->colors->count() != 0) @foreach($product->colors as $selectedColor) {{ $color->id == $selectedColor->id ? 'selected' : ''}}
                                                     @endforeach
@@ -187,10 +187,24 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="custom-control custom-switch switch-blue mr-5 py-3">
+                                        <input type="checkbox" class="custom-control-input" id="color_amount" name="color_amount" {{ $product->color_amount_status == "enable" ? 'checked' : '' }}>
+                                        <label class="custom-control-label iranyekan font-15" for="color_amount">اختصاص موجودی به رنگ ها</label>
+                                        <h6 class="text-danger my-1">با اختصاص موجودی به رنگ ها موجودی اصلی کالا محاسبه نخواهد شد. </h6>
+
+                                    </div>
+                                    @if($product->color_amount_status == "enable")
+                                      @foreach ($product->colors as $color)
                                     <div class="input-group mt-3">
+                                        <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی رنگ {{ $color->name }} :</span></div>
+                                          <input type="text" class="form-control inputfield" name="color_amount_number[{{ $color->id }}]"  value="{{ $color->pivot->amount }}">
+                                    </div>
+                                  @endforeach
+                                  @endif
+                                    <div class="input-group specification-dot mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7"> خصوصیات انتخابی :</span></div>
 
-                                        <select class="selectpicker" multiple data-live-search="true" name="specifications[]" title="موردی انتخاب نشده است">
+                                        <select class="selectpicker selectpicker-specification" multiple data-live-search="true" name="specifications[]" title="موردی انتخاب نشده است">
                                           @foreach($shop->specifications as $specification)
                                             <option @if($product->specifications->count() != 0) @foreach($product->specifications as $selectedSpecification) {{ $specification->id == $selectedSpecification->id ? 'selected' : ''}}
                                                     @endforeach
@@ -198,11 +212,26 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="custom-control custom-switch switch-blue mr-5 py-3">
+                                        <input type="checkbox" class="custom-control-input" id="specification_amount" name="specification_amount" {{ $product->specification_amount_status == "enable" ? 'checked' : '' }}>
+                                        <label class="custom-control-label iranyekan font-15" for="specification_amount">اختصاص موجودی به خصوصیت ها</label>
+                                        <h6 class="text-danger my-1">با اختصاص موجودی به خصوصیت ها موجودی اصلی کالا محاسبه نخواهد شد. </h6>
+                                    </div>
+
+                                    @if($product->specification_amount_status == "enable")
+                                      @foreach ($product->specifications as $selectedSpecification)
+                                        @foreach ($selectedSpecification->items as $item)
+                                          <div class="input-group mt-3">
+                                              <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">موجودی خصوصیت {{ $item->name }} :</span></div>
+                                                <input type="text" class="form-control inputfield"  name="specification_amount_number[{{ $item->id }}]"  value="{{ $item->productSpecificationItems->where('product_id', $product->id)->first()->amount}}">
+                                          </div>
+                                        @endforeach
+                                  @endforeach
+                                  @endif
 
                                     <div class="input-group mt-3">
                                         <div class="input-group-prepend min-width-180"><span class="input-group-text bg-light min-width-140" id="basic-addon7">برچسب های محصول :</span></div>
                                         <input value="{{ $tags }}" type="text" id="input-tags" name="tags" class="form-control" />
-
                                     </div>
 
                                       @forelse( $product->facilities as $facility)
@@ -327,4 +356,95 @@
      });
      });
  </script>
+
+                 {{-- color amount --}}
+
+                 <script type="text/javascript">
+                 $(document).on('change', '.selectpicker-color', function(e) {
+                   $('.color-amount-values').remove();
+                   $('#color_amount').prop('checked', false); // Unchecks it
+                 });
+                 </script>
+                 <script type="text/javascript">
+                 $(document).on('change', '#color_amount', function(e) {
+                   if (!$('#color_amount').is(':checked')) {
+                     $('.color-amount-values').remove();
+             }
+             else{
+                     e.preventDefault();
+                     selected_colors = $('.selectpicker-color option:selected').toArray().map(item => ({'text':item.text, 'value':item.value}));
+                           $(".color-amount-values").remove();
+                           selected_colors.forEach(mysw);
+                           function mysw(key, value) {
+                             var a = '<div class="form-group mb-0 col-12 color-amount-values">' +
+                                 '<div class="input-group mt-3">' +
+                                 '<div class="input-group-prepend min-width-180">'+
+                                 '<span class="input-group-text bg-light min-width-140" id="basic-addon7">'+
+                                 '<i class="fas fa-star required-star mr-1">'+
+                                 '</i>'+
+                                 key.text+':'+
+                                 '</span>'+
+                                 '</div>' +
+                                     '<input type="number" class="form-control inputfield" name="color_amount_number['+key.value+']">' +
+                                     '</div>' +
+                                     '</div>';
+                                 $(".color-dot").append(a);
+                         }
+
+                     }
+                 });
+                 </script>
+
+
+                 {{-- specification amount --}}
+                 <script type="text/javascript">
+                 $(document).on('change', '.selectpicker-specification', function(e) {
+                   $('.specification-amount-values').remove();
+                   $('#specification_amount').prop('checked', false); // Unchecks it
+                 });
+                 </script>
+
+                 <script type="text/javascript">
+                 $(document).on('change', '#specification_amount', function(e) {
+                   if (!$('#specification_amount').is(':checked')) {
+                     $('.specification-amount-values').remove();
+             }
+             else{
+                 e.preventDefault();
+               selected_specificationIds = $('.selectpicker-specification option:selected').toArray().map(item => item.value);
+               $.ajax({
+                   type: "post",
+                   url: window.location.origin +'/admin-panel/shop/product-list/getSpecificationItems',
+                   data: {
+                       selected_specificationIds: selected_specificationIds,
+                       "_token": $('#csrf-token')[0].content //pass the CSRF_TOKEN()
+                   },
+                   success: function(data) {
+                     data.forEach(myFunction);
+                     function myFunction(key, value) {
+                     key.forEach(mysw);
+                     function mysw(key, value) {
+                       var a = '<div class="form-group mb-0 col-12 specification-amount-values">' +
+                           '<div class="input-group mt-3">' +
+                           '<div class="input-group-prepend min-width-180">'+
+                           '<span class="input-group-text bg-light min-width-140" id="basic-addon7">'+
+                           '<i class="fas fa-star required-star mr-1">'+
+                           '</i>'+
+                           key.name+':'+
+                           '</span>'+
+                           '</div>' +
+                               '<input type="number" class="form-control inputfield" name="specification_amount_number['+key.id+']">' +
+                               '</div>' +
+                               '</div>';
+                           $(".specification-dot").append(a);
+                   }
+                 }
+                 }
+               });
+
+
+                     }
+                 });
+                 </script>
+
 @stop

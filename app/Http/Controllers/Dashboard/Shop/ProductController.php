@@ -162,7 +162,7 @@ class ProductController extends Controller
         $request->amount = $this->fa_num_to_en($request->amount);
       }
       }
-      if($request->color_amount == 'on' and $request->get('color_amount_number')){
+      if($request->color_amount == 'on' and $request->get('color_amount_number') or ($request->specification_amount == 'on' and $request->get('specification_amount_number'))){
         $request->merge(['min_amount' => null]);
       }
       else{
@@ -217,7 +217,7 @@ class ProductController extends Controller
   }
 
 
-  if($request->specification_amount = 'on' and $request->get('specification_amount_number')){
+  if($request->specification_amount == 'on' and $request->get('specification_amount_number')){
     foreach($request->specification_amount_number as $specification_amount_number_id => $specification_amount_number){
       DB::table('product_specificationItem')->insertOrIgnore([
     ['product_id' => $product->id, 'specification_item_id' => $specification_amount_number_id, 'amount' => $specification_amount_number]
@@ -356,6 +356,21 @@ class ProductController extends Controller
       DB::table('facilities')->insert(['name' => $facility, 'product_id' => $product->id]);
     }
   }
+
+  if($request->specification_amount == 'on' and $request->get('specification_amount_number')){
+    foreach($request->specification_amount_number as $specification_amount_number_id => $specification_amount_number){
+      DB::table('product_specificationItem')->insertOrIgnore([
+    ['product_id' => $product->id, 'specification_item_id' => $specification_amount_number_id, 'amount' => $specification_amount_number]
+  ]);
+    }
+    $product->update([
+      'specification_amount_status' => 'enable'
+    ]);
+  }
+
+
+
+
   //add tags to the product
   if($product)
   {
@@ -385,6 +400,23 @@ class ProductController extends Controller
             }
         }
         $product->colors()->sync($colorIds);
+      }
+
+      //get all color and color Amount of product
+      if($request->get('color') and $request->get('color_amount_number')){
+
+          foreach($request->get('color_amount_number') as $colorId=>$colorAmount)
+          {
+            $color = Color::find($colorId);
+            if($color){
+              $colorIds[$color->id] = ['amount'=>$colorAmount];
+            }
+          }
+
+          $product->colors()->sync($colorIds);
+          $product->update([
+            'color_amount_status' => 'enable'
+          ]);
       }
 
       if($request->get('specifications')){
@@ -493,6 +525,7 @@ else{
     {
       $shop = \Auth::user()->shop()->first();
       $product = $shop->products->where('id', $id)->first();
+
       $tags = [];
       foreach($product->tags as $tag){
         $tags[] = $tag->name;
@@ -567,6 +600,7 @@ else{
             'off_price_started_at' => 'required_with:off_price',
             'off_price_expired_at' => 'required_with:off_price|gt:off_price_started_at',
           ]);
+
           //check for started and and expired for off_price
           if($request->off_price_started_at != null){
             $realTimestampStart = substr($request->off_price_started_at,0,10);
@@ -578,6 +612,35 @@ else{
           }
         }
 
+        if ($request->type == 'product') {
+        if($request->specification_amount != 'on' and $request->color_amount != 'on'){
+        $request->validate([
+          'amount' => 'required_unless:specification_amount,on|required_unless:color_amount,on|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u','max:999999','min:0',
+          'min_amount' => 'required_unless:specification_amount,on|required_unless:color_amount,on|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u','max:999999','min:0',
+        ]);
+      }
+      elseif($request->specification_amount == 'on' or $request->color_amount == 'on'){
+        $request->validate([
+          'amount' => 'nullable|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u','max:999999','min:0',
+          'min_amount' => 'nullable|regex:/^[ا-یa-zA-Z0-9\-۰-۹ء-ي., ]+$/u','max:999999','min:0',
+        ]);
+      }
+    }
+    if($request->specification_amount != 'on'){
+         $request->merge(['specification_amount' => '']);
+         $specification_amount_status = 'disable';
+    }
+    else{
+      $specification_amount_status = 'enable';
+    }
+    if($request->color_amount != 'on'){
+         $request->merge(['color_amount' => '']);
+         $color_amount_status = 'disable';
+    }
+    else{
+      $color_amount_status = 'enable';
+
+    }
 
           $product = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first();
           if($request->type == 'file' and $request->file('attachment') == null){
@@ -629,12 +692,18 @@ else{
        else
        $request->discount_status = 'enable';
 
-
+       //check amount of product and change fa number to en
+       if($request->color_amount == 'on' and $request->get('color_amount_number') or ($request->specification_amount == 'on' and $request->get('specification_amount_number'))){
+         $request->merge(['amount' => null]);
+         $request->merge(['min_amount' => null]);
+       }
+       else{
         if($request->amount != null){
           $request->amount = $this->fa_num_to_en($request->amount);
         }
         if($request->min_amount != null){
           $request->min_amount = $this->fa_num_to_en($request->min_amount);
+        }
         }
         if($request->weight != null){
           $request->weight = $this->fa_num_to_en($request->weight);
@@ -642,7 +711,7 @@ else{
         if($request->off_price != null){
           $request->off_price = $this->fa_num_to_en($request->off_price);
         }
-        $shop = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
+        $updatedProduct = \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->update([
           'title' => $request->title,
           'type' => $request->type,
           'productCat_id' => $request->productCat_id,
@@ -660,6 +729,9 @@ else{
           'discount_status' => $request->discount_status,
           'description' => $request->description,
           'image' => $image,
+          'attachment' => $attachment,
+          'specification_amount_status' => $specification_amount_status,
+          'color_amount_status' => $color_amount_status,
           'attachment' => $attachment,
           'off_price_started_at' => $request->off_price_started_at,
           'off_price_expired_at' => $request->off_price_expired_at,
@@ -684,8 +756,17 @@ else{
           }
         }
 
+        if($request->specification_amount == 'on' and $request->get('specification_amount_number')){
+          foreach($request->specification_amount_number as $specification_amount_number_id => $specification_amount_number){
+            DB::table('product_specificationItem')->updateOrInsert(
+          ['product_id' => $product->id, 'specification_item_id' => $specification_amount_number_id],
+          ['amount' => $specification_amount_number],
+        );
+          }
+        }
 
-        if($shop)
+
+        if($updatedProduct)
         {
             $tagIds = [];
             $colorIds = [];
@@ -702,7 +783,7 @@ else{
                 }
             }
             // get all color of product
-            if($request->get('color')){
+            if($request->get('color') and !$request->get('color_amount_number')){
               foreach($request->get('color') as $colorName)
               {
                   $color = Color::firstOrCreate(['id'=>$colorName]);
@@ -712,6 +793,20 @@ else{
                   }
               }
               \Auth::user()->shop()->first()->products()->where('id',$id)->get()->first()->colors()->sync($colorIds);
+            }
+
+
+            //get all color and color Amount of product
+            if($request->get('color') and $request->color_amount == 'on' and $request->get('color_amount_number')){
+                foreach($request->get('color_amount_number') as $colorId=>$colorAmount)
+                {
+
+                  $color = Color::find($colorId);
+                  if($color){
+                    $colorIds[$color->id] = ['amount'=>$colorAmount];
+                  }
+                }
+                $product->colors()->sync($colorIds);
             }
 
             if($request->get('specifications')){

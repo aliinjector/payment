@@ -822,7 +822,7 @@
                                                     <td>-</td>
                                                     @endif
 
-                                                    <td @if($product->amount <= $product->min_amount and $product->type == 'product') class="text-danger amount-warning" @endif >{{ $product->amount != null ? $product->amount : '-' }}
+                                                    <td @if($product->amount <= $product->min_amount and $product->type == 'product' and $product->amount != null) class="text-danger amount-warning" @endif >{{ $product->amount != null ? $product->amount : '-' }}
 
                                                             <div class="d-none icon-show">
                                                                 @if($product->type == 'product')
